@@ -1,0 +1,567 @@
+<mjml>
+  <mj-head>
+    <mj-breakpoint width="600px" />
+    <mj-attributes>
+      <mj-all
+        color="inherit"
+        font-size="17px"
+      />
+      <mj-button
+        font-size="16px"
+        font-weight="700"
+        border-radius="0px"
+        inner-padding="16px 30px"
+        font-family="Arial, sans-serif"
+        letter-spacing="2px"
+        css-class="button"
+      />
+    </mj-attributes>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+  <mj-body css-class="email-body" background-color="#ffffff">
+    <!-- START: Main Content -->
+    <!-- START: Logo Image Block -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-column>
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-marketing-tools.png?v=1779709580000"
+          alt="NGS Logo"
+          href="https://www.nationalgeographic.org/society/"
+          width="150px"
+          padding="0"
+          css-class="light-only"
+        />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
+          alt="NGS Logo"
+          href="https://www.nationalgeographic.org/society/"
+          width="150px"
+          padding="0"
+          css-class="dark-only"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+    </mj-section>
+    <!-- END: Logo Image Block -->
+
+    <!-- START: Image with caption -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#ffffff"
+      padding="0"
+    >
+      <mj-column>
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
+          alt="Image Alt Text"
+          href="https://www.nationalgeographic.org/society/"
+          width="600px"
+          padding="0px"
+        />
+        <mj-text padding="10px 0 0" align="right" css-class="wysiwyg caption">
+          <span style="font-size:11px; font-family: Arial, sans-serif;">PHOTOGRAPHY BY PHOTOGRAPHER NAME, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image with caption -->
+
+    <!-- START: WYSIWYG (Text content) -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-column width="480px" padding="0">
+        <mj-text css-class="wysiwyg" padding="0">
+          <h1 style="text-align: center;">
+            Lorem ipsum quis malesuada sed quam faucibus.
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            Fermentum sit id pharetra tortor. In viverra semper et lorem consequat
+            pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean.
+            Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus aenean. <a href="https://www.nationalgeographic.org/society/">Non sit volutpat quam pretium risus ullamcorper pretium
+            nisi porttitor.</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: WYSIWYG (Text content) -->
+
+    <!-- START: Button Solid -->
+    <mj-section
+      css-class="cta-button-block block"
+      background-color="#FFFFFF"
+      padding="20px 20px"
+    >
+      <mj-column padding="0">
+        <mj-button
+          color="#000000"
+          background-color="#FFC530"
+          border="2px solid #FFC530"
+          href="https://www.nationalgeographic.org/society/"
+          align="center"
+        >
+          BUTTON
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Button Solid -->
+
+    <!-- START: Button Outlined -->
+    <mj-section
+        css-class="cta-button-block block"
+        background-color="#FFFFFF"
+        padding="20px 20px"
+    >
+      <mj-column padding="0">
+        <mj-button
+            color="#000000"
+            background-color="#FFFFFF"
+            border="2px solid #000000"
+            href="https://www.nationalgeographic.org/society/"
+            align="center"
+        >
+          BUTTON
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Button Outlined -->
+
+    <!-- START: Highlighted Text -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-column width="480px" padding="13px" border-left="4px solid #FFCC00" background-color="#FDFBF7">
+        <mj-text css-class="wysiwyg" padding="0">
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            Fermentum sit id pharetra tortor.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Highlighted Text -->
+
+    <!-- START: Side by side image and text -->
+    <mj-section
+        css-class="two-col-image-text-button-block block"
+        background-color="#ffffff"
+        padding="20px 20px"
+    >
+      <mj-column css-class="two-col-column first-two-col-column" width="250px" padding="0 10px" vertical-align="top">
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
+            alt="Custom alt text"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            align="center"
+            fluid-on-mobile="true"
+        />
+        <mj-text padding="20px 0 0" css-class="wysiwyg">
+          <h3>Lorem ipsum dolor consectur</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut.
+          </p>
+          <p>
+            <a
+                href="https://www.nationalgeographic.org/society/"
+                style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
+            >
+              PLACEHOLDER
+            </a>
+          </p>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="250px" padding="0 10px" vertical-align="top">
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
+            alt="Custom alt text"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            align="center"
+            fluid-on-mobile="true"
+        />
+        <mj-text padding="20px 0 0" css-class="wysiwyg">
+          <h3>Lorem ipsum dolor consectur</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut.
+          </p>
+          <p>
+            <a
+                href="https://www.nationalgeographic.org/society/"
+                style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
+            >
+              PLACEHOLDER
+            </a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Side by side image and text -->
+
+    <!-- START: 2 col image and text -->
+    <mj-section
+      css-class="two-col-image-text-block block"
+      background-color="#F1EEE9"
+      padding="20px 10px"
+    >
+      <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+            alt="Custom alt text"
+            href="https://www.nationalgeographic.org/society/"
+            align="center"
+            fluid-on-mobile="true"
+            padding="0"
+            css-class="two-col-image"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-col" width="340px" padding="0 10px" vertical-align="middle">
+        <mj-text padding="0" css-class="wysiwyg">
+          <h3>Lorem ipsum dolor</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
+            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
+            Ac vel ut nam augue. Volutpat tincidunt ut amet phasellus. Pulvinar at dapibus
+            praesent euismod pulvinar ut.
+          </p>
+          <p>
+            <a
+              href="https://www.nationalgeographic.org/society/"
+              style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
+            >
+              PLACEHOLDER
+            </a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: 2 col image and text -->
+
+    <!-- START: Reversed 2 col image and text-->
+    <mj-section
+        css-class="two-col-image-text-block block"
+        background-color="#F1EEE9"
+        padding="20px 10px"
+        direction="rtl"
+    >
+      <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+            alt="Custom alt text"
+            href="https://www.nationalgeographic.org/society/"
+            align="center"
+            fluid-on-mobile="true"
+            padding="0"
+            css-class="two-col-image"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-col" width="340px" padding="0 10px" vertical-align="middle">
+        <mj-text padding="0" css-class="wysiwyg">
+          <h3>Lorem ipsum dolor</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
+            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
+            Ac vel ut nam augue. Volutpat tincidunt ut amet phasellus. Pulvinar at dapibus
+            praesent euismod pulvinar ut.
+          </p>
+          <p>
+            <a
+              href="https://www.nationalgeographic.org/society/"
+              style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
+            >
+              PLACEHOLDER
+            </a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Reversed 2 col image and text -->
+
+    <!-- START: Spacer -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Spacer -->
+
+    <!-- START: CTA Block -->
+    <mj-section
+      css-class="cta-button-block block"
+      background-color="#FFC530"
+      padding="20px 20px"
+    >
+      <mj-column width="480px" padding="0">
+        <mj-text padding="0" css-class="wysiwyg" align="center">
+          <h3>Lorem ipsum dolor</h3>
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
+            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
+          </p>
+        </mj-text>
+        <mj-button
+            color="#000000"
+            background-color="#FFC530"
+            border="2px solid #000000"
+            href="https://www.nationalgeographic.org/society/"
+            align="center"
+            padding-top="30px"
+        >
+          LOREM IPSUM SEMPER MI
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Block -->
+
+    <!-- START: Divider -->
+    <mj-section css-class="divider-block block" background-color="#ffffff">
+      <mj-column>
+        <mj-divider
+          border-width="3px"
+          border-color="#FFCC00"
+          padding="0 20px"
+          width="300px"
+        />
+      </mj-column>
+    </mj-section>
+    <!-- END: Divider -->
+
+    <!-- START: Signature card -->
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0px">
+      <mj-column width="480px">
+        <mj-text padding="0" css-class="wysiwyg">
+          <p style="font-style: italic;">
+            With deep appreciation,
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px">
+      <mj-group width="480px">
+        <mj-column
+          vertical-align="top"
+          width="110px"
+          css-class="signature-img"
+          padding-right="10px"
+        >
+          <mj-image
+              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins.png?v=1779722860000"
+              alt="Custom alt text"
+              padding="0"
+          />
+        </mj-column>
+        <mj-column
+            vertical-align="middle"
+            width="365px"
+            css-class="signature-text"
+            padding-left="10px"
+        >
+          <mj-image
+              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
+              alt="Signature Image"
+              width="200px"
+              padding="0 0 10px"
+              align="left"
+          />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image
+              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
+              alt="Signature Image"
+              width="200px"
+              padding="0 0 10px"
+              align="left"
+              css-class="dark-only"
+          />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-text font-size="16px" padding="0" css-class="wysiwyg">
+            <p style="font-family: Arial, sans-serif;">
+              Kara Ramirez Mullins
+              <br />
+              <em style="font-family: Georgia, serif;">Placeholder title, Example Division</em>
+              <br />
+              <b>National Geographic Society</b>
+            </p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Signature card -->
+
+    <!-- START: Footer -->
+    <mj-section
+      css-class="footer-block block"
+      background-color="#000000"
+      padding="60px 20px 0"
+    >
+      <mj-column width="480px">
+        <mj-image
+          alt="NGS Logo"
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
+          width="150px"
+          href="https://www.nationalgeographic.org/society/"
+        />
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="footer-block block"
+      background-color="#000000"
+      padding="30px 20px 0px"
+    >
+      <mj-group width="480px">
+        <mj-column width="33%" vertical-align="middle">
+          <mj-text
+            padding="0"
+            css-class="wysiwyg footer-text"
+            color="#ffffff"
+          >
+            <p style="text-align: center;">
+              <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="#">DONATE</a>
+            </p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="66%"  border-left="2px solid #4d4d4d" vertical-align="middle">
+          <mj-text
+            padding="0"
+            css-class="wysiwyg footer-text"
+            color="#ffffff"
+          >
+            <p style="text-align: center;">
+              <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="#">MANAGE SUBSCRIPTION</a>
+            </p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section
+        css-class="footer-block block"
+        background-color="#000000"
+        padding="0px 20px 60px"
+    >
+      <mj-column width="480px">
+        <mj-text
+          padding="30px 0 0"
+          css-class="wysiwyg footer-text"
+          color="#ffffff"
+        >
+          <p>
+            Photos by:  Anand Varma, Wallace W. Nutting, Tamara Merino, Photo Ark: ANIMALS OF EARTH
+            by Joel Sartore, Exhibit Rendering, Michael O. Snyder / Preserving Legacies,
+            Joel Sartore / National Geographic Photo Ark
+          </p>
+          <p>
+            The National Geographic Society is a nonprofit organization driven by the belief in the
+            power of science, exploration, and storytelling to change the world. The National Geographic
+            Society is a 501(c)(3), tax-exempt organization. Copyright © 2025 National Geographic Society.
+            All rights reserved.
+          </p>
+          <p>
+            <br />
+            You are receiving this email because you elected to receive marketing communications from
+            National Geographic under the terms of our Privacy Policy and Terms of Service.
+          </p>
+          <p>
+            You may unsubscribe from this list if you no longer wish to receive email marketing
+            communications. If you would like to unsubscribe from ALL email communication from National
+            Geographic Society, request erasure or portability of your personal data please email
+            dataprivacy@ngs.org with your request.
+          </p>
+          <p>
+            You may not be able to save the whole world, but you can make a difference in your own
+            backyard by planting a garden with native plants to provide a sustainable habitat for local
+            pollinators and other wildlife.
+          </p>
+        </mj-text>
+        <mj-button
+          color="#000000"
+          background-color="#FFC530"
+          border="2px solid #FFC530"
+          href="https://www.nationalgeographic.org/society/"
+          align="center"
+          padding="40px 0 60px"
+        >
+          DONATE
+        </mj-button>
+        <mj-social
+          css-class="socials"
+          icon-padding="0"
+          mode="horizontal"
+          inner-padding="0px 8px"
+          align="center"
+        >
+          <mj-social-element
+            css-class="social-link"
+            name="facebook-noshare"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/facebook.png?v=1779709436000"
+            href="https://www.facebook.com/InsideNatGeo/"
+            background-color="#000000"
+            alt="Facebook Logo"
+            icon-size="11px"
+            icon-height="25px"
+            vertical-align="middle"
+          />
+          <mj-social-element
+            css-class="social-link"
+            name="instagram-noshare"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/instagram.png?v=1779709437000"
+            href="https://www.instagram.com/insidenatgeo/"
+            background-color="#000000"
+            alt="Instagram Logo"
+            icon-size="24px"
+            icon-height="24px"
+            vertical-align="middle"
+          />
+          <mj-social-element
+            css-class="social-link"
+            name="youtube-noshare"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/youtube.png?v=1779709463000"
+            href="https://www.youtube.com/insidenatgeo"
+            background-color="#000000"
+            alt="YouTube Logo"
+            icon-size="27px"
+            icon-height="20px"
+            vertical-align="middle"
+          />
+          <mj-social-element
+            css-class="social-link"
+            name="linkedin-noshare"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/linkedin.png?v=1779709439000"
+            href="https://www.linkedin.com/company/national-geographic-society/"
+            background-color="#000000"
+            alt="LinkedIn Logo"
+            icon-size="24px"
+            icon-height="24px"
+            vertical-align="middle"
+          />
+        </mj-social>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer -->
+
+    <!-- END: Main Content -->
+  </mj-body>
+</mjml>
