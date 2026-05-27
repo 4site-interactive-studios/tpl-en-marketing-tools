@@ -82,6 +82,15 @@ p {
   font-family: Arial, sans-serif;
 }
 
+.question-response {
+  border: 1px solid #F1EEE9;
+}
+
+.question-response:hover {
+  background-color: #fdfbf7!important;
+  cursor: pointer;
+}
+
 @media (max-width: 599px) {
   .desktop-only {
     display: none !important;
@@ -105,7 +114,9 @@ p {
   }
 
   /* Add space below first column on mobile when it is collapsed to single column */
-  .first-two-col-column {
+  .first-two-col-column,
+  .first-column,
+  .second-column {
     margin-bottom: 20px;
   }
 

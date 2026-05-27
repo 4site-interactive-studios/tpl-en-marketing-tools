@@ -54,6 +54,62 @@
     </mj-section>
     <!-- END: Logo Image Block -->
 
+    <!-- START: Logo Image Block -->
+    <mj-section
+            css-class="image-block block"
+            background-color="#ffffff"
+            padding="0"
+    >
+      <mj-column>
+        <mj-image
+                src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+                alt="NGS Logo"
+                href="https://www.nationalgeographic.org/society/"
+                padding="0"
+                css-class="light-only"
+        />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+                src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+                alt="NGS Logo"
+                href="https://www.nationalgeographic.org/society/"
+                width="150px"
+                padding="0"
+                css-class="dark-only"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+    </mj-section>
+    <!-- END: Logo Image Block -->
+
+    <!-- START: Logo Image Block -->
+    <mj-section
+        css-class="image-block block"
+        background-color="#ffffff"
+        padding="0"
+    >
+      <mj-column>
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
+            alt="NGS Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="light-only"
+        />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
+            alt="NGS Logo"
+            href="https://www.nationalgeographic.org/society/"
+            width="150px"
+            padding="0"
+            css-class="dark-only"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+    </mj-section>
+    <!-- END: Logo Image Block -->
+
     <!-- START: Image with caption -->
     <mj-section
       css-class="image-block block"
@@ -102,6 +158,159 @@
             nisi porttitor.</a>
           </p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: WYSIWYG (Text content) -->
+
+    <!-- START: Image with overlay -->
+    <!-- After compiling this block, you must add color="#000000" to the v:fill element -->
+    <mj-section
+        css-class="overlay-image-block block"
+        background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center center"
+        padding="350px 0px 50px"
+    >
+      <mj-group>
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px">&nbsp;</mj-column>
+
+        <mj-column width="550px">
+          <mj-text css-class="wysiwyg overlay" color="#ffffff" padding="0 0 10px">
+            <h3 style="color: white; text-align: center; font-size: 36px; font-weight:bold">Placeholder message for special occasion</h3>
+          </mj-text>
+          <mj-button
+            color="#000000"
+            background-color="#FFC530"
+            border="2px solid #FFC530"
+            href="https://www.nationalgeographic.org/society/"
+            align="center"
+          >
+            BUTTON
+          </mj-button>
+        </mj-column>
+
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Image with overlay -->
+
+    <!-- START: Question Response -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-group css-class="question-response" width="480px">
+        <mj-column width="8%" vertical-align="top">
+          <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ellipse.jpg?v=1779895408000"
+            alt="Input Control"
+            padding="16px 10px"
+          />
+        </mj-column>
+        <mj-column width="92%" vertical-align="top" padding="0">
+          <mj-text css-class="wysiwyg" padding="12px 0">
+            <p style="font-family: Arial, sans-serif;">Each list item will functions as a link in the email directing users to a dedicated page on your site.</p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Question Response -->
+
+    <!-- START: Two Images -->
+    <mj-section
+      css-class="two-col-images-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-column css-class="two-col-column first-two-col-column" width="245px" padding="0 5px" vertical-align="top">
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
+          alt="Custom alt text"
+          href="https://www.nationalgeographic.org/society/"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-column" width="245px" padding="0 5px" vertical-align="top">
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
+          alt="Custom alt text"
+          href="https://www.nationalgeographic.org/society/"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+    </mj-section>
+    <!-- END: Two Images -->
+
+    <!-- START: Two Images -->
+    <mj-section
+      css-class="three-col-images-block block"
+      background-color="#ffffff"
+      padding="20px 20px"
+    >
+      <mj-column css-class="two-col-column first-column" width="163px" padding="0 5px" vertical-align="top">
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
+          alt="Custom alt text"
+          href="https://www.nationalgeographic.org/society/"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-column second-column" width="164px" padding="0 5px" vertical-align="top">
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
+          alt="Custom alt text"
+          href="https://www.nationalgeographic.org/society/"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-column second-col" width="163px" padding="0 5px" vertical-align="top">
+        <mj-image
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
+            alt="Custom alt text"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            align="center"
+            fluid-on-mobile="true"
+        />
+      </mj-column>
+    </mj-section>
+    <!-- END: Two Images -->
+
+    <!-- START: WYSIWYG (Text content) -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#F1EEE9"
+      padding="40px 20px 0px"
+    >
+      <mj-column width="480px" padding="0">
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/quotes.png?v=1779896914000"
+          alt="Quotation Symbol"
+          width="44px"
+          padding="0 0 30px"
+        />
+        <mj-text css-class="wysiwyg" padding="0">
+          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 20px;">
+            Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
+            Arcu eu tincidunt amet eleifend placerat adipiscing.
+          </p>
+          <p style="font-size: 14px; letter-spacing: 2px; font-weight: 500; text-align: center; font-family: Arial, sans-serif; margin-bottom: 0;">
+            - TESTIMONIAL AUTHOR
+          </p>
+        </mj-text>
+        <mj-divider border-width="4px" border-color="#000000" padding="40px 0 0" width="280px" align="center" />
       </mj-column>
     </mj-section>
     <!-- END: WYSIWYG (Text content) -->
@@ -417,6 +626,7 @@
       css-class="footer-block block"
       background-color="#000000"
       padding="60px 20px 0"
+      full-width="full-width"
     >
       <mj-column width="480px">
         <mj-image
@@ -431,6 +641,8 @@
       css-class="footer-block block"
       background-color="#000000"
       padding="30px 20px 0px"
+      full-width="full-width"
+
     >
       <mj-group width="480px">
         <mj-column width="33%" vertical-align="middle">
@@ -461,6 +673,8 @@
         css-class="footer-block block"
         background-color="#000000"
         padding="0px 20px 60px"
+        full-width="full-width"
+
     >
       <mj-column width="480px">
         <mj-text
