@@ -56,26 +56,25 @@
 
     <!-- START: Logo Image Block -->
     <mj-section
-            css-class="image-block block"
-            background-color="#ffffff"
-            padding="0"
+        css-class="image-block block"
+        background-color="#ffffff"
+        padding="0"
     >
       <mj-column>
         <mj-image
-                src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
-                alt="NGS Logo"
-                href="https://www.nationalgeographic.org/society/"
-                padding="0"
-                css-class="light-only"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+            alt="NGS Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="light-only"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-                src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
-                alt="NGS Logo"
-                href="https://www.nationalgeographic.org/society/"
-                width="150px"
-                padding="0"
-                css-class="dark-only"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+            alt="NGS Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="dark-only"
         />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
@@ -101,7 +100,6 @@
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
             alt="NGS Logo"
             href="https://www.nationalgeographic.org/society/"
-            width="150px"
             padding="0"
             css-class="dark-only"
         />
@@ -206,7 +204,7 @@
       <mj-group css-class="question-response" width="480px">
         <mj-column width="8%" vertical-align="top">
           <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ellipse.jpg?v=1779895408000"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ellipse.png?v=1780314745000"
             alt="Input Control"
             padding="16px 10px"
           />
@@ -288,9 +286,9 @@
     </mj-section>
     <!-- END: Two Images -->
 
-    <!-- START: WYSIWYG (Text content) -->
+    <!-- START: Quote Block -->
     <mj-section
-      css-class="text-block block"
+      css-class="quote-block block"
       background-color="#F1EEE9"
       padding="40px 20px 0px"
     >
@@ -300,7 +298,17 @@
           alt="Quotation Symbol"
           width="44px"
           padding="0 0 30px"
+          css-class="light-only"
         />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/quotes-dark-mode.png?v=1780316044000"
+          alt="Quotation Symbol"
+          width="44px"
+          padding="0 0 30px"
+          css-class="dark-only"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg" padding="0">
           <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 20px;">
             Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
@@ -310,14 +318,14 @@
             - TESTIMONIAL AUTHOR
           </p>
         </mj-text>
-        <mj-divider border-width="4px" border-color="#000000" padding="40px 0 0" width="280px" align="center" />
+        <mj-divider css-class="divider" border-width="4px" border-color="#000000" padding="40px 0 0" width="280px" align="center" />
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG (Text content) -->
+    <!-- END: Quote Block -->
 
     <!-- START: Button Solid -->
     <mj-section
-      css-class="cta-button-block block"
+      css-class="button-block block"
       background-color="#FFFFFF"
       padding="20px 20px"
     >
@@ -337,7 +345,7 @@
 
     <!-- START: Button Outlined -->
     <mj-section
-        css-class="cta-button-block block"
+        css-class="button-block block"
         background-color="#FFFFFF"
         padding="20px 20px"
     >
@@ -361,7 +369,7 @@
       background-color="#ffffff"
       padding="20px 20px"
     >
-      <mj-column width="480px" padding="13px" border-left="4px solid #FFCC00" background-color="#FDFBF7">
+      <mj-column css-class="highlighted-text-column" width="480px" padding="13px" border-left="4px solid #FFCC00" background-color="#FDFBF7">
         <mj-text css-class="wysiwyg" padding="0">
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
@@ -551,6 +559,7 @@
     <mj-section css-class="divider-block block" background-color="#ffffff">
       <mj-column>
         <mj-divider
+          css-class="divider"
           border-width="3px"
           border-color="#FFCC00"
           padding="0 20px"
@@ -596,8 +605,9 @@
               width="200px"
               padding="0 0 10px"
               align="left"
+              css-class="light-only"
           />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-raw><!--[if !mso] --></mj-raw>
           <mj-image
               src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
               alt="Signature Image"

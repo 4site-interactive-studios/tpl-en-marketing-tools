@@ -183,6 +183,14 @@ p {
     background-color: #1f2021 !important;
   }
 
+  .quote-block,
+  .quote-block>table,
+  .cta-button-block,
+  .cta-button-block>table,
+  .highlighted-text-column > table > tbody > tr > td {
+    background-color: #2b2a2a !important;
+  }
+
   .button td,
   .button a {
     background-color: #eaebec !important;
@@ -196,6 +204,11 @@ p {
 
   .divider>p {
     border-color: #eeeeee !important;
+  }
+
+  .question-response:hover {
+    background-color: #1f2021!important;
+    cursor: pointer;
   }
 }
 
