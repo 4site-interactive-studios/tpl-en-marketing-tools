@@ -164,7 +164,7 @@
     <!-- After compiling this block, you must add color="#000000" to the v:fill element -->
     <mj-section
         css-class="overlay-image-block block"
-        background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+        background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs_overlay_image_bg.png?v=1780320473000"
         background-size="cover"
         background-repeat="no-repeat"
         background-position="center center"
