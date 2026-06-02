@@ -287,6 +287,11 @@
     <!-- END: Two Images -->
 
     <!-- START: Quote Block -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
+    </mj-section>
     <mj-section
       css-class="quote-block block"
       background-color="#F1EEE9"
@@ -321,6 +326,11 @@
         <mj-divider css-class="divider" border-width="4px" border-color="#000000" padding="40px 0 0" width="280px" align="center" />
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
+    </mj-section>
     <!-- END: Quote Block -->
 
     <!-- START: Button Solid -->
@@ -336,6 +346,7 @@
           border="2px solid #FFC530"
           href="https://www.nationalgeographic.org/society/"
           align="center"
+          width="400px"
         >
           BUTTON
         </mj-button>
@@ -528,6 +539,11 @@
     <!-- END: Spacer -->
 
     <!-- START: CTA Block -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
+    </mj-section>
     <mj-section
       css-class="cta-button-block block"
       background-color="#FFC530"
@@ -551,6 +567,11 @@
         >
           LOREM IPSUM SEMPER MI
         </mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Block -->
@@ -594,10 +615,10 @@
           />
         </mj-column>
         <mj-column
-            vertical-align="middle"
-            width="365px"
-            css-class="signature-text"
-            padding-left="10px"
+          vertical-align="middle"
+          width="365px"
+          css-class="signature-text"
+          padding-left="10px"
         >
           <mj-image
               src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
