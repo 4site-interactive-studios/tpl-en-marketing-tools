@@ -161,13 +161,24 @@
     <!-- END: WYSIWYG (Text content) -->
 
     <!-- START: Image with overlay -->
-    <!-- After compiling this block, you must add color="#000000" to the v:fill element -->
+    <!--
+      Inside a section using a background all elements must have 0 left
+      and right padding or they will be misaligned on outlook.
+      This is why we use spacer columns with a fixed width on the sides
+      of the overlay image column to create the necessary padding while
+      maintaining alignment across email clients.
+     -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
+    </mj-section>
     <mj-section
         css-class="overlay-image-block block"
         background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs_overlay_image_bg.png?v=1780320473000"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center center"
+        background-position="center bottom"
         padding="350px 0px 50px"
     >
       <mj-group>
@@ -176,7 +187,7 @@
 
         <mj-column width="550px">
           <mj-text css-class="wysiwyg overlay" color="#ffffff" padding="0 0 10px">
-            <h3 style="color: white; text-align: center; font-size: 36px; font-weight:bold">Placeholder message for special occasion</h3>
+            <h1 style="text-align: center">Placeholder message for special occasion</h1>
           </mj-text>
           <mj-button
             color="#000000"
@@ -184,6 +195,8 @@
             border="2px solid #FFC530"
             href="https://www.nationalgeographic.org/society/"
             align="center"
+            padding-left="0px"
+            padding-right="0px"
           >
             BUTTON
           </mj-button>
@@ -192,6 +205,11 @@
         <!-- Spacer column - required to be done this way for Outlook -->
         <mj-column width="25px">&nbsp;</mj-column>
       </mj-group>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="20px" container-background-color="#ffffff" />
+      </mj-column>
     </mj-section>
     <!-- END: Image with overlay -->
 
@@ -202,16 +220,18 @@
       padding="20px 20px"
     >
       <mj-group css-class="question-response" width="480px">
-        <mj-column width="8%" vertical-align="top">
+        <mj-column css-class="question-response-symbol" width="38px" vertical-align="top" padding="16px 10px">
           <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ellipse.png?v=1780314745000"
             alt="Input Control"
-            padding="16px 10px"
+            padding="0px"
+            width="18px"
+            height="18px"
           />
         </mj-column>
-        <mj-column width="92%" vertical-align="top" padding="0">
-          <mj-text css-class="wysiwyg" padding="12px 0">
-            <p style="font-family: Arial, sans-serif;">Each list item will functions as a link in the email directing users to a dedicated page on your site.</p>
+        <mj-column css-class="question-response-text" width="442px" vertical-align="top" padding="12px 10px 12px 0">
+          <mj-text css-class="wysiwyg" padding="0">
+            <p style="font-family: Arial, sans-serif;color:#000000">Each list item will functions as a link in the email directing users to a dedicated page on your site.</p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -247,7 +267,7 @@
     </mj-section>
     <!-- END: Two Images -->
 
-    <!-- START: Two Images -->
+    <!-- START: Three Images -->
     <mj-section
       css-class="three-col-images-block block"
       background-color="#ffffff"
@@ -263,7 +283,7 @@
           fluid-on-mobile="true"
         />
       </mj-column>
-      <mj-column css-class="two-col-column second-column" width="164px" padding="0 5px" vertical-align="top">
+      <mj-column css-class="two-col-column second-column" width="163px" padding="0 5px" vertical-align="top">
         <mj-image
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
           alt="Custom alt text"
@@ -273,7 +293,7 @@
           fluid-on-mobile="true"
         />
       </mj-column>
-      <mj-column css-class="two-col-column second-col" width="163px" padding="0 5px" vertical-align="top">
+      <mj-column css-class="two-col-column" width="163px" padding="0 5px" vertical-align="top">
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
             alt="Custom alt text"
@@ -284,7 +304,7 @@
         />
       </mj-column>
     </mj-section>
-    <!-- END: Two Images -->
+    <!-- END: Three Images -->
 
     <!-- START: Quote Block -->
     <mj-section css-class="spacer-block block" padding="0">
@@ -392,7 +412,7 @@
     </mj-section>
     <!-- END: Highlighted Text -->
 
-    <!-- START: Side by side image and text -->
+    <!-- START: 2 Col Image and Text -->
     <mj-section
         css-class="two-col-image-text-button-block block"
         background-color="#ffffff"
@@ -449,9 +469,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Side by side image and text -->
+    <!-- END: 2 Col Image and Text -->
 
-    <!-- START: 2 col image and text -->
+    <!-- START: Side by side image and text -->
     <mj-section
       css-class="two-col-image-text-block block"
       background-color="#F1EEE9"
@@ -488,9 +508,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: 2 col image and text -->
+    <!-- END: Side by side image and text -->
 
-    <!-- START: Reversed 2 col image and text-->
+    <!-- START: Reversed Side by side image and text-->
     <mj-section
         css-class="two-col-image-text-block block"
         background-color="#F1EEE9"
@@ -528,7 +548,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Reversed 2 col image and text -->
+    <!-- END: Reversed Side by side image and text -->
 
     <!-- START: Spacer -->
     <mj-section css-class="spacer-block block" padding="0">
