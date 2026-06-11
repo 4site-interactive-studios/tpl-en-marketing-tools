@@ -1,6 +1,6 @@
-# National Geographic Society EN Marketing Tools - Template Repository
+# Trust for Public Land EN Marketing Tools - Template Repository
 
-This repository contains the MJML source code, assets, and JSON exports for the National Geographic Society Engaging Networks Marketing Tools email templates.
+This repository contains the MJML source code, assets, and JSON exports for the Trust for Public Land Engaging Networks Marketing Tools email templates.
 
 Client Documentation can be found here: **TO DO: ADD LINK TO DOCUMENTATION**
 

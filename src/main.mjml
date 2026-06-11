@@ -34,7 +34,7 @@
       <mj-column>
         <mj-image
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-marketing-tools.png?v=1779709580000"
-          alt="NGS Logo"
+          alt="Logo"
           href="https://www.nationalgeographic.org/society/"
           width="150px"
           padding="0"
@@ -43,7 +43,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
-          alt="NGS Logo"
+          alt="Logo"
           href="https://www.nationalgeographic.org/society/"
           width="150px"
           padding="0"
@@ -63,7 +63,7 @@
       <mj-column>
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
-            alt="NGS Logo"
+            alt="Logo"
             href="https://www.nationalgeographic.org/society/"
             padding="0"
             css-class="light-only"
@@ -71,7 +71,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
-            alt="NGS Logo"
+            alt="Logo"
             href="https://www.nationalgeographic.org/society/"
             padding="0"
             css-class="dark-only"
@@ -90,7 +90,7 @@
       <mj-column>
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
-            alt="NGS Logo"
+            alt="Logo"
             href="https://www.nationalgeographic.org/society/"
             padding="0"
             css-class="light-only"
@@ -98,7 +98,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
-            alt="NGS Logo"
+            alt="Logo"
             href="https://www.nationalgeographic.org/society/"
             padding="0"
             css-class="dark-only"
@@ -664,7 +664,7 @@
               <br />
               <em style="font-family: Georgia, serif;">Placeholder title, Example Division</em>
               <br />
-              <b>National Geographic Society</b>
+              <b>Trust for Public Land</b>
             </p>
           </mj-text>
         </mj-column>
@@ -681,7 +681,7 @@
     >
       <mj-column width="480px">
         <mj-image
-          alt="NGS Logo"
+          alt="Logo"
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
           width="150px"
           href="https://www.nationalgeographic.org/society/"
@@ -736,18 +736,18 @@
           <p>
             Photos by:  Anand Varma, Wallace W. Nutting, Tamara Merino, Photo Ark: ANIMALS OF EARTH
             by Joel Sartore, Exhibit Rendering, Michael O. Snyder / Preserving Legacies,
-            Joel Sartore / National Geographic Photo Ark
+            Joel Sartore / Trust for Public Land Photo Ark
           </p>
           <p>
-            The National Geographic Society is a nonprofit organization driven by the belief in the
-            power of science, exploration, and storytelling to change the world. The National Geographic
-            Society is a 501(c)(3), tax-exempt organization. Copyright © 2025 National Geographic Society.
+            The Trust for Public Land is a nonprofit organization driven by the belief in the
+            power of science, exploration, and storytelling to change the world. The Trust for Public Land
+            Society is a 501(c)(3), tax-exempt organization. Copyright © 2025 Trust for Public Land.
             All rights reserved.
           </p>
           <p>
             <br />
             You are receiving this email because you elected to receive marketing communications from
-            National Geographic under the terms of our Privacy Policy and Terms of Service.
+            Trust for Public Land under the terms of our Privacy Policy and Terms of Service.
           </p>
           <p>
             You may unsubscribe from this list if you no longer wish to receive email marketing

@@ -1,5 +1,5 @@
 {
-  "name": "ngs-en-marketing-tools",
+  "name": "tpl-en-marketing-tools",
   "version": "1.0.0",
   "description": "A template for building EN marketing tools projects using MJML.",
   "scripts": {
