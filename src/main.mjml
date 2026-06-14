@@ -559,7 +559,7 @@
             href="https://www.example.com"
             align="left" padding="0"
           >
-            Read more
+            Left button
           </mj-button>
       </mj-column>
     </mj-section>
@@ -576,7 +576,7 @@
             href="https://www.example.com"
             align="center" padding="0"
           >
-            Read more
+            Center button
           </mj-button>
       </mj-column>
     </mj-section>
@@ -593,14 +593,31 @@
             href="https://www.example.com"
             align="right" padding="0"
           >
-            Read more
+            Right button
           </mj-button>
       </mj-column>
     </mj-section>
     <!-- END: CTA Button Right Aligned -->
 
+    <!-- START: CTA Button Center Aligned and Fixed Width -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="0px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+            href="https://www.example.com"
+            align="center" padding="0" width="400px"
+          >
+            Fixed width Fixed width Fixed width Fixed width 
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Button Center Aligned and Fixed Width -->
+
     <!-- START: CTA x CTA Buttons Left Aligned -->
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -612,7 +629,7 @@
     <!-- END: CTA x CTA Buttons Left Aligned -->
 
     <!-- START: CTA x CTA Buttons Center Aligned -->
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -624,7 +641,7 @@
     <!-- END: CTA x CTA Buttons Center Aligned -->
 
     <!-- START: CTA x CTA Buttons Right Aligned -->
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
