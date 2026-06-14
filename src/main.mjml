@@ -652,6 +652,66 @@
     </mj-section>
     <!-- END: CTA x CTA Buttons Right Aligned -->
 
+    <!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons -->
+    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" css-class="button">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Center aligned</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons -->
+
+    <!-- START: CTA x CTA x CTA Fixed Width and Center Aligned Buttons -->
+    <!--
+      SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+        width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+
+        sectionWidth : 600   (= email width here; use the section's own width if narrower)
+        padding      : 32 + 32
+        gap          : 32     (between buttons)
+        buttonCount  : 3
+        => (600 - 32 - 32 - (3 - 1) * 32) / 3 = 472 / 3 = 157.3 -> 157px
+
+      If any value changes, update width:157px on every <a> AND width="157"/width:157px on every MSO <td>.
+    -->
+    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" css-class="button">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA x CTA x CTA Fixed Width and Center Aligned Buttons -->
+
+<!-- START: CTA x CTA Fixed Width and Center Aligned Buttons -->
+<!--
+  SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+    width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+
+    sectionWidth : 600   (= email width here; use the section's own width if narrower)
+    padding      : 32 + 32
+    gap          : 32     (between buttons)
+    buttonCount  : 2
+    => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
+
+  If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
+-->
+<mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+  <mj-column vertical-align="middle">
+    <mj-text padding="0" css-class="button">
+      <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+      <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+      <!--[if mso]></td></tr></table><![endif]-->
+    </mj-text>
+  </mj-column>
+</mj-section>
+<!-- END: CTA x CTA Fixed Width and Center Aligned Buttons -->
+
     <!-- START: Question Response -->
     <!-- <mj-section
       css-class="text-block block"
