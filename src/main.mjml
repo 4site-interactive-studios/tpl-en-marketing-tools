@@ -616,6 +616,47 @@
     </mj-section>
     <!-- END: CTA Button Center Aligned and Fixed Width -->
 
+    <!-- START: CTA Outline Button Center Aligned -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="0px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+                      color="#006837"
+          background-color="#FFFFFF"
+          border="2px solid #006837"
+          href="https://www.example.com"
+          align="center"
+          padding="0"
+          >
+            Center outline button
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Outline Button Center Aligned -->
+
+    <!-- START: CTA Text Button Center Aligned -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="0px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+                      color="#006837"
+          background-color="#FFFFFF"
+          href="https://www.example.com"
+          align="center"
+          padding="0"
+          >
+            Center text button
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Text Button Center Aligned -->
+
     <!-- START: CTA x CTA Buttons Left Aligned -->
     <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
@@ -688,32 +729,50 @@
     </mj-section>
     <!-- END: CTA x CTA x CTA Fixed Width and Center Aligned Buttons -->
 
-<!-- START: CTA x CTA Fixed Width and Center Aligned Buttons -->
-<!--
-  SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
-    width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+  <!-- START: CTA x CTA Fixed Width and Center Aligned Buttons -->
+  <!--
+    SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+      width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
-    sectionWidth : 600   (= email width here; use the section's own width if narrower)
-    padding      : 32 + 32
-    gap          : 32     (between buttons)
-    buttonCount  : 2
-    => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
+      sectionWidth : 600   (= email width here; use the section's own width if narrower)
+      padding      : 32 + 32
+      gap          : 32     (between buttons)
+      buttonCount  : 2
+      => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
 
-  If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
--->
-<mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
-  <mj-column vertical-align="middle">
-    <mj-text padding="0" css-class="button">
-      <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-      <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
-      <!--[if mso]></td></tr></table><![endif]-->
-    </mj-text>
-  </mj-column>
-</mj-section>
-<!-- END: CTA x CTA Fixed Width and Center Aligned Buttons -->
+    If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
+  -->
+  <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-column vertical-align="middle">
+      <mj-text padding="0" css-class="button">
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <!-- END: CTA x CTA Fixed Width and Center Aligned Buttons -->
 
-    <!-- START: Question Response -->
-    <!-- <mj-section
+  <!-- START: CTA x CTA Two-Line (bold + regular), Two-Color Buttons -->
+  <!--
+    SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+      width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+      => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
+    If padding/gap/count change, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
+  -->
+  <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-column vertical-align="middle">
+      <mj-text padding="0" css-class="two-line-cta">
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#6CBF4B" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#6CBF4B;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#E89440" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#E89440;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <!-- END: CTA x CTA Two-Line (bold + regular), Two-Color Buttons -->
+
+  <!-- START: Question Response -->
+  <!-- <mj-section
       css-class="text-block block"
       background-color="#ffffff"
       padding="0px"
@@ -799,7 +858,7 @@
             - TESTIMONIAL AUTHOR
           </p>
         </mj-text>
-        <mj-divider css-class="divider" border-width="4px" border-color="#000000" padding="40px 0 0" width="280px" align="center" />
+        <mj-divider css-class="divider" border-width="4px" border-color="#006837" padding="40px 0 0" width="280px" align="center" />
       </mj-column>
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
@@ -809,54 +868,13 @@
     </mj-section>
     <!-- END: Quote Block -->
 
-    <!-- START: Button Solid -->
-    <mj-section
-      css-class="button-block block"
-      background-color="#FFFFFF"
-      padding="16px 16px"
-    >
-      <mj-column padding="0">
-        <mj-button
-          color="#000000"
-          background-color="#FFC530"
-          border="2px solid #FFC530"
-          href="https://www.example.com"
-          align="center"
-          width="400px"
-        >
-          BUTTON
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Button Solid -->
-
-    <!-- START: Button Outlined -->
-    <mj-section
-        css-class="button-block block"
-        background-color="#FFFFFF"
-        padding="16px 16px"
-    >
-      <mj-column padding="0">
-        <mj-button
-            color="#000000"
-            background-color="#FFFFFF"
-            border="2px solid #000000"
-            href="https://www.example.com"
-            align="center"
-        >
-          BUTTON
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Button Outlined -->
-
     <!-- START: Highlighted Text -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
       padding="16px 16px"
     >
-      <mj-column css-class="highlighted-text-column" width="480px" padding="13px" border-left="4px solid #FFCC00" background-color="#FDFBF7">
+      <mj-column css-class="highlighted-text-column" width="480px" padding="13px" border-left="4px solid #006837" background-color="#CEE4C5">
         <mj-text padding="0">
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
@@ -876,7 +894,7 @@
     >
       <mj-column css-class="two-col-column first-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
+            src="assets/photo-kayak.jpg"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -901,7 +919,7 @@
       </mj-column>
       <mj-column css-class="two-col-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
+            src="assets/photo-garden.png"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -935,7 +953,7 @@
     >
       <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
         <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+            src="assets/photo-forest.jpg"
             alt="Custom alt text"
             href="https://www.example.com"
             align="center"
@@ -975,7 +993,7 @@
     >
       <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
         <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
+            src="assets/photo-hiking-duo.png"
             alt="Custom alt text"
             href="https://www.example.com"
             align="center"
@@ -1022,7 +1040,7 @@
     </mj-section>
     <mj-section
       css-class="cta-button-block block"
-      background-color="#FFC530"
+      background-color="#CEE4C5"
       padding="16px 16px"
     >
       <mj-column width="480px" padding="0">
@@ -1034,9 +1052,8 @@
           </p>
         </mj-text>
         <mj-button
-            color="#000000"
-            background-color="#FFC530"
-            border="2px solid #000000"
+            color="#ffffff"
+            background-color="#006837"
             href="https://www.example.com"
             align="center"
             padding-top="30px"
@@ -1058,7 +1075,7 @@
         <mj-divider
           css-class="divider"
           border-width="3px"
-          border-color="#FFCC00"
+          border-color="#006837"
           padding="0 20px"
           width="300px"
         />
@@ -1085,7 +1102,7 @@
           padding-right="10px"
         >
           <mj-image
-              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins.png?v=1779722860000"
+              src="assets/staff-carrie-besnette-hauser.png"
               alt="Custom alt text"
               padding="0"
           />
@@ -1097,18 +1114,18 @@
           padding-left="10px"
         >
           <mj-image
-              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
+              src="assets/staff-carrie-besnette-hauser-signature_black.png"
               alt="Signature Image"
-              width="200px"
+              width="228px"
               padding="0 0 10px"
               align="left"
               css-class="light-only"
           />
           <mj-raw><!--[if !mso] --></mj-raw>
           <mj-image
-              src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/kara-ramirez-mullins-signature.png?v=1779723720000"
+              src="assets/staff-carrie-besnette-hauser-signature_black.png"
               alt="Signature Image"
-              width="200px"
+              width="228px"
               padding="0 0 10px"
               align="left"
               css-class="dark-only"
@@ -1116,7 +1133,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text font-size="16px" padding="0">
             <p style="font-family: Arial, sans-serif;">
-              Kara Ramirez Mullins
+              Carrie Besnette-Hauser
               <br />
               <em style="font-family: Georgia, serif;">Placeholder title, Example Division</em>
               <br />
@@ -1138,7 +1155,7 @@
       <mj-column width="480px">
         <mj-image
           alt="Logo"
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
+          src="assets/logo-tpl_color-light-green-text.png"
           width="150px"
           href="https://www.example.com"
         />
@@ -1218,9 +1235,8 @@
           </p>
         </mj-text>
         <mj-button
-          color="#000000"
-          background-color="#FFC530"
-          border="2px solid #FFC530"
+          color="#ffffff"
+          background-color="##06837"
           href="https://www.example.com"
           align="center"
           padding="40px 0 60px"
