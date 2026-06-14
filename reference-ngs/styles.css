@@ -4,22 +4,22 @@ div[data-container] {
   margin: 0 auto;
 }
 
-/* body {
+body {
   color: #000000;
-  font-family: Tahoma, sans-serif;
-  font-size: 18px;
-} */
+  font-family: Georgia, serif;
+  font-size: 17px;
+}
 
 a {
   color: #FFC530;
 }
 
-/* p,
+p,
 span,
 a,
 li {
-  font-family: Tahoma, sans-serif;
-} */
+  font-family: Georgia, serif;
+}
 
 h1,
 h2,
@@ -28,7 +28,7 @@ h4,
 h5,
 h6 {
   color: #000000;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -85,7 +85,7 @@ p {
 .footer-text li {
   font-size: 12px;
   line-height: 20px;
-  /* font-family: Arial, sans-serif; */
+  font-family: Arial, sans-serif;
   mso-line-height-rule: exactly;
 }
 
@@ -109,14 +109,6 @@ p {
 .overlay a {
   color: #ffffff;
 }
-
-
-
-/* .caption {
-  font-size: 10px;
-  line-height: 16px;
-  font-style: italic;
-} */
 
 @media (max-width: 599px) {
   .desktop-only {
@@ -145,6 +137,11 @@ p {
   .first-column,
   .second-column {
     margin-bottom: 20px;
+  }
+
+  .caption {
+    padding-left: 20px!important;
+    padding-right: 20px!important;
   }
 
   .question-response-symbol {

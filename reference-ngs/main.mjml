@@ -1,358 +1,120 @@
 <mjml>
   <mj-head>
     <mj-breakpoint width="600px" />
-
-    <!-- Baseline everything inherits -->
     <mj-attributes>
-      <mj-text
-        color="#000000"
-        font-size="18px"
-        font-weight="400"
-        font-family="Tahoma, san-serif"
-        line-height="24px"
-        css-class="wysiwyg"
+      <mj-all
+        color="inherit"
+        font-size="17px"
       />
       <mj-button
-        css-class="button"
-        font-size="21px"
+        font-size="16px"
         font-weight="700"
-        font-family="Tahoma, san-serif"
-        line-height="25px"
-        border-radius="100px"
-        inner-padding="12px 16px"
+        border-radius="0px"
+        inner-padding="16px 30px"
+        font-family="Arial, sans-serif"
         letter-spacing="2px"
-        color="#ffffff"
-        background-color="#006837"
-      />
-      <mj-image
-        padding="0"
-      />
-
-      <!-- Reusable variants — apply with mj-class="*" -->
-      <mj-class
-        name="caption"
-        font-size="10px"
-        line-height="16px"
-        padding="8px 0 0 0"
+        css-class="button"
       />
     </mj-attributes>
-
-    <mj-style>
-      /* Indents the caption */
-      @media (max-width: 619px) {
-        .caption {
-          padding-left: 16px !important; /* must be !important — beats the inline td padding */
-          padding-right: 16px !important; /* must be !important — beats the inline td padding */
-        }
-      }
-    </mj-style>
-
     <mj-raw>
       <meta name="color-scheme" content="light dark" />
       <meta name="supported-color-schemes" content="light dark" />
       <meta name="format-detection" content="telephone=no" />
     </mj-raw>
-    <!-- <mj-preview>Hello MJML</mj-preview> -->
     <mj-include path="./styles.css" type="css" />
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
     <!-- START: Main Content -->
-
-    <!-- START: Image Block (with Dark Mode) -->
+    <!-- START: Logo Image Block -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff"
-      padding="16px 32px"
+      padding="20px 20px"
     >
-      <mj-column vertical-align="middle">
+      <mj-column>
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-marketing-tools.png?v=1779709580000"
           alt="Logo"
           href="https://www.nationalgeographic.org/society/"
           width="150px"
+          padding="0"
           css-class="light-only"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_all-light-green.png"
+          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
           alt="Logo"
           href="https://www.nationalgeographic.org/society/"
           width="150px"
+          padding="0"
           css-class="dark-only"
         />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Image Block -->
+    <!-- END: Logo Image Block -->
 
-    <!-- START: Image x Image Centered Block (with Dark Mode) -->
+    <!-- START: Logo Image Block -->
     <mj-section
-      css-class="image-block block"
-      background-color="#F5FAF1"
-      padding="16px 32px"
+        css-class="image-block block"
+        background-color="#ffffff"
+        padding="0"
     >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%">
+      <mj-column>
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="right"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="right"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 0 0 16px"
-          css-class="light-only"
-          align="left"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 0 0 16px"
-          css-class="dark-only"
-          align="left"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image x Image Centered Block (with Dark Mode) -->
-
-
-    <!-- START: Image x Image Split Block (with Dark Mode) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#006837"
-      padding="16px 32px"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 0 0 16px"
-          css-class="light-only"
-          align="right"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 0 0 16px"
-          css-class="dark-only"
-          align="right"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image x Image Split Block (with Dark Mode) -->    
-
-    <!-- START: Image x CTA Split Block (with Dark Mode) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="16px 32px"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="middle" width="50%">
-          <mj-button
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+            alt="Logo"
             href="https://www.nationalgeographic.org/society/"
-            align="right" padding="0"
-          >
-            Read more
-          </mj-button>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image x CTA Split Block (with Dark Mode) -->    
-
-    <!-- START: Image x CTA Split Block w/ Background Image (with Dark Mode) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left"
+            padding="0"
+            css-class="light-only"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/FromtheDeskofKaraHeader_no+image.jpg"
+            alt="Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="dark-only"
         />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
-      <mj-column vertical-align="middle" width="50%">
-          <mj-button
-            href="https://www.nationalgeographic.org/society/"
-            align="right" padding="0"
-          >
-            Read more
-          </mj-button>
-      </mj-column>
-      </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Background Image (with Dark Mode) -->    
+    <!-- END: Logo Image Block -->
 
-    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->
+    <!-- START: Logo Image Block -->
     <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="264px 32px 16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center"
+        css-class="image-block block"
+        background-color="#ffffff"
+        padding="0"
     >
-      <mj-group>
-      <mj-column vertical-align="bottom" width="50%">
+      <mj-column>
         <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
+            alt="Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="light-only"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left"
+            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs-email-header-earth-month.png?v=1779883726000"
+            alt="Logo"
+            href="https://www.nationalgeographic.org/society/"
+            padding="0"
+            css-class="dark-only"
         />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
-      <mj-column vertical-align="bottom" width="50%">
-          <mj-button
-            href="https://www.nationalgeographic.org/society/"
-            align="right" padding="0"
-          >
-            Read more
-          </mj-button>
-      </mj-column>
-      </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->    
+    <!-- END: Logo Image Block -->
 
-
-    <!-- START: Text w/ Background Image -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle">
-        <mj-text color="#ffffff" align="center">Hello World</mj-text>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Text w/ Background Image -->
-
-    <!-- START: Image -->
+    <!-- START: Image with caption -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff"
       padding="0"
     >
-      <mj-column vertical-align="middle">
+      <mj-column>
         <mj-image
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
           alt="Image Alt Text"
@@ -360,32 +122,21 @@
           width="600px"
           padding="0px"
         />
-      </mj-column>
-    </mj-section>
-    <!-- END: Image -->
-
-    <!-- START: Caption -->
-    <mj-section
-      css-class="block caption"
-      background-color="#ffffff"
-      padding="0"
-    >
-      <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption">
-          <span>Photography by Photographers Name, Agency</span>
+        <mj-text padding="10px 0 0" align="right" css-class="wysiwyg caption">
+          <span style="font-size:11px; font-family: Arial, sans-serif;">PHOTOGRAPHY BY PHOTOGRAPHER NAME, AGENCY</span>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Caption -->
+    <!-- END: Image with caption -->
 
     <!-- START: WYSIWYG (Text content) -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column width="480px" padding="0">
-        <mj-text padding="0">
+        <mj-text css-class="wysiwyg" padding="0">
           <h1 style="text-align: center;">
             Lorem ipsum quis malesuada sed quam faucibus.
           </h1>
@@ -435,7 +186,7 @@
         <mj-column width="25px">&nbsp;</mj-column>
 
         <mj-column width="550px">
-          <mj-text css-class="overlay" color="#ffffff" padding="0 0 10px">
+          <mj-text css-class="wysiwyg overlay" color="#ffffff" padding="0 0 10px">
             <h1 style="text-align: center">Placeholder message for special occasion</h1>
           </mj-text>
           <mj-button
@@ -466,7 +217,7 @@
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-group css-class="question-response" width="480px">
         <mj-column css-class="question-response-symbol" width="38px" vertical-align="top" padding="16px 10px">
@@ -479,7 +230,7 @@
           />
         </mj-column>
         <mj-column css-class="question-response-text" width="442px" vertical-align="top" padding="12px 10px 12px 0">
-          <mj-text padding="0">
+          <mj-text css-class="wysiwyg" padding="0">
             <p style="font-family: Arial, sans-serif;color:#000000">Each list item will functions as a link in the email directing users to a dedicated page on your site.</p>
           </mj-text>
         </mj-column>
@@ -491,7 +242,7 @@
     <mj-section
       css-class="two-col-images-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column css-class="two-col-column first-two-col-column" width="245px" padding="0 5px" vertical-align="top">
         <mj-image
@@ -520,7 +271,7 @@
     <mj-section
       css-class="three-col-images-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column css-class="two-col-column first-column" width="163px" padding="0 5px" vertical-align="top">
         <mj-image
@@ -564,7 +315,7 @@
     <mj-section
       css-class="quote-block block"
       background-color="#F1EEE9"
-      padding="32px 16px 0px"
+      padding="40px 20px 0px"
     >
       <mj-column width="480px" padding="0">
         <mj-image
@@ -583,8 +334,8 @@
           css-class="dark-only"
         />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text padding="0">
-          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 16px;">
+        <mj-text css-class="wysiwyg" padding="0">
+          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 20px;">
             Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
             Arcu eu tincidunt amet eleifend placerat adipiscing.
           </p>
@@ -606,7 +357,7 @@
     <mj-section
       css-class="button-block block"
       background-color="#FFFFFF"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column padding="0">
         <mj-button
@@ -627,7 +378,7 @@
     <mj-section
         css-class="button-block block"
         background-color="#FFFFFF"
-        padding="16px 16px"
+        padding="20px 20px"
     >
       <mj-column padding="0">
         <mj-button
@@ -647,10 +398,10 @@
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column css-class="highlighted-text-column" width="480px" padding="13px" border-left="4px solid #FFCC00" background-color="#FDFBF7">
-        <mj-text padding="0">
+        <mj-text css-class="wysiwyg" padding="0">
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -665,7 +416,7 @@
     <mj-section
         css-class="two-col-image-text-button-block block"
         background-color="#ffffff"
-        padding="16px 16px"
+        padding="20px 20px"
     >
       <mj-column css-class="two-col-column first-two-col-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
@@ -676,7 +427,7 @@
             align="center"
             fluid-on-mobile="true"
         />
-        <mj-text padding="16px 0 0">
+        <mj-text padding="20px 0 0" css-class="wysiwyg">
           <h3>Lorem ipsum dolor consectur</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
@@ -701,7 +452,7 @@
             align="center"
             fluid-on-mobile="true"
         />
-        <mj-text padding="16px 0 0">
+        <mj-text padding="20px 0 0" css-class="wysiwyg">
           <h3>Lorem ipsum dolor consectur</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
@@ -724,7 +475,7 @@
     <mj-section
       css-class="two-col-image-text-block block"
       background-color="#F1EEE9"
-      padding="16px 8px"
+      padding="20px 10px"
     >
       <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
         <mj-image
@@ -738,7 +489,7 @@
         />
       </mj-column>
       <mj-column css-class="two-col-col" width="340px" padding="0 10px" vertical-align="middle">
-        <mj-text padding="0">
+        <mj-text padding="0" css-class="wysiwyg">
           <h3>Lorem ipsum dolor</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
@@ -763,7 +514,7 @@
     <mj-section
         css-class="two-col-image-text-block block"
         background-color="#F1EEE9"
-        padding="16px 8px"
+        padding="20px 10px"
         direction="rtl"
     >
       <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
@@ -778,7 +529,7 @@
         />
       </mj-column>
       <mj-column css-class="two-col-col" width="340px" padding="0 10px" vertical-align="middle">
-        <mj-text padding="0">
+        <mj-text padding="0" css-class="wysiwyg">
           <h3>Lorem ipsum dolor</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
@@ -816,10 +567,10 @@
     <mj-section
       css-class="cta-button-block block"
       background-color="#FFC530"
-      padding="16px 16px"
+      padding="20px 20px"
     >
       <mj-column width="480px" padding="0">
-        <mj-text padding="0" align="center">
+        <mj-text padding="0" css-class="wysiwyg" align="center">
           <h3>Lorem ipsum dolor</h3>
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
@@ -862,14 +613,14 @@
     <!-- START: Signature card -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0px">
       <mj-column width="480px">
-        <mj-text padding="0">
+        <mj-text padding="0" css-class="wysiwyg">
           <p style="font-style: italic;">
             With deep appreciation,
           </p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px">
       <mj-group width="480px">
         <mj-column
           vertical-align="top"
@@ -907,7 +658,7 @@
               css-class="dark-only"
           />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text font-size="16px" padding="0">
+          <mj-text font-size="16px" padding="0" css-class="wysiwyg">
             <p style="font-family: Arial, sans-serif;">
               Kara Ramirez Mullins
               <br />
@@ -948,7 +699,7 @@
         <mj-column width="33%" vertical-align="middle">
           <mj-text
             padding="0"
-            css-class="footer-text"
+            css-class="wysiwyg footer-text"
             color="#ffffff"
           >
             <p style="text-align: center;">
@@ -959,7 +710,7 @@
         <mj-column width="66%"  border-left="2px solid #4d4d4d" vertical-align="middle">
           <mj-text
             padding="0"
-            css-class="footer-text"
+            css-class="wysiwyg footer-text"
             color="#ffffff"
           >
             <p style="text-align: center;">
@@ -979,7 +730,7 @@
       <mj-column width="480px">
         <mj-text
           padding="30px 0 0"
-          css-class="footer-text"
+          css-class="wysiwyg footer-text"
           color="#ffffff"
         >
           <p>
