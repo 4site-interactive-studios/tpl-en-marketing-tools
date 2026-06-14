@@ -45,6 +45,12 @@
           padding-right: 16px !important; /* must be !important — beats the inline td padding */
         }
       }
+
+      /* Side by Side CTA Buttons */
+      @media (max-width: 619px) {
+        .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
+        .cta-item:last-child { margin-bottom: 0 !important; }
+      }
     </mj-style>
 
     <mj-raw>
@@ -68,7 +74,7 @@
         <mj-image
           src="assets/logo-tpl_color-black-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           css-class="light-only"
         />
@@ -76,7 +82,7 @@
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           css-class="dark-only"
         />
@@ -88,15 +94,15 @@
     <!-- START: Image x Image Centered Block (with Dark Mode) -->
     <mj-section
       css-class="image-block block"
-      background-color="#F5FAF1"
+      background-color="#700310"
       padding="16px 32px"
     >
       <mj-group>
       <mj-column vertical-align="middle" width="50%">
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
+          src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -104,9 +110,9 @@
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
+          src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -116,20 +122,20 @@
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
+          src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
+          href="https://www.example.com"
+          width="100px"
           padding="0 0 0 16px"
           css-class="light-only"
           align="left"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_color-black-text.png"
+          src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
+          href="https://www.example.com"
+          width="100px"
           padding="0 0 0 16px"
           css-class="dark-only"
           align="left"
@@ -152,7 +158,7 @@
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -162,7 +168,7 @@
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -172,20 +178,20 @@
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
         <mj-image
-          src="assets/logo-tpl_all-light-green.png"
+          src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
+          href="https://www.example.com"
+          width="100px"
           padding="0 0 0 16px"
           css-class="light-only"
           align="right"
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/logo-tpl_all-light-green.png"
+          src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
-          width="150px"
+          href="https://www.example.com"
+          width="100px"
           padding="0 0 0 16px"
           css-class="dark-only"
           align="right"
@@ -207,7 +213,7 @@
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -217,7 +223,7 @@
         <mj-image
           src="assets/logo-tpl_color-black-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -227,7 +233,7 @@
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
           <mj-button
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="right" padding="0"
           >
             Read more
@@ -242,7 +248,7 @@
       css-class="image-block block"
       background-color="#362229"
       padding="16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
+      background-url="assets/photo-kayak.jpg"
       background-size="cover"
       background-repeat="no-repeat"
       background-position="center center"
@@ -252,7 +258,7 @@
         <mj-image
           src="assets/logo-tpl_color-light-green-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -262,7 +268,7 @@
         <mj-image
           src="assets/logo-tpl_color-light-green-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -272,7 +278,7 @@
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
           <mj-button
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="right" padding="0"
           >
             Read more
@@ -287,7 +293,7 @@
       css-class="image-block block"
       background-color="#362229"
       padding="264px 32px 16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
+      background-url="assets/photo-trail.jpg"
       background-size="cover"
       background-repeat="no-repeat"
       background-position="center center"
@@ -297,7 +303,7 @@
         <mj-image
           src="assets/logo-tpl_color-light-green-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -307,7 +313,7 @@
         <mj-image
           src="assets/logo-tpl_color-light-green-text.png"
           alt="Logo"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -317,7 +323,7 @@
       </mj-column>
       <mj-column vertical-align="bottom" width="50%">
           <mj-button
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="right" padding="0"
           >
             Read more
@@ -327,13 +333,49 @@
     </mj-section>
     <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->    
 
+    <!-- START: Image with overlay -->
+    <!--
+      Inside a section using a background all elements must have 0 left
+      and right padding or they will be misaligned on outlook.
+      This is why we use spacer columns with a fixed width on the sides
+      of the overlay image column to create the necessary padding while
+      maintaining alignment across email clients.
+     -->
+    <mj-section
+        css-class="overlay-image-block block"
+        background-url="assets/photo-person_overlay.png"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center bottom"
+        padding="350px 16px 48px 16px"
+    >
+      <mj-group>
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px">&nbsp;</mj-column>
+
+        <mj-column width="550px">
+          <mj-text css-class="overlay">
+            <h1 style="text-align: center">Placeholder message for special occasion</h1>
+          </mj-text>
+          <mj-button
+            href="https://www.example.com"
+          >
+            Button
+          </mj-button>
+        </mj-column>
+
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Image with overlay -->
 
     <!-- START: Text w/ Background Image -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
       padding="16px 32px"
-      background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
+      background-url="assets/photo-river.jpg"
       background-size="cover"
       background-repeat="no-repeat"
       background-position="center center"
@@ -354,9 +396,9 @@
     >
       <mj-column vertical-align="middle">
         <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/banner-example-1.jpg?v=1779709560000"
+          src="assets/photo-family.png"
           alt="Image Alt Text"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           width="600px"
           padding="0px"
         />
@@ -378,17 +420,51 @@
     </mj-section>
     <!-- END: Caption -->
 
+    <!-- START: Two Images -->
+    <mj-section
+      css-class="two-col-images-block block"
+      background-color="#ffffff"
+      padding="0"
+    >
+      <mj-column css-class="two-col-column first-column" width="300px" padding="0 8px 0 0" vertical-align="middle">
+        <mj-image
+          src="assets/photo-family.png"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-column" width="300px" padding="0 0 0 8px" vertical-align="middle">
+        <mj-image
+          src="assets/photo-family.png"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+        />
+      </mj-column>
+    </mj-section>
+    <!-- END: Two Images -->
+
     <!-- START: WYSIWYG (Text content) -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="0"
     >
-      <mj-column width="480px" padding="0">
+      <mj-column>
         <mj-text padding="0">
-          <h1 style="text-align: center;">
+          <h1>
             Lorem ipsum quis malesuada sed quam faucibus.
           </h1>
+          <a href="https://www.example.com">
+            <h1>
+              Lorem ipsum quis malesuada sed quam faucibus.
+            </h1>
+          </a>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -401,7 +477,7 @@
             vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
             metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
             consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
-            senectus aenean. <a href="https://www.nationalgeographic.org/society/">Non sit volutpat quam pretium risus ullamcorper pretium
+            senectus aenean. <a href="https://www.example.com">Non sit volutpat quam pretium risus ullamcorper pretium
             nisi porttitor.</a>
           </p>
         </mj-text>
@@ -409,58 +485,128 @@
     </mj-section>
     <!-- END: WYSIWYG (Text content) -->
 
-    <!-- START: Image with overlay -->
-    <!--
-      Inside a section using a background all elements must have 0 left
-      and right padding or they will be misaligned on outlook.
-      This is why we use spacer columns with a fixed width on the sides
-      of the overlay image column to create the necessary padding while
-      maintaining alignment across email clients.
-     -->
-    <mj-section css-class="spacer-block block" padding="0">
-      <mj-column>
-        <mj-spacer height="20px" container-background-color="#ffffff" />
-      </mj-column>
-    </mj-section>
+    <!-- START: WYSIWYG (Text content) -->
     <mj-section
-        css-class="overlay-image-block block"
-        background-url="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ngs_overlay_image_bg.png?v=1780320473000"
-        background-size="cover"
-        background-repeat="no-repeat"
-        background-position="center bottom"
-        padding="350px 0px 50px"
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="0"
     >
-      <mj-group>
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px">&nbsp;</mj-column>
-
-        <mj-column width="550px">
-          <mj-text css-class="overlay" color="#ffffff" padding="0 0 10px">
-            <h1 style="text-align: center">Placeholder message for special occasion</h1>
-          </mj-text>
-          <mj-button
-            color="#000000"
-            background-color="#FFC530"
-            border="2px solid #FFC530"
-            href="https://www.nationalgeographic.org/society/"
-            align="center"
-            padding-left="0px"
-            padding-right="0px"
-          >
-            BUTTON
-          </mj-button>
-        </mj-column>
-
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px">&nbsp;</mj-column>
-      </mj-group>
-    </mj-section>
-    <mj-section css-class="spacer-block block" padding="0">
-      <mj-column>
-        <mj-spacer height="20px" container-background-color="#ffffff" />
+      <mj-column width="526px">
+        <mj-text padding="0">
+          <h1>
+            Lorem ipsum quis malesuada sed quam faucibus.
+          </h1>
+          <a href="https://www.example.com">
+            <h1>
+              Lorem ipsum quis malesuada sed quam faucibus.
+            </h1>
+          </a>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            Fermentum sit id pharetra tortor. In viverra semper et lorem consequat
+            pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean.
+            Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus aenean. <a href="https://www.example.com">Non sit volutpat quam pretium risus ullamcorper pretium
+            nisi porttitor.</a>
+          </p>
+        </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Image with overlay -->
+    <!-- END: WYSIWYG (Text content) -->
+
+    <!-- START: CTA Button Left Aligned -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+            href="https://www.example.com"
+            align="left" padding="0"
+          >
+            Read more
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Button Left Aligned -->
+
+    <!-- START: CTA Button Center Aligned -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+            href="https://www.example.com"
+            align="center" padding="0"
+          >
+            Read more
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Button Center Aligned -->
+
+    <!-- START: CTA Button Right Aligned -->
+    <mj-section
+      css-class="block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-column vertical-align="middle">
+          <mj-button
+            href="https://www.example.com"
+            align="right" padding="0"
+          >
+            Read more
+          </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Button Right Aligned -->
+
+    <!-- START: CTA x CTA Buttons Left Aligned -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" css-class="button">
+          <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA x CTA Buttons Left Aligned -->
+
+    <!-- START: CTA x CTA Buttons Center Aligned -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" css-class="button">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA x CTA Buttons Center Aligned -->
+
+    <!-- START: CTA x CTA Buttons Right Aligned -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" css-class="button">
+          <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:right;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA x CTA Buttons Right Aligned -->
 
     <!-- START: Question Response -->
     <mj-section
@@ -486,74 +632,6 @@
       </mj-group>
     </mj-section>
     <!-- END: Question Response -->
-
-    <!-- START: Two Images -->
-    <mj-section
-      css-class="two-col-images-block block"
-      background-color="#ffffff"
-      padding="16px 16px"
-    >
-      <mj-column css-class="two-col-column first-two-col-column" width="245px" padding="0 5px" vertical-align="top">
-        <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
-          alt="Custom alt text"
-          href="https://www.nationalgeographic.org/society/"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true"
-        />
-      </mj-column>
-      <mj-column css-class="two-col-column" width="245px" padding="0 5px" vertical-align="top">
-        <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
-          alt="Custom alt text"
-          href="https://www.nationalgeographic.org/society/"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true"
-        />
-      </mj-column>
-    </mj-section>
-    <!-- END: Two Images -->
-
-    <!-- START: Three Images -->
-    <mj-section
-      css-class="three-col-images-block block"
-      background-color="#ffffff"
-      padding="16px 16px"
-    >
-      <mj-column css-class="two-col-column first-column" width="163px" padding="0 5px" vertical-align="top">
-        <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
-          alt="Custom alt text"
-          href="https://www.nationalgeographic.org/society/"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true"
-        />
-      </mj-column>
-      <mj-column css-class="two-col-column second-column" width="163px" padding="0 5px" vertical-align="top">
-        <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
-          alt="Custom alt text"
-          href="https://www.nationalgeographic.org/society/"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true"
-        />
-      </mj-column>
-      <mj-column css-class="two-col-column" width="163px" padding="0 5px" vertical-align="top">
-        <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
-            alt="Custom alt text"
-            href="https://www.nationalgeographic.org/society/"
-            padding="0"
-            align="center"
-            fluid-on-mobile="true"
-        />
-      </mj-column>
-    </mj-section>
-    <!-- END: Three Images -->
 
     <!-- START: Quote Block -->
     <mj-section css-class="spacer-block block" padding="0">
@@ -613,7 +691,7 @@
           color="#000000"
           background-color="#FFC530"
           border="2px solid #FFC530"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           align="center"
           width="400px"
         >
@@ -634,7 +712,7 @@
             color="#000000"
             background-color="#FFFFFF"
             border="2px solid #000000"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="center"
         >
           BUTTON
@@ -667,11 +745,11 @@
         background-color="#ffffff"
         padding="16px 16px"
     >
-      <mj-column css-class="two-col-column first-two-col-column" width="250px" padding="0 10px" vertical-align="top">
+      <mj-column css-class="two-col-column first-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-preview-1.png?v=1779709462000"
             alt="Custom alt text"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             padding="0"
             align="center"
             fluid-on-mobile="true"
@@ -684,7 +762,7 @@
           </p>
           <p>
             <a
-                href="https://www.nationalgeographic.org/society/"
+                href="https://www.example.com"
                 style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
             >
               PLACEHOLDER
@@ -696,7 +774,7 @@
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/square-example-1.png?v=1779709460000"
             alt="Custom alt text"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             padding="0"
             align="center"
             fluid-on-mobile="true"
@@ -709,7 +787,7 @@
           </p>
           <p>
             <a
-                href="https://www.nationalgeographic.org/society/"
+                href="https://www.example.com"
                 style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
             >
               PLACEHOLDER
@@ -730,7 +808,7 @@
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
             alt="Custom alt text"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
             padding="0"
@@ -748,7 +826,7 @@
           </p>
           <p>
             <a
-              href="https://www.nationalgeographic.org/society/"
+              href="https://www.example.com"
               style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
             >
               PLACEHOLDER
@@ -770,7 +848,7 @@
         <mj-image
             src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/portrait-example-1.png?v=1779709443000"
             alt="Custom alt text"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
             padding="0"
@@ -788,7 +866,7 @@
           </p>
           <p>
             <a
-              href="https://www.nationalgeographic.org/society/"
+              href="https://www.example.com"
               style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
             >
               PLACEHOLDER
@@ -830,7 +908,7 @@
             color="#000000"
             background-color="#FFC530"
             border="2px solid #000000"
-            href="https://www.nationalgeographic.org/society/"
+            href="https://www.example.com"
             align="center"
             padding-top="30px"
         >
@@ -933,7 +1011,7 @@
           alt="Logo"
           src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/logo-light.png?v=1779709440000"
           width="150px"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
         />
       </mj-column>
     </mj-section>
@@ -1014,7 +1092,7 @@
           color="#000000"
           background-color="#FFC530"
           border="2px solid #FFC530"
-          href="https://www.nationalgeographic.org/society/"
+          href="https://www.example.com"
           align="center"
           padding="40px 0 60px"
         >

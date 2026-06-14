@@ -123,25 +123,23 @@ p {
     width: calc(100% - 110px) !important;
   }
 
-  .two-col-column>table>tbody>tr>td {
+  .two-col-column>table>tbody>tr>td{
     padding: 0 !important;
   }
 
   /* Add space below image on mobile when it is collapsed to single column */
-  .two-col-image > table {
-    margin-bottom: 15px !important;
+  .two-col-image > table{
+    margin-bottom: 14px !important;
   }
 
   /* Add space below first column on mobile when it is collapsed to single column */
-  .first-two-col-column,
-  .first-column,
-  .second-column {
-    margin-bottom: 20px;
+  .first-column {
+    margin-bottom: 16px !important;
   }
 
   .caption {
-    padding-left: 20px!important;
-    padding-right: 20px!important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
   .question-response-symbol {
