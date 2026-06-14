@@ -89,14 +89,14 @@ p {
   mso-line-height-rule: exactly;
 }
 
-.question-response {
-  border: 1px solid #F1EEE9;
-}
+/* .question-response {
+  border: 1px solid #006837;
+} */
 
-.question-response:hover {
-  background-color: #fdfbf7!important;
+/* .question-response:hover {
+  background-color: #F5FAF1!important;
   cursor: pointer;
-}
+} */
 
 .overlay h1,
 .overlay h2,
@@ -232,20 +232,20 @@ p {
     border-color: #eeeeee !important;
   }
 
-  .question-response {
+  /* .question-response {
     background-color: #2b2a2a !important;
     border-color: #eee !important;;
     color: #eeeeee !important;
-  }
+  } */
 
-  .question-response p a {
+  /* .question-response p a {
     color: #eeeeee !important;
-  }
+  } */
 
-  .question-response:hover {
+  /* .question-response:hover {
     background-color: #1f2021!important;
     cursor: pointer;
-  }
+  } */
 }
 
 /* sizing classes for adjustable column widths 50-550px */

@@ -91,6 +91,33 @@
     </mj-section>
     <!-- END: Image Block -->
 
+    <!-- START: Image Block (with Dark Mode) -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#F5FAF1"
+      padding="16px 32px"
+    >
+      <mj-column vertical-align="middle">
+        <mj-image
+          src="assets/logo-tpl_color-black-text.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          css-class="light-only"
+        />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/logo-tpl_all-light-green.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          css-class="dark-only"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image Block -->
+
     <!-- START: Image x Image Centered Block (with Dark Mode) -->
     <mj-section
       css-class="image-block block"
@@ -288,6 +315,24 @@
     </mj-section>
     <!-- END: Image x CTA Split Block w/ Background Image (with Dark Mode) -->    
 
+    <!-- START: Text w/ Background Image -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      padding="16px 32px"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center"
+    >
+      <mj-group>
+      <mj-column vertical-align="middle">
+        <mj-text color="#ffffff" align="center">Hello World</mj-text>
+      </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Text w/ Background Image -->
+
     <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->
     <mj-section
       css-class="image-block block"
@@ -355,7 +400,7 @@
 
         <mj-column width="550px">
           <mj-text css-class="overlay">
-            <h1 style="text-align: center">Placeholder message for special occasion</h1>
+            <h1 style="text-align: center">Placeholder message for special occasion </h1>
           </mj-text>
           <mj-button
             href="https://www.example.com"
@@ -369,24 +414,6 @@
       </mj-group>
     </mj-section>
     <!-- END: Image with overlay -->
-
-    <!-- START: Text w/ Background Image -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="16px 32px"
-      background-url="assets/photo-river.jpg"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle">
-        <mj-text color="#ffffff" align="center">Hello World</mj-text>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Text w/ Background Image -->
 
     <!-- START: Image -->
     <mj-section
@@ -525,7 +552,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="16px 32px"
+      padding="0px 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -542,7 +569,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="16px 32px"
+      padding="0px 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -559,7 +586,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="16px 32px"
+      padding="0px 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -609,29 +636,54 @@
     <!-- END: CTA x CTA Buttons Right Aligned -->
 
     <!-- START: Question Response -->
-    <mj-section
+    <!-- <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="16px 16px"
+      padding="0px"
     >
-      <mj-group css-class="question-response" width="480px">
+      <mj-group css-class="question-response" width="600px">
         <mj-column css-class="question-response-symbol" width="38px" vertical-align="top" padding="16px 10px">
           <mj-image
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/ellipse.png?v=1780314745000"
+            src="assets/icon-circle.png"
             alt="Input Control"
             padding="0px"
             width="18px"
             height="18px"
           />
         </mj-column>
-        <mj-column css-class="question-response-text" width="442px" vertical-align="top" padding="12px 10px 12px 0">
+        <mj-column css-class="question-response-text" width="562px" vertical-align="top" padding="8px 16px 8px 0">
           <mj-text padding="0">
-            <p style="font-family: Arial, sans-serif;color:#000000">Each list item will functions as a link in the email directing users to a dedicated page on your site.</p>
+            <p><a href="https://www.example.com">Each list item will functions as a link in the email directing users to a dedicated page on your site.</a></p>
           </mj-text>
         </mj-column>
       </mj-group>
-    </mj-section>
+    </mj-section> -->
     <!-- END: Question Response -->
+
+    <!-- START: Question Response (NEW) -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="0px"
+    >
+      <mj-column padding="0">
+        <mj-text padding="0" css-class="question-response">
+          <a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
+                  <img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
+                </td>
+                <td valign="top" style="padding:8px 16px 12px 0px;">
+                  <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
+                </td>
+              </tr>
+            </table>
+          </a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Question Response (NEW) -->
 
     <!-- START: Quote Block -->
     <mj-section css-class="spacer-block block" padding="0">
@@ -646,7 +698,7 @@
     >
       <mj-column width="480px" padding="0">
         <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/quotes.png?v=1779896914000"
+          src="assets/icon-quotes_black.png"
           alt="Quotation Symbol"
           width="44px"
           padding="0 0 30px"
@@ -654,7 +706,7 @@
         />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/quotes-dark-mode.png?v=1780316044000"
+          src="assets/icon-quotes_white.png"
           alt="Quotation Symbol"
           width="44px"
           padding="0 0 30px"
