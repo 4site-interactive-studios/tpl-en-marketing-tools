@@ -3,21 +3,23 @@
  *
  * Parses the <!-- START: Name --> / <!-- END: Name --> comments that MJML
  * passes through into the compiled HTML and provides:
- *   - Sections mode:  one labeled outline per block
- *   - Group mode:     names differing only by a parenthetical qualifier
- *                     (e.g. "Footer (dark)" / "Footer (light green)") share a
- *                     name/color; ADJACENT same-group blocks merge into one
- *                     outline, and each member keeps a distinct variant chip.
- *   - Stack mode:     grouped adjacent runs are physically laid out
- *                     side-by-side in a scrollable row for visual comparison
- *                     (fully reversible DOM move).
+ *   - Outline blocks:   one labeled outline per block (labels click-to-copy)
+ *   - Group similar:    names differing only by parenthetical qualifiers share
+ *                       a family/color; ADJACENT same-family blocks merge
+ *   - Stack side-by-side: grouped runs laid out horizontally with scroll-snap
+ *                       into the email column; row height tracks the current
+ *                       cell (fully reversible DOM move)
+ *   - Hide duplicates:  repeats of an identical block name collapse to the
+ *                       first occurrence
  *
- * Loaded lazily by the "Debug" button block; exposes window.__tplDebug.
+ * Loaded lazily by the floating 🐞 toggle; exposes window.__tplDebug.
+ * See NAMING.md for the block-name grammar this tool depends on.
  */
 (function () {
   if (window.__tplDebug) return; // already loaded
 
   var SKIP = /^(Main Content|Debug Toolbar)/;
+  var CELL_W = 600, CELL_GAP = 16; // stacked cell = email width; gap between cells
   var HATCH = 'repeating-linear-gradient(45deg,#ececec 0 10px,#f8f8f8 10px 20px)';
   var PALETTE = [
     '#e6194b', '#3cb44b', '#4363d8', '#f58231', '#911eb4', '#0a9396',
@@ -44,8 +46,8 @@
   function variantLabel(name, key, i) {
     var parens = name.match(/\([^)]*\)/g);
     if (parens) return parens.join(' ');
-    var v = name.indexOf(key) === 0 ? name.slice(key.length).trim() : name.trim();
-    return v && v !== name ? v : (v === name && v ? v : '#' + (i + 1));
+    var v = name.indexOf(key) === 0 ? name.slice(key.length).trim() : '';
+    return v || '#' + (i + 1);
   }
 
   function copyName(text, feedbackEl) {
@@ -185,7 +187,7 @@
       c.style.paddingLeft = left + 'px';
       c.style.scrollPaddingLeft = left + 'px';
       // enough right padding that the LAST cell can also snap onto the email column
-      var pr = Math.max(16, c.getBoundingClientRect().width - left - 600);
+      var pr = Math.max(CELL_GAP, c.getBoundingClientRect().width - left - CELL_W);
       c.style.paddingRight = pr + 'px';
     });
   }
@@ -201,7 +203,7 @@
 
       var container = document.createElement('div');
       container.setAttribute('data-tpl-debug-stack', '');
-      container.style.cssText = 'display:flex;align-items:flex-start;gap:16px;overflow-x:auto;' +
+      container.style.cssText = 'display:flex;align-items:flex-start;gap:' + CELL_GAP + 'px;overflow-x:auto;' +
         'scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 16px 0 0;';
       container.style.background = state.stripes ? HATCH : 'none';
       var c = color(run.key);
@@ -235,7 +237,7 @@
       container.addEventListener('scroll', function () {
         clearTimeout(st);
         st = setTimeout(function () {
-          entry.current = Math.max(0, Math.min(cells.length - 1, Math.round(container.scrollLeft / 616)));
+          entry.current = Math.max(0, Math.min(cells.length - 1, Math.round(container.scrollLeft / (CELL_W + CELL_GAP))));
           setStackHeight(entry);
           queueRender();
         }, 90);
@@ -434,7 +436,8 @@
     btn.title = on ? 'Debug ON — click to disable' : 'Toggle debug mode';
   }
 
-  /* ---- re-render on layout shifts (resize, late image loads) ---- */
+  /* ---- re-render on layout shifts (resize, late image loads) ----
+     page-lifetime listeners: intentionally never detached on disable() ---- */
   var t;
   function queueRender() {
     clearTimeout(t);

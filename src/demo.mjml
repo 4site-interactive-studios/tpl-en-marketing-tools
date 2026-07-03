@@ -38,16 +38,14 @@
     </mj-attributes>
 
     <mj-style>
-      /* Indents the caption */
-      @media (max-width: 619px) {
+      @media (max-width: 599px) {
+        /* Indents the caption */
         .caption {
           padding-left: 16px !important;
           padding-right: 16px !important;
         }
-      }
 
-      /* Side by Side CTA Buttons */
-      @media (max-width: 619px) {
+        /* Side by Side CTA Buttons */
         .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
         .cta-item:last-child { margin-bottom: 0 !important; }
       }
@@ -85,7 +83,10 @@
     <!-- START: Logo Header (light green, left) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (light green, left) -->
@@ -93,7 +94,10 @@
     <!-- START: Logo Header (light green, centered) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (light green, centered) -->
@@ -101,7 +105,10 @@
     <!-- START: Logo Header (dark, left) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (dark, left) -->
@@ -109,7 +116,10 @@
     <!-- START: Logo Header (dark, centered) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (dark, centered) -->
@@ -117,7 +127,10 @@
     <!-- START: Logo Header (off-white bordered, left) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (off-white bordered, left) -->
@@ -125,7 +138,10 @@
     <!-- START: Logo Header (off-white bordered, centered) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (off-white bordered, centered) -->
@@ -133,7 +149,10 @@
     <!-- START: Logo Header (dark red, left) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (dark red, left) -->
@@ -141,7 +160,10 @@
     <!-- START: Logo Header (dark red, centered) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (dark red, centered) -->
@@ -204,10 +226,16 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -217,10 +245,16 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -230,13 +264,19 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-text align="right" padding="0 0 4px" color="#ffffff">
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
-          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -246,13 +286,19 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-text align="left" padding="0 0 4px 40px" color="#ffffff">
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
-          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -262,7 +308,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">DONATE</mj-button>
@@ -275,7 +324,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Donate</mj-button>
@@ -288,7 +340,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-image src="assets/text-and-arrow_1.png" alt="Protecting the places birds call home" width="200px" padding="0 0 0 16px" align="right" />
@@ -301,10 +356,16 @@
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
           <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
         </mj-column>
       </mj-group>
@@ -315,10 +376,16 @@
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
           <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
         </mj-column>
       </mj-group>
@@ -329,7 +396,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
@@ -342,17 +412,23 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
           <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
     <!-- END: Logo Header x CTA (GivingTuesday on dark) -->
 
-    <!-- START: Image x Image Centered Block (with Dark Mode) -->
+    <!-- START: Image x Image Centered Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#700310"
@@ -405,9 +481,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x Image Centered Block (with Dark Mode) -->
+    <!-- END: Image x Image Centered Block (w/ dark-mode swap) -->
 
-    <!-- START: Image x Image Split Block (with Dark Mode) -->
+    <!-- START: Image x Image Split Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837"
@@ -460,9 +536,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x Image Split Block (with Dark Mode) -->
+    <!-- END: Image x Image Split Block (w/ dark-mode swap) -->
 
-    <!-- START: Image x CTA Split Block (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -501,9 +577,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block (with Dark Mode) -->
+    <!-- END: Image x CTA Split Block (w/ dark-mode swap) -->
 
-    <!-- START: Image x CTA Split Block w/ Background Image (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -546,9 +622,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Background Image (with Dark Mode) -->
+    <!-- END: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->
 
-    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -591,17 +667,17 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->
+    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->
 
-    <!-- START: Category — Heading Banners and Rows -->
+    <!-- START: Category — Heading Banners & Rows -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADING BANNERS AND ROWS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADING BANNERS &amp; ROWS</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Heading Banners and Rows -->
+    <!-- END: Category — Heading Banners & Rows -->
 
     <!-- START: Heading Banner (white) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
@@ -1089,15 +1165,15 @@
     </mj-section>
     <!-- END: Question Response (linked row) -->
 
-    <!-- START: Category — Buttons and CTAs -->
+    <!-- START: Category — Buttons & CTAs -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS AND CTAS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS &amp; CTAS</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Buttons and CTAs -->
+    <!-- END: Category — Buttons & CTAs -->
 
     <!-- START: CTA Button (left) -->
     <mj-section
@@ -1370,15 +1446,15 @@
     </mj-section>
     <!-- END: CTA Block -->
 
-    <!-- START: Category — Images and Media -->
+    <!-- START: Category — Images & Media -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGES AND MEDIA</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Images and Media -->
+    <!-- END: Category — Images & Media -->
 
     <!-- START: Image -->
     <mj-section
@@ -1613,15 +1689,15 @@
     </mj-section>
     <!-- END: Video Block (full-bleed) -->
 
-    <!-- START: Category — Image and Text Layouts -->
+    <!-- START: Category — Image & Text Layouts -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGE AND TEXT LAYOUTS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Image and Text Layouts -->
+    <!-- END: Category — Image & Text Layouts -->
 
     <!-- START: Side by side image and text -->
     <mj-section
@@ -1957,15 +2033,15 @@
     </mj-wrapper>
     <!-- END: More Stories for You (orange-bordered story card) -->
 
-    <!-- START: Category — Fundraising and Campaign -->
+    <!-- START: Category — Fundraising & Campaign -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FUNDRAISING AND CAMPAIGN</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FUNDRAISING &amp; CAMPAIGN</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Fundraising and Campaign -->
+    <!-- END: Category — Fundraising & Campaign -->
 
     <!-- START: Limited-Time Match Banner (light green) -->
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="12px 32px">
@@ -2037,7 +2113,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
@@ -2050,7 +2129,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
@@ -2072,7 +2154,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
@@ -2102,7 +2187,10 @@
       <mj-section padding="48px 32px 24px">
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
-            <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+            <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
             <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">GIVE NOW</mj-button>
@@ -2116,7 +2204,10 @@
     <mj-section css-class="image-block block" background-color="#006837" padding="160px 32px 24px" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">3X MY GIFT</mj-button>
@@ -2347,7 +2438,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="24px 32px 32px" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="top" width="45%">
-          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="top" width="55%">
           <mj-text align="center" padding="0 0 12px 24px" container-background-color="#F5FAF1" css-class="advocacy-box">
@@ -2364,7 +2458,10 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="24px 32px 32px" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
         <mj-column vertical-align="top" width="45%">
-          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="0" align="left" />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="top" width="55%">
           <mj-text align="center" padding="0 0 12px 24px" container-background-color="#F5FAF1">
@@ -2377,15 +2474,15 @@
     </mj-section>
     <!-- END: Advocacy Photo Card (outline CTA) -->
 
-    <!-- START: Category — Engagement and Interactive -->
+    <!-- START: Category — Engagement & Interactive -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT AND INTERACTIVE</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Category — Engagement and Interactive -->
+    <!-- END: Category — Engagement & Interactive -->
 
     <!-- START: Pop Quiz Block -->
     <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
@@ -2981,7 +3078,10 @@
         <mj-text padding="0 0 16px" color="#ffffff" align="center">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
         </mj-text>
-        <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--<![endif]--></mj-raw>
         <mj-text padding="0" color="#ffffff" align="center">
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
         </mj-text>
@@ -3007,7 +3107,10 @@
         <mj-text padding="0 0 16px" color="#ffffff" align="center">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
         </mj-text>
-        <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--<![endif]--></mj-raw>
         <mj-text padding="0" color="#ffffff" align="center">
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
         </mj-text>
@@ -3032,7 +3135,10 @@
         <mj-text padding="0 0 16px" align="center">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
         </mj-text>
-        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--<![endif]--></mj-raw>
         <mj-text padding="0" align="center">
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
         </mj-text>
@@ -3057,7 +3163,10 @@
         <mj-text padding="0 0 16px" align="center">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
         </mj-text>
-        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-raw><!--<![endif]--></mj-raw>
         <mj-text padding="0" align="center">
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
         </mj-text>
@@ -3079,6 +3188,14 @@
           width="150px"
           href="https://www.example.com"
         />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          alt="Logo"
+          src="assets/logo-tpl_color-light-green-text.png"
+          width="150px"
+          href="https://www.example.com"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <mj-section

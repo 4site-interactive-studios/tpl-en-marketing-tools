@@ -37,3 +37,5 @@ grouping, side-by-side stacking, click-to-copy, and duplicate hiding.
   non-adjacent instances are indexed (· 1/n).
 - `(dev only — remove for production)` marks non-shipping chrome (Debug
   Toolbar); such blocks are excluded from the overlay entirely.
+- `Category — <Label>` blocks are navigation chrome for the demo catalog, not
+  content blocks; use `&` rather than "and" in their labels.

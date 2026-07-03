@@ -38,16 +38,14 @@
     </mj-attributes>
 
     <mj-style>
-      /* Indents the caption */
-      @media (max-width: 619px) {
+      @media (max-width: 599px) {
+        /* Indents the caption (!important beats the inline td padding) */
         .caption {
-          padding-left: 16px !important; /* must be !important — beats the inline td padding */
-          padding-right: 16px !important; /* must be !important — beats the inline td padding */
+          padding-left: 16px !important;
+          padding-right: 16px !important;
         }
-      }
 
-      /* Side by Side CTA Buttons */
-      @media (max-width: 619px) {
+        /* Side by Side CTA Buttons */
         .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
         .cta-item:last-child { margin-bottom: 0 !important; }
       }
@@ -127,7 +125,7 @@
     </mj-section>
     <!-- END: Logo Header (light green, w/ dark-mode swap) -->
 
-    <!-- START: Image x Image Centered Block (with Dark Mode) -->
+    <!-- START: Image x Image Centered Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#700310"
@@ -180,10 +178,10 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x Image Centered Block (with Dark Mode) -->
+    <!-- END: Image x Image Centered Block (w/ dark-mode swap) -->
 
 
-    <!-- START: Image x Image Split Block (with Dark Mode) -->
+    <!-- START: Image x Image Split Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837"
@@ -236,9 +234,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x Image Split Block (with Dark Mode) -->    
+    <!-- END: Image x Image Split Block (w/ dark-mode swap) -->    
 
-    <!-- START: Image x CTA Split Block (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -277,9 +275,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block (with Dark Mode) -->    
+    <!-- END: Image x CTA Split Block (w/ dark-mode swap) -->    
 
-    <!-- START: Image x CTA Split Block w/ Background Image (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -322,7 +320,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Background Image (with Dark Mode) -->    
+    <!-- END: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->    
 
     <!-- START: Text w/ Background Image -->
     <mj-section
@@ -342,7 +340,7 @@
     </mj-section>
     <!-- END: Text w/ Background Image -->
 
-    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->
+    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -385,7 +383,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (with Dark Mode) -->    
+    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->    
 
     <!-- START: Image with overlay -->
     <!--
