@@ -62,9 +62,18 @@
     <mj-include path="./styles.css" type="css" />
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
+
+    <!-- START: Debug Toolbar (dev only — remove for production) -->
+    <mj-raw>
+      <div id="tpl-debug-btn" title="Toggle debug mode"
+           onclick="if(window.__tplDebug){window.__tplDebug.toggle();}else{var s=document.createElement('script');s.src='assets/debug.js';s.onload=function(){window.__tplDebug.enable();};document.body.appendChild(s);}"
+           style="position:fixed;bottom:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#111111;font-size:20px;line-height:44px;text-align:center;cursor:pointer;z-index:2147483646;box-shadow:0 2px 10px rgba(0,0,0,.35);user-select:none;">🐞</div>
+    </mj-raw>
+    <!-- END: Debug Toolbar (dev only — remove for production) -->
+
     <!-- START: Main Content -->
 
-    <!-- START: Image Block (with Dark Mode) -->
+    <!-- START: Logo Header (white, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff"
@@ -89,9 +98,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Image Block -->
+    <!-- END: Logo Header (white, w/ dark-mode swap) -->
 
-    <!-- START: Image Block (with Dark Mode) -->
+    <!-- START: Logo Header (light green, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#F5FAF1"
@@ -116,7 +125,7 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Image Block -->
+    <!-- END: Logo Header (light green, w/ dark-mode swap) -->
 
     <!-- START: Image x Image Centered Block (with Dark Mode) -->
     <mj-section
@@ -476,7 +485,7 @@
     </mj-section>
     <!-- END: Two Images -->
 
-    <!-- START: WYSIWYG (Text content) -->
+    <!-- START: WYSIWYG Text (full width) -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
@@ -510,9 +519,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG (Text content) -->
+    <!-- END: WYSIWYG Text (full width) -->
 
-    <!-- START: WYSIWYG (Text content) -->
+    <!-- START: WYSIWYG Text (inset) -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
@@ -546,9 +555,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG (Text content) -->
+    <!-- END: WYSIWYG Text (inset) -->
 
-    <!-- START: CTA Button Left Aligned -->
+    <!-- START: CTA Button (left) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -563,9 +572,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button Left Aligned -->
+    <!-- END: CTA Button (left) -->
 
-    <!-- START: CTA Button Center Aligned -->
+    <!-- START: CTA Button (centered) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -580,9 +589,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button Center Aligned -->
+    <!-- END: CTA Button (centered) -->
 
-    <!-- START: CTA Button Right Aligned -->
+    <!-- START: CTA Button (right) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -597,9 +606,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button Right Aligned -->
+    <!-- END: CTA Button (right) -->
 
-    <!-- START: CTA Button Center Aligned and Fixed Width -->
+    <!-- START: CTA Button (centered, fixed width) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -614,9 +623,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button Center Aligned and Fixed Width -->
+    <!-- END: CTA Button (centered, fixed width) -->
 
-    <!-- START: CTA Outline Button Center Aligned -->
+    <!-- START: CTA Button (centered, outline) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -635,9 +644,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Outline Button Center Aligned -->
+    <!-- END: CTA Button (centered, outline) -->
 
-    <!-- START: CTA Text Button Center Aligned -->
+    <!-- START: CTA Button (centered, text only) -->
     <mj-section
       css-class="block"
       background-color="#ffffff"
@@ -655,9 +664,9 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Text Button Center Aligned -->
+    <!-- END: CTA Button (centered, text only) -->
 
-    <!-- START: CTA x CTA Buttons Left Aligned -->
+    <!-- START: Dual CTA Buttons (left) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
@@ -667,9 +676,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA x CTA Buttons Left Aligned -->
+    <!-- END: Dual CTA Buttons (left) -->
 
-    <!-- START: CTA x CTA Buttons Center Aligned -->
+    <!-- START: Dual CTA Buttons (centered) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
@@ -679,9 +688,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA x CTA Buttons Center Aligned -->
+    <!-- END: Dual CTA Buttons (centered) -->
 
-    <!-- START: CTA x CTA Buttons Right Aligned -->
+    <!-- START: Dual CTA Buttons (right) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
@@ -691,9 +700,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA x CTA Buttons Right Aligned -->
+    <!-- END: Dual CTA Buttons (right) -->
 
-    <!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons -->
+    <!-- START: Triple CTA Buttons (centered, dynamic width) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
@@ -703,9 +712,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons -->
+    <!-- END: Triple CTA Buttons (centered, dynamic width) -->
 
-    <!-- START: CTA x CTA x CTA Fixed Width and Center Aligned Buttons -->
+    <!-- START: Triple CTA Buttons (centered, fixed width) -->
     <!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -727,9 +736,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA x CTA x CTA Fixed Width and Center Aligned Buttons -->
+    <!-- END: Triple CTA Buttons (centered, fixed width) -->
 
-  <!-- START: CTA x CTA Fixed Width and Center Aligned Buttons -->
+  <!-- START: Dual CTA Buttons (centered, fixed width) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -751,9 +760,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: CTA x CTA Fixed Width and Center Aligned Buttons -->
+  <!-- END: Dual CTA Buttons (centered, fixed width) -->
 
-  <!-- START: CTA x CTA Two-Line (bold + regular), Two-Color Buttons -->
+  <!-- START: Dual CTA Buttons (two-line, two-color) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -769,34 +778,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: CTA x CTA Two-Line (bold + regular), Two-Color Buttons -->
+  <!-- END: Dual CTA Buttons (two-line, two-color) -->
 
-  <!-- START: Question Response -->
-  <!-- <mj-section
-      css-class="text-block block"
-      background-color="#ffffff"
-      padding="0px"
-    >
-      <mj-group css-class="question-response" width="600px">
-        <mj-column css-class="question-response-symbol" width="38px" vertical-align="top" padding="16px 10px">
-          <mj-image
-            src="assets/icon-circle.png"
-            alt="Input Control"
-            padding="0px"
-            width="18px"
-            height="18px"
-          />
-        </mj-column>
-        <mj-column css-class="question-response-text" width="562px" vertical-align="top" padding="8px 16px 8px 0">
-          <mj-text padding="0">
-            <p><a href="https://www.example.com">Each list item will functions as a link in the email directing users to a dedicated page on your site.</a></p>
-          </mj-text>
-        </mj-column>
-      </mj-group>
-    </mj-section> -->
-    <!-- END: Question Response -->
-
-    <!-- START: Question Response (NEW) -->
+    <!-- START: Question Response (linked row) -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
@@ -819,7 +803,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Question Response (NEW) -->
+    <!-- END: Question Response (linked row) -->
 
     <!-- START: Quote Block -->
     <mj-section css-class="spacer-block block" padding="0">
@@ -984,7 +968,7 @@
     </mj-section>
     <!-- END: Side by side image and text -->
 
-    <!-- START: Reversed Side by side image and text-->
+    <!-- START: Side by side image and text (reversed) -->
     <mj-section
         css-class="two-col-image-text-block block"
         background-color="#F1EEE9"
@@ -1022,7 +1006,7 @@
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Reversed Side by side image and text -->
+    <!-- END: Side by side image and text (reversed) -->
 
     <!-- START: Spacer -->
     <mj-section css-class="spacer-block block" padding="0">
@@ -1083,7 +1067,7 @@
     </mj-section>
     <!-- END: Divider -->
 
-    <!-- START: Linked Header Row w/ Icon -->
+    <!-- START: Linked Header Row (w/ icon) -->
     <mj-section
       css-class="text-block block"
       background-color="#CEE4C5"
@@ -1095,7 +1079,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Linked Header Row w/ Icon -->
+    <!-- END: Linked Header Row (w/ icon) -->
 
     <!-- START: Side by side text and image (w/ CTA + caption) -->
     <mj-section
@@ -1395,7 +1379,7 @@
     </mj-section>
     <!-- END: Join Links Block -->
 
-    <!-- START: Quiz Block -->
+    <!-- START: Creek Quiz Block -->
     <mj-section
       css-class="text-block block"
       background-color="#362229"
@@ -1422,7 +1406,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Quiz Block -->
+    <!-- END: Creek Quiz Block -->
 
     <!-- START: Pop Quiz Block -->
     <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
@@ -1606,7 +1590,7 @@
     </mj-section>
     <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
 
-    <!-- START: Signature card -->
+    <!-- START: Signature Card (original) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0px">
       <mj-column width="480px">
         <mj-text padding="0">
@@ -1666,7 +1650,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature card -->
+    <!-- END: Signature Card (original) -->
 
     <!-- START: Footer -->
     <mj-section

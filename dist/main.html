@@ -716,7 +716,8 @@ li {
 
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
   <div aria-roledescription="email" role="article" lang="und" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
-    <!-- START: Main Content --><!-- START: Image Block (with Dark Mode) -->
+    <!-- START: Debug Toolbar (dev only — remove for production) -->
+    <div id="tpl-debug-btn" title="Toggle debug mode" onclick="if(window.__tplDebug){window.__tplDebug.toggle();}else{var s=document.createElement('script');s.src='assets/debug.js';s.onload=function(){window.__tplDebug.enable();};document.body.appendChild(s);}" style="position:fixed;bottom:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#111111;font-size:20px;line-height:44px;text-align:center;cursor:pointer;z-index:2147483646;box-shadow:0 2px 10px rgba(0,0,0,.35);user-select:none;">🐞</div><!-- END: Debug Toolbar (dev only — remove for production) --><!-- START: Main Content --><!-- START: Logo Header (white, w/ dark-mode swap) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="image-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -764,7 +765,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Image Block --><!-- START: Image Block (with Dark Mode) -->
+    <!-- END: Logo Header (white, w/ dark-mode swap) --><!-- START: Logo Header (light green, w/ dark-mode swap) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="image-block block" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
@@ -812,7 +813,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Image Block --><!-- START: Image x Image Centered Block (with Dark Mode) -->
+    <!-- END: Logo Header (light green, w/ dark-mode swap) --><!-- START: Image x Image Centered Block (with Dark Mode) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#700310" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="image-block block" style="background:#700310;background-color:#700310;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#700310;background-color:#700310;width:100%;">
@@ -1443,7 +1444,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Two Images --><!-- START: WYSIWYG (Text content) -->
+    <!-- END: Two Images --><!-- START: WYSIWYG Text (full width) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1477,7 +1478,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: WYSIWYG (Text content) --><!-- START: WYSIWYG (Text content) -->
+    <!-- END: WYSIWYG Text (full width) --><!-- START: WYSIWYG Text (inset) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1511,7 +1512,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: WYSIWYG (Text content) --><!-- START: CTA Button Left Aligned -->
+    <!-- END: WYSIWYG Text (inset) --><!-- START: CTA Button (left) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1545,7 +1546,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Button Left Aligned --><!-- START: CTA Button Center Aligned -->
+    <!-- END: CTA Button (left) --><!-- START: CTA Button (centered) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1579,7 +1580,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Button Center Aligned --><!-- START: CTA Button Right Aligned -->
+    <!-- END: CTA Button (centered) --><!-- START: CTA Button (right) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1613,7 +1614,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Button Right Aligned --><!-- START: CTA Button Center Aligned and Fixed Width -->
+    <!-- END: CTA Button (right) --><!-- START: CTA Button (centered, fixed width) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1647,7 +1648,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Button Center Aligned and Fixed Width --><!-- START: CTA Outline Button Center Aligned -->
+    <!-- END: CTA Button (centered, fixed width) --><!-- START: CTA Button (centered, outline) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1681,7 +1682,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Outline Button Center Aligned --><!-- START: CTA Text Button Center Aligned -->
+    <!-- END: CTA Button (centered, outline) --><!-- START: CTA Button (centered, text only) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1715,7 +1716,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Text Button Center Aligned --><!-- START: CTA x CTA Buttons Left Aligned -->
+    <!-- END: CTA Button (centered, text only) --><!-- START: Dual CTA Buttons (left) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1747,7 +1748,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA Buttons Left Aligned --><!-- START: CTA x CTA Buttons Center Aligned -->
+    <!-- END: Dual CTA Buttons (left) --><!-- START: Dual CTA Buttons (centered) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1779,7 +1780,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA Buttons Center Aligned --><!-- START: CTA x CTA Buttons Right Aligned -->
+    <!-- END: Dual CTA Buttons (centered) --><!-- START: Dual CTA Buttons (right) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1811,7 +1812,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA Buttons Right Aligned --><!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons -->
+    <!-- END: Dual CTA Buttons (right) --><!-- START: Triple CTA Buttons (centered, dynamic width) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -1844,7 +1845,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- START: CTA x CTA x CTA Dynamic Width and Center Aligned Buttons --><!-- START: CTA x CTA x CTA Fixed Width and Center Aligned Buttons --><!--
+    <!-- END: Triple CTA Buttons (centered, dynamic width) --><!-- START: Triple CTA Buttons (centered, fixed width) --><!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
@@ -1888,7 +1889,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA x CTA Fixed Width and Center Aligned Buttons --><!-- START: CTA x CTA Fixed Width and Center Aligned Buttons --><!--
+    <!-- END: Triple CTA Buttons (centered, fixed width) --><!-- START: Dual CTA Buttons (centered, fixed width) --><!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
@@ -1931,7 +1932,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA Fixed Width and Center Aligned Buttons --><!-- START: CTA x CTA Two-Line (bold + regular), Two-Color Buttons --><!--
+    <!-- END: Dual CTA Buttons (centered, fixed width) --><!-- START: Dual CTA Buttons (two-line, two-color) --><!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
       => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
@@ -1968,28 +1969,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA x CTA Two-Line (bold + regular), Two-Color Buttons --><!-- START: Question Response --><!-- <mj-section
-      css-class="text-block block"
-      background-color="#ffffff"
-      padding="0px"
-    >
-      <mj-group css-class="question-response" width="600px">
-        <mj-column css-class="question-response-symbol" width="38px" vertical-align="top" padding="16px 10px">
-          <mj-image
-            src="assets/icon-circle.png"
-            alt="Input Control"
-            padding="0px"
-            width="18px"
-            height="18px"
-          />
-        </mj-column>
-        <mj-column css-class="question-response-text" width="562px" vertical-align="top" padding="8px 16px 8px 0">
-          <mj-text padding="0">
-            <p><a href="https://www.example.com">Each list item will functions as a link in the email directing users to a dedicated page on your site.</a></p>
-          </mj-text>
-        </mj-column>
-      </mj-group>
-    </mj-section> --><!-- END: Question Response --><!-- START: Question Response (NEW) -->
+    <!-- END: Dual CTA Buttons (two-line, two-color) --><!-- START: Question Response (linked row) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -2034,7 +2014,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Question Response (NEW) --><!-- START: Quote Block -->
+    <!-- END: Question Response (linked row) --><!-- START: Quote Block -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
@@ -2384,7 +2364,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Side by side image and text --><!-- START: Reversed Side by side image and text-->
+    <!-- END: Side by side image and text --><!-- START: Side by side image and text (reversed) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F1EEE9" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block" style="background:#F1EEE9;background-color:#F1EEE9;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F1EEE9;background-color:#F1EEE9;width:100%;">
@@ -2464,7 +2444,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Reversed Side by side image and text --><!-- START: Spacer -->
+    <!-- END: Side by side image and text (reversed) --><!-- START: Spacer -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
@@ -2617,7 +2597,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Divider --><!-- START: Linked Header Row w/ Icon -->
+    <!-- END: Divider --><!-- START: Linked Header Row (w/ icon) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
@@ -2645,7 +2625,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Linked Header Row w/ Icon --><!-- START: Side by side text and image (w/ CTA + caption) -->
+    <!-- END: Linked Header Row (w/ icon) --><!-- START: Side by side text and image (w/ CTA + caption) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3283,7 +3263,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Join Links Block --><!-- START: Quiz Block -->
+    <!-- END: Join Links Block --><!-- START: Creek Quiz Block -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
@@ -3341,7 +3321,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Quiz Block --><!-- START: Pop Quiz Block -->
+    <!-- END: Creek Quiz Block --><!-- START: Pop Quiz Block -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
@@ -3940,7 +3920,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Feedback Poll Block (framed by tri-color dividers) --><!-- START: Signature card -->
+    <!-- END: Feedback Poll Block (framed by tri-color dividers) --><!-- START: Signature Card (original) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="signature-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="signature-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -4066,7 +4046,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Signature card --><!-- START: Footer -->
+    <!-- END: Signature Card (original) --><!-- START: Footer -->
     <table align="center" class="footer-block block" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
       <tbody>
         <tr>
