@@ -1202,7 +1202,7 @@
     <!-- START: Podcast Episode Block -->
     <mj-section
       css-class="image-block block"
-      background-color="#3A6B4F"
+      background-color="#0E7C3F"
       padding="16px 32px"
     >
       <mj-group>

@@ -1,0 +1,1674 @@
+<mjml>
+  <mj-head>
+    <mj-breakpoint width="600px" />
+
+    <!-- Baseline everything inherits -->
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-button
+        css-class="button"
+        font-size="21px"
+        font-weight="700"
+        font-family="Tahoma, sans-serif"
+        line-height="25px"
+        border-radius="100px"
+        inner-padding="12px 16px"
+        letter-spacing="2px"
+        color="#ffffff"
+        background-color="#006837"
+      />
+      <mj-image
+        padding="0"
+      />
+
+      <!-- Reusable variants — apply with mj-class="*" -->
+      <mj-class
+        name="caption"
+        font-size="10px"
+        line-height="16px"
+        padding="8px 0 0 0"
+      />
+    </mj-attributes>
+
+    <mj-style>
+      /* Indents the caption */
+      @media (max-width: 619px) {
+        .caption {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+      }
+
+      /* Side by Side CTA Buttons */
+      @media (max-width: 619px) {
+        .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
+        .cta-item:last-child { margin-bottom: 0 !important; }
+      }
+    </mj-style>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+  <mj-body css-class="email-body" background-color="#ffffff">
+    <!-- START: Main Content -->
+
+    <!-- START: Image (full-bleed) w/ Caption -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image (full-bleed) w/ Caption -->
+
+    <!-- START: Image (inset) w/ Caption -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" />
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image (inset) w/ Caption -->
+
+    <!-- START: Text Block (mixed-weight heading) -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus aenean.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Text Block (mixed-weight heading) -->
+
+    <!-- START: Logo Header Permutations -->
+    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Logo Header Permutations -->
+
+    <!-- START: Logo Header x State Permutations -->
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-text align="right" padding="0 0 4px" color="#ffffff">
+            <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
+          </mj-text>
+          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-text align="left" padding="0 0 4px 40px" color="#ffffff">
+            <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
+          </mj-text>
+          <mj-image src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x State Permutations -->
+
+    <!-- START: Logo Header x CTA Permutations -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">DONATE</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Donate</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/text-and-arrow_1.png" alt="Protecting the places birds call home" width="200px" padding="0 0 0 16px" align="right" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA Permutations -->
+
+    <!-- START: Giving Day Hero (background image, headline + logo + CTA) -->
+    <mj-wrapper css-class="block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
+      <mj-section padding="48px 32px 8px">
+        <mj-column>
+          <mj-text align="center" padding="0" color="#ffffff">
+            <h1 style="color:#ffffff;">Giving Day 2X Match:<br />Now Active</h1>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="48px 32px 24px">
+        <mj-group>
+          <mj-column vertical-align="middle" width="50%">
+            <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          </mj-column>
+          <mj-column vertical-align="middle" width="50%">
+            <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">GIVE NOW</mj-button>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Giving Day Hero -->
+
+    <!-- START: Limited-Time Match Banners -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="12px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#700310" padding="12px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#006837" padding="12px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="12px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Limited-Time Match Banners -->
+
+    <!-- START: Match Hero (banner + photo CTA) -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Match Hero (banner + photo CTA) -->
+
+    <!-- START: Match Hero w/ Supporter Status (match offer) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Match:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;">OFFER UNCLAIMED</a></p>
+          <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7941D;font-weight:bold;">FRIDAY</span></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Match Hero w/ Supporter Status (match offer) -->
+
+    <!-- START: Match Hero w/ Supporter Status (monthly) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Monthly Supporter:</b> <span style="color:#006837;font-weight:bold;">Yes&ndash;thank you!</span></p>
+          <p style="font-size:16px;margin:0;"><b>Monthly Gift Amount:</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Match Hero w/ Supporter Status (monthly) -->
+
+    <!-- START: Photo CTA Banner (logo + gift button) -->
+    <mj-section css-class="image-block block" background-color="#006837" padding="160px 32px 24px" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">3X MY GIFT</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Photo CTA Banner (logo + gift button) -->
+
+    <!-- START: Photo CTA Banner (centered headline + gift button) -->
+    <mj-section css-class="image-block block" background-color="#006837" padding="48px 32px" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-column>
+        <mj-text align="center" padding="0 0 16px" color="#ffffff">
+          <h1 style="color:#ffffff;">End of Year Triple Match</h1>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D" font-size="18px">3X MY GIFT</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Photo CTA Banner (centered headline + gift button) -->
+
+    <!-- START: Fundraising Thermometer -->
+    <mj-section css-class="image-block block" background-color="#006837" padding="32px 32px" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-column>
+        <mj-text align="center" padding="0" color="#ffffff">
+          <p style="font-size:16px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE DAY</p>
+          <h2 style="color:#ffffff;margin:0 0 16px;">Don&rsquo;t miss this 5X match!</h2>
+        </mj-text>
+        <mj-text padding="0 0 8px" color="#ffffff">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+            <tr>
+              <td align="left" style="padding-right:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
+                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$600,000</p>
+              </td>
+              <td align="left" style="padding-right:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
+                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$400,500</p>
+              </td>
+              <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
+                <p style="font-size:18px;font-weight:700;color:#F7941D;margin:0;">$200,000</p>
+              </td>
+              <td width="30%">&nbsp;</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-text padding="0 0 24px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-radius:8px;border-collapse:separate;">
+            <tr>
+              <td width="66%" bgcolor="#39B54A" style="height:14px;font-size:0;line-height:0;border-radius:8px 0 0 8px;">&nbsp;</td>
+              <td width="34%" bgcolor="#ffffff" style="height:14px;font-size:0;line-height:0;border-radius:0 8px 8px 0;">&nbsp;</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D" font-size="18px">5X MY GIFT</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Fundraising Thermometer -->
+
+    <!-- START: Advocacy Photo Card (green CTA) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="24px 32px 32px" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="top" width="45%">
+          <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" />
+        </mj-column>
+        <mj-column vertical-align="top" width="55%">
+          <mj-text align="center" padding="0 0 12px 24px" container-background-color="#F5FAF1" css-class="advocacy-box">
+            <h3 style="color:#362229;padding:12px 8px 0;">Don&rsquo;t<br />Let Our<br />National<br />Parks Fall<br />Apart</h3>
+            <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+          </mj-text>
+          <mj-button href="https://www.example.com" align="center" padding="12px 0 0" font-size="18px">TAKE ACTION</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Advocacy Photo Card (green CTA) -->
+
+    <!-- START: Advocacy Photo Card (outline CTA) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="24px 32px 32px" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="top" width="45%">
+          <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="0" align="left" />
+        </mj-column>
+        <mj-column vertical-align="top" width="55%">
+          <mj-text align="center" padding="0 0 12px 24px" container-background-color="#F5FAF1">
+            <h3 style="color:#362229;padding:12px 8px 0;">Urge<br />Congress<br />to Protect<br />America&rsquo;s<br />Wildlife</h3>
+            <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+          </mj-text>
+          <mj-button href="https://www.example.com" align="center" padding="12px 0 0" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D" font-size="18px">TAKE ACTION</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Advocacy Photo Card (outline CTA) -->
+
+    <!-- START: Countdown Card -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 40px">
+      <mj-section padding="32px 24px" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9">
+        <mj-column>
+          <mj-text align="center" padding="0" color="#ffffff">
+            <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
+            <h3 style="color:#ffffff;margin:0 0 16px;">Time is running out to<br />quintuple your impact!</h3>
+          </mj-text>
+          <mj-button href="https://www.example.com" align="center" padding="0 0 16px" background-color="#F7941D" font-size="18px">5X MY GIFT</mj-button>
+          <mj-text align="center" padding="0" color="#ffffff">
+            <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
+            <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Countdown Card -->
+
+    <!-- START: Linked Header Row w/ Icon -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0">
+          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;">Start Your Summer with Butterflies</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header Row w/ Icon -->
+
+    <!-- START: Side by side text and image (w/ CTA + caption) -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="296px" padding="0 16px 0 0" vertical-align="top">
+        <mj-text padding="0">
+          <p>
+            Summer brings a surge of butterflies&mdash;monarchs, painted ladies,
+            tiger swallowtails, and more. These vibrant pollinators thrive in
+            protected landscapes, creating unforgettable seasonal displays.
+            From coast to coast, here are TPL-protected places where
+            butterflies abound.
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">FOLLOW THE FLUTTER</mj-button>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="240px" padding="0" vertical-align="top">
+        <mj-image src="assets/photo-butterfly.png" alt="Monarch butterfly resting on a purple coneflower" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Side by side text and image (w/ CTA + caption) -->
+
+    <!-- START: TPL in the News Block -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3>📰 TPL in the News</h3>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">E&amp;E News by Politico:</a> Most Americans Back Funding for the Massive Park Maintenance Backlog, Survey Finds</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">FacilitiesNet:</a> Sustainable K-12 Schoolyards Grow in Popularity</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sky-Hi News:</a> Outdoor Organization Encourages Kids to Take Their Brains Outside</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Deseret News:</a> The Start of a Movement? How Time Outside Can Alter Our Nation's Health</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: TPL in the News Block -->
+
+    <!-- START: Join Links Block -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Advisory Board</a></h2>
+          <p style="font-size:16px;">
+            Advisory board members are TPL advocates, ambassadors, and donors
+            who help increase our impact through philanthropy, advocacy,
+            connections, and strategic guidance.
+          </p>
+          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Team</a></h2>
+          <p style="font-size:16px;">
+            Come join a passionate team working toward a mission you believe
+            in. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">View all open positions.</a>
+          </p>
+          <p style="font-size:14px;">
+            Was this email forwarded to you? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sign up here.</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Join Links Block -->
+
+    <!-- START: More Stories for You (orange-bordered story card) -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0">
+          <h2 style="color:#362229;">More Stories for You</h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="8px 32px 16px" border="none">
+      <mj-section background-color="#ffffff" border="1px solid #F7941D" padding="16px 16px 0">
+        <mj-column>
+          <mj-text padding="0">
+            <h3><a href="https://www.example.com" style="color:#006837;">Seattle Makes the Top 10 List in the ParkScore Index</a></h3>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" border-left="1px solid #F7941D" border-right="1px solid #F7941D" border-bottom="1px solid #F7941D" padding="8px 16px 16px">
+        <mj-column css-class="two-col-column first-column" width="240px" padding="0 16px 0 0" vertical-align="top">
+          <mj-image src="assets/image-ranking.png" alt="2026 ParkScore ranking: number 8" href="https://www.example.com" padding="0" align="center" width="200px" />
+        </mj-column>
+        <mj-column css-class="two-col-column" width="296px" padding="0" vertical-align="top">
+          <mj-text padding="0">
+            <p style="font-size:16px;">
+              We released our 15th annual ParkScore index yesterday, and Seattle
+              ranks #8 nationwide based on strong measurements for acreage,
+              access, investment, amenities, and equity. Although the Emerald
+              City fell out of the top 10 in 2020, it came back to the top 10
+              list in 2021 and has stayed there ever since.
+            </p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: More Stories for You (orange-bordered story card) -->
+
+    <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:17px;font-weight:700;">Were the topics in this newsletter important?</p>
+          <p style="font-size:16px;"><img src="assets/icon-heart_green.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Very important</a></p>
+          <p style="font-size:16px;"><img src="assets/icon-thumbs-up.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Somewhat important</a></p>
+          <p style="font-size:16px;"><img src="assets/icon-prohibited.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Not important</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
+
+    <!-- START: Midwest Quiz Block (2x2 two-line color buttons) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">Can You Guess Which Midwest City Ranks in the Nation's Top 5 Park Systems?</h3>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="two-line-cta">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5FC9C5" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8DC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8DC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="two-line-cta">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column border="1px solid #39B54A" background-color="#ffffff" padding="8px 0">
+        <mj-text padding="0" align="center">
+          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Reveal the answer.</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Midwest Quiz Block (2x2 two-line color buttons) -->
+
+    <!-- START: Quiz Block -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" align="center" color="#ffffff">
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">CREEK QUIZ: GUESS WHO&rsquo;S BACK</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;">Which species of trout returned to Hazle Creek after a century-long absence?</a></h3>
+          <p style="font-size:16px;"><b>A.</b> Cutthroat</p>
+          <p style="font-size:16px;"><b>B.</b> Brook</p>
+          <p style="font-size:16px;"><b>C.</b> Tiger</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Uncover which species made this miraculous comeback.</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Quiz Block -->
+
+    <!-- START: Pop Quiz Block -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" align="center" color="#ffffff">
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">POP QUIZ</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">How many miles of creeks and headwaters are protected in Tualatin Mountain Forest?</h3>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="button">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Pop Quiz Block -->
+
+    <!-- START: Podcast Episode Block -->
+    <mj-section css-class="image-block block" background-color="#0E7C3F" padding="16px 32px">
+      <mj-group>
+        <mj-column width="112px" vertical-align="middle">
+          <mj-image src="assets/icon-podcast.png" alt="People. Nature. Big Ideas podcast" width="86px" align="left" padding="0 16px 0 0" />
+        </mj-column>
+        <mj-column width="424px" vertical-align="middle">
+          <mj-text padding="0">
+            <h2 style="color:#CEE4C5;">People. Nature. Big Ideas</h2>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+          <p>
+            Land carries meaning&mdash;and so do the places where history
+            happened. In that sense, some buildings are physical archives that
+            we can stand in and experience, connecting us to stories of human
+            resilience. This episode is produced from Atlanta's Prince Hall
+            Masonic Lodge, home to the former WERD studios, the first
+            Black-owned U.S. radio station, exploring how self-determination
+            shaped a movement&mdash;and can help shape the future.
+            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Listen now!</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Podcast Episode Block -->
+
+    <!-- START: Podcast Streaming Row -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-group>
+        <mj-column width="380px" vertical-align="middle">
+          <mj-text padding="0">
+            <p style="font-size:19px;font-weight:700;">Listen where you stream<br />your favorite podcasts!</p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="78px" vertical-align="middle">
+          <mj-image src="assets/icon-spotify.png" alt="Listen on Spotify" href="https://www.example.com" width="62px" align="right" padding="0" />
+        </mj-column>
+        <mj-column width="78px" vertical-align="middle">
+          <mj-image src="assets/icon-apple-podcast.png" alt="Listen on Apple Podcasts" href="https://www.example.com" width="62px" align="right" padding="0 0 0 16px" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Podcast Streaming Row -->
+
+    <!-- START: Comment Steps Block (w/ arrow heading) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-group>
+        <mj-column width="90px" vertical-align="top">
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" />
+        </mj-column>
+        <mj-column width="446px" vertical-align="middle">
+          <mj-text padding="0">
+            <h3 style="color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="0 32px 16px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
+          <p style="font-size:16px;margin-top:0;">And if you like, where you live or what parks you love.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
+          <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
+          <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">4</span>&nbsp; <b>Add your personal touch.</b></p>
+          <p style="font-size:16px;margin-top:0;">Share a meaningful park memory or experience&mdash;something that helped you learn or feel connected.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">5</span>&nbsp; <b>Close with your request.</b></p>
+          <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">SUBMIT A COMMENT</mj-button>
+        <mj-text padding="16px 0 0">
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;">Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <!-- END: Comment Steps Block (w/ arrow heading) -->
+
+    <!-- START: Photo Contest Steps Block -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Your photo(s) should capture how you experience a public outdoor space</b>&mdash;like a park, trail, schoolyard, or protected landscape.</p>
+          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>You can enter daily with a new photo through February 9.</b> Let them know you appreciate the chance to weigh in.</p>
+          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>TPL will select the top five photos.</b> You'll then have the chance to vote for your favorite finalist from February 11-15. Watch for the voting announcement on February 11.</p>
+          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">4</span>&nbsp; <b>All five finalists will receive a TPL prize package,</b> and the one with the most votes will also win a TPL x ENO Giving Back hammock and a one-year AllTrails Plus membership.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <!-- END: Photo Contest Steps Block -->
+
+    <!-- START: Birders Grid (2x2, dark background) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="color:#ffffff;">Here's what's inspiring our TPL birders:</h3>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-person-and-bird-4.png" alt="Keith Maley and a ring-necked pheasant" width="248px" align="center" padding="0 0 12px" />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Keith Maley:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 12px" />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 12px" />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Taj Schottland:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-person-and-bird-3.png" alt="Jeff Danter and a great egret" width="248px" align="center" padding="0 0 12px" />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Jeff Danter:</b> &ldquo;My favorite TPL-protected birding spot is the Chattahoochee RiverLands. This green oasis that runs through the heart of suburban Atlanta is a natural migration corridor that fills with the songs of hundreds of species every spring.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px">
+      <mj-column>
+        <mj-text mj-class="caption" color="#ffffff" padding="0">
+          <span>Photos <a href="https://www.example.com" style="color:#ffffff;">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Birders Grid (2x2, dark background) -->
+
+    <!-- START: In the Spotlight Block (2x2 photo quiz, dark background) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0" color="#ffffff">
+          <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
+          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-people-on-fence.png" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #F7941D" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-couple-hiking.png" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #8DC63F" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="0 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-couple-fishing.png" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #5FC9C5" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 45-54</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-couple-on-water.png" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #39B54A" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 65+</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px">
+      <mj-column>
+        <mj-text padding="0" color="#ffffff">
+          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
+        </mj-text>
+        <mj-text mj-class="caption" color="#ffffff">
+          <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: In the Spotlight Block (2x2 photo quiz, dark background) -->
+
+    <!-- START: Text w/ CTA Permutations -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus aenean. Non sit volutpat quam pretium risus
+            ullamcorper
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus aenean. Non sit volutpat quam pretium risus
+            ullamcorper
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet gsdgg consectetur. Pulvsvb adp.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus aenean. Non sit volutpat quam pretium risus ullamcorper
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Text w/ CTA Permutations -->
+
+    <!-- START: Text w/ Bullet Lists Permutations -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvsvb adp.</b></h1>
+          <ul style="font-size:16px;line-height:24px;padding-left:24px;margin:0 0 16px;">
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Morbi adipiscing convallis vitae quisque commodo</li>
+            <li>Cursus sed quam ornare augue quis metus.</li>
+            <li>Fermentum sit id pharetra tortor.</li>
+            <li>In viverra semper et lorem consequat pellentesque.</li>
+            <li>Proin urna urna massa ut quis augue pulvinar senectus</li>
+          </ul>
+          <ul style="font-size:16px;line-height:24px;font-weight:700;padding-left:24px;margin:0;">
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Morbi adipiscing convallis vitae quisque</li>
+            <li>Cursus sed quam ornare augue quis metus.</li>
+            <li>Fermentum sit id pharetra tortor.</li>
+            <li>In viverra semper et lorem consequat</li>
+            <li>Proin urna urna massa ut quis augue pulvinar</li>
+          </ul>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet lqpxk consectetur. Pulvsvb adp.</b></h1>
+          <ul style="font-size:16px;line-height:24px;padding-left:24px;margin:0 0 16px;">
+            <li>Lorem ipsum dolor sit amet ghgjj vitae quisque consectetur.</li>
+            <li>Morbi adipiscing convallis vitae quisque commodo</li>
+            <li>Cursus sed quam ornare augue quis metus.</li>
+            <li>Fermentum sit id pharetra vitae quisque vitae quisque tortor.</li>
+            <li>In viverra semper et lorem consequat pellentesque.</li>
+            <li>Proin urna urna massa ut quis augue pulvinar senectus</li>
+          </ul>
+          <ul style="font-size:16px;line-height:24px;font-weight:700;padding-left:24px;margin:0;">
+            <li>Lorem ipsum dolor sit amet adipiscing convallis consectetur.</li>
+            <li>Morbi adipiscing convallis vitae quisque</li>
+            <li>Cursus sed quam ornare adipiscing convallis augue quis.</li>
+            <li>Fermentum sit id adipiscing convallis pharetra tortor.</li>
+            <li>In viverra semper adipiscing convallis et lorem consequat</li>
+            <li>Proin urna urna massa ut adipiscing convallis quis augue.</li>
+          </ul>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Text w/ Bullet Lists Permutations -->
+
+    <!-- START: Linked Header + Text + Dual CTA Permutations -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Ray Has Big Ideas for Texas</a></h2>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus aenean. Non sit volutpat quam pretium risus
+            ullamcorper
+          </p>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="button">
+          <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LISTEN</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">WATCH</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Ray Has Big Ideas for Texas</a></h2>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus aenean. Non sit volutpat quam pretium risus ullamcorper
+          </p>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="button">
+          <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LISTEN</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">WATCH</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header + Text + Dual CTA Permutations -->
+
+    <!-- START: Image (bikers) w/ Caption -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image (bikers) w/ Caption -->
+
+    <!-- START: Text + Link Paragraph + CTA Permutations -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+          </p>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra
+          </p>
+          <p style="font-size:16px;">
+            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra</a>
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px" letter-spacing="0px">Start My Annual Gift</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet ketfw consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et
+          </p>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra
+          </p>
+          <p style="font-size:16px;">
+            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare a quis metus. Fermentum sit idretra tortor. In viverra &gt;&gt;</a>
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px" letter-spacing="0px">Start My Annual Gift</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Text + Link Paragraph + CTA Permutations -->
+
+    <!-- START: Event Invite Block -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0" align="center">
+          <p style="font-size:17px;">[[S1:first_name:Friend]], you're invited!</p>
+          <h2><a href="https://www.example.com" style="color:#006837;">The Great Northern Festival</a></h2>
+          <p style="font-size:17px;">
+            The Main Cinema<br />
+            115 SE Main Street<br />
+            Minneapolis, MN 55414
+          </p>
+        </mj-text>
+        <mj-text padding="0">
+          <p style="font-size:16px;">
+            ❄️ Minnesota winters are long, but they also offer rare moments to
+            pause, reflect, and reconnect. The Great Northern Festival embraces
+            that spirit, using winter as a backdrop for meaningful gatherings
+            that invite people to think differently about how we build
+            community and inspire outdoor joy.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <!-- END: Event Invite Block -->
+
+    <!-- START: Heading Banner Permutations -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <!-- END: Heading Banner Permutations -->
+
+    <!-- START: Story Block (banner + image + text + CTA) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0">
+      <mj-column width="480px">
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus.
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column><mj-text padding="0" align="center"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet ketfw consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus.
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Block (banner + image + text + CTA) -->
+
+    <!-- START: Giving Circles (2x2) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="IRA Rollover / QCD Giving" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" />
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/icon-donor-advised-fund.png" alt="Donor Advised Funds" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" />
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/icon-planned-giving.png" alt="Planned Giving" href="https://www.example.com" width="220px" align="center" padding="0" />
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="2X Giving Tuesday Planned Giving" href="https://www.example.com" width="220px" align="center" padding="0" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Giving Circles (2x2) -->
+
+    <!-- START: Icon Rows -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0">
+      <mj-group>
+        <mj-column width="120px" vertical-align="middle">
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 20px 0 0" />
+        </mj-column>
+        <mj-column width="416px" vertical-align="middle">
+          <mj-text padding="0 0 16px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px">
+      <mj-group>
+        <mj-column width="120px" vertical-align="middle">
+          <mj-image src="assets/icon-hands-money.png" alt="" width="100px" align="left" padding="0 20px 0 0" />
+        </mj-column>
+        <mj-column width="416px" vertical-align="middle">
+          <mj-text padding="0 0 16px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px">
+      <mj-group>
+        <mj-column width="120px" vertical-align="middle">
+          <mj-image src="assets/icon-hands-heart.png" alt="" width="100px" align="left" padding="0 20px 0 0" />
+        </mj-column>
+        <mj-column width="416px" vertical-align="middle">
+          <mj-text padding="0 0 16px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px">
+      <mj-group>
+        <mj-column width="120px" vertical-align="middle">
+          <mj-image src="assets/icon-2x.png" alt="2X" width="100px" align="left" padding="0 20px 0 0" />
+        </mj-column>
+        <mj-column width="416px" vertical-align="middle">
+          <mj-text padding="0 0 16px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Icon Rows -->
+
+    <!-- START: Story Card (image right) -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="296px" padding="0 16px 0 0" vertical-align="top">
+        <mj-text padding="0">
+          <h3 style="color:#362229;">Lorem ipsum dolor amet.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px" letter-spacing="0px">Read more</mj-button>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="240px" padding="0" vertical-align="top">
+        <mj-image src="assets/photo-hiking-duo.png" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Card (image right) -->
+
+    <!-- START: Story Card (image left) -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" padding="0 16px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-garden.png" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" padding="0" vertical-align="top">
+        <mj-text padding="0">
+          <h3 style="color:#362229;">Lorem ipsum dolo amet.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px" letter-spacing="0px">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Card (image left) -->
+
+    <!-- START: Tri-Color Divider -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Tri-Color Divider -->
+
+    <!-- START: Merch Rows -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0">
+      <mj-group>
+        <mj-column width="380px" vertical-align="middle">
+          <mj-text padding="0 0 24px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl.</p>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Example text link &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="156px" vertical-align="top">
+          <mj-image src="assets/premium-bag.png" alt="Trust for Public Land tote bag" href="https://www.example.com" width="140px" align="right" padding="0 0 24px 16px" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px">
+      <mj-group>
+        <mj-column width="380px" vertical-align="middle">
+          <mj-text padding="0 0 24px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl.</p>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Example text link &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="156px" vertical-align="top">
+          <mj-image src="assets/premium-hat.png" alt="Trust for Public Land cap" href="https://www.example.com" width="140px" align="right" padding="0 0 24px 16px" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px">
+      <mj-group>
+        <mj-column width="380px" vertical-align="middle">
+          <mj-text padding="0 0 24px">
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl.</p>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Example text link &gt;&gt;</a></p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="156px" vertical-align="top">
+          <mj-image src="assets/premium-mug.png" alt="Trust for Public Land mug" href="https://www.example.com" width="140px" align="right" padding="0 0 24px 16px" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Merch Rows -->
+
+    <!-- START: Heading Banner (two-line, mixed weight) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="24px 32px">
+      <mj-column>
+        <mj-text padding="0" align="center">
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar feugiat</b></h1>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Heading Banner (two-line, mixed weight) -->
+
+    <!-- START: Video Block (inset) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+    </mj-section>
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 40px 0">
+      <mj-section padding="90px 24px" background-url="assets/photo-kayak_color-overlay.png" background-size="cover" background-repeat="no-repeat" background-position="center center">
+        <mj-column>
+          <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" font-size="18px" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0 40px">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Block (inset) -->
+
+    <!-- START: Video Block (full-bleed) -->
+    <mj-section css-class="image-block block" padding="110px 24px" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.png" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-column>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" font-size="18px" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption">
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Block (full-bleed) -->
+
+    <!-- START: Tri-Color Divider -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="8px 0 0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Tri-Color Divider -->
+
+    <!-- START: Support Snapshot (off-white) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="24px 24px">
+        <mj-column>
+          <mj-text padding="0" align="center">
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>End-of-Year 5X Match</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" font-size="18px" letter-spacing="0px">5X My Gift Now</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Support Snapshot (off-white) -->
+
+    <!-- START: Support Snapshot (green) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px">
+      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="24px 24px">
+        <mj-column>
+          <mj-text padding="0" align="center">
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>End-of-Year 5X Match</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" font-size="18px" letter-spacing="0px">5X My Gift Now</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Support Snapshot (green) -->
+
+    <!-- START: Give Button Stack -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $100 = $200 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $60 = $120 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $35 = $75 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0" width="100%" font-size="18px">GIVE ANY AMOUNT = DOUBLE MATCHED</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Give Button Stack -->
+
+    <!-- START: Signature Card (photo variant) -->
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="130px" css-class="signature-img">
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="406px" css-class="signature-text">
+          <mj-text padding="0">
+            <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
+          </mj-text>
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="180px" padding="0 0 8px" align="left" />
+          <mj-text padding="0">
+            <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Signature Card (photo variant) -->
+
+    <!-- START: Signature Card (no photo) -->
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
+        </mj-text>
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="180px" padding="0 0 8px" align="left" />
+        <mj-text padding="0">
+          <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Signature Card (no photo) -->
+
+    <!-- START: Footer (dark) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
+      <mj-column>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-text padding="0 0 16px" color="#ffffff" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+        </mj-text>
+        <mj-text padding="0 0 16px" color="#ffffff" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
+        </mj-text>
+        <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-text padding="0" color="#ffffff" align="center">
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (dark) -->
+
+    <!-- START: Footer (dark w/ arrow note) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
+      <mj-column>
+        <mj-image src="assets/text-and-arrow_2.png" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" />
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-text padding="0 0 16px" color="#ffffff" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+        </mj-text>
+        <mj-text padding="0 0 16px" color="#ffffff" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
+        </mj-text>
+        <mj-image src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-text padding="0" color="#ffffff" align="center">
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (dark w/ arrow note) -->
+
+    <!-- START: Footer (off-white) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px">
+      <mj-column>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-text padding="0 0 16px" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+        </mj-text>
+        <mj-text padding="0 0 16px" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
+        </mj-text>
+        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-text padding="0" align="center">
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (off-white) -->
+
+    <!-- START: Footer (light green) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="footer-block block" background-color="#CEE4C5" padding="32px 32px">
+      <mj-column>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-text padding="0 0 16px" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+        </mj-text>
+        <mj-text padding="0 0 16px" align="center">
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />[INSERT USER EMAIL HERE]</b></p>
+        </mj-text>
+        <mj-image src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" />
+        <mj-text padding="0" align="center">
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (light green) -->
+
+    <!-- END: Main Content -->
+  </mj-body>
+</mjml>
