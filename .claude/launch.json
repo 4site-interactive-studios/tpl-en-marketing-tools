@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "email-template-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server",
+        "/Users/4Site/Documents/GitHub/tpl-en-marketing-tools/dist",
+        "-p",
+        "8642",
+        "-c-1"
+      ],
+      "port": 8642
+    }
+  ]
+}

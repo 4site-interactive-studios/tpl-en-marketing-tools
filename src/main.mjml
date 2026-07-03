@@ -8,7 +8,7 @@
         color="#000000"
         font-size="18px"
         font-weight="400"
-        font-family="Tahoma, san-serif"
+        font-family="Tahoma, sans-serif"
         line-height="24px"
         css-class="wysiwyg"
       />
@@ -16,7 +16,7 @@
         css-class="button"
         font-size="21px"
         font-weight="700"
-        font-family="Tahoma, san-serif"
+        font-family="Tahoma, sans-serif"
         line-height="25px"
         border-radius="100px"
         inner-padding="12px 16px"
@@ -608,7 +608,7 @@
       <mj-column vertical-align="middle">
           <mj-button
             href="https://www.example.com"
-            align="center" padding="0" width="400px"
+            align="center" padding="0" width="300px"
           >
             Fixed width Fixed width Fixed width Fixed width 
           </mj-button>
@@ -907,15 +907,15 @@
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut.
           </p>
-          <p>
-            <a
-                href="https://www.example.com"
-                style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
-            >
-              PLACEHOLDER
-            </a>
-          </p>
         </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          PLACEHOLDER
+        </mj-button>
       </mj-column>
       <mj-column css-class="two-col-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
@@ -932,15 +932,15 @@
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut.
           </p>
-          <p>
-            <a
-                href="https://www.example.com"
-                style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
-            >
-              PLACEHOLDER
-            </a>
-          </p>
         </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          PLACEHOLDER
+        </mj-button>
       </mj-column>
     </mj-section>
     <!-- END: 2 Col Image and Text -->
@@ -971,15 +971,15 @@
             Ac vel ut nam augue. Volutpat tincidunt ut amet phasellus. Pulvinar at dapibus
             praesent euismod pulvinar ut.
           </p>
-          <p>
-            <a
-              href="https://www.example.com"
-              style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
-            >
-              PLACEHOLDER
-            </a>
-          </p>
         </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          PLACEHOLDER
+        </mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Side by side image and text -->
@@ -1011,15 +1011,15 @@
             Ac vel ut nam augue. Volutpat tincidunt ut amet phasellus. Pulvinar at dapibus
             praesent euismod pulvinar ut.
           </p>
-          <p>
-            <a
-              href="https://www.example.com"
-              style="color: #000000;font-weight:bold;font-family:Arial, sans-serif;letter-spacing:2px;font-size:15px"
-            >
-              PLACEHOLDER
-            </a>
-          </p>
         </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          PLACEHOLDER
+        </mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Reversed Side by side image and text -->
@@ -1082,6 +1082,529 @@
       </mj-column>
     </mj-section>
     <!-- END: Divider -->
+
+    <!-- START: Linked Header Row w/ Icon -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#CEE4C5"
+      padding="16px 32px"
+    >
+      <mj-column vertical-align="middle">
+        <mj-text padding="0">
+          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;">Start Your Summer with Butterflies</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header Row w/ Icon -->
+
+    <!-- START: Side by side text and image (w/ CTA + caption) -->
+    <mj-section
+      css-class="two-col-image-text-block block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-column css-class="two-col-column first-column" width="296px" padding="0 16px 0 0" vertical-align="top">
+        <mj-text padding="0">
+          <p>
+            Summer brings a surge of butterflies&mdash;monarchs, painted ladies,
+            tiger swallowtails, and more. These vibrant pollinators thrive in
+            protected landscapes, creating unforgettable seasonal displays.
+            From coast to coast, here are TPL-protected places where
+            butterflies abound.
+          </p>
+        </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          FOLLOW THE FLUTTER
+        </mj-button>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="240px" padding="0" vertical-align="top">
+        <mj-image
+          src="assets/photo-butterfly.png"
+          alt="Monarch butterfly resting on a purple coneflower"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true"
+          css-class="two-col-image"
+        />
+        <mj-text align="right" mj-class="caption">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Side by side text and image (w/ CTA + caption) -->
+
+    <!-- START: Tri-Color Divider -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#F7941D" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#8DC63F" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#7ED0C8" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Tri-Color Divider -->
+
+    <!-- START: Linked Header Row -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff"
+      padding="16px 32px 0"
+    >
+      <mj-column vertical-align="middle">
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Seattle Makes the Top 10 List in the ParkScore Index</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header Row -->
+
+    <!-- START: Side by side image and text (image left) -->
+    <mj-section
+      css-class="two-col-image-text-block block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-column css-class="two-col-column first-column" width="240px" padding="0 16px 0 0" vertical-align="top">
+        <mj-image
+          src="assets/image-ranking.png"
+          alt="2026 ParkScore ranking: number 8"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          width="224px"
+        />
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" padding="0" vertical-align="top">
+        <mj-text padding="0">
+          <p>
+            We released our 15th annual ParkScore index yesterday, and Seattle
+            ranks #8 nationwide based on strong measurements for acreage,
+            access, investment, amenities, and equity. Although the Emerald
+            City fell out of the top 10 in 2020, it came back to the top 10
+            list in 2021 and has stayed there ever since.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Side by side image and text (image left) -->
+
+    <!-- START: Podcast Episode Block -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#3A6B4F"
+      padding="16px 32px"
+    >
+      <mj-group>
+        <mj-column width="112px" vertical-align="middle">
+          <mj-image
+            src="assets/icon-podcast.png"
+            alt="People. Nature. Big Ideas podcast"
+            width="86px"
+            align="left"
+            padding="0 16px 0 0"
+          />
+        </mj-column>
+        <mj-column width="424px" vertical-align="middle">
+          <mj-text padding="0">
+            <h2 style="color:#CEE4C5;">People. Nature. Big Ideas</h2>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section
+      css-class="text-block block"
+      background-color="#CEE4C5"
+      padding="16px 32px"
+    >
+      <mj-column>
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+          <p>
+            Land carries meaning&mdash;and so do the places where history
+            happened. In that sense, some buildings are physical archives that
+            we can stand in and experience, connecting us to stories of human
+            resilience. This episode is produced from Atlanta's Prince Hall
+            Masonic Lodge, home to the former WERD studios, the first
+            Black-owned U.S. radio station, exploring how self-determination
+            shaped a movement&mdash;and can help shape the future.
+            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Listen now!</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Podcast Episode Block -->
+
+    <!-- START: Podcast Streaming Row -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#ffffff"
+      padding="16px 32px"
+    >
+      <mj-group>
+        <mj-column width="380px" vertical-align="middle">
+          <mj-text padding="0">
+            <p style="font-size:19px;font-weight:700;">
+              Listen where you stream<br />your favorite podcasts!
+            </p>
+          </mj-text>
+        </mj-column>
+        <mj-column width="78px" vertical-align="middle">
+          <mj-image
+            src="assets/icon-spotify.png"
+            alt="Listen on Spotify"
+            href="https://www.example.com"
+            width="62px"
+            align="right"
+            padding="0"
+          />
+        </mj-column>
+        <mj-column width="78px" vertical-align="middle">
+          <mj-image
+            src="assets/icon-apple-podcast.png"
+            alt="Listen on Apple Podcasts"
+            href="https://www.example.com"
+            width="62px"
+            align="right"
+            padding="0 0 0 16px"
+          />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Podcast Streaming Row -->
+
+    <!-- START: Birders Grid (2x2, dark background) -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#362229"
+      padding="16px 32px 0"
+    >
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="color:#ffffff;">Here's what's inspiring our TPL birders:</h3>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      padding="8px 32px 0"
+    >
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image
+          src="assets/photo-person-and-bird-4.png"
+          alt="Keith Maley and a ring-necked pheasant"
+          width="248px"
+          align="center"
+          padding="0 0 12px"
+        />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Keith Maley:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image
+          src="assets/photo-person-and-bird-1.png"
+          alt="Ronda Lee Chapman and a northern flicker"
+          width="248px"
+          align="center"
+          padding="0 0 12px"
+        />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      padding="8px 32px 0"
+    >
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image
+          src="assets/photo-person-and-bird-2.png"
+          alt="Taj Schottland and a northern cardinal"
+          width="248px"
+          align="center"
+          padding="0 0 12px"
+        />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Taj Schottland:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image
+          src="assets/photo-person-and-bird-3.png"
+          alt="Jeff Danter and a great egret"
+          width="248px"
+          align="center"
+          padding="0 0 12px"
+        />
+        <mj-text padding="0 0 16px" color="#ffffff">
+          <p style="font-size:16px;"><b>Jeff Danter:</b> &ldquo;My favorite TPL-protected birding spot is the Chattahoochee RiverLands. This green oasis that runs through the heart of suburban Atlanta is a natural migration corridor that fills with the songs of hundreds of species every spring.&rdquo;</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="text-block block"
+      background-color="#362229"
+      padding="0 32px 16px"
+    >
+      <mj-column>
+        <mj-text mj-class="caption" color="#ffffff" padding="0">
+          <span>Photos <a href="https://www.example.com" style="color:#ffffff;">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Birders Grid (2x2, dark background) -->
+
+    <!-- START: Join Links Block -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#CEE4C5"
+      padding="16px 32px"
+    >
+      <mj-column>
+        <mj-text padding="0">
+          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Advisory Board</a></h2>
+          <p style="font-size:16px;">
+            Advisory board members are TPL advocates, ambassadors, and donors
+            who help increase our impact through philanthropy, advocacy,
+            connections, and strategic guidance.
+          </p>
+          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Team</a></h2>
+          <p style="font-size:16px;">
+            Come join a passionate team working toward a mission you believe
+            in. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">View all open positions.</a>
+          </p>
+          <p style="font-size:14px;">
+            Was this email forwarded to you? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sign up here.</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Join Links Block -->
+
+    <!-- START: Quiz Block -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#362229"
+      padding="12px 32px"
+    >
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" align="center" color="#ffffff">
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">CREEK QUIZ: GUESS WHO&rsquo;S BACK</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="text-block block"
+      background-color="#CEE4C5"
+      padding="16px 32px"
+    >
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;">Which species of trout returned to Hazle Creek after a century-long absence?</a></h3>
+          <p style="font-size:16px;"><b>A.</b> Cutthroat</p>
+          <p style="font-size:16px;"><b>B.</b> Brook</p>
+          <p style="font-size:16px;"><b>C.</b> Tiger</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Uncover which species made this miraculous comeback.</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Quiz Block -->
+
+    <!-- START: Pop Quiz Block -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="12px 32px">
+      <mj-column vertical-align="middle">
+        <mj-text padding="0" align="center" color="#ffffff">
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">POP QUIZ</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">How many miles of creeks and headwaters are protected in Tualatin Mountain Forest?</h3>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="button">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Pop Quiz Block -->
+
+    <!-- START: Comment Steps Block -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
+          <p style="font-size:16px;margin-top:0;">And if you like, where you live or what parks you love.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
+          <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
+          <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">4</span>&nbsp; <b>Add your personal touch.</b></p>
+          <p style="font-size:16px;margin-top:0;">Share a meaningful park memory or experience&mdash;something that helped you learn or feel connected.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">5</span>&nbsp; <b>Close with your request.</b></p>
+          <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
+        </mj-text>
+        <mj-button
+          href="https://www.example.com"
+          align="left"
+          padding="16px 0 0"
+          font-size="18px"
+        >
+          SUBMIT A COMMENT
+        </mj-button>
+        <mj-text padding="16px 0 0">
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;">Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Comment Steps Block -->
+
+    <!-- START: TPL in the News Block -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3>📰 TPL in the News</h3>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">E&amp;E News by Politico:</a> Most Americans Back Funding for the Massive Park Maintenance Backlog, Survey Finds</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">FacilitiesNet:</a> Sustainable K-12 Schoolyards Grow in Popularity</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sky-Hi News:</a> Outdoor Organization Encourages Kids to Take Their Brains Outside</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Deseret News:</a> The Start of a Movement? How Time Outside Can Alter Our Nation's Health</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: TPL in the News Block -->
+
+    <!-- START: Midwest Quiz Block (2x2 two-line color buttons) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="text-align:center;">Can You Guess Which Midwest City Ranks in the Nation's Top 5 Park Systems?</h3>
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="two-line-cta">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5FC9C5" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8DC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8DC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+        <mj-text padding="16px 0 0" css-class="two-line-cta">
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]></td></tr></table><![endif]-->
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column border="1px solid #39B54A" background-color="#ffffff" padding="8px 0">
+        <mj-text padding="0" align="center">
+          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Reveal the answer.</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Midwest Quiz Block (2x2 two-line color buttons) -->
+
+    <!-- START: In the Spotlight Block (2x2 photo quiz, dark background) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
+      <mj-column>
+        <mj-text padding="0" color="#ffffff">
+          <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
+          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-people-on-fence.png" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #F7941D" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-couple-hiking.png" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #8DC63F" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="0 32px 0">
+      <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
+        <mj-image src="assets/photo-couple-fishing.png" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #5FC9C5" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 45-54</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
+        <mj-image src="assets/photo-couple-on-water.png" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #39B54A" border-radius="18px" />
+        <mj-text padding="0 0 16px" align="center">
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 65+</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px">
+      <mj-column>
+        <mj-text padding="0" color="#ffffff">
+          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
+        </mj-text>
+        <mj-text mj-class="caption" color="#ffffff">
+          <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: In the Spotlight Block (2x2 photo quiz, dark background) -->
+
+    <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#F7941D" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#8DC63F" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#7ED0C8" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:17px;font-weight:700;">Were the topics in this newsletter important?</p>
+          <p style="font-size:16px;"><img src="assets/icon-heart_green.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Very important</a></p>
+          <p style="font-size:16px;"><img src="assets/icon-thumbs-up.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Somewhat important</a></p>
+          <p style="font-size:16px;"><img src="assets/icon-prohibited.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;">Not important</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+      <mj-group>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#F7941D" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#8DC63F" />
+        </mj-column>
+        <mj-column width="200px">
+          <mj-spacer height="4px" container-background-color="#7ED0C8" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
 
     <!-- START: Signature card -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0px">
