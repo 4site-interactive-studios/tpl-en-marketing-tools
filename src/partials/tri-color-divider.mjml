@@ -1,0 +1,7 @@
+<mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+  <mj-group>
+    <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
+    <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
+    <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
+  </mj-group>
+</mj-section>

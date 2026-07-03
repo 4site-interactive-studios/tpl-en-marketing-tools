@@ -1,6 +1,8 @@
-<mjml>
+<mjml lang="en">
   <mj-head>
     <mj-breakpoint width="600px" />
+    <mj-title>TPL Email Template — Demo Catalog</mj-title>
+    <mj-preview>Preview text placeholder — update per send.</mj-preview>
 
     <!-- Baseline everything inherits -->
     <mj-attributes>
@@ -60,13 +62,7 @@
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
 
-    <!-- START: Debug Toolbar (dev only — remove for production) -->
-    <mj-raw>
-      <div id="tpl-debug-btn" title="Toggle debug mode"
-           onclick="if(window.__tplDebug){window.__tplDebug.toggle();}else{var s=document.createElement('script');s.src='assets/debug.js';s.onload=function(){window.__tplDebug.enable();};document.body.appendChild(s);}"
-           style="position:fixed;bottom:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#111111;font-size:20px;line-height:44px;text-align:center;cursor:pointer;z-index:2147483646;box-shadow:0 2px 10px rgba(0,0,0,.35);user-select:none;">🐞</div>
-    </mj-raw>
-    <!-- END: Debug Toolbar (dev only — remove for production) -->
+    <mj-include path="./partials/debug-toolbar.mjml" />
 
     <!-- START: Main Content -->
 
@@ -1102,7 +1098,7 @@
     <mj-section
       css-class="quote-block block"
       background-color="#F1EEE9"
-      padding="32px 16px 0px"
+      padding="32px 16px 0"
     >
       <mj-column width="480px" padding="0">
         <mj-image
@@ -1144,7 +1140,7 @@
     <mj-section
       css-class="text-block block"
       background-color="#ffffff"
-      padding="0px"
+      padding="0"
     >
       <mj-column padding="0">
         <mj-text padding="0" css-class="question-response">
@@ -1179,7 +1175,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1196,7 +1192,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1213,7 +1209,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1230,7 +1226,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1247,7 +1243,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1268,7 +1264,7 @@
     <mj-section
       css-class="block"
       background-color="#ffffff"
-      padding="0px 32px"
+      padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button
@@ -1285,7 +1281,7 @@
     <!-- END: CTA Button (centered, text only) -->
 
     <!-- START: Dual CTA Buttons (left) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -1297,7 +1293,7 @@
     <!-- END: Dual CTA Buttons (left) -->
 
     <!-- START: Dual CTA Buttons (centered) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -1309,7 +1305,7 @@
     <!-- END: Dual CTA Buttons (centered) -->
 
     <!-- START: Dual CTA Buttons (right) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -1333,7 +1329,7 @@
 
     If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
     <mj-column vertical-align="middle">
       <mj-text padding="0" css-class="button">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1351,7 +1347,7 @@
       => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
     If padding/gap/count change, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
     <mj-column vertical-align="middle">
       <mj-text padding="0" css-class="two-line-cta">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#6CBF4B" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1363,7 +1359,7 @@
   <!-- END: Dual CTA Buttons (two-line, two-color) -->
 
     <!-- START: Triple CTA Buttons (centered, dynamic width) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -1387,7 +1383,7 @@
 
       If any value changes, update width:157px on every <a> AND width="157"/width:157px on every MSO <td>.
     -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1468,7 +1464,7 @@
           alt="Image Alt Text"
           href="https://www.example.com"
           width="600px"
-          padding="0px"
+          padding="0"
         />
       </mj-column>
     </mj-section>
@@ -1655,9 +1651,7 @@
     <!-- END: Text w/ Background Image -->
 
     <!-- START: Video Block (inset) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 40px 0">
       <mj-section padding="90px 24px" background-url="assets/photo-kayak_color-overlay.png" background-size="cover" background-repeat="no-repeat" background-position="center center">
         <mj-column>
@@ -2555,13 +2549,7 @@
     <!-- END: Midwest Quiz Block (2x2 two-line color buttons) -->
 
     <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
@@ -2572,19 +2560,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
 
     <!-- START: Event Invite Block -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0" align="center">
@@ -2607,15 +2587,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <!-- END: Event Invite Block -->
 
     <!-- START: Photo Contest Steps Block -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
@@ -2626,9 +2602,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <!-- END: Photo Contest Steps Block -->
 
     <!-- START: Comment Steps Block -->
@@ -2663,9 +2637,7 @@
     <!-- END: Comment Steps Block -->
 
     <!-- START: Comment Steps Block (w/ arrow heading) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-group>
         <mj-column width="90px" vertical-align="top">
@@ -2698,9 +2670,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
-    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
     <!-- END: Comment Steps Block (w/ arrow heading) -->
 
     <!-- START: Category — Content Features -->
@@ -2927,23 +2897,11 @@
     <!-- END: Divider -->
 
     <!-- START: Tri-Color Divider -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <!-- END: Tri-Color Divider -->
 
     <!-- START: Tri-Color Divider -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <!-- END: Tri-Color Divider -->
 
     <!-- START: Category — Signatures -->
@@ -2957,7 +2915,7 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (original) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="20px 20px 0">
       <mj-column width="480px">
         <mj-text padding="0">
           <p style="font-style: italic;">
@@ -3062,13 +3020,7 @@
     <!-- END: Category — Footers -->
 
     <!-- START: Footer (dark) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
       <mj-column>
         <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
@@ -3090,13 +3042,7 @@
     <!-- END: Footer (dark) -->
 
     <!-- START: Footer (dark w/ arrow note) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" />
@@ -3119,13 +3065,7 @@
     <!-- END: Footer (dark w/ arrow note) -->
 
     <!-- START: Footer (off-white) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px">
       <mj-column>
         <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
@@ -3147,13 +3087,7 @@
     <!-- END: Footer (off-white) -->
 
     <!-- START: Footer (light green) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
-      <mj-group>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7941D" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8DC63F" /></mj-column>
-        <mj-column width="200px"><mj-spacer height="4px" container-background-color="#7ED0C8" /></mj-column>
-      </mj-group>
-    </mj-section>
+    <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#CEE4C5" padding="32px 32px">
       <mj-column>
         <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
@@ -3201,7 +3135,7 @@
     <mj-section
       css-class="footer-block block"
       background-color="#000000"
-      padding="30px 20px 0px"
+      padding="30px 20px 0"
       full-width="full-width"
 
     >
@@ -3233,7 +3167,7 @@
     <mj-section
         css-class="footer-block block"
         background-color="#000000"
-        padding="0px 20px 60px"
+        padding="0 20px 60px"
         full-width="full-width"
 
     >
@@ -3284,7 +3218,7 @@
           css-class="socials"
           icon-padding="0"
           mode="horizontal"
-          inner-padding="0px 8px"
+          inner-padding="0 8px"
           align="center"
         >
           <mj-social-element

@@ -1,0 +1,3 @@
+<mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+  <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
+</mj-section>
