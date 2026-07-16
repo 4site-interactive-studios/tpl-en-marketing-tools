@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A template for building EN marketing tools projects using MJML.",
   "scripts": {
-    "build": "mjml ./src/*.mjml -o ./dist/ --config.allowIncludes=true && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/",
-    "watch": "rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && mjml -w ./src/*.mjml -o ./dist/ --config.allowIncludes=true"
+    "build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/",
+    "watch": "node scripts/watch.mjs"
   },
   "keywords": [],
   "author": "4Site Interactive Studios",
