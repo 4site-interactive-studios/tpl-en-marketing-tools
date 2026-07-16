@@ -569,17 +569,18 @@
     state.panel.querySelector('[data-dbg-hideexcl]').checked = state.hideExcluded;
     var blocksTitle = 'BLOCKS', structureTitle = 'STRUCTURE', excludedTitle = 'EXCLUDED';
     if (state.blocks) {
-      var total = state.blocks.length;
-      var excluded = state.blocks.filter(isExcluded).length;
-      // unique IMPORTABLE structures — category chrome (import-excluded) is
-      // never imported, so it doesn't count; matches the build's group count
+      // category chrome (import-excluded) never reaches an email — it counts
+      // toward NOTHING; all three numbers describe importable blocks only
+      var content = state.blocks.filter(function (b) { return !isImportExcluded(b); });
+      var excluded = content.filter(function (b) {
+        return !!(state.fullyExcluded && state.fullyExcluded[b.name]);
+      }).length;
       var uniq = 0, seenKeys = {};
-      state.blocks.forEach(function (b) {
-        if (isImportExcluded(b)) return;
+      content.forEach(function (b) {
         var k = groupKey(b.name);
         if (!seenKeys[k]) { seenKeys[k] = 1; uniq++; }
       });
-      blocksTitle += ' (' + total + ' Total)';
+      blocksTitle += ' (' + content.length + ' Total)';
       structureTitle += ' (' + uniq + ' Unique)';
       excludedTitle += ' (' + excluded + ' Blocks)';
     }

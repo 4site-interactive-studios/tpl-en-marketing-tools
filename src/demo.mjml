@@ -712,11 +712,11 @@
 
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block inset-gutter"
       background-color="#ffffff"
-      padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      padding="0 37px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column width="526px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1>
             Lorem ipsum quis malesuada sed quam faucibus.
@@ -747,8 +747,8 @@
     <!-- END: WYSIWYG Text (inset) -->
 
     <!-- START: Text w/ CTA (inset, left button) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
           <p style="font-size:16px;">
@@ -766,8 +766,8 @@
     <!-- END: Text w/ CTA (inset, left button) -->
 
     <!-- START: Text w/ CTA (inset, centered button) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
           <p style="font-size:16px;">
@@ -785,7 +785,7 @@
     <!-- END: Text w/ CTA (inset, centered button) -->
 
     <!-- START: Text w/ CTA (full width, centered button) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet gsdgg consectetur. Pulvsvb adp.</b></h1>
@@ -803,8 +803,8 @@
     <!-- END: Text w/ CTA (full width, centered button) -->
 
     <!-- START: Text w/ Bullet Lists (inset, centered button) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvsvb adp.</b></h1>
           <ul style="font-size:16px;line-height:24px;padding-left:24px;margin:0 0 16px;">
@@ -857,8 +857,8 @@
     <!-- END: Text w/ Bullet Lists (full width, left button) -->
 
     <!-- START: Text + Link Paragraph CTA (inset) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
           <p style="font-size:16px;">
@@ -905,8 +905,8 @@
     <!-- END: Text + Link Paragraph CTA (full width) -->
 
     <!-- START: Linked Header + Text + Dual CTA (inset) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Ray Has Big Ideas for Texas</a></h2>
           <p style="font-size:16px;">
@@ -928,7 +928,7 @@
     <!-- END: Linked Header + Text + Dual CTA (inset) -->
 
     <!-- START: Linked Header + Text + Dual CTA (full width) -->
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Ray Has Big Ideas for Texas</a></h2>
@@ -1782,8 +1782,8 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 60px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
           <p style="font-size:16px;">
@@ -1800,7 +1800,7 @@
     <!-- END: Story Block (left button) -->
 
     <!-- START: Story Block (centered button) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text padding="0" align="center" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>

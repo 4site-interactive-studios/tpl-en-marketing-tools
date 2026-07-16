@@ -147,6 +147,12 @@ p {
     margin-bottom: 20px;
   }
 
+  /* Inset sections: collapse the wide desktop gutters to the standard 32px */
+  .inset-gutter > table > tbody > tr > td {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
   .question-response-symbol {
     width: 40px !important;
   }

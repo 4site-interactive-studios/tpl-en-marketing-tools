@@ -42,6 +42,10 @@ const MASK = ['src', 'alt', 'href', 'background-url', 'background-size', 'backgr
 
 function normalize(body) {
   let s = body.replace(/\s*data-(style-[a-z-]+|fully-exclude)/g, '');
+  // inset-gutter is the responsive companion of a padding value (collapses
+  // desktop gutters on mobile) — padding is a Replacement, so this isn't structure
+  s = s.replace(/css-class="([^"]*)"/g, (m, cls) =>
+    'css-class="' + cls.split(/\s+/).filter((t) => t && t !== 'inset-gutter').join(' ') + '"');
   // align is an exposed Replacement on buttons, text, and images
   s = s.replace(/<mj-(button|text|image)\b[^>]*>/g, (tag) => tag.replace(/\salign="[^"]*"/g, ''));
   // vertical-align is an exposed Replacement on columns (absent = "top")

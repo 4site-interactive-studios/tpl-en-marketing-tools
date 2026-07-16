@@ -83,11 +83,6 @@
         max-width: 300px;
       }
 
-      .mj-column-px-526 {
-        width: 526px !important;
-        max-width: 526px;
-      }
-
       .mj-column-px-480 {
         width: 480px !important;
         max-width: 480px;
@@ -183,11 +178,6 @@
     .moz-text-html .mj-column-px-300 {
       width: 300px !important;
       max-width: 300px;
-    }
-
-    .moz-text-html .mj-column-px-526 {
-      width: 526px !important;
-      max-width: 526px;
     }
 
     .moz-text-html .mj-column-px-480 {
@@ -438,6 +428,12 @@ li {
       .first-column,
       .second-column {
         margin-bottom: 20px;
+      }
+
+      /* Inset sections: collapse the wide desktop gutters to the standard 32px */
+      .inset-gutter>table>tbody>tr>td {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
       }
 
       .question-response-symbol {
@@ -722,11 +718,11 @@ li {
       "Caption": "Caption",
       "Two Images": "Two Images",
       "WYSIWYG Text (full width)": "WYSIWYG Text (full width)",
+      "WYSIWYG Text (inset)": "WYSIWYG Text (full width)",
       "Linked Header Row (w/ icon)": "WYSIWYG Text (full width)",
       "Linked Header Row": "WYSIWYG Text (full width)",
       "Join Links Block": "WYSIWYG Text (full width)",
       "TPL in the News Block": "WYSIWYG Text (full width)",
-      "WYSIWYG Text (inset)": "WYSIWYG Text (inset)",
       "CTA Button (left)": "CTA Button (left)",
       "CTA Button (centered)": "CTA Button (left)",
       "CTA Button (right)": "CTA Button (left)",
@@ -1569,14 +1565,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: WYSIWYG Text (full width) --><!-- START: WYSIWYG Text (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0 37px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:526px;" ><![endif]-->
-              <div class="mj-column-px-526 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>

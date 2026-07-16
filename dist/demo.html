@@ -68,11 +68,6 @@
         max-width: 50%;
       }
 
-      .mj-column-px-526 {
-        width: 526px !important;
-        max-width: 526px;
-      }
-
       .mj-column-px-480 {
         width: 480px !important;
         max-width: 480px;
@@ -223,11 +218,6 @@
     .moz-text-html .mj-column-per-50 {
       width: 50% !important;
       max-width: 50%;
-    }
-
-    .moz-text-html .mj-column-px-526 {
-      width: 526px !important;
-      max-width: 526px;
     }
 
     .moz-text-html .mj-column-px-480 {
@@ -550,6 +540,12 @@ li {
         margin-bottom: 20px;
       }
 
+      /* Inset sections: collapse the wide desktop gutters to the standard 32px */
+      .inset-gutter>table>tbody>tr>td {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+      }
+
       .question-response-symbol {
         width: 40px !important;
       }
@@ -860,6 +856,7 @@ li {
       "Linked Header Row": "Heading Banner (white)",
       "Linked Header Row (w/ icon)": "Heading Banner (white)",
       "WYSIWYG Text (full width)": "Heading Banner (white)",
+      "WYSIWYG Text (inset)": "Heading Banner (white)",
       "Limited-Time Match Banner (light green)": "Heading Banner (white)",
       "Limited-Time Match Banner (dark)": "Heading Banner (white)",
       "Limited-Time Match Banner (dark red)": "Heading Banner (white)",
@@ -868,16 +865,15 @@ li {
       "Limited-Time Match Banner (light green, hero lead-in)": "Heading Banner (white)",
       "TPL in the News Block": "Heading Banner (white)",
       "Join Links Block": "Heading Banner (white)",
-      "WYSIWYG Text (inset)": "WYSIWYG Text (inset)",
       "Text w/ CTA (inset, left button)": "Text w/ CTA (inset, left button)",
       "Text w/ CTA (inset, centered button)": "Text w/ CTA (inset, left button)",
+      "Text w/ CTA (full width, centered button)": "Text w/ CTA (inset, left button)",
       "Text w/ Bullet Lists (inset, centered button)": "Text w/ CTA (inset, left button)",
+      "Text w/ Bullet Lists (full width, left button)": "Text w/ CTA (inset, left button)",
       "Text + Link Paragraph CTA (inset)": "Text w/ CTA (inset, left button)",
-      "Text w/ CTA (full width, centered button)": "Text w/ CTA (full width, centered button)",
-      "Text w/ Bullet Lists (full width, left button)": "Text w/ CTA (full width, centered button)",
-      "Text + Link Paragraph CTA (full width)": "Text w/ CTA (full width, centered button)",
+      "Text + Link Paragraph CTA (full width)": "Text w/ CTA (inset, left button)",
       "Linked Header + Text + Dual CTA (inset)": "Linked Header + Text + Dual CTA (inset)",
-      "Linked Header + Text + Dual CTA (full width)": "Linked Header + Text + Dual CTA (full width)",
+      "Linked Header + Text + Dual CTA (full width)": "Linked Header + Text + Dual CTA (inset)",
       "Highlighted Text": "Highlighted Text",
       "Quote Block": "Quote Block",
       "Question Response (linked row)": "Question Response (linked row)",
@@ -912,7 +908,7 @@ li {
       "Story Card (image right)": "Story Card (image right, no heading)",
       "Story Card (image left)": "Story Card (image right, no heading)",
       "Story Block (left button)": "Story Block (left button)",
-      "Story Block (centered button)": "Story Block (centered button)",
+      "Story Block (centered button)": "Story Block (left button)",
       "2 Col Image and Text": "2 Col Image and Text",
       "More Stories for You (orange-bordered story card)": "More Stories for You (orange-bordered story card)",
       "Match Hero (photo CTA)": "Match Hero (photo CTA)",
@@ -3117,14 +3113,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: WYSIWYG Text (full width) --><!-- START: WYSIWYG Text (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0 37px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:526px;" ><![endif]-->
-              <div class="mj-column-px-526 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3151,14 +3147,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: WYSIWYG Text (inset) --><!-- START: Text w/ CTA (inset, left button) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3193,14 +3189,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text w/ CTA (inset, left button) --><!-- START: Text w/ CTA (inset, centered button) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3235,8 +3231,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text w/ CTA (inset, centered button) --><!-- START: Text w/ CTA (full width, centered button) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -3277,14 +3273,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text w/ CTA (full width, centered button) --><!-- START: Text w/ Bullet Lists (inset, centered button) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3391,14 +3387,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text w/ Bullet Lists (full width, left button) --><!-- START: Text + Link Paragraph CTA (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3483,14 +3479,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text + Link Paragraph CTA (full width) --><!-- START: Linked Header + Text + Dual CTA (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -3523,8 +3519,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Linked Header + Text + Dual CTA (inset) --><!-- START: Linked Header + Text + Dual CTA (full width) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -5753,14 +5749,14 @@ li {
         </tbody>
       </table>
     </div>
-    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook inset-gutter-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block inset-gutter" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 60px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
@@ -5795,8 +5791,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Story Block (left button) --><!-- START: Story Block (centered button) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
         <tbody>
           <tr>

@@ -92,7 +92,8 @@ Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
   and are applied with `mj-class="caption"` rather than repeating attributes.
 - `mj-style` holds mobile-only overrides under `@media (max-width: 599px)`
   (caption gutter with `!important` to beat inline td padding; `.cta-item`
-  stacking for side-by-side CTAs).
+  stacking for side-by-side CTAs; `.inset-gutter` collapsing desktop inset
+  gutters to the standard 32px).
 - `mj-raw` in head injects the metas MJML has no tag for:
 
   ```html
@@ -280,6 +281,15 @@ the ignored attributes, mask `mj-text` bodies and image srcs, compare.
   `(600 − section padding − (n−1)·gap) / n`, rounded down.
 - **`mj-group`** wherever columns must NOT stack on mobile (e.g. the
   tri-color divider's three 200px spacer columns).
+- **Insets are padding, not column width:** a narrowed text block is authored
+  as a full-width column with section side-padding (480px look = `16px 60px`,
+  526px = `0 37px`) plus `css-class="… inset-gutter"`, whose shared mobile rule
+  collapses the gutters to 32px on phones. Never author an inset via a px
+  column: MJML bakes column widths into class names (not Replaceable, §6d) and
+  the column collapse leaves zero-margin full-bleed text on mobile. The
+  `inset-gutter` token is ignored by the structure normalizer (it's the
+  responsive companion of a padding value), but imported blocks must carry the
+  class + its CSS for padding Replacements to behave on mobile.
 - **Fixed-width buttons:** keep ≤ 300px. A 400px `mj-button` plus 32px section
   padding overflows a 375px phone (rendered 464px → horizontal scroll).
 - **`mso-line-height-rule: exactly`** on every heading line-height in

@@ -516,11 +516,11 @@
 
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block inset-gutter"
       background-color="#ffffff"
-      padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      padding="0 37px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column width="526px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text padding="0" data-style-alignment data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h1>
             Lorem ipsum quis malesuada sed quam faucibus.
