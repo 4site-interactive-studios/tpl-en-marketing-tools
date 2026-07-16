@@ -16,7 +16,7 @@
       />
       <mj-button
         css-class="button"
-        font-size="21px"
+        font-size="18px"
         font-weight="700"
         font-family="Tahoma, sans-serif"
         line-height="25px"
@@ -300,186 +300,7 @@
     </mj-section>
     <!-- END: Logo Header x State (logo centered, labeled) -->
 
-    <!-- START: Logo Header x CTA (orange DONATE) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">DONATE</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (orange DONATE) -->
-
-    <!-- START: Logo Header x CTA (green Donate) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Donate</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (green Donate) -->
-
-    <!-- START: Logo Header x CTA (birds arrow) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image src="assets/text-and-arrow_1.png" alt="Protecting the places birds call home" width="200px" padding="0 0 0 16px" align="right" />
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (birds arrow) -->
-
-    <!-- START: Logo Header x CTA (GivingTuesday on white) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--<![endif]--></mj-raw>
-          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (GivingTuesday on white) -->
-
-    <!-- START: Logo Header x CTA (GivingTuesday on light green) -->
-    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--<![endif]--></mj-raw>
-          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (GivingTuesday on light green) -->
-
-    <!-- START: Logo Header x CTA (background image) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (background image) -->
-
-    <!-- START: Logo Header x CTA (GivingTuesday on dark) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
-          <mj-raw><!--<![endif]--></mj-raw>
-          <mj-button href="https://www.example.com" align="right" padding="0" font-size="18px">Read more</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x CTA (GivingTuesday on dark) -->
-
-    <!-- START: Image x Image Centered Block (w/ dark-mode swap) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#700310"
-      padding="16px 32px"
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="right"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="right"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="middle" width="50%">
-        <mj-image
-          src="assets/state-north-carolina.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="100px"
-          padding="0 0 0 16px"
-          css-class="light-only"
-          align="left"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/state-north-carolina.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="100px"
-          padding="0 0 0 16px"
-          css-class="dark-only"
-          align="left"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image x Image Centered Block (w/ dark-mode swap) -->
-
-    <!-- START: Image x Image Split Block (w/ dark-mode swap) -->
+    <!-- START: Logo Header x State (green, logo left) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837"
@@ -532,9 +353,133 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x Image Split Block (w/ dark-mode swap) -->
+    <!-- END: Logo Header x State (green, logo left) -->
 
-    <!-- START: Image x CTA Split Block (w/ dark-mode swap) -->
+    <!-- START: Logo Header x CTA (orange DONATE) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D">DONATE</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (orange DONATE) -->
+
+    <!-- START: Logo Header x CTA (green Donate) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button width="160px" href="https://www.example.com" align="right" padding="0">Donate</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (green Donate) -->
+
+    <!-- START: Logo Header x CTA (birds arrow) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image src="assets/text-and-arrow_1.png" alt="Protecting the places birds call home" width="200px" padding="0 0 0 16px" align="right" />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (birds arrow) -->
+
+    <!-- START: Logo Header x CTA (GivingTuesday on white) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-button href="https://www.example.com" align="right" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (GivingTuesday on white) -->
+
+    <!-- START: Logo Header x CTA (GivingTuesday on light green) -->
+    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-button href="https://www.example.com" align="right" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (GivingTuesday on light green) -->
+
+    <!-- START: Logo Header x CTA (canoe background) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-button href="https://www.example.com" align="right" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (canoe background) -->
+
+    <!-- START: Logo Header x CTA (GivingTuesday on dark) -->
+    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-button width="160px" href="https://www.example.com" align="right" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Logo Header x CTA (GivingTuesday on dark) -->
+
+    <!-- START: Logo Header x CTA (green Read more) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -573,9 +518,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block (w/ dark-mode swap) -->
+    <!-- END: Logo Header x CTA (green Read more) -->
 
-    <!-- START: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->
+    <!-- START: Logo Header x CTA (kayak background) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -618,52 +563,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image x CTA Split Block w/ Background Image (w/ dark-mode swap) -->
-
-    <!-- START: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      padding="264px 32px 16px 32px"
-      background-url="assets/photo-trail.jpg"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center"
-    >
-      <mj-group>
-      <mj-column vertical-align="bottom" width="50%">
-        <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left"
-        />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left"
-        />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="bottom" width="50%">
-          <mj-button
-            href="https://www.example.com"
-            align="right" padding="0"
-          >
-            Read more
-          </mj-button>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image x CTA Split Block w/ Fixed Height Background Image (w/ dark-mode swap) -->
+    <!-- END: Logo Header x CTA (kayak background) -->
 
     <!-- START: Category — Heading Banners & Rows -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
@@ -882,7 +782,7 @@
             ullamcorper
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (inset, left button) -->
@@ -901,7 +801,7 @@
             ullamcorper
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (inset, centered button) -->
@@ -919,7 +819,7 @@
             senectus aenean. Non sit volutpat quam pretium risus ullamcorper
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (full width, centered button) -->
@@ -946,7 +846,7 @@
             <li>Proin urna urna massa ut quis augue pulvinar</li>
           </ul>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ Bullet Lists (inset, centered button) -->
@@ -973,7 +873,7 @@
             <li>Proin urna urna massa ut adipiscing convallis quis augue.</li>
           </ul>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ Bullet Lists (full width, left button) -->
@@ -997,7 +897,7 @@
             <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra</a>
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px" letter-spacing="0px">Start My Annual Gift</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" letter-spacing="0px">Start My Annual Gift</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text + Link Paragraph CTA (inset) -->
@@ -1021,7 +921,7 @@
             <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare a quis metus. Fermentum sit idretra tortor. In viverra &gt;&gt;</a>
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px" letter-spacing="0px">Start My Annual Gift</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" letter-spacing="0px">Start My Annual Gift</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text + Link Paragraph CTA (full width) -->
@@ -1285,7 +1185,7 @@
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1297,7 +1197,7 @@
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1309,7 +1209,7 @@
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:right;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <div class="cta-group" style="text-align:right;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1333,7 +1233,7 @@
     <mj-column vertical-align="middle">
       <mj-text padding="0" css-class="button">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1351,7 +1251,7 @@
     <mj-column vertical-align="middle">
       <mj-text padding="0" css-class="two-line-cta">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#6CBF4B" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#6CBF4B;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#E89440" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#E89440;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#6CBF4B;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#E89440" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#E89440;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1363,7 +1263,7 @@
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Center aligned</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Left</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Center aligned</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">Right</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1387,7 +1287,7 @@
       <mj-column vertical-align="middle">
         <mj-text padding="0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1397,10 +1297,10 @@
     <!-- START: Give Button Stack -->
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
       <mj-column>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $100 = $200 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $60 = $120 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%" font-size="18px">GIVE $35 = $75 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" padding="0" width="100%" font-size="18px">GIVE ANY AMOUNT = DOUBLE MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%">GIVE $100 = $200 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%">GIVE $60 = $120 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 12px" width="100%">GIVE $35 = $75 WHEN 2X MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0" width="100%">GIVE ANY AMOUNT = DOUBLE MATCHED</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Give Button Stack -->
@@ -1460,7 +1360,7 @@
     >
       <mj-column vertical-align="middle">
         <mj-image
-          src="assets/photo-family.png"
+          src="assets/photo-family.jpg"
           alt="Image Alt Text"
           href="https://www.example.com"
           width="600px"
@@ -1487,22 +1387,7 @@
     <!-- START: Image (full-bleed) w/ Caption -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" />
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption">
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Image (full-bleed) w/ Caption -->
-
-    <!-- START: Image (full-bleed) w/ Caption -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" />
       </mj-column>
     </mj-section>
     <mj-section css-class="block caption" background-color="#ffffff" padding="0">
@@ -1517,39 +1402,13 @@
     <!-- START: Image (inset) w/ Caption -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" />
         <mj-text align="right" mj-class="caption">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- END: Image (inset) w/ Caption -->
-
-    <!-- START: Image (inset) w/ Caption -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px">
-      <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-family.png" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" />
-        <mj-text align="right" mj-class="caption">
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Image (inset) w/ Caption -->
-
-    <!-- START: Image (bikers) w/ Caption -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" />
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption">
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Image (bikers) w/ Caption -->
 
     <!-- START: Image (bikers) w/ Caption -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
@@ -1574,7 +1433,7 @@
     >
       <mj-column css-class="two-col-column first-column" width="300px" padding="0 8px 0 0" vertical-align="middle">
         <mj-image
-          src="assets/photo-family.png"
+          src="assets/photo-family.jpg"
           alt="Custom alt text"
           href="https://www.example.com"
           padding="0"
@@ -1584,7 +1443,7 @@
       </mj-column>
       <mj-column css-class="two-col-column" width="300px" padding="0 0 0 8px" vertical-align="middle">
         <mj-image
-          src="assets/photo-family.png"
+          src="assets/photo-family.jpg"
           alt="Custom alt text"
           href="https://www.example.com"
           padding="0"
@@ -1605,7 +1464,7 @@
      -->
     <mj-section
         css-class="overlay-image-block block"
-        background-url="assets/photo-person_overlay.png"
+        background-url="assets/photo-person_overlay.jpg"
         background-size="cover"
         background-repeat="no-repeat"
         background-position="center bottom"
@@ -1653,9 +1512,9 @@
     <!-- START: Video Block (inset) -->
     <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 40px 0">
-      <mj-section padding="90px 24px" background-url="assets/photo-kayak_color-overlay.png" background-size="cover" background-repeat="no-repeat" background-position="center center">
+      <mj-section padding="90px 24px" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
         <mj-column>
-          <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" font-size="18px" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
@@ -1669,9 +1528,9 @@
     <!-- END: Video Block (inset) -->
 
     <!-- START: Video Block (full-bleed) -->
-    <mj-section css-class="image-block block" padding="110px 24px" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.png" background-size="cover" background-repeat="no-repeat" background-position="center center">
+    <mj-section css-class="image-block block" padding="110px 24px" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-column>
-        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" font-size="18px" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" letter-spacing="0px">Watch&nbsp;&nbsp;▷</mj-button>
       </mj-column>
     </mj-section>
     <mj-section css-class="block caption" background-color="#ffffff" padding="0">
@@ -1693,7 +1552,7 @@
     </mj-section>
     <!-- END: Category — Image & Text Layouts -->
 
-    <!-- START: Side by side image and text -->
+    <!-- START: Story Card (beige, image left) -->
     <mj-section
       css-class="two-col-image-text-block block"
       background-color="#F1EEE9"
@@ -1724,15 +1583,14 @@
           href="https://www.example.com"
           align="left"
           padding="16px 0 0"
-          font-size="18px"
         >
           PLACEHOLDER
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Side by side image and text -->
+    <!-- END: Story Card (beige, image left) -->
 
-    <!-- START: Side by side image and text (reversed) -->
+    <!-- START: Story Card (beige, image right, rtl) -->
     <mj-section
         css-class="two-col-image-text-block block"
         background-color="#F1EEE9"
@@ -1741,7 +1599,7 @@
     >
       <mj-column css-class="two-col-col" width="240px" padding="0 10px" vertical-align="middle">
         <mj-image
-            src="assets/photo-hiking-duo.png"
+            src="assets/photo-hiking-duo.jpg"
             alt="Custom alt text"
             href="https://www.example.com"
             align="center"
@@ -1764,15 +1622,14 @@
           href="https://www.example.com"
           align="left"
           padding="16px 0 0"
-          font-size="18px"
         >
           PLACEHOLDER
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Side by side image and text (reversed) -->
+    <!-- END: Story Card (beige, image right, rtl) -->
 
-    <!-- START: Side by side image and text (image left) -->
+    <!-- START: Story Card (image left, no button) -->
     <mj-section
       css-class="two-col-image-text-block block"
       background-color="#ffffff"
@@ -1800,9 +1657,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Side by side image and text (image left) -->
+    <!-- END: Story Card (image left, no button) -->
 
-    <!-- START: Side by side text and image (w/ CTA + caption) -->
+    <!-- START: Story Card (image right, no heading) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
       <mj-column css-class="two-col-column first-column" width="296px" padding="0 16px 0 0" vertical-align="top">
         <mj-text padding="0">
@@ -1814,16 +1671,16 @@
             butterflies abound.
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">FOLLOW THE FLUTTER</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0">FOLLOW THE FLUTTER</mj-button>
       </mj-column>
       <mj-column css-class="two-col-column" width="240px" padding="0" vertical-align="top">
-        <mj-image src="assets/photo-butterfly.png" alt="Monarch butterfly resting on a purple coneflower" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-image src="assets/photo-butterfly.jpg" alt="Monarch butterfly resting on a purple coneflower" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
         <mj-text align="right" mj-class="caption">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Side by side text and image (w/ CTA + caption) -->
+    <!-- END: Story Card (image right, no heading) -->
 
     <!-- START: Story Card (image right) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
@@ -1835,10 +1692,10 @@
             vitae quisque commodo volutpat ut. Cursus ...
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px" letter-spacing="0px">Read more</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" letter-spacing="0px">Read more</mj-button>
       </mj-column>
       <mj-column css-class="two-col-column" width="240px" padding="0" vertical-align="top">
-        <mj-image src="assets/photo-hiking-duo.png" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-image src="assets/photo-hiking-duo.jpg" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
         <mj-text align="right" mj-class="caption">
           <span>Photograph by Photographer</span>
         </mj-text>
@@ -1849,7 +1706,7 @@
     <!-- START: Story Card (image left) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
       <mj-column css-class="two-col-column first-column" width="240px" padding="0 16px 0 0" vertical-align="top">
-        <mj-image src="assets/photo-garden.png" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-image src="assets/photo-garden.jpg" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
         <mj-text align="right" mj-class="caption">
           <span>Photograph by Photographer</span>
         </mj-text>
@@ -1862,7 +1719,7 @@
             vitae quisque commodo volutpat ut. Cursus ...
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px" letter-spacing="0px">Read more</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" letter-spacing="0px">Read more</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image left) -->
@@ -1895,7 +1752,7 @@
             pulvinar senectus.
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Block (left button) -->
@@ -1928,7 +1785,7 @@
             senectus.
           </p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="16px 0 0" font-size="18px">View ParkScore Rankings</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="16px 0 0">View ParkScore Rankings</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Block (centered button) -->
@@ -1959,14 +1816,13 @@
           href="https://www.example.com"
           align="left"
           padding="16px 0 0"
-          font-size="18px"
         >
           PLACEHOLDER
         </mj-button>
       </mj-column>
       <mj-column css-class="two-col-column" width="250px" padding="0 10px" vertical-align="top">
         <mj-image
-            src="assets/photo-garden.png"
+            src="assets/photo-garden.jpg"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -1984,7 +1840,6 @@
           href="https://www.example.com"
           align="left"
           padding="16px 0 0"
-          font-size="18px"
         >
           PLACEHOLDER
         </mj-button>
@@ -2106,13 +1961,13 @@
     <!-- START: Match Hero (photo CTA) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="40%">
           <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="60%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
         </mj-column>
       </mj-group>
@@ -2122,13 +1977,13 @@
     <!-- START: Match Hero (photo CTA, w/ match status) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="40%">
           <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="60%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
         </mj-column>
       </mj-group>
@@ -2147,13 +2002,13 @@
     <!-- START: Match Hero (photo CTA, w/ monthly status) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="160px 32px 24px" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
       <mj-group>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="40%">
           <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="60%">
           <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="16px">START MY ANNUAL GIFT</mj-button>
         </mj-column>
       </mj-group>
@@ -2187,7 +2042,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
-            <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">GIVE NOW</mj-button>
+            <mj-button width="160px" href="https://www.example.com" align="right" padding="0" background-color="#F7941D">GIVE NOW</mj-button>
           </mj-column>
         </mj-group>
       </mj-section>
@@ -2204,7 +2059,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-button href="https://www.example.com" align="right" padding="0" background-color="#F7941D" font-size="18px">3X MY GIFT</mj-button>
+          <mj-button width="160px" href="https://www.example.com" align="right" padding="0" background-color="#F7941D">3X MY GIFT</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2216,10 +2071,55 @@
         <mj-text align="center" padding="0 0 16px" color="#ffffff">
           <h1 style="color:#ffffff;">End of Year Triple Match</h1>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D" font-size="18px">3X MY GIFT</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D">3X MY GIFT</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Photo CTA Banner (centered headline + gift button) -->
+
+    <!-- START: Photo CTA Banner (fixed height) -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      padding="264px 32px 16px 32px"
+      background-url="assets/photo-trail.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center"
+    >
+      <mj-group>
+      <mj-column vertical-align="bottom" width="50%">
+        <mj-image
+          src="assets/logo-tpl_color-light-green-text.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          padding="0 16px 0 0"
+          css-class="light-only"
+          align="left"
+        />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/logo-tpl_color-light-green-text.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          padding="0 16px 0 0"
+          css-class="dark-only"
+          align="left"
+        />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+      <mj-column vertical-align="bottom" width="50%">
+          <mj-button
+            href="https://www.example.com"
+            align="right" padding="0"
+          >
+            Read more
+          </mj-button>
+      </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Photo CTA Banner (fixed height) -->
 
     <!-- START: Fundraising Thermometer -->
     <mj-section css-class="image-block block" background-color="#006837" padding="32px 32px" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center">
@@ -2255,7 +2155,7 @@
             </tr>
           </table>
         </mj-text>
-        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D" font-size="18px">5X MY GIFT</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0" background-color="#F7941D">5X MY GIFT</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Fundraising Thermometer -->
@@ -2268,7 +2168,7 @@
             <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
             <h3 style="color:#ffffff;margin:0 0 16px;">Time is running out to<br />quintuple your impact!</h3>
           </mj-text>
-          <mj-button href="https://www.example.com" align="center" padding="0 0 16px" background-color="#F7941D" font-size="18px">5X MY GIFT</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="0 0 16px" background-color="#F7941D">5X MY GIFT</mj-button>
           <mj-text align="center" padding="0" color="#ffffff">
             <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
             <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
@@ -2291,7 +2191,7 @@
             <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
             <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
           </mj-text>
-          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" font-size="18px" letter-spacing="0px">5X My Gift Now</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" letter-spacing="0px">5X My Gift Now</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
@@ -2310,7 +2210,7 @@
             <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
             <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
           </mj-text>
-          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" font-size="18px" letter-spacing="0px">5X My Gift Now</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="8px 0 0" letter-spacing="0px">5X My Gift Now</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
@@ -2442,7 +2342,7 @@
             <h3 style="color:#362229;padding:12px 8px 0;">Don&rsquo;t<br />Let Our<br />National<br />Parks Fall<br />Apart</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
-          <mj-button href="https://www.example.com" align="center" padding="12px 0 0" font-size="18px">TAKE ACTION</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="12px 0 0">TAKE ACTION</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2462,7 +2362,7 @@
             <h3 style="color:#362229;padding:12px 8px 0;">Urge<br />Congress<br />to Protect<br />America&rsquo;s<br />Wildlife</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
-          <mj-button href="https://www.example.com" align="center" padding="12px 0 0" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D" font-size="18px">TAKE ACTION</mj-button>
+          <mj-button href="https://www.example.com" align="center" padding="12px 0 0" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D">TAKE ACTION</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2493,7 +2393,7 @@
         </mj-text>
         <mj-text padding="16px 0 0" css-class="button">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -2529,12 +2429,12 @@
         </mj-text>
         <mj-text padding="16px 0 0" css-class="two-line-cta">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5FC9C5" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8DC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8DC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8DC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8DC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
         <mj-text padding="16px 0 0" css-class="two-line-cta">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:21px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -2590,7 +2490,7 @@
     <mj-include path="./partials/green-rule-divider.mjml" />
     <!-- END: Event Invite Block -->
 
-    <!-- START: Photo Contest Steps Block -->
+    <!-- START: Steps Block (photo contest) -->
     <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
@@ -2603,9 +2503,9 @@
       </mj-column>
     </mj-section>
     <mj-include path="./partials/green-rule-divider.mjml" />
-    <!-- END: Photo Contest Steps Block -->
+    <!-- END: Steps Block (photo contest) -->
 
-    <!-- START: Comment Steps Block -->
+    <!-- START: Steps Block (comment) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
@@ -2625,7 +2525,6 @@
           href="https://www.example.com"
           align="left"
           padding="16px 0 0"
-          font-size="18px"
         >
           SUBMIT A COMMENT
         </mj-button>
@@ -2634,9 +2533,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Comment Steps Block -->
+    <!-- END: Steps Block (comment) -->
 
-    <!-- START: Comment Steps Block (w/ arrow heading) -->
+    <!-- START: Steps Block (comment, w/ arrow heading) -->
     <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-group>
@@ -2664,14 +2563,14 @@
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">5</span>&nbsp; <b>Close with your request.</b></p>
           <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
         </mj-text>
-        <mj-button href="https://www.example.com" align="left" padding="16px 0 0" font-size="18px">SUBMIT A COMMENT</mj-button>
+        <mj-button href="https://www.example.com" align="left" padding="16px 0 0">SUBMIT A COMMENT</mj-button>
         <mj-text padding="16px 0 0">
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;">Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-include path="./partials/green-rule-divider.mjml" />
-    <!-- END: Comment Steps Block (w/ arrow heading) -->
+    <!-- END: Steps Block (comment, w/ arrow heading) -->
 
     <!-- START: Category — Content Features -->
     <mj-section css-class="text-block block" background-color="#111111" padding="10px 32px">
@@ -2826,13 +2725,13 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
       <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
-        <mj-image src="assets/photo-people-on-fence.png" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #F7941D" border-radius="18px" />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #F7941D" border-radius="18px" />
         <mj-text padding="0 0 16px" align="center">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
-        <mj-image src="assets/photo-couple-hiking.png" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #8DC63F" border-radius="18px" />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #8DC63F" border-radius="18px" />
         <mj-text padding="0 0 16px" align="center">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a>
         </mj-text>
@@ -2840,13 +2739,13 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="0 32px 0">
       <mj-column width="50%" padding="0 10px 0 0" vertical-align="top">
-        <mj-image src="assets/photo-couple-fishing.png" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #5FC9C5" border-radius="18px" />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #5FC9C5" border-radius="18px" />
         <mj-text padding="0 0 16px" align="center">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 45-54</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" padding="0 0 0 10px" vertical-align="top">
-        <mj-image src="assets/photo-couple-on-water.png" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #39B54A" border-radius="18px" />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 12px" border="3px solid #39B54A" border-radius="18px" />
         <mj-text padding="0 0 16px" align="center">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 65+</a>
         </mj-text>
@@ -2895,10 +2794,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Divider -->
-
-    <!-- START: Tri-Color Divider -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Tri-Color Divider -->
 
     <!-- START: Tri-Color Divider -->
     <mj-include path="./partials/tri-color-divider.mjml" />
@@ -3023,7 +2918,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
       <mj-column>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px">DONATE</mj-button>
         <mj-text padding="0 0 16px" color="#ffffff" align="center">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3046,7 +2941,7 @@
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px 32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" />
-        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px">DONATE</mj-button>
         <mj-text padding="0 0 16px" color="#ffffff" align="center">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3068,7 +2963,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px">
       <mj-column>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px">DONATE</mj-button>
         <mj-text padding="0 0 16px" align="center">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3090,7 +2985,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#CEE4C5" padding="32px 32px">
       <mj-column>
-        <mj-button href="https://www.example.com" align="center" padding="0 0 24px" font-size="18px">DONATE</mj-button>
+        <mj-button href="https://www.example.com" align="center" padding="0 0 24px">DONATE</mj-button>
         <mj-text padding="0 0 16px" align="center">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>

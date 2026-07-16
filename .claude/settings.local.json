@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"try{const p=require\\('./package.json'\\);console.log\\(JSON.stringify\\(p.scripts||{},null,2\\)\\)}catch\\(e\\){console.log\\('no package.json'\\)}\")"
+    ]
+  }
+}
