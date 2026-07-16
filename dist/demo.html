@@ -68,14 +68,14 @@
         max-width: 50%;
       }
 
-      .mj-column-px-480 {
-        width: 480px !important;
-        max-width: 480px;
-      }
-
       .mj-column-px-526 {
         width: 526px !important;
         max-width: 526px;
+      }
+
+      .mj-column-px-480 {
+        width: 480px !important;
+        max-width: 480px;
       }
 
       .mj-column-px-300 {
@@ -225,14 +225,14 @@
       max-width: 50%;
     }
 
-    .moz-text-html .mj-column-px-480 {
-      width: 480px !important;
-      max-width: 480px;
-    }
-
     .moz-text-html .mj-column-px-526 {
       width: 526px !important;
       max-width: 526px;
+    }
+
+    .moz-text-html .mj-column-px-480 {
+      width: 480px !important;
+      max-width: 480px;
     }
 
     .moz-text-html .mj-column-px-300 {
@@ -829,21 +829,23 @@ li {
       "Logo Header (dark red, centered)": "Logo Header (light green, left)",
       "Logo Header (white, w/ dark-mode swap)": "Logo Header (light green, left)",
       "Logo Header (light green, w/ dark-mode swap)": "Logo Header (light green, left)",
+      "Image": "Logo Header (light green, left)",
       "Logo Header x State (logo left)": "Logo Header x State (logo left)",
       "Logo Header x State (logo centered)": "Logo Header x State (logo left)",
       "Logo Header x State (green, logo left)": "Logo Header x State (logo left)",
+      "Logo Header x CTA (birds arrow)": "Logo Header x State (logo left)",
       "Logo Header x State (logo left, labeled)": "Logo Header x State (logo left, labeled)",
       "Logo Header x State (logo centered, labeled)": "Logo Header x State (logo left, labeled)",
       "Logo Header x CTA (orange DONATE)": "Logo Header x CTA (orange DONATE)",
       "Logo Header x CTA (green Donate)": "Logo Header x CTA (orange DONATE)",
       "Logo Header x CTA (green Read more)": "Logo Header x CTA (orange DONATE)",
-      "Logo Header x CTA (birds arrow)": "Logo Header x CTA (birds arrow)",
       "Logo Header x CTA (GivingTuesday on white)": "Logo Header x CTA (GivingTuesday on white)",
       "Logo Header x CTA (GivingTuesday on light green)": "Logo Header x CTA (GivingTuesday on white)",
       "Logo Header x CTA (GivingTuesday on dark)": "Logo Header x CTA (GivingTuesday on white)",
       "Logo Header x CTA (canoe background)": "Logo Header x CTA (canoe background)",
       "Logo Header x CTA (kayak background)": "Logo Header x CTA (canoe background)",
       "Photo CTA Banner (logo + gift button)": "Logo Header x CTA (canoe background)",
+      "Photo CTA Banner (fixed height)": "Logo Header x CTA (canoe background)",
       "Heading Banner (white)": "Heading Banner (white)",
       "Heading Banner (off-white)": "Heading Banner (white)",
       "Heading Banner (off-white, green text)": "Heading Banner (white)",
@@ -855,6 +857,8 @@ li {
       "Heading Banner (green)": "Heading Banner (white)",
       "Heading Banner (dark red)": "Heading Banner (white)",
       "Heading Banner (two-line, mixed weight)": "Heading Banner (white)",
+      "Linked Header Row": "Heading Banner (white)",
+      "Linked Header Row (w/ icon)": "Heading Banner (white)",
       "WYSIWYG Text (full width)": "Heading Banner (white)",
       "Limited-Time Match Banner (light green)": "Heading Banner (white)",
       "Limited-Time Match Banner (dark)": "Heading Banner (white)",
@@ -864,17 +868,14 @@ li {
       "Limited-Time Match Banner (light green, hero lead-in)": "Heading Banner (white)",
       "TPL in the News Block": "Heading Banner (white)",
       "Join Links Block": "Heading Banner (white)",
-      "Linked Header Row": "Linked Header Row",
-      "Linked Header Row (w/ icon)": "Linked Header Row",
-      "Text Block (mixed-weight heading)": "Text Block (mixed-weight heading)",
       "WYSIWYG Text (inset)": "WYSIWYG Text (inset)",
       "Text w/ CTA (inset, left button)": "Text w/ CTA (inset, left button)",
       "Text w/ CTA (inset, centered button)": "Text w/ CTA (inset, left button)",
       "Text w/ Bullet Lists (inset, centered button)": "Text w/ CTA (inset, left button)",
+      "Text + Link Paragraph CTA (inset)": "Text w/ CTA (inset, left button)",
       "Text w/ CTA (full width, centered button)": "Text w/ CTA (full width, centered button)",
       "Text w/ Bullet Lists (full width, left button)": "Text w/ CTA (full width, centered button)",
-      "Text + Link Paragraph CTA (inset)": "Text + Link Paragraph CTA (inset)",
-      "Text + Link Paragraph CTA (full width)": "Text + Link Paragraph CTA (full width)",
+      "Text + Link Paragraph CTA (full width)": "Text w/ CTA (full width, centered button)",
       "Linked Header + Text + Dual CTA (inset)": "Linked Header + Text + Dual CTA (inset)",
       "Linked Header + Text + Dual CTA (full width)": "Linked Header + Text + Dual CTA (full width)",
       "Highlighted Text": "Highlighted Text",
@@ -895,7 +896,6 @@ li {
       "Triple CTA Buttons (centered, fixed width)": "Triple CTA Buttons (centered, fixed width)",
       "Give Button Stack": "Give Button Stack",
       "CTA Block": "CTA Block",
-      "Image": "Image",
       "Caption": "Caption",
       "Image (full-bleed) w/ Caption": "Image (full-bleed) w/ Caption",
       "Image (bikers) w/ Caption": "Image (full-bleed) w/ Caption",
@@ -909,8 +909,8 @@ li {
       "Story Card (beige, image right, rtl)": "Story Card (beige, image left)",
       "Story Card (image left, no button)": "Story Card (image left, no button)",
       "Story Card (image right, no heading)": "Story Card (image right, no heading)",
-      "Story Card (image right)": "Story Card (image right)",
-      "Story Card (image left)": "Story Card (image left)",
+      "Story Card (image right)": "Story Card (image right, no heading)",
+      "Story Card (image left)": "Story Card (image right, no heading)",
       "Story Block (left button)": "Story Block (left button)",
       "Story Block (centered button)": "Story Block (centered button)",
       "2 Col Image and Text": "2 Col Image and Text",
@@ -920,7 +920,6 @@ li {
       "Match Hero (photo CTA, w/ monthly status)": "Match Hero (photo CTA, w/ match status)",
       "Giving Day Hero": "Giving Day Hero",
       "Photo CTA Banner (centered headline + gift button)": "Photo CTA Banner (centered headline + gift button)",
-      "Photo CTA Banner (fixed height)": "Photo CTA Banner (fixed height)",
       "Fundraising Thermometer": "Fundraising Thermometer",
       "Countdown Card": "Countdown Card",
       "Support Snapshot (off-white)": "Support Snapshot (off-white)",
@@ -2059,8 +2058,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Logo Header x CTA (green Donate) --><!-- START: Logo Header x CTA (birds arrow) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block" data-fully-exclude="true" style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
         <tbody>
           <tr>
@@ -2999,8 +2998,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Heading Banner (two-line, mixed weight) --><!-- START: Linked Header Row -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -3083,36 +3082,7 @@ li {
         </table>
       </div>
       <!--[if mso | IE]></td></tr></table><![endif]-->
-    </div><!-- END: Category — Text Blocks --><!-- START: Text Block (mixed-weight heading) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
-        <tbody>
-          <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:480px;" ><![endif]-->
-              <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tbody>
-                    <tr>
-                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <h1 style="font-weight:400;color:#362229;">Lorem Ipsum <b>Dolor Sit Amet Consectetur. Pulvinar Feugi</b></h1>
-                          <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. </p>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!--[if mso | IE]></td></tr></table><![endif]-->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Text Block (mixed-weight heading) --><!-- START: WYSIWYG Text (full width) -->
+    </div><!-- END: Category — Text Blocks --><!-- START: WYSIWYG Text (full width) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3421,8 +3391,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text w/ Bullet Lists (full width, left button) --><!-- START: Text + Link Paragraph CTA (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -3449,7 +3419,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Start My Annual Gift </a>
+                                <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Start My Annual Gift </a>
                               </td>
                             </tr>
                           </tbody>
@@ -3467,8 +3437,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Text + Link Paragraph CTA (inset) --><!-- START: Text + Link Paragraph CTA (full width) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -3495,7 +3465,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Start My Annual Gift </a>
+                                <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Start My Annual Gift </a>
                               </td>
                             </tr>
                           </tbody>
@@ -4478,8 +4448,8 @@ li {
       </div>
       <!--[if mso | IE]></td></tr></table><![endif]-->
     </div><!-- END: Category — Images & Media --><!-- START: Image -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -4997,7 +4967,7 @@ li {
                                       <tbody>
                                         <tr>
                                           <td align="center" bgcolor="#4A7A68" role="presentation" style="border:2px solid #ffffff;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#4A7A68;" valign="middle">
-                                            <a href="https://www.example.com" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Watch&nbsp;&nbsp;▷ </a>
+                                            <a href="https://www.example.com" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Watch&nbsp;&nbsp;▷ </a>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -5063,7 +5033,7 @@ li {
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="#4A7A68" role="presentation" style="border:2px solid #ffffff;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#4A7A68;" valign="middle">
-                                  <a href="https://www.example.com" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Watch&nbsp;&nbsp;▷ </a>
+                                  <a href="https://www.example.com" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Watch&nbsp;&nbsp;▷ </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -5402,44 +5372,9 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
-              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                  <tbody>
-                    <tr>
-                      <td style="vertical-align:top;padding:0 16px 0 0;">
-                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-                          <tbody>
-                            <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                  <p> Summer brings a surge of butterflies&mdash;monarchs, painted ladies, tiger swallowtails, and more. These vibrant pollinators thrive in protected landscapes, creating unforgettable seasonal displays. From coast to coast, here are TPL-protected places where butterflies abound. </p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left" class="button" style="font-size:0px;padding:16px 0 0;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                  <tbody>
-                                    <tr>
-                                      <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> FOLLOW THE FLUTTER </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
-              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+            <td style="direction:rtl;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
+              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5485,22 +5420,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td></tr></table><![endif]-->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Story Card (image right, no heading) --><!-- START: Story Card (image right) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
-        <tbody>
-          <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
-              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
+              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5510,8 +5431,7 @@ li {
                             <tr>
                               <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                  <h3 style="color:#362229;">Lorem ipsum dolor amet.</h3>
-                                  <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
+                                  <p> Summer brings a surge of butterflies&mdash;monarchs, painted ladies, tiger swallowtails, and more. These vibrant pollinators thrive in protected landscapes, creating unforgettable seasonal displays. From coast to coast, here are TPL-protected places where butterflies abound. </p>
                                 </div>
                               </td>
                             </tr>
@@ -5521,7 +5441,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
+                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> FOLLOW THE FLUTTER </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -5535,8 +5455,22 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
-              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- END: Story Card (image right, no heading) --><!-- START: Story Card (image right) -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="two-col-image-text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:rtl;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
+              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5582,6 +5516,42 @@ li {
                   </tbody>
                 </table>
               </div>
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
+              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tbody>
+                    <tr>
+                      <td style="vertical-align:top;padding:0 16px 0 0;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                  <h3 style="color:#362229;">Lorem ipsum dolor amet.</h3>
+                                  <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="button" style="font-size:0px;padding:16px 0 0;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
+                                  <tbody>
+                                    <tr>
+                                      <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
+                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
           </tr>
@@ -5590,8 +5560,8 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Story Card (image right) --><!-- START: Story Card (image left) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="two-col-image-text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
@@ -5665,7 +5635,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
+                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -6955,8 +6925,8 @@ li {
     </div>
     <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><![endif]-->
     <!-- END: Photo CTA Banner (centered headline + gift button) --><!-- START: Photo CTA Banner (fixed height) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="assets/photo-trail.jpg" color="#362229" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
-    <div class="image-block block" style="background:#362229 url('assets/photo-trail.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="assets/photo-trail.jpg" color="#362229" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+    <div class="image-block block" data-fully-exclude="true" style="background:#362229 url('assets/photo-trail.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
       <div style="line-height:0;font-size:0;">
         <table align="center" background="assets/photo-trail.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229 url('assets/photo-trail.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
           <tbody>
@@ -7207,7 +7177,7 @@ li {
                                     <tbody>
                                       <tr>
                                         <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                          <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> 5X My Gift Now </a>
+                                          <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> 5X My Gift Now </a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -7266,7 +7236,7 @@ li {
                                     <tbody>
                                       <tr>
                                         <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                          <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:0px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> 5X My Gift Now </a>
+                                          <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> 5X My Gift Now </a>
                                         </td>
                                       </tr>
                                     </tbody>

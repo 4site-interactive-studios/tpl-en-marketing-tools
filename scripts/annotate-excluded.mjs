@@ -44,11 +44,16 @@ function normalize(body) {
   let s = body.replace(/\s*data-(style-[a-z-]+|fully-exclude)/g, '');
   // align is an exposed Replacement on buttons, text, and images
   s = s.replace(/<mj-(button|text|image)\b[^>]*>/g, (tag) => tag.replace(/\salign="[^"]*"/g, ''));
+  // vertical-align is an exposed Replacement on columns (absent = "top")
+  s = s.replace(/<mj-column\b[^>]*>/g, (tag) => tag.replace(/\svertical-align="[^"]*"/g, ''));
   s = s.replace(/(<mj-text\b[^>]*>)[\s\S]*?(<\/mj-text>)/g, '$1#$2');
   // button labels are editable content in EN, same as mj-text bodies
   s = s.replace(/(<mj-button\b[^>]*>)[\s\S]*?(<\/mj-button>)/g, '$1#$2');
   // button width is a Replacement ("auto" = shrink-to-fit; every button authors one)
   s = s.replace(/<mj-button\b[^>]*>/g, (t) => t.replace(/(\swidth=")[^"]*(")/g, '$1#$2'));
+  // image/spacer width+height values are Replacements (every image authors an
+  // explicit px width; "fill container" = the padding-chain ceiling)
+  s = s.replace(/<mj-(image|spacer)\b[^>]*>/g, (t) => t.replace(/(\s(?:width|height)=")[^"]*(")/g, '$1#$2'));
   for (const a of REMOVE) s = s.replace(new RegExp('\\s' + a + '="[^"]*"', 'g'), '');
   for (const a of MASK) s = s.replace(new RegExp('(\\s' + a + '=")[^"]*(")', 'g'), '$1#$2');
   // attribute ORDER is not structure — normalize it away
@@ -83,6 +88,55 @@ function topBlocks(text) {
     }
   }
   return out;
+}
+
+/* ---------- image width guardrails ---------- */
+
+function hpad(tag) {
+  let total = 0;
+  const m = tag.match(/\spadding="([^"]*)"/);
+  if (m) {
+    const v = m[1].split(/\s+/).map((x) => parseFloat(x) || 0);
+    if (v.length === 1) total += 2 * v[0];
+    else if (v.length <= 3) total += 2 * v[1];
+    else total += v[1] + v[3];
+  }
+  for (const side of ['left', 'right']) {
+    const p = tag.match(new RegExp('\\spadding-' + side + '="([^"]*)"'));
+    if (p) total += parseFloat(p[1]) || 0;
+  }
+  return total;
+}
+
+function checkImageWidths(text, file) {
+  let issues = 0;
+  for (const sm of text.matchAll(/(<mj-section\b[^>]*>)([\s\S]*?)<\/mj-section>/g)) {
+    const inner = 600 - hpad(sm[1]);
+    const cols = [...sm[2].matchAll(/(<mj-column\b[^>]*>)([\s\S]*?)<\/mj-column>/g)];
+    for (const cm of cols) {
+      const w = cm[1].match(/\swidth="([^"]*)"/);
+      const colw = w
+        ? (w[1].includes('%') ? (inner * parseFloat(w[1])) / 100 : parseFloat(w[1]))
+        : inner / Math.max(1, cols.length);
+      const content = colw - hpad(cm[1]);
+      for (const im of cm[2].matchAll(/<mj-image\b[^>]*?\/?>/g)) {
+        const ceiling = Math.floor(content - hpad(im[0]));
+        const iw = im[0].match(/\swidth="([^"]*)"/);
+        const src = (im[0].match(/src="([^"]*)"/) || [])[1] || '?';
+        if (!iw) {
+          console.warn(`  WARN ${file}: image ${src} has no explicit width (ceiling ${ceiling}px)`);
+          issues++;
+        } else if (iw[1].includes('%')) {
+          console.warn(`  WARN ${file}: image ${src} uses a percent width "${iw[1]}" (MJML misparses percents — use px)`);
+          issues++;
+        } else if (parseFloat(iw[1]) > ceiling) {
+          console.warn(`  WARN ${file}: image ${src} width ${iw[1]} exceeds its container ceiling ${ceiling}px`);
+          issues++;
+        }
+      }
+    }
+  }
+  return issues;
 }
 
 function structureManifest(text, file) {
@@ -156,6 +210,7 @@ for (const rel of ['', 'partials']) {
     let groupNote = '';
 
     if (text.includes('</mj-head>')) {
+      checkImageWidths(source, join(rel, f));
       const { manifest, groups, flagIssues } = structureManifest(source, join(rel, f));
       const tag =
         '<mj-raw><script type="application/json" data-tpl-structure-groups>' +

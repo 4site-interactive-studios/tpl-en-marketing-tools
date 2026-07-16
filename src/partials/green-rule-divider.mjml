@@ -1,3 +1,3 @@
 <mj-section css-class="divider-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-  <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left><mj-spacer height="3px" container-background-color="#39B54A" data-style-height /></mj-column>
+  <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="3px" container-background-color="#39B54A" data-style-height /></mj-column>
 </mj-section>

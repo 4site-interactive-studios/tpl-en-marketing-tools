@@ -191,10 +191,10 @@ all four `data-style-padding-*` flags.
 | Component | Flags |
 |---|---|
 | `mj-section` | padding-top/right/bottom/left, background-color, border, direction (+ background-url/position/size when a background image is present) |
-| `mj-column` | background-color, border, padding ×4 |
+| `mj-column` | background-color, border, padding ×4, vertical-align |
 | `mj-text` | alignment, padding ×4, color |
 | `mj-button` | align, padding ×4, background-color, border, direction, color, href, width (every button authors an explicit width — `auto` for shrink-to-fit — so width presence is uniform and the value is a clean Replacement) |
-| `mj-image` | src, href, alt, width, align (+ `data-style-dark-mode` on dark copies, §6c) |
+| `mj-image` | src, href, alt, width, align (+ `data-style-dark-mode` on dark copies, §6c). Every image authors an explicit px width; "fill container" = the padding-chain ceiling (600 minus section/column/image side padding, × column fraction). Percent widths are forbidden (MJML misparses them); the build warns on missing/percent/over-ceiling widths |
 | `mj-divider` | border-color, border-width, width |
 | `mj-social-element` | href |
 | `mj-spacer` | height |
@@ -239,12 +239,17 @@ Backed by CSS in `styles.css`: `.dark-only { display:none }`, flipped by both
 
 Placed on sections that are identical to an earlier block once you ignore:
 font color, background color, image URLs (`src`/`alt`/background-url),
-borders, padding, direction, `align` on `mj-button`/`mj-text`/`mj-image`
-(alignment is an exposed Replacement on all three), `href` values, `mj-button`
+borders, padding, direction, `align` on `mj-button`/`mj-text`/`mj-image` and
+`vertical-align` on `mj-column` (alignment is an exposed Replacement on all
+four; absent = the MJML default, `left`/`top`), `href` values, `mj-button`
 width values (`width="auto"` compiles to `width:auto` — CSS-identical to no
-width — so every button authors one and the value is replaceable), **and the
-entire contents of `mj-text` and `mj-button`** (body copy and button labels
-are editable content). Attribute
+width — so every button authors one and the value is replaceable), `mj-image`
+width and `mj-spacer` height values (explicit px everywhere; the converter
+stamps the number into both compiled sites — `width:{{w}}px` in the td style
+and unitless `width="{{w}}"` on the img), **and the entire contents of
+`mj-text` and `mj-button`** (body copy and button labels are editable
+content). Divider width stays structural: MJML derives its compiled px from
+the container, so the authored value never matches the shipped one. Attribute
 *presence* stays structural — a section with a background-url is never
 duplicative of one without; only values are ignored. With those becoming
 converter variables, such blocks are redundant — first occurrence survives,

@@ -6,9 +6,9 @@
  *   - Outline blocks:   one labeled outline per block (labels click-to-copy)
  *   - Group by structure: blocks sharing a structure group (the build-injected
  *                       data-tpl-structure-groups manifest — identical after
- *                       masking Replacement-managed values) share one color,
- *                       labeled by the group's anchor block; ADJACENT same-group
- *                       blocks merge (name-family fallback without a manifest)
+ *                       masking Replacement-managed values) share one color;
+ *                       every block keeps its own full-name label (name-family
+ *                       fallback without a manifest)
  *   - Stack side-by-side: grouped runs laid out horizontally with scroll-snap
  *                       into the email column; row height tracks the current
  *                       cell (fully reversible DOM move)
@@ -64,18 +64,6 @@
 
   function groupKey(name) {
     return (sgMap && sgMap[name]) || familyKey(name);
-  }
-
-  function variantLabel(name, key, i) {
-    if (key.indexOf(familyKey(name)) === 0) {
-      var parens = name.match(/\([^)]*\)/g);
-      if (parens) return parens.join(' ');
-      var v = name.indexOf(key) === 0 ? name.slice(key.length).trim() : '';
-      if (v) return v;
-    } else if (name !== key) {
-      return name;
-    }
-    return '#' + (i + 1);
   }
 
   function copyName(text, feedbackEl) {
@@ -254,7 +242,6 @@
       map[k].members.push(b);
     });
     runs.forEach(function (r) {
-      r.label = r.key + (r.members.length > 1 ? ' \u00d7' + r.members.length : '');
       r.els = r.members.reduce(function (a, m) { return a.concat(m.els); }, []);
     });
     return runs;
@@ -339,9 +326,8 @@
         cell.style.outline = state.on ? cell.dataset.tplOutline : 'none';
         var bar = document.createElement('div');
         bar.setAttribute('data-tpl-debug-bar', '');
-        var vName = variantLabel(m.name, run.key, i);
-        var payload = run.label + ' - ' + vName;
-        bar.textContent = vName;
+        var payload = m.name;
+        bar.textContent = m.name;
         bar.title = 'Click to copy: ' + payload;
         bar.style.cssText = 'position:absolute;top:0;left:0;z-index:5;background:' + c + ';color:#fff;' +
           'font:11px/1.8 Menlo,Consolas,monospace;padding:1px 8px;cursor:pointer;';
@@ -422,30 +408,15 @@
           var r = docRect([stackEntry.container]);
           if (!r) return;
           layer.appendChild(box(r, c, 2, 'dashed'));
-          if (state.labels) {
-            var gc = chip(run.label, c, r.top, r.left + (parseFloat(stackEntry.container.style.paddingLeft) || 0), false);
-            gc.style.transform = 'translateY(-100%)'; // tab above the strip, clear of the first cell's bar
-            gc.style.borderRadius = '6px 6px 0 0';
-            layer.appendChild(gc);
-          }
-        } else if (run.members.length > 1) {
-          // scattered group: one box per member, group chip on the first,
-          // variant chips on every member
-          run.members.forEach(function (m, i) {
+        } else {
+          // unstacked: every member gets its own box + full-name chip (same as
+          // ungrouped view); the shared color is what shows the grouping
+          run.members.forEach(function (m) {
             var mr = docRect(m.els);
             if (!mr) return;
-            layer.appendChild(box(mr, c, 2, i ? 'dotted' : 'dashed'));
-            if (state.labels) {
-              if (i === 0) layer.appendChild(chip(run.label, c, mr.top, mr.left, false));
-              var v = variantLabel(m.name, run.key, i);
-              layer.appendChild(chip(v, c, mr.top, mr.left + mr.width, true, run.label + ' - ' + v));
-            }
+            layer.appendChild(box(mr, c, 2, 'dashed'));
+            if (state.labels) layer.appendChild(chip(m.name, c, mr.top, mr.left, false));
           });
-        } else {
-          var sr = docRect(run.els);
-          if (!sr) return;
-          layer.appendChild(box(sr, c, 2, 'dashed'));
-          if (state.labels) layer.appendChild(chip(run.label, c, sr.top, sr.left, false));
         }
       });
     } else {
@@ -600,8 +571,11 @@
     if (state.blocks) {
       var total = state.blocks.length;
       var excluded = state.blocks.filter(isExcluded).length;
+      // unique IMPORTABLE structures — category chrome (import-excluded) is
+      // never imported, so it doesn't count; matches the build's group count
       var uniq = 0, seenKeys = {};
       state.blocks.forEach(function (b) {
+        if (isImportExcluded(b)) return;
         var k = groupKey(b.name);
         if (!seenKeys[k]) { seenKeys[k] = 1; uniq++; }
       });
