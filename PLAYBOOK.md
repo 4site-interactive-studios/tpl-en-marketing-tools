@@ -193,14 +193,14 @@ all four `data-style-padding-*` flags.
 | Component | Flags |
 |---|---|
 | `mj-section` | padding-top/right/bottom/left, background-color, border, direction (+ background-url/position/size when a background image is present) |
-| `mj-column` | background-color, border, padding ×4, vertical-align |
-| `mj-text` | alignment, padding ×4, color |
-| `mj-button` | align, padding ×4, background-color, border, direction, color, href, width (every button authors an explicit width — `auto` for shrink-to-fit — so width presence is uniform and the value is a clean Replacement) |
-| `mj-image` | src, href, alt, width, align (+ `data-style-dark-mode` on dark copies, §6c). Every image authors an explicit px width; "fill container" = the padding-chain ceiling (600 minus section/column/image side padding, × column fraction). Percent widths are forbidden (MJML misparses them); the build warns on missing/percent/over-ceiling widths |
+| `mj-column` | background-color, border, 4×padding, vertical-align |
+| `mj-text` | alignment, 4×padding, color |
+| `mj-button` | align, 4×padding, background-color, border, direction, color, href, width ("auto" or px) |
+| `mj-image` | src, href, alt, width, align (+ `data-style-dark-mode` on dark copies, §6c) |
 | `mj-divider` | border-color, border-width, width |
 | `mj-social-element` | href |
 | `mj-spacer` | height |
-| raw pill `<a>` (has `border-radius` in inline style) | the full button set + color + href |
+| raw pill `<a>` (has `border-radius` in style) | the full button set |
 | plain inline `<a>` | color, href |
 
 ### 6b. `data-import-exclude` — "skip this block entirely"
