@@ -270,6 +270,30 @@ reach all of those, so width/inset variants remain distinct blocks. The annotate
 through to the corresponding elements in the compiled HTML. Determining which blocks qualify is a normalization pass: strip
 the ignored attributes, mask `mj-text` bodies and image srcs, compare.
 
+### 6e. Expected validator noise
+
+Any standard MJML validator (editors, linters, external warning reports) will
+flag these sources — **by design**:
+
+- `Attribute data-style-* / data-fully-exclude is illegal` on nearly every
+  tag — the converter metadata contract (§6a/§6d). The attributes exist only
+  in raw MJML; the pipeline compiles with `validationLevel=skip` (§2), which
+  strips them from shipped HTML.
+- `Attribute width has invalid value: auto for type Unit` on every auto-width
+  `mj-button` — the explicit "shrink-to-fit" convention. Confirmed harmless:
+  at default ("soft") validation MJML logs the message but exits 0 and passes
+  `width:auto` through to the button table's inline style, which renders
+  identically to an absent width in every client.
+
+Both classes of message are safe to whitelist/ignore in external MJML-warning
+reporting. Strict validation mode is incompatible with these sources by
+design — the pipeline's level is `skip`.
+
+Do NOT "fix" `width="auto"` by removing it: uniform width *presence* is what
+keeps button structures unified (§6d), and the converter's width-Replacement
+contract relies on the attribute always being present ("auto" = shrink-to-fit,
+a px value = fixed). Removing it re-splits structure groups.
+
 ## 7. Email-client compatibility patterns
 
 - **Pill CTA hybrid (side-by-side buttons):** raw `<a>` pills inside
