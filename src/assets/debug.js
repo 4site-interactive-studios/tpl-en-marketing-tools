@@ -19,6 +19,8 @@
  *                       pipeline (raw-.mjml fetch as legacy fallback)
  *   - Hide all excluded: hides those same blocks entirely — what remains is
  *                       what actually imports
+ *   - Export / Copy .mjml: the page's raw .mjml with every excluded/dev-only
+ *                       top-level block removed, as a download or clipboard copy
  *
  * Loaded lazily by the floating 🐞 toggle; exposes window.__tplDebug.
  * See NAMING.md for the block-name grammar this tool depends on.
@@ -142,6 +144,101 @@
         console.warn('[tpl-debug] cannot load ' + src + ' for exclusion info (' + e.message + ') — "Mark fully excluded" unavailable');
         syncPanel();
       });
+  }
+
+  /* ---- export: the page's raw MJML minus excluded blocks ----
+     Top-level blocks flagged data-fully-exclude, wrapped in
+     data-import-exclude, or marked dev-only are removed; everything the
+     converter would actually import remains. Source of truth is the raw
+     .mjml the build ships next to the compiled HTML. */
+  function buildImportableMjml(text) {
+    var marker = /<!--\s*(START|END):\s*(.+?)\s*-->/g, m, stack = [], cuts = [];
+    while ((m = marker.exec(text))) {
+      if (m[1] === 'START') {
+        stack.push({ name: m[2], start: m.index });
+      } else {
+        for (var i = stack.length - 1; i >= 0; i--) {
+          if (stack[i].name === m[2]) {
+            var open = stack.splice(i, 1)[0];
+            if (stack.length <= 1 && open.name !== 'Main Content') {
+              var body = text.slice(open.start, m.index);
+              if (body.indexOf('data-fully-exclude') !== -1 ||
+                  body.indexOf('data-import-exclude') !== -1 ||
+                  /dev only/.test(open.name)) {
+                cuts.push([open.start, marker.lastIndex]);
+              }
+            }
+            break;
+          }
+        }
+      }
+    }
+    for (var j = cuts.length - 1; j >= 0; j--) {
+      var a = cuts[j][0], b = cuts[j][1];
+      while (a > 0 && (text[a - 1] === ' ' || text[a - 1] === '\t')) a--;
+      if (text[b] === '\n') b++;
+      text = text.slice(0, a) + text.slice(b);
+    }
+    // dev-only chrome + leftover blank runs
+    text = text.replace(/^[ \t]*<mj-include[^>]*debug-toolbar[^>]*\/>[ \t]*\n?/m, '');
+    return text.replace(/\n[ \t]*\n[ \t]*\n+/g, '\n\n');
+  }
+
+  /* inline every mj-include so the export has zero file dependencies:
+     type="css" becomes an mj-style block, partial .mjml files are spliced
+     in verbatim (single level — our partials contain no nested includes) */
+  function inlineIncludes(text, includes) {
+    if (!includes) return text;
+    return text.replace(/([ \t]*)<mj-include\s+path="([^"]+)"([^>]*)\/>/g, function (whole, indent, path, rest) {
+      var body = includes[path];
+      if (body == null) return whole; // not bundled — leave the include
+      if (/type="css"/.test(rest)) {
+        var inlineAttr = /css-inline="inline"/.test(rest) ? ' inline="inline"' : '';
+        return indent + '<mj-style' + inlineAttr + '>\n' + body.replace(/\s+$/, '') + '\n' + indent + '</mj-style>';
+      }
+      return body.replace(/\s+$/, '').split('\n').map(function (line) {
+        return line ? indent + line : line;
+      }).join('\n').replace(/^[ \t]+/, indent);
+    });
+  }
+
+  function exportMjml() {
+    // preferred: the raw source the build embeds into the page (works on
+    // file:// too); fallback: fetch the sibling .mjml
+    var embedded = document.querySelector('script[data-tpl-raw-source]');
+    if (embedded) {
+      try {
+        var payload = JSON.parse(embedded.textContent);
+        if (typeof payload === 'string') payload = { source: payload, includes: null };
+        return Promise.resolve(inlineIncludes(buildImportableMjml(payload.source), payload.includes));
+      } catch (e) { /* fall through to fetch */ }
+    }
+    var src = location.pathname.replace(/\.html$/, '.mjml');
+    return fetch(src)
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (text) { return buildImportableMjml(text); });
+  }
+
+  function copyMjml(feedbackEl) {
+    return exportMjml().then(function (text) {
+      copyName(text, feedbackEl);
+    }).catch(function (e) {
+      alert('Copy failed: ' + e.message + ' — rebuild the page (npm run build) so the raw source is embedded, or serve dist/ over http');
+    });
+  }
+
+  function downloadMjml() {
+    exportMjml().then(function (text) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+      a.download = location.pathname.split('/').pop().replace(/\.html$/, '') + '-importable.mjml';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+    }).catch(function (e) {
+      alert('Export failed: ' + e.message + ' — rebuild the page (npm run build) so the raw source is embedded, or serve dist/ over http');
+    });
   }
 
   /* ---- parse START/END comment pairs into block ranges (cached) ---- */
@@ -520,6 +617,12 @@
       sec('EXCLUDED', 'data-dbg-sec-excluded') +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-xmark> Highlight all excluded</label>' +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-hideexcl> Hide all excluded</label>' +
+      '<div style="display:flex;gap:6px;margin-top:6px;">' +
+      '<button data-dbg-export style="flex:1;background:#0E7C3F;color:#fff;border:0;border-radius:4px;' +
+      'padding:4px 0;font:inherit;cursor:pointer;">Export .mjml</button>' +
+      '<button data-dbg-copy style="flex:1;background:#0E7C3F;color:#fff;border:0;border-radius:4px;' +
+      'padding:4px 0;font:inherit;cursor:pointer;">Copy .mjml</button>' +
+      '</div>' +
 
       '<button data-dbg-off style="margin-top:8px;width:100%;background:#700310;color:#fff;border:0;border-radius:4px;' +
       'padding:4px 0;font:inherit;cursor:pointer;">Turn off</button>';
@@ -544,6 +647,11 @@
     });
     p.querySelector('[data-dbg-hideexcl]').addEventListener('change', function (e) {
       api.setHideExcluded(e.target.checked);
+    });
+    p.querySelector('[data-dbg-export]').addEventListener('click', downloadMjml);
+    p.querySelector('[data-dbg-copy]').addEventListener('click', function () {
+      var btn = p.querySelector('[data-dbg-copy]');
+      copyMjml(btn);
     });
     p.querySelector('[data-dbg-off]').addEventListener('click', function () { api.disable(); });
     state.panel = p;
@@ -639,6 +747,9 @@
       syncButton();
     },
     toggle: function () { (state.on || state.panel) ? api.disable() : api.enable(); },
+    exportMjml: exportMjml,       // returns a Promise<string> of importable MJML
+    downloadMjml: downloadMjml,   // same, as a file download
+    copyMjml: copyMjml,           // same, to the clipboard
     setGrouping: function (v) {
       state.grouped = !!v;
       if (state.grouped && !state.groupedEver) {

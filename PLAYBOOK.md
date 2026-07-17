@@ -157,6 +157,7 @@ blocks, both kinds):
 | STRUCTURE | Stack side-by-side | Gathers ALL members of a structure group — from anywhere on the page — into one horizontal scroll-snap strip at the first member's position (fully reversible per-element DOM move) |
 | STRUCTURE | Striped background | Hatches the strip backgrounds (on by default with grouping) |
 | EXCLUDED | Highlight all excluded | Red tint + red ✕ over every excluded block — both `data-fully-exclude` variants and `data-import-exclude` chrome |
+| EXCLUDED | Export / Copy .mjml | The page's raw .mjml with every excluded/dev-only top-level block removed and every mj-include inlined (type="css" becomes mj-style; partials spliced in) — fully self-contained and compilable from anywhere; as a file download or a clipboard copy |
 | EXCLUDED | Hide all excluded | Hides all of those blocks — what remains is exactly what imports (one block per structure group) |
 
 Exclusion detection reads the `[data-fully-exclude]` / `[data-import-exclude]`

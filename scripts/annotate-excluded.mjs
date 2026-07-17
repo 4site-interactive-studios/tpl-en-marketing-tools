@@ -216,9 +216,24 @@ for (const rel of ['', 'partials']) {
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));
       const { manifest, groups, flagIssues } = structureManifest(source, join(rel, f));
+      // raw source + every mj-include's contents ride along in the compiled
+      // page (dev artifact) so the debugger's MJML export works even opened
+      // as a bare file:// page AND can inline the includes to make the
+      // export fully self-contained; <\/ escaping keeps any "</" inside the
+      // payload from closing the tag
+      const includes = {};
+      for (const im of source.matchAll(/<mj-include\s+path="([^"]+)"[^>]*\/>/g)) {
+        try {
+          includes[im[1]] = readFileSync(join(SRC, rel, im[1]), 'utf8');
+        } catch (e) {
+          console.warn(`  WARN ${join(rel, f)}: cannot read include ${im[1]}`);
+        }
+      }
       const tag =
         '<mj-raw><script type="application/json" data-tpl-structure-groups>' +
         JSON.stringify(manifest) +
+        '</script><script type="application/json" data-tpl-raw-source>' +
+        JSON.stringify({ source: source, includes: includes }).replace(/<\//g, '<\\/') +
         '</script></mj-raw>\n  </mj-head>';
       text = text.replace('</mj-head>', tag);
       groupNote = `, ${groups} structure groups` + (flagIssues ? `, ${flagIssues} FLAG ISSUES` : '');
