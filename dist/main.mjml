@@ -770,11 +770,6 @@
     <!-- END: Question Response (linked row) -->
 
     <!-- START: Quote Block -->
-    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-spacer height="20px" container-background-color="#ffffff" data-style-height />
-      </mj-column>
-    </mj-section>
     <mj-section
       css-class="quote-block block"
       background-color="#F1EEE9" padding="32px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -804,11 +799,6 @@
           </p>
         </mj-text>
         <mj-divider css-class="divider" border-width="4px" border-color="#006837" padding="0" width="280px" align="center" data-style-border-color data-style-border-width data-style-width />
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-spacer height="20px" container-background-color="#ffffff" data-style-height />
       </mj-column>
     </mj-section>
     <!-- END: Quote Block -->
@@ -996,11 +986,6 @@
     <!-- END: Spacer -->
 
     <!-- START: CTA Block -->
-    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-spacer height="20px" container-background-color="#ffffff" data-style-height />
-      </mj-column>
-    </mj-section>
     <mj-section
       css-class="cta-button-block block"
       background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1020,11 +1005,6 @@
             align="center" data-style-align padding="0 25px 10px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
           LOREM IPSUM SEMPER MI
         </mj-button>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-spacer height="20px" container-background-color="#ffffff" data-style-height />
       </mj-column>
     </mj-section>
     <!-- END: CTA Block -->
