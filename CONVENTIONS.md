@@ -1,6 +1,4 @@
-<!-- MIRROR — DO NOT EDIT HERE. Canonical source:
-     email-to-en-marketing-tools (private repo), docs/conventions.md.
-     Changes land there and are re-mirrored into this file. -->
+<!-- MIRROR — DO NOT EDIT HERE. Canonical source: email-to-en-marketing-tools (private repo), docs/conventions.md. Re-mirrored on every change. -->
 
 # Conventions & Business Logic
 
@@ -177,14 +175,16 @@ spacing, and stay.
   (`block_1_width`). Frame fields are NEVER regrouped into content groups —
   an earlier experiment did, and blocks appeared to have no block-level
   settings at all.
-- **Content groups**: **"Column M - X"** when the component type's kept
-  instances map one-per-column onto a single side-by-side row (M = real
-  column position — explicit beats shorthand, especially with no
-  "Column M Settings" section to anchor the number). Ordinal
-  **"└─ Block N X"** (e.g. "└─ Block 1 Text") for stacked bands or
-  cross-section repeats, where "Column" would be wrong — the tree glyph
-  nests the group under its block/band header in EN's panel.
-  (`columnPlacements` + `columnGroupOf`)
+- **Content groups**: when the component type's kept instances map
+  one-per-column onto a single side-by-side row (M = real column position —
+  explicit beats shorthand, especially with no "Column M Settings" section
+  to anchor the number), the FIRST group in each column heads it
+  (**"Column M X"**, e.g. "Column 1 Image") and its sibling groups indent
+  beneath with the tree glyph (**"└─ Column M X"**, e.g. "└─ Column 1
+  Text"), so the panel shows a hierarchy without a separate settings
+  header. Ordinal **"└─ Block N X"** (e.g. "└─ Block 1 Text") for stacked
+  bands or cross-section repeats, where "Column" would be wrong.
+  (`columnPlacements` + `columnGroupOf` + `columnHeadPrefix`)
 - **Column/group frames**: "Column N Settings" / "Group N Settings" when a
   block has multiple columns/groups with fields.
 - Image Position / Column Order controls land in their band's section
