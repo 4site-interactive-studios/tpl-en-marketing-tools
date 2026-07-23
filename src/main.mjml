@@ -1,5 +1,10 @@
 <mjml lang="en">
   <mj-head>
+    <!-- en-tools-config {
+      "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48 },
+      "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32 },
+      "geometryReachPx": 64
+    } -->
     <mj-breakpoint width="600px" />
     <mj-title>TPL Email Template — Block Catalog</mj-title>
     <mj-preview>Preview text placeholder — update per send.</mj-preview>

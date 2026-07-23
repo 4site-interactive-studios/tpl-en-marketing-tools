@@ -178,6 +178,19 @@ the checkbox greys out with a tooltip instead of breaking.
 
 ## 6. Converter metadata (`data-*` attributes for MJML → EN import)
 
+### 6.0 `en-tools-config` — the template's declared expectations
+
+One JSON comment at the top of `<mj-head>` (both copies, kept identical)
+declares the template's spacing scale, width presets, and geometry
+threshold. The importer derives every pacing dropdown's names, px values,
+and snapping targets from it, and flags any authored value that is out of
+sync with the declaration. If a design change needs different steps (e.g.
+Half = 10px), change THIS declaration and the authored values together —
+never leave values silently off the declared grid. Schema and semantics:
+see docs/conventions.md in the email-to-en-marketing-tools repo
+("Template-declared expectations").
+
+
 Purpose: a downstream converter scans the **raw MJML** and turns templates into
 Engaging Networks JSON imports. The attributes are machine-readable markers; at
 `validationLevel=skip` they compile away to nothing, so they're invisible in
