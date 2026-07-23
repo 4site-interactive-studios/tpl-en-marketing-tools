@@ -187,8 +187,9 @@ and snapping targets from it, and flags any authored value that is out of
 sync with the declaration. If a design change needs different steps (e.g.
 Half = 10px), change THIS declaration and the authored values together —
 never leave values silently off the declared grid. Schema and semantics: see the "Template-declared expectations" section of
-https://github.com/4site-interactive-studios/email-to-en-marketing-tools/blob/main/docs/conventions.md
-(raw: https://raw.githubusercontent.com/4site-interactive-studios/email-to-en-marketing-tools/main/docs/conventions.md).
+CONVENTIONS.md at this repo's root (a public mirror of the converter's
+authoring contract; canonical source lives in the private
+email-to-en-marketing-tools repo).
 
 
 Purpose: a downstream converter scans the **raw MJML** and turns templates into
