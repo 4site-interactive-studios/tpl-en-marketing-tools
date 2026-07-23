@@ -20,7 +20,9 @@
  *   - Hide all excluded: hides those same blocks entirely — what remains is
  *                       what actually imports
  *   - Export / Copy .mjml: the page's raw .mjml with every excluded/dev-only
- *                       top-level block removed, as a download or clipboard copy
+ *                       top-level block removed, as a download or clipboard copy;
+ *                       a scope selector narrows it to one category section, or
+ *                       downloads a .zip with one .mjml per section + the full file
  *
  * Loaded lazily by the floating 🐞 toggle; exposes window.__tplDebug.
  * See NAMING.md for the block-name grammar this tool depends on.
@@ -151,7 +153,7 @@
      data-import-exclude, or marked dev-only are removed; everything the
      converter would actually import remains. Source of truth is the raw
      .mjml the build ships next to the compiled HTML. */
-  function buildImportableMjml(text) {
+  function buildImportableMjml(text, range) {
     var marker = /<!--\s*(START|END):\s*(.+?)\s*-->/g, m, stack = [], cuts = [];
     while ((m = marker.exec(text))) {
       if (m[1] === 'START') {
@@ -162,7 +164,9 @@
             var open = stack.splice(i, 1)[0];
             if (stack.length <= 1 && open.name !== 'Main Content') {
               var body = text.slice(open.start, m.index);
-              if (body.indexOf('data-fully-exclude') !== -1 ||
+              var outsideRange = range && (open.start < range.from || open.start >= range.to);
+              if (outsideRange ||
+                  body.indexOf('data-fully-exclude') !== -1 ||
                   body.indexOf('data-import-exclude') !== -1 ||
                   /dev only/.test(open.name)) {
                 cuts.push([open.start, marker.lastIndex]);
@@ -202,43 +206,147 @@
     });
   }
 
-  function exportMjml() {
-    // preferred: the raw source the build embeds into the page (works on
-    // file:// too); fallback: fetch the sibling .mjml
+  /* category sections: each "Category — X" header owns the blocks that follow
+     it until the next header. Ranges are character windows over the raw source. */
+  function sectionRanges(text) {
+    var out = [], m;
+    var re = /<!--\s*START:\s*Category — (.+?)\s*-->/g;
+    while ((m = re.exec(text))) out.push({ label: m[1], from: m.index, to: Infinity });
+    for (var i = 0; i + 1 < out.length; i++) out[i].to = out[i + 1].from;
+    return out;
+  }
+
+  function getRawPayload() {
     var embedded = document.querySelector('script[data-tpl-raw-source]');
     if (embedded) {
       try {
         var payload = JSON.parse(embedded.textContent);
         if (typeof payload === 'string') payload = { source: payload, includes: null };
-        return Promise.resolve(inlineIncludes(buildImportableMjml(payload.source), payload.includes));
+        return Promise.resolve(payload);
       } catch (e) { /* fall through to fetch */ }
     }
     var src = location.pathname.replace(/\.html$/, '.mjml');
     return fetch(src)
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(function (text) { return buildImportableMjml(text); });
+      .then(function (text) { return { source: text, includes: null }; });
+  }
+
+  function pageBase() {
+    return location.pathname.split('/').pop().replace(/\.html$/, '') || 'template';
+  }
+
+  function slug(label) {
+    return label.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  /* ---- minimal store-only ZIP writer (no dependencies) ---- */
+  var CRC_TABLE = (function () {
+    var t = [], c;
+    for (var n = 0; n < 256; n++) {
+      c = n;
+      for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+
+  function crc32(bytes) {
+    var c = 0xFFFFFFFF;
+    for (var i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+
+  function makeZip(files) { // files: [{name, text}]
+    var enc = new TextEncoder();
+    var parts = [], central = [], offset = 0;
+    var now = new Date();
+    var dosTime = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1);
+    var dosDate = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+    function u16(v) { return [v & 0xFF, (v >> 8) & 0xFF]; }
+    function u32(v) { return [v & 0xFF, (v >>> 8) & 0xFF, (v >>> 16) & 0xFF, (v >>> 24) & 0xFF]; }
+    files.forEach(function (f) {
+      var name = enc.encode(f.name), data = enc.encode(f.text), crc = crc32(data);
+      var common = [].concat(u16(20), u16(0), u16(0), u16(dosTime), u16(dosDate),
+        u32(crc), u32(data.length), u32(data.length), u16(name.length), u16(0));
+      parts.push(new Uint8Array([].concat([0x50, 0x4B, 0x03, 0x04], common)), name, data);
+      central.push({ name: name, common: common, offset: offset });
+      offset += 30 + name.length + data.length;
+    });
+    var cdStart = offset, cdLen = 0;
+    central.forEach(function (e) {
+      var rec = new Uint8Array([].concat([0x50, 0x4B, 0x01, 0x02], u16(20), e.common,
+        u16(0), u16(0), u16(0), u32(0), u32(e.offset)));
+      parts.push(rec, e.name);
+      cdLen += rec.length + e.name.length;
+    });
+    parts.push(new Uint8Array([].concat([0x50, 0x4B, 0x05, 0x06], u16(0), u16(0),
+      u16(files.length), u16(files.length), u32(cdLen), u32(cdStart), u16(0))));
+    return new Blob(parts, { type: 'application/zip' });
+  }
+
+  function exportMjml(sectionLabel) {
+    return getRawPayload().then(function (payload) {
+      var range = null;
+      if (sectionLabel) {
+        range = sectionRanges(payload.source).filter(function (r) { return r.label === sectionLabel; })[0];
+        if (!range) throw new Error('unknown section "' + sectionLabel + '"');
+      }
+      return inlineIncludes(buildImportableMjml(payload.source, range), payload.includes);
+    });
+  }
+
+  function exportZip() {
+    return getRawPayload().then(function (payload) {
+      var base = pageBase();
+      var files = [{ name: base + '-full.mjml',
+                     text: inlineIncludes(buildImportableMjml(payload.source), payload.includes) }];
+      sectionRanges(payload.source).forEach(function (r) {
+        files.push({ name: base + '-' + slug(r.label) + '.mjml',
+                     text: inlineIncludes(buildImportableMjml(payload.source, r), payload.includes) });
+      });
+      return makeZip(files);
+    });
+  }
+
+  function exportSelection() {
+    var sel = state.panel && state.panel.querySelector('[data-dbg-exportsel]');
+    return sel ? sel.value : 'full';
+  }
+
+  function saveBlob(blob, filename) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+  }
+
+  function exportFail(e) {
+    alert('Export failed: ' + e.message + ' — rebuild the page (npm run build) so the raw source is embedded, or serve dist/ over http');
   }
 
   function copyMjml(feedbackEl) {
-    return exportMjml().then(function (text) {
+    var which = exportSelection();
+    var section = (which === 'full' || which === 'zip') ? null : which;
+    return exportMjml(section).then(function (text) {
       copyName(text, feedbackEl);
-    }).catch(function (e) {
-      alert('Copy failed: ' + e.message + ' — rebuild the page (npm run build) so the raw source is embedded, or serve dist/ over http');
-    });
+    }).catch(exportFail);
   }
 
   function downloadMjml() {
-    exportMjml().then(function (text) {
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
-      a.download = location.pathname.split('/').pop().replace(/\.html$/, '') + '-importable.mjml';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
-    }).catch(function (e) {
-      alert('Export failed: ' + e.message + ' — rebuild the page (npm run build) so the raw source is embedded, or serve dist/ over http');
-    });
+    var which = exportSelection();
+    if (which === 'zip') {
+      return exportZip().then(function (blob) {
+        saveBlob(blob, pageBase() + '-sections.zip');
+      }).catch(exportFail);
+    }
+    var section = which === 'full' ? null : which;
+    return exportMjml(section).then(function (text) {
+      var name = pageBase() + (section ? '-' + slug(section) : '-importable') + '.mjml';
+      saveBlob(new Blob([text], { type: 'text/plain' }), name);
+    }).catch(exportFail);
   }
 
   /* ---- parse START/END comment pairs into block ranges (cached) ---- */
@@ -617,6 +725,8 @@
       sec('EXCLUDED', 'data-dbg-sec-excluded') +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-xmark> Highlight all excluded</label>' +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-hideexcl> Hide all excluded</label>' +
+      '<select data-dbg-exportsel style="display:none;width:100%;margin-top:6px;background:#222;color:#fff;' +
+      'border:1px solid #444;border-radius:4px;font:inherit;padding:2px 4px;"></select>' +
       '<div style="display:flex;gap:6px;margin-top:6px;">' +
       '<button data-dbg-export style="flex:1;background:#0E7C3F;color:#fff;border:0;border-radius:4px;' +
       'padding:4px 0;font:inherit;cursor:pointer;">Export .mjml</button>' +
@@ -648,6 +758,22 @@
     p.querySelector('[data-dbg-hideexcl]').addEventListener('change', function (e) {
       api.setHideExcluded(e.target.checked);
     });
+    // populate the export scope selector from the raw source's category headers
+    getRawPayload().then(function (payload) {
+      var ranges = sectionRanges(payload.source);
+      if (!ranges.length) return; // no categories on this page — full export only
+      var sel = p.querySelector('[data-dbg-exportsel]');
+      var opts = '<option value="full">Full template</option>' +
+                 '<option value="zip">All sections (.zip)</option>';
+      ranges.forEach(function (r) {
+        opts += '<option value="' + r.label.replace(/"/g, '&quot;') + '">' + r.label + '</option>';
+      });
+      sel.innerHTML = opts;
+      sel.style.display = 'block';
+      sel.addEventListener('change', function () {
+        p.querySelector('[data-dbg-copy]').disabled = sel.value === 'zip';
+      });
+    }).catch(function () { /* selector stays hidden; buttons default to full */ });
     p.querySelector('[data-dbg-export]').addEventListener('click', downloadMjml);
     p.querySelector('[data-dbg-copy]').addEventListener('click', function () {
       var btn = p.querySelector('[data-dbg-copy]');
@@ -747,9 +873,10 @@
       syncButton();
     },
     toggle: function () { (state.on || state.panel) ? api.disable() : api.enable(); },
-    exportMjml: exportMjml,       // returns a Promise<string> of importable MJML
-    downloadMjml: downloadMjml,   // same, as a file download
-    copyMjml: copyMjml,           // same, to the clipboard
+    exportMjml: exportMjml,       // (sectionLabel?) => Promise<string> of importable MJML
+    exportZip: exportZip,         // Promise<Blob> — one .mjml per category section + the full template
+    downloadMjml: downloadMjml,   // downloads per the panel's scope selector
+    copyMjml: copyMjml,           // clipboard copy per the scope selector
     setGrouping: function (v) {
       state.grouped = !!v;
       if (state.grouped && !state.groupedEver) {
