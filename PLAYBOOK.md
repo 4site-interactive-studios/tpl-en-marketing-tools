@@ -220,6 +220,23 @@ there, and the debugger's hide toggle uses it), so it's applied as an
 The wrapper survives compilation as-is, so the attribute is directly
 queryable in the compiled HTML.
 
+Category wrappers also carry `data-folder="<id>"` — the Engaging Networks
+import-folder ID for every block that FOLLOWS that header (until the next
+category header). The converter reads it from the raw MJML to route each
+block's import; the header block itself still never imports. Current map:
+Logo Headers 6399 · Text Blocks 6400 · Images & Media 6401 · Fundraising &
+Campaign 6402 · Content Features 6403 · Signatures 6404 · Heading Banners &
+Rows 6405 · Buttons & CTAs 6406 · Image & Text Layouts 6407 · Engagement &
+Interactive 6408 · Utilities 6409 · Footers 6410.
+
+A block can override its section's folder by carrying `data-folder="<id>"`
+directly on its own top-level tag (e.g. the block's `mj-section`): the
+converter resolves a block's folder as block-level `data-folder` →
+enclosing category header's `data-folder`. Like the other `data-*` metadata,
+a block-level `data-folder` exists only in the raw MJML (validationLevel=skip
+strips it from compiled HTML); the category wrappers keep theirs in compiled
+output because they're raw divs.
+
 ### 6c. Dark-mode image pairs + `data-style-dark-mode`
 
 Every `mj-image` gets a dark-mode twin: identical attributes, own swappable
@@ -275,8 +292,8 @@ the ignored attributes, mask `mj-text` bodies and image srcs, compare.
 Any standard MJML validator (editors, linters, external warning reports) will
 flag these sources — **by design**:
 
-- `Attribute data-style-* / data-fully-exclude is illegal` on nearly every
-  tag — the converter metadata contract (§6a/§6d). The attributes exist only
+- `Attribute data-style-* / data-fully-exclude / data-folder is illegal` on
+  flagged tags — the converter metadata contract (§6a/§6b/§6d). The attributes exist only
   in raw MJML; the pipeline compiles with `validationLevel=skip` (§2), which
   strips them from shipped HTML.
 - `Attribute width has invalid value: auto for type Unit` on every auto-width
