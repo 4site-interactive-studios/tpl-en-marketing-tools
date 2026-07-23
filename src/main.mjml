@@ -1662,13 +1662,13 @@
           alt="Logo"
           src="assets/logo-tpl_color-light-green-text.png"
           width="150px"
-          href="https://www.example.com" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          href="https://www.example.com" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           alt="Logo"
           src="assets/logo-tpl_color-light-green-text.png"
           width="150px"
-          href="https://www.example.com" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          href="https://www.example.com" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -1710,7 +1710,7 @@
       <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text
           css-class="footer-text"
-          color="#ffffff" data-style-alignment padding="30px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color
+          color="#ffffff" data-no-display-toggle data-style-alignment padding="30px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color
         >
           <p>
             Photos by:  Anand Varma, Wallace W. Nutting, Tamara Merino, Photo Ark: ANIMALS OF EARTH

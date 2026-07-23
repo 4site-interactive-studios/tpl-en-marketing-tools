@@ -41,7 +41,7 @@ const REMOVE = [
 const MASK = ['src', 'alt', 'href', 'background-url', 'background-size', 'background-position', 'background-repeat'];
 
 function normalize(body) {
-  let s = body.replace(/\s*data-(style-[a-z-]+|fully-exclude)/g, '');
+  let s = body.replace(/\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle)/g, '');
   // inset-gutter is the responsive companion of a padding value (collapses
   // desktop gutters on mobile) — padding is a Replacement, so this isn't structure
   s = s.replace(/css-class="([^"]*)"/g, (m, cls) =>

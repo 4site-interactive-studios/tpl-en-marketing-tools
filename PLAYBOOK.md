@@ -232,7 +232,18 @@ Interactive 6408 · Utilities 6409 · Footers 6410.
 A block can override its section's folder by carrying `data-folder="<id>"`
 directly on its own top-level tag (e.g. the block's `mj-section`): the
 converter resolves a block's folder as block-level `data-folder` →
-enclosing category header's `data-folder`. Like the other `data-*` metadata,
+enclosing category header's `data-folder`.
+
+**`data-no-display-toggle`** (valueless, on `mj-image`/`mj-text`/`mj-button`/
+`mj-divider` only): opts a component OUT of the importer's auto-generated
+per-component Display replacement (Include/Exclude Block). The importer adds
+that toggle to every such component sharing its column with another non-spacer
+component; this flag marks the ones editors must never be able to hide —
+legally required footer text (sender identification, Unsubscribe/Privacy
+links, photo credits), the required footer logos, and composite pieces whose
+siblings break without them (the thermometer's figures + bar). Presence-only,
+composes with `data-style-*` on the same tag, stripped from compiled HTML
+like the rest of the contract, and ignored by the structure-group normalizer. Like the other `data-*` metadata,
 a block-level `data-folder` exists only in the raw MJML (validationLevel=skip
 strips it from compiled HTML); the category wrappers keep theirs in compiled
 output because they're raw divs.
@@ -292,7 +303,7 @@ the ignored attributes, mask `mj-text` bodies and image srcs, compare.
 Any standard MJML validator (editors, linters, external warning reports) will
 flag these sources — **by design**:
 
-- `Attribute data-style-* / data-fully-exclude / data-folder is illegal` on
+- `Attribute data-style-* / data-fully-exclude / data-folder / data-no-display-toggle is illegal` on
   flagged tags — the converter metadata contract (§6a/§6b/§6d). The attributes exist only
   in raw MJML; the pipeline compiles with `validationLevel=skip` (§2), which
   strips them from shipped HTML.
