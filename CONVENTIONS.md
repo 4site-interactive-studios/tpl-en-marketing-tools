@@ -165,32 +165,47 @@ spacing, and stay.
 
 ## Sections (EN panel groups) & ordering
 
-- **Single-band block**: one settings section headed by the **block's name**
-  (no "Block Settings -" prefix — the context is self-explanatory).
-- **Multi-band block** (multiple mj-sections): each band's frame heads its
-  own **"Block N"** section placed right above that band's content group:
-  `Block 1 / └─ Block 1 Text / Block 2 / └─ Block 2 Text` (Creek Quiz
-  shape). Labels
-  inside go bare ("Padding Top", "Width"); names stay numbered
-  (`block_1_width`). Frame fields are NEVER regrouped into content groups —
-  an earlier experiment did, and blocks appeared to have no block-level
-  settings at all.
-- **Content groups**: when the component type's kept instances map
-  one-per-column onto a single side-by-side row (M = real column position —
-  explicit beats shorthand, especially with no "Column M Settings" section
-  to anchor the number), the FIRST group in each column heads it
-  (**"Column M X"**, e.g. "Column 1 Image") and its sibling groups indent
-  beneath with the tree glyph (**"└─ Column M X"**, e.g. "└─ Column 1
-  Text"), so the panel shows a hierarchy without a separate settings
-  header. Ordinal **"└─ Block N X"** (e.g. "└─ Block 1 Text") for stacked
-  bands or cross-section repeats, where "Column" would be wrong.
-  (`columnPlacements` + `columnGroupOf` + `columnHeadPrefix`)
-- **Column/group frames**: "Column N Settings" / "Group N Settings" when a
-  block has multiple columns/groups with fields.
-- Image Position / Column Order controls land in their band's section
-  ("Block N" on multi-band blocks, else the block-name section), ordered
-  right after that band's own fields.
-- Field order follows MJML scan order throughout.
+The panel is a **two-level tree**: the **block name always heads it**, and
+every other group nests one level down with the **`└─` tree glyph** — one
+consistent depth, one consistent addressing scheme per block. Merge-tag
+NAMES are unchanged by any of this (they stay `block_2_padding_top`,
+`text_1_content`, …); only the panel grouping LABELS move, so exports stay
+byte-stable. (`resolveSection` in `src/core/mjmlProps.ts`.)
+
+- **Block header = the block's name, always first** — for single- AND
+  multi-band blocks. It carries block-level frame settings (band 1's
+  padding/width/background). Never "Block 1" at the top.
+- **Bands** (each mj-section, numbered in document order): band 1 lives
+  under the block-name header; **band N>1 nests as `└─ Section N`**,
+  carrying that band's frame settings. (An mj-section whose frame fields are
+  all suppressed still anchors its content's `└─ Section N` grouping.)
+- **Content groups** always nest with the glyph, addressing uniform within
+  the block (never a mix of "Column M X" and a bare "X"):
+  - **Single-column**: `└─ <Component>` (e.g. `└─ Text`, `└─ Button`),
+    numbered per-component WITHIN THE BAND when repeated: `└─ Text 1` /
+    `└─ Text 2`. In a multi-band block the band is prefixed for
+    disambiguation: `└─ Section 2 Text`.
+  - **Side-by-side columns** (a component maps one-instance-per-column onto
+    one row): `└─ Column M <Component>`, uniformly for every component in
+    the row (band-prefixed when multi-band: `└─ Section 2 Column 1 Image`).
+    (`columnPlacements` + `columnGroupOf`.)
+- **"Block N" is retired as a panel label** — it used to name three
+  unrelated things (band index, repeated-component index, segmenter
+  auto-name) with independent counters that diverged. Bands are now
+  `Section N`; component repeats are `<Component> N` scoped to their band.
+- **Column/group frame settings**: `└─ Column N Settings` /
+  `└─ Group N Settings` only when several coexist; a lone column's frame
+  folds into its band's header.
+- **All-zero padding is suppressed**: a lone column authored `padding="0"`
+  (or a shorthand expanding to all zeros) gets NO Column Padding fields —
+  four "None" Selects are redundant noise; the block-level padding is the
+  real control. Genuine inset-box columns (non-zero padding, usually with a
+  background-color/border) still surface their controls. (`keepsPadding` →
+  `isAllZeroPadding`.)
+- Image Position / Column Order controls land in their band's frame section
+  (block name for band 1, `└─ Section N` beyond).
+- Field order follows MJML scan order, which keeps each band's frame and
+  content contiguous.
 
 ## Labels & names
 
