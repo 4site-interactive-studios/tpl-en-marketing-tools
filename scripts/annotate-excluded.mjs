@@ -143,6 +143,27 @@ function checkImageWidths(text, file) {
   return issues;
 }
 
+/* ---------- markup-integrity guard ----------
+   Catches the corruption classes a careless bulk source edit can introduce
+   (and that MJML compiles right past): an attribute glued to `padding="`
+   because a repair ate the leading space, and `cellpadding`/`cellspacing`
+   split into two words by an injected space. Both shipped once via the
+   pacing snap; this makes the build fail loud instead of silent. */
+function checkMarkupIntegrity(text, file) {
+  let issues = 0;
+  const warn = (msg) => { console.warn(`  WARN ${file}: ${msg}`); issues++; };
+  // a word-char/quote directly before padding=" means the leading space was
+  // eaten (valid MJML always has whitespace there; inner-/mso- use a hyphen).
+  // cellpadding="" is the one legit word ending in `padding` — exclude it.
+  const glued = text.match(/(?<=[A-Za-z0-9"])(?<!cell)padding="/g);
+  if (glued) warn(`${glued.length} attribute(s) glued to padding (missing space) — a bulk edit likely ate a space`);
+  for (const bad of ['cell padding=', 'cell spacing=']) {
+    const n = (text.match(new RegExp(bad, 'g')) || []).length;
+    if (n) warn(`${n}x "${bad}" — cellpadding/cellspacing was split by an injected space`);
+  }
+  return issues;
+}
+
 function structureManifest(text, file) {
   const groups = new Map(); // normalized key -> [block, ...]
   for (const b of topBlocks(text)) {
@@ -213,6 +234,7 @@ for (const rel of ['', 'partials']) {
     let { text, fully, imports } = annotate(source);
     let groupNote = '';
 
+    checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));
       const { manifest, groups, flagIssues } = structureManifest(source, join(rel, f));
