@@ -165,22 +165,25 @@ spacing, and stay.
 
 ## Sections (EN panel groups) & ordering
 
-The panel is a **two-level tree**: the **block name always heads it**, and
-every other group nests one level down with the **`└─` tree glyph** — one
-consistent depth, one consistent addressing scheme per block. Merge-tag
-NAMES are unchanged by any of this (they stay `block_2_padding_top`,
+The panel is a **two-level tree**. **Header sections carry NO glyph** — they
+are parents (the block name, and each band); **leaf content groups nest one
+level down with the `└─` glyph**. So a band and its content read as
+`Section 3` / `└─ Section 3 Text`, never `└─ Section 3` / `└─ Section 3
+Text`. One consistent depth, one consistent addressing scheme per block.
+Merge-tag NAMES are unchanged by any of this (they stay `block_2_padding_top`,
 `text_1_content`, …); only the panel grouping LABELS move, so exports stay
 byte-stable. (`resolveSection` in `src/core/mjmlProps.ts`.)
 
 - **Block header = the block's name, always first** — for single- AND
-  multi-band blocks. It carries block-level frame settings (band 1's
-  padding/width/background). Never "Block 1" at the top.
+  multi-band blocks (no glyph). It carries block-level frame settings
+  (band 1's padding/width/background). Never "Block 1" at the top.
 - **Bands** (each mj-section, numbered in document order): band 1 lives
-  under the block-name header; **band N>1 nests as `└─ Section N`**,
-  carrying that band's frame settings. (An mj-section whose frame fields are
-  all suppressed still anchors its content's `└─ Section N` grouping.)
-- **Content groups** always nest with the glyph, addressing uniform within
-  the block (never a mix of "Column M X" and a bare "X"):
+  under the block-name header; **band N>1 heads a `Section N` group (no
+  glyph — it is a parent)**, carrying that band's frame settings. (An
+  mj-section whose frame fields are all suppressed still anchors its
+  content's grouping.)
+- **Content groups** are the leaves — always nest with the glyph, addressing
+  uniform within the block (never a mix of "Column M X" and a bare "X"):
   - **Single-column**: `└─ <Component>` (e.g. `└─ Text`, `└─ Button`),
     numbered per-component WITHIN THE BAND when repeated: `└─ Text 1` /
     `└─ Text 2`. In a multi-band block the band is prefixed for
@@ -193,9 +196,9 @@ byte-stable. (`resolveSection` in `src/core/mjmlProps.ts`.)
   unrelated things (band index, repeated-component index, segmenter
   auto-name) with independent counters that diverged. Bands are now
   `Section N`; component repeats are `<Component> N` scoped to their band.
-- **Column/group frame settings**: `└─ Column N Settings` /
-  `└─ Group N Settings` only when several coexist; a lone column's frame
-  folds into its band's header.
+- **Column/group frame settings**: `Column N Settings` / `Group N Settings`
+  (headers, no glyph) only when several coexist; a lone column's frame folds
+  into its band's header.
 - **All-zero padding is suppressed**: a lone column authored `padding="0"`
   (or a shorthand expanding to all zeros) gets NO Column Padding fields —
   four "None" Selects are redundant noise; the block-level padding is the
@@ -226,6 +229,21 @@ Frame/header sections have no primary content, so they naturally begin at
 Appearance (Background Color) and end at Spacing (Padding → Block Width).
 Merge-tag NAMES and the HTML are untouched by the sort — it is purely the
 panel/export display order.
+
+### Options WITHIN a Select
+
+- **Natural order, default not hoisted**: option lists keep their intrinsic
+  order (palette order, font stacks, the pacing/preset scale). An off-list
+  custom default (a color not in the palette, a font not in the document) is
+  appended at the END, never hoisted to the top. (`resolvePaletteOptions`,
+  `fontOptions`.)
+- **`(default)` marker**: at export, the option whose value is the current
+  default gets a trailing " (default)" on its label — "Centered" →
+  "Centered (default)" — so the EN editor sees which choice is the template
+  baseline. Applied only at the export boundary (`markDefaultOption` in
+  `src/core/export/replacementMap.ts`) and idempotent (a stale marker is
+  stripped and re-placed), so the stored replacement and re-imports stay
+  clean.
 
 ## Labels & names
 
