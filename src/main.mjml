@@ -134,7 +134,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
+          alt="Trust for Public Land"
           href="https://www.example.com"
           width="150px"
           padding="0 16px 0 0"
@@ -145,7 +145,7 @@
       <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
           src="assets/state-north-carolina.png"
-          alt="Logo"
+          alt="North Carolina"
           href="https://www.example.com"
           width="100px"
           padding="0 0 0 16px"
@@ -154,7 +154,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/state-north-carolina.png"
-          alt="Logo"
+          alt="North Carolina"
           href="https://www.example.com"
           width="100px"
           padding="0 0 0 16px"
