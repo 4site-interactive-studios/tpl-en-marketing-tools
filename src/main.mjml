@@ -1377,10 +1377,10 @@
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
-          <p style="font-size:16px;"><b>A.</b> Cutthroat</p>
-          <p style="font-size:16px;"><b>B.</b> Brook</p>
-          <p style="font-size:16px;"><b>C.</b> Tiger</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Uncover which species made this miraculous comeback.</a></p>
+          <p style="font-size:16px;"><b>A.</b> Lorem</p>
+          <p style="font-size:16px;"><b>B.</b> Ipsum</p>
+          <p style="font-size:16px;"><b>C.</b> Dolor</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur.</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1696,16 +1696,14 @@
             donor.outreach@tpl.org with your request.
           </p>
           <p>
-            You may not be able to save the whole world, but you can make a difference in your own
-            backyard by planting a garden with native plants to provide a sustainable habitat for local
-            pollinators and other wildlife.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </mj-text>
         <mj-button width="auto"
           color="#ffffff"
           background-color="#006837"
           href="https://www.example.com"
-          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
         <mj-social
           css-class="socials"
           icon-padding="0"
