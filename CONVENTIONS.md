@@ -204,8 +204,28 @@ byte-stable. (`resolveSection` in `src/core/mjmlProps.ts`.)
   `isAllZeroPadding`.)
 - Image Position / Column Order controls land in their band's frame section
   (block name for band 1, `└─ Section N` beyond).
-- Field order follows MJML scan order, which keeps each band's frame and
-  content contiguous.
+
+### Field order WITHIN a section
+
+Sections keep document order; the FIELDS inside each one are sorted into a
+logical editing sequence (not raw MJML scan order, which buried Content at
+the bottom and split the dark URL from its light twin). The canonical rank
+(`FIELD_ORDER` / `fieldPriority` in `src/core/mjmlProps.ts`):
+
+1. **Primary content** — Content (RTE) · Image URL · **Dark Mode Image URL
+   (immediately after its light twin)** · Label · Link URL · Alt Text
+2. **Appearance** — Text Color · Background Image · Background Color · other
+   colors · Border Radius · Font Size · Letter Spacing · Line Height
+3. **Dimensions** — Width in Pixels / button Width · Height
+4. **Position** — Alignment · Image Position / Column Order / Direction
+5. **Spacing** — Spacing Below · Padding Top/Right/Bottom/Left · Block Width
+   (the width preset is a frame control, so it sits with padding)
+6. **Visibility** — **Display is always last** in its group
+
+Frame/header sections have no primary content, so they naturally begin at
+Appearance (Background Color) and end at Spacing (Padding → Block Width).
+Merge-tag NAMES and the HTML are untouched by the sort — it is purely the
+panel/export display order.
 
 ## Labels & names
 

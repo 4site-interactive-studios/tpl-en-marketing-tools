@@ -360,7 +360,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -376,7 +376,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="160px" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Donate</mj-button>
+          <mj-button width="160px" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -411,9 +411,9 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -431,9 +431,9 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -467,9 +467,9 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Giving Tuesday" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="160px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="160px" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -644,7 +644,7 @@
     >
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Seattle Makes the Top 10 List in the ParkScore Index</a></h2>
+          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -654,7 +654,7 @@
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Start Your Summer with Butterflies</a></h2>
+          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -757,7 +757,7 @@
             ullamcorper
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (inset, left button) -->
@@ -776,7 +776,7 @@
             ullamcorper
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (inset, centered button) -->
@@ -794,7 +794,7 @@
             senectus aenean. Non sit volutpat quam pretium risus ullamcorper
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (full width, centered button) -->
@@ -821,7 +821,7 @@
             <li>Proin urna urna massa ut quis augue pulvinar</li>
           </ul>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ Bullet Lists (inset, centered button) -->
@@ -848,7 +848,7 @@
             <li>Proin urna urna massa ut adipiscing convallis quis augue.</li>
           </ul>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text w/ Bullet Lists (full width, left button) -->
@@ -872,7 +872,7 @@
             <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra</a>
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Start My Annual Gift</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text + Link Paragraph CTA (inset) -->
@@ -896,7 +896,7 @@
             <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare a quis metus. Fermentum sit idretra tortor. In viverra &gt;&gt;</a>
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Start My Annual Gift</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Text + Link Paragraph CTA (full width) -->
@@ -917,7 +917,7 @@
         </mj-text>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>LISTEN</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>WATCH</a></div></div>
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>Learn More</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>WATCH</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -939,7 +939,7 @@
         </mj-text>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>LISTEN</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>WATCH</a></div></div>
+          <div class="cta-group" style="text-align:left;font-size:0;"><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>Learn More</a></div><!--[if mso]></td><td style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>WATCH</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1245,10 +1245,10 @@
     <!-- START: Give Button Stack -->
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>GIVE $100 = $200 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>GIVE $60 = $120 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>GIVE $35 = $75 WHEN 2X MATCHED</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>GIVE ANY AMOUNT = DOUBLE MATCHED</mj-button>
+        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Give Button Stack -->
@@ -1614,7 +1614,7 @@
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
           src="assets/image-ranking.png"
-          alt="2026 ParkScore ranking: number 8"
+          alt="Placeholder ranking graphic"
           href="https://www.example.com"
           padding="0"
           align="center"
@@ -1622,7 +1622,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/image-ranking.png"
-          alt="2026 ParkScore ranking: number 8"
+          alt="Placeholder ranking graphic"
           href="https://www.example.com"
           padding="0"
           align="center"
@@ -1632,12 +1632,7 @@
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p>
-            We released our 15th annual ParkScore index yesterday, and Seattle
-            ranks #8 nationwide based on strong measurements for acreage,
-            access, investment, amenities, and equity. Although the Emerald
-            City fell out of the top 10 in 2020, it came back to the top 10
-            list in 2021 and has stayed there ever since.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1646,9 +1641,9 @@
     <!-- START: Story Card (image right, no heading) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-butterfly.jpg" width="240px" alt="Monarch butterfly resting on a purple coneflower" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image src="assets/photo-butterfly.jpg" width="240px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-butterfly.jpg" width="240px" alt="Monarch butterfly resting on a purple coneflower" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-butterfly.jpg" width="240px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -1657,14 +1652,9 @@
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p>
-            Summer brings a surge of butterflies&mdash;monarchs, painted ladies,
-            tiger swallowtails, and more. These vibrant pollinators thrive in
-            protected landscapes, creating unforgettable seasonal displays.
-            From coast to coast, here are TPL-protected places where
-            butterflies abound.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>FOLLOW THE FLUTTER</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image right, no heading) -->
@@ -1748,7 +1738,7 @@
             pulvinar senectus.
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Block (left button) -->
@@ -1784,7 +1774,7 @@
             senectus.
           </p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>View ParkScore Rankings</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Block (centered button) -->
@@ -1869,26 +1859,21 @@
       <mj-section background-color="#ffffff" border="1px solid #F7941D" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Seattle Makes the Top 10 List in the ParkScore Index</a></h3>
+            <h3><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h3>
           </mj-text>
         </mj-column>
       </mj-section>
       <mj-section background-color="#ffffff" border-left="1px solid #F7941D" border-right="1px solid #F7941D" border-bottom="1px solid #F7941D" padding="8px 16px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/image-ranking.png" alt="2026 ParkScore ranking: number 8" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/image-ranking.png" alt="2026 ParkScore ranking: number 8" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:16px;">
-              We released our 15th annual ParkScore index yesterday, and Seattle
-              ranks #8 nationwide based on strong measurements for acreage,
-              access, investment, amenities, and equity. Although the Emerald
-              City fell out of the top 10 in 2020, it came back to the top 10
-              list in 2021 and has stayed there ever since.
-            </p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </mj-text>
         </mj-column>
       </mj-section>
@@ -1911,7 +1896,7 @@
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1922,7 +1907,7 @@
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1933,7 +1918,7 @@
     <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1944,7 +1929,7 @@
     <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1955,7 +1940,7 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1966,7 +1951,7 @@
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LIMITED-TIME MATCH</p>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
         </mj-text>
       </mj-column>
@@ -1983,7 +1968,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>START MY ANNUAL GIFT</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -1999,7 +1984,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>START MY ANNUAL GIFT</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2007,7 +1992,7 @@
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Match:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>OFFER UNCLAIMED</a></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>LOREM IPSUM DOLOR SIT</a></p>
           <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7941D;font-weight:bold;">FRIDAY</span></p>
         </mj-text>
       </mj-column>
@@ -2024,7 +2009,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>START MY ANNUAL GIFT</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2044,7 +2029,7 @@
       <mj-section padding="48px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h1 style="color:#ffffff;">Giving Day 2X Match:<br />Now Active</h1>
+            <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
           </mj-text>
         </mj-column>
       </mj-section>
@@ -2057,7 +2042,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>GIVE NOW</mj-button>
+            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
           </mj-column>
         </mj-group>
       </mj-section>
@@ -2074,7 +2059,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>3X MY GIFT</mj-button>
+          <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2084,9 +2069,9 @@
     <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h1 style="color:#ffffff;">End of Year Triple Match</h1>
+          <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>3X MY GIFT</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Photo CTA Banner (centered headline + gift button) -->
@@ -2137,7 +2122,7 @@
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE DAY</p>
-          <h2 style="color:#ffffff;margin:0 0 16px;">Don&rsquo;t miss this 5X match!</h2>
+          <h2 style="color:#ffffff;margin:0 0 16px;">Lorem Ipsum Dolor Sit Amet</h2>
         </mj-text>
         <mj-text color="#ffffff" data-no-display-toggle data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
@@ -2166,7 +2151,7 @@
             </tr>
           </table>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>5X MY GIFT</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Fundraising Thermometer -->
@@ -2179,7 +2164,7 @@
             <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
             <h3 style="color:#ffffff;margin:0 0 16px;">Time is running out to<br />quintuple your impact!</h3>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>5X MY GIFT</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
           <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
             <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
@@ -2197,12 +2182,12 @@
             <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
             <p style="font-size:16px;"><b>Supporter ID:</b></p>
             <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>End-of-Year 5X Match</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
             <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
             <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
             <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>5X My Gift Now</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
@@ -2216,12 +2201,12 @@
             <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
             <p style="font-size:16px;"><b>Supporter ID:</b></p>
             <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>End-of-Year 5X Match</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
             <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
             <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
             <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>5X My Gift Now</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
@@ -2250,9 +2235,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="2X Giving Tuesday Planned Giving" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="2X Giving Tuesday Planned Giving" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -2383,10 +2368,10 @@
         </mj-column>
         <mj-column vertical-align="top" width="55%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text align="center" container-background-color="#F5FAF1" css-class="advocacy-box" data-style-alignment padding="0 0 32px 24px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;padding:12px 8px 0;">Don&rsquo;t<br />Let Our<br />National<br />Parks Fall<br />Apart</h3>
+            <h3 style="color:#362229;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>TAKE ACTION</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2406,7 +2391,7 @@
             <h3 style="color:#362229;padding:12px 8px 0;">Urge<br />Congress<br />to Protect<br />America&rsquo;s<br />Wildlife</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>TAKE ACTION</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -2450,14 +2435,14 @@
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">CREEK QUIZ: GUESS WHO&rsquo;S BACK</p>
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">LOREM IPSUM DOLOR SIT</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Which species of trout returned to Hazle Creek after a century-long absence?</a></h3>
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
           <p style="font-size:16px;"><b>A.</b> Cutthroat</p>
           <p style="font-size:16px;"><b>B.</b> Brook</p>
           <p style="font-size:16px;"><b>C.</b> Tiger</p>
@@ -2499,7 +2484,7 @@
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:17px;font-weight:700;">Were the topics in this newsletter important?</p>
+          <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
           <p style="font-size:16px;"><img src="assets/icon-heart_green.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Very important</a></p>
           <p style="font-size:16px;"><img src="assets/icon-thumbs-up.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Somewhat important</a></p>
           <p style="font-size:16px;"><img src="assets/icon-prohibited.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Not important</a></p>
@@ -2557,7 +2542,7 @@
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
-          <p style="font-size:16px;margin-top:0;">And if you like, where you live or what parks you love.</p>
+          <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
@@ -2569,9 +2554,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          SUBMIT A COMMENT
-        </mj-button>
+          align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;" data-style-color data-style-href>Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
         </mj-text>
@@ -2600,7 +2583,7 @@
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
-          <p style="font-size:16px;margin-top:0;">And if you like, where you live or what parks you love.</p>
+          <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
@@ -2610,7 +2593,7 @@
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">5</span>&nbsp; <b>Close with your request.</b></p>
           <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>SUBMIT A COMMENT</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;" data-style-color data-style-href>Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
         </mj-text>
@@ -2652,15 +2635,7 @@
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
           <p>
-            Land carries meaning&mdash;and so do the places where history
-            happened. In that sense, some buildings are physical archives that
-            we can stand in and experience, connecting us to stories of human
-            resilience. This episode is produced from Atlanta's Prince Hall
-            Masonic Lodge, home to the former WERD studios, the first
-            Black-owned U.S. radio station, exploring how self-determination
-            shaped a movement&mdash;and can help shape the future.
-            <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Listen now!</a>
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2694,11 +2669,11 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>📰 TPL in the News</h3>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>E&amp;E News by Politico:</a> Most Americans Back Funding for the Massive Park Maintenance Backlog, Survey Finds</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>FacilitiesNet:</a> Sustainable K-12 Schoolyards Grow in Popularity</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Sky-Hi News:</a> Outdoor Organization Encourages Kids to Take Their Brains Outside</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Deseret News:</a> The Start of a Movement? How Time Outside Can Alter Our Nation's Health</p>
+          <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -3014,7 +2989,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3040,7 +3015,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3062,7 +3037,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3084,7 +3059,7 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#CEE4C5" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
@@ -3195,9 +3170,7 @@
           color="#ffffff"
           background-color="#006837"
           href="https://www.example.com"
-          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          DONATE
-        </mj-button>
+          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-social
           css-class="socials"
           icon-padding="0"

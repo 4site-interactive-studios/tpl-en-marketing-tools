@@ -1033,7 +1033,7 @@
     >
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Start Your Summer with Butterflies</a></h2>
+          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1047,7 +1047,7 @@
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
           src="assets/photo-butterfly.jpg" width="240px"
-          alt="Monarch butterfly resting on a purple coneflower"
+          alt="Placeholder photo"
           href="https://www.example.com"
           padding="0 0 8px"
           align="center"
@@ -1056,7 +1056,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-butterfly.jpg" width="240px"
-          alt="Monarch butterfly resting on a purple coneflower"
+          alt="Placeholder photo"
           href="https://www.example.com"
           padding="0 0 8px"
           align="center"
@@ -1070,18 +1070,11 @@
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p>
-            Summer brings a surge of butterflies&mdash;monarchs, painted ladies,
-            tiger swallowtails, and more. These vibrant pollinators thrive in
-            protected landscapes, creating unforgettable seasonal displays.
-            From coast to coast, here are TPL-protected places where
-            butterflies abound.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          FOLLOW THE FLUTTER
-        </mj-button>
+          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image right, no heading) -->
@@ -1097,7 +1090,7 @@
     >
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Seattle Makes the Top 10 List in the ParkScore Index</a></h2>
+          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1111,7 +1104,7 @@
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
           src="assets/image-ranking.png"
-          alt="2026 ParkScore ranking: number 8"
+          alt="Placeholder ranking graphic"
           href="https://www.example.com"
           padding="0"
           align="center"
@@ -1119,7 +1112,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/image-ranking.png"
-          alt="2026 ParkScore ranking: number 8"
+          alt="Placeholder ranking graphic"
           href="https://www.example.com"
           padding="0"
           align="center"
@@ -1129,12 +1122,7 @@
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p>
-            We released our 15th annual ParkScore index yesterday, and Seattle
-            ranks #8 nationwide based on strong measurements for acreage,
-            access, investment, amenities, and equity. Although the Emerald
-            City fell out of the top 10 in 2020, it came back to the top 10
-            list in 2021 and has stayed there ever since.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1177,15 +1165,7 @@
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
           <p>
-            Land carries meaning&mdash;and so do the places where history
-            happened. In that sense, some buildings are physical archives that
-            we can stand in and experience, connecting us to stories of human
-            resilience. This episode is produced from Atlanta's Prince Hall
-            Masonic Lodge, home to the former WERD studios, the first
-            Black-owned U.S. radio station, exploring how self-determination
-            shaped a movement&mdash;and can help shape the future.
-            <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Listen now!</a>
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1386,7 +1366,7 @@
     >
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">CREEK QUIZ: GUESS WHO&rsquo;S BACK</p>
+          <p style="font-size:22px;font-weight:700;letter-spacing:2px;">LOREM IPSUM DOLOR SIT</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1396,7 +1376,7 @@
     >
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Which species of trout returned to Hazle Creek after a century-long absence?</a></h3>
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
           <p style="font-size:16px;"><b>A.</b> Cutthroat</p>
           <p style="font-size:16px;"><b>B.</b> Brook</p>
           <p style="font-size:16px;"><b>C.</b> Tiger</p>
@@ -1434,7 +1414,7 @@
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
-          <p style="font-size:16px;margin-top:0;">And if you like, where you live or what parks you love.</p>
+          <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
@@ -1446,9 +1426,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          SUBMIT A COMMENT
-        </mj-button>
+          align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;" data-style-color data-style-href>Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
         </mj-text>
@@ -1460,11 +1438,11 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>📰 TPL in the News</h3>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>E&amp;E News by Politico:</a> Most Americans Back Funding for the Massive Park Maintenance Backlog, Survey Finds</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>FacilitiesNet:</a> Sustainable K-12 Schoolyards Grow in Popularity</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Sky-Hi News:</a> Outdoor Organization Encourages Kids to Take Their Brains Outside</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Deseret News:</a> The Start of a Movement? How Time Outside Can Alter Our Nation's Health</p>
+          <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1563,7 +1541,7 @@
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:17px;font-weight:700;">Were the topics in this newsletter important?</p>
+          <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
           <p style="font-size:16px;"><img src="assets/icon-heart_green.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Very important</a></p>
           <p style="font-size:16px;"><img src="assets/icon-thumbs-up.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Somewhat important</a></p>
           <p style="font-size:16px;"><img src="assets/icon-prohibited.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Not important</a></p>
@@ -1727,9 +1705,7 @@
           color="#ffffff"
           background-color="#006837"
           href="https://www.example.com"
-          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          DONATE
-        </mj-button>
+          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-social
           css-class="socials"
           icon-padding="0"
