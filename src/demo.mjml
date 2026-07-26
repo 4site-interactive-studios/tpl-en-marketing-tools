@@ -1322,6 +1322,9 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
       </mj-column>
       <mj-column css-class="two-col-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
@@ -1340,9 +1343,83 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
       </mj-column>
     </mj-section>
     <!-- END: Two Images -->
+
+    <!-- START: Three Images -->
+    <mj-section
+      css-class="three-col-images-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column second-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Three Images -->
 
     <!-- START: Image with overlay -->
     <!--
@@ -1444,9 +1521,9 @@
     <!-- START: Story Card (beige, image left) -->
     <mj-section
       css-class="two-col-image-text-block block"
-      background-color="#F1EEE9" padding="16px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      background-color="#F1EEE9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column css-class="two-col-col" width="240px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
             src="assets/photo-forest.jpg" width="220px"
             alt="Custom alt text"
@@ -1466,7 +1543,7 @@
             css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
-      <mj-column css-class="two-col-col" width="340px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3>Lorem ipsum dolor</h3>
           <p>
@@ -1489,9 +1566,9 @@
     <mj-section
         css-class="two-col-image-text-block block"
         background-color="#F1EEE9"
-        direction="rtl" padding="16px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
+        direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column css-class="two-col-col" width="240px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
             src="assets/photo-hiking-duo.jpg" width="220px"
             alt="Custom alt text"
@@ -1511,7 +1588,7 @@
             css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
-      <mj-column css-class="two-col-col" width="340px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3>Lorem ipsum dolor</h3>
           <p>
@@ -1533,7 +1610,7 @@
     <!-- START: Story Card (image left, no button) -->
     <mj-section
       css-class="two-col-image-text-block block"
-      background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
@@ -1542,7 +1619,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image light-only" fluid-on-mobile="true" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/image-ranking.png"
@@ -1550,7 +1627,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1632,9 +1709,6 @@
     <!-- END: Story Card (image left) -->
 
     <!-- START: Story Block (left button) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
@@ -1668,10 +1742,7 @@
     <!-- END: Story Block (left button) -->
 
     <!-- START: Story Block (centered button) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -1898,21 +1969,8 @@
     </mj-section>
     <!-- END: Photo Hero (CTA) -->
 
-    <!-- START: Photo Hero (CTA, w/ deadline panel) -->
-    <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
-      <mj-group>
-        <mj-column vertical-align="middle" width="40%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <!-- START: Deadline Panel -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
@@ -1921,22 +1979,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo Hero (CTA, w/ deadline panel) -->
+    <!-- END: Deadline Panel -->
 
-    <!-- START: Photo Hero (CTA, w/ subscription panel) -->
-    <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size data-fully-exclude>
-      <mj-group>
-        <mj-column vertical-align="middle" width="40%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
+    <!-- START: Subscription Panel -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1946,7 +1991,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo Hero (CTA, w/ subscription panel) -->
+    <!-- END: Subscription Panel -->
 
     <!-- START: Headline Hero -->
     <mj-wrapper css-class="block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
@@ -2467,7 +2512,7 @@
           <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank [Agency Name].</b></p>
           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
           <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
@@ -2480,7 +2525,7 @@
           href="https://www.example.com"
           align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;" data-style-color data-style-href>Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;" data-style-color data-style-href>[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2508,7 +2553,7 @@
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank the National Park Service.</b></p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank [Agency Name].</b></p>
           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
           <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
@@ -2519,7 +2564,7 @@
         </mj-text>
         <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.regulations.gov" style="color:#2E9E44;" data-style-color data-style-href>Regulations.gov</a>, the federal site where you can send your comment straight to the National Park Service.</p>
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;" data-style-color data-style-href>[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
       </mj-column>
     </mj-section>

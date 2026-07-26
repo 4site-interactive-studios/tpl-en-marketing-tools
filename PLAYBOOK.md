@@ -145,9 +145,9 @@ on any page that has the START/END comments.
 
 Panel options:
 
-Options are grouped into three sections whose headers carry live counts —
-BLOCKS (total parsed), STRUCTURE (unique structures), EXCLUDED (flagged
-blocks, both kinds):
+Options are grouped into four sections; BLOCKS (total parsed), STRUCTURE
+(unique structures) and EXCLUDED (flagged blocks, both kinds) headers carry
+live counts:
 
 | Section | Option | What it does |
 |---|---|---|
@@ -156,6 +156,8 @@ blocks, both kinds):
 | STRUCTURE | Group by structure | Groups by structure-group manifest: one color + the anchor block's name per structure; adjacent same-group blocks merge into runs (name-family fallback on pages without a manifest). First enable also turns on stacking + stripes |
 | STRUCTURE | Stack side-by-side | Gathers ALL members of a structure group — from anywhere on the page — into one horizontal scroll-snap strip at the first member's position (fully reversible per-element DOM move) |
 | STRUCTURE | Striped background | Hatches the strip backgrounds (on by default with grouping) |
+| EDIT | Edit blocks | Turns every block content-editable (click into text and type) and adds ↑ ↓ ✎ ✕ chips to each block outline: move the block up/down one slot on the page, rename it (prompt pre-filled with the current name; renamed chips show the new name + `*`, and clicking a chip still copies the ORIGINAL name), or mark it for deletion (block dims + greys out and its chip gains a ✕ prefix; the chips collapse to a single ↺ that undoes the mark). Enabling edit mode dissolves any active stacking. Nothing writes to source — it builds a change request |
+| EDIT | Copy changes | Copies a JSON changeset keyed by ORIGINAL block names (the stable identifiers): per-block `newName`, `deleted: true`, and `textEdits` (`{before, after}` per changed text node, diffed against a baseline snapshotted when edit mode first turns on), plus a full-page `order` array when blocks were moved. Paste it to Claude to apply against the MJML source. Caveat: blocks whose text is rewritten by live scripts (countdown timers) can't hold manual text edits |
 | EXCLUDED | Highlight all excluded | Red tint + red ✕ over every excluded block — both `data-fully-exclude` variants and `data-import-exclude` chrome |
 | EXCLUDED | Export / Copy .mjml | The page's raw .mjml with every excluded/dev-only top-level block removed and every mj-include inlined (type="css" becomes mj-style; partials spliced in) — fully self-contained and compilable from anywhere. A scope selector (shown when the page has Category headers) narrows the export to one category section, or downloads a .zip containing one .mjml per section plus the full template (dependency-free store-mode zip); Copy is disabled in zip mode |
 | EXCLUDED | Hide all excluded | Hides all of those blocks — what remains is exactly what imports (one block per structure group) |

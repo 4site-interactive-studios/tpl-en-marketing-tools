@@ -215,9 +215,16 @@ function structureManifest(text, file) {
     groups.get(key).push(b);
   }
   // subsumption edges: groupKey -> key of a group whose anchor subsumes it
-  const variantKeys = new Map(); // groupKey -> Set of normalized single-removal variants
+  // depth-2 closure: editors may exclude ANY combination of toggles, so a
+  // subset reachable by removing two members (e.g. caption + button) is just
+  // as derivable as a one-removal subset. Depth 2 covers every real case in
+  // this catalog at trivial cost.
+  const variantKeys = new Map(); // groupKey -> Set of normalized 1- and 2-removal variants
   for (const [key, members] of groups) {
-    variantKeys.set(key, new Set(removableVariants(members[0].body).map(normalize)));
+    const lvl1 = removableVariants(members[0].body);
+    const keys = new Set(lvl1.map(normalize));
+    for (const v of lvl1) for (const v2 of removableVariants(v)) keys.add(normalize(v2));
+    variantKeys.set(key, keys);
   }
   const parentOf = new Map();
   for (const [key, members] of groups) {

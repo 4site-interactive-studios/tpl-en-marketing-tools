@@ -41,6 +41,7 @@
   var state = {
     on: false, grouped: false, stacked: false, labels: true, stripes: false, groupedEver: false,
     markExcluded: false, hideExcluded: false, fullyExcluded: null, exclusionsFailed: false,
+    editMode: false, editEver: false, renames: {}, deleted: {}, textBase: null, origOrder: null,
     blocks: null,     // parsed once per enable; el references stay valid across moves
     layer: null, panel: null,
     stacks: [],       // [{placeholder, container, cells:[{els}]}] for reversal
@@ -146,6 +147,132 @@
         console.warn('[tpl-debug] cannot load ' + src + ' for exclusion info (' + e.message + ') — "Mark fully excluded" unavailable');
         syncPanel();
       });
+  }
+
+  /* ---- EDIT MODE ----
+     Move / rename / text-edit blocks in the page, then "Copy changes" emits a
+     JSON payload (keyed by ORIGINAL block names — the stable identifiers) that
+     the user hands to Claude to apply to the MJML source. Nothing here writes
+     to the source; it's a change-request builder. */
+  function blockNodes(b) {
+    // every sibling node from START comment to END comment inclusive
+    var nodes = [], n = b.startC;
+    while (n) { nodes.push(n); if (n === b.endC) break; n = n.nextSibling; }
+    return nodes;
+  }
+
+  function snapshotText() {
+    state.textBase = new WeakMap();
+    state.blocks.forEach(function (b) {
+      b.els.forEach(function (el) {
+        var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        var t;
+        while ((t = w.nextNode())) {
+          if (t.nodeValue.trim()) state.textBase.set(t, t.nodeValue);
+        }
+      });
+    });
+  }
+
+  function setEditMode(on) {
+    state.editMode = !!on;
+    if (on) {
+      if (state.stacked) { removeStack(); state.stacked = false; state.grouped = false; }
+      if (!state.editEver) { state.editEver = true; state.origOrder = state.blocks.map(function (b) { return b.name; }); snapshotText(); }
+      state.blocks.forEach(function (b) { b.els.forEach(function (el) { el.contentEditable = 'true'; el.style.outlineOffset = '-1px'; }); });
+    } else {
+      state.blocks.forEach(function (b) { b.els.forEach(function (el) { el.contentEditable = 'false'; }); });
+    }
+    render();
+  }
+
+  function domOrderBlocks() {
+    // current on-page order of blocks by walking comments
+    var order = [], w = document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT);
+    var n;
+    while ((n = w.nextNode())) {
+      var m = n.nodeValue.trim().match(/^START:\s*(.+?)\s*$/);
+      if (m && !SKIP.test(m[1])) order.push(m[1]);
+    }
+    return order;
+  }
+
+  function moveBlock(name, dir) {
+    var order = domOrderBlocks();
+    var byName = {};
+    state.blocks.forEach(function (b) { byName[b.name] = b; });
+    var i = order.indexOf(name);
+    var j = i + (dir < 0 ? -1 : 1);
+    if (i < 0 || j < 0 || j >= order.length) return;
+    var mover = byName[name], target = byName[order[j]];
+    if (!mover || !target) return;
+    var nodes = blockNodes(mover);
+    if (dir < 0) {
+      var ref = target.startC;
+      nodes.forEach(function (nd) { ref.parentNode.insertBefore(nd, ref); });
+    } else {
+      var after = target.endC.nextSibling;
+      nodes.forEach(function (nd) { target.endC.parentNode.insertBefore(nd, after); });
+    }
+    render();
+  }
+
+  function renameBlock(origName, newName) {
+    if (!newName || newName === origName) delete state.renames[origName];
+    else state.renames[origName] = newName;
+    render();
+  }
+
+  function deleteBlock(origName, restore) {
+    // mark-for-deletion only: the block stays on the page, dimmed and
+    // struck through, so the choice is reversible until Copy changes
+    if (!document.getElementById('tpl-debug-edit-css')) {
+      var st = document.createElement('style');
+      st.id = 'tpl-debug-edit-css';
+      st.textContent = '[data-tpl-debug-deleted]{opacity:.25 !important;filter:grayscale(1);}';
+      document.head.appendChild(st);
+    }
+    var byName = {};
+    state.blocks.forEach(function (b) { byName[b.name] = b; });
+    var b = byName[origName];
+    if (!b) return;
+    if (restore) delete state.deleted[origName];
+    else state.deleted[origName] = true;
+    b.els.forEach(function (el) {
+      if (restore) el.removeAttribute('data-tpl-debug-deleted');
+      else el.setAttribute('data-tpl-debug-deleted', '');
+    });
+    render();
+  }
+
+  function collectChanges() {
+    var order = domOrderBlocks();
+    var moved = state.origOrder && order.join('\u0001') !== state.origOrder.join('\u0001');
+    var changes = [];
+    state.blocks.forEach(function (b) {
+      var c = { originalName: b.name };
+      var dirty = false;
+      if (state.renames[b.name]) { c.newName = state.renames[b.name]; dirty = true; }
+      if (state.deleted[b.name]) { c.deleted = true; dirty = true; }
+      var edits = [];
+      b.els.forEach(function (el) {
+        var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        var t;
+        while ((t = w.nextNode())) {
+          var base = state.textBase && state.textBase.get(t);
+          if (base !== undefined && base !== t.nodeValue) edits.push({ before: base, after: t.nodeValue });
+        }
+      });
+      if (edits.length) { c.textEdits = edits; dirty = true; }
+      if (dirty) changes.push(c);
+    });
+    var payload = {
+      page: pageBase(),
+      note: 'Block change-request from the debug overlay. originalName is the stable identifier (the START/END comment name in the MJML source at the time of editing). Apply renames and deletions to both catalog copies where the block exists; apply order to this page. deleted:true means remove the block from the source entirely.',
+      changes: changes,
+    };
+    if (moved) payload.order = order;
+    return JSON.stringify(payload, null, 2);
   }
 
   /* ---- export: the page's raw MJML minus excluded blocks ----
@@ -365,7 +492,7 @@
             var open = stack.splice(i, 1)[0];
             if (!SKIP.test(open.name)) {
               var els = elementsBetween(open.start, node);
-              if (els.length) blocks.push({ name: open.name, els: els });
+              if (els.length) blocks.push({ name: open.name, els: els, startC: open.start, endC: node });
             }
             matched = true;
             break;
@@ -630,7 +757,35 @@
         if (!r) return;
         var c = color(groupKey(b.name));
         layer.appendChild(box(r, c, 2, 'dashed'));
-        if (state.labels) layer.appendChild(chip(b.name, c, r.top, r.left, false));
+        var isDel = !!state.deleted[b.name];
+        var shown = state.renames[b.name] ? state.renames[b.name] + ' *' : b.name;
+        if (isDel) shown = '\u2715 ' + shown;
+        if (state.labels) layer.appendChild(chip(shown, c, r.top, r.left, false, b.name));
+        if (state.editMode) {
+          var bar = document.createElement('div');
+          bar.setAttribute('data-tpl-debug-editbar', '');
+          bar.style.cssText = 'position:absolute;top:' + r.top + 'px;left:' + (r.left + r.width) + 'px;' +
+            'transform:translateX(-100%);display:flex;gap:2px;pointer-events:auto;z-index:6;';
+          var defs = isDel
+            ? [['\u21ba', function () { deleteBlock(b.name, true); }]]
+            : [['\u2191', function () { moveBlock(b.name, -1); }],
+               ['\u2193', function () { moveBlock(b.name, 1); }],
+               ['\u270e', function () {
+                 var cur = state.renames[b.name] || b.name;
+                 var nn = prompt('Rename block (original: "' + b.name + '")', cur);
+                 if (nn !== null) renameBlock(b.name, nn.trim());
+               }],
+               ['\u2715', function () { deleteBlock(b.name); }]];
+          defs.forEach(function (def) {
+            var btn = document.createElement('div');
+            btn.textContent = def[0];
+            btn.style.cssText = 'background:#111;color:#fff;font:12px/1.6 Menlo,monospace;padding:1px 7px;' +
+              'cursor:pointer;border:1px solid ' + c + ';border-radius:3px;user-select:none;';
+            btn.addEventListener('click', def[1]);
+            bar.appendChild(btn);
+          });
+          layer.appendChild(bar);
+        }
       });
     }
 
@@ -722,6 +877,10 @@
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-group> Group by structure</label>' +
       '<label style="display:none;cursor:pointer;padding-left:18px;" data-dbg-stack-label><input type="checkbox" data-dbg-stack> Stack side-by-side</label>' +
       '<label style="display:none;cursor:pointer;padding-left:18px;color:#777;" data-dbg-stripes-label><input type="checkbox" data-dbg-stripes disabled> Striped background</label>' +
+      sec('EDIT', 'data-dbg-sec-edit') +
+      '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-editmode> Edit blocks (move, rename, edit, delete)</label>' +
+      '<button data-dbg-copychanges style="margin-top:4px;width:100%;background:#8a6d1a;color:#fff;border:0;border-radius:4px;' +
+      'padding:4px 0;font:inherit;cursor:pointer;">Copy changes</button>' +
       sec('EXCLUDED', 'data-dbg-sec-excluded') +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-xmark> Highlight all excluded</label>' +
       '<label style="display:block;cursor:pointer;"><input type="checkbox" data-dbg-hideexcl> Hide all excluded</label>' +
@@ -774,6 +933,12 @@
         p.querySelector('[data-dbg-copy]').disabled = sel.value === 'zip';
       });
     }).catch(function () { /* selector stays hidden; buttons default to full */ });
+    p.querySelector('[data-dbg-editmode]').addEventListener('change', function (e) {
+      setEditMode(e.target.checked);
+    });
+    p.querySelector('[data-dbg-copychanges]').addEventListener('click', function () {
+      copyName(collectChanges(), p.querySelector('[data-dbg-copychanges]'));
+    });
     p.querySelector('[data-dbg-export]').addEventListener('click', downloadMjml);
     p.querySelector('[data-dbg-copy]').addEventListener('click', function () {
       var btn = p.querySelector('[data-dbg-copy]');
@@ -799,6 +964,7 @@
     var stripesLabel = state.panel.querySelector('[data-dbg-stripes-label]');
     stripesLabel.style.display = state.grouped ? 'block' : 'none';
     stripesLabel.style.color = state.stacked ? '#fff' : '#777';
+    state.panel.querySelector('[data-dbg-editmode]').checked = state.editMode;
     state.panel.querySelector('[data-dbg-xmark]').checked = state.markExcluded;
     state.panel.querySelector('[data-dbg-hideexcl]').checked = state.hideExcluded;
     var blocksTitle = 'BLOCKS', structureTitle = 'STRUCTURE', excludedTitle = 'EXCLUDED';
@@ -865,6 +1031,7 @@
         applyVisibility();
       }
       state.markExcluded = false;
+      if (state.editMode) setEditMode(false);
       state.on = false;
       clearLayer();
       var css = document.getElementById('tpl-debug-css');
@@ -873,6 +1040,11 @@
       syncButton();
     },
     toggle: function () { (state.on || state.panel) ? api.disable() : api.enable(); },
+    setEditMode: setEditMode,     // (bool) — toggle move/rename/text-edit mode
+    moveBlock: moveBlock,         // (originalName, -1|1)
+    renameBlock: renameBlock,     // (originalName, newName)
+    deleteBlock: deleteBlock,     // (originalName, restore?) — mark for deletion / undo
+    collectChanges: collectChanges, // the Copy-changes JSON string
     exportMjml: exportMjml,       // (sectionLabel?) => Promise<string> of importable MJML
     exportZip: exportZip,         // Promise<Blob> — one .mjml per category section + the full template
     downloadMjml: downloadMjml,   // downloads per the panel's scope selector
