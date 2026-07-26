@@ -217,7 +217,7 @@
     </mj-section>
     <!-- END: Logo Header x State (green, logo left) -->    
 
-    <!-- START: Logo Header x CTA (green Read more) -->
+    <!-- START: Logo Header x CTA (green button) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -252,9 +252,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (green Read more) -->    
+    <!-- END: Logo Header x CTA (green button) -->    
 
-    <!-- START: Logo Header x CTA (kayak background) -->
+    <!-- START: Logo Header x CTA (photo background) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -293,7 +293,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (kayak background) -->    
+    <!-- END: Logo Header x CTA (photo background) -->    
 
     <!-- START: Text w/ Background Image -->
     <mj-section
@@ -1224,7 +1224,7 @@
     </mj-section>
     <!-- END: Podcast Streaming Row -->
 
-    <!-- START: Birders Grid (2x2, dark background) -->
+    <!-- START: Photo Grid (2x2, dark background) -->
     <mj-section
       css-class="text-block block"
       background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1331,7 +1331,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Birders Grid (2x2, dark background) -->
+    <!-- END: Photo Grid (2x2, dark background) -->
 
     <!-- START: Join Links Block -->
     <mj-section
@@ -1359,7 +1359,7 @@
     </mj-section>
     <!-- END: Join Links Block -->
 
-    <!-- START: Creek Quiz Block -->
+    <!-- START: Multiple Choice Quiz Block -->
     <mj-section
       css-class="text-block block"
       background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1384,7 +1384,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Creek Quiz Block -->
+    <!-- END: Multiple Choice Quiz Block -->
 
     <!-- START: Pop Quiz Block -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -1408,7 +1408,7 @@
     </mj-section>
     <!-- END: Pop Quiz Block -->
 
-    <!-- START: Steps Block (comment) -->
+    <!-- START: Steps Block -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1432,9 +1432,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Steps Block (comment) -->
+    <!-- END: Steps Block -->
 
-    <!-- START: TPL in the News Block -->
+    <!-- START: Linked List Block -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1446,9 +1446,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: TPL in the News Block -->
+    <!-- END: Linked List Block -->
 
-    <!-- START: Midwest Quiz Block (2x2 two-line color buttons) -->
+    <!-- START: Quiz Block (2x2 two-line color buttons) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1473,9 +1473,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Midwest Quiz Block (2x2 two-line color buttons) -->
+    <!-- END: Quiz Block (2x2 two-line color buttons) -->
 
-    <!-- START: In the Spotlight Block (2x2 photo quiz, dark background) -->
+    <!-- START: Photo Quiz Block (2x2, dark background) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1534,7 +1534,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: In the Spotlight Block (2x2 photo quiz, dark background) -->
+    <!-- END: Photo Quiz Block (2x2, dark background) -->
 
     <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
     <mj-include path="./partials/tri-color-divider.mjml" />

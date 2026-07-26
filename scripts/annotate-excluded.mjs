@@ -164,6 +164,48 @@ function checkMarkupIntegrity(text, file) {
   return issues;
 }
 
+/* ---------- display-toggle subsumption ----------
+   A block whose column members can be individually excluded via the importer's
+   auto Display toggles "contains" every block reachable by removing one such
+   member. A group anchor MAY carry data-fully-exclude when another group's
+   anchor subsumes it — its looks are reachable from the superset block, so it
+   is redundant as an importable starting point. The build verifies the claim
+   (single-element removals, dark twins fold into their light image, elements
+   with data-no-display-toggle or MSO-conditional texts are not removable). */
+function removableVariants(body) {
+  const out = [];
+  const colRe = /<mj-column\b[^>]*?>([\s\S]*?)<\/mj-column>/g;
+  let cm;
+  while ((cm = colRe.exec(body))) {
+    const col = cm[1];
+    const colStart = cm.index + cm[0].indexOf(col);
+    const els = [];
+    const er = /<mj-(image|text|button|divider)\b[^>]*?(?:\/>|>[\s\S]*?<\/mj-\1>)/g;
+    let em;
+    while ((em = er.exec(col))) {
+      const tag = em[0];
+      if (/data-style-dark-mode/.test(tag) && els.length && els[els.length - 1].kind === 'image') {
+        els[els.length - 1].end = em.index + tag.length; // fold dark twin into light image
+        continue;
+      }
+      els.push({ kind: em[1], start: em.index, end: em.index + tag.length });
+    }
+    if (els.length < 2) continue; // sole member never gets a toggle
+    for (const e of els) {
+      const seg = col.slice(e.start, e.end);
+      if (/data-no-display-toggle/.test(seg)) continue;
+      if (e.kind === 'text' && /\[if mso\]/.test(seg)) continue; // complex texts skipped by importer
+      let s0 = e.start, e0 = e.end;
+      const after = col.slice(e0).match(/^\s*<mj-raw><!--<!\[endif\]--><\/mj-raw>/);
+      if (after) e0 += after[0].length;
+      const before = col.slice(0, s0).match(/<mj-raw><!--\[if !mso\]><!--><\/mj-raw>\s*$/);
+      if (before) s0 -= before[0].length;
+      out.push(body.slice(0, colStart + s0) + body.slice(colStart + e0));
+    }
+  }
+  return out;
+}
+
 function structureManifest(text, file) {
   const groups = new Map(); // normalized key -> [block, ...]
   for (const b of topBlocks(text)) {
@@ -172,24 +214,44 @@ function structureManifest(text, file) {
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(b);
   }
+  // subsumption edges: groupKey -> key of a group whose anchor subsumes it
+  const variantKeys = new Map(); // groupKey -> Set of normalized single-removal variants
+  for (const [key, members] of groups) {
+    variantKeys.set(key, new Set(removableVariants(members[0].body).map(normalize)));
+  }
+  const parentOf = new Map();
+  for (const [key, members] of groups) {
+    if (!members[0].body.includes('data-fully-exclude')) continue; // only flagged anchors need a parent
+    for (const [candKey] of groups) {
+      if (candKey !== key && variantKeys.get(candKey).has(key)) { parentOf.set(key, candKey); break; }
+    }
+  }
+  const resolveAnchor = (key) => {
+    let k = key, hops = 0;
+    while (parentOf.has(k) && hops++ < 10) k = parentOf.get(k);
+    return groups.get(k)[0].name;
+  };
+
   const manifest = {};
   let flagIssues = 0;
-  for (const members of groups.values()) {
-    const anchor = members[0];
+  let subsumed = 0;
+  for (const [key, members] of groups) {
+    const anchorName = resolveAnchor(key);
+    if (parentOf.has(key)) subsumed++;
     for (const [i, b] of members.entries()) {
-      manifest[b.name] = anchor.name;
+      manifest[b.name] = anchorName;
       const flagged = b.body.includes('data-fully-exclude');
-      if (i === 0 && flagged) {
-        console.warn(`  WARN ${file}: "${b.name}" is the group anchor but is flagged data-fully-exclude`);
+      if (i === 0 && flagged && !parentOf.has(key)) {
+        console.warn(`  WARN ${file}: "${b.name}" is the group anchor but is flagged data-fully-exclude (and no other block subsumes it)`);
         flagIssues++;
       }
       if (i > 0 && !flagged) {
-        console.warn(`  WARN ${file}: "${b.name}" duplicates "${anchor.name}" but is NOT flagged data-fully-exclude`);
+        console.warn(`  WARN ${file}: "${b.name}" duplicates "${members[0].name}" but is NOT flagged data-fully-exclude`);
         flagIssues++;
       }
     }
   }
-  return { manifest, groups: groups.size, flagIssues };
+  return { manifest, groups: groups.size, subsumed, flagIssues };
 }
 
 /* ---------- class transforms (flags must survive compilation) ---------- */
@@ -237,7 +299,7 @@ for (const rel of ['', 'partials']) {
     checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));
-      const { manifest, groups, flagIssues } = structureManifest(source, join(rel, f));
+      const { manifest, groups, subsumed, flagIssues } = structureManifest(source, join(rel, f));
       // raw source + every mj-include's contents ride along in the compiled
       // page (dev artifact) so the debugger's MJML export works even opened
       // as a bare file:// page AND can inline the includes to make the
@@ -258,7 +320,7 @@ for (const rel of ['', 'partials']) {
         JSON.stringify({ source: source, includes: includes }).replace(/<\//g, '<\\/') +
         '</script></mj-raw>\n  </mj-head>';
       text = text.replace('</mj-head>', tag);
-      groupNote = `, ${groups} structure groups` + (flagIssues ? `, ${flagIssues} FLAG ISSUES` : '');
+      groupNote = `, ${groups} structure groups` + (subsumed ? ` (${subsumed} subsumed -> ${groups - subsumed} importable)` : '') + (flagIssues ? `, ${flagIssues} FLAG ISSUES` : '');
     }
 
     writeFileSync(join(OUT, rel, f), text);

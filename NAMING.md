@@ -13,12 +13,12 @@ grouping, side-by-side stacking, click-to-copy, and duplicate hiding.
   "Dual CTA Buttons"). Stripping every parenthetical yields the *group key*:
   blocks sharing a key are variants of one family and group/stack together.
 - **Qualifiers** — comma-separated inside one parenthetical, lowercase (proper
-  nouns like GivingTuesday exempt), ordered:
+  nouns exempt), ordered:
   1. surface/color: `(dark)`, `(off-white bordered)`, `(light green)`
   2. layout/alignment: `(centered)`, `(image left)`, `(full width)`
   3. features, prefixed `w/`: `(w/ photo)`, `(w/ arrow heading)`, `(w/ dark-mode swap)`
 - An **unqualified name** is the family baseline and may coexist with
-  qualified variants ("Comment Steps Block" + "Comment Steps Block (w/ arrow heading)").
+  qualified variants ("Steps Block" + "Steps Block (w/ arrow heading)").
 
 ## Combinators
 
