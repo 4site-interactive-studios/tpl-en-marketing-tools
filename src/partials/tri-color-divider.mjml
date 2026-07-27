@@ -2,6 +2,6 @@
   <mj-group>
     <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#F7941D" data-style-height /></mj-column>
     <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#8DC63F" data-style-height /></mj-column>
-    <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#7ED0C8" data-style-height /></mj-column>
+    <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#5FC9C5" data-style-height /></mj-column>
   </mj-group>
 </mj-section>

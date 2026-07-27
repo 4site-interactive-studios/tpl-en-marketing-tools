@@ -90,11 +90,11 @@ p {
 }
 
 .question-response {
-  border: 1px solid #F1EEE9;
+  border: 1px solid #ffffff;
 }
 
 .question-response:hover {
-  background-color: #fdfbf7!important;
+  background-color: #ffffff!important;
   cursor: pointer;
 }
 
@@ -191,8 +191,8 @@ p {
 
   body,
   .email-body {
-    color: #eeeeee !important;
-    background-color: #171819 !important;
+    color: #ffffff !important;
+    background-color: #000000 !important;
   }
 
   a {
@@ -211,13 +211,13 @@ p {
 
   .quote-block p,
   .footer-block p {
-    color: #eeeeee !important;
+    color: #ffffff !important;
   }
 
   .block,
   .block>table,
   .spacer-block td {
-    background-color: #1f2021 !important;
+    background-color: #000000 !important;
   }
 
   .quote-block,
@@ -225,36 +225,36 @@ p {
   .cta-button-block,
   .cta-button-block>table,
   .highlighted-text-column > table > tbody > tr > td {
-    background-color: #2b2a2a !important;
+    background-color: #000000 !important;
   }
 
   .button td,
   .button a {
-    background-color: #eaebec !important;
-    border-color: #eaebec !important;
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
     color: #121314 !important;
   }
 
   .social-link table {
-    background-color: #0e0f0f !important;
+    background-color: #000000 !important;
   }
 
   .divider>p {
-    border-color: #eeeeee !important;
+    border-color: #ffffff !important;
   }
 
   .question-response {
-    background-color: #2b2a2a !important;
+    background-color: #000000 !important;
     border-color: #eee !important;
-    color: #eeeeee !important;
+    color: #ffffff !important;
   }
 
   .question-response p a {
-    color: #eeeeee !important;
+    color: #ffffff !important;
   }
 
   .question-response:hover {
-    background-color: #1f2021!important;
+    background-color: #000000!important;
     cursor: pointer;
   }
 }
