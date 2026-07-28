@@ -163,6 +163,48 @@ spacing, and stay.
   so the single tag filling both side slots of the composite (mso-padding-alt
   copies included) drives the whole effect.
 
+## Inert paddings — never ship a field that does nothing
+
+A padding field is worthless if changing it doesn't change the rendering.
+Two mechanisms are detected statically at import and the field is
+suppressed (the reason lands in `Block.pacingNotes`, surfaced by the
+validator):
+
+- **Structural pin** (`gutterStructurallyPinned`, mjmlProps.ts): MJML bakes
+  `600 − 2·gutter` into compiled descendants — a wrapped section's
+  `max-width`, or an image/td width sized to fill the frame. Those baked
+  widths never move, so SHRINKING the gutter re-centers the same box,
+  pixel-identically. A frame Width preset whose gutter is pinned is NOT
+  created (the gutter stays literal; top/bottom Selects remain; the inner
+  section's own Width is the working control). Zero gutters never pin —
+  600px is the natural cap and stays responsive. On the current template
+  this suppresses: Video Block (inset) + Countdown Card wrappers (48→504),
+  Stat Row wrapper+section (32→536), Image (inset) w/ Caption (48→504
+  image).
+- **Outlook-only copies**: a padding whose EVERY occurrence sits inside an
+  MSO conditional comment or an `mso-*` property would edit Outlook alone —
+  invisible in the preview, silently desyncing every other client. No field
+  (same reasoning that removed Outlook-only column widths).
+
+Known but NOT suppressed (documented trade-offs):
+
+- **Mobile-only CSS pinning**: `.inset-gutter` / `.two-col-column` head
+  rules override some paddings with `!important` below 600px. The fields
+  work at desktop width — where email is judged — so they stay; just know
+  the mobile rendering is fixed by the template's own CSS.
+- **Grow-direction asymmetry**: a pinned gutter's WIDEN direction would
+  have an effect (it compresses the child); the dropdown is suppressed
+  anyway because most of its options would be dead — one working option
+  out of five is a trap, not a control.
+
+**Empirical oracle** (`window.__auditPadding()` in dev builds,
+src/components/paddingAudit.ts): renders every padding-family Select
+option at 600px and geometry-diffs against the default render — the ground
+truth the static guards are checked against. Current template: 414/414
+fields live after suppression. Run it after template-structure changes;
+any newly-flagged field means a new mechanism to detect or a candidate to
+prune.
+
 ## Sections (EN panel groups) & ordering
 
 The panel is a **two-level tree**. **Header sections carry NO glyph** — they
