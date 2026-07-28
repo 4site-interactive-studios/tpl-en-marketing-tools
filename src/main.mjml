@@ -118,59 +118,10 @@
     </mj-section>
     <!-- END: Logo Header (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Header x State (logo centered) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Trust for Public Land"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/state-north-carolina.png"
-          alt="North Carolina"
-          href="https://www.example.com"
-          width="100px"
-          padding="0 0 0 16px"
-          css-class="light-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/state-north-carolina.png"
-          alt="North Carolina"
-          href="https://www.example.com"
-          width="100px"
-          padding="0 0 0 16px"
-          css-class="dark-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x State (logo centered) -->
-
-
     <!-- START: Logo Header x State (green, logo left) -->
     <mj-section
       css-class="image-block block"
-      background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
+      background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-group>
       <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -447,7 +398,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -468,7 +419,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -497,7 +448,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -518,7 +469,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -539,7 +490,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1412,7 +1363,7 @@
       background-color="#362229" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photos <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
         </mj-text>
       </mj-column>
@@ -1615,16 +1566,15 @@
         <mj-text color="#ffffff" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;" data-style-color data-style-href>Skip to the answer.</a></p>
         </mj-text>
-        <mj-text mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- END: Photo Quiz Block (2x2, dark background) -->
 
-    <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <!-- START: Feedback Poll Block -->
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
@@ -1634,8 +1584,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
+    <!-- END: Feedback Poll Block -->
 
     <!-- START: Signature Card (original) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>

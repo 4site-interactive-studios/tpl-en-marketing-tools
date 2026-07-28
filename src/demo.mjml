@@ -70,17 +70,17 @@
 
     <!-- START: Main Content -->
 
-    <!-- START: Category — Logo Headers -->
+    <!-- START: Category — Headers -->
     <mj-raw><div data-import-exclude="true" data-folder="6399"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">LOGO HEADERS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADERS</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-raw></div></mj-raw>
-    <!-- END: Category — Logo Headers -->
+    <!-- END: Category — Headers -->
 
     <!-- START: Logo Header (light green, left) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -217,44 +217,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Logo Header (light green, w/ dark-mode swap) -->
-
-    <!-- START: Logo Header x State (logo left) -->
-    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x State (logo left) -->
-
-    <!-- START: Logo Header x State (logo centered) -->
-    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Logo Header x State (logo centered) -->
 
     <!-- START: Logo Header x State (logo left, labeled) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -479,17 +441,127 @@
 
 
 
-    <!-- START: Category — Heading Banners & Rows -->
-    <mj-raw><div data-import-exclude="true" data-folder="6405"></mj-raw>
+    <!-- START: Photo Hero (CTA) -->
+    <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+      <mj-group>
+        <mj-column vertical-align="middle" width="40%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Photo Hero (CTA) -->
+
+    <!-- START: Headline Hero -->
+    <mj-wrapper css-class="block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
+      <mj-section padding="48px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="48px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-group>
+          <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Headline Hero -->
+
+    <!-- START: Photo CTA Banner (logo + button) -->
+    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude data-style-background-url data-style-background-position data-style-background-size>
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Photo CTA Banner (logo + button) -->
+
+    <!-- START: Photo CTA Banner (centered headline + button) -->
+    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Photo CTA Banner (centered headline + button) -->
+
+    <!-- START: Photo CTA Banner (fixed height) -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      background-url="assets/photo-trail.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="264px 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude data-style-background-url data-style-background-position data-style-background-size
+    >
+      <mj-group>
+      <mj-column vertical-align="bottom" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/logo-tpl_color-light-green-text.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          padding="0 16px 0 0"
+          css-class="light-only"
+          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/logo-tpl_color-light-green-text.png"
+          alt="Logo"
+          href="https://www.example.com"
+          width="150px"
+          padding="0 16px 0 0"
+          css-class="dark-only"
+          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+      <mj-column vertical-align="bottom" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-button width="auto"
+            href="https://www.example.com"
+            align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            Read more
+          </mj-button>
+      </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Photo CTA Banner (fixed height) -->
+
+    <!-- START: Category — Text Blocks -->
+    <mj-raw><div data-import-exclude="true" data-folder="6400"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADING BANNERS &amp; ROWS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-raw></div></mj-raw>
-    <!-- END: Category — Heading Banners & Rows -->
+    <!-- END: Category — Text Blocks -->
+
 
     <!-- START: Heading Banner (white) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -583,19 +655,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Linked Header Row (w/ icon) -->
-
-    <!-- START: Category — Text Blocks -->
-    <mj-raw><div data-import-exclude="true" data-folder="6400"></mj-raw>
-    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-raw></div></mj-raw>
-    <!-- END: Category — Text Blocks -->
-
 
     <!-- START: WYSIWYG Text (full width) -->
     <mj-section
@@ -945,17 +1004,65 @@
     </mj-section>
     <!-- END: Question Response (linked row) -->
 
-    <!-- START: Category — Buttons & CTAs -->
+    <!-- START: CTA Block -->
+    <mj-section
+      css-class="cta-button-block block"
+      background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3>Lorem ipsum dolor</h3>
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
+            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
+          </p>
+        </mj-text>
+        <mj-button width="auto"
+            color="#ffffff"
+            background-color="#006837"
+            href="https://www.example.com"
+            align="center" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+          LOREM IPSUM SEMPER MI
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Block -->
+
+    <!-- START: Deadline Panel -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>LOREM IPSUM DOLOR SIT</a></p>
+          <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7941D;font-weight:bold;">FRIDAY</span></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Deadline Panel -->
+
+    <!-- START: Subscription Panel -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Monthly Supporter:</b> <span style="color:#006837;font-weight:bold;">Yes&ndash;thank you!</span></p>
+          <p style="font-size:16px;margin:0;"><b>Monthly Gift Amount:</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Subscription Panel -->
+
+    <!-- START: Category — Buttons -->
     <mj-raw><div data-import-exclude="true" data-folder="6406"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS &amp; CTAS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-raw></div></mj-raw>
-    <!-- END: Category — Buttons & CTAs -->
+    <!-- END: Category — Buttons -->
 
     <!-- START: CTA Button (left) -->
     <mj-section
@@ -1166,40 +1273,13 @@
     </mj-section>
     <!-- END: Triple CTA Buttons (centered, fixed width) -->
 
-    <!-- START: Button Stack -->
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <!-- START: CTA Button (full width, stackable) -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        <mj-button href="https://www.example.com" align="center" width="100%" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Button Stack -->
-
-    <!-- START: CTA Block -->
-    <mj-section
-      css-class="cta-button-block block"
-      background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>Lorem ipsum dolor</h3>
-          <p style="font-family: Arial, sans-serif;">
-            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
-            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
-          </p>
-        </mj-text>
-        <mj-button width="auto"
-            color="#ffffff"
-            background-color="#006837"
-            href="https://www.example.com"
-            align="center" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          LOREM IPSUM SEMPER MI
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Block -->
+    <!-- END: CTA Button (full width, stackable) -->
 
     <!-- START: Category — Images & Media -->
     <mj-raw><div data-import-exclude="true" data-folder="6401"></mj-raw>
@@ -1322,7 +1402,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1343,7 +1423,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1372,7 +1452,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1393,7 +1473,7 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1414,64 +1494,27 @@
           align="center"
           fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- END: Three Images -->
 
-    <!-- START: Image with overlay -->
-    <!--
-      Inside a section using a background all elements must have 0 left
-      and right padding or they will be misaligned on outlook.
-      This is why we use spacer columns with a fixed width on the sides
-      of the overlay image column to create the necessary padding while
-      maintaining alignment across email clients.
-     -->
-    <mj-section
-        css-class="overlay-image-block block"
-        background-url="assets/photo-person_overlay.jpg"
-        background-size="cover"
-        background-repeat="no-repeat"
-        background-position="center bottom" padding="350px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
-    >
-      <mj-group>
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
-
-        <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h1 style="text-align: center">Placeholder message for special occasion </h1>
-          </mj-text>
-          <mj-button width="auto"
-            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-            Button
-          </mj-button>
-        </mj-column>
-
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image with overlay -->
-
-    <!-- START: Text w/ Background Image -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      background-url="assets/photo-river.jpg"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
-    >
-      <mj-group>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
+    <!-- START: Video Block (full-bleed) -->
+    <mj-section css-class="image-block block" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="110px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Watch&nbsp;&nbsp;▷</mj-button>
       </mj-column>
-      </mj-group>
     </mj-section>
-    <!-- END: Text w/ Background Image -->
+    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Block (full-bleed) -->
 
     <!-- START: Video Block (inset) -->
     <mj-include path="./partials/green-rule-divider.mjml" />
@@ -1491,20 +1534,36 @@
     </mj-section>
     <!-- END: Video Block (inset) -->
 
-    <!-- START: Video Block (full-bleed) -->
-    <mj-section css-class="image-block block" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="110px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Watch&nbsp;&nbsp;▷</mj-button>
+    <!-- START: Icon Grid (2x2) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Video Block (full-bleed) -->
+    <!-- END: Icon Grid (2x2) -->
 
     <!-- START: Category — Image & Text Layouts -->
     <mj-raw><div data-import-exclude="true" data-folder="6407"></mj-raw>
@@ -1884,342 +1943,57 @@
     </mj-wrapper>
     <!-- END: Story Card (orange-bordered) -->
 
-    <!-- START: Category — Fundraising & Campaign -->
-    <mj-raw><div data-import-exclude="true" data-folder="6402"></mj-raw>
-    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FUNDRAISING &amp; CAMPAIGN</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-raw></div></mj-raw>
-    <!-- END: Category — Fundraising & Campaign -->
-
-    <!-- START: Two-Line Banner (light green) -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (light green) -->
-
-    <!-- START: Two-Line Banner (dark) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark) -->
-
-    <!-- START: Two-Line Banner (dark red) -->
-    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark red) -->
-
-    <!-- START: Two-Line Banner (green) -->
-    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (green) -->
-
-    <!-- START: Two-Line Banner (off-white bordered) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (off-white bordered) -->
-
-    <!-- START: Two-Line Banner (light green, hero lead-in) -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (light green, hero lead-in) -->
-
-    <!-- START: Photo Hero (CTA) -->
-    <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+    <!-- START: Image with overlay -->
+    <!--
+      Inside a section using a background all elements must have 0 left
+      and right padding or they will be misaligned on outlook.
+      This is why we use spacer columns with a fixed width on the sides
+      of the overlay image column to create the necessary padding while
+      maintaining alignment across email clients.
+     -->
+    <mj-section
+        css-class="overlay-image-block block"
+        background-url="assets/photo-person_overlay.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center bottom" padding="350px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
+    >
       <mj-group>
-        <mj-column vertical-align="middle" width="40%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="60%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Photo Hero (CTA) -->
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
 
-    <!-- START: Deadline Panel -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>LOREM IPSUM DOLOR SIT</a></p>
-          <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7941D;font-weight:bold;">FRIDAY</span></p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Deadline Panel -->
-
-    <!-- START: Subscription Panel -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Monthly Supporter:</b> <span style="color:#006837;font-weight:bold;">Yes&ndash;thank you!</span></p>
-          <p style="font-size:16px;margin:0;"><b>Monthly Gift Amount:</b></p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Subscription Panel -->
-
-    <!-- START: Headline Hero -->
-    <mj-wrapper css-class="block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
-      <mj-section padding="48px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
+        <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h1 style="text-align: center">Placeholder message for special occasion </h1>
           </mj-text>
+          <mj-button width="auto"
+            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            Button
+          </mj-button>
         </mj-column>
-      </mj-section>
-      <mj-section padding="48px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-        <mj-group>
-          <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-            <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-            <mj-raw><!--<![endif]--></mj-raw>
-          </mj-column>
-          <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-          </mj-column>
-        </mj-group>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Headline Hero -->
 
-    <!-- START: Photo CTA Banner (logo + button) -->
-    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude data-style-background-url data-style-background-position data-style-background-size>
-      <mj-group>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo CTA Banner (logo + button) -->
+    <!-- END: Image with overlay -->
 
-    <!-- START: Photo CTA Banner (centered headline + button) -->
-    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
-        </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Photo CTA Banner (centered headline + button) -->
-
-    <!-- START: Photo CTA Banner (fixed height) -->
+    <!-- START: Text w/ Background Image -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
-      background-url="assets/photo-trail.jpg"
+      background-url="assets/photo-river.jpg"
       background-size="cover"
       background-repeat="no-repeat"
-      background-position="center center" padding="264px 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude data-style-background-url data-style-background-position data-style-background-size
+      background-position="center center" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
     >
       <mj-group>
-      <mj-column vertical-align="bottom" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="light-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_color-light-green-text.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="150px"
-          padding="0 16px 0 0"
-          css-class="dark-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column vertical-align="bottom" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button width="auto"
-            href="https://www.example.com"
-            align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-            Read more
-          </mj-button>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text color="#ffffff" align="center" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo CTA Banner (fixed height) -->
-
-    <!-- START: Progress Meter Block -->
-    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:16px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE DAY</p>
-          <h2 style="color:#ffffff;margin:0 0 16px;">Lorem Ipsum Dolor Sit Amet</h2>
-        </mj-text>
-        <mj-text color="#ffffff" data-no-display-toggle data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-            <tr>
-              <td align="left" style="padding-right:12px;">
-                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
-                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$600,000</p>
-              </td>
-              <td align="left" style="padding-right:12px;">
-                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
-                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$400,500</p>
-              </td>
-              <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
-                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
-                <p style="font-size:18px;font-weight:700;color:#F7941D;margin:0;">$200,000</p>
-              </td>
-              <td width="30%">&nbsp;</td>
-            </tr>
-          </table>
-        </mj-text>
-        <mj-text data-no-display-toggle data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-radius:8px;border-collapse:separate;">
-            <tr>
-              <td width="66%" bgcolor="#39B54A" style="height:14px;font-size:0;line-height:0;border-radius:8px 0 0 8px;">&nbsp;</td>
-              <td width="34%" bgcolor="#ffffff" style="height:14px;font-size:0;line-height:0;border-radius:0 8px 8px 0;">&nbsp;</td>
-            </tr>
-          </table>
-        </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Progress Meter Block -->
-
-    <!-- START: Countdown Card -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px">
-      <mj-section background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
-            <h3 style="color:#ffffff;margin:0 0 16px;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
-            <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Countdown Card -->
-
-    <!-- START: Stat Row (off-white) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
-      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
-            <p style="font-size:16px;"><b>Supporter ID:</b></p>
-            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
-            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Stat Row (off-white) -->
-
-    <!-- START: Stat Row (green) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px" data-fully-exclude>
-      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
-            <p style="font-size:16px;"><b>Supporter ID:</b></p>
-            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
-            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Stat Row (green) -->
-
-    <!-- START: Icon Grid (2x2) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Icon Grid (2x2) -->
+    <!-- END: Text w/ Background Image -->
 
     <!-- START: Icon Rows -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -2339,13 +2113,13 @@
     <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-group>
         <mj-column vertical-align="top" width="45%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" container-background-color="#F5FAF1" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="140px" padding="8px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="top" width="55%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" container-background-color="#F5FAF1" css-class="advocacy-box" data-style-alignment padding="0 0 32px 24px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text align="center" container-background-color="#F5FAF1" css-class="advocacy-box" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <h3 style="color:#362229;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
@@ -2365,7 +2139,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="top" width="55%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" container-background-color="#F5FAF1" data-style-alignment padding="0 0 32px 24px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text align="center" container-background-color="#F5FAF1" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <h3 style="color:#362229;padding:12px 8px 0;">Urge<br />Congress<br />to Protect<br />America&rsquo;s<br />Wildlife</h3>
             <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
           </mj-text>
@@ -2374,6 +2148,179 @@
       </mj-group>
     </mj-section>
     <!-- END: Photo Card (outline CTA) -->
+
+    <!-- START: Category — Fundraising & Campaign -->
+    <mj-raw><div data-import-exclude="true" data-folder="6402"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FUNDRAISING &amp; CAMPAIGN</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Fundraising & Campaign -->
+
+    <!-- START: Two-Line Banner (light green) -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (light green) -->
+
+    <!-- START: Two-Line Banner (dark) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (dark) -->
+
+    <!-- START: Two-Line Banner (dark red) -->
+    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (dark red) -->
+
+    <!-- START: Two-Line Banner (green) -->
+    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (green) -->
+
+    <!-- START: Two-Line Banner (off-white bordered) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (off-white bordered) -->
+
+    <!-- START: Two-Line Banner (light green, hero lead-in) -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (light green, hero lead-in) -->
+
+    <!-- START: Progress Meter Block -->
+    <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE DAY</p>
+          <h2 style="color:#ffffff;margin:0 0 16px;">Lorem Ipsum Dolor Sit Amet</h2>
+        </mj-text>
+        <mj-text color="#ffffff" data-no-display-toggle data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+            <tr>
+              <td align="left" style="padding-right:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
+                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$600,000</p>
+              </td>
+              <td align="left" style="padding-right:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
+                <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$400,500</p>
+              </td>
+              <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
+                <p style="font-size:18px;font-weight:700;color:#F7941D;margin:0;">$200,000</p>
+              </td>
+              <td width="30%">&nbsp;</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-text data-no-display-toggle data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-radius:8px;border-collapse:separate;">
+            <tr>
+              <td width="66%" bgcolor="#39B54A" style="height:14px;font-size:0;line-height:0;border-radius:8px 0 0 8px;">&nbsp;</td>
+              <td width="34%" bgcolor="#ffffff" style="height:14px;font-size:0;line-height:0;border-radius:0 8px 8px 0;">&nbsp;</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Progress Meter Block -->
+
+    <!-- START: Countdown Card -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px">
+      <mj-section background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
+            <h3 style="color:#ffffff;margin:0 0 16px;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+          <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
+            <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Countdown Card -->
+
+    <!-- START: Stat Row (off-white) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Stat Row (off-white) -->
+
+    <!-- START: Stat Row (green) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px" data-fully-exclude>
+      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Stat Row (green) -->
 
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408"></mj-raw>
@@ -2457,9 +2404,8 @@
     </mj-section>
     <!-- END: Quiz Block (2x2 two-line color buttons) -->
 
-    <!-- START: Feedback Poll Block (framed by tri-color dividers) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <!-- START: Feedback Poll Block -->
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
@@ -2469,8 +2415,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Feedback Poll Block (framed by tri-color dividers) -->
+    <!-- END: Feedback Poll Block -->
 
     <!-- START: Event Invite Block -->
     <mj-include path="./partials/green-rule-divider.mjml" />
@@ -2730,7 +2675,7 @@
     </mj-section>
     <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photos <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
         </mj-text>
       </mj-column>
@@ -2791,7 +2736,7 @@
         <mj-text color="#ffffff" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;" data-style-color data-style-href>Skip to the answer.</a></p>
         </mj-text>
-        <mj-text mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>
@@ -2965,7 +2910,7 @@
 
     <!-- START: Footer (dark) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
