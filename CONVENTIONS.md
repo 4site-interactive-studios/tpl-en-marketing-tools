@@ -185,6 +185,17 @@ validator):
   MSO conditional comment or an `mso-*` property would edit Outlook alone —
   invisible in the preview, silently desyncing every other client. No field
   (same reasoning that removed Outlook-only column widths).
+- **Inset-box sections** (2026-07-27, `loneFixedPxColumn` in
+  `sectionShapes`): a section whose only content is a lone fixed-px column
+  (Highlighted Text's 480px green box, Quote Block) centers that column in
+  the side-padding slack — symmetric Block Padding Left/Right edits move
+  nothing. Those two sides stay literal; Block Top/Bottom and the column's
+  own four paddings (the real box inset) keep their Selects: 8 padding
+  fields → 6.
+
+Related readability rule: all four padding sides share ONE field-order
+rank, so two frames' paddings list contiguously (Block Top/Bottom, then
+Column Top/Right/Bottom/Left) instead of interleaving side-by-side.
 
 Known but NOT suppressed (documented trade-offs):
 
@@ -319,6 +330,8 @@ sort — it is purely the panel/export display order.
   leave editable as-is, revisit later if needed): image/divider Width,
   Font Size (must stay editable), Line Height, Letter Spacing,
   Border Radius. Spacing/padding/height NEVER appears as free text.
+  Exception: none of these are surfaced on hand-authored `<a>` button-links
+  — see "Button-link parity" below.
 
 ## Other generated controls
 
@@ -349,8 +362,15 @@ sort — it is purely the panel/export display order.
   (pacingNote explains) — a swap that mangles text is worse than no swap.
 - **Button widths**: Select — "Automatically Resize", 100px steps capped at
   the column's usable content width, "Npx (full width)" at the cap, plus
-  Original for off-grid authored widths. Button font size stays editable;
-  other button typography intentionally left alone (user said hold off).
+  Original for off-grid authored widths.
+- **Button-link parity** (2026-07-27): hand-authored `<a>` buttons inside
+  mj-text expose EXACTLY what real mj-buttons do — Label, Link URL,
+  Text/Background Color (+ the width Select where present). Their inline
+  typography (font-size/family/weight, letter-spacing, line-height) and
+  border-radius stay hard-coded: anchors carry those inline only because
+  they can't inherit mj-attributes defaults, and surfacing them gave
+  button-links MORE knobs than real buttons (`ANCHOR_STYLE_PROPS`).
+  Supersedes the earlier "keep Font Size editable" note for button-links.
 - **Column/Group widths are NEVER exposed** (px or %): on-screen width is
   pinned by shared-head classes (`mj-column-per/px-N !important`); a
   replacement would change Outlook alone and desync it. See
