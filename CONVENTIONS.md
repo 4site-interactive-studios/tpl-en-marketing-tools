@@ -417,6 +417,14 @@ sort — it is purely the panel/export display order.
   parallel compile stays unformatted (ordinal matching only). Formatting is
   fail-open.
 - Thumbnail probing is async, after load — never blocks the import.
+- Export panel ZIPs are asset-root-ready: FLAT filenames only (EN CDN
+  folders are flat). "Download assets ZIP" packages every image the
+  blocks reference (rendered defaults + Select option values, so
+  display-toggle fragments and dark twins are seen; relative paths
+  resolve source URL first, asset root second); "thumbnails + assets"
+  merges both sets, thumbnails winning name clashes. CORS-less hosts
+  can't be fetched client-side — those refs are counted in the status
+  line and listed in the console (`src/components/assetDownload.ts`).
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
