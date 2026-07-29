@@ -439,8 +439,6 @@
     </mj-section>
     <!-- END: CTA Hero (w/ badge image, dark) -->
 
-
-
     <!-- START: CTA Hero (fixed height, logo and background image) -->
     <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-group>
@@ -595,7 +593,6 @@
     </mj-section>
     <mj-raw></div></mj-raw>
     <!-- END: Category — Text Blocks -->
-
 
     <!-- START: Heading -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -1041,7 +1038,6 @@
     </mj-section>
     <!-- END: Quote Block -->
 
-
     <!-- START: CTA Text Block -->
     <mj-section
       css-class="cta-button-block block"
@@ -1089,6 +1085,103 @@
       </mj-column>
     </mj-section>
     <!-- END: Subscription Panel -->
+
+    <!-- START: Two-Line Banner (light green) -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (light green) -->
+    <!-- START: Two-Line Banner (dark) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (dark) -->
+    <!-- START: Two-Line Banner (dark red) -->
+    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (dark red) -->
+    <!-- START: Two-Line Banner (green) -->
+    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (green) -->
+    <!-- START: Two-Line Banner (off-white bordered) -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (off-white bordered) -->
+    <!-- START: Two-Line Banner (light green, hero lead-in) -->
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (light green, hero lead-in) -->
+    <!-- START: Stat Row (off-white) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
+      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Stat Row (off-white) -->
+    <!-- START: Stat Row (green) -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px" data-fully-exclude>
+      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+            <p style="font-size:16px;"><b>Supporter ID:</b></p>
+            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Stat Row (green) -->
 
     <!-- START: Category — Buttons -->
     <mj-raw><div data-import-exclude="true" data-folder="6406" data-category-short="Buttons"></mj-raw>
@@ -1417,7 +1510,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Image (bikers) -->
-
 
     <!-- START: Images 2x1 -->
     <mj-section
@@ -1945,9 +2037,6 @@
     </mj-section>
     <!-- END: Story Card (image left, no button) -->
 
-
-
-
     <!-- START: Story Card (orange-bordered) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1980,7 +2069,6 @@
       </mj-section>
     </mj-wrapper>
     <!-- END: Story Card (orange-bordered) -->
-
 
     <!-- START: Text w/ Background Image -->
     <mj-section
@@ -2165,72 +2253,6 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Fundraising & Campaign -->
 
-    <!-- START: Two-Line Banner (light green) -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (light green) -->
-
-    <!-- START: Two-Line Banner (dark) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark) -->
-
-    <!-- START: Two-Line Banner (dark red) -->
-    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark red) -->
-
-    <!-- START: Two-Line Banner (green) -->
-    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (green) -->
-
-    <!-- START: Two-Line Banner (off-white bordered) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (off-white bordered) -->
-
-    <!-- START: Two-Line Banner (light green, hero lead-in) -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (light green, hero lead-in) -->
-
     <!-- START: Progress Meter Block -->
     <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2287,44 +2309,6 @@
       </mj-section>
     </mj-wrapper>
     <!-- END: Countdown Card -->
-
-    <!-- START: Stat Row (off-white) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
-      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
-            <p style="font-size:16px;"><b>Supporter ID:</b></p>
-            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
-            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Stat Row (off-white) -->
-
-    <!-- START: Stat Row (green) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px" data-fully-exclude>
-      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
-            <p style="font-size:16px;"><b>Supporter ID:</b></p>
-            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
-            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Stat Row (green) -->
 
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
@@ -2768,7 +2752,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Photo and Text Grid (2x2) -->
-
 
     <!-- START: Category — Utilities -->
     <mj-raw><div data-import-exclude="true" data-folder="6409" data-category-short="Utility"></mj-raw>
