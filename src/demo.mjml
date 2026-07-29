@@ -71,7 +71,7 @@
     <!-- START: Main Content -->
 
     <!-- START: Category — Headers and Heroes -->
-    <mj-raw><div data-import-exclude="true" data-folder="6399"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -585,7 +585,7 @@
     </mj-section>
     <!-- END: CTA Hero (w/ large background image) -->
     <!-- START: Category — Text Blocks -->
-    <mj-raw><div data-import-exclude="true" data-folder="6400"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1091,7 +1091,7 @@
     <!-- END: Subscription Panel -->
 
     <!-- START: Category — Buttons -->
-    <mj-raw><div data-import-exclude="true" data-folder="6406"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6406" data-category-short="Buttons"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1320,7 +1320,7 @@
     <!-- END: CTA Button (full width, stackable) -->
 
     <!-- START: Category — Images & Media -->
-    <mj-raw><div data-import-exclude="true" data-folder="6401"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6401" data-category-short="Images"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1604,7 +1604,7 @@
     <!-- END: Photo Grid (2x2) -->
 
     <!-- START: Category — Image & Text Layouts -->
-    <mj-raw><div data-import-exclude="true" data-folder="6407"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Images and Text"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2154,7 +2154,7 @@
     <!-- END: Photo Card (outline CTA) -->
 
     <!-- START: Category — Fundraising & Campaign -->
-    <mj-raw><div data-import-exclude="true" data-folder="6402"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6402" data-category-short="Campaign"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2327,7 +2327,7 @@
     <!-- END: Stat Row (green) -->
 
     <!-- START: Category — Engagement & Interactive -->
-    <mj-raw><div data-import-exclude="true" data-folder="6408"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2613,7 +2613,7 @@
     <!-- END: Steps Block (w/ arrow heading) -->
 
     <!-- START: Category — Content Features -->
-    <mj-raw><div data-import-exclude="true" data-folder="6403"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6403" data-category-short="Content"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2771,7 +2771,7 @@
 
 
     <!-- START: Category — Utilities -->
-    <mj-raw><div data-import-exclude="true" data-folder="6409"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6409" data-category-short="Utility"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2809,7 +2809,7 @@
     <!-- END: Divider (Tri-color) -->
 
     <!-- START: Category — Signatures -->
-    <mj-raw><div data-import-exclude="true" data-folder="6404"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6404" data-category-short="Signature"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2924,7 +2924,7 @@
     <!-- END: Signature Card (no photo) -->
 
     <!-- START: Category — Footers -->
-    <mj-raw><div data-import-exclude="true" data-folder="6410"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6410" data-category-short="Footer"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
