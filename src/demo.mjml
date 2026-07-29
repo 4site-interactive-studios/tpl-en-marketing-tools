@@ -569,6 +569,16 @@
     </mj-section>
     <!-- END: Heading Banner (white) -->
 
+    <!-- START: Heading Banner (white, linked) -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h1><a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Lorem Ipsum</a></h1>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Heading Banner (white, linked) -->
+
     <!-- START: Heading Banner (off-white) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
@@ -744,6 +754,23 @@
       </mj-column>
     </mj-section>
     <!-- END: Text w/ CTA (inset, left button) -->
+
+    <!-- START: Body Text (inset) -->
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus aenean. Non sit volutpat quam pretium risus
+            ullamcorper
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Body Text (inset) -->
 
     <!-- START: Text w/ CTA (inset, centered button) -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -1115,7 +1142,7 @@
       background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-button
+          <mj-button css-class="button fixed-width"
             href="https://www.example.com"
             align="center" width="300px" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
             Fixed width Fixed width Fixed width Fixed width 

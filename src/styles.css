@@ -123,6 +123,21 @@ p {
     display: none !important;
   }
 
+  /* Fixed-width dividers and buttons span their container on narrow
+     screens — a px width would force table min-width and overflow the
+     viewport. Buttons opt in via css-class="button fixed-width". */
+  .divider>p {
+    width: 100% !important;
+  }
+
+  .fixed-width>table {
+    width: 100% !important;
+  }
+
+  .fixed-width>table a {
+    width: auto !important;
+  }
+
   .signature-img {
     width: 110px !important;
   }

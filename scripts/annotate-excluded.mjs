@@ -45,7 +45,11 @@ function normalize(body) {
   // inset-gutter is the responsive companion of a padding value (collapses
   // desktop gutters on mobile) — padding is a Replacement, so this isn't structure
   s = s.replace(/css-class="([^"]*)"/g, (m, cls) =>
-    'css-class="' + cls.split(/\s+/).filter((t) => t && t !== 'inset-gutter').join(' ') + '"');
+    'css-class="' + cls.split(/\s+/).filter((t) => t && t !== 'inset-gutter' && t !== 'fixed-width').join(' ') + '"');
+  // css-class="button" on a button restates the mj-attributes default; an
+  // emptied-out css-class is no class at all — neither is structure
+  s = s.replace(/<mj-button\b[^>]*>/g, (tag) => tag.replace(/\s*css-class="button"/g, ''));
+  s = s.replace(/\s*css-class=""/g, '');
   // align is an exposed Replacement on buttons, text, and images
   s = s.replace(/<mj-(button|text|image)\b[^>]*>/g, (tag) => tag.replace(/\salign="[^"]*"/g, ''));
   // vertical-align is an exposed Replacement on columns (absent = "top")
