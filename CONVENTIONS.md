@@ -332,11 +332,21 @@ sort — it is purely the panel/export display order.
 - **Dark-mode images**: light/dark swap pairs merge (src EXCLUDED from the
   equality check so differing artwork still pairs); the dark twin's src
   becomes "Dark Mode Image URL" in the light image's group.
-- **Image Position / Column Order**: multi-column sections whose columns
-  differ structurally get "Image Position" Left/Right (2 cols w/ image) or
-  "Column Order" Normal/Reversed. Structurally identical columns are
-  excluded (reversing = swapping contents, which per-column fields already
-  allow). Grouped columns target the mj-group's direction.
+- **Image Position / Column Order** (the content-swap control): exists to
+  reverse CONTENT ordering, never to reverse text — so it is generated ONLY
+  at the section/column-frame level, never on inner elements like a Text
+  (direction:rtl on text re-renders it right-to-left instead of reordering
+  anything). Multi-column sections whose columns differ structurally get
+  "Image Position" Left/Right (2 cols w/ image) or "Column Order"
+  Normal/Reversed. Structurally identical columns are excluded (reversing =
+  swapping contents, which per-column fields already allow). Grouped
+  columns target the mj-group's direction.
+  **Text-shield invariant**: flipping the frame to rtl only reorders columns
+  because MJML re-pins `direction:ltr` on every column div, shielding
+  descendants (verified empirically: columns swap x-positions while text
+  keeps computed direction ltr). The generator enforces this: a section
+  whose columns do NOT all pin direction:ltr gets no swap control at all
+  (pacingNote explains) — a swap that mangles text is worse than no swap.
 - **Button widths**: Select — "Automatically Resize", 100px steps capped at
   the column's usable content width, "Npx (full width)" at the cap, plus
   Original for off-grid authored widths. Button font size stays editable;
