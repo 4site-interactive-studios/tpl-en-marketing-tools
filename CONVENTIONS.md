@@ -450,7 +450,14 @@ importer whitelists all data-*-only MJML validator warnings
 - **`data-fully-exclude`** (raw MJML; block-level): the block is a
   redundant variant — dropped entirely at import
   (`src/core/blocks.ts` `isFullyExcludedBlock`), skipped from category
-  counts.
+  counts. A family must normally keep ONE un-flagged canonical (the inset
+  variant where one exists) — default content is a block's value, so
+  structural dedupe alone must not erase a whole family. 2026-07-29
+  audit (user-decided): restored canonicals Two-Line Banner (light
+  green), Linked Header Row, Body Text (inset), Deadline Panel,
+  Subscription Panel; DELIBERATELY fully excluded with no canonical
+  (do not re-flag as errors): WYSIWYG Text, Text w/ Bullet Lists,
+  Text + Link Paragraph CTA, Linked List Block, Join Links Block.
 - **`data-import-exclude`**: dev-only labeling/visual blocks. Ships as an
   mj-raw `<div data-import-exclude>` wrapper so it SURVIVES compilation;
   the block renders in previews but starts unchecked in exports
