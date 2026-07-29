@@ -314,6 +314,16 @@ sort — it is purely the panel/export display order.
 - "Container Background Color" reads "Background Color".
 - Multi-instance numbering counts only instances that actually surface
   fields; merged swap pairs count once.
+- **Block names carry their category** (2026-07-29): at import every block
+  after a "Category — X" divider is renamed "Name — Category" ("Heading —
+  Text Blocks") so the EN block library reads the group at a glance
+  (`appendBlockCategories`). The append happens AFTER replacement
+  generation, so the top-level replacement section keeps mirroring the
+  PLAIN name — the category never leaks into sections, labels, or
+  merge-tag names. Thumbnail slugs/probes and per-block download filenames
+  also use the plain name (`blockBaseName`) so existing
+  `thumbnail-<slug>.png` assets keep matching. Dividers, pre-divider
+  blocks, and user renames are left alone.
 
 ## Replacement typing (what becomes a dropdown)
 
