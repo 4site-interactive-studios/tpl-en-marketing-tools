@@ -314,19 +314,21 @@ sort — it is purely the panel/export display order.
 - "Container Background Color" reads "Background Color".
 - Multi-instance numbering counts only instances that actually surface
   fields; merged swap pairs count once.
-- **Block names carry their category** (2026-07-29): at import every block
-  after a "Category — X" divider is renamed "Name — Category" so the EN
-  block library reads the group at a glance (`appendBlockCategories`).
-  The divider's `data-category-short` supplies the suffix when present
-  ("Heading — Text"); the full category name is the fallback. The append
-  happens AFTER replacement generation, so the top-level replacement
-  section keeps mirroring the PLAIN name — the category never leaks into
-  sections, labels, or merge-tag names. Thumbnail slugs/probes and
-  per-block download filenames also use the plain name (`blockBaseName`)
-  so existing `thumbnail-<slug>.png` assets keep matching. Dividers,
-  pre-divider blocks, and user renames are left alone. Declared short
-  names (2026-07-29): Headers/Heroes, Text, Buttons, Images, Images and
-  Text, Campaign, Engagement, Content, Utility, Signature, Footer.
+- **Block names carry their category, PREPENDED** (2026-07-29): at import
+  every block after a "Category — X" divider is renamed "Category — Name"
+  so the EN block library reads — and sorts by — the group at a glance
+  (`prependBlockCategories`). The divider's `data-category-short` supplies
+  the prefix when present ("Text — Heading"); the full category name is
+  the fallback. No collision with divider detection, which requires the
+  literal word "Category" up front. The prepend happens AFTER replacement
+  generation, so the top-level replacement section keeps mirroring the
+  PLAIN name — the category never leaks into sections, labels, or
+  merge-tag names. Thumbnail slugs/probes and per-block download filenames
+  also use the plain name (`blockBaseName`) so existing
+  `thumbnail-<slug>.png` assets keep matching. Dividers, pre-divider
+  blocks, and user renames are left alone. Declared short names
+  (2026-07-29): Headers/Heroes, Text, Buttons, Images, Images and Text,
+  Campaign, Engagement, Content, Utility, Signature, Footer.
 
 ## Replacement typing (what becomes a dropdown)
 
@@ -462,8 +464,8 @@ importer whitelists all data-*-only MJML validator warnings
 - **`data-category-short="<name>"`** (raw MJML; on category dividers,
   same div as data-folder): the category's short display name
   ("Headers/Heroes" for "Headers and Heroes"). When present it replaces
-  the full category name in member blocks' appended name suffix
-  ("Heading — Text" instead of "Heading — Text Blocks");
+  the full category name in member blocks' prepended name prefix
+  ("Text — Heading" instead of "Text Blocks — Heading");
   folder grouping and the import form keep using the full divider name
   (`src/core/blocks.ts` `categoryShortNameOf`).
 - **`data-no-display-toggle`** (valueless, on content components): opts
