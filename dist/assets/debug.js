@@ -23,6 +23,8 @@
  *                       top-level block removed, as a download or clipboard copy;
  *                       a scope selector narrows it to one category section, or
  *                       downloads a .zip with one .mjml per section + the full file
+ *   - Copy HTML:        the compiled page as served, minus every <script> and
+ *                       the debug toolbar — the send-ready HTML
  *
  * Loaded lazily by the floating 🐞 toggle; exposes window.__tplDebug.
  * See NAMING.md for the block-name grammar this tool depends on.
@@ -462,6 +464,68 @@
     }).catch(exportFail);
   }
 
+  /* Copy the page's HTML minus dev chrome: every <script> (the debugger and
+     the two build-injected JSON payloads — safe to regex-strip because the
+     payloads escape "</" as "<\/") and the toolbar button with its START/END
+     comments. Preferred source is a re-fetch of the served file, which by
+     construction carries no debugger surgery; on file:// pages, where fetch
+     is blocked, a cleaned serialization of the live DOM stands in. */
+  function copyPageHtml(feedbackEl) {
+    return fetch(location.href)
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (html) {
+        copyName(stripDevChrome(html), feedbackEl);
+      })
+      .catch(function () {
+        try {
+          copyName(pageHtmlFromDom(), feedbackEl);
+        } catch (e) {
+          alert('Copy HTML failed: ' + e.message);
+        }
+      });
+  }
+
+  function stripDevChrome(html) {
+    return html
+      .replace(/[ \t]*<script\b[\s\S]*?<\/script>[ \t]*\n?/gi, '')
+      .replace(/[ \t]*<!--\s*(?:START|END): Debug Toolbar[\s\S]*?-->[ \t]*\n?/g, '')
+      .replace(/[ \t]*<div id="tpl-debug-btn"[\s\S]*?<\/div>[ \t]*\n?/, '');
+  }
+
+  /* file:// fallback: clone the live DOM and undo every debugger footprint —
+     stacks are put back first (the one structural mutation), then the clone
+     drops injected elements, marker attributes, and edit-mode leftovers */
+  function pageHtmlFromDom() {
+    var wasStacked = state.stacked;
+    if (wasStacked) { removeStack(); state.stacked = false; }
+    var clone = document.documentElement.cloneNode(true);
+    if (wasStacked) { state.stacked = true; applyStack(); render(); }
+
+    clone.querySelectorAll(
+      'script, #tpl-debug-btn, [data-tpl-debug-panel], [data-tpl-debug-layer], ' +
+      '[data-tpl-debug-xmark], #tpl-debug-css, #tpl-debug-edit-css'
+    ).forEach(function (el) { el.remove(); });
+    clone.querySelectorAll('[data-tpl-debug-hidden], [data-tpl-debug-deleted], [contenteditable]')
+      .forEach(function (el) {
+        el.removeAttribute('data-tpl-debug-hidden');
+        el.removeAttribute('data-tpl-debug-deleted');
+        el.removeAttribute('contenteditable');
+      });
+    // edit mode writes outline-offset onto block elements; clear the leftover
+    clone.querySelectorAll('[style*="outline-offset"]').forEach(function (el) {
+      el.style.outlineOffset = '';
+      if (!el.getAttribute('style')) el.removeAttribute('style');
+    });
+    var w = document.createTreeWalker(clone, NodeFilter.SHOW_COMMENT);
+    var doomed = [], n;
+    while ((n = w.nextNode())) {
+      if (/^\s*(START|END): Debug Toolbar/.test(n.nodeValue) ||
+          /^tpl-debug-/.test(n.nodeValue.trim())) doomed.push(n);
+    }
+    doomed.forEach(function (c) { c.remove(); });
+    return '<!doctype html>\n' + clone.outerHTML;
+  }
+
   function downloadMjml() {
     var which = exportSelection();
     if (which === 'zip') {
@@ -892,6 +956,8 @@
       '<button data-dbg-copy style="flex:1;background:#0E7C3F;color:#fff;border:0;border-radius:4px;' +
       'padding:4px 0;font:inherit;cursor:pointer;">Copy .mjml</button>' +
       '</div>' +
+      '<button data-dbg-copyhtml style="margin-top:6px;width:100%;background:#0E5C7C;color:#fff;border:0;border-radius:4px;' +
+      'padding:4px 0;font:inherit;cursor:pointer;">Copy HTML</button>' +
 
       '<button data-dbg-off style="margin-top:8px;width:100%;background:#700310;color:#fff;border:0;border-radius:4px;' +
       'padding:4px 0;font:inherit;cursor:pointer;">Turn off</button>';
@@ -940,6 +1006,9 @@
       copyName(collectChanges(), p.querySelector('[data-dbg-copychanges]'));
     });
     p.querySelector('[data-dbg-export]').addEventListener('click', downloadMjml);
+    p.querySelector('[data-dbg-copyhtml]').addEventListener('click', function () {
+      copyPageHtml(p.querySelector('[data-dbg-copyhtml]'));
+    });
     p.querySelector('[data-dbg-copy]').addEventListener('click', function () {
       var btn = p.querySelector('[data-dbg-copy]');
       copyMjml(btn);
@@ -1049,6 +1118,7 @@
     exportZip: exportZip,         // Promise<Blob> — one .mjml per category section + the full template
     downloadMjml: downloadMjml,   // downloads per the panel's scope selector
     copyMjml: copyMjml,           // clipboard copy per the scope selector
+    copyPageHtml: copyPageHtml,   // clipboard copy of the page HTML minus scripts/debug chrome
     setGrouping: function (v) {
       state.grouped = !!v;
       if (state.grouped && !state.groupedEver) {

@@ -70,19 +70,19 @@
 
     <!-- START: Main Content -->
 
-    <!-- START: Category — Headers -->
+    <!-- START: Category — Headers and Heroes -->
     <mj-raw><div data-import-exclude="true" data-folder="6399"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADERS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-raw></div></mj-raw>
-    <!-- END: Category — Headers -->
+    <!-- END: Category — Headers and Heroes -->
 
-    <!-- START: Logo Header (light green, left) -->
+    <!-- START: Logo Hero (no CTA) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -91,9 +91,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (light green, left) -->
+    <!-- END: Logo Hero (no CTA) -->
 
-    <!-- START: Logo Header (light green, centered) -->
+    <!-- START: Logo Hero (light green, centered) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -102,9 +102,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (light green, centered) -->
+    <!-- END: Logo Hero (light green, centered) -->
 
-    <!-- START: Logo Header (dark, left) -->
+    <!-- START: Logo Hero (dark, left) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -113,9 +113,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (dark, left) -->
+    <!-- END: Logo Hero (dark, left) -->
 
-    <!-- START: Logo Header (dark, centered) -->
+    <!-- START: Logo Hero (dark, centered) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -124,9 +124,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (dark, centered) -->
+    <!-- END: Logo Hero (dark, centered) -->
 
-    <!-- START: Logo Header (off-white bordered, left) -->
+    <!-- START: Logo Hero (off-white bordered, left) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -135,9 +135,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (off-white bordered, left) -->
+    <!-- END: Logo Hero (off-white bordered, left) -->
 
-    <!-- START: Logo Header (off-white bordered, centered) -->
+    <!-- START: Logo Hero (off-white bordered, centered) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -146,9 +146,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (off-white bordered, centered) -->
+    <!-- END: Logo Hero (off-white bordered, centered) -->
 
-    <!-- START: Logo Header (dark red, left) -->
+    <!-- START: Logo Hero (dark red, left) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -157,9 +157,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (dark red, left) -->
+    <!-- END: Logo Hero (dark red, left) -->
 
-    <!-- START: Logo Header (dark red, centered) -->
+    <!-- START: Logo Hero (dark red, centered) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -168,9 +168,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (dark red, centered) -->
+    <!-- END: Logo Hero (dark red, centered) -->
 
-    <!-- START: Logo Header (white, w/ dark-mode swap) -->
+    <!-- START: Logo Hero (white, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
@@ -192,9 +192,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (white, w/ dark-mode swap) -->
+    <!-- END: Logo Hero (white, w/ dark-mode swap) -->
 
-    <!-- START: Logo Header (light green, w/ dark-mode swap) -->
+    <!-- START: Logo Hero (light green, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
@@ -216,9 +216,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (light green, w/ dark-mode swap) -->
+    <!-- END: Logo Hero (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Header x State (logo left, labeled) -->
+    <!-- START: Logo Hero (w/ text and image) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -238,9 +238,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x State (logo left, labeled) -->
+    <!-- END: Logo Hero (w/ text and image) -->
 
-    <!-- START: Logo Header x State (logo centered, labeled) -->
+    <!-- START: Logo Hero (w/ text and image, centered) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -260,9 +260,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x State (logo centered, labeled) -->
+    <!-- END: Logo Hero (w/ text and image, centered) -->
 
-    <!-- START: Logo Header x State (green, logo left) -->
+    <!-- START: Logo Hero (w/ image, green) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
@@ -310,9 +310,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x State (green, logo left) -->
+    <!-- END: Logo Hero (w/ image, green) -->
 
-    <!-- START: Logo Header x CTA (orange button) -->
+    <!-- START: CTA Hero (orange button) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -326,9 +326,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (orange button) -->
+    <!-- END: CTA Hero (orange button) -->
 
-    <!-- START: Logo Header x CTA (green button) -->
+    <!-- START: CTA Hero (green button) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -342,9 +342,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (green button) -->
+    <!-- END: CTA Hero (green button) -->
 
-    <!-- START: Logo Header x CTA (arrow graphic) -->
+    <!-- START: CTA Hero (arrow graphic) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -361,9 +361,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (arrow graphic) -->
+    <!-- END: CTA Hero (arrow graphic) -->
 
-    <!-- START: Logo Header x CTA (badge on white) -->
+    <!-- START: CTA Hero (w/ badge image) -->
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -381,9 +381,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (badge on white) -->
+    <!-- END: CTA Hero (w/ badge image) -->
 
-    <!-- START: Logo Header x CTA (badge on light green) -->
+    <!-- START: CTA Hero (w/ badge image, light green) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -401,9 +401,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (badge on light green) -->
+    <!-- END: CTA Hero (w/ badge image, light green) -->
 
-    <!-- START: Logo Header x CTA (photo background) -->
+    <!-- START: CTA Hero (logo and background image) -->
     <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -417,9 +417,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (photo background) -->
+    <!-- END: CTA Hero (logo and background image) -->
 
-    <!-- START: Logo Header x CTA (badge on dark) -->
+    <!-- START: CTA Hero (w/ badge image, dark) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -437,11 +437,11 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (badge on dark) -->
+    <!-- END: CTA Hero (w/ badge image, dark) -->
 
 
 
-    <!-- START: Photo Hero (CTA) -->
+    <!-- START: CTA Hero (fixed height, logo and background image) -->
     <mj-section css-class="image-block block" background-color="#362229" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-group>
         <mj-column vertical-align="middle" width="40%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -455,9 +455,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo Hero (CTA) -->
+    <!-- END: CTA Hero (fixed height, logo and background image) -->
 
-    <!-- START: Headline Hero -->
+    <!-- START: CTA Hero with Heading (logo and background image) -->
     <mj-wrapper css-class="block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
       <mj-section padding="48px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -480,9 +480,9 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: Headline Hero -->
+    <!-- END: CTA Hero with Heading (logo and background image) -->
 
-    <!-- START: Photo CTA Banner (logo + button) -->
+    <!-- START: CTA Hero (centered w/ background image, logo + button) -->
     <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude data-style-background-url data-style-background-position data-style-background-size>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -496,9 +496,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo CTA Banner (logo + button) -->
+    <!-- END: CTA Hero (centered w/ background image, logo + button) -->
 
-    <!-- START: Photo CTA Banner (centered headline + button) -->
+    <!-- START: CTA Hero (centered w/ background image) -->
     <mj-section css-class="image-block block" background-color="#006837" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -507,9 +507,9 @@
         <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Photo CTA Banner (centered headline + button) -->
+    <!-- END: CTA Hero (centered w/ background image) -->
 
-    <!-- START: Photo CTA Banner (fixed height) -->
+    <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -548,8 +548,42 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo CTA Banner (fixed height) -->
+    <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
+    <!-- START: CTA Hero (w/ large background image) -->
+    <!--
+      Inside a section using a background all elements must have 0 left
+      and right padding or they will be misaligned on outlook.
+      This is why we use spacer columns with a fixed width on the sides
+      of the overlay image column to create the necessary padding while
+      maintaining alignment across email clients.
+     -->
+    <mj-section
+        css-class="overlay-image-block block"
+        background-url="assets/photo-person_overlay.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center bottom" padding="350px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
+    >
+      <mj-group>
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
+
+        <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h1 style="text-align: center">Placeholder message for special occasion </h1>
+          </mj-text>
+          <mj-button width="auto"
+            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            Button
+          </mj-button>
+        </mj-column>
+
+        <!-- Spacer column - required to be done this way for Outlook -->
+        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: CTA Hero (w/ large background image) -->
     <!-- START: Category — Text Blocks -->
     <mj-raw><div data-import-exclude="true" data-folder="6400"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -563,13 +597,13 @@
     <!-- END: Category — Text Blocks -->
 
 
-    <!-- START: Heading Banner (white) -->
+    <!-- START: Heading -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (white) -->
+    <!-- END: Heading -->
 
-    <!-- START: Heading Banner (white, linked) -->
+    <!-- START: Heading (linked) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -577,63 +611,63 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Heading Banner (white, linked) -->
+    <!-- END: Heading (linked) -->
 
-    <!-- START: Heading Banner (off-white) -->
+    <!-- START: Heading (off-white) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (off-white) -->
+    <!-- END: Heading (off-white) -->
 
-    <!-- START: Heading Banner (off-white, green text) -->
+    <!-- START: Heading (off-white, green text) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (off-white, green text) -->
+    <!-- END: Heading (off-white, green text) -->
 
-    <!-- START: Heading Banner (off-white bordered) -->
+    <!-- START: Heading (off-white bordered) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (off-white bordered) -->
+    <!-- END: Heading (off-white bordered) -->
 
-    <!-- START: Heading Banner (white bordered) -->
+    <!-- START: Heading (white bordered) -->
     <mj-section css-class="text-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (white bordered) -->
+    <!-- END: Heading (white bordered) -->
 
-    <!-- START: Heading Banner (off-white bordered, green text) -->
+    <!-- START: Heading (off-white bordered, green text) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (off-white bordered, green text) -->
+    <!-- END: Heading (off-white bordered, green text) -->
 
-    <!-- START: Heading Banner (light green) -->
+    <!-- START: Heading (light green) -->
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (light green) -->
+    <!-- END: Heading (light green) -->
 
-    <!-- START: Heading Banner (dark) -->
+    <!-- START: Heading (dark) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (dark) -->
+    <!-- END: Heading (dark) -->
 
-    <!-- START: Heading Banner (green) -->
+    <!-- START: Heading (green) -->
     <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (green) -->
+    <!-- END: Heading (green) -->
 
-    <!-- START: Heading Banner (dark red) -->
+    <!-- START: Heading (dark red) -->
     <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
-    <!-- END: Heading Banner (dark red) -->
+    <!-- END: Heading (dark red) -->
 
-    <!-- START: Heading Banner (two-line, mixed weight) -->
+    <!-- START: Heading (two-line, mixed weight) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -641,7 +675,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Heading Banner (two-line, mixed weight) -->
+    <!-- END: Heading (two-line, mixed weight) -->
 
     <!-- START: Linked Header Row -->
     <mj-section
@@ -736,7 +770,7 @@
     </mj-section>
     <!-- END: WYSIWYG Text (inset) -->
 
-    <!-- START: Text w/ CTA (inset, left button) -->
+    <!-- START: Heading, Text, and CTA -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -753,7 +787,7 @@
         <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Text w/ CTA (inset, left button) -->
+    <!-- END: Heading, Text, and CTA -->
 
     <!-- START: Body Text (inset) -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -772,7 +806,7 @@
     </mj-section>
     <!-- END: Body Text (inset) -->
 
-    <!-- START: Text w/ CTA (inset, centered button) -->
+    <!-- START: Heading, Text, and CTA (centered button) -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -789,9 +823,9 @@
         <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Text w/ CTA (inset, centered button) -->
+    <!-- END: Heading, Text, and CTA (centered button) -->
 
-    <!-- START: Text w/ CTA (full width, centered button) -->
+    <!-- START: Heading, Text, and CTA (full width, centered button) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -807,7 +841,7 @@
         <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Text w/ CTA (full width, centered button) -->
+    <!-- END: Heading, Text, and CTA (full width, centered button) -->
 
     <!-- START: Text w/ Bullet Lists (inset, centered button) -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -911,7 +945,7 @@
     </mj-section>
     <!-- END: Text + Link Paragraph CTA (full width) -->
 
-    <!-- START: Linked Header + Text + Dual CTA (inset) -->
+    <!-- START: Heading (linked), Text, and CTA -->
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -932,9 +966,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Linked Header + Text + Dual CTA (inset) -->
+    <!-- END: Heading (linked), Text, and CTA -->
 
-    <!-- START: Linked Header + Text + Dual CTA (full width) -->
+    <!-- START: Heading (linked), Text, and CTA (full width) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -954,7 +988,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Linked Header + Text + Dual CTA (full width) -->
+    <!-- END: Heading (linked), Text, and CTA (full width) -->
 
     <!-- START: Highlighted Text -->
     <mj-section
@@ -1007,31 +1041,8 @@
     </mj-section>
     <!-- END: Quote Block -->
 
-    <!-- START: Question Response (linked row) -->
-    <mj-section
-      css-class="text-block block"
-      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text css-class="question-response" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;" data-style-color data-style-href>
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-              <tr>
-                <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
-                  <img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
-                </td>
-                <td valign="top" style="padding:8px 16px 12px 0px;">
-                  <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
-                </td>
-              </tr>
-            </table>
-          </a>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Question Response (linked row) -->
 
-    <!-- START: CTA Block -->
+    <!-- START: CTA Text Block -->
     <mj-section
       css-class="cta-button-block block"
       background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1053,7 +1064,7 @@
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Block -->
+    <!-- END: CTA Text Block -->
 
     <!-- START: Deadline Panel -->
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -1091,7 +1102,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Buttons -->
 
-    <!-- START: CTA Button (left) -->
+    <!-- START: CTA Button -->
     <mj-section
       css-class="block"
       background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1104,7 +1115,7 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button (left) -->
+    <!-- END: CTA Button -->
 
     <!-- START: CTA Button (centered) -->
     <mj-section
@@ -1186,7 +1197,7 @@
     </mj-section>
     <!-- END: CTA Button (centered, text only) -->
 
-    <!-- START: Dual CTA Buttons (left) -->
+    <!-- START: CTA Buttons 2x1 -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1196,9 +1207,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (left) -->
+    <!-- END: CTA Buttons 2x1 -->
 
-    <!-- START: Dual CTA Buttons (centered) -->
+    <!-- START: CTA Buttons 2x1 (centered) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1208,9 +1219,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (centered) -->
+    <!-- END: CTA Buttons 2x1 (centered) -->
 
-    <!-- START: Dual CTA Buttons (right) -->
+    <!-- START: CTA Buttons 2x1 (right) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1220,9 +1231,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (right) -->
+    <!-- END: CTA Buttons 2x1 (right) -->
 
-  <!-- START: Dual CTA Buttons (centered, fixed width) -->
+  <!-- START: CTA Buttons 2x1 (fixed width) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -1244,9 +1255,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: Dual CTA Buttons (centered, fixed width) -->
+  <!-- END: CTA Buttons 2x1 (fixed width) -->
 
-  <!-- START: Dual CTA Buttons (two-line, two-color) -->
+  <!-- START: CTA Buttons 2x1 (two-line) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -1262,9 +1273,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: Dual CTA Buttons (two-line, two-color) -->
+  <!-- END: CTA Buttons 2x1 (two-line) -->
 
-    <!-- START: Triple CTA Buttons (centered, dynamic width) -->
+    <!-- START: CTA Buttons 3x1 (dynamic width) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1274,9 +1285,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Triple CTA Buttons (centered, dynamic width) -->
+    <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
-    <!-- START: Triple CTA Buttons (centered, fixed width) -->
+    <!-- START: CTA Buttons 3x1 (fixed width) -->
     <!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -1298,7 +1309,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Triple CTA Buttons (centered, fixed width) -->
+    <!-- END: CTA Buttons 3x1 (fixed width) -->
 
     <!-- START: CTA Button (full width, stackable) -->
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -1357,7 +1368,7 @@
     </mj-section>
     <!-- END: Caption -->
 
-    <!-- START: Image (full-bleed) w/ Caption -->
+    <!-- START: Image (full-bleed) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
@@ -1373,9 +1384,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Image (full-bleed) w/ Caption -->
+    <!-- END: Image (full-bleed) -->
 
-    <!-- START: Image (inset) w/ Caption -->
+    <!-- START: Image (inset) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
@@ -1387,9 +1398,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Image (inset) w/ Caption -->
+    <!-- END: Image (inset) -->
 
-    <!-- START: Image (bikers) w/ Caption -->
+    <!-- START: Image (bikers) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
@@ -1405,9 +1416,10 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Image (bikers) w/ Caption -->
+    <!-- END: Image (bikers) -->
 
-    <!-- START: Two Images -->
+
+    <!-- START: Images 2x1 -->
     <mj-section
       css-class="two-col-images-block block"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1455,9 +1467,8 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Two Images -->
-
-    <!-- START: Three Images -->
+    <!-- END: Images 2x1 -->
+    <!-- START: Images 3x1 -->
     <mj-section
       css-class="three-col-images-block block"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1526,7 +1537,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Three Images -->
+    <!-- END: Images 3x1 -->
 
     <!-- START: Video Block (full-bleed) -->
     <mj-section css-class="image-block block" background-color="#4A7A68" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="110px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
@@ -1561,7 +1572,7 @@
     </mj-section>
     <!-- END: Video Block (inset) -->
 
-    <!-- START: Icon Grid (2x2) -->
+    <!-- START: Photo Grid (2x2) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
@@ -1590,7 +1601,7 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Icon Grid (2x2) -->
+    <!-- END: Photo Grid (2x2) -->
 
     <!-- START: Category — Image & Text Layouts -->
     <mj-raw><div data-import-exclude="true" data-folder="6407"></mj-raw>
@@ -1604,42 +1615,139 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Image & Text Layouts -->
 
-    <!-- START: Story Card (image left, no button) -->
-    <mj-section
-      css-class="two-col-image-text-block block"
-      background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
-    >
-      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/image-ranking.png"
-          alt="Placeholder ranking graphic"
-          href="https://www.example.com"
-          padding="0 0 8px"
-          align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image light-only" fluid-on-mobile="true" data-style-align />
+    <!-- START: Story Card (full width) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/image-ranking.png"
-          alt="Placeholder ranking graphic"
-          href="https://www.example.com"
-          padding="0 0 8px"
-          align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer</span>
-        </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Story Card (image left, no button) -->
+    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
+            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
+            lorem consequat pellentesque. Proin urna urna massa ut quis augue
+            pulvinar senectus.
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Card (full width) -->
+    <!-- START: Story Card (full width, centered button) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet ketfw consectetur. Pulvinar asy.</b></h1>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
+            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
+            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
+            senectus.
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Card (full width, centered button) -->
+    <!-- START: Story Card 2x1 -->
+    <mj-section
+        css-class="two-col-image-text-button-block block"
+        background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="two-col-column first-column" width="250px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+            src="assets/photo-kayak.jpg" width="230px"
+            alt="Custom alt text"
+            href="https://www.example.com"
+            padding="0 0 16px"
+            align="center"
+            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+            src="assets/photo-kayak.jpg" width="230px"
+            alt="Custom alt text"
+            href="https://www.example.com"
+            padding="0 0 16px"
+            align="center"
+            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3>Lorem ipsum dolor consectur</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut.
+          </p>
+        </mj-text>
+        <mj-button width="auto"
+          href="https://www.example.com"
+          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+          PLACEHOLDER
+        </mj-button>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="250px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+            src="assets/photo-garden.jpg" width="230px"
+            alt="Custom alt text"
+            href="https://www.example.com"
+            padding="0 0 16px"
+            align="center"
+            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+            src="assets/photo-garden.jpg" width="230px"
+            alt="Custom alt text"
+            href="https://www.example.com"
+            padding="0 0 16px"
+            align="center"
+            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3>Lorem ipsum dolor consectur</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut.
+          </p>
+        </mj-text>
+        <mj-button width="auto"
+          href="https://www.example.com"
+          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+          PLACEHOLDER
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Story Card 2x1 -->
 
-    <!-- START: Story Card (image right, no heading) -->
+    <!-- START: Story Card (no heading, image on the side) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image src="assets/photo-butterfly.jpg" width="240px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -1658,7 +1766,7 @@
         <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Story Card (image right, no heading) -->
+    <!-- END: Story Card (no heading, image on the side) -->
 
     <!-- START: Story Card (image right) -->
     <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -1802,140 +1910,43 @@
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image right, middle-aligned) -->
-
-    <!-- START: Story Block (left button) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet consectetur. Pulvinar asy.</b></h1>
-          <p style="font-size:16px;">
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
-            quis metus. Fermentum sit id pharetra tortor. In viverra semper et
-            lorem consequat pellentesque. Proin urna urna massa ut quis augue
-            pulvinar senectus.
-          </p>
-        </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Story Block (left button) -->
-
-    <!-- START: Story Block (centered button) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h1 style="font-weight:400;color:#362229;">Lorem ipsum <b>dolor sit amet ketfw consectetur. Pulvinar asy.</b></h1>
-          <p style="font-size:16px;">
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
-            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
-            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
-            senectus.
-          </p>
-        </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Story Block (centered button) -->
-
-    <!-- START: 2 Col Image and Text -->
+    <!-- START: Story Card (image left, no button) -->
     <mj-section
-        css-class="two-col-image-text-button-block block"
-        background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      css-class="two-col-image-text-block block"
+      background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column css-class="two-col-column first-column" width="250px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
-            src="assets/photo-kayak.jpg" width="230px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            padding="0 0 16px"
-            align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          src="assets/image-ranking.png"
+          alt="Placeholder ranking graphic"
+          href="https://www.example.com"
+          padding="0 0 8px"
+          align="center"
+          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image light-only" fluid-on-mobile="true" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-kayak.jpg" width="230px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            padding="0 0 16px"
-            align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>Lorem ipsum dolor consectur</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut.
-          </p>
-        </mj-text>
-        <mj-button width="auto"
+          src="assets/image-ranking.png"
+          alt="Placeholder ranking graphic"
           href="https://www.example.com"
-          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          PLACEHOLDER
-        </mj-button>
+          padding="0 0 8px"
+          align="center"
+          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer</span>
+        </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="250px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-            src="assets/photo-garden.jpg" width="230px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            padding="0 0 16px"
-            align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-            src="assets/photo-garden.jpg" width="230px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            padding="0 0 16px"
-            align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>Lorem ipsum dolor consectur</h3>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
-        <mj-button width="auto"
-          href="https://www.example.com"
-          align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          PLACEHOLDER
-        </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: 2 Col Image and Text -->
+    <!-- END: Story Card (image left, no button) -->
+
+
+
 
     <!-- START: Story Card (orange-bordered) -->
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -1970,40 +1981,6 @@
     </mj-wrapper>
     <!-- END: Story Card (orange-bordered) -->
 
-    <!-- START: Image with overlay -->
-    <!--
-      Inside a section using a background all elements must have 0 left
-      and right padding or they will be misaligned on outlook.
-      This is why we use spacer columns with a fixed width on the sides
-      of the overlay image column to create the necessary padding while
-      maintaining alignment across email clients.
-     -->
-    <mj-section
-        css-class="overlay-image-block block"
-        background-url="assets/photo-person_overlay.jpg"
-        background-size="cover"
-        background-repeat="no-repeat"
-        background-position="center bottom" padding="350px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
-    >
-      <mj-group>
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
-
-        <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h1 style="text-align: center">Placeholder message for special occasion </h1>
-          </mj-text>
-          <mj-button width="auto"
-            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-            Button
-          </mj-button>
-        </mj-column>
-
-        <!-- Spacer column - required to be done this way for Outlook -->
-        <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Image with overlay -->
 
     <!-- START: Text w/ Background Image -->
     <mj-section
@@ -2361,7 +2338,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Engagement & Interactive -->
 
-    <!-- START: Pop Quiz Block -->
+    <!-- START: Quiz Block (3x1 buttons) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2381,9 +2358,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Pop Quiz Block -->
+    <!-- END: Quiz Block (3x1 buttons) -->
 
-    <!-- START: Multiple Choice Quiz Block -->
+    <!-- START: Quiz Block (multiple choice) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2402,9 +2379,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Multiple Choice Quiz Block -->
+    <!-- END: Quiz Block (multiple choice) -->
 
-    <!-- START: Quiz Block (2x2 two-line color buttons) -->
+    <!-- START: Quiz Block (2x2 buttons) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2429,8 +2406,91 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Quiz Block (2x2 two-line color buttons) -->
+    <!-- END: Quiz Block (2x2 buttons) -->
 
+    <!-- START: Quiz Block (2x2 photos) -->
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
+          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 13-17</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 25-34</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="image-block block" background-color="#362229" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 45-54</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 65+</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text color="#ffffff" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;" data-style-color data-style-href>Skip to the answer.</a></p>
+        </mj-text>
+        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Quiz Block (2x2 photos) -->
+    <!-- START: Question Block -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text css-class="question-response" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;" data-style-color data-style-href>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
+                  <img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
+                </td>
+                <td valign="top" style="padding:8px 16px 12px 0px;">
+                  <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
+                </td>
+              </tr>
+            </table>
+          </a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Question Block -->
     <!-- START: Feedback Poll Block -->
     <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2591,7 +2651,7 @@
     </mj-section>
     <!-- END: Podcast Episode Block -->
 
-    <!-- START: Podcast Streaming Row -->
+    <!-- START: Podcast Streaming Block -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="380px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2613,7 +2673,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Podcast Streaming Row -->
+    <!-- END: Podcast Streaming Block -->
 
     <!-- START: Linked List Block -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
@@ -2652,7 +2712,7 @@
     </mj-section>
     <!-- END: Join Links Block -->
 
-    <!-- START: Photo Grid (2x2, dark background) -->
+    <!-- START: Photo and Text Grid (2x2) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2707,68 +2767,8 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo Grid (2x2, dark background) -->
+    <!-- END: Photo and Text Grid (2x2) -->
 
-    <!-- START: Photo Quiz Block (2x2, dark background) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
-          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 13-17</a>
-        </mj-text>
-      </mj-column>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 25-34</a>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="image-block block" background-color="#362229" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 45-54</a>
-        </mj-text>
-      </mj-column>
-      <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 65+</a>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;" data-style-color data-style-href>Skip to the answer.</a></p>
-        </mj-text>
-        <mj-text align="right" mj-class="caption" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Photo Quiz Block (2x2, dark background) -->
 
     <!-- START: Category — Utilities -->
     <mj-raw><div data-import-exclude="true" data-folder="6409"></mj-raw>
@@ -2790,7 +2790,7 @@
     </mj-section>
     <!-- END: Spacer -->
 
-    <!-- START: Divider -->
+    <!-- START: Divider (Single-color) -->
     <mj-section css-class="divider-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-divider
@@ -2802,11 +2802,11 @@
         />
       </mj-column>
     </mj-section>
-    <!-- END: Divider -->
+    <!-- END: Divider (Single-color) -->
 
-    <!-- START: Tri-Color Divider -->
+    <!-- START: Divider (Tri-color) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Tri-Color Divider -->
+    <!-- END: Divider (Tri-color) -->
 
     <!-- START: Category — Signatures -->
     <mj-raw><div data-import-exclude="true" data-folder="6404"></mj-raw>
@@ -2820,7 +2820,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Signatures -->
 
-    <!-- START: Signature Card (original) -->
+    <!-- START: Signature Card (square photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2879,9 +2879,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature Card (original) -->
+    <!-- END: Signature Card (square photo) -->
 
-    <!-- START: Signature Card (w/ photo) -->
+    <!-- START: Signature Card (round photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="130px" css-class="signature-img" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2904,7 +2904,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature Card (w/ photo) -->
+    <!-- END: Signature Card (round photo) -->
 
     <!-- START: Signature Card (no photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -2957,7 +2957,7 @@
     </mj-section>
     <!-- END: Footer (dark) -->
 
-    <!-- START: Footer (dark w/ arrow note) -->
+    <!-- START: Footer (w/ image) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2981,7 +2981,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Footer (dark w/ arrow note) -->
+    <!-- END: Footer (w/ image) -->
 
     <!-- START: Footer (off-white) -->
     <mj-include path="./partials/tri-color-divider.mjml" />

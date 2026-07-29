@@ -70,7 +70,7 @@
 
     <!-- START: Main Content -->
 
-    <!-- START: Logo Header (white, w/ dark-mode swap) -->
+    <!-- START: Logo Hero (white, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -92,9 +92,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (white, w/ dark-mode swap) -->
+    <!-- END: Logo Hero (white, w/ dark-mode swap) -->
 
-    <!-- START: Logo Header (light green, w/ dark-mode swap) -->
+    <!-- START: Logo Hero (light green, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
       background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
@@ -116,9 +116,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Header (light green, w/ dark-mode swap) -->
+    <!-- END: Logo Hero (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Header x State (green, logo left) -->
+    <!-- START: Logo Hero (w/ image, green) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -166,9 +166,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x State (green, logo left) -->    
+    <!-- END: Logo Hero (w/ image, green) -->    
 
-    <!-- START: Logo Header x CTA (green button) -->
+    <!-- START: CTA Hero (green button) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -203,9 +203,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (green button) -->    
+    <!-- END: CTA Hero (green button) -->    
 
-    <!-- START: Logo Header x CTA (photo background) -->
+    <!-- START: CTA Hero (logo and background image) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -244,7 +244,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Header x CTA (photo background) -->    
+    <!-- END: CTA Hero (logo and background image) -->    
 
     <!-- START: Text w/ Background Image -->
     <mj-section
@@ -263,7 +263,7 @@
     </mj-section>
     <!-- END: Text w/ Background Image -->
 
-    <!-- START: Photo CTA Banner (fixed height) -->
+    <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <mj-section
       css-class="image-block block"
       background-color="#362229"
@@ -302,9 +302,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Photo CTA Banner (fixed height) -->    
+    <!-- END: CTA Hero (centered w/ background image, fixed height) -->    
 
-    <!-- START: Image with overlay -->
+    <!-- START: CTA Hero (w/ large background image) -->
     <!--
       Inside a section using a background all elements must have 0 left
       and right padding or they will be misaligned on outlook.
@@ -337,7 +337,7 @@
         <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Image with overlay -->
+    <!-- END: CTA Hero (w/ large background image) -->
 
     <!-- START: Image -->
     <mj-section
@@ -376,7 +376,7 @@
     </mj-section>
     <!-- END: Caption -->
 
-    <!-- START: Two Images -->
+    <!-- START: Images 2x1 -->
     <mj-section
       css-class="two-col-images-block block"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -424,9 +424,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Two Images -->
+    <!-- END: Images 2x1 -->
 
-    <!-- START: Three Images -->
+    <!-- START: Images 3x1 -->
     <mj-section
       css-class="three-col-images-block block"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -495,7 +495,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Three Images -->
+    <!-- END: Images 3x1 -->
 
     <!-- START: WYSIWYG Text (full width) -->
     <mj-section
@@ -567,7 +567,7 @@
     </mj-section>
     <!-- END: WYSIWYG Text (inset) -->
 
-    <!-- START: CTA Button (left) -->
+    <!-- START: CTA Button -->
     <mj-section
       css-class="block"
       background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -580,7 +580,7 @@
           </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Button (left) -->
+    <!-- END: CTA Button -->
 
     <!-- START: CTA Button (centered) -->
     <mj-section
@@ -662,7 +662,7 @@
     </mj-section>
     <!-- END: CTA Button (centered, text only) -->
 
-    <!-- START: Dual CTA Buttons (left) -->
+    <!-- START: CTA Buttons 2x1 -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -672,9 +672,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (left) -->
+    <!-- END: CTA Buttons 2x1 -->
 
-    <!-- START: Dual CTA Buttons (centered) -->
+    <!-- START: CTA Buttons 2x1 (centered) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -684,9 +684,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (centered) -->
+    <!-- END: CTA Buttons 2x1 (centered) -->
 
-    <!-- START: Dual CTA Buttons (right) -->
+    <!-- START: CTA Buttons 2x1 (right) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -696,9 +696,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Dual CTA Buttons (right) -->
+    <!-- END: CTA Buttons 2x1 (right) -->
 
-    <!-- START: Triple CTA Buttons (centered, dynamic width) -->
+    <!-- START: CTA Buttons 3x1 (dynamic width) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text css-class="button" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -708,9 +708,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Triple CTA Buttons (centered, dynamic width) -->
+    <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
-    <!-- START: Triple CTA Buttons (centered, fixed width) -->
+    <!-- START: CTA Buttons 3x1 (fixed width) -->
     <!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -732,9 +732,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Triple CTA Buttons (centered, fixed width) -->
+    <!-- END: CTA Buttons 3x1 (fixed width) -->
 
-  <!-- START: Dual CTA Buttons (centered, fixed width) -->
+  <!-- START: CTA Buttons 2x1 (fixed width) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -756,9 +756,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: Dual CTA Buttons (centered, fixed width) -->
+  <!-- END: CTA Buttons 2x1 (fixed width) -->
 
-  <!-- START: Dual CTA Buttons (two-line, two-color) -->
+  <!-- START: CTA Buttons 2x1 (two-line) -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -774,9 +774,9 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: Dual CTA Buttons (two-line, two-color) -->
+  <!-- END: CTA Buttons 2x1 (two-line) -->
 
-    <!-- START: Question Response (linked row) -->
+    <!-- START: Question Block -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -798,7 +798,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Question Response (linked row) -->
+    <!-- END: Question Block -->
 
     <!-- START: Quote Block -->
     <mj-section
@@ -851,7 +851,7 @@
     </mj-section>
     <!-- END: Highlighted Text -->
 
-    <!-- START: 2 Col Image and Text -->
+    <!-- START: Story Card 2x1 -->
     <mj-section
         css-class="two-col-image-text-button-block block"
         background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -917,7 +917,7 @@
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: 2 Col Image and Text -->
+    <!-- END: Story Card 2x1 -->
 
     <!-- START: Spacer -->
     <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -927,7 +927,7 @@
     </mj-section>
     <!-- END: Spacer -->
 
-    <!-- START: CTA Block -->
+    <!-- START: CTA Text Block -->
     <mj-section
       css-class="cta-button-block block"
       background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -949,9 +949,9 @@
         </mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Block -->
+    <!-- END: CTA Text Block -->
 
-    <!-- START: Divider -->
+    <!-- START: Divider (Single-color) -->
     <mj-section css-class="divider-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-divider
@@ -963,7 +963,7 @@
         />
       </mj-column>
     </mj-section>
-    <!-- END: Divider -->
+    <!-- END: Divider (Single-color) -->
 
     <!-- START: Linked Header Row (w/ icon) -->
     <mj-section
@@ -978,7 +978,7 @@
     </mj-section>
     <!-- END: Linked Header Row (w/ icon) -->
 
-    <!-- START: Story Card (image right, no heading) -->
+    <!-- START: Story Card (no heading, image on the side) -->
     <mj-section
       css-class="two-col-image-text-block block"
       background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1016,7 +1016,7 @@
           align="left" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Story Card (image right, no heading) -->
+    <!-- END: Story Card (no heading, image on the side) -->
 
     <!-- START: Story Card (image left, middle-aligned) -->
     <mj-section
@@ -1113,9 +1113,9 @@
     </mj-section>
     <!-- END: Story Card (image right, middle-aligned) -->
 
-    <!-- START: Tri-Color Divider -->
+    <!-- START: Divider (Tri-color) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Tri-Color Divider -->
+    <!-- END: Divider (Tri-color) -->
 
     <!-- START: Linked Header Row -->
     <mj-section
@@ -1208,7 +1208,7 @@
     </mj-section>
     <!-- END: Podcast Episode Block -->
 
-    <!-- START: Podcast Streaming Row -->
+    <!-- START: Podcast Streaming Block -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1259,9 +1259,9 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Podcast Streaming Row -->
+    <!-- END: Podcast Streaming Block -->
 
-    <!-- START: Photo Grid (2x2, dark background) -->
+    <!-- START: Photo and Text Grid (2x2) -->
     <mj-section
       css-class="text-block block"
       background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1368,7 +1368,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo Grid (2x2, dark background) -->
+    <!-- END: Photo and Text Grid (2x2) -->
 
     <!-- START: Join Links Block -->
     <mj-section
@@ -1396,7 +1396,7 @@
     </mj-section>
     <!-- END: Join Links Block -->
 
-    <!-- START: Multiple Choice Quiz Block -->
+    <!-- START: Quiz Block (multiple choice) -->
     <mj-section
       css-class="text-block block"
       background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
@@ -1421,9 +1421,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Multiple Choice Quiz Block -->
+    <!-- END: Quiz Block (multiple choice) -->
 
-    <!-- START: Pop Quiz Block -->
+    <!-- START: Quiz Block (3x1 buttons) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1443,7 +1443,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Pop Quiz Block -->
+    <!-- END: Quiz Block (3x1 buttons) -->
 
     <!-- START: Steps Block -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -1485,7 +1485,7 @@
     </mj-section>
     <!-- END: Linked List Block -->
 
-    <!-- START: Quiz Block (2x2 two-line color buttons) -->
+    <!-- START: Quiz Block (2x2 buttons) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1510,9 +1510,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Quiz Block (2x2 two-line color buttons) -->
+    <!-- END: Quiz Block (2x2 buttons) -->
 
-    <!-- START: Photo Quiz Block (2x2, dark background) -->
+    <!-- START: Quiz Block (2x2 photos) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1571,7 +1571,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo Quiz Block (2x2, dark background) -->
+    <!-- END: Quiz Block (2x2 photos) -->
 
     <!-- START: Feedback Poll Block -->
     <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -1586,7 +1586,7 @@
     </mj-section>
     <!-- END: Feedback Poll Block -->
 
-    <!-- START: Signature Card (original) -->
+    <!-- START: Signature Card (square photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -1645,7 +1645,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature Card (original) -->
+    <!-- END: Signature Card (square photo) -->
 
     <!-- START: Footer -->
     <mj-section
