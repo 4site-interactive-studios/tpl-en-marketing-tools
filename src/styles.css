@@ -210,10 +210,12 @@ p {
     background-color: #000000 !important;
   }
 
+  /* ToDo: Revisit for TPL */
   a {
     color: #9ca4a5 !important;
   }
 
+  /* ToDo: Revisit for TPL */
   .wysiwyg h1,
   .wysiwyg h2,
   .wysiwyg h3,
@@ -221,7 +223,7 @@ p {
   .wysiwyg h5,
   .wysiwyg h6,
   .pre-footer-text span {
-    color: #b0b4b5 !important;
+    color: #9ca4a5 !important;
   }
 
   .quote-block p,
@@ -247,7 +249,7 @@ p {
   .button a {
     background-color: #ffffff !important;
     border-color: #ffffff !important;
-    color: #121314 !important;
+    color: #000000 !important;
   }
 
   .social-link table {
