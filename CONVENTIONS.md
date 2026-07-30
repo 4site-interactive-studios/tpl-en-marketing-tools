@@ -335,9 +335,14 @@ sort — it is purely the panel/export display order.
 - **Colors** → Select backed by the project's brand palette (text vs
   background groups), defaults normalized to lowercase hex, authored casing
   kept in `originalValue`. The palette extracts only from the template's
-  own CSS and its blocks — debug-block regions are stripped first
-  (2026-07-30), so dev-only chrome like the 🐞 toolbar's #111111 button
-  never becomes a brand color or a dropdown option.
+  own CSS and blocks that can actually import (2026-07-30): debug-block
+  regions AND data-fully-exclude variants are stripped first (leaf blocks
+  only — container wrappers never match), so dev-only chrome (the 🐞
+  toolbar's #111111) and variant-only colors (Stat Row (green)'s #DFEEDA)
+  never become brand colors. Border colors never feed the palette either —
+  borders export as plain Text fields, not palette dropdowns (drops
+  `.question-response`'s #eee). Colors an excluded variant shares with a
+  live block or the stylesheet survive via their other occurrences.
 - **Fonts** → Select over the document's font-family stacks.
 - **Enumerable attributes** (align, vertical-align, direction, target,
   font-weight — keywords normalized to numeric) → constrained Selects.
