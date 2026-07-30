@@ -334,7 +334,10 @@ sort — it is purely the panel/export display order.
 
 - **Colors** → Select backed by the project's brand palette (text vs
   background groups), defaults normalized to lowercase hex, authored casing
-  kept in `originalValue`.
+  kept in `originalValue`. The palette extracts only from the template's
+  own CSS and its blocks — debug-block regions are stripped first
+  (2026-07-30), so dev-only chrome like the 🐞 toolbar's #111111 button
+  never becomes a brand color or a dropdown option.
 - **Fonts** → Select over the document's font-family stacks.
 - **Enumerable attributes** (align, vertical-align, direction, target,
   font-weight — keywords normalized to numeric) → constrained Selects.
