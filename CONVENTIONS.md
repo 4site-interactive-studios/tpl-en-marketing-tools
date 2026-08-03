@@ -362,6 +362,14 @@ sort — it is purely the panel/export display order.
   borders export as plain Text fields, not palette dropdowns (drops
   `.question-response`'s #eee). Colors an excluded variant shares with a
   live block or the stylesheet survive via their other occurrences.
+  The panel's usage badges are **role-aware** (2026-08-03, user-decided):
+  each occurrence is classified by the property owning it
+  (`countColorRoles`, src/core/colorUsage.ts) — `color:`/`color=` counts
+  as text; `background`/`background-color`/`bgcolor`/`fillcolor` as
+  background — so a hex living in both palette groups shows different
+  numbers per row, and click-to-filter targets that role's block set.
+  Borders, shadows, and other roles count in NEITHER badge (the palette
+  dropdowns never drive them); their total is named in the tooltip.
 - **Fonts** → Select over the document's font-family stacks.
 - **Enumerable attributes** (align, vertical-align, direction, target,
   font-weight — keywords normalized to numeric) → constrained Selects.
