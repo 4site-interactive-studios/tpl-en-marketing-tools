@@ -240,10 +240,13 @@ Category wrappers also carry `data-folder="<id>"` — the Engaging Networks
 import-folder ID for every block that FOLLOWS that header (until the next
 category header). The converter reads it from the raw MJML to route each
 block's import; the header block itself still never imports. Current map:
-Logo Headers 6399 · Text Blocks 6400 · Images & Media 6401 · Fundraising &
-Campaign 6402 · Content Features 6403 · Signatures 6404 · Heading Banners &
-Rows 6405 · Buttons & CTAs 6406 · Image & Text Layouts 6407 · Engagement &
-Interactive 6408 · Utilities 6409 · Footers 6410.
+Logo Headers 6399 · Text Blocks 6400 · Images & Media 6401 · Signatures
+6404 · Heading Banners & Rows 6405 · Buttons & CTAs 6406 · Image & Text
+Layouts 6407 · Engagement & Interactive 6408 · Utilities 6409 · Footers
+6410. (Retired 2026-08-03: Fundraising & Campaign 6402 and Content
+Features 6403 were merged into Engagement & Interactive 6408 — the
+Progress Meter, Countdown Card, and all Content Features blocks now
+live there.)
 
 A block can override its section's folder by carrying `data-folder="<id>"`
 directly on its own top-level tag (e.g. the block's `mj-section`): the

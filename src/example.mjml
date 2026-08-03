@@ -561,18 +561,18 @@
         background-url="assets/photo-person_overlay.jpg"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center bottom" padding="350px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
+        background-position="center bottom" padding="360px 16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
     >
       <mj-group>
         <!-- Spacer column - required to be done this way for Outlook -->
         <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
 
         <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text css-class="overlay" data-style-alignment padding="0 25px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <h1 style="text-align: center">Placeholder message for special occasion </h1>
           </mj-text>
           <mj-button width="auto"
-            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            href="https://www.example.com" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
             Button
           </mj-button>
         </mj-column>
@@ -1147,22 +1147,20 @@
     </mj-section>
     <!-- END: Two-Line Banner (light green, hero lead-in) -->
     <!-- START: Stat Row (off-white) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 32px">
-      <mj-section background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-            <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
-            <p style="font-size:16px;"><b>Supporter ID:</b></p>
-            <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
-            <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-            <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
-            <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
-          </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+          <p style="font-size:16px;"><b>Supporter ID:</b></p>
+          <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+          <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+          <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+          <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+          <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
     <!-- END: Stat Row (off-white) -->
     <!-- START: Stat Row (green) -->
     <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px" data-fully-exclude>
@@ -2151,18 +2149,6 @@
     </mj-section>
     <!-- END: Text + Image Rows (image right) -->
 
-    <!-- START: Category — Fundraising & Campaign -->
-    <mj-raw><div data-import-exclude="true" data-folder="6402" data-category-short="Campaign"></mj-raw>
-    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FUNDRAISING &amp; CAMPAIGN</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-raw></div></mj-raw>
-    <!-- END: Category — Fundraising & Campaign -->
-
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
@@ -2425,18 +2411,6 @@
     </mj-section>
     <mj-include path="./partials/green-rule-divider.mjml" />
     <!-- END: Steps Block (w/ arrow heading) -->
-
-    <!-- START: Category — Content Features -->
-    <mj-raw><div data-import-exclude="true" data-folder="6403" data-category-short="Content"></mj-raw>
-    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">CONTENT FEATURES</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-raw></div></mj-raw>
-    <!-- END: Category — Content Features -->
 
     <!-- START: Podcast Episode Block -->
     <mj-section css-class="image-block block" background-color="#0E7C3F" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>

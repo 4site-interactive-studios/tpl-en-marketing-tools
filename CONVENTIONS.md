@@ -167,8 +167,15 @@ spacing, and stay.
 
 A padding field is worthless if changing it doesn't change the rendering.
 Two mechanisms are detected statically at import and the field is
-suppressed (the reason lands in `Block.pacingNotes`, surfaced by the
-validator):
+suppressed. The reason lands in `Block.infoNotes` and the validator
+surfaces it at **'info' level, not as a warning** (2026-08-03,
+user-decided): the source is correct as written and nothing can be
+burned down — the note only explains WHY the field is missing and what
+the working control is, so it must keep that explanation in its message.
+`Block.pacingNotes` (snaps, off-preset gutters) stay warnings — those ARE
+actionable in the source. The same info treatment applies to the other
+deliberate suppressions: Outlook-only paddings and unsafe
+direction-flip skips.
 
 - **Structural pin** (`gutterStructurallyPinned`, mjmlProps.ts): MJML bakes
   `600 − 2·gutter` into compiled descendants — a wrapped section's
@@ -179,8 +186,14 @@ validator):
   section's own Width is the working control). Zero gutters never pin —
   600px is the natural cap and stays responsive. On the current template
   this suppresses: Video Block (inset) + Countdown Card wrappers (48→504),
-  Stat Row wrapper+section (32→536), Image (inset) w/ Caption (48→504
-  image).
+  Image (inset) w/ Caption (48→504 image). These pins are INHERENT to MJML
+  compilation (verified 2026-08-03): a wrapper always bakes its inner
+  section's max-width, and mj-image always bakes a computed px td width —
+  they cannot be authored away without giving up the structure. Stat Row
+  (off-white) WAS on this list (32→536) until 2026-08-03, when the
+  upstream wrapper>section was flattened to section>column (bg/border on
+  the column) — color-only inset cards don't need a wrapper, so the
+  gutter unpins and a live Block Width field appears.
 - **Outlook-only copies**: a padding whose EVERY occurrence sits inside an
   MSO conditional comment or an `mso-*` property would edit Outlook alone —
   invisible in the preview, silently desyncing every other client. No field
@@ -211,8 +224,10 @@ Known but NOT suppressed (documented trade-offs):
 **Empirical oracle** (`window.__auditPadding()` in dev builds,
 src/components/paddingAudit.ts): renders every padding-family Select
 option at 600px and geometry-diffs against the default render — the ground
-truth the static guards are checked against. Current template: 414/414
-fields live after suppression. Run it after template-structure changes;
+truth the static guards are checked against. Current template: 416/416
+fields live after suppression (2026-08-03: the Stat Row flatten added a
+live Block Width and moved the card's bottom inset onto the button's
+Spacing Below). Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
 prune.
 
@@ -328,7 +343,11 @@ sort — it is purely the panel/export display order.
   `thumbnail-<slug>.png` assets keep matching. Dividers, pre-divider
   blocks, and user renames are left alone. Declared short names
   (2026-07-29): Headers/Heroes, Text, Buttons, Images, Images and Text,
-  Campaign, Engagement, Content, Utility, Signature, Footer.
+  Engagement, Utility, Signature, Footer. (2026-08-03, user-decided:
+  the empty Fundraising & Campaign category was removed and Content
+  Features merged into Engagement & Interactive — Progress Meter,
+  Countdown Card, and the Content blocks all live under Engagement now;
+  the Campaign and Content short names are retired.)
 
 ## Replacement typing (what becomes a dropdown)
 
