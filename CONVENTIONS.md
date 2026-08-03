@@ -452,6 +452,11 @@ sort — it is purely the panel/export display order.
   merges both sets, thumbnails winning name clashes. CORS-less hosts
   can't be fetched client-side — those refs are counted in the status
   line and listed in the console (`src/components/assetDownload.ts`).
+  When selected blocks lack thumbnails, a "Missing thumbnails ZIP (N)"
+  button (2026-08-03) zips ONLY those blocks' thumbnails (+
+  placeholder.png, so the fallback always exists) as
+  `thumbnails-missing.zip` — a top-up for an asset root that already
+  has the rest.
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
