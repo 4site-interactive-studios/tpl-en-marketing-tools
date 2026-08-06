@@ -456,23 +456,28 @@ sort — it is purely the panel/export display order.
   fail-open.
 - Thumbnail probing is async, after load — never blocks the import.
 - Export panel ZIPs are asset-root-ready: FLAT filenames only (EN CDN
-  folders are flat). Three counted buttons (2026-08-04): Block Imagery /
-  Block Thumbnails / Block Imagery and Thumbnails. Imagery collects every
-  image the blocks reference (rendered defaults + Select option values,
-  so display-toggle fragments and dark twins are seen; relative paths
-  resolve source URL first, asset root second); the combined ZIP merges
-  both sets with thumbnails winning name clashes. Uploading is idempotent,
-  so the full ZIPs are the answer whenever art changes.
-- **No "missing/changed" detection against the asset root.** A
-  browser cannot read the bytes of a cross-origin image from a host that
-  sends no CORS headers (verified 2026-08-04 against the TPL Rackspace
-  root: `fetch` throws, `crossOrigin` images fail to load, canvas
-  `getImageData` throws SecurityError on the tainted canvas, and
-  resource-timing sizes report 0). Loading the URL in an `<img>` proves
-  EXISTENCE only — that is what `probeImage` does for thumbnail
-  detection. A diff-the-root feature would need
-  `Access-Control-Allow-Origin` on the CDN container; until then, "what
-  changed?" is unanswerable client-side and must not be faked.
+  folders are flat). Six counted buttons (2026-08-04): Block Imagery /
+  Block Thumbnails / Block Imagery and Thumbnails, plus Missing variants
+  of each. Imagery collects every image the blocks reference (rendered
+  defaults + Select option values, so display-toggle fragments and dark
+  twins are seen; relative paths resolve source URL first, asset root
+  second); combined ZIPs merge both sets with thumbnails winning name
+  clashes. Missing ZIPs fetch from the SOURCE, never from the root that
+  lacks them.
+- **Asset-root checking is EXISTENCE-only** — the line the UI must not
+  cross. `findMissingAtRoot` / `probeImage` load `<root>/<filename>` in an
+  `<img>`, which CORS never gates, so "is the file there?" is answerable
+  against any CDN (verified 2026-08-04: on the TPL Rackspace root
+  `facebook.png` probes true while `icon-circle.png` probes false).
+  "Are the bytes still current?" is NOT answerable: `fetch` throws,
+  `crossOrigin` images fail to load, canvas `getImageData` throws
+  SecurityError on the tainted canvas, and resource-timing sizes report
+  0. So a present-but-stale file (re-exported artwork under the same
+  name) can never be detected client-side — the panel says so plainly
+  when nothing is missing rather than implying everything is current.
+  Byte diffing would require `Access-Control-Allow-Origin` on the CDN
+  container; until then, re-upload the full Block Imagery ZIP after
+  changing artwork (uploads are idempotent).
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
