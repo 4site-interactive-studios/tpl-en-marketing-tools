@@ -456,18 +456,21 @@ sort — it is purely the panel/export display order.
   fail-open.
 - Thumbnail probing is async, after load — never blocks the import.
 - Export panel ZIPs are asset-root-ready: FLAT filenames only (EN CDN
-  folders are flat). "Download assets ZIP" packages every image the
-  blocks reference (rendered defaults + Select option values, so
-  display-toggle fragments and dark twins are seen; relative paths
-  resolve source URL first, asset root second); "thumbnails + assets"
-  merges both sets, thumbnails winning name clashes. CORS-less hosts
-  can't be fetched client-side — those refs are counted in the status
-  line and listed in the console (`src/components/assetDownload.ts`).
-  When selected blocks lack thumbnails, a "Missing thumbnails ZIP (N)"
-  button (2026-08-03) zips ONLY those blocks' thumbnails (+
-  placeholder.png, so the fallback always exists) as
-  `thumbnails-missing.zip` — a top-up for an asset root that already
-  has the rest.
+  folders are flat). Six counted buttons (2026-08-04): Block Imagery /
+  Block Thumbnails / Block Imagery and Thumbnails, plus Missing variants
+  of all three driven by an automatic asset-root audit that replaced the
+  manual "Detect existing thumbnails" button. Imagery collects every
+  image the blocks reference (rendered defaults + Select option values,
+  so display-toggle fragments and dark twins are seen; relative paths
+  resolve source URL first, asset root second); combined ZIPs merge with
+  thumbnails winning name clashes. The audit
+  (`auditAssetsAgainstRoot`, `src/components/assetDownload.ts`) marks an
+  image missing when the root has no copy and CHANGED when the root's
+  bytes differ from the source (replacement art uploaded under the same
+  name — both land in the Missing ZIPs); thumbnails audit by <img>
+  existence probe only (rendered PNGs are never byte-stable). CORS-less
+  roots can't be byte-read — existing-but-unverifiable images are
+  counted in an amber note, never silently assumed current.
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
