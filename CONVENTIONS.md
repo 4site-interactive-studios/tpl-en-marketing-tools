@@ -456,21 +456,23 @@ sort — it is purely the panel/export display order.
   fail-open.
 - Thumbnail probing is async, after load — never blocks the import.
 - Export panel ZIPs are asset-root-ready: FLAT filenames only (EN CDN
-  folders are flat). Six counted buttons (2026-08-04): Block Imagery /
-  Block Thumbnails / Block Imagery and Thumbnails, plus Missing variants
-  of all three driven by an automatic asset-root audit that replaced the
-  manual "Detect existing thumbnails" button. Imagery collects every
+  folders are flat). Three counted buttons (2026-08-04): Block Imagery /
+  Block Thumbnails / Block Imagery and Thumbnails. Imagery collects every
   image the blocks reference (rendered defaults + Select option values,
   so display-toggle fragments and dark twins are seen; relative paths
-  resolve source URL first, asset root second); combined ZIPs merge with
-  thumbnails winning name clashes. The audit
-  (`auditAssetsAgainstRoot`, `src/components/assetDownload.ts`) marks an
-  image missing when the root has no copy and CHANGED when the root's
-  bytes differ from the source (replacement art uploaded under the same
-  name — both land in the Missing ZIPs); thumbnails audit by <img>
-  existence probe only (rendered PNGs are never byte-stable). CORS-less
-  roots can't be byte-read — existing-but-unverifiable images are
-  counted in an amber note, never silently assumed current.
+  resolve source URL first, asset root second); the combined ZIP merges
+  both sets with thumbnails winning name clashes. Uploading is idempotent,
+  so the full ZIPs are the answer whenever art changes.
+- **No "missing/changed" detection against the asset root.** A
+  browser cannot read the bytes of a cross-origin image from a host that
+  sends no CORS headers (verified 2026-08-04 against the TPL Rackspace
+  root: `fetch` throws, `crossOrigin` images fail to load, canvas
+  `getImageData` throws SecurityError on the tainted canvas, and
+  resource-timing sizes report 0). Loading the URL in an `<img>` proves
+  EXISTENCE only — that is what `probeImage` does for thumbnail
+  detection. A diff-the-root feature would need
+  `Access-Control-Allow-Origin` on the CDN container; until then, "what
+  changed?" is unanswerable client-side and must not be faked.
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
