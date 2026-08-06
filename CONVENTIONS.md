@@ -398,6 +398,16 @@ sort — it is purely the panel/export display order.
 - **Dark-mode images**: light/dark swap pairs merge (src EXCLUDED from the
   equality check so differing artwork still pairs); the dark twin's src
   becomes "Dark Mode Image URL" in the light image's group.
+- **Link toggles** (2026-07-31, QA-driven): every mj-image with a live
+  href gets a "Link" Select — "Include Link" carries the component's
+  fragment with its <a> wrapper(s), "Exclude Link" the same fragment with
+  each anchor's open/close stripped (the href tag goes with the opener; it
+  still resolves via the Include value, which the validator counts).
+  Light/dark pairs toggle as one unit. Generated BEFORE Display, so a
+  Display fragment nests {replacement~image_N_link} — EN must resolve
+  option-value tags recursively one level deeper than Display alone
+  (verify in EN before relying on it). `data-no-link-toggle` opts out
+  upstream. Label is bare "Link", sorted directly under Display.
 - **Image Position / Column Order** (the content-swap control): exists to
   reverse CONTENT ordering, never to reverse text — so it is generated ONLY
   at the section/column-frame level, never on inner elements like a Text
@@ -536,6 +546,10 @@ importer whitelists all data-*-only MJML validator warnings
   ("Text — Heading" instead of "Text Blocks — Heading");
   folder grouping and the import form keep using the full divider name
   (`src/core/blocks.ts` `categoryShortNameOf`).
+- **`data-no-link-toggle`** (valueless, on mj-image): opts the image out
+  of the auto-generated Include/Exclude Link Select
+  (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link
+  must never be removable (e.g. a legally required logo link).
 - **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
