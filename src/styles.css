@@ -123,6 +123,23 @@ p {
     display: none !important;
   }
 
+  /* Buttons center on mobile regardless of desktop alignment — a
+     left-hugging button on a 375px screen reads as a layout accident.
+     text-align + inline-table beats the legacy td[align] attribute. */
+  td.button {
+    text-align: center !important;
+  }
+
+  td.button>table {
+    float: none !important;
+    display: inline-table !important;
+    margin: 0 auto !important;
+  }
+
+  .cta-group {
+    text-align: center !important;
+  }
+
   /* Fixed-width dividers and buttons span their container on narrow
      screens — a px width would force table min-width and overflow the
      viewport. Buttons opt in via css-class="button fixed-width". */
@@ -146,6 +163,12 @@ p {
     width: calc(100% - 110px) !important;
   }
 
+  /* The handwriting graphic reads oversized next to the shrunken photo */
+  .signature-text img {
+    width: 140px !important;
+    height: auto !important;
+  }
+
   .two-col-column>table>tbody>tr>td {
     padding: 0 !important;
   }
@@ -156,10 +179,9 @@ p {
   }
 
   /* Add space below first column on mobile when it is collapsed to single column */
-  .first-two-col-column,
   .first-column,
   .second-column {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
   }
 
   /* Inset sections: collapse the wide desktop gutters to the standard 32px */
@@ -195,6 +217,62 @@ p {
   display: none !important;
 }
 
+/* Outlook.com dark mode ([data-ogsc]) can't read the media query below —
+   mirror the full treatment. Backgrounds must come along with the forced
+   white text: OWA keeps authored light section colors (off-white/light
+   green footers), which would leave white-on-light otherwise. */
+[data-ogsc] .block,
+[data-ogsc] .block>table,
+[data-ogsc] .spacer-block td {
+  background-color: #000000 !important;
+}
+
+[data-ogsc] .quote-block,
+[data-ogsc] .quote-block>table,
+[data-ogsc] .cta-button-block,
+[data-ogsc] .cta-button-block>table,
+[data-ogsc] .highlighted-text-column > table > tbody > tr > td {
+  background-color: #000000 !important;
+}
+
+[data-ogsc] .social-link table {
+  background-color: #000000 !important;
+}
+
+[data-ogsc] a {
+  color: #8DC63F !important;
+}
+
+[data-ogsc] .wysiwyg h1,
+[data-ogsc] .wysiwyg h2,
+[data-ogsc] .wysiwyg h3,
+[data-ogsc] .wysiwyg h4,
+[data-ogsc] .wysiwyg h5,
+[data-ogsc] .wysiwyg h6,
+[data-ogsc] .block h1,
+[data-ogsc] .block h2,
+[data-ogsc] .block h3,
+[data-ogsc] .block h4,
+[data-ogsc] .block h5,
+[data-ogsc] .block h6,
+[data-ogsc] .block p,
+[data-ogsc] .block span,
+[data-ogsc] .block li {
+  color: #ffffff !important;
+}
+
+[data-ogsc] .button td,
+[data-ogsc] .button a {
+  background-color: #006837 !important;
+  border-color: #006837 !important;
+  color: #ffffff !important;
+}
+
+[data-ogsc] .two-line-cta a,
+[data-ogsc] .two-line-cta a span {
+  color: #000000 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   .light-only {
     display: none !important;
@@ -210,12 +288,10 @@ p {
     background-color: #000000 !important;
   }
 
-  /* ToDo: Revisit for TPL */
   a {
-    color: #9ca4a5 !important;
+    color: #8DC63F !important;
   }
 
-  /* ToDo: Revisit for TPL */
   .wysiwyg h1,
   .wysiwyg h2,
   .wysiwyg h3,
@@ -223,7 +299,7 @@ p {
   .wysiwyg h5,
   .wysiwyg h6,
   .pre-footer-text span {
-    color: #9ca4a5 !important;
+    color: #ffffff !important;
   }
 
   .quote-block p,
@@ -245,10 +321,32 @@ p {
     background-color: #000000 !important;
   }
 
+  /* Blocks force a black background above, but much of the catalog authors
+     its text color inline (dark ink on light section colors) — that ink is
+     invisible on black unless overridden here. Exceptions re-assert below. */
+  .block h1,
+  .block h2,
+  .block h3,
+  .block h4,
+  .block h5,
+  .block h6,
+  .block p,
+  .block span,
+  .block li {
+    color: #ffffff !important;
+  }
+
   .button td,
   .button a {
-    background-color: #ffffff !important;
-    border-color: #ffffff !important;
+    background-color: #006837 !important;
+    border-color: #006837 !important;
+    color: #ffffff !important;
+  }
+
+  /* Two-line pills keep their authored colored chips; black text stays
+     readable on both chip colors where forced-white would fail on orange */
+  .two-line-cta a,
+  .two-line-cta a span {
     color: #000000 !important;
   }
 
@@ -259,6 +357,10 @@ p {
   .divider>p {
     border-color: #ffffff !important;
   }
+
+  /* Tri-color divider: intentionally NOT adapted — its three brand-color
+     bars (orange/green/teal, authored as spacer td backgrounds) read fine
+     on black. Only the single-color divider above inverts. */
 
   .question-response {
     background-color: #000000 !important;

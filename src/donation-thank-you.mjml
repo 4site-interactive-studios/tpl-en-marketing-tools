@@ -73,7 +73,7 @@
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -156,7 +156,7 @@
           </mj-text>
           <mj-image src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="180px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="180px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="180px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>

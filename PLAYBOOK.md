@@ -364,6 +364,26 @@ a px value = fixed). Removing it re-splits structure groups.
   class + its CSS for padding Replacements to behave on mobile.
 - **Fixed-width buttons:** keep ≤ 300px. A 400px `mj-button` plus 32px section
   padding overflows a 375px phone (rendered 464px → horizontal scroll).
+- **Element width × block width can jointly overflow (QA hazard):** in EN,
+  element widths (button/image px) and block widths (padding presets) are
+  independent Replacements — a full-width button inside a block whose width
+  preset was widened past Double can exceed the 600px canvas and break out of
+  its container. There is no build-time guard for values chosen in EN, so warn
+  editors in block documentation, keep `css-class="button fixed-width"` on
+  buttons inside hero/background sections (its mobile rule caps them at
+  container width), and re-run the 375px overflow scan (§9 step 4) after
+  geometry changes.
+- **Background-image sections (Outlook):** MJML emits the `v:rect`/`v:fill`
+  VML automatically, but Outlook cannot honor horizontal section padding
+  inside one — author these sections with vertical-only padding and fake the
+  gutters with an `mj-group` of `25px` spacer columns around a `550px` content
+  column (the NGS pattern; see any CTA Hero). Every `background-url` container
+  must also author a real `background-color` — without it MJML omits `color=`
+  on `v:fill` and Outlook shows black/transparent when the image fails.
+- **Outlook renders all buttons square:** Outlook ignores `border-radius` on
+  table cells, for both `mj-button` and the raw pill hybrids. This is accepted
+  graceful degradation — do NOT reach for VML roundrect wrappers; they break
+  the converter's label/color Replacement bindings and bloat every block.
 - **`mso-line-height-rule: exactly`** on every heading line-height in
   styles.css.
 - Headings use a separate display stack ("Helvetica Neue", Arial) from body
