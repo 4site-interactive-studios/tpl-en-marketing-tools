@@ -465,6 +465,19 @@ sort — it is purely the panel/export display order.
   parallel compile stays unformatted (ordinal matching only). Formatting is
   fail-open.
 - Thumbnail probing is async, after load — never blocks the import.
+- **One background image = FOUR compiled carriers.** MJML expands a single
+  `mj-section background-url` into the div's inline `background:` shorthand,
+  the wrapper table's `background=` attribute, a second `url()` in that
+  table's style, and a `v:fill src` inside the `[if mso | IE]` conditional.
+  A Replacement must tag ALL of them or an editor's image swap lands in
+  some clients and not others (Outlook reads the VML, Apple Mail/Gmail read
+  the CSS background). Occurrence classification therefore has to see
+  through the `url('…')` wrapper: its quote used to hide the declaration
+  name, leaving CSS carriers classified as bare `style` and rejected while
+  the attribute carriers of the same image bound normally
+  (`cssPropertyBefore`, `src/core/replacements.ts`, fixed 2026-08-05).
+  Asset-root rewriting already covered all four (`rewriteAssetPaths` is a
+  string pass, so MSO comments are not skipped).
 - Export panel ZIPs are asset-root-ready: FLAT filenames only (EN CDN
   folders are flat). Six counted buttons (2026-08-04): Block Imagery /
   Block Thumbnails / Block Imagery and Thumbnails, plus Missing variants
@@ -555,6 +568,24 @@ importer whitelists all data-*-only MJML validator warnings
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
   never-hideable content (sender identification, unsubscribe text,
   required logos, interdependent thermometer figures).
+
+## EN template settings (required at template creation)
+
+- **The EN email template's CSS inliner must be OFF / style-preserving.**
+  MJML already inlines everything inlinable at build time, so what survives
+  in the head `<style>` is precisely what CANNOT be inlined:
+  `@media (prefers-color-scheme: dark)`, the `[data-ogsc]` Outlook.com
+  branch, `:root { color-scheme: light dark; supported-color-schemes: light
+  dark }`, and the mobile-only `!important` overrides this document already
+  documents as load-bearing (padding Replacements, column width pinning).
+  An inliner that flattens plain rules and drops the rest silently removes
+  dark mode and mobile behavior from every send, leaving no trace in the
+  block JSON.
+- **Diagnostic symptom** (worth recognizing in a QA report): images do NOT
+  double up — `.dark-only { display:none }` was inlinable and survived —
+  while text stays dark-on-dark and no light/dark asset swap happens. That
+  combination means the media queries were stripped, not that the blocks
+  are wrong.
 
 ## Process
 
