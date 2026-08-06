@@ -569,23 +569,38 @@ importer whitelists all data-*-only MJML validator warnings
   never-hideable content (sender identification, unsubscribe text,
   required logos, interdependent thermometer figures).
 
-## EN template settings (required at template creation)
+## EN's CSS inliner (not optional — measure it, don't fight it)
 
-- **The EN email template's CSS inliner must be OFF / style-preserving.**
-  MJML already inlines everything inlinable at build time, so what survives
-  in the head `<style>` is precisely what CANNOT be inlined:
-  `@media (prefers-color-scheme: dark)`, the `[data-ogsc]` Outlook.com
-  branch, `:root { color-scheme: light dark; supported-color-schemes: light
-  dark }`, and the mobile-only `!important` overrides this document already
-  documents as load-bearing (padding Replacements, column width pinning).
-  An inliner that flattens plain rules and drops the rest silently removes
-  dark mode and mobile behavior from every send, leaving no trace in the
-  block JSON.
+- **EN always inlines the template's CSS and the behavior cannot be turned
+  off** (confirmed with Bryan 2026-08-05; an earlier version of this section
+  wrongly told agents to disable it). Anything this template needs in the
+  head `<style>` is therefore at the inliner's mercy, and the mitigation is
+  to KNOW what it does, not to try to prevent it.
+- **What is at stake.** MJML already inlines everything inlinable at build
+  time, so what survives in the head `<style>` is precisely what CANNOT be
+  inlined: `@media (prefers-color-scheme: dark)`, the `[data-ogsc]`
+  Outlook.com branch, `:root { color-scheme: light dark;
+  supported-color-schemes: light dark }`, `:hover` affordances, and the
+  mobile-only `!important` overrides documented above as load-bearing for
+  padding Replacements and column pinning. An inliner that flattens plain
+  rules and DROPS the rest removes dark mode and mobile behavior from every
+  send while leaving no trace in the block JSON.
 - **Diagnostic symptom** (worth recognizing in a QA report): images do NOT
-  double up — `.dark-only { display:none }` was inlinable and survived —
+  double up — `.dark-only { display:none }` is inlinable and survives —
   while text stays dark-on-dark and no light/dark asset swap happens. That
   combination means the media queries were stripped, not that the blocks
-  are wrong.
+  are authored wrong.
+- **Measuring it**: `docs/en-css-inliner-probe.html` is a self-contained
+  template carrying one uniquely-marked probe per construct we depend on
+  (PROBE-01 … PROBE-11, covering the control case, `:root`,
+  prefers-color-scheme, `[data-ogsc]`, mobile `!important`, the
+  light/dark display pair, `:hover`, attribute selectors, unused-rule
+  pruning, and MSO conditional comments). Save it as a Marketing Tools
+  template, export it back, and diff: each probe comes back KEPT, INLINED,
+  or DROPPED.
+- **Results table**: TO BE FILLED IN once the probe has been round-tripped
+  through EN. Until then, treat every head-CSS dependency as unverified and
+  QA dark mode plus a ≤480px viewport on every template change.
 
 ## Process
 
