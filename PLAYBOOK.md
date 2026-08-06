@@ -389,6 +389,39 @@ a px value = fixed). Removing it re-splits structure groups.
 - Headings use a separate display stack ("Helvetica Neue", Arial) from body
   copy (Tahoma).
 
+### 7a. Dark mode
+
+The whole dark treatment lives in styles.css: a `:root { color-scheme: light
+dark; supported-color-schemes: light dark; }` declaration, an
+`@media (prefers-color-scheme: dark)` block, and a `[data-ogsc]`-prefixed
+mirror of it. Every declaration inside both carries `!important` — blocks
+author their ink inline (dark text on light section colors), and only
+`!important` outranks an inline style.
+
+Two mechanisms do the work: elements pair a `light-only` and a `dark-only`
+twin (see §6c) for asset swaps, and the rules above repaint text, buttons,
+and backgrounds. `.block div` is in the forced-white selector list because
+`mj-text` compiles to a `<div>` carrying inline `color` — text written
+without a `<p>`/`<span>` wrapper is reachable no other way.
+
+**The head `<style>` must ship verbatim.** MJML already inlines everything
+inlinable; what remains in the head is exactly the part that *cannot* be
+inlined — media queries, attribute-prefixed rules, and pseudo-classes. An
+EN template with its CSS inliner enabled will inline the plain rules and
+drop the rest, which silently removes dark mode from every send. Symptom:
+the images don't double up (so `.dark-only { display:none }` survived), but
+Apple Mail shows black-on-black text and unswapped logos. Verify by viewing
+source on a received test — if `@media (prefers-color-scheme: dark)` isn't
+in the head, the template config is wrong, not the block.
+
+Client support, since dark mode is not uniformly addressable:
+
+| Client | Honors | Notes |
+|---|---|---|
+| Apple Mail, iOS Mail | `prefers-color-scheme` | Full control; auto-darkens backgrounds even without our CSS, which is why missing CSS reads as black-on-black |
+| Outlook.com / OWA | `[data-ogsc]` | Needs the mirrored branch; media query never runs |
+| Gmail app, Outlook Windows desktop | neither | They apply their own color transform. Only asset choice and transform-tolerant colors help — e.g. Word's inversion of a dark plum section to pink is not addressable from CSS |
+
 ## 8. Asset policy
 
 - **Format:** photographs are JPG; anything needing transparency (logos,

@@ -257,8 +257,17 @@ p {
 [data-ogsc] .block h6,
 [data-ogsc] .block p,
 [data-ogsc] .block span,
-[data-ogsc] .block li {
+[data-ogsc] .block li,
+[data-ogsc] .block div,
+[data-ogsc] .pre-footer-text span,
+[data-ogsc] .quote-block p,
+[data-ogsc] .footer-block p {
   color: #ffffff !important;
+}
+
+[data-ogsc] .email-body {
+  color: #ffffff !important;
+  background-color: #000000 !important;
 }
 
 [data-ogsc] .button td,
@@ -271,6 +280,20 @@ p {
 [data-ogsc] .two-line-cta a,
 [data-ogsc] .two-line-cta a span {
   color: #000000 !important;
+}
+
+[data-ogsc] .divider>p {
+  border-color: #ffffff !important;
+}
+
+[data-ogsc] .question-response {
+  background-color: #000000 !important;
+  border-color: #eee !important;
+  color: #ffffff !important;
+}
+
+[data-ogsc] .question-response p a {
+  color: #ffffff !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -332,7 +355,10 @@ p {
   .block h6,
   .block p,
   .block span,
-  .block li {
+  .block li,
+  /* mj-text compiles to a div carrying inline color — text authored without
+     a <p>/<span> wrapper is only reachable here */
+  .block div {
     color: #ffffff !important;
   }
 
