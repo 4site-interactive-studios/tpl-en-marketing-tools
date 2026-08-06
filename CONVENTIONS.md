@@ -353,15 +353,18 @@ sort — it is purely the panel/export display order.
 
 - **Colors** → Select backed by the project's brand palette (text vs
   background groups), defaults normalized to lowercase hex, authored casing
-  kept in `originalValue`. The palette extracts only from the template's
-  own CSS and blocks that can actually import (2026-07-30): debug-block
-  regions AND data-fully-exclude variants are stripped first (leaf blocks
-  only — container wrappers never match), so dev-only chrome (the 🐞
-  toolbar's #111111) and variant-only colors (Stat Row (green)'s #DFEEDA)
-  never become brand colors. Border colors never feed the palette either —
-  borders export as plain Text fields, not palette dropdowns (drops
-  `.question-response`'s #eee). Colors an excluded variant shares with a
-  live block or the stylesheet survive via their other occurrences.
+  kept in `originalValue`. The palette is TEMPLATE-AUTHORED only
+  (2026-08-01 QA): a hex enters it via an attribute value or inline style
+  in an importable block, or an mj-attributes default. Stripped before
+  scanning: `<mj-style>` blocks (the merged stylesheet — client-compat
+  shims, dark-mode overrides, and hover states are rendering plumbing,
+  never dropdown options), debug-block regions, and data-fully-exclude
+  variants (leaf blocks only — container wrappers never match). Border
+  colors never feed the palette either — borders export as plain Text
+  fields, not palette dropdowns. A color the stylesheet or an excluded
+  variant shares with live block markup survives via those occurrences
+  (e.g. #8DC63F is authored in blocks, so its dark-mode override in the
+  stylesheet costs it nothing).
   The panel's usage badges are **role-aware** (2026-08-03, user-decided):
   each occurrence is classified by the property owning it
   (`countColorRoles`, src/core/colorUsage.ts) — `color:`/`color=` counts
