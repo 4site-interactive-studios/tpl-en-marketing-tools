@@ -590,17 +590,53 @@ importer whitelists all data-*-only MJML validator warnings
   while text stays dark-on-dark and no light/dark asset swap happens. That
   combination means the media queries were stripped, not that the blocks
   are authored wrong.
-- **Measuring it**: `docs/en-css-inliner-probe.html` is a self-contained
-  template carrying one uniquely-marked probe per construct we depend on
-  (PROBE-01 … PROBE-11, covering the control case, `:root`,
-  prefers-color-scheme, `[data-ogsc]`, mobile `!important`, the
-  light/dark display pair, `:hover`, attribute selectors, unused-rule
-  pruning, and MSO conditional comments). Save it as a Marketing Tools
-  template, export it back, and diff: each probe comes back KEPT, INLINED,
-  or DROPPED.
-- **Results table**: TO BE FILLED IN once the probe has been round-tripped
-  through EN. Until then, treat every head-CSS dependency as unverified and
-  QA dark mode plus a ≤480px viewport on every template change.
+- **Measuring it**: `docs/en-css-inliner-probe.html` round-trips one
+  uniquely-marked probe per construct. Measured 2026-08-07 by saving it as a
+  Marketing Tools TEMPLATE and test-sending it (block pipeline not yet
+  measured separately):
+
+| Probe | Construct | Verdict | Consequence |
+| :---- | :---- | :---- | :---- |
+| 01 | plain rule (control) | INLINED | the inliner definitely runs |
+| 02 | `:root { color-scheme }` | INLINED onto `<html>` | semantics preserved, survives |
+| 03 | `@media (prefers-color-scheme: dark)` | **KEPT** verbatim | dark mode survives |
+| 04 | `[data-ogsc] .x` | **DROPPED** | Outlook.com dark branch is lost |
+| 05 | `@media only screen and (max-width:480px)` | **KEPT** verbatim | mobile `!important` overrides survive |
+| 06 | `.dark-only { display:none }` | INLINED | swap still works — only because 03 keeps `!important` |
+| 07 | `:hover` | **KEPT** | |
+| 08 | `div[class="x"] { … !important }` | INLINED, **`!important` stripped** | attribute selectors resolve, priority does not |
+| 09 | unused rule | DROPPED (pruned) | harmless |
+| 10 | `@media screen` (unconditional) | INLINED (flattened) | only *conditional* media queries are retained |
+| 11 | MSO conditional comment | **KEPT** intact | Outlook scaffolding is safe |
+
+  Structural transformations EN also applies: a hidden preheader `<p>` is
+  injected as the first body child; `background-color` in a style attribute
+  becomes a `bgcolor` ATTRIBUTE (on `<body>` and `<td>`); the retained
+  `<style>` is reformatted and loses `type="text/css"`; head comments and
+  `<!--[if mso]-->` blocks survive untouched.
+
+### Authoring rules this forces (all proven by the run above)
+
+- **Any rule inside a retained media query that must beat a base rule needs
+  `!important`.** The base rule gets INLINED onto the element, and an inline
+  style beats any stylesheet rule that lacks `!important`. The light/dark
+  swap survives only because `@media (prefers-color-scheme: dark)` declares
+  `.dark-only { display: block !important }` — drop that one keyword and
+  dark mode silently stops swapping while everything still looks fine in the
+  editor.
+- **Do not rely on `!important` that you wrote on an INLINABLE rule.** It is
+  stripped during inlining (probe 08).
+- **`@media screen` is not a safe hiding place** — unconditional queries are
+  flattened and inlined. Only queries with a real condition (`min-width` /
+  `max-width` / `prefers-color-scheme`) are retained.
+- **`[data-ogsc]` selectors do not survive at all.** `src/styles.css`
+  currently carries ~40 of them (the deliberate Outlook.com dark branch,
+  including the `.dark-only`/`.light-only` pair). Every one is removed on
+  template save, so Outlook.com falls back to its own auto-inversion. An
+  untested rescue is to nest those selectors INSIDE a retained conditional
+  media query (probes 12–14 in the probe file test exactly that); until that
+  round is measured, treat Outlook.com dark mode as unsupported rather than
+  assuming the CSS is doing anything.
 
 ## Process
 
