@@ -23,6 +23,17 @@ Two audiences:
    they natively produce the expected importer outcomes — without access
    to this repo or any chat history.
 
+### Companion document
+
+A portable, repo-agnostic version of the authoring rules lives in
+`docs/mjml-authoring-guide.md` (public mirror:
+https://raw.githubusercontent.com/4site-interactive-studios/tpl-en-marketing-tools/main/MJML-AUTHORING-GUIDE.md).
+That guide is the one to hand to a NEW MJML repo: it carries the measured
+EN CSS-inliner behavior, the bottom-only pacing rationale, the data-*
+contract, a QA checklist, and its own copy-paste agent prompt. THIS
+document remains the exhaustive, importer-specific contract. When a rule
+generalizes beyond this template, it belongs in both.
+
 ### Lead-in prompt for upstream agents (copy-paste, then attach this file)
 
 > You are working on the MJML source of an Engaging Networks email
