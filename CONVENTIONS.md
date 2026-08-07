@@ -34,38 +34,74 @@ contract, a QA checklist, and its own copy-paste agent prompt. THIS
 document remains the exhaustive, importer-specific contract. When a rule
 generalizes beyond this template, it belongs in both.
 
-### Lead-in prompt for upstream agents (copy-paste, then attach this file)
+### Lead-in prompt for upstream agents (copy-paste)
 
-> You are working on the MJML source of an Engaging Networks email
-> template (repo:
-> https://github.com/4site-interactive-studios/tpl-en-marketing-tools —
-> blocks live in
-> https://github.com/4site-interactive-studios/tpl-en-marketing-tools/blob/main/src/main.mjml
-> and
-> https://github.com/4site-interactive-studios/tpl-en-marketing-tools/blob/main/src/demo.mjml
-> — keep BOTH copies in sync). The attached "Conventions & Business
-> Logic" document (public mirror, fetch it if no copy is attached:
-> https://raw.githubusercontent.com/4site-interactive-studios/tpl-en-marketing-tools/main/CONVENTIONS.md
-> ) is the
-> authoring contract for the importer that converts this template into
-> EN blocks with auto-generated editable fields. Read the WHOLE document
-> first. Then, for the task I give you below, make the template natively
-> match the importer's expected outcomes:
-> - Vertical pacing is bottom-only, on the declared spacing scale;
->   redistribute rather than change rendering (total inter-element gap =
->   upper.bottom + lower.top must stay identical when moving padding).
-> - Never remove, rename, or "fix" any data-* attribute; keep data-style-*
->   flags accurate for every property you touch.
-> - If the design genuinely needs values outside the documented defaults,
->   do not ignore the grid — declare the template's own expectations in
->   the en-tools-config head comment instead.
-> - Verify when done: grep both copies for content elements
->   (mj-image/text/button/divider) with non-zero TOP padding (only the
->   documented overlay/inset exemptions may remain), for columns with
->   bottom padding (none allowed), and for pacing values off the declared
->   scale.
->
-> Task: [describe the change]
+Keep this current. It is the entry point for every AI session in the TPL
+repo, so a stale prompt silently teaches the wrong rules.
+
+```text
+You are working on the MJML source of the Trust for Public Land email
+system, whose compiled output is imported into Engaging Networks (EN)
+Marketing Tools as blocks and a template.
+
+Repo: https://github.com/4site-interactive-studios/tpl-en-marketing-tools
+- src/demo.mjml and src/example.mjml are the block catalogs. They carry
+  the same block set and the same "Category — X" dividers. KEEP THEM IN
+  SYNC: a change to a block in one belongs in the other.
+- src/main.mjml is the master template.
+- src/styles.css is the shared stylesheet, compiled into the head.
+
+Two documents govern this work. Fetch and read BOTH in full before making
+any change, and treat them as binding:
+
+1. MJML Authoring Guide for EN Marketing Tools (best practices, EN's
+   measured CSS-inliner behavior, the data-* contract, the QA checklist):
+   https://raw.githubusercontent.com/4site-interactive-studios/tpl-en-marketing-tools/main/MJML-AUTHORING-GUIDE.md
+
+2. Conventions & Business Logic (the importer's full contract: how every
+   editable field is generated, named, ordered, and suppressed):
+   https://raw.githubusercontent.com/4site-interactive-studios/tpl-en-marketing-tools/main/CONVENTIONS.md
+
+Non-negotiables while you work:
+- Vertical pacing is BOTTOM-ONLY, on the declared spacing scale. When you
+  move padding, keep the total inter-element gap identical
+  (upper.bottom + lower.top must not change). Columns never carry bottom
+  padding.
+- Never remove, rename, or "fix" any data-* attribute. They are VALUELESS
+  flags (data-no-display-toggle, not ="true"), and they are the only
+  channel design intent has into the importer. Keep data-style-* accurate
+  for every property you touch.
+- If a design needs values outside the declared defaults, do not silently
+  ignore the grid. Change the en-tools-config head declaration
+  deliberately, in both catalogs, in the same commit.
+- EN runs a CSS inliner on every template save and it cannot be turned
+  off. Any CSS that must survive it untouched has to be nested inside a
+  CONDITIONAL media query (bare @media screen does not work). [data-ogsc]
+  rules at top level are deleted outright.
+- Any rule inside a media query that must beat an inlined base rule needs
+  !important. This is what keeps the light/dark image swap working.
+- An editable background image must bind ALL FOUR compiled carriers: the
+  div's inline background shorthand, the wrapper table's background
+  attribute, the second url() in that table's style, and the v:fill src
+  inside the [if mso | IE] conditional.
+
+Verify when done, and report what each check returned:
+- grep both catalogs for content elements (mj-image/text/button/divider)
+  with non-zero TOP padding — only the documented overlay/inset
+  exemptions may remain
+- grep for columns with bottom padding — none allowed
+- grep for pacing values off the declared scale
+- grep for [data-ogsc] at top level in styles.css — each one must be
+  nested inside a conditional media query
+- confirm demo.mjml and example.mjml still carry the same block set
+- run the full QA checklist in section 8 of the authoring guide
+
+If you added or changed a convention, say so explicitly so the canonical
+documents can be updated. A rule that only lives in a chat transcript is
+considered lost.
+
+Task: [describe the change]
+```
 
 ## The pacing scale (spacing)
 
