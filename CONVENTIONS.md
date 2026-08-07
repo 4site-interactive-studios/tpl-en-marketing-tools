@@ -501,6 +501,26 @@ sort — it is purely the panel/export display order.
   Byte diffing would require `Access-Control-Allow-Origin` on the CDN
   container; until then, re-upload the full Block Imagery ZIP after
   changing artwork (uploads are idempotent).
+- **Compiled HTML is rejected with a plain-English error.** A `dist/` file
+  or GitHub Pages URL segments fine but carries none of the MJML the
+  generator reads, and the compiler's own "Malformed MJML" message sends
+  people hunting the wrong problem. The analyze step detects a document
+  that STARTS with `<!doctype html>`/`<html>` and names the fix, deriving
+  `src/<name>.mjml` from a `dist/<name>.html` URL. Detection is on the
+  document's opening, NOT on the presence of an `<mjml>` tag — the TPL
+  build embeds its raw MJML source inside the compiled HTML for the debug
+  toolbar's exporter, so a tag search matches and lets it through.
+- **Asset-root staleness is UNKNOWABLE from the browser** — do not try to
+  "just download the image and compare" (measured 2026-08-06 against the
+  live Rackspace root). A plain `<img>` loads fine, but drawing it to a
+  canvas taints the canvas and `getImageData` throws SecurityError;
+  `crossOrigin="anonymous"` fails to load at all; `fetch` throws; and
+  resource-timing reports `encodedBodySize: 0`. That is the deliberate
+  defense against exactly this read, not a bug to work around. Only
+  `naturalWidth`/`naturalHeight` survive on a tainted image, which cannot
+  catch a recolor at identical dimensions. Hence existence-only auditing;
+  the real fixes are CORS headers on the container or re-uploading the
+  full imagery ZIP when art changes.
 - **Re-import** re-fetches the stored source URL and rebuilds with the
   project's saved settings (folder IDs included). GitHub raw's CDN caches
   ~5 min — a re-import right after an upstream push can be stale once.
@@ -559,6 +579,12 @@ importer whitelists all data-*-only MJML validator warnings
   ("Text — Heading" instead of "Text Blocks — Heading");
   folder grouping and the import form keep using the full divider name
   (`src/core/blocks.ts` `categoryShortNameOf`).
+- **Reading these flags**: most data-* opt-outs are VALUELESS
+  (`data-no-display-toggle`, not `…="true"`). `getAttr` only matches
+  name=value pairs and silently returns undefined for a bare flag, so
+  detection must use `hasAttrFlag` (`src/core/mjmlProps.ts`), which accepts
+  both forms. A bare `data-no-display-toggle` was being ignored entirely
+  until 2026-07-31 for exactly this reason.
 - **`data-no-link-toggle`** (valueless, on mj-image): opts the image out
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link
