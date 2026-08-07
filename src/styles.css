@@ -209,91 +209,97 @@ p {
   display: none;
 }
 
-[data-ogsc] .dark-only {
-  display: block !important;
-}
+/* Outlook.com dark mode. EN's CSS inliner DELETES [data-ogsc] rules that sit
+   at top level (measured — see MJML-AUTHORING-GUIDE.md §2), so the whole
+   branch lives inside a conditional media query: EN returns anything nested
+   in one verbatim. The condition must be un-evaluable — a bare @media screen
+   is flattened and inlined instead. Every declaration keeps !important
+   because the base rules ARE inlined onto the elements (§2b).
+   OWA mirrors the media query below; backgrounds must come along with the
+   forced white text or light footers render white-on-light. */
+@media only screen and (max-width: 9999px) {
+  [data-ogsc] .dark-only {
+    display: block !important;
+  }
 
-[data-ogsc] .light-only {
-  display: none !important;
-}
+  [data-ogsc] .light-only {
+    display: none !important;
+  }
 
-/* Outlook.com dark mode ([data-ogsc]) can't read the media query below —
-   mirror the full treatment. Backgrounds must come along with the forced
-   white text: OWA keeps authored light section colors (off-white/light
-   green footers), which would leave white-on-light otherwise. */
-[data-ogsc] .block,
-[data-ogsc] .block>table,
-[data-ogsc] .spacer-block td {
-  background-color: #000000 !important;
-}
+  [data-ogsc] .block,
+  [data-ogsc] .block>table,
+  [data-ogsc] .spacer-block td {
+    background-color: #000000 !important;
+  }
 
-[data-ogsc] .quote-block,
-[data-ogsc] .quote-block>table,
-[data-ogsc] .cta-button-block,
-[data-ogsc] .cta-button-block>table,
-[data-ogsc] .highlighted-text-column > table > tbody > tr > td {
-  background-color: #000000 !important;
-}
+  [data-ogsc] .quote-block,
+  [data-ogsc] .quote-block>table,
+  [data-ogsc] .cta-button-block,
+  [data-ogsc] .cta-button-block>table,
+  [data-ogsc] .highlighted-text-column > table > tbody > tr > td {
+    background-color: #000000 !important;
+  }
 
-[data-ogsc] .social-link table {
-  background-color: #000000 !important;
-}
+  [data-ogsc] .social-link table {
+    background-color: #000000 !important;
+  }
 
-[data-ogsc] a {
-  color: #8DC63F !important;
-}
+  [data-ogsc] a {
+    color: #8DC63F !important;
+  }
 
-[data-ogsc] .wysiwyg h1,
-[data-ogsc] .wysiwyg h2,
-[data-ogsc] .wysiwyg h3,
-[data-ogsc] .wysiwyg h4,
-[data-ogsc] .wysiwyg h5,
-[data-ogsc] .wysiwyg h6,
-[data-ogsc] .block h1,
-[data-ogsc] .block h2,
-[data-ogsc] .block h3,
-[data-ogsc] .block h4,
-[data-ogsc] .block h5,
-[data-ogsc] .block h6,
-[data-ogsc] .block p,
-[data-ogsc] .block span,
-[data-ogsc] .block li,
-[data-ogsc] .block div,
-[data-ogsc] .pre-footer-text span,
-[data-ogsc] .quote-block p,
-[data-ogsc] .footer-block p {
-  color: #ffffff !important;
-}
+  [data-ogsc] .wysiwyg h1,
+  [data-ogsc] .wysiwyg h2,
+  [data-ogsc] .wysiwyg h3,
+  [data-ogsc] .wysiwyg h4,
+  [data-ogsc] .wysiwyg h5,
+  [data-ogsc] .wysiwyg h6,
+  [data-ogsc] .block h1,
+  [data-ogsc] .block h2,
+  [data-ogsc] .block h3,
+  [data-ogsc] .block h4,
+  [data-ogsc] .block h5,
+  [data-ogsc] .block h6,
+  [data-ogsc] .block p,
+  [data-ogsc] .block span,
+  [data-ogsc] .block li,
+  [data-ogsc] .block div,
+  [data-ogsc] .pre-footer-text span,
+  [data-ogsc] .quote-block p,
+  [data-ogsc] .footer-block p {
+    color: #ffffff !important;
+  }
 
-[data-ogsc] .email-body {
-  color: #ffffff !important;
-  background-color: #000000 !important;
-}
+  [data-ogsc] .email-body {
+    color: #ffffff !important;
+    background-color: #000000 !important;
+  }
 
-[data-ogsc] .button td,
-[data-ogsc] .button a {
-  background-color: #006837 !important;
-  border-color: #006837 !important;
-  color: #ffffff !important;
-}
+  [data-ogsc] .button td,
+  [data-ogsc] .button a {
+    background-color: #006837 !important;
+    border-color: #006837 !important;
+    color: #ffffff !important;
+  }
 
-[data-ogsc] .two-line-cta a,
-[data-ogsc] .two-line-cta a span {
-  color: #000000 !important;
-}
+  [data-ogsc] .two-line-cta a,
+  [data-ogsc] .two-line-cta a span {
+    color: #000000 !important;
+  }
 
-[data-ogsc] .divider>p {
-  border-color: #ffffff !important;
-}
+  [data-ogsc] .divider>p {
+    border-color: #ffffff !important;
+  }
 
-[data-ogsc] .question-response {
-  background-color: #000000 !important;
-  border-color: #eee !important;
-  color: #ffffff !important;
-}
+  [data-ogsc] .question-response {
+    background-color: #000000 !important;
+    border-color: #eee !important;
+    color: #ffffff !important;
+  }
 
-[data-ogsc] .question-response p a {
-  color: #ffffff !important;
+  [data-ogsc] .question-response p a {
+    color: #ffffff !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

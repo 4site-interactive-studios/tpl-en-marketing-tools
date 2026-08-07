@@ -336,6 +336,21 @@ for (const rel of ['', 'partials']) {
 
     writeFileSync(join(OUT, rel, f), text);
     console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}`);
+
+    // Print the live category → EN folder routing. Documenting this by hand
+    // rots on every category change (it did); deriving it means the build
+    // itself is the reference and PLAYBOOK can simply point here.
+    const categories = [
+      ...source.matchAll(
+        /<!-- START: Category — (.+?) -->[\s\S]{0,400}?data-folder="(\d+)"(?:[^>]*data-category-short="([^"]*)")?/g,
+      ),
+    ];
+    if (categories.length) {
+      const rows = categories
+        .map(([, label, folder, short]) => `${folder} ${label}${short ? ` [${short}]` : ''}`)
+        .join(' · ');
+      console.log(`  categories (${categories.length}): ${rows}`);
+    }
   }
 }
 cpSync(join(SRC, 'styles.css'), join(OUT, 'styles.css'));

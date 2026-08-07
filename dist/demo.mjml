@@ -250,7 +250,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text align="left" color="#ffffff" data-style-alignment padding="0 0 8px 40px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text align="left" color="#ffffff" data-style-alignment padding="0 0 8px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
           <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="100px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
@@ -580,11 +580,11 @@
         <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
 
         <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text css-class="overlay" data-style-alignment padding="0 25px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text css-class="overlay" data-style-alignment padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <h1 style="text-align: center">Placeholder message for special occasion </h1>
           </mj-text>
           <mj-button css-class="button fixed-width" width="auto"
-            href="https://www.example.com" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            href="https://www.example.com" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
             Button
           </mj-button>
         </mj-column>
@@ -1067,7 +1067,7 @@
             color="#ffffff"
             background-color="#006837"
             href="https://www.example.com"
-            align="center" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            align="center" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
           LOREM IPSUM SEMPER MI
         </mj-button>
       </mj-column>
@@ -2092,7 +2092,7 @@
       <mj-group>
         <mj-column width="25px">&nbsp;</mj-column>
       <mj-column width="550px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 25px 10px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
+        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
       </mj-column>
         <mj-column width="25px">&nbsp;</mj-column>
       </mj-group>
@@ -2103,9 +2103,9 @@
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="120px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 20px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 20px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="416px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2808,9 +2808,9 @@
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="130px" css-class="signature-img" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="406px" css-class="signature-text" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>

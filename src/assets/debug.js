@@ -27,7 +27,7 @@
  *                       the debug toolbar — the send-ready HTML
  *
  * Loaded lazily by the floating 🐞 toggle; exposes window.__tplDebug.
- * See NAMING.md for the block-name grammar this tool depends on.
+ * See PLAYBOOK.md §4 for the block-name grammar this tool depends on.
  */
 (function () {
   if (window.__tplDebug) return; // already loaded

@@ -260,7 +260,7 @@
       <mj-group>
         <mj-column width="25px">&nbsp;</mj-column>
       <mj-column width="550px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
+        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
       </mj-column>
         <mj-column width="25px">&nbsp;</mj-column>
       </mj-group>
@@ -330,11 +330,11 @@
         <mj-column width="25px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>&nbsp;</mj-column>
 
         <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text css-class="overlay" data-style-alignment padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text css-class="overlay" data-style-alignment padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <h1 style="text-align: center">Placeholder message for special occasion </h1>
           </mj-text>
           <mj-button css-class="button fixed-width" width="auto"
-            href="https://www.example.com" data-style-align padding="10px 25px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            href="https://www.example.com" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
             Button
           </mj-button>
         </mj-column>
@@ -950,7 +950,7 @@
             color="#ffffff"
             background-color="#006837"
             href="https://www.example.com"
-            align="center" data-style-align padding="0 25px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+            align="center" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
           LOREM IPSUM SEMPER MI
         </mj-button>
       </mj-column>

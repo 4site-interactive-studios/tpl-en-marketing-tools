@@ -11,28 +11,42 @@ short version.
 
 ```
 src/
-  main.mjml            ← block catalog (one page per .mjml in src/)
-  demo.mjml            ← mockup mirror / second page
+  demo.mjml            ← full block catalog (the 9 "Category — X" dividers)
+  example.mjml         ← curated SUBSET of demo (see CLAUDE.md)
+  main.mjml            ← master template
+  donation-thank-you.mjml
+  recurring-donation-thank-you.mjml    ← standalone autoresponders
   styles.css           ← shared CSS, pulled in via mj-include
   partials/            ← reusable mj-include fragments
     debug-toolbar.mjml
     tri-color-divider.mjml
     green-rule-divider.mjml
   assets/              ← images + debug.js (synced to dist at build)
+scripts/               ← build passes (§2)
+  annotate-excluded.mjs  restore-excluded.mjs
+  emit-cdn-variants.mjs  watch.mjs
 dist/                  ← build output; this is what gets served/previewed
+  <name>.html          ← relative assets + debugger (working copy)
+  <name>.cdn.html      ← absolute assets, no debugger (send-ready, §2)
   assets/originals/    ← full-res originals, NOT synced/overwritten by builds
-NAMING.md              ← block naming grammar (see §4)
+CLAUDE.md              ← repo-specific instructions agents load first
+MJML-AUTHORING-GUIDE.md  ← MIRROR, do not edit — authoring rules + QA checklist
+CONVENTIONS.md         ← MIRROR, do not edit — the importer's contract
 .claude/launch.json    ← preview server definition (http-server on dist/)
 ```
 
 Multiple pages are free: the build globs `src/*.mjml`, so adding
-`src/anything.mjml` yields `dist/anything.html` with no config change.
+`src/anything.mjml` yields `dist/anything.html` **and**
+`dist/anything.cdn.html` with no config change — see §2 for the difference
+between the two, and CLAUDE.md for the catalogs' roles (notably that
+`example.mjml` is a curated subset of `demo.mjml`, not a mirror of it).
 
 ## 2. Build pipeline (`package.json`)
 
 ```json
-"build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/",
-"watch": "node scripts/watch.mjs"
+"build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/ && node scripts/emit-cdn-variants.mjs && node scripts/check-docs.mjs",
+"watch": "node scripts/watch.mjs",
+"preview": "npx --yes http-server ./dist -p 8642 -c-1"
 ```
 
 Each step exists for a reason:
@@ -45,8 +59,10 @@ Each step exists for a reason:
   as classes while the sources keep only the `data-*` attributes as the
   single source of truth. It also computes STRUCTURE GROUPS (blocks identical
   after masking every Replacement-managed property — the exclusion rules in
-  §6d), injects a `{ blockName: anchorName }` JSON manifest into each page's
-  <head> (`<script data-tpl-structure-groups>`), and validates the
+  §6d), injects two JSON `<script>` payloads into each page's `<head>` — the
+  `{ blockName: anchorName }` manifest (`data-tpl-structure-groups`) and the
+  raw source + includes (`data-tpl-raw-source`), which the debugger's export
+  reads before falling back to fetching `dist/<name>.mjml` — and validates the
   data-fully-exclude flags against those groups on every build: group anchors
   must be unflagged, follow-on members must be flagged; mismatches print WARN
   lines in the build output.
@@ -76,13 +92,35 @@ Each step exists for a reason:
 - `cp ./src/*.mjml ./dist/` — ships raw (un-annotated) sources next to the
   compiled HTML for the converter and as the debugger's fallback source of
   exclusion flags (§5).
+- `scripts/emit-cdn-variants.mjs` — **send-ready twin.** For each
+  `dist/<name>.html` it writes `dist/<name>.cdn.html` with every relative
+  asset path rewritten to an absolute URL under the EN asset root, and all
+  dev chrome removed (every `<script>` — the debugger plus the two injected
+  JSON payloads — and the 🐞 toolbar). The rewrite covers all four carriers
+  MJML emits for one background image (§7) plus `<img src>`; missing any one
+  renders the old photo in some clients and the new one in others. EN's CDN
+  folders are flat, so `assets/sub/logo.png` collapses to `<root>logo.png`.
+  The root is TPL's by default and overridable with `TPL_ASSET_ROOT=…`; see
+  CLAUDE.md. Source MJML always keeps relative paths (guide §7) — the
+  absolute form is a build artifact, never something you author.
+
+- `scripts/check-docs.mjs` — **documentation lint.** Asserts the things that
+  actually rotted before: every block name cited in a doc still resolves, the
+  demo/example delta is exactly the documented subset, no top-level
+  `[data-ogsc]`, every dark-mode declaration carries `!important`, no absolute
+  asset root in source, every `§N` cross-reference resolves, and both mirrors
+  still carry their DO-NOT-EDIT header. WARN-only, like the annotate pass —
+  it never blocks a build. Run alone with `npm run check-docs`.
 
 Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
-(`-c-1` disables caching so rebuilds show immediately). Always preview from
-`dist/`, never from `src/`.
+(`-c-1` disables caching so rebuilds show immediately); `npm run preview` is
+the same server from the CLI. Always preview from `dist/`, never from `src/`.
 
 ## 3. `mj-head` conventions
 
+- `<!-- en-tools-config { … } -->` — **first thing in `mj-head`**, declaring
+  the template's `spacingScale`, `widthPresets`, and `geometryReachPx`. It
+  must be identical in every `src/*.mjml`. Full semantics in §6.0.
 - `mj-breakpoint width="600px"` — single mobile breakpoint; email width is 600.
 - `mj-attributes` sets the inherited baseline once: `mj-text` (Tahoma
   sans-serif stack, 18/24, `css-class="wysiwyg"`), `mj-button` (pill:
@@ -92,8 +130,8 @@ Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
   and are applied with `mj-class="caption"` rather than repeating attributes.
 - `mj-style` holds mobile-only overrides under `@media (max-width: 599px)`
   (caption gutter with `!important` to beat inline td padding; `.cta-item`
-  stacking for side-by-side CTAs; `.inset-gutter` collapsing desktop inset
-  gutters to the standard 32px).
+  stacking for side-by-side CTAs). Note `.inset-gutter` — which collapses
+  desktop inset gutters to 32px on phones — lives in `styles.css`, not here.
 - `mj-raw` in head injects the metas MJML has no tag for:
 
   ```html
@@ -113,28 +151,60 @@ Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
 Every content block is wrapped in comments that **survive MJML compilation**:
 
 ```html
-<!-- START: Logo Header (light green, centered) -->
+<!-- START: Logo Hero (light green, centered) -->
 <mj-section ...> ... </mj-section>
-<!-- END: Logo Header (light green, centered) -->
+<!-- END: Logo Hero (light green, centered) -->
 ```
 
 These are the backbone of everything else — the debug overlay, duplicate
 detection, and the raw-MJML↔compiled-HTML mapping all key off block names.
 Names must match exactly (case-sensitive) between START and END.
 
-Grammar (full spec in `NAMING.md`): `Family (qualifier, qualifier, w/ feature)`
+### Naming grammar
 
-- Stripping parentheticals yields the *group key*; blocks sharing a key are
-  variants of one family and group/stack together in the debugger.
-- Qualifier order: surface/color → layout/alignment → `w/` features.
-- `x` combines different things ("Logo Header x CTA"); `Dual`/`Triple` denote
-  repetition.
-- Identical full names are reserved for byte-identical repeats (that's what
-  "Hide duplicates" collapses).
-- `(dev only — remove for production)` marks non-shipping chrome; the overlay
-  skips it. `Category — <Label>` blocks are catalog navigation chrome.
+    Family (qualifier, qualifier, w/ feature)
+
+- **Family** — the structural identity (`Logo Hero`, `Heading`,
+  `CTA Buttons 2x1`). Stripping every parenthetical yields the *group key*:
+  blocks sharing a key are variants of one family and group/stack together
+  in the debugger.
+- **Qualifiers** — comma-separated inside one parenthetical, lowercase
+  (proper nouns exempt), ordered:
+  1. surface/color: `(dark)`, `(off-white bordered)`, `(light green)`
+  2. layout/alignment: `(centered)`, `(image left)`, `(full width)`
+  3. features, prefixed `w/`: `(w/ badge image)`, `(w/ arrow heading)`,
+     `(w/ dark-mode swap)`
+- An **unqualified name** is the family baseline and may coexist with
+  qualified variants (`Steps Block` + `Steps Block (w/ arrow heading)`).
+- `NxN` denotes repetition and layout — columns × rows: `CTA Buttons 2x1`,
+  `Images 3x1`, `Story Card 2x1`, and inside a parenthetical when it
+  qualifies a variant: `Photo Grid (2x2)`, `Quiz Block (3x1 buttons)`. It
+  superseded the older `Dual`/`Triple` words, which no longer appear
+  anywhere in the catalog — do not reintroduce them. The `x` pairing
+  combinator (`Logo Header x CTA`) is likewise retired with no surviving
+  instance; express combinations as qualifiers.
+- Avoid baking qualifiers into the family name (`… Left Aligned` — wrong;
+  `(left)` — right), and avoid "and"/"with" chains.
+
+**Rules the tooling depends on:**
+
+- **Identical full names are reserved for byte-identical repeats** — the
+  "Hide duplicates" toggle keeps the first occurrence and hides the rest by
+  exact name, so two different blocks must never share a name.
+- Names are **case-sensitive** (`Signature card` ≠ `Signature Card`).
+- Adjacent same-family blocks merge into one comparison run when grouped;
+  non-adjacent instances are indexed (· 1/n).
+- `(dev only — remove for production)` marks non-shipping chrome (the Debug
+  Toolbar); such blocks are excluded from the overlay entirely.
+- `Category — <Label>` blocks are catalog navigation chrome, not content.
+  `&` is preferred in their labels (`Images & Media`); "and" is acceptable
+  where it reads better (`Headers and Heroes`). Renaming a category churns
+  its EN folder, so treat existing labels as fixed.
 - An outer `<!-- START: Main Content -->` wrapper encloses the whole body
   (also skipped by the overlay).
+
+`scripts/check-docs.mjs` asserts that every block name cited anywhere in the
+docs still resolves to a block, family, or category in `src/demo.mjml`.
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 
@@ -160,6 +230,7 @@ live counts:
 | EDIT | Copy changes | Copies a JSON changeset keyed by ORIGINAL block names (the stable identifiers): per-block `newName`, `deleted: true`, and `textEdits` (`{before, after}` per changed text node, diffed against a baseline snapshotted when edit mode first turns on), plus a full-page `order` array when blocks were moved. Paste it to Claude to apply against the MJML source. Caveat: blocks whose text is rewritten by live scripts (countdown timers) can't hold manual text edits |
 | EXCLUDED | Highlight all excluded | Red tint + red ✕ over every excluded block — both `data-fully-exclude` variants and `data-import-exclude` chrome |
 | EXCLUDED | Export / Copy .mjml | The page's raw .mjml with every excluded/dev-only top-level block removed and every mj-include inlined (type="css" becomes mj-style; partials spliced in) — fully self-contained and compilable from anywhere. A scope selector (shown when the page has Category headers) narrows the export to one category section, or downloads a .zip containing one .mjml per section plus the full template (dependency-free store-mode zip); Copy is disabled in zip mode |
+| EXCLUDED | Copy HTML | The compiled page as served, minus every `<script>` (the debugger and both injected JSON payloads) and the 🐞 toolbar — i.e. the send-ready HTML. Re-fetches from the server so debugger surgery can never leak in; on `file://` pages it falls back to a cleaned clone of the live DOM. Same output as `<name>.cdn.html` but with relative asset paths |
 | EXCLUDED | Hide all excluded | Hides all of those blocks — what remains is exactly what imports (one block per structure group) |
 
 Exclusion detection reads the `[data-fully-exclude]` / `[data-import-exclude]`
@@ -221,14 +292,14 @@ all four `data-style-padding-*` flags.
 
 ### 6b. `data-import-exclude` — "skip this block entirely"
 
-For catalog chrome (the 12 `Category — …` header bars) that must never import.
+For catalog chrome (the 9 `Category — …` header bars) that must never import.
 MJML rejects unknown attributes on `mj-section` at default validation *and*
 this flag must survive into compiled HTML (the converter's exclusion happens
 there, and the debugger's hide toggle uses it), so it's applied as an
 `mj-raw` div wrapper around the section:
 
 ```html
-<mj-raw><div data-import-exclude="true"></mj-raw>
+<mj-raw><div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes"></mj-raw>
   <mj-section> ... </mj-section>
 <mj-raw></div></mj-raw>
 ```
@@ -239,14 +310,20 @@ queryable in the compiled HTML.
 Category wrappers also carry `data-folder="<id>"` — the Engaging Networks
 import-folder ID for every block that FOLLOWS that header (until the next
 category header). The converter reads it from the raw MJML to route each
-block's import; the header block itself still never imports. Current map:
-Logo Headers 6399 · Text Blocks 6400 · Images & Media 6401 · Signatures
-6404 · Heading Banners & Rows 6405 · Buttons & CTAs 6406 · Image & Text
-Layouts 6407 · Engagement & Interactive 6408 · Utilities 6409 · Footers
-6410. (Retired 2026-08-03: Fundraising & Campaign 6402 and Content
-Features 6403 were merged into Engagement & Interactive 6408 — the
-Progress Meter, Countdown Card, and all Content Features blocks now
-live there.)
+block's import; the header block itself still never imports. Each wrapper
+also carries `data-category-short="<label>"` — the short name the importer
+prefixes onto block names (e.g. `Headers/Heroes`, `Images and Text`).
+
+**The live map is printed by every build** — `npm run build` emits a
+`categories (n): <folder> <label> [<short>]` line per catalog page. Read it
+there rather than from a list here; a hand-copied map goes stale on the next
+category change (this one did).
+
+(Retired 2026-08-03: Fundraising & Campaign 6402 and Content Features 6403
+merged into Engagement & Interactive 6408 — the Progress Meter, Countdown
+Card, and all Content Features blocks live there. Retired with the same
+consolidation: Heading Banners & Rows 6405, absorbed into Text Blocks 6400.
+Retirements are worth recording; current state is not.)
 
 A block can override its section's folder by carrying `data-folder="<id>"`
 directly on its own top-level tag (e.g. the block's `mj-section`): the
@@ -282,7 +359,10 @@ is wrapped in an MSO-hiding conditional so Outlook never renders both:
 ```
 
 Backed by CSS in `styles.css`: `.dark-only { display:none }`, flipped by both
-`@media (prefers-color-scheme: dark)` and `[data-ogsc]` (Outlook.com dark mode).
+`@media (prefers-color-scheme: dark)` and `[data-ogsc]` (Outlook.com dark
+mode). The `[data-ogsc]` branch **must stay nested inside a conditional media
+query** — EN's inliner deletes those rules at top level, and the base
+`display:none` gets inlined, so every flip also needs `!important`. See §7a.
 
 ### 6d. `data-fully-exclude` — "duplicative variant, don't re-import"
 
@@ -302,7 +382,8 @@ the container, so the authored value never matches the shipped one. Attribute
 *presence* stays structural — a section with a background-url is never
 duplicative of one without; only values are ignored. With those becoming
 converter variables, such blocks are redundant — first occurrence survives,
-later ones are flagged. (This project: 7 in main, 38 in demo.)
+later ones are flagged. (The annotate pass validates these every build, so trust its output over
+any number written here.)
 The annotate pass (§2) encodes these rules, derives the structure groups from
 them, and verifies the flags on every build — a follow-on block missing its
 flag (or a flagged anchor) prints a WARN in the build output. Grouping,
@@ -354,9 +435,11 @@ a px value = fixed). Removing it re-splits structure groups.
 - **`mj-group`** wherever columns must NOT stack on mobile (e.g. the
   tri-color divider's three 200px spacer columns).
 - **Insets are padding, not column width:** a narrowed text block is authored
-  as a full-width column with section side-padding (480px look = `16px 60px`,
-  526px = `0 37px`) plus `css-class="… inset-gutter"`, whose shared mobile rule
-  collapses the gutters to 32px on phones. Never author an inset via a px
+  as a full-width column with section side-padding (`16px 64px` — Quadruple
+  on the declared scale, giving a ~472px content width) plus
+  `css-class="… inset-gutter"`, whose shared mobile rule collapses the
+  gutters to 32px on phones. Keep the side value on the scale; an off-grid
+  inset snaps at import and desyncs from the other inset blocks. Never author an inset via a px
   column: MJML bakes column widths into class names (not Replaceable, §6d) and
   the column collapse leaves zero-margin full-bleed text on mobile. The
   `inset-gutter` token is ignored by the structure normalizer (it's the
@@ -394,7 +477,8 @@ a px value = fixed). Removing it re-splits structure groups.
 The whole dark treatment lives in styles.css: a `:root { color-scheme: light
 dark; supported-color-schemes: light dark; }` declaration, an
 `@media (prefers-color-scheme: dark)` block, and a `[data-ogsc]`-prefixed
-mirror of it. Every declaration inside both carries `!important` — blocks
+mirror of it wrapped in `@media only screen and (max-width: 9999px)` (see
+below for why). Every declaration inside both carries `!important` — blocks
 author their ink inline (dark text on light section colors), and only
 `!important` outranks an inline style.
 
@@ -404,15 +488,27 @@ and backgrounds. `.block div` is in the forced-white selector list because
 `mj-text` compiles to a `<div>` carrying inline `color` — text written
 without a `<p>`/`<span>` wrapper is reachable no other way.
 
-**The head `<style>` must ship verbatim.** MJML already inlines everything
-inlinable; what remains in the head is exactly the part that *cannot* be
-inlined — media queries, attribute-prefixed rules, and pseudo-classes. An
-EN template with its CSS inliner enabled will inline the plain rules and
-drop the rest, which silently removes dark mode from every send. Symptom:
-the images don't double up (so `.dark-only { display:none }` survived), but
-Apple Mail shows black-on-black text and unswapped logos. Verify by viewing
-source on a received test — if `@media (prefers-color-scheme: dark)` isn't
-in the head, the template config is wrong, not the block.
+**EN's CSS inliner cannot be turned off**, so the dark treatment is authored
+around it. MJML-AUTHORING-GUIDE.md §2 is canonical for the measured
+behavior (measured through the TEMPLATE pipeline; the block pipeline has not
+been separately probed). The two findings this file depends on:
+
+- **A conditional media query is EN's "do-not-touch" wrapper.** Anything
+  nested inside one returns verbatim. `[data-ogsc]` rules at *top level* are
+  deleted outright, which is why the whole OWA branch here lives inside
+  `@media only screen and (max-width: 9999px)`. Do not unwrap it, and do not
+  substitute a bare `@media screen` — an un-evaluable condition is what makes
+  the wrapper work.
+- **`!important` is stripped from any rule EN inlines**, and the base rules
+  (`.dark-only { display: none }`) do get inlined onto the element. Every
+  declaration inside both dark branches therefore needs `!important` to
+  outrank that inline style. Dropping the keyword breaks the swap silently —
+  it still looks right in source, in local preview, and in the EN editor.
+
+Symptom of a broken swap: images don't double up (so the inlined
+`display:none` survived), but text stays dark-on-dark and no asset swaps.
+Verify by viewing source on a received test — the media queries should be
+present in the head, unmodified.
 
 Client support, since dark mode is not uniformly addressable:
 
@@ -431,12 +527,22 @@ Client support, since dark mode is not uniformly addressable:
 - **Originals archive:** before converting/resizing, copy the untouched file
   to `dist/assets/originals/` (rsync-excluded, never overwritten).
 - **Naming prefixes:** `photo-`, `icon-`, `logo-`, `premium-`, `staff-`,
-  `state-`, `text-`, `cta-`; variants suffixed with `_` (`_white`, `_color-overlay`).
-- All MJML references are relative (`assets/foo.jpg`) so dist is portable.
+  `state-`, `text-`, `cta-`, `image-`; variants suffixed with `_` (`_white`,
+  `_color-overlay`). `placeholder.png` is the one intentional exception.
+- **Paths and the flat CDN folder** are governed by
+  MJML-AUTHORING-GUIDE.md §7: source stays relative, and filenames must be
+  unique repo-wide because every asset resolves to `<root>/<filename>`. The
+  absolute-URL form is a build artifact (`<name>.cdn.html`, §2), never
+  authored.
 
 ## 9. Verification workflow (per change)
 
-1. `npm run build` must exit clean.
+These steps are repo-specific and run **in addition to** the QA checklist in
+MJML-AUTHORING-GUIDE.md §8, which CLAUDE.md requires after every source
+change.
+
+1. `npm run build` must exit clean — zero `WARN` lines from either the
+   annotate pass (structure groups) or `check-docs` (documentation drift).
 2. START/END pairing audit: scan each `.mjml` for unmatched/misnested markers
    (the debugger also warns in console).
 3. Headless-Chrome screenshots of `dist/*.html` at ~700px and ~480px; compare
@@ -452,17 +558,25 @@ Client support, since dark mode is not uniformly addressable:
 
 Copy verbatim, then adapt:
 
-- [ ] `package.json` build/watch scripts (§2) + `mjml` dependency
-- [ ] `scripts/` (annotate-excluded, restore-excluded, watch) + add `.build` to .gitignore
+- [ ] `package.json` build/watch/preview scripts (§2) + `mjml` dependency
+- [ ] `scripts/` (annotate-excluded, restore-excluded, emit-cdn-variants,
+      watch) + add `.build` to .gitignore
 - [ ] `src/assets/debug.js` — fully generic, no project-specific code
 - [ ] `src/partials/debug-toolbar.mjml` — the 🐞 launcher
-- [ ] `NAMING.md` — the naming grammar
+- [ ] `MJML-AUTHORING-GUIDE.md` + `CONVENTIONS.md` — mirrors of the private
+      canonical docs; copy, never edit locally
 - [ ] `.claude/launch.json` — adjust path/port
 - [ ] `styles.css` scaffolding: heading scale w/ mso rules, `.light-only`/`.dark-only`
-      + `[data-ogsc]` swap CSS, `div[data-container]` shim
+      swap CSS with the `[data-ogsc]` branch **wrapped in
+      `@media only screen and (max-width: 9999px)`** and `!important` on every
+      declaration in both dark branches (§7a), `div[data-container]` shim
 
 Adapt per project:
 
+- [ ] `CLAUDE.md` — repo-specific instructions: catalog roles, asset root,
+      anything the mirrors get wrong for this project
+- [ ] `en-tools-config` head comment — declare the spacing scale, width
+      presets, and `geometryReachPx` (§6.0); identical in every `src/*.mjml`
 - [ ] `mj-head` baseline (`mj-attributes`, `mj-class`es, brand fonts/colors)
 - [ ] Wrap every block in START/END comments following the grammar
 - [ ] Apply the `data-style-*` matrix (§6a) to every tag as it's authored
