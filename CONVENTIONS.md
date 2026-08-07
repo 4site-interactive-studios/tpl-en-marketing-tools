@@ -608,6 +608,9 @@ importer whitelists all data-*-only MJML validator warnings
 | 09 | unused rule | DROPPED (pruned) | harmless |
 | 10 | `@media screen` (unconditional) | INLINED (flattened) | only *conditional* media queries are retained |
 | 11 | MSO conditional comment | **KEPT** intact | Outlook scaffolding is safe |
+| 12 | `[data-ogsc]` nested in `@media (max-width)` | **KEPT** | the rescue: nesting saves it |
+| 13 | `[data-ogsc]` nested in `@media (prefers-color-scheme)` | **KEPT** | same, inside the dark block |
+| 14 | plain inlinable rule nested in a media query | **KEPT, not inlined** | a media query protects ANY rule |
 
   Structural transformations EN also applies: a hidden preheader `<p>` is
   injected as the first body child; `background-color` in a style attribute
@@ -629,14 +632,26 @@ importer whitelists all data-*-only MJML validator warnings
 - **`@media screen` is not a safe hiding place** — unconditional queries are
   flattened and inlined. Only queries with a real condition (`min-width` /
   `max-width` / `prefers-color-scheme`) are retained.
-- **`[data-ogsc]` selectors do not survive at all.** `src/styles.css`
-  currently carries ~40 of them (the deliberate Outlook.com dark branch,
-  including the `.dark-only`/`.light-only` pair). Every one is removed on
-  template save, so Outlook.com falls back to its own auto-inversion. An
-  untested rescue is to nest those selectors INSIDE a retained conditional
-  media query (probes 12–14 in the probe file test exactly that); until that
-  round is measured, treat Outlook.com dark mode as unsupported rather than
-  assuming the CSS is doing anything.
+- **A conditional media query is a reliable "do not touch" wrapper** (probes
+  12–14, round 2). Anything nested inside one comes back verbatim — even a
+  plain inlinable rule (14) and even `[data-ogsc]` selectors that are
+  DROPPED at top level (12, 13). This is the escape hatch for any CSS that
+  must survive EN untouched.
+  - Use a condition that is always true but not statically evaluable:
+    `@media only screen and (max-width: 9999px) { … }`. Bare `@media screen`
+    does NOT work — it is flattened and inlined (probe 10).
+  - **Caveat**: the wrapper also hides the rule from clients that ignore
+    media queries, notably Outlook desktop's Word engine. Only park rules
+    there when no Word-engine client needs them. `[data-ogsc]` qualifies
+    (Outlook.com is a web client and honors media queries); base layout CSS
+    does not.
+- **`[data-ogsc]` at TOP LEVEL does not survive.** `src/styles.css` carries
+  13 such rule blocks (lines ~212–297, the deliberate Outlook.com dark
+  branch including its `.dark-only`/`.light-only` pair). At top level every
+  one is removed on template save, so Outlook.com falls back to its own
+  auto-inversion. They are contiguous, so wrapping that whole region in the
+  media query above rescues all of them — until that lands, treat
+  Outlook.com dark mode as not actually deployed.
 
 ## Process
 
