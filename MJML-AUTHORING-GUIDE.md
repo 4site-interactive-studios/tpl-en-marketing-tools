@@ -65,8 +65,15 @@ first child of `<body>`, and converts `background-color` in a style
 attribute into a `bgcolor` **attribute** on `<body>` and `<td>`. The
 BLOCK pipeline applies the same rewrites to custom block markup, and
 returns MSO conditional comments inside a block verbatim (both measured
-2026-08-09). What it does to a `<style>` element inside block markup is
-not yet measured — keep block styling inline until it is.
+2026-08-09). A `<style>` element inside block markup goes through the
+SAME inliner (measured 2026-08-09): plain rules are inlined and the
+element is removed from the body, a bare `@media screen` is flattened
+and inlined, and conditional media queries — nested `[data-ogsc]`
+included — are retained verbatim but HOISTED into the email's head
+stylesheet, with same-condition queries merged into one block. Hoisting
+makes block CSS global to the WHOLE email, so scope class names (e.g. a
+block-specific prefix) to avoid cross-block collisions. Ordinary HTML
+comments in block markup survive untouched.
 
 ### 2a. The escape hatch
 
