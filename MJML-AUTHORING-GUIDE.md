@@ -178,6 +178,15 @@ rather than trusting the source.
 The same principle applies to light/dark image pairs (two `<img>` tags, one
 logical image) and to any value duplicated into an MSO conditional.
 
+Two companion rules for background sections, both Outlook:
+
+- **Always author a real `background-color` alongside `background-url`.**
+  Without one, MJML omits `color=` on the `v:fill` and Outlook shows black
+  or transparent whenever the image fails to load.
+- **Outlook cannot honor horizontal section padding inside a `v:rect`.**
+  Give background sections vertical-only padding and fake the gutters with
+  an `mj-group` of narrow spacer columns around the content column.
+
 ---
 
 ## 5. Authoring for good Replacements
