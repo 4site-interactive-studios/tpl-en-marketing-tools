@@ -179,8 +179,20 @@ Select only when its authored padding is bottom-only — explicit
 yields a Spacing Below defaulting to None). Components authored with top or
 all-around padding (e.g. an 8px inset image) are NOT on the convention and
 stay fully hard-coded. Whether a block's image shows Spacing Below is
-decided by the template source, not per-block tool logic. Horizontal insets
-on content components stay hard-coded (docs/future-enhancements.md #2).
+decided by the template source, not per-block tool logic.
+
+**Horizontal insets** (2026-08-09, closing future-enhancements #2): a
+qualifying component's NON-ZERO on-scale right/left shorthand slots become
+"Inset Right" / "Inset Left" Selects on the same closed scale, spliced into
+the same composite (mso-padding-alt copies included). Zero and off-scale
+sides stay literal — the field only exists where the template authored a
+real inset — and every Spacing Below gate applies unchanged (bottom-only,
+on-scale bottom, sole-member consolidation). Off-grid sides snap with a
+pacingNote. Total left offset = block gutter + content inset; the disjoint
+"Inset" vocabulary (never "Padding") is what keeps the two knobs
+distinguishable, and the fields sort directly under Spacing Below.
+Explicit padding-left/right attributes on content components remain
+unhandled (none exist upstream; documented limitation).
 
 **Sole-member consolidation** (2026-07-23): when a column's content is a
 SINGLE element (Creek Quiz bands, plain text/divider blocks), that element

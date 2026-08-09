@@ -207,6 +207,16 @@ gets an Include/Exclude toggle automatically. Mark the exceptions:
   identification, unsubscribe text, required logos, interdependent figures)
 - A column's only member never gets one, so do not add filler to force it
 
+### Horizontal insets
+
+A content component's non-zero right/left padding becomes an "Inset Right"
+/ "Inset Left" dropdown on the same closed scale — but only when the side
+is authored ON the scale (8/16/32/48…). Off-scale sides read as geometry
+and stay pinned, exactly like off-scale bottoms. Author insets on the
+scale when you want editors to adjust them; author them off-scale to pin
+them. Remember the offsets add: total left offset = the block's gutter
+plus the content inset.
+
 ### Sole-member consolidation
 
 When a column holds a single element, that element gets no spacing field of
