@@ -117,21 +117,25 @@ The single highest-leverage authoring convention.
   lower element's top padding. The last element in a column supplies the
   column's bottom space.
 - **Columns never carry bottom padding.**
-- **Spacing lives on a closed named scale** (default 0 / 8 / 16 / 32 / 48 /
-  64px as None / Half / Regular / Double / Triple / Quadruple). No free-text
-  spacing fields anywhere, so editors can adjust rhythm but cannot break
-  typography.
+- **Spacing lives on a closed named scale.** The importer's built-in
+  default is five steps, None / Half / Regular / Double / Triple =
+  0 / 8 / 16 / 32 / 48px (`src/core/templateConfig.ts`,
+  `DEFAULT_TEMPLATE_CONFIG`). Templates routinely declare their own: TPL
+  adds a sixth step, Quadruple = 64px. No free-text spacing fields
+  anywhere, so editors can adjust rhythm but cannot break typography.
 - **Off-scale values snap** to the nearest step at import (ties round up),
   and the snap is reported as a warning. Do not leave authored values
   silently off-grid: fix the value, or change the declared scale.
 
 Declare the scale in one JSON comment inside `<mj-head>` so the importer
-follows your template rather than its defaults:
+follows your template rather than its defaults. This is **TPL's actual
+declaration**, not the built-in default — every `src/*.mjml` in that repo
+carries it:
 
 ```html
 <!-- en-tools-config {
-  "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48 },
-  "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32 },
+  "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+  "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
   "geometryReachPx": 64
 } -->
 ```
@@ -140,10 +144,17 @@ follows your template rather than its defaults:
 still pace correctly. If element A owns the gap below it, A + B and A + C
 both look right. If B owns the gap above it, every pairing is a new bug.
 
-**Geometry is not spacing.** Values above `geometryReachPx` (hero photo
+**Geometry is not spacing.** Values ABOVE `geometryReachPx` (hero photo
 reserves, video band heights) are design geometry and stay hard-coded with
 no editable field. Same for sub-8px spacers, which are decorative color
 bars, not pacing.
+
+The boundary is inclusive on the spacing side: the importer tests
+`n <= geometryReachPx`, so a value equal to the reach is still spacing.
+That is why `geometryReachPx: 64` coexists correctly with a
+`Quadruple: 64` step — 64 is the largest spacing value, and only >64 is
+geometry. The parser enforces the relationship, rejecting any
+`geometryReachPx` smaller than the largest declared step.
 
 ---
 
@@ -230,6 +241,15 @@ one; they are the only channel your design intent has into the importer.
 - **Outlook-only values are invisible everywhere else.** A padding that
   exists only inside an MSO conditional or an `mso-*` property would edit
   Outlook alone; it should not become a field.
+- **Outlook renders every button square.** It ignores `border-radius` on
+  table cells, for both `mj-button` and raw pill hybrids. Accept the
+  degradation rather than reaching for VML roundrect wrappers: those break
+  the importer's label/color Replacement bindings and bloat every block.
+- **Keep fixed-width buttons at 300px or less.** A 400px `mj-button` plus
+  32px section padding renders 464px wide and overflows a 375px phone into
+  horizontal scroll. Element width and block width are independent
+  Replacements in EN, so an editor can combine two legal values into an
+  overflow; there is no build-time guard for choices made in EN.
 - **Column-order swaps need text shielding.** Reversing a section with
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
@@ -257,7 +277,7 @@ one; they are the only channel your design intent has into the importer.
 
 ## 8. QA checklist before you call a template done
 
-1. Grep both copies of the template for content elements with non-zero
+1. Grep every `src/*.mjml` for content elements with non-zero
    **top** padding. Only documented overlay/inset exemptions should remain.
 2. Grep for columns with bottom padding. There should be none.
 3. Grep for spacing values off the declared scale.
@@ -303,7 +323,7 @@ Non-negotiables while you work:
   Keep data-style-* accurate for every property you touch.
 - If a design needs values outside the declared defaults, do not silently
   ignore the grid. Change the en-tools-config declaration deliberately, in
-  both copies of the template, in the same commit.
+  every src/*.mjml that declares one, in the same commit.
 - Any CSS that must survive EN's inliner untouched has to be nested inside
   a conditional media query. Bare @media screen does not work.
 - Any dark-mode rule that must beat an inlined base rule needs !important.

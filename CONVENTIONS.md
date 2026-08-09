@@ -45,9 +45,11 @@ system, whose compiled output is imported into Engaging Networks (EN)
 Marketing Tools as blocks and a template.
 
 Repo: https://github.com/4site-interactive-studios/tpl-en-marketing-tools
-- src/demo.mjml and src/example.mjml are the block catalogs. They carry
-  the same block set and the same "Category — X" dividers. KEEP THEM IN
-  SYNC: a change to a block in one belongs in the other.
+- src/demo.mjml is the full block catalog. src/example.mjml is a
+  deliberately curated SUBSET of it — same "Category — X" dividers (9 in
+  each), fewer blocks. A change to a block they SHARE belongs in both;
+  never add blocks to example.mjml to "restore parity." The repo's
+  CLAUDE.md records the exact delta.
 - src/main.mjml is the master template.
 - src/styles.css is the shared stylesheet, compiled into the head.
 
@@ -73,7 +75,8 @@ Non-negotiables while you work:
   for every property you touch.
 - If a design needs values outside the declared defaults, do not silently
   ignore the grid. Change the en-tools-config head declaration
-  deliberately, in both catalogs, in the same commit.
+  deliberately, in every src/*.mjml that declares one, in the same
+  commit.
 - EN runs a CSS inliner on every template save and it cannot be turned
   off. Any CSS that must survive it untouched has to be nested inside a
   CONDITIONAL media query (bare @media screen does not work). [data-ogsc]
@@ -86,15 +89,10 @@ Non-negotiables while you work:
   inside the [if mso | IE] conditional.
 
 Verify when done, and report what each check returned:
-- grep both catalogs for content elements (mj-image/text/button/divider)
-  with non-zero TOP padding — only the documented overlay/inset
-  exemptions may remain
-- grep for columns with bottom padding — none allowed
-- grep for pacing values off the declared scale
-- grep for [data-ogsc] at top level in styles.css — each one must be
-  nested inside a conditional media query
-- confirm demo.mjml and example.mjml still carry the same block set
-- run the full QA checklist in section 8 of the authoring guide
+- confirm every block example.mjml shares with demo.mjml is still
+  identical (the block LISTS are intentionally different)
+- run the full QA checklist in section 8 of the authoring guide — it is
+  the single copy of those checks, do not restate them here
 
 If you added or changed a convention, say so explicitly so the canonical
 documents can be updated. A rule that only lives in a chat transcript is
@@ -149,15 +147,17 @@ inside `<mj-head>` (parsed from the prepared source by
   the authored value, the declared scale, and what it imported as — the
   burn-down list for bringing the source in line with its own declaration.
 - **Rule for agents**: never leave authored values silently off-grid — fix
-  the value, or change the declaration deliberately (both copies of the
-  template, same commit).
+  the value, or change the declaration deliberately (every src/*.mjml
+  that declares one — TPL has five — same commit).
 
 ## Geometry guard — what never gets a spacing field
 
 Values that are design geometry, not pacing, stay hard-coded with NO field
 (never a free-text fallback):
 
-- Frame/content paddings **above 64px** (`SCALE_REACH_PX`): hero photo
+- Frame/content paddings **above `geometryReachPx`** (default 64; the test
+  is `n <= reach`, so a value EQUAL to the reach is still spacing — which
+  is why a Quadruple=64 step and geometryReachPx=64 coexist): hero photo
   reserves (Match Hero 160px, Image with overlay 350px), video bands
   (90–110px). In composite splices the out-of-reach side stays a literal
   while in-reach sides still get Selects.
@@ -721,10 +721,9 @@ importer whitelists all data-*-only MJML validator warnings
 - **`[data-ogsc]` at TOP LEVEL does not survive.** `src/styles.css` carries
   13 such rule blocks (lines ~212–297, the deliberate Outlook.com dark
   branch including its `.dark-only`/`.light-only` pair). At top level every
-  one is removed on template save, so Outlook.com falls back to its own
-  auto-inversion. They are contiguous, so wrapping that whole region in the
-  media query above rescues all of them — until that lands, treat
-  Outlook.com dark mode as not actually deployed.
+  one is removed on template save. **Wrapped upstream 2026-08-07**
+  (`src/styles.css:220`, `@media only screen and (max-width: 9999px)`) so
+  the whole branch now survives; do not unwrap it.
 
 ## Process
 
