@@ -481,10 +481,25 @@ sort — it is purely the panel/export display order.
   they can't inherit mj-attributes defaults, and surfacing them gave
   button-links MORE knobs than real buttons (`ANCHOR_STYLE_PROPS`).
   Supersedes the earlier "keep Font Size editable" note for button-links.
-- **Column/Group widths are NEVER exposed** (px or %): on-screen width is
-  pinned by shared-head classes (`mj-column-per/px-N !important`); a
-  replacement would change Outlook alone and desync it. See
-  docs/future-enhancements.md #1 for the enumerated-dropdown path back.
+- **Column widths: enumerated dropdown for lone inset-box columns ONLY**
+  (2026-08-09, closing future-enhancements #1 v1). A section's single
+  fixed-px column (Highlighted Text's 480px card) gets a "Column Width"
+  Select whose ONE tag is spliced into BOTH width copies — the digits of
+  the `mj-column-px-N` class suffix on the column div and the `width:Npx`
+  in the MSO conditional immediately before it — so the head class rule
+  and Outlook move together. Options are the 50px-step widths whose
+  `.mj-column-px-N` head class actually exists (derived from
+  shell.beforeBlocks at import — an option without a live class would
+  render in Outlook alone), capped at the row's available width, plus an
+  "Original (Npx)" escape for off-ladder authored widths
+  (`fixedPxColumns`, `columnWidthOptions`). Eligibility is strict and
+  fails closed with an infoNote on any compiled-shape mismatch: ungrouped,
+  integer, ≥50px, lone in its section, no `data-no-width-toggle`.
+  Everything else stays NEVER exposed: side-by-side siblings (sum-to-600
+  math, v2 candidate), mj-groups and group MEMBERS (members compile with
+  computed inline PERCENT widths the splice cannot reach — mobile would
+  desync), and all %-widths (`mj-column-per-N !important` head pinning,
+  no enumerated path).
 - **Spacer-only sections** get no frame padding fields (the spacer height
   is the one knob).
 - **Side-by-side columns** get no padding fields; content sub-elements get
@@ -632,6 +647,9 @@ importer whitelists all data-*-only MJML validator warnings
   detection must use `hasAttrFlag` (`src/core/mjmlProps.ts`), which accepts
   both forms. A bare `data-no-display-toggle` was being ignored entirely
   until 2026-07-31 for exactly this reason.
+- **`data-no-width-toggle`** (valueless, on mj-column): opts a lone
+  fixed-px column out of the enumerated Column Width Select — for inset
+  boxes whose width is load-bearing design geometry.
 - **`data-no-link-toggle`** (valueless, on mj-image): opts the image out
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link

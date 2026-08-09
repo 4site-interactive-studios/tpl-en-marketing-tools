@@ -240,9 +240,14 @@ one; they are the only channel your design intent has into the importer.
 
 ## 6. Structure, widths, and Outlook
 
-- **Never expose column widths as editable.** On-screen width is pinned by
-  shared head classes with `!important`; a per-block override would change
-  Outlook alone and desync it.
+- **Column widths are editable only for a section's LONE fixed-px column**
+  (the inset-box shape), via an enumerated dropdown over the 50px-step
+  widths seeded in the stylesheet — never as free text. Author such
+  columns with integer widths on the 50px ladder where possible; pin one
+  with `data-no-width-toggle` when its width is load-bearing. Side-by-side
+  siblings, groups, and group members stay fixed: members compile with
+  computed inline percent widths no edit can reach, and sibling edits
+  break the sum-to-600 math.
 - **Horizontal gutters belong to the frame**, expressed as width presets
   (full bleed / indented / double indent), not as ad-hoc padding.
 - **A lone fixed-px column centers in its section's slack**, so that
