@@ -207,6 +207,10 @@ gets an Include/Exclude toggle automatically. Mark the exceptions:
   identification, unsubscribe text, required logos, interdependent figures)
 - A column's only member never gets one, so do not add filler to force it
 
+Selections are per instance: the same block added to a broadcast several
+times keeps independent Replacement choices for each copy (measured
+2026-08-09), so repeated-block patterns like poll options are safe.
+
 ### Horizontal insets
 
 A content component's non-zero right/left padding becomes an "Inset Right"

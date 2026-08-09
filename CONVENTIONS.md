@@ -465,9 +465,11 @@ sort — it is purely the panel/export display order.
   Light/dark pairs toggle as one unit. Generated BEFORE Display, so a
   Display fragment nests {replacement~image_N_link} — EN resolves
   option-value tags recursively at that depth, VERIFIED 2026-08-09 with
-  the nesting probe (docs/en-nesting-probe.json: a Display → Link →
-  Link URL chain came back fully substituted in a real TPL test send,
-  no literal tags). `data-no-link-toggle` opts out
+  the nesting probe (docs/en-nesting-probe.json): the FULL Display ×
+  Link matrix ran in one real TPL send, all four combinations rendered
+  their exact expected state, zero literal tags. The same send also
+  proved the same block added multiple times keeps INDEPENDENT
+  Replacement selections per instance. `data-no-link-toggle` opts out
   upstream. Label is bare "Link", sorted directly under Display.
 - **Image Position / Column Order** (the content-swap control): exists to
   reverse CONTENT ordering, never to reverse text — so it is generated ONLY
