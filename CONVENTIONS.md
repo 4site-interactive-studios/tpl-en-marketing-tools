@@ -135,7 +135,11 @@ inside `<mj-head>` (parsed from the prepared source by
 - **Semantics**: `spacingScale` (name → px; needs a 0 step and ≥2 entries;
   names and step count are free) drives every pacing Select's options,
   labels, and snapping targets. `widthPresets` (name → px) drives the
-  Block Width dropdown. `geometryReachPx` is the hard-coded-geometry
+  Block Width dropdown. `columnWidthsPx` (optional; a non-empty array of
+  whole px numbers ≥ 50, e.g. `[120, 240, 480]`) curates the Column
+  Width ladder template-wide — see the column-width bullet for the
+  precedence (`data-width-options` beats it) and the head-class guard.
+  `geometryReachPx` is the hard-coded-geometry
   threshold. Partial declarations merge over the defaults per key; unknown
   keys are ignored; invalid keys fall back to defaults with a parse
   warning surfaced in the issues badge.
@@ -508,12 +512,21 @@ sort — it is purely the panel/export display order.
   shell.beforeBlocks at import — an option without a live class would
   render in Outlook alone), capped at the row's available width, plus an
   "Original (Npx)" escape for off-ladder authored widths
-  (`fixedPxColumns`, `columnWidthOptions`). Eligibility is strict and
-  fails closed with an infoNote on any compiled-shape mismatch: ungrouped,
-  integer, ≥50px, lone in its section, no `data-no-width-toggle`.
-  Everything else stays NEVER exposed: side-by-side siblings (sum-to-600
-  math, v2 candidate), mj-groups and group MEMBERS (members compile with
-  computed inline PERCENT widths the splice cannot reach — mobile would
+  (`fixedPxColumns`, `columnWidthOptions`). The ladder can be CURATED
+  (2026-08-09): a per-column `data-width-options="150,250,350"` attribute
+  wins, else the template's en-tools-config `columnWidthsPx`, else the
+  50px steps. Curation replaces the 50px-step rule but keeps both guards
+  — every curated value still needs a live `.mj-column-px-N` head class
+  and must fit the row cap; failing values are dropped with an infoNote,
+  an unparseable attribute is ignored with an infoNote, and a curated
+  list that leaves nothing falls back to the 50px ladder. Eligibility is
+  strict and fails closed with an infoNote on any compiled-shape
+  mismatch: ungrouped, integer, ≥50px, lone in its section, no
+  `data-no-width-toggle`.
+  Everything else stays NEVER exposed: side-by-side siblings (PERMANENT
+  product decision 2026-08-09 — user-defined widths on siblings have too
+  many failure modes; not a v2 candidate), mj-groups and group MEMBERS
+  (members compile with computed inline PERCENT widths the splice cannot reach — mobile would
   desync), and all %-widths (`mj-column-per-N !important` head pinning,
   no enumerated path).
 - **Spacer-only sections** get no frame padding fields (the spacer height
@@ -666,6 +679,12 @@ importer whitelists all data-*-only MJML validator warnings
 - **`data-no-width-toggle`** (valueless, on mj-column): opts a lone
   fixed-px column out of the enumerated Column Width Select — for inset
   boxes whose width is load-bearing design geometry.
+- **`data-width-options`** (VALUED — the one exception in this family, on
+  mj-column): `data-width-options="150,250,350"` curates that column's
+  Column Width ladder, overriding en-tools-config `columnWidthsPx` and
+  the default 50px steps. Whole px numbers ≥ 50, comma-separated; each
+  still needs a live `.mj-column-px-N` head class and must fit the row.
+  An unparseable list is ignored with an infoNote.
 - **`data-no-link-toggle`** (valueless, on mj-image): opts the image out
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link

@@ -62,7 +62,11 @@ pipeline.
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
 first child of `<body>`, and converts `background-color` in a style
-attribute into a `bgcolor` **attribute** on `<body>` and `<td>`.
+attribute into a `bgcolor` **attribute** on `<body>` and `<td>`. The
+BLOCK pipeline applies the same rewrites to custom block markup, and
+returns MSO conditional comments inside a block verbatim (both measured
+2026-08-09). What it does to a `<style>` element inside block markup is
+not yet measured — keep block styling inline until it is.
 
 ### 2a. The escape hatch
 
@@ -270,9 +274,19 @@ one; they are the only channel your design intent has into the importer.
   widths seeded in the stylesheet — never as free text. Author such
   columns with integer widths on the 50px ladder where possible; pin one
   with `data-no-width-toggle` when its width is load-bearing. Side-by-side
-  siblings, groups, and group members stay fixed: members compile with
-  computed inline percent widths no edit can reach, and sibling edits
-  break the sum-to-600 math.
+  siblings, groups, and group members stay fixed — a deliberate,
+  permanent decision, not a gap: members compile with computed inline
+  percent widths no edit can reach, and sibling edits break the
+  sum-to-600 math.
+- **Curating the width ladder.** When 50px steps are the wrong menu,
+  declare the exact options: per column with
+  `data-width-options="150,250,350"` on the mj-column, or template-wide
+  with `"columnWidthsPx": [150, 250, 350]` in en-tools-config (the
+  attribute wins). Whole px numbers ≥ 50 only. EVERY offered width —
+  curated or not — must have a live `.mj-column-px-N` rule in the
+  stylesheet's min-width media query; seed the class for each width you
+  curate, or the importer drops that option (it would render in Outlook
+  alone) and says so in an info note.
 - **Horizontal gutters belong to the frame**, expressed as width presets
   (full bleed / indented / double indent), not as ad-hoc padding.
 - **A lone fixed-px column centers in its section's slack**, so that
