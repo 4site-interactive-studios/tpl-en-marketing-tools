@@ -463,9 +463,11 @@ sort — it is purely the panel/export display order.
   each anchor's open/close stripped (the href tag goes with the opener; it
   still resolves via the Include value, which the validator counts).
   Light/dark pairs toggle as one unit. Generated BEFORE Display, so a
-  Display fragment nests {replacement~image_N_link} — EN must resolve
-  option-value tags recursively one level deeper than Display alone
-  (verify in EN before relying on it). `data-no-link-toggle` opts out
+  Display fragment nests {replacement~image_N_link} — EN resolves
+  option-value tags recursively at that depth, VERIFIED 2026-08-09 with
+  the nesting probe (docs/en-nesting-probe.json: a Display → Link →
+  Link URL chain came back fully substituted in a real TPL test send,
+  no literal tags). `data-no-link-toggle` opts out
   upstream. Label is bare "Link", sorted directly under Display.
 - **Image Position / Column Order** (the content-swap control): exists to
   reverse CONTENT ordering, never to reverse text — so it is generated ONLY
