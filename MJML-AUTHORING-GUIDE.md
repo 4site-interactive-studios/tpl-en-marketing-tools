@@ -150,9 +150,11 @@ asset — light-only AND dark-only — must stay legible on EITHER a light
 or a dark surface, because a client that cannot run the swap may hand
 it the opposite background: prefer wordmarks and icons that carry
 their own contrast (knockout/outline), or serve Outlook a hand-picked
-single asset via `<!--[if mso]>`. A VML solid fill may pin Outlook
-backgrounds the way v:fill pins background images, but that is
-unmeasured through EN — probe before relying on it.
+single asset via `<!--[if mso]>`. A solid-color background
+tile may pin Outlook backgrounds the way v:fill pins background
+images, but that is unmeasured through EN — probe
+(the canonical repo's docs/en-bg-tile-probe.html) before relying on
+it.
 
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
