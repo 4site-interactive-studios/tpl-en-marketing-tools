@@ -120,6 +120,40 @@ dark-on-dark and no asset swap happens.
 
 ---
 
+### 2c. Where dark mode can and cannot reach
+
+The dark-mode strategy has exactly two hooks, and both survive EN:
+`@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
+friends) and `[data-ogsc]` inside a conditional media query
+(Outlook.com / OWA). Two mainstream clients expose NEITHER hook
+(measured 2026-08-09, real TPL send viewed across clients):
+
+- **Gmail app (Android, dark theme)** ignores `prefers-color-scheme`
+  and force-applies its own auto-darkening. The `dark-only` swap cannot
+  fire; the light variant renders and Gmail recolors it.
+- **Outlook 2021 Windows (Word engine, dark mode)** supports no media
+  queries at all, and `[data-ogsc]` is Outlook.com-only. TPL
+  additionally excludes `dark-only` images from Outlook with
+  `<!--[if !mso]><!-->` — deliberate, since Word cannot reliably
+  `display:none` them — so desktop Outlook can only ever receive the
+  light asset, which its dark mode then recolors around.
+
+This is client design, not an EN or importer limitation, and no CSS
+reaches it. Worse, the two clients transform in OPPOSITE directions
+(both measured 2026-08-09 on real TPL sends): the Gmail app darkens
+light designs, while Outlook desktop dark mode also INVERTS dark ones —
+it flipped the Footer's #000000 to a white background while leaving its
+light-green logo and white social icons untouched, stranding light
+artwork on a light surface. Images are never recolored by either
+client; that is both the failure mode and the defense. Every swap
+asset — light-only AND dark-only — must stay legible on EITHER a light
+or a dark surface, because a client that cannot run the swap may hand
+it the opposite background: prefer wordmarks and icons that carry
+their own contrast (knockout/outline), or serve Outlook a hand-picked
+single asset via `<!--[if mso]>`. A VML solid fill may pin Outlook
+backgrounds the way v:fill pins background images, but that is
+unmeasured through EN — probe before relying on it.
+
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
 The single highest-leverage authoring convention.
@@ -346,7 +380,10 @@ one; they are the only channel your design intent has into the importer.
 5. Confirm every dark-mode rule that must override an inlined base rule
    carries `!important`.
 6. Confirm no `[data-ogsc]` rule sits at top level; wrap them per §2a.
-7. Send a real test: dark mode on, and a ≤480px viewport. The inliner
+7. In dark-mode passes, check Gmail app and Outlook desktop
+   SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
+   light-only assets survive the client's own auto-darkening.
+8. Send a real test: dark mode on, and a ≤480px viewport. The inliner
    failures are invisible in source and in the editor.
 
 ---
