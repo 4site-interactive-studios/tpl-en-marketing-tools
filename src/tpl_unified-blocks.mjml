@@ -1653,153 +1653,31 @@
     </mj-section>
     <!-- END: Signature Card (square photo) -->
 
-    <!-- START: Footer -->
-    <mj-section
-      css-class="footer-block block"
-      background-color="#000000"
-      full-width="full-width" padding="64px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          alt="Logo"
-          src="assets/logo-tpl_color-light-green-text.png"
-          width="150px"
-          href="https://www.example.com" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+    <!-- START: Footer (w/ image) -->
+    <mj-include path="./partials/tri-color-divider.mjml" />
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          alt="Logo"
-          src="assets/logo-tpl_color-light-green-text.png"
-          width="150px"
-          href="https://www.example.com" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="220px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <mj-section
-      css-class="footer-block block"
-      background-color="#000000"
-      full-width="full-width" padding="32px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-
-    >
-      <mj-group width="480px">
-        <mj-column width="33%" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text
-            css-class="footer-text"
-            color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color
-          >
-            <p style="text-align: center;">
-              <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com" data-style-color data-style-href>DONATE</a>
-            </p>
-          </mj-text>
-        </mj-column>
-        <mj-column width="66%"  border-left="2px solid #4d4d4d" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text
-            css-class="footer-text"
-            color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color
-          >
-            <p style="text-align: center;">
-              <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com" data-style-color data-style-href>MANAGE SUBSCRIPTION</a>
-            </p>
-          </mj-text>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <mj-section
-        css-class="footer-block block"
-        background-color="#000000"
-        full-width="full-width" padding="32px 16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-
-    >
-      <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text
-          css-class="footer-text"
-          color="#ffffff" data-no-display-toggle data-style-alignment padding="0 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color
-        >
-          <p>
-            Photos by:  Anand Varma, Wallace W. Nutting, Tamara Merino, Photo Ark: ANIMALS OF EARTH
-            by Joel Sartore, Exhibit Rendering, Michael O. Snyder / Preserving Legacies,
-            Joel Sartore / Trust for Public Land Photo Ark
-          </p>
-          <p>
-            The Trust for Public Land is a nonprofit organization driven by the belief in the
-            power of science, exploration, and storytelling to change the world. The Trust for Public Land
-            Society is a 501(c)(3), tax-exempt organization. Copyright © 2025 Trust for Public Land.
-            All rights reserved.
-          </p>
-          <p>
-            <br />
-            You are receiving this email because you elected to receive marketing communications from
-            Trust for Public Land under the terms of our Privacy Policy and Terms of Service.
-          </p>
-          <p>
-            You may unsubscribe from this list if you no longer wish to receive email marketing
-            communications. If you would like to unsubscribe from ALL email communication from Trust for
-            Public Land, request erasure or portability of your personal data please email
-            donor.outreach@tpl.org with your request.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
+        <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
-        <mj-button width="auto"
-          color="#ffffff"
-          background-color="#006837"
-          href="https://www.example.com"
-          align="center" data-style-align padding="0 0 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
-        <mj-social
-          css-class="socials"
-          icon-padding="0"
-          mode="horizontal"
-          inner-padding="0 8px"
-          align="center"
-        >
-          <mj-social-element
-            css-class="social-link"
-            name="facebook-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/facebook.png?v=1779709436000"
-            href="https://www.facebook.com/TheTrustforPublicLand/"
-            background-color="#000000"
-            alt="Facebook Logo"
-            icon-size="11px"
-            icon-height="25px"
-            vertical-align="middle" data-style-href
-          />
-          <mj-social-element
-            css-class="social-link"
-            name="instagram-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/instagram.png?v=1779709437000"
-            href="https://www.instagram.com/trustforpublicland/"
-            background-color="#000000"
-            alt="Instagram Logo"
-            icon-size="24px"
-            icon-height="24px"
-            vertical-align="middle" data-style-href
-          />
-          <mj-social-element
-            css-class="social-link"
-            name="youtube-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/youtube.png?v=1779709463000"
-            href="https://www.youtube.com/user/TrustforPublicLand"
-            background-color="#000000"
-            alt="YouTube Logo"
-            icon-size="27px"
-            icon-height="20px"
-            vertical-align="middle" data-style-href
-          />
-          <mj-social-element
-            css-class="social-link"
-            name="linkedin-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/linkedin.png?v=1779709439000"
-            href="https://www.linkedin.com/company/the-trust-for-public-land/"
-            background-color="#000000"
-            alt="LinkedIn Logo"
-            icon-size="24px"
-            icon-height="24px"
-            vertical-align="middle" data-style-href
-          />
-        </mj-social>
+        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+        </mj-text>
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="130px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>
+        </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Footer -->
+    <!-- END: Footer (w/ image) -->
 
     <!-- END: Main Content -->
   </mj-body>

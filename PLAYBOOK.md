@@ -11,9 +11,9 @@ short version.
 
 ```
 src/
-  demo.mjml            ← full block catalog (the 9 "Category — X" dividers)
-  example.mjml         ← curated SUBSET of demo (see CLAUDE.md)
-  main.mjml            ← master template
+  mjml_all-blocks.mjml     ← full block catalog (the 9 "Category — X" dividers)
+  tpl_all-blocks.mjml      ← curated SUBSET of the catalog (see CLAUDE.md)
+  tpl_unified-blocks.mjml  ← master template
   donation-thank-you.mjml
   recurring-donation-thank-you.mjml    ← standalone autoresponders
   styles.css           ← shared CSS, pulled in via mj-include
@@ -39,7 +39,7 @@ Multiple pages are free: the build globs `src/*.mjml`, so adding
 `src/anything.mjml` yields `dist/anything.html` **and**
 `dist/anything.cdn.html` with no config change — see §2 for the difference
 between the two, and CLAUDE.md for the catalogs' roles (notably that
-`example.mjml` is a curated subset of `demo.mjml`, not a mirror of it).
+`tpl_all-blocks.mjml` is a curated subset of `mjml_all-blocks.mjml`, not a mirror of it).
 
 ## 2. Build pipeline (`package.json`)
 
@@ -204,7 +204,7 @@ Names must match exactly (case-sensitive) between START and END.
   (also skipped by the overlay).
 
 `scripts/check-docs.mjs` asserts that every block name cited anywhere in the
-docs still resolves to a block, family, or category in `src/demo.mjml`.
+docs still resolves to a block, family, or category in `src/mjml_all-blocks.mjml`.
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 
