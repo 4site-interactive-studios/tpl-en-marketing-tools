@@ -198,6 +198,17 @@ emails. Colors, spacing, widths, alignment, and direction should all resolve
 to enumerable options. In practice this means authoring from a consistent
 palette and scale so the importer can infer the option list.
 
+### Nested Replacements: measured behavior
+
+EN resolves `{replacement~…}` tags inside Select option values
+**recursively**, measured to three levels in a real send (2026-08-09,
+probe: block content → Display option value → Link option value →
+Link URL): every combination of a two-toggle chain rendered its exact
+expected state with zero literal tags. Structuring controls as
+fragments-within-fragments (a link toggle nested inside a show/hide
+toggle) is therefore safe. The probe block that measured this is
+reusable: `docs/en-nesting-probe.json` in the canonical repo.
+
 ### Show/hide
 
 A component sharing its column with at least one other non-spacer member
