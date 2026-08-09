@@ -28,7 +28,7 @@ and edits here are overwritten on the next mirror. When one is wrong:
 and asserts the things that actually rotted before: block names cited in docs
 still resolve, the demo/example delta is exactly the documented subset, no
 top-level `[data-ogsc]`, every dark-mode declaration carries `!important`, no
-absolute asset root in source, every `§N` cross-reference resolves, and the
+absolute CDN URL in source, every `§N` cross-reference resolves, and the
 mirrors still carry their header. Run it alone with `npm run check-docs`.
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.
@@ -91,16 +91,20 @@ https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.co
 Override for another environment with `TPL_ASSET_ROOT=… npm run build`.
 
 **Source MJML always keeps relative paths** (guide §7 — absolute URLs in
-source defeat environment portability). The regression test is the asset-root
-id specifically, which must return nothing:
+source defeat environment portability). The regression test is the whole
+CDN domain, which must return nothing:
 
 ```bash
-grep bd6ca9cefa6fb6e0adf1 src/*.mjml
+grep rackcdn.com src/*.mjml
 ```
 
-Do not grep for `rackcdn.com` — the footer social icons legitimately live on
-a different TPL container (16 hits, all expected). That is the documented
-"genuinely external asset" exception.
+Every asset is repo-local under `src/assets/`. The one historical
+exception — footer social icons hard-coded to the legacy `/2184`
+container — was retired 2026-08-09 by copying the four icons into
+`src/assets/`: importer rewriting and the missing-at-root audit skip
+absolute URLs, so an off-root asset breaks silently if its container is
+ever retired. A future genuinely-external asset (guide §7) needs a note
+here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
 
 ## Working rules
 

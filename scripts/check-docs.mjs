@@ -158,13 +158,20 @@ for (const marker of ['@media (prefers-color-scheme: dark)', '@media only screen
 
 // ---------------------------------------------------------------------------
 // 5. Source keeps relative asset paths; the absolute root is a build artifact.
-//    The test is the asset-root id, NOT "rackcdn" — the footer social icons
-//    legitimately live on a different container.
+//    Since 2026-08-09 ANY rackcdn URL in source is a defect: the last off-root
+//    exception (footer social icons on the legacy /2184 container) was retired
+//    by copying the icons into src/assets/ — importer rewriting and the
+//    missing-at-root audit skip absolute URLs, so an off-root asset breaks
+//    silently if its container is ever retired. A deliberate future external
+//    asset gets an allowlist entry here plus a CLAUDE.md note.
 // ---------------------------------------------------------------------------
 const ASSET_ROOT_ID = 'bd6ca9cefa6fb6e0adf1';
 for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
-  if ((read(`src/${f}`) || '').includes(ASSET_ROOT_ID)) {
+  const text = read(`src/${f}`) || '';
+  if (text.includes(ASSET_ROOT_ID)) {
     warn(`src/${f} contains the absolute EN asset root — source must stay relative (guide §7); the absolute form is emitted into <name>.cdn.html`);
+  } else if (text.includes('rackcdn.com')) {
+    warn(`src/${f} references an off-root rackcdn.com URL — asset-root rewriting and the missing-at-root audit skip absolute URLs; move the file into src/assets/ and reference it relatively (guide §7)`);
   }
 }
 

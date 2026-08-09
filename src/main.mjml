@@ -1755,7 +1755,7 @@
           <mj-social-element
             css-class="social-link"
             name="facebook-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/facebook.png?v=1779709436000"
+            src="assets/icon-facebook.png"
             href="https://www.facebook.com/TheTrustforPublicLand/"
             background-color="#000000"
             alt="Facebook Logo"
@@ -1766,7 +1766,7 @@
           <mj-social-element
             css-class="social-link"
             name="instagram-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/instagram.png?v=1779709437000"
+            src="assets/icon-instagram.png"
             href="https://www.instagram.com/trustforpublicland/"
             background-color="#000000"
             alt="Instagram Logo"
@@ -1777,7 +1777,7 @@
           <mj-social-element
             css-class="social-link"
             name="youtube-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/youtube.png?v=1779709463000"
+            src="assets/icon-youtube.png"
             href="https://www.youtube.com/user/TrustforPublicLand"
             background-color="#000000"
             alt="YouTube Logo"
@@ -1788,7 +1788,7 @@
           <mj-social-element
             css-class="social-link"
             name="linkedin-noshare"
-            src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2184/linkedin.png?v=1779709439000"
+            src="assets/icon-linkedin.png"
             href="https://www.linkedin.com/company/the-trust-for-public-land/"
             background-color="#000000"
             alt="LinkedIn Logo"
