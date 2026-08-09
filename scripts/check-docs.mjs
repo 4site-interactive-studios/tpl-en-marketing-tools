@@ -210,6 +210,81 @@ for (const f of LOCAL_DOCS) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// 9. Symbol existence: paths, data-* attributes, and css-class tokens a doc
+//    cites must still resolve. Assertion 1 does this for block NAMES; this is
+//    the same guarantee for the vocabulary the docs use to describe code.
+//    Caused by: prose survives renames silently. A doc naming a script that
+//    moved, or a data-* flag that was renamed, reads as current forever.
+// ---------------------------------------------------------------------------
+{
+  /**
+   * The vocabulary corpus is wider than src/: data-tpl-* flags and the
+   * `fully-excluded` class are INJECTED by the build (annotate-excluded.mjs)
+   * and consumed by debug.js, so they legitimately never appear in a .mjml.
+   * Checking against src/ alone would flag every one of them.
+   */
+  const mjmlSrc = readdirSync(join(ROOT, 'src'))
+    .filter((n) => n.endsWith('.mjml'))
+    .map((n) => read(`src/${n}`) || '')
+    .join('\n');
+  const scriptSrc = readdirSync(join(ROOT, 'scripts'))
+    .filter((n) => n.endsWith('.mjs'))
+    .map((n) => read(`scripts/${n}`) || '')
+    .join('\n');
+  const vocabulary = mjmlSrc + (read('src/styles.css') || '') + scriptSrc + (read('src/assets/debug.js') || '');
+
+  /** Docs illustrate with stand-ins: `src/anything.mjml`, `css-class="… x"`. */
+  const PLACEHOLDER = /anything|…|\.\.\.|<[^>]*>|\*/;
+
+  for (const f of LOCAL_DOCS) {
+    const text = read(f);
+
+    // 9a. Repo-relative paths. Trailing-slash tokens are directories.
+    for (const m of text.matchAll(/`((?:scripts|src|dist)\/[\w./-]*)`/g)) {
+      const rel = m[1].replace(/\/$/, '');
+      if (!rel || PLACEHOLDER.test(rel)) continue;
+      if (!existsSync(join(ROOT, rel))) warn(`${f} cites \`${m[1]}\`, which does not exist`);
+    }
+
+    // 9b. data-* flags. `data-*` itself is the wildcard, not an attribute, and
+    // a cited value (data-folder="<id>") is illustrative — check the name only.
+    for (const m of text.matchAll(/`(data-[a-z-]+)(?:="[^"]*")?`/g)) {
+      const attr = m[1];
+      if (attr === 'data-' || attr.endsWith('-')) continue;
+      if (!vocabulary.includes(attr)) {
+        warn(`${f} cites \`${attr}\`, which appears nowhere in src/ or scripts/`);
+      }
+    }
+
+    // 9c. css-class tokens must exist somewhere that actually applies them.
+    for (const m of text.matchAll(/`css-class="([^"]+)"`/g)) {
+      for (const cls of m[1].split(/\s+/).filter(Boolean)) {
+        if (PLACEHOLDER.test(cls)) continue;
+        if (!vocabulary.includes(cls)) {
+          warn(`${f} cites css-class "${cls}", which appears nowhere in src/ or scripts/`);
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 10. Unresolved-state language must not outlive the thing it describes.
+//     Caused by: CONVENTIONS carried "until that lands, treat Outlook.com dark
+//     mode as not actually deployed" for weeks after the wrap shipped in
+//     styles.css. Nobody re-reads a doc to check whether its caveats expired.
+// ---------------------------------------------------------------------------
+{
+  const PENDING =
+    /(TO BE FILLED IN|until that lands|not yet measured|untested rescue|pending .{0,30}(?:run|test|confirmation)|TODO: ADD LINK)/gi;
+  for (const f of LOCAL_DOCS) {
+    for (const m of (read(f) || '').matchAll(PENDING)) {
+      warn(`${f} still says "${m[0]}" — confirm it is genuinely still pending, or update it`);
+    }
+  }
+}
+
 console.log(
   warnings
     ? `check-docs: ${warnings} WARNING(S) — see above`
