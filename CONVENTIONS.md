@@ -45,12 +45,15 @@ system, whose compiled output is imported into Engaging Networks (EN)
 Marketing Tools as blocks and a template.
 
 Repo: https://github.com/4site-interactive-studios/tpl-en-marketing-tools
-- src/demo.mjml is the full block catalog. src/example.mjml is a
+- src/mjml_all-blocks.mjml (formerly demo.mjml) is the full block
+  catalog. src/tpl_all-blocks.mjml (formerly example.mjml) is a
   deliberately curated SUBSET of it — same "Category — X" dividers (9 in
   each), fewer blocks. A change to a block they SHARE belongs in both;
-  never add blocks to example.mjml to "restore parity." The repo's
+  never add blocks to tpl_all-blocks.mjml to "restore parity." The
+  repo's
   CLAUDE.md records the exact delta.
-- src/main.mjml is the master template.
+- src/tpl_unified-blocks.mjml (formerly main.mjml) is the master
+  template.
 - src/styles.css is the shared stylesheet, compiled into the head.
 
 Two documents govern this work. Fetch and read BOTH in full before making
@@ -89,7 +92,8 @@ Non-negotiables while you work:
   inside the [if mso | IE] conditional.
 
 Verify when done, and report what each check returned:
-- confirm every block example.mjml shares with demo.mjml is still
+- confirm every block tpl_all-blocks.mjml shares with
+  mjml_all-blocks.mjml is still
   identical (the block LISTS are intentionally different)
 - run the full QA checklist in section 8 of the authoring guide — it is
   the single copy of those checks, do not restate them here

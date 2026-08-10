@@ -37,16 +37,16 @@ that produces the count cannot.
 
 | File | Role |
 | :--- | :--- |
-| `src/demo.mjml` | full block catalog with `Category — X` dividers |
-| `src/example.mjml` | **curated subset** of demo, see below |
-| `src/main.mjml` | master template |
+| `src/mjml_all-blocks.mjml` | full block catalog with `Category — X` dividers (formerly demo.mjml) |
+| `src/tpl_all-blocks.mjml` | **curated subset** of the catalog, see below (formerly example.mjml) |
+| `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) |
 | `src/donation-thank-you.mjml`, `src/recurring-donation-thank-you.mjml` | standalone autoresponders |
 
-**`example.mjml` is a curated subset, not a mirror of `demo.mjml`.**
+**`tpl_all-blocks.mjml` is a curated subset, not a mirror of `mjml_all-blocks.mjml`.**
 CONVENTIONS.md's lead-in prompt says the two catalogs "carry the same block
 set — KEEP THEM IN SYNC." That is true for every block they *share*: a change
 to a shared block belongs in both. It is **not** an instruction to equalize
-the block lists. `example.mjml` deliberately omits eight blocks:
+the block lists. `tpl_all-blocks.mjml` deliberately omits eight blocks:
 
     Story Card (orange-bordered)   Text w/ Background Image
     Photo Card (green CTA)         Photo Card (outline CTA)
@@ -58,8 +58,8 @@ They were removed on request to make a shorter demonstration page. Do not
 eight, and nothing else, with:
 
 ```bash
-diff <(grep -oE '<!-- START: [^>]*-->' src/demo.mjml) \
-     <(grep -oE '<!-- START: [^>]*-->' src/example.mjml)
+diff <(grep -oE '<!-- START: [^>]*-->' src/mjml_all-blocks.mjml) \
+     <(grep -oE '<!-- START: [^>]*-->' src/tpl_all-blocks.mjml)
 ```
 
 ## Two HTML outputs per page

@@ -29,8 +29,8 @@ const warn = (msg) => {
 const LOCAL_DOCS = ['PLAYBOOK.md', 'CLAUDE.md', 'README.MD'].filter((f) => read(f));
 const MIRRORS = ['MJML-AUTHORING-GUIDE.md', 'CONVENTIONS.md'];
 
-const demo = read('src/demo.mjml') || '';
-const example = read('src/example.mjml') || '';
+const demo = read('src/mjml_all-blocks.mjml') || '';
+const example = read('src/tpl_all-blocks.mjml') || '';
 const blockNames = (src) => new Set([...src.matchAll(/<!-- START: (.+?) -->/g)].map((m) => m[1]));
 const demoBlocks = blockNames(demo);
 
@@ -70,7 +70,7 @@ for (const f of LOCAL_DOCS) {
     // docs legitimately cite all three.
     if (demoBlocks.has(name) || families.has(name) || categories.has(name)) continue;
     if (name.startsWith('Category — ') && categories.has(name.slice('Category — '.length))) continue;
-    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in src/demo.mjml`);
+    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in src/mjml_all-blocks.mjml`);
   }
 }
 
@@ -96,13 +96,13 @@ if (example) {
   const unexpected = onlyDemo.filter((n) => !EXPECTED_ONLY_IN_DEMO.includes(n));
   const missing = EXPECTED_ONLY_IN_DEMO.filter((n) => !onlyDemo.includes(n));
   for (const n of unexpected) {
-    warn(`"${n}" is in demo.mjml but not example.mjml, and is not in the documented subset (CLAUDE.md)`);
+    warn(`"${n}" is in mjml_all-blocks.mjml but not tpl_all-blocks.mjml, and is not in the documented subset (CLAUDE.md)`);
   }
   for (const n of missing) {
-    warn(`"${n}" is documented as omitted from example.mjml but is present — update CLAUDE.md or the catalog`);
+    warn(`"${n}" is documented as omitted from tpl_all-blocks.mjml but is present — update CLAUDE.md or the catalog`);
   }
   for (const n of onlyExample) {
-    warn(`"${n}" exists only in example.mjml; example is a subset of demo, never a superset`);
+    warn(`"${n}" exists only in tpl_all-blocks.mjml; the curated set is a subset of the catalog, never a superset`);
   }
 }
 
