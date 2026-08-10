@@ -304,6 +304,28 @@ When a column holds a single element, that element gets no spacing field of
 its own; the frame's padding is the one control. Authoring a single-element
 column with its own padding creates two knobs for one gap.
 
+### Viewport-scoped controls (measured 2026-08-09)
+
+The importer pixel-audits every generated dropdown at 600px and 375px and
+codifies what it proves, so expect:
+
+- **An image sized to its column's content width gets no Alignment field**
+  — alignment has nothing to move. An image that fills the column only at
+  ONE viewport (`fluid-on-mobile`, or an mj-group member whose percent
+  width shrinks below the image at 375px) keeps the field, labeled
+  "Desktop Alignment" / "Mobile Alignment" for where it works. Leave a few
+  px of slack at both viewports if you want a plain, always-live control.
+- **A symmetric spacer-column section gets no Column Order control** — the
+  Outlook-safe `25px spacer | content | 25px spacer` pattern reads the
+  same reversed, so the swap would be the identity. Only asymmetric column
+  layouts get the control.
+- **Column Width dropdowns are labeled "Desktop Column Width"** — the
+  `.mj-column-px-*` classes are min-width:600px-gated, so the control acts
+  at desktop only; below 600px columns stack full-width regardless.
+- More generally: labels prefixed "Desktop " / "Mobile " mean the audit
+  proved the control moves pixels at that viewport only. The merge-tag
+  names never carry the prefix.
+
 ### Signal intent with `data-style-*`
 
 Flag the properties meant to be editable, one flag per property:
@@ -406,6 +428,13 @@ one; they are the only channel your design intent has into the importer.
    light-only assets survive the client's own auto-darkening.
 8. Send a real test: dark mode on, and a ≤480px viewport. The inliner
    failures are invisible in source and in the editor.
+9. After import, open the Inert Dropdown Audit, run it, and read the Check
+   column: **every row should say PASS**. PASS means the field behaves the
+   way its label and kind promise — including the intended-inert ones (link
+   toggles, Outlook fallback colors). Any FAIL means the template pins a
+   control the importer generated, or a label does not say where the control
+   works; either the source or the importer needs a decision
+   (§5 "Viewport-scoped controls").
 
 ---
 

@@ -296,7 +296,177 @@ fields live after suppression (2026-08-03: the Stat Row flatten added a
 live Block Width and moved the card's bottom inset onto the button's
 Spacing Below). Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
-prune.
+prune. The Inert Dropdown Audit below generalizes this oracle to every
+Select, both viewports, and pixel comparison; `__auditPadding()` remains
+the fast padding-family path.
+
+## Inert Dropdown Audit — every Select, pixel ground truth
+
+The geometry oracle covers one family at one viewport. The **Inert
+Dropdown Audit** (the `Inert Audit` header button) generalizes it to every
+Select replacement: per block × Select × option it renders the block with
+ONLY that option applied (every other field at its default) at 600px
+(desktop — the `min-width:600px` breakpoint matches at exactly 600) and
+375px (mobile), light mode only, and compares raster **pixels** (SHA-256
+over the RGBA bytes), not geometry — color and font fields are in scope. A
+field is INERT at a viewport iff every option rasters byte-identical to
+the all-defaults baseline. Implementation: `src/core/inertAudit.ts`
+(classification + the runner — pure, vitest-covered against a scripted
+fake engine), `src/components/inertAuditRender.ts` (iframe pool →
+`foreignObject` raster → pixel hash),
+`src/components/InertDropdownAuditPanel.tsx` (matrix UI + resume),
+`src/core/inertAuditReport.ts` (the downloadable markdown matrix).
+
+Determinism contract — what makes the matrix trustworthy:
+
+- Every image reference (`src`, CSS `url()`, legacy VML `background=`) is
+  stubbed to a per-URL **tinted** placeholder before load, so network
+  variance can never fake a diff (and the canvas is never tainted). The
+  tint (hue from the URL's crc32) keeps a genuine image swap visible;
+  dimensions come from a one-time-per-run natural-size probe
+  (`probeImageDims`), falling back to the referencing `<img>`'s
+  width/height attributes, then 600×200 — whatever a URL resolves to first
+  is frozen for the whole run.
+- The audit head rewrites `prefers-color-scheme: dark` media conditions to
+  a never-matching condition (`neutralizeDarkScheme`) — a dark-OS machine
+  renders the light-only sweep identically to a light one (a
+  `color-scheme: light` style alone does NOT defeat the media query) — and
+  freezes animations, transitions, and the caret.
+- A settle timeout NEVER falls through to comparison (the paddingAudit
+  races resolve-and-continue; here every timeout yields **unproven**,
+  retried once). After each block × viewport the baseline is re-rendered
+  fresh and must hash identically, or the whole block × viewport is
+  downgraded to unproven — determinism is witnessed per block, not
+  assumed.
+- The engine self-tests at startup (double-render determinism, dark
+  neutralization, breakpoint evaluation at 600 vs 375 inside the raster
+  context) and REFUSES to run if any tripwire fails — a lying matrix is
+  worse than no matrix.
+
+Verdict vocabulary the matrix never conflates: **inert** (proven, per
+viewport) · **inert at defaults** (the option's substituted body is
+byte-equal to the baseline's — e.g. its tag only exists inside another
+Select's non-default conditional fragment; proven without rendering but
+only for the current defaults) · **unproven** (a render failed — never
+counted as inert). Image-URL-flavored Selects are **static-exempt**
+("image swap"): with every src stubbed, a src change is a display change
+by definition — and dark-only swaps are invisible in a light-only sweep —
+so they are listed for eyeball review instead of render-tested. Display
+toggles ARE render-tested and double as positive controls: Exclude
+collapses content, so a Display toggle reporting inert is an engine-bug
+tripwire, not a finding. Link toggles are render-tested too but EXPECTED
+inert — Exclude Link strips only the `<a>` wrapper, which moves zero
+pixels — so the matrix annotates them "non-visual by design (href-only)"
+rather than presenting them as removal candidates: the control changes
+behavior, not rendering (measured on the unified catalog 2026-08-09, all
+link toggles inert@both, all Display toggles live). A zero-height render
+(a Spacer at `None - 0px`) hashes as a deterministic empty raster —
+collapsing a block IS a display change, not an error.
+
+Results persist per row under `localStorage['en-tools:inert-audit:v1']`
+(its own key — never inside the project state), keyed by block id +
+replacement name and fingerprinted over the block html, the Select's
+option values, EVERY sibling default (the baseline substitutes them all),
+and the audit head — any render-relevant edit reverts exactly the affected
+rows to pending. Runs are cancellable (cancel = pause), resumable across
+reloads, and batchable by category chip; Re-import regenerates block ids,
+which correctly invalidates everything.
+
+Two pre-registered mechanisms are expected on the mobile axis and are
+documented trade-offs, not new discoveries: the `.inset-gutter` /
+`.two-col-column` mobile `!important` pinning and grow-direction asymmetry
+(see "Known but NOT suppressed" above).
+
+## Viewport-scoped controls — codified audit truths
+
+The 2026-08-09 audit round on the unified catalog (458 Selects, two
+byte-identical runs) hardened into policy (user-decided):
+
+- **A Select proven inert at BOTH viewports is removed** — its tag reverts
+  to the original value, exactly like a manual delete. Two exemptions
+  survive: **Link toggles** (Exclude Link strips only the `<a>` wrapper —
+  zero pixels move, but clickability changes: behavior, not rendering) and
+  **BACKGROUND colors on blocks that carry background images** (invisible
+  under the loaded image, but Outlook desktop does not load background
+  images — the color IS the Outlook fallback; carriers = CSS `url()` and
+  the legacy `background=` attribute, never foreground `src=`, per
+  `blockHasBackgroundImage`). The exemption is `paletteGroup: 'background'`
+  only: a TEXT color renders ON TOP of the image, so its inertness is not
+  explained by the image failing to load and it stays a finding.
+- **A Select inert at exactly ONE viewport keeps working but its LABEL says
+  where**: `Desktop ` prefix when it is inert at 375px, `Mobile ` when
+  inert at 600px ("Desktop Alignment", "Mobile Spacing Below"). LABELS
+  ONLY — merge-tag names never carry the prefix, so exports stay
+  byte-stable. `classifyAttribute` and the audit's own family classifier
+  read through the prefixes.
+- **Unexplained findings are never removed silently.** Removals whose
+  mechanism has no codified explanation (today: every color-family removal,
+  including the open `text_color`-on-background-image finding) are
+  review-flagged and listed default-UNCHECKED in the Apply modal.
+
+Codified STATIC guards (generator-level, so they survive re-import; each
+suppression lands in `Block.infoNotes` at 'info' level):
+
+- **Full-width images get no live Alignment**: when an image's rendered
+  width meets or exceeds its column's content width at a viewport, `align`
+  has nothing to move there. Evaluated per viewport by
+  `measureColumnGeometry` (the generalized button-width walk): desktop from
+  the 600px column math; mobile from the compiled 375px reality —
+  `fluid-on-mobile` images raster 100%-wide, `mj-group` members keep their
+  percent widths, everything else stacks to the full frame. Dead at both →
+  no field + infoNote; dead at one → the label carries the viewport prefix
+  at generation time.
+- **Symmetric sections get no Column Order**: a column list whose
+  (width, signature) pairs read the same forwards and backwards — the
+  `25px spacer | content | 25px spacer` Outlook pattern — makes the swap
+  the identity. Skipped + infoNote (the identical-signature skip alone
+  misses it: empty spacer signatures differ from the content column's).
+- **Column Width is desktop-only, always**: the `.mj-column-px-*` ladder is
+  `min-width:600px`-gated, so enumerated column widths label as
+  `Desktop Column Width` (`Column N - Desktop Width`) from birth. Names
+  keep the unprefixed form (`column_width`).
+
+**The PASS/FAIL check.** Every audited row carries a verdict of its own:
+a field **PASSES** when its measured behavior matches what its label and
+kind promise, and **FAILS** otherwise. The rule is defined so that PASS is
+exactly "Apply findings has nothing to propose for this row"
+(`assessRow` / `planVerdictApplication` share the policy, and a test
+holds the equivalence):
+
+- live at both viewports, no viewport prefix → PASS
+- inert at one viewport, label names the WORKING viewport → PASS
+- inert at both, link toggle or color-under-background-image → PASS
+- static-exempt image swap → PASS
+- inert at one viewport with a missing, wrong, or stale prefix → FAIL
+  (relabel; a "Desktop …" label on a control that is dead at 600px is as
+  wrong as no label at all)
+- inert at both, anything else → FAIL (remove)
+- skipped (no options / one option / all options equal the default) → FAIL
+  (nothing to choose)
+- unproven → FAIL (could not prove — re-run; never silently a PASS)
+
+The matrix shows it as a Check column with a FAIL-only filter, and the
+markdown report carries the column plus a `Checks: N PASS · M FAIL` line.
+A catalog is "clean" when every row reads PASS. Current state of
+`tpl_unified-blocks.mjml` after the static guards and one Apply pass
+(2026-08-10): 447 Selects, **444 PASS / 3 FAIL** — the three being colors
+whose inertness has no codified mechanism yet (Text w/ Background Image's
+Text Color, Divider (Tri-color) and Footer (w/ image) background colors),
+held for a product decision rather than removed.
+
+Audit-driven remedies (template-CSS- or content-dependent — not statically
+decidable) go through **Apply findings** in the audit panel:
+`planVerdictApplication` turns done rows into remove/relabel/keep-exempt
+actions; the modal lists them grouped with checkboxes; the applier
+(`applyActionsToProject`, wrapped by `applyInertAuditFindings`) reverts
+removed tags in the block HTML AND inside every sibling's default/option
+values — Display/Link fragments nest sibling tags, which a plain delete
+would orphan — then reindexes field order. Known members of this class:
+centered-pin gutters (a fixed-px auto-centered child narrower than every
+candidate content width — the Logo Hero logo, the Divider rule — where
+whether MOBILE releases the pin depends on template CSS), the mobile
+centering pins (`td.button` rules), and trailing spacing absorbed by a
+taller sibling column at desktop.
 
 ## Sections (EN panel groups) & ordering
 
@@ -486,8 +656,11 @@ sort — it is purely the panel/export display order.
   anything). Multi-column sections whose columns differ structurally get
   "Image Position" Left/Right (2 cols w/ image) or "Column Order"
   Normal/Reversed. Structurally identical columns are excluded (reversing =
-  swapping contents, which per-column fields already allow). Grouped
-  columns target the mj-group's direction.
+  swapping contents, which per-column fields already allow), and so are
+  SYMMETRIC layouts — (width, signature) pairs reading the same forwards
+  and backwards, e.g. the `25px spacer | content | 25px spacer` Outlook
+  pattern, where reversing is the identity (2026-08-09, audit-proven;
+  infoNote explains). Grouped columns target the mj-group's direction.
   **Text-shield invariant**: flipping the frame to rtl only reorders columns
   because MJML re-pins `direction:ltr` on every column div, shielding
   descendants (verified empirically: columns swap x-positions while text
@@ -507,8 +680,11 @@ sort — it is purely the panel/export display order.
   Supersedes the earlier "keep Font Size editable" note for button-links.
 - **Column widths: enumerated dropdown for lone inset-box columns ONLY**
   (2026-08-09, closing future-enhancements #1 v1). A section's single
-  fixed-px column (Highlighted Text's 480px card) gets a "Column Width"
-  Select whose ONE tag is spliced into BOTH width copies — the digits of
+  fixed-px column (Highlighted Text's 480px card) gets a "Desktop Column
+  Width" Select (the `.mj-column-px-*` ladder is min-width:600px-gated, so
+  the control only acts at desktop — see "Viewport-scoped controls"; the
+  merge-tag name stays `column_width`) whose ONE tag is spliced into BOTH
+  width copies — the digits of
   the `mj-column-px-N` class suffix on the column div and the `width:Npx`
   in the MSO conditional immediately before it — so the head class rule
   and Outlook move together. Options are the 50px-step widths whose
