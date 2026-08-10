@@ -7,7 +7,7 @@
     } -->
     <mj-breakpoint width="600px" />
     <mj-title>TPL Email Template — Block Catalog</mj-title>
-    <mj-preview>Preview text placeholder — update per send.</mj-preview>
+    <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
 
     <!-- Baseline everything inherits -->
     <mj-attributes>

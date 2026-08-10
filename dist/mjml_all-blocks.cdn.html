@@ -984,6 +984,7 @@ li {
       "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64
     } -->
+  <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
   <!-- Baseline everything inherits -->
   <meta name="color-scheme" content="light dark" />
   <meta name="supported-color-schemes" content="light dark" />
@@ -991,7 +992,6 @@ li {
 </head>
 
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
-  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Preview text placeholder — update per send.</div>
   <div aria-label="TPL Email Template — Demo Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
 <!-- START: Main Content --><!-- START: Category — Headers and Heroes -->
     <div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes">

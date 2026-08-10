@@ -767,6 +767,81 @@ without a template round-trip. Semantics:
   not a block render: the Thumbnails ZIP includes that copy, and the
   Missing-thumbnails audit probes for it at the root like any other.
 
+## Template Styles block — head CSS ships as a block (2026-08-10, user-decided)
+
+EN cannot propagate template edits into existing draft emails — a changed
+template means recreating every draft from scratch. CSS is the template
+part that actually needs post-hoc fixes, so at MJML import
+(`extractHeadStyles`, src/core/headStyles.ts) every `<style>` element,
+stylesheet `<link>`, and style-bearing MSO conditional comment is moved OUT
+of the shell's `<head>` into a synthetic **"Template Styles"** block placed
+FIRST in the block list. Editors drop it in as the first block of every
+email; a CSS fix then ships by swapping that one block inside a draft
+instead of rebuilding the whole email. (`<style>` inside `<body>` is parsed
+by all major clients; the trade-off was accepted deliberately.)
+
+- The head keeps `<title>`, metas, the MSO OfficeDocumentSettings block,
+  and scripts. Downlevel-revealed wrappers (`<!--[if !mso]><!--> …
+  <!--<![endif]-->`) travel only when everything inside them is moving
+  (the mj-font link + @import pair); a wrapper around a meta stays.
+- The CSS-derived theme replacements (Text/Headings/Links Color,
+  Body/Headings Font) are created ON the styles block
+  (`autoEnableStylesBlockReplacements`, src/core/templateProps.ts),
+  sectioned under the block's name — still per-email editable in EN. The
+  shell's template replacements keep only what remains inline there: the
+  body/wrapper `background_color`.
+- Detection elsewhere is content-based (`isStyleOnlyHtml`), never
+  name-based: previews, thumbnails, and the padding audit re-compose the
+  styles block's CSS into their document `<head>`
+  (`composePreviewChrome`), so per-block rendering keeps the template
+  styling even though the shell head is CSS-free.
+- EN JSON imports are untouched: a template pasted from EN keeps its
+  styles wherever they are (round-trips stay byte-stable). Extraction runs
+  only when a project is created from MJML.
+- The block sits before the first "Category — X" divider: no category
+  prefix, default EN folder.
+- The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES`
+  regardless of which target mints them — content blocks keep reserving
+  the whole vocabulary so no block field ever shares a tag with the theme
+  fields (the 2026-08-10 shadowing rule).
+
+## Per-email shell fields: Email Title, and why Preview Text gets NONE (2026-08-10, user-decided)
+
+One EN template serves many emails, but MJML bakes `<mj-title>` into the
+shell two ways — the head `<title>` and the wrapper div's `aria-label`
+(MJML ≥4.14 accessibility output) — per-SEND content EN cannot edit after
+the template exists. Baked in for TPL imports
+(`enableShellContentReplacements`, src/core/templateProps.ts):
+
+- **`email_title` ("Email Title")**: a Text replacement created ahead of
+  the theme fields; ONE tag drives both the `<title>` text and the
+  `aria-label` value. The aria-label is the authoritative copy; the title
+  joins the same tag only when its text is identical (MJML guarantees
+  this) — a diverged title stays hard-coded rather than silently unifying
+  on delete-restore. Named in `TEMPLATE_REPLACEMENT_NAMES` so content
+  blocks can never mint a colliding tag. Values already carrying
+  `{replacement~…}` are left alone (EN-import safety); generation happens
+  only at MJML import, like every other shell replacement.
+
+**Preview text deliberately gets NO replacement.** Measured 2026-08-10 by
+sending a blank template (no preheader element in its content) through
+Marketing Tools: EN injects its own hidden
+`<p style="display:none !important; …">` as the first child of `<body>`,
+filled from the email's per-send **Preview Text** setting, and prepends
+the same text to the text/plain alternative. A template-authored
+preheader (mj-preview output) would sit right after EN's injected one, so
+Gmail-style snippets would show BOTH lines. Consequences:
+
+- `<mj-preview>` was removed from the TPL broadcast sources
+  (tpl_unified-blocks / mjml_all-blocks / tpl_all-blocks) the same day;
+  the autoresponder sources (donation-thank-you, recurring) KEEP theirs —
+  they don't go out through Marketing Tools broadcasts.
+- The validator warns when a shell still bakes in a hidden
+  preheader-shaped element (`validateShell`,
+  src/core/validate.ts) and points at the mj-preview removal.
+- An earlier same-day `preview_text` replacement was reverted once the
+  send test disproved the "EN adds no preheader" assumption.
+
 ## Validator (src/core/validate.ts)
 
 - Orphaned `{replacement~…}` tags are errors; tags nested inside Select
@@ -783,6 +858,10 @@ without a template round-trip. Semantics:
 
 ## Import pipeline decisions
 
+- The import form's MJML SOURCE prefills with the TPL master template —
+  `https://github.com/4site-interactive-studios/tpl-en-marketing-tools/blob/main/src/tpl_unified-blocks.mjml`
+  (`DEFAULT_MJML_URL`, src/core/mjml.ts; 2026-08-10, user-decided) — since
+  importing exactly that file is this tool's day-to-day use.
 - Compiled HTML is formatted with **js-beautify** before segmentation
   (prettier took ~46s on a ~1MB doc; js-beautify ~60ms). The instrumented
   parallel compile stays unformatted (ordinal matching only). Formatting is

@@ -61,7 +61,14 @@ pipeline.
 | Rule matching nothing | pruned | harmless |
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
-first child of `<body>`, and converts `background-color` in a style
+first child of `<body>` — filled from each email's per-send **Preview
+Text** setting, and prepended to the text/plain part too (measured
+2026-08-10 on a blank-template send). **Therefore do NOT author
+`<mj-preview>` in a broadcast template**: its compiled preheader div
+would sit right after EN's injected one and inbox snippets would show
+both lines. (Autoresponder sources that don't send through Marketing
+Tools broadcasts may still need their own.) EN also converts
+`background-color` in a style
 attribute into a `bgcolor` **attribute** on `<body>` and `<td>`. The
 BLOCK pipeline applies the same rewrites to custom block markup, and
 returns MSO conditional comments inside a block verbatim (both measured
@@ -440,6 +447,9 @@ one; they are the only channel your design intent has into the importer.
 5. Confirm every dark-mode rule that must override an inlined base rule
    carries `!important`.
 6. Confirm no `[data-ogsc]` rule sits at top level; wrap them per §2a.
+6a. Confirm no `<mj-preview>` in broadcast sources — EN injects its own
+   preheader from the per-email Preview Text setting (§2), and a
+   template-baked one doubles the inbox snippet.
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

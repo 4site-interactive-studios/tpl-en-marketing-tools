@@ -122,6 +122,18 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
   the template's `spacingScale`, `widthPresets`, and `geometryReachPx`. It
   must be identical in every `src/*.mjml`. Full semantics in §6.0.
 - `mj-breakpoint width="600px"` — single mobile breakpoint; email width is 600.
+- `mj-title` — always present. MJML bakes it into the compiled `<title>`
+  AND the wrapper div's `aria-label`; the importer turns both into one
+  per-email `email_title` field, so keep the authored text sensible (it is
+  the field's default).
+- **NO `mj-preview` in broadcast sources** (tpl_unified-blocks,
+  mjml_all-blocks, tpl_all-blocks): EN Marketing Tools injects its own
+  hidden preheader `<p>` from each email's per-send **Preview Text**
+  setting (measured 2026-08-10 on a blank-template send — it also prepends
+  the text to the text/plain part), so a template-baked preheader would
+  DOUBLE the inbox snippet. The importer's validator warns if one sneaks
+  back in. The autoresponder sources (donation-thank-you, recurring) KEEP
+  their `mj-preview` — they do not send through Marketing Tools broadcasts.
 - `mj-attributes` sets the inherited baseline once: `mj-text` (Tahoma
   sans-serif stack, 18/24, `css-class="wysiwyg"`), `mj-button` (pill:
   `border-radius="100px"`, `inner-padding="12px 16px"`, letter-spacing, brand
