@@ -165,6 +165,23 @@ for (const marker of ['@media (prefers-color-scheme: dark)', '@media only screen
 //    silently if its container is ever retired. A deliberate future external
 //    asset gets an allowlist entry here plus a CLAUDE.md note.
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// 5b. No FULL-WIDTH section may carry a background-url. EN's inliner rebuilds
+//     the table background shorthand (url() dropped, color -> bgcolor) and the
+//     leftover shorthand RESETS backgrounds in CSS clients; constrained
+//     sections survive via the wrapper div's shorthand, but full-width
+//     sections have no div carrier and render BLANK in Gmail/Apple Mail/iOS
+//     (measured 2026-08-09, 15-client EoA matrix on the tile probe).
+// ---------------------------------------------------------------------------
+for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+  const text = read(`src/${f}`) || '';
+  for (const m of text.matchAll(/<mj-section\b[^>]*>/g)) {
+    if (m[0].includes('full-width') && m[0].includes('background-url')) {
+      warn(`src/${f} has a FULL-WIDTH section with background-url — EN strips the url() from the table shorthand and the leftover resets the background, so it renders blank in CSS clients (guide §4); use a constrained section (div carrier survives) or a plain background-color`);
+    }
+  }
+}
+
 const ASSET_ROOT_ID = 'bd6ca9cefa6fb6e0adf1';
 for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
   const text = read(`src/${f}`) || '';

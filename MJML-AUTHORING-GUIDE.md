@@ -73,7 +73,13 @@ included — are retained verbatim but HOISTED into the email's head
 stylesheet, with same-condition queries merged into one block. Hoisting
 makes block CSS global to the WHOLE email, so scope class names (e.g. a
 block-specific prefix) to avoid cross-block collisions. Ordinary HTML
-comments in block markup survive untouched.
+comments in block markup survive untouched. The bgcolor rewrite also
+REBUILDS a table's `background:` shorthand (measured 2026-08-09): the
+color moves to `bgcolor`, any `url()` is DROPPED, and the leftover
+shorthand (e.g. `background: repeat center top / auto`) still counts as
+author CSS — it RESETS the background in CSS clients, overriding both
+the `bgcolor` and legacy `background=` attributes. See §4 for the
+carrier consequences.
 
 ### 2a. The escape hatch
 
@@ -150,11 +156,13 @@ asset — light-only AND dark-only — must stay legible on EITHER a light
 or a dark surface, because a client that cannot run the swap may hand
 it the opposite background: prefer wordmarks and icons that carry
 their own contrast (knockout/outline), or serve Outlook a hand-picked
-single asset via `<!--[if mso]>`. A solid-color background
-tile may pin Outlook backgrounds the way v:fill pins background
-images, but that is unmeasured through EN — probe
-(the canonical repo's docs/en-bg-tile-probe.html) before relying on
-it.
+single asset via `<!--[if mso]>`. The solid-color background-tile
+pin was probed and REJECTED (2026-08-09, 15-client EoA matrix,
+docs/en-bg-tile-probe.html in the canonical repo): the VML fill itself
+does resist Outlook's dark inversion, but the HTML `bgcolor` layers
+MJML must interleave above it invert to white and cover the content
+area, and Outlook flips the white text dark regardless — two
+independent kills. Asset contrast remains the only defense here.
 
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
@@ -221,6 +229,17 @@ The worst offender is `mj-section background-url`, which compiles to **four**:
 Miss the CSS ones and Outlook shows the new photo while Apple Mail and
 Gmail show the old one. This cost a full QA round; check compiled output
 rather than trusting the source.
+
+**EN kills carrier 3 and weaponizes its remains** (measured 2026-08-09,
+15-client EoA matrix): the inliner rebuilds the table's shorthand —
+color to `bgcolor`, `url()` dropped — and the leftover shorthand resets
+the background in every CSS client, beating carriers 2 and the bgcolor
+fallback. Constrained sections still paint because carrier 1 (the
+wrapper div) survives untouched. **A FULL-WIDTH section has no div
+carrier, so after EN it renders BLANK in Gmail, Apple Mail, and iOS —
+never author `full-width` + `background-url` for EN.** TPL's
+check-docs enforces this; every current TPL background block is
+constrained, which is why the bug never fired in production.
 
 The same principle applies to light/dark image pairs (two `<img>` tags, one
 logical image) and to any value duplicated into an MSO conditional.
