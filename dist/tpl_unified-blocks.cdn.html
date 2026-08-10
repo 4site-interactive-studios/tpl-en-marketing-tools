@@ -399,6 +399,16 @@ li {
         margin: 0 auto !important;
       }
 
+      /* MJML writes the button's align onto TWO cells: the outer td.button
+     (pinned above) and the inner cell holding the <a>. Without this the
+     pill centers but a label that WRAPS keeps its desktop alignment
+     inside it — ragged text in a centered button, and an "inert on
+     mobile" control that silently comes back to life the moment the copy
+     gets longer. Pin the inner cell so mobile centering is complete. */
+      td.button table td {
+        text-align: center !important;
+      }
+
       .cta-group {
         text-align: center !important;
       }
@@ -2966,7 +2976,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Story Card (image right, middle-aligned) --><!-- START: Divider (Tri-color) -->
+    <!-- END: Story Card (image right, middle-aligned) --><!-- START: Divider (Tri-color) --><!-- data-no-background-color: the three columns tile the full content width with opaque spacers, so this background can never show. It stays as a fallback but gets no editable field (audited 2026-08-10). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="divider-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="divider-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -4356,7 +4366,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Signature Card (square photo) --><!-- START: Footer (w/ image) -->
+    <!-- END: Signature Card (square photo) --><!-- START: Footer (w/ image) --><!-- data-no-background-color: the three columns tile the full content width with opaque spacers, so this background can never show. It stays as a fallback but gets no editable field (audited 2026-08-10). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="divider-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="divider-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">

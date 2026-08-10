@@ -41,7 +41,15 @@ const REMOVE = [
 const MASK = ['src', 'alt', 'href', 'background-url', 'background-size', 'background-position', 'background-repeat'];
 
 function normalize(body) {
-  let s = body.replace(/\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle)/g, '');
+  // Importer directives are ANNOTATION, not structure: they say which fields
+  // the importer generates and how it labels them, never what the block
+  // renders. Two blocks that differ only by a directive still look the same,
+  // so they must stay in one subsumption group — otherwise flagging one
+  // variant orphans its twin's data-fully-exclude.
+  let s = body.replace(
+    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|desktop-only-[a-z-]+|mobile-only-[a-z-]+)/g,
+    '',
+  );
   // inset-gutter is the responsive companion of a padding value (collapses
   // desktop gutters on mobile) — padding is a Replacement, so this isn't structure
   s = s.replace(/css-class="([^"]*)"/g, (m, cls) =>

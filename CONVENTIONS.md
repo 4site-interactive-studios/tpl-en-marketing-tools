@@ -426,6 +426,39 @@ suppression lands in `Block.infoNotes` at 'info' level):
   `Desktop Column Width` (`Column N - Desktop Width`) from birth. Names
   keep the unprefixed form (`column_width`).
 
+**Where the labels come from.** The template's own mobile CSS is the
+declaration: a property forced with `!important` inside a media query below
+the breakpoint cannot be edited there, so a control over it is
+desktop-only. `parseMobilePins` reads that from the compiled head the
+importer already holds (`shell.beforeBlocks`), `parseAttributeClassDefaults`
+adds the template-wide `<mj-attributes>` css-class defaults so an element
+with no authored class still matches (TPL gives every `mj-button`
+`css-class="button"`, which is why button alignment is pinned everywhere),
+and the generator prefixes the label at import. Only `align`, `width` and
+`height` map to CSS properties today, and an unrecognized selector pins
+nothing — it fails closed to a normal always-on control that the audit can
+still catch. This is why viewport labels survive re-import without anyone
+running the audit and applying its verdicts by hand.
+
+Two carriers, one value: a pin only settles the question when it covers
+EVERY compiled carrier of the value. MJML writes a button's `align` onto
+two cells — the outer `td.button` and the inner cell holding the `<a>` —
+so `td.button { text-align:center !important }` centers the pill while a
+label that WRAPS keeps its desktop alignment inside it. The template pins
+both cells (`td.button table td`, added 2026-08-10); without that second
+rule the control measures inert only for short copy and silently comes
+back to life when the copy grows, which no label can describe honestly.
+When adding a mobile pin, pin every carrier or claim nothing.
+
+**What the CSS cannot say.** Some controls are dead at one viewport for
+reasons that are not in any stylesheet: a centered content-sized child
+makes symmetric gutters invisible, and a short column's trailing spacing
+is absorbed by its taller sibling until the columns stack. Both depend on
+rendered geometry, so the importer cannot derive them — the author
+declares them with `data-desktop-only-<token>` / `data-mobile-only-<token>`
+(see the data-* contract). Declaration beats inference where they
+disagree, and the audit checks the claim either way.
+
 **The PASS/FAIL check.** Every audited row carries a verdict of its own:
 a field **PASSES** when its measured behavior matches what its label and
 kind promise, and **FAILS** otherwise. The rule is defined so that PASS is
@@ -447,12 +480,10 @@ holds the equivalence):
 
 The matrix shows it as a Check column with a FAIL-only filter, and the
 markdown report carries the column plus a `Checks: N PASS · M FAIL` line.
-A catalog is "clean" when every row reads PASS. Current state of
-`tpl_unified-blocks.mjml` after the static guards and one Apply pass
-(2026-08-10): 447 Selects, **444 PASS / 3 FAIL** — the three being colors
-whose inertness has no codified mechanism yet (Text w/ Background Image's
-Text Color, Divider (Tri-color) and Footer (w/ image) background colors),
-held for a product decision rather than removed.
+A catalog is "clean" when every row reads PASS. The goal is that a
+fresh import already reads all-PASS without anyone applying anything: the
+static guards plus the CSS-derived viewport labels do at import what the
+audit would otherwise have to prove and a human apply by hand.
 
 Audit-driven remedies (template-CSS- or content-dependent — not statically
 decidable) go through **Apply findings** in the audit panel:
@@ -895,6 +926,46 @@ importer whitelists all data-*-only MJML validator warnings
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
   never-hideable content (sender identification, unsubscribe text,
   required logos, interdependent thermometer figures).
+- **`data-no-background-color`** (valueless, on any element with an
+  authored `background-color`): keeps the color in the compiled output but
+  creates NO editable field. For a background that provably cannot show —
+  the tri-color divider's section, whose three columns tile the full
+  content width with opaque spacers (audited 2026-08-10; the same partial
+  is the Footer's first section, so one flag covers both blocks). Deleting
+  the attribute instead would also remove the dead field, but this keeps
+  the value as a client fallback. Distinguish from a background that is
+  merely covered by an IMAGE — that one stays editable, because Outlook
+  desktop does not load background images and the color is what shows
+  there (see "Viewport-scoped controls").
+- **`data-desktop-only-<token>` / `data-mobile-only-<token>`** (valueless,
+  on the element that OWNS the control): declares that the control works at
+  only one viewport, and the importer prefixes its LABEL accordingly
+  ("Desktop Block Width", "Mobile Spacing Below"). The merge-tag NAME never
+  changes. Tokens use the `data-style-*` property vocabulary where one
+  exists — `align`, `direction`, `width` — plus `spacing-below` for the
+  pacing control. Put the flag on the frame for `width`/`direction`, on the
+  content component for `spacing-below`/`align`. This is the channel for
+  the cases no static rule can reach:
+  - a **centered, content-sized child in a uniformly painted frame** — the
+    gutter changes, nothing moves (CTA Button's pill is centered by the
+    mobile CSS, so its Width is `data-desktop-only-width`; the single-color
+    divider is a fixed 280px centered box at desktop and only stretches
+    below the breakpoint, so it is `data-mobile-only-width`);
+  - **trailing spacing absorbed by a taller sibling column**, live only
+    once the columns stack (`data-mobile-only-spacing-below`);
+  - **column order that the mobile stack flattens**
+    (`data-desktop-only-direction`).
+
+  A declaration is a CLAIM, not an escape hatch: the audit still measures
+  every option, and a false claim comes back as a FAIL on the very next
+  run. Where the control is dead at BOTH viewports, use
+  `data-no-width-toggle` (frames as well as columns) rather than a scope
+  flag — there is no honest label for a control that never does anything.
+
+  These flags are annotation, not structure: the TPL build's subsumption
+  normalizer (`scripts/annotate-excluded.mjs`) strips the whole importer
+  directive family before grouping, so flagging one variant never orphans
+  its `data-fully-exclude` twin.
 
 ## EN's CSS inliner (not optional — measure it, don't fight it)
 

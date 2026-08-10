@@ -322,9 +322,23 @@ codifies what it proves, so expect:
 - **Column Width dropdowns are labeled "Desktop Column Width"** — the
   `.mj-column-px-*` classes are min-width:600px-gated, so the control acts
   at desktop only; below 600px columns stack full-width regardless.
-- More generally: labels prefixed "Desktop " / "Mobile " mean the audit
-  proved the control moves pixels at that viewport only. The merge-tag
-  names never carry the prefix.
+- More generally: labels prefixed "Desktop " / "Mobile " mean the control
+  moves pixels at that viewport only. The merge-tag names never carry the
+  prefix.
+- **When the stylesheet cannot say it, declare it.** A centered,
+  content-sized child makes symmetric gutters invisible; a short column's
+  trailing spacing is absorbed by its taller sibling until the columns
+  stack. Neither is derivable from CSS, so mark the owning element
+  `data-desktop-only-width`, `data-mobile-only-spacing-below`,
+  `data-desktop-only-direction` (tokens: `align`, `direction`, `width`,
+  `spacing-below`). It is a claim the audit re-checks, not an escape
+  hatch — and where a control is dead at BOTH viewports use
+  `data-no-width-toggle` instead, since no label makes it honest.
+- **A mobile pin must cover every carrier of the value.** MJML writes a
+  button's `align` onto two cells; pinning only the outer one centers the
+  pill but leaves a WRAPPED label following the desktop setting — so the
+  control measures inert for short copy and comes alive for long copy.
+  Pin both (`td.button`, `td.button table td`) or claim nothing.
 
 ### Signal intent with `data-style-*`
 
@@ -344,6 +358,9 @@ declared intent; keep them accurate for every property you touch.
 | `data-category-short="Text"` | short category name prefixed onto block names |
 | `data-no-display-toggle` | opt out of the show/hide Select |
 | `data-no-link-toggle` | opt out of the image link Select |
+| `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
+| `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Width"). Tokens: `align`, `direction`, `width`, `spacing-below` |
 
 **Two rules for all of them.** They are valueless flags, so write
 `data-no-display-toggle`, not `="true"`. And never remove, rename, or "fix"

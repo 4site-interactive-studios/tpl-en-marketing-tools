@@ -289,6 +289,16 @@ li {
         margin: 0 auto !important;
       }
 
+      /* MJML writes the button's align onto TWO cells: the outer td.button
+     (pinned above) and the inner cell holding the <a>. Without this the
+     pill centers but a label that WRAPS keeps its desktop alignment
+     inside it — ragged text in a centered button, and an "inert on
+     mobile" control that silently comes back to life the moment the copy
+     gets longer. Pin the inner cell so mobile centering is complete. */
+      td.button table td {
+        text-align: center !important;
+      }
+
       .cta-group {
         text-align: center !important;
       }

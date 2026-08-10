@@ -1,4 +1,5 @@
-<mj-section css-class="divider-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+<!-- data-no-background-color: the three columns tile the full content width with opaque spacers, so this background can never show. It stays as a fallback but gets no editable field (audited 2026-08-10). -->
+<mj-section css-class="divider-block block" background-color="#ffffff" padding="0" data-no-background-color data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
   <mj-group>
     <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#F7941D" data-style-height /></mj-column>
     <mj-column width="200px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-spacer height="4px" container-background-color="#8DC63F" data-style-height /></mj-column>
