@@ -539,6 +539,27 @@ sort — it is purely the panel/export display order.
   no per-side padding fields (Spacing Below is the only content spacing
   knob).
 
+## The programmatic RAW HTML utility block
+
+Every block export additionally carries one synthetic block the MJML never
+authored: **"Utility — RAW HTML"** (`rawHtmlBlockExport`,
+`src/core/export/blockExport.ts`). Its content is exactly
+`{replacement~raw_html}` — a single HTML-type Replacement (EN's raw-code
+box, a distinct type from RTE's rich-text editor) — so editors can paste
+arbitrary markup (probe blocks, one-off embeds) straight into a broadcast
+without a template round-trip. Semantics:
+
+- Appended once to every block-export JSON regardless of the selection or
+  group filter; in the per-group ZIP it ships as its OWN file
+  (`en-block-utility-raw-html.json`) so bulk imports never duplicate it.
+- Stamped with the current settings (client, owner, DEFAULT folder — it
+  belongs to no category, so per-category folders don't apply).
+- Its thumbnail follows the standard base-name convention
+  (`thumbnail-raw-html.png` under the asset root). The image itself is a
+  designed asset shipped with the App (`public/thumbnail-raw-html.png`),
+  not a block render: the Thumbnails ZIP includes that copy, and the
+  Missing-thumbnails audit probes for it at the root like any other.
+
 ## Validator (src/core/validate.ts)
 
 - Orphaned `{replacement~…}` tags are errors; tags nested inside Select
