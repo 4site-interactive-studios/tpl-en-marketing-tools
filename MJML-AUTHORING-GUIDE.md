@@ -192,7 +192,7 @@ The single highest-leverage authoring convention.
   column's bottom space.
 - **Columns never carry bottom padding.**
 - **Spacing lives on a closed named scale.** The importer's built-in
-  default is five steps, None / Half / Regular / Double / Triple =
+  default is five steps, None / Half / Single / Double / Triple =
   0 / 8 / 16 / 32 / 48px (`src/core/templateConfig.ts`,
   `DEFAULT_TEMPLATE_CONFIG`). Templates routinely declare their own: TPL
   adds a sixth step, Quadruple = 64px. No free-text spacing fields
@@ -208,8 +208,8 @@ carries it:
 
 ```html
 <!-- en-tools-config {
-  "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-  "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+  "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+  "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
   "geometryReachPx": 64
 } -->
 ```
@@ -378,6 +378,7 @@ declared intent; keep them accurate for every property you touch.
 | `data-no-display-toggle` | opt out of the show/hide Select |
 | `data-no-link-toggle` | opt out of the image link Select |
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
+| `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Width"). Tokens: `align`, `direction`, `width`, `spacing-below` |
 
@@ -443,6 +444,19 @@ each other up, and the report says so when they do.
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
   on the swap, or text renders reversed.
+- **A column-order swap cannot move a physical `align`.** If a row pins its
+  outer content to the block's edge — a logo `align="left"` beside a button
+  `align="right"` — the flip moves the COLUMNS but leaves the alignments
+  pointing where they were, so both end up facing inward and the content
+  collapses into the middle with dead space at the edges (measured
+  2026-08-10: 238px of span lost). There is no run-time fix: one EN Select
+  cannot drive mirrored values in two places, and the columns must keep
+  their `direction:ltr` text shield. The importer suppresses the control
+  when both outer columns pin to opposite edges; for a single outward pin,
+  declare it with `data-no-direction-toggle`. Ship the mirrored arrangement
+  as its own block, the way `Story Card (image left…)` and `(image right…)`
+  already are. Content that is centered, or that fills its column, flips
+  cleanly and keeps the control.
 - **Buttons side by side are hand-rolled, and the row needs a declared
   height.** `mj-button` compiles to its own table and cannot sit next to
   another in one column, so a row of buttons is inline-block pills inside a

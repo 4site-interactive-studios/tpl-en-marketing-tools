@@ -1,8 +1,8 @@
 <mjml lang="en">
   <mj-head>
     <!-- en-tools-config {
-      "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-      "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64
     } -->
     <mj-breakpoint width="600px" />

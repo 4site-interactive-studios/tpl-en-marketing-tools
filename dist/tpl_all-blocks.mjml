@@ -1,8 +1,8 @@
 <mjml lang="en">
   <mj-head>
     <!-- en-tools-config {
-      "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-      "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64
     } -->
     <mj-breakpoint width="600px" />
@@ -131,7 +131,7 @@
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -142,7 +142,7 @@
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="150px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -2067,7 +2067,8 @@
 
     <!-- START: Text + Image Row (image right) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-group>
+      <!-- data-no-direction-toggle: this row pins its outer content to the block edge (align is physical), so reversing the columns would drag it inward — ship the mirrored arrangement as its own block (measured 2026-08-10). -->
+      <mj-group data-no-direction-toggle>
         <mj-column width="380px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl.</p>

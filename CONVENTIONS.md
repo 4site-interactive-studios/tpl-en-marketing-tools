@@ -107,13 +107,13 @@ Task: [describe the change]
 
 ## The pacing scale (spacing)
 
-- **None / Half / Regular / Double / Triple = 0 / 8 / 16 / 32 / 48 px**
+- **None / Half / Single / Double / Triple = 0 / 8 / 16 / 32 / 48 px**
   (the DEFAULTS — a template can declare its own names, values, and step
   count via en-tools-config, below). Labels carry the px:
-  "Regular - 16px". (`src/core/templateConfig.ts`)
+  "Single - 16px". (`src/core/templateConfig.ts`)
 - The scale is **closed**: no free-text spacing and no per-field "Original"
   escape. Off-grid authored values **snap to the closest step, ties round
-  UP** (24px → Double, 12px → Regular, 10px → Half, 60px → Triple). The
+  UP** (24px → Double, 12px → Single, 10px → Half, 60px → Triple). The
   authored value is preserved as `originalValue` so deleting a field
   restores the HTML byte-exact. (`snapToSpacingScale`)
 - Applies to: content components' **Spacing Below**, **spacer heights**
@@ -130,8 +130,8 @@ inside `<mj-head>` (parsed from the prepared source by
 
 ```html
 <!-- en-tools-config {
-  "spacingScale": { "None": 0, "Half": 8, "Regular": 16, "Double": 32, "Triple": 48 },
-  "widthPresets": { "Full Bleed": 0, "Regular": 16, "Double": 32 },
+  "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48 },
+  "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32 },
   "geometryReachPx": 64
 } -->
 ```
@@ -219,7 +219,7 @@ spacing, and stay.
 ## Width presets (horizontal gutters)
 
 - Qualifying blocks' symmetric section/wrapper side padding becomes ONE
-  **"Block Width"** Select: **Full Bleed / Regular / Double = 0 / 16 / 32 px**
+  **"Block Width"** Select: **Full Bleed / Single / Double = 0 / 16 / 32 px**
   per side, plus a per-block **"Original (Npx)"** for off-grid gutters —
   width presets and button widths are the only places Original survives.
 - Qualification (`blockSupportsWidthPreset`): every column width-auto or %,
@@ -686,12 +686,44 @@ sort — it is purely the panel/export display order.
   (direction:rtl on text re-renders it right-to-left instead of reordering
   anything). Multi-column sections whose columns differ structurally get
   "Image Position" Left/Right (2 cols w/ image) or "Column Order"
-  Normal/Reversed. Structurally identical columns are excluded (reversing =
+  Normal/Reversed. **"Image Position" only when exactly ONE column carries
+  an image and the other carries TEXT** — the classic image-beside-a-body-of-
+  copy control. Any other pairing (image vs button, image vs image, photo vs
+  signature card) is a swap of two peers, and naming that "Image Position"
+  describes the wrong thing (2026-08-10, user-reported on CTA Hero (green
+  button)). Structurally identical columns are excluded (reversing =
   swapping contents, which per-column fields already allow), and so are
   SYMMETRIC layouts — (width, signature) pairs reading the same forwards
   and backwards, e.g. the `25px spacer | content | 25px spacer` Outlook
   pattern, where reversing is the identity (2026-08-09, audit-proven;
   infoNote explains). Grouped columns target the mj-group's direction.
+
+  **Physical alignment does not survive a swap.** `align` is a physical
+  value authored for the column's ORIGINAL position: a logo pinned left
+  beside a button pinned right points outward in LTR, and after the flip
+  both point INWARD, collapsing the content into the middle with dead space
+  at both edges (measured 2026-08-10: CTA Hero (green button) lost 238px of
+  content span, CTA Hero (logo and background image) 252px). Nothing can
+  rescue it at run time — EN has no expressions, so one Select cannot drive
+  mirrored values in two places, and the columns must keep their
+  `direction:ltr` text shield. So the control is not offered:
+
+  - **The guard** skips any section whose OUTER content columns (spacer
+    columns excluded — the Outlook shims sit at both ends) pin box-level
+    content to OPPOSITE edges. `mj-text` is not box-level: it fills its
+    column, so its align moves glyphs inside a full-width box (a photo
+    caption) and strands nothing.
+  - **`data-no-direction-toggle`** covers the rest. A SINGLE outward pin
+    strands content too (Photo Card's logo moves 92px), but no static rule
+    separated those from the icon rows that flip perfectly well — the icon
+    blocks pin their icon left and are fine, and neither the authored widths
+    nor MJML's own align slack tells the two apart. Rather than remove
+    working controls on a guess, the author declares it.
+
+  Mirrored layouts stay a design decision shipped as their own block, which
+  is already how the catalog handles `Story Card (image left…)` vs
+  `(image right…)`. Verified behaviourally across all three catalogs: every
+  surviving control flips with 0px of span lost.
   **Text-shield invariant**: flipping the frame to rtl only reorders columns
   because MJML re-pins `direction:ltr` on every column div, shielding
   descendants (verified empirically: columns swap x-positions while text
@@ -1027,6 +1059,16 @@ importer whitelists all data-*-only MJML validator warnings
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
   never-hideable content (sender identification, unsubscribe text,
   required logos, interdependent thermometer figures).
+- **`data-no-direction-toggle`** (valueless, on the mj-section or — when
+  the columns are grouped — the mj-group that owns the flip): creates no
+  Image Position / Column Order control. For a row whose outer content is
+  pinned to the block edge with a physical `align`, where reversing the
+  columns would drag it inward (see the content-swap control above). The
+  built-in guard already catches the unambiguous shape, both outer columns
+  pinned to opposite edges; this flag is for the single-pin cases no static
+  rule could separate from the icon rows that flip cleanly — Text + Image
+  Row (image right), Photo Card (green CTA), Photo Card (outline CTA),
+  measured 2026-08-10 at 225px / 92px / 108px of span lost.
 - **`data-no-background-color`** (valueless, on any element with an
   authored `background-color`): keeps the color in the compiled output but
   creates NO editable field. For a background that provably cannot show —
