@@ -110,6 +110,13 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
 
 - Never commit or push unless asked. "Commit" means commit **and** push to
   `origin/main`.
+- **Git discipline** (parallel AI sessions push here many times a day):
+  fetch + fast-forward before starting work; never run `git checkout`
+  variants inside compound/scripted commands (a stray `git checkout
+  HEAD~0` once detached HEAD — the commit landed off-branch and `git push
+  origin main` exited 0 as a no-op); before committing, `git status -sb`
+  must show `## main...`, not `## HEAD (no branch)`; after every push,
+  verify `git ls-remote origin main` equals `git rev-parse HEAD`.
 - Run `npm run build` after any source change; it must print zero `WARN`
   lines. Then run the guide's §8 QA checklist and report what each check
   returned.
