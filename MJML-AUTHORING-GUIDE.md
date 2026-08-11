@@ -100,6 +100,32 @@ author CSS — it RESETS the background in CSS clients, overriding both
 the `bgcolor` and legacy `background=` attributes. See §4 for the
 carrier consequences.
 
+Three more findings, measured 2026-08-11 with import/edit/send round-trips
+of a two-rule probe block and an A/B logo probe through a real account:
+
+- **The BLOCK EDITOR corrupts CSS held in an HTML-type Replacement.**
+  A `<style>` element stored as an HTML Replacement value survives
+  import and send byte-clean — but opening the block in EN's editor
+  renders the CSS text with `>` escaped to `&gt;` (the `<style>` tag
+  delimiters themselves stay intact). Since `style` is a raw-text
+  element, entities are never decoded there: every child-combinator
+  selector becomes invalid CSS and is silently dropped by the client.
+  The classic casualty is a paired dark-mode rule — `.block p { color:
+  #fff }` survives while `.block > table { background: #000 }` dies,
+  leaving white text on a white panel. **Until EN fixes this, author
+  CSS destined for a block with NO child combinators** — descendant
+  selectors only, scoped by class where descendant reach is too broad.
+- **EN splits comma-separated selector groups into individual rules**
+  (`.a, .b, .c { … }` → three rules). Harmless alone, but it means one
+  authored group can end up half-alive after the escaping above, and
+  sent CSS never diffs cleanly against authored CSS.
+- **The `bgcolor` ATTRIBUTE does not resist Outlook's dark-mode
+  inversion.** A panel colored via `bgcolor="#362229"` inverts to the
+  same pale pink as one colored via CSS `background-color` (measured
+  A/B, Outlook 2021 + M365 on Windows, dark mode). Attributes buy no
+  protection — light-ink transparent PNGs on dark panels need per-mode
+  asset variants or a baked-in background instead.
+
 ### 2a. The escape hatch
 
 **A conditional media query is EN's "do not touch" wrapper.** Anything
@@ -526,6 +552,9 @@ each other up, and the report says so when they do.
 6a. Confirm no `<mj-preview>` in broadcast sources — EN injects its own
    preheader from the per-email Preview Text setting (§2), and a
    template-baked one doubles the inbox snippet.
+6b. Grep every stylesheet for the child combinator (`>`). EN's block
+   editor escapes it to `&gt;` inside HTML-Replacement CSS (§2), which
+   silently kills the rule — author descendant selectors instead.
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

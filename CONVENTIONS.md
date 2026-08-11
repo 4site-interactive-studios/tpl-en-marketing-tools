@@ -884,6 +884,12 @@ by all major clients; the trade-off was accepted deliberately.)
 - No theme Selects exist on the block: the extracted CSS keeps its
   authored literal values. The shell's template replacements keep only
   what remains inline there: the body/wrapper `background_color`.
+- **CAVEAT (2026-08-11, measured):** EN's block editor HTML-escapes the
+  CSS text inside an HTML-type Replacement (`>` → `&gt;`; import and
+  send are clean), so any child-combinator selector dies the first time
+  an editor opens the block. Until EN fixes it, the head CSS must use
+  NO child combinators (guide §2; a bug report with a PoC block lives
+  at docs/en-bug-html-replacement-escapes-css.md).
 - Detection elsewhere is content-based (`isStyleOnlyHtml`), never
   name-based — the detector accepts `<style>`s, stylesheet `<link>`s,
   the `#head-styles` marker span, and bare merge-tag text: previews,
