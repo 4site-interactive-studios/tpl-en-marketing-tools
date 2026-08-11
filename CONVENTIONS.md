@@ -892,7 +892,11 @@ by all major clients; the trade-off was accepted deliberately.)
   from the import form's "Utilities" entry when one exists (i.e. the
   source has a Utilities category divider); otherwise default folder. It
   still sits FIRST in the block list, before the first "Category — X"
-  divider.
+  divider — but `groupBlocksByCategory` files a pre-divider block whose
+  explicit `category` matches a group's short (or full) name into that
+  group, so group views and the per-group ZIP put it under Utilities
+  (`en-blocks-utilities.json`) instead of Ungrouped (2026-08-11,
+  user-decided).
 - Its thumbnail is a designed explainer asset shipped with the App
   (`public/thumbnail-template-styles.png`, same visual language as the
   RAW HTML one — dark slate card, green `{ }` icon, "keep it the FIRST
