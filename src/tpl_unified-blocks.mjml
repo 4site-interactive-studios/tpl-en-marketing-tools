@@ -70,6 +70,18 @@
 
     <!-- START: Main Content -->
 
+    <!-- START: Category — Headers and Heroes -->
+    <mj-raw><div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Headers and Heroes -->
+
     <!-- START: Logo Hero (white, w/ dark-mode swap) -->
     <mj-section
       css-class="image-block block"
@@ -166,7 +178,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Hero (w/ image, green) -->    
+    <!-- END: Logo Hero (w/ image, green) -->
 
     <!-- START: CTA Hero (green button) -->
     <mj-section
@@ -203,7 +215,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (green button) -->    
+    <!-- END: CTA Hero (green button) -->
 
     <!-- START: CTA Hero (logo and background image) -->
     <mj-section
@@ -246,26 +258,7 @@
         <mj-column width="25px">&nbsp;</mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (logo and background image) -->    
-
-    <!-- START: Text w/ Background Image -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#362229"
-      background-url="assets/photo-river.jpg"
-      background-size="cover"
-      background-repeat="no-repeat"
-      background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
-    >
-      <mj-group>
-        <mj-column width="25px">&nbsp;</mj-column>
-      <mj-column width="550px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
-      </mj-column>
-        <mj-column width="25px">&nbsp;</mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Text w/ Background Image -->
+    <!-- END: CTA Hero (logo and background image) -->
 
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <mj-section
@@ -308,7 +301,7 @@
         <mj-column width="25px">&nbsp;</mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (centered w/ background image, fixed height) -->    
+    <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
     <!-- START: CTA Hero (w/ large background image) -->
     <!--
@@ -345,163 +338,17 @@
     </mj-section>
     <!-- END: CTA Hero (w/ large background image) -->
 
-    <!-- START: Image -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
-    >
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg"
-          alt="Image Alt Text"
-          href="https://www.example.com"
-          width="600px"
-          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg"
-          alt="Image Alt Text"
-          href="https://www.example.com"
-          width="600px"
-          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Image -->
-
-    <!-- START: Caption -->
-    <mj-section
-      css-class="block caption"
-      background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photography by Photographers Name, Agency</span>
+    <!-- START: Category — Text Blocks -->
+    <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Caption -->
-
-    <!-- START: Images 2x1 -->
-    <mj-section
-      css-class="two-col-images-block block"
-      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column css-class="two-col-column first-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg" width="292px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg" width="292px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-      <mj-column css-class="two-col-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg" width="292px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg" width="292px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Images 2x1 -->
-
-    <!-- START: Images 3x1 -->
-    <mj-section
-      css-class="three-col-images-block block"
-      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-      <mj-column css-class="two-col-column second-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg" width="184px"
-          alt="Custom alt text"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Images 3x1 -->
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Text Blocks -->
 
     <!-- START: WYSIWYG Text (full width) -->
     <mj-section
@@ -572,6 +419,119 @@
       </mj-column>
     </mj-section>
     <!-- END: WYSIWYG Text (inset) -->
+
+    <!-- START: Quote Block -->
+    <mj-section
+      css-class="quote-block block"
+      background-color="#FFFFFF" padding="32px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/icon-quotes_black.png"
+          alt="Quotation Symbol"
+          width="44px"
+          padding="0 0 32px"
+          css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/icon-quotes_white.png"
+          alt="Quotation Symbol"
+          width="44px"
+          padding="0 0 32px"
+          css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-style-alignment padding="0 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 16px;">
+            Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
+            Arcu eu tincidunt amet eleifend placerat adipiscing.
+          </p>
+          <p style="font-size: 14px; letter-spacing: 2px; font-weight: 500; text-align: center; font-family: Arial, sans-serif; margin-bottom: 0;">
+            - TESTIMONIAL AUTHOR
+          </p>
+        </mj-text>
+        <mj-divider css-class="divider" border-width="4px" border-color="#006837" padding="0" width="280px" data-style-border-color data-style-border-width data-style-width />
+      </mj-column>
+    </mj-section>
+    <!-- END: Quote Block -->
+
+    <!-- START: Highlighted Text -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="highlighted-text-column" width="480px" border-left="4px solid #006837" background-color="#CEE4C5" data-style-background-color data-style-border padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            Fermentum sit id pharetra tortor.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Highlighted Text -->
+
+    <!-- START: CTA Text Block -->
+    <mj-section
+      css-class="cta-button-block block"
+      background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3>Lorem ipsum dolor</h3>
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
+            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
+          </p>
+        </mj-text>
+        <mj-button width="auto"
+            color="#ffffff"
+            background-color="#006837"
+            href="https://www.example.com"
+            align="center" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
+          LOREM IPSUM SEMPER MI
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: CTA Text Block -->
+
+    <!-- START: Linked Header Row (w/ icon) -->
+    <mj-section
+      css-class="text-block block header-row-block"
+      background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header Row (w/ icon) -->
+
+    <!-- START: Linked Header Row -->
+    <mj-section
+      css-class="text-block block header-row-block"
+      background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
+    >
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Linked Header Row -->
+
+    <!-- START: Category — Buttons -->
+    <mj-raw><div data-import-exclude="true" data-folder="6406" data-category-short="Buttons"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Buttons -->
 
     <!-- START: CTA Button -->
     <mj-section
@@ -782,80 +742,206 @@
   </mj-section>
   <!-- END: CTA Buttons 2x1 (two-line) -->
 
-    <!-- START: Question Block -->
-    <mj-section
-      css-class="text-block block"
-      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text css-class="question-response" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;" data-style-color data-style-href>
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-              <tr>
-                <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
-                  <img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
-                </td>
-                <td valign="top" style="padding:8px 16px 12px 0px;">
-                  <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
-                </td>
-              </tr>
-            </table>
-          </a>
+    <!-- START: Category — Images & Media -->
+    <mj-raw><div data-import-exclude="true" data-folder="6401" data-category-short="Images"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Question Block -->
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Images & Media -->
 
-    <!-- START: Quote Block -->
+    <!-- START: Image -->
     <mj-section
-      css-class="quote-block block"
-      background-color="#FFFFFF" padding="32px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      css-class="image-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
-      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
-          src="assets/icon-quotes_black.png"
-          alt="Quotation Symbol"
-          width="44px"
-          padding="0 0 32px"
-          css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          src="assets/photo-family.jpg"
+          alt="Image Alt Text"
+          href="https://www.example.com"
+          width="600px"
+          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/icon-quotes_white.png"
-          alt="Quotation Symbol"
-          width="44px"
-          padding="0 0 32px"
-          css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          src="assets/photo-family.jpg"
+          alt="Image Alt Text"
+          href="https://www.example.com"
+          width="600px"
+          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-style-alignment padding="0 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 16px;">
-            Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
-            Arcu eu tincidunt amet eleifend placerat adipiscing.
-          </p>
-          <p style="font-size: 14px; letter-spacing: 2px; font-weight: 500; text-align: center; font-family: Arial, sans-serif; margin-bottom: 0;">
-            - TESTIMONIAL AUTHOR
-          </p>
-        </mj-text>
-        <mj-divider css-class="divider" border-width="4px" border-color="#006837" padding="0" width="280px" data-style-border-color data-style-border-width data-style-width />
       </mj-column>
     </mj-section>
-    <!-- END: Quote Block -->
+    <!-- END: Image -->
 
-    <!-- START: Highlighted Text -->
+    <!-- START: Caption -->
     <mj-section
-      css-class="text-block block"
-      background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+      css-class="block caption"
+      background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
-      <mj-column css-class="highlighted-text-column" width="480px" border-left="4px solid #006837" background-color="#CEE4C5" data-style-background-color data-style-border padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-family: Arial, sans-serif;">
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
-            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
-            Fermentum sit id pharetra tortor.
-          </p>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photography by Photographers Name, Agency</span>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Highlighted Text -->
+    <!-- END: Caption -->
+
+    <!-- START: Images 2x1 -->
+    <mj-section
+      css-class="two-col-images-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="two-col-column first-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="292px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="292px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="292px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="292px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Images 2x1 -->
+
+    <!-- START: Images 3x1 -->
+    <mj-section
+      css-class="three-col-images-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column second-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image
+          src="assets/photo-family.jpg" width="184px"
+          alt="Custom alt text"
+          href="https://www.example.com"
+          padding="0"
+          align="center"
+          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Images 3x1 -->
+
+    <!-- START: Category — Image & Text Layouts -->
+    <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Images and Text"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Image & Text Layouts -->
+
+    <!-- START: Text w/ Background Image -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size
+    >
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+      <mj-column width="550px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>Hello World</mj-text>
+      </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Text w/ Background Image -->
 
     <!-- START: Story Card 2x1 -->
     <mj-section
@@ -924,65 +1010,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Story Card 2x1 -->
-
-    <!-- START: Spacer -->
-    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-spacer height="16px" container-background-color="#ffffff" data-style-height />
-      </mj-column>
-    </mj-section>
-    <!-- END: Spacer -->
-
-    <!-- START: CTA Text Block -->
-    <mj-section
-      css-class="cta-button-block block"
-      background-color="#CEE4C5" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="center" data-style-alignment padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h3>Lorem ipsum dolor</h3>
-          <p style="font-family: Arial, sans-serif;">
-            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
-            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
-          </p>
-        </mj-text>
-        <mj-button width="auto"
-            color="#ffffff"
-            background-color="#006837"
-            href="https://www.example.com"
-            align="center" data-style-align padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>
-          LOREM IPSUM SEMPER MI
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Text Block -->
-
-    <!-- START: Divider (Single-color) -->
-    <mj-section css-class="divider-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-mobile-only-width>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-divider
-          css-class="divider"
-          border-width="3px"
-          border-color="#006837"
-          padding="0 16px"
-          width="300px" data-style-border-color data-style-border-width data-style-width
-        />
-      </mj-column>
-    </mj-section>
-    <!-- END: Divider (Single-color) -->
-
-    <!-- START: Linked Header Row (w/ icon) -->
-    <mj-section
-      css-class="text-block block header-row-block"
-      background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
-    >
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Linked Header Row (w/ icon) -->
 
     <!-- START: Story Card (no heading, image on the side) -->
     <mj-section
@@ -1119,23 +1146,6 @@
     </mj-section>
     <!-- END: Story Card (image right, middle-aligned) -->
 
-    <!-- START: Divider (Tri-color) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Divider (Tri-color) -->
-
-    <!-- START: Linked Header Row -->
-    <mj-section
-      css-class="text-block block header-row-block"
-      background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
-    >
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <h2><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h2>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Linked Header Row -->
-
     <!-- START: Story Card (image left, no button) -->
     <mj-section
       css-class="two-col-image-text-block block"
@@ -1170,6 +1180,42 @@
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image left, no button) -->
+
+    <!-- START: Category — Engagement & Interactive -->
+    <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Engagement & Interactive -->
+
+    <!-- START: Question Block -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text css-class="question-response" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;" data-style-color data-style-href>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
+                  <img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
+                </td>
+                <td valign="top" style="padding:8px 16px 12px 0px;">
+                  <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
+                </td>
+              </tr>
+            </table>
+          </a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Question Block -->
 
     <!-- START: Podcast Episode Block -->
     <mj-section
@@ -1592,6 +1638,56 @@
     </mj-section>
     <!-- END: Feedback Poll Block -->
 
+    <!-- START: Category — Utilities -->
+    <mj-raw><div data-import-exclude="true" data-folder="6409" data-category-short="Utility"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">UTILITIES</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Utilities -->
+
+    <!-- START: Spacer -->
+    <mj-section css-class="spacer-block block" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-spacer height="16px" container-background-color="#ffffff" data-style-height />
+      </mj-column>
+    </mj-section>
+    <!-- END: Spacer -->
+
+    <!-- START: Divider (Single-color) -->
+    <mj-section css-class="divider-block block" background-color="#ffffff" padding="16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-mobile-only-width>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-divider
+          css-class="divider"
+          border-width="3px"
+          border-color="#006837"
+          padding="0 16px"
+          width="300px" data-style-border-color data-style-border-width data-style-width
+        />
+      </mj-column>
+    </mj-section>
+    <!-- END: Divider (Single-color) -->
+
+    <!-- START: Divider (Tri-color) -->
+    <mj-include path="./partials/tri-color-divider.mjml" />
+    <!-- END: Divider (Tri-color) -->
+
+    <!-- START: Category — Signatures -->
+    <mj-raw><div data-import-exclude="true" data-folder="6404" data-category-short="Signature"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">SIGNATURES</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Signatures -->
+
     <!-- START: Signature Card (square photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="480px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1652,6 +1748,18 @@
       </mj-group>
     </mj-section>
     <!-- END: Signature Card (square photo) -->
+
+    <!-- START: Category — Footers -->
+    <mj-raw><div data-import-exclude="true" data-folder="6410" data-category-short="Footer"></mj-raw>
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FOOTERS</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw></div></mj-raw>
+    <!-- END: Category — Footers -->
 
     <!-- START: Footer (w/ image) -->
     <mj-include path="./partials/tri-color-divider.mjml" />

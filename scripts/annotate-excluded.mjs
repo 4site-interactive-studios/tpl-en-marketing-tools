@@ -50,6 +50,8 @@ function normalize(body) {
     /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|desktop-only-[a-z-]+|mobile-only-[a-z-]+)/g,
     '',
   );
+  // data-folder routes a block to an EN folder — importer annotation too
+  s = s.replace(/\s*data-folder="\d+"/g, '');
   // inset-gutter is the responsive companion of a padding value (collapses
   // desktop gutters on mobile) — padding is a Replacement, so this isn't structure
   s = s.replace(/css-class="([^"]*)"/g, (m, cls) =>

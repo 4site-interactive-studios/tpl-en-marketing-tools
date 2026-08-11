@@ -123,10 +123,12 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
   the template's `spacingScale`, `widthPresets`, and `geometryReachPx`. It
   must be identical in every `src/*.mjml`. Full semantics in §6.0.
 - `mj-breakpoint width="600px"` — single mobile breakpoint; email width is 600.
-- `mj-title` — always present. MJML bakes it into the compiled `<title>`
-  AND the wrapper div's `aria-label`; the importer turns both into one
-  per-email `email_title` field, so keep the authored text sensible (it is
-  the field's default).
+- `mj-title` — always present for local previews, but it never reaches the
+  EN template: the importer STRIPS both compiled carriers (the head
+  `<title>` and the `aria-label` MJML mirrors onto the body wrapper — the
+  latter an accessibility hazard, since a screen reader would announce the
+  whole email as one string repeating the title). The sender titles the
+  email in EN itself.
 - **NO `mj-preview` in broadcast sources** (tpl_unified-blocks,
   mjml_all-blocks, tpl_all-blocks): EN Marketing Tools injects its own
   hidden preheader `<p>` from each email's per-send **Preview Text**
