@@ -139,7 +139,7 @@ inside `<mj-head>` (parsed from the prepared source by
 - **Semantics**: `spacingScale` (name → px; needs a 0 step and ≥2 entries;
   names and step count are free) drives every pacing Select's options,
   labels, and snapping targets. `widthPresets` (name → px) drives the
-  Block Width dropdown. `columnWidthsPx` (optional; a non-empty array of
+  Block Padding Left/Right dropdown. `columnWidthsPx` (optional; a non-empty array of
   whole px numbers ≥ 50, e.g. `[120, 240, 480]`) curates the Column
   Width ladder template-wide — see the column-width bullet for the
   precedence (`data-width-options` beats it) and the head-class guard.
@@ -219,9 +219,17 @@ spacing, and stay.
 ## Width presets (horizontal gutters)
 
 - Qualifying blocks' symmetric section/wrapper side padding becomes ONE
-  **"Block Width"** Select: **Full Bleed / Single / Double = 0 / 16 / 32 px**
-  per side, plus a per-block **"Original (Npx)"** for off-grid gutters —
-  width presets and button widths are the only places Original survives.
+  **"Block Padding Left/Right"** Select whose options are the declared
+  `widthPresets` ladder (bare names; default config **Full Bleed / Single
+  / Double = 0 / 16 / 32 px** per side, TPL declares five steps through
+  Quadruple = 64), plus a per-block **"Original (Npx)"** for off-grid
+  gutters — width presets and button widths are the only places Original
+  survives. Labeled **"Block Width" until 2026-08-11** (user-decided
+  rename): the value IS the side padding, so the width framing inverted
+  polarity — "Quadruple" sounded wider but made content narrower. The
+  padding name matches the sibling "Block Padding Top/Bottom" fields; the
+  merge-tag NAME stays `block_width` (`block_1_width`, `wrapper_width`, …)
+  — labels are display-only, tags are byte-stable.
 - Qualification (`blockSupportsWidthPreset`): every column width-auto or %,
   symmetric decomposable side padding. **Fixed-px-column blocks get NO
   preset** (their columns can't resize — Outlook overflow risk); they keep
@@ -260,7 +268,7 @@ direction-flip skips.
   (off-white) WAS on this list (32→536) until 2026-08-03, when the
   upstream wrapper>section was flattened to section>column (bg/border on
   the column) — color-only inset cards don't need a wrapper, so the
-  gutter unpins and a live Block Width field appears.
+  gutter unpins and a live Block Padding Left/Right field appears.
 - **Outlook-only copies**: a padding whose EVERY occurrence sits inside an
   MSO conditional comment or an `mso-*` property would edit Outlook alone —
   invisible in the preview, silently desyncing every other client. No field
@@ -293,7 +301,7 @@ src/components/paddingAudit.ts): renders every padding-family Select
 option at 600px and geometry-diffs against the default render — the ground
 truth the static guards are checked against. Current template: 416/416
 fields live after suppression (2026-08-03: the Stat Row flatten added a
-live Block Width and moved the card's bottom inset onto the button's
+live width preset and moved the card's bottom inset onto the button's
 Spacing Below). Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
 prune. The Inert Dropdown Audit below generalizes this oracle to every
@@ -559,12 +567,13 @@ the bottom and split the dark URL from its light twin). The canonical rank
    colors · Border Radius · Font Size · Letter Spacing · Line Height
 4. **Dimensions** — Width in Pixels / button Width · Height
 5. **Position** — Alignment · Image Position / Column Order / Direction
-6. **Spacing** — Spacing Below · Padding Top/Right/Bottom/Left · Block Width
-   (the width preset is a frame control, so it sits with padding)
+6. **Spacing** — Spacing Below · Padding Top/Right/Bottom/Left · Block
+   Padding Left/Right (the width preset is a frame control, so it sits
+   with padding)
 
 Frame/header sections have no Display toggle or primary content, so they
 naturally begin at Appearance (Background Color) and end at Spacing
-(Padding → Block Width). Merge-tag NAMES and the HTML are untouched by the
+(Padding sides → Padding Left/Right). Merge-tag NAMES and the HTML are untouched by the
 sort — it is purely the panel/export display order.
 
 ### Options WITHIN a Select
@@ -1119,7 +1128,7 @@ importer whitelists all data-*-only MJML validator warnings
 - **`data-desktop-only-<token>` / `data-mobile-only-<token>`** (valueless,
   on the element that OWNS the control): declares that the control works at
   only one viewport, and the importer prefixes its LABEL accordingly
-  ("Desktop Block Width", "Mobile Spacing Below"). The merge-tag NAME never
+  ("Desktop Block Padding Left/Right", "Mobile Spacing Below"). The merge-tag NAME never
   changes. Tokens use the `data-style-*` property vocabulary where one
   exists — `align`, `direction`, `width` — plus `spacing-below` for the
   pacing control. Put the flag on the frame for `width`/`direction`, on the

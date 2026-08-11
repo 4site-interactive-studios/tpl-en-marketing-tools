@@ -380,7 +380,7 @@ declared intent; keep them accurate for every property you touch.
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
-| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Width"). Tokens: `align`, `direction`, `width`, `spacing-below` |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below` |
 
 **Three rules for all of them.** They are valueless flags, so write
 `data-no-display-toggle`, not `="true"`. Never remove, rename, or "fix" one
