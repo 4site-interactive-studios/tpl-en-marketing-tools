@@ -856,17 +856,30 @@ by all major clients; the trade-off was accepted deliberately.)
   and scripts. Downlevel-revealed wrappers (`<!--[if !mso]><!--> …
   <!--<![endif]-->`) travel only when everything inside them is moving
   (the mj-font link + @import pair); a wrapper around a meta stays.
-- The CSS-derived theme replacements (Text/Headings/Links Color,
-  Body/Headings Font) are created ON the styles block
-  (`autoEnableStylesBlockReplacements`, src/core/templateProps.ts),
-  sectioned under the block's name — still per-email editable in EN. The
-  shell's template replacements keep only what remains inline there: the
-  body/wrapper `background_color`.
+- **The block's content is a builder placeholder plus ONE HTML-type
+  replacement** (2026-08-11, user-decided — supersedes the CSS-derived
+  theme Selects that briefly lived here): `buildStylesBlockHtml()`
+  emits a hidden `<span id="head-styles">` and a `<style>` targeting
+  EN's `.en__emailbuilder__block` wrapper — inside EN's email builder
+  the block renders as a labeled black band ("Email Template — Head CSS
+  Styles Block") instead of a zero-height sliver, while at send time the
+  span stays display:none and EN's inliner prunes the builder-only rules
+  (they match nothing) — followed by `{replacement~head_styles}`. The
+  `head_styles` replacement (type `HTML`, EN's raw-code box; label "Head
+  CSS Styles"; section = the base block name) carries the ENTIRE
+  extracted head CSS as its default, values hard-coded — so the CSS is
+  self-editable per email, in place, without any template round-trip.
+- No theme Selects exist on the block: the extracted CSS keeps its
+  authored literal values. The shell's template replacements keep only
+  what remains inline there: the body/wrapper `background_color`.
 - Detection elsewhere is content-based (`isStyleOnlyHtml`), never
-  name-based: previews, thumbnails, and the padding audit re-compose the
-  styles block's CSS into their document `<head>`
-  (`composePreviewChrome`), so per-block rendering keeps the template
-  styling even though the shell head is CSS-free.
+  name-based — the detector accepts `<style>`s, stylesheet `<link>`s,
+  the `#head-styles` marker span, and bare merge-tag text: previews,
+  thumbnails, and the padding audit re-compose the styles block into
+  their document `<head>` (`composePreviewChrome`, which drops the
+  marker span and lets the head_styles tag substitute downstream), so
+  per-block rendering keeps the template styling even though the shell
+  head is CSS-free.
 - EN JSON imports are untouched: a template pasted from EN keeps its
   styles wherever they are (round-trips stay byte-stable). Extraction runs
   only when a project is created from MJML.
@@ -888,10 +901,12 @@ by all major clients; the trade-off was accepted deliberately.)
   detection rule above. Falls back to the name card if the asset cannot
   be fetched; the standard `thumbnail-template-styles.png` naming keeps
   probes and uploads working unchanged.
-- The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES`
-  regardless of which target mints them — content blocks keep reserving
-  the whole vocabulary so no block field ever shares a tag with the theme
-  fields (the 2026-08-10 shadowing rule).
+- The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (now
+  including `head_styles`) even though only `background_color` and
+  `head_styles` are minted today — content blocks keep reserving the
+  whole vocabulary so no block field ever shares a tag with a
+  template-level one (the 2026-08-10 shadowing rule; same precedent as
+  email_title after its revert).
 
 ## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
