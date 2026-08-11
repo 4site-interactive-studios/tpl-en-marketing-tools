@@ -698,32 +698,57 @@ sort — it is purely the panel/export display order.
   pattern, where reversing is the identity (2026-08-09, audit-proven;
   infoNote explains). Grouped columns target the mj-group's direction.
 
-  **Physical alignment does not survive a swap.** `align` is a physical
-  value authored for the column's ORIGINAL position: a logo pinned left
-  beside a button pinned right points outward in LTR, and after the flip
-  both point INWARD, collapsing the content into the middle with dead space
-  at both edges (measured 2026-08-10: CTA Hero (green button) lost 238px of
-  content span, CTA Hero (logo and background image) 252px). Nothing can
-  rescue it at run time — EN has no expressions, so one Select cannot drive
-  mirrored values in two places, and the columns must keep their
-  `direction:ltr` text shield. So the control is not offered:
+  **The value is the whole ROW, twice — not a direction keyword**
+  (2026-08-11). The control's two option VALUES are complete compiled
+  fragments of the row, one per order, exactly like a Display toggle one
+  level deeper. Two failures forced it, both measured 2026-08-10:
 
-  - **The guard** skips any section whose OUTER content columns (spacer
-    columns excluded — the Outlook shims sit at both ends) pin box-level
-    content to OPPOSITE edges. `mj-text` is not box-level: it fills its
-    column, so its align moves glyphs inside a full-width box (a photo
-    caption) and strands nothing.
-  - **`data-no-direction-toggle`** covers the rest. A SINGLE outward pin
-    strands content too (Photo Card's logo moves 92px), but no static rule
-    separated those from the icon rows that flip perfectly well — the icon
-    blocks pin their icon left and are fine, and neither the authored widths
-    nor MJML's own align slack tells the two apart. Rather than remove
-    working controls on a guess, the author declares it.
+  - `align` is PHYSICAL and a direction flip is not. A logo pinned left
+    beside a button pinned right points outward as authored; after the flip
+    both point INWARD and the content collapses into the middle (CTA Hero
+    (green button) lost 238px of span, CTA Hero (logo and background image)
+    252px). EN has no expressions, so one Select cannot drive mirrored values
+    in two places — but it CAN carry two finished arrangements.
+  - Outlook never flipped at all. Its column order lives in the MSO
+    conditional `<td>` cells and Word ignores the divs `direction` sits on,
+    so the control was silently inert there. Reordering the cells inside the
+    fragment fixes Outlook too.
 
-  Mirrored layouts stay a design decision shipped as their own block, which
-  is already how the catalog handles `Story Card (image left…)` vs
-  `(image right…)`. Verified behaviourally across all three catalogs: every
-  surviving control flips with 0px of span lost.
+  `reverseCompiledRow` rebuilds the row: each `<td …>` cell descriptor
+  travels WITH its column (it carries that column's width and classes, e.g.
+  `two-col-column-outlook first-column`, `width:296px`), and only
+  `[if mso | IE]` conditionals delimit cells — the `[if !mso]` dark-mode
+  wrappers inside a column are carried along untouched. It locks onto the row
+  by scanning candidate openers, so an enclosing frame's own wrapper is
+  skipped, and returns null on any shape it does not recognise: an
+  unrecognised row gets NO control rather than markup the pass did not
+  understand. The pass runs LAST so the Link and Display fragments already
+  exist and are absorbed into both orders (EN resolves the nesting — proven
+  to 4 levels through a real send, 2026-08-11).
+
+  **Alignment is BAKED per order** for box-level pinned members
+  (2026-08-11, user-decided): their Alignment field is dropped and the
+  literal travels with the column, left in one order and right in the other.
+  It cannot be both editable and mirrored — one field resolves to one value,
+  so a shared `{replacement~…_alignment}` would put the same physical align
+  in both orders and re-create the collapse. `mj-text` is never baked: it
+  fills its column, so its align moves glyphs inside a full-width box (a
+  photo caption) and neither strands layout nor should flip.
+
+  **Known limit — anything behind another fragment cannot mirror.** A tag
+  resolves to ONE value regardless of the selected order, so a pinned member
+  whose alignment lives inside a Link or Display fragment (an image with an
+  href) keeps a shared alignment across both orders. On CTA Hero (green
+  button) the button mirrors and the logo does not. Fixing it would mean
+  inlining those nested fragments for pinned members, costing them their
+  Link and Display toggles as well — not done; the alignment is adjusted by
+  hand for those members after a flip.
+
+  **`data-no-direction-toggle`** remains the upstream opt-out, for a row
+  whose mirrored arrangement is a design decision that should ship as its
+  own block — already how the catalog handles `Story Card (image left…)`
+  vs `(image right…)`.
+
   **Text-shield invariant**: flipping the frame to rtl only reorders columns
   because MJML re-pins `direction:ltr` on every column div, shielding
   descendants (verified empirically: columns swap x-positions while text
@@ -1061,14 +1086,12 @@ importer whitelists all data-*-only MJML validator warnings
   required logos, interdependent thermometer figures).
 - **`data-no-direction-toggle`** (valueless, on the mj-section or — when
   the columns are grouped — the mj-group that owns the flip): creates no
-  Image Position / Column Order control. For a row whose outer content is
-  pinned to the block edge with a physical `align`, where reversing the
-  columns would drag it inward (see the content-swap control above). The
-  built-in guard already catches the unambiguous shape, both outer columns
-  pinned to opposite edges; this flag is for the single-pin cases no static
-  rule could separate from the icon rows that flip cleanly — Text + Image
-  Row (image right), Photo Card (green CTA), Photo Card (outline CTA),
-  measured 2026-08-10 at 225px / 92px / 108px of span lost.
+  Image Position / Column Order control. For a row whose mirrored
+  arrangement is a design decision that should ship as its own block rather
+  than a toggle. Since 2026-08-11 the control carries both orders as
+  fragments and mirrors box-level alignment itself, so this is a taste
+  judgement, not a workaround — the automatic suppression it used to
+  accompany is gone (see the content-swap control above).
 - **`data-no-background-color`** (valueless, on any element with an
   authored `background-color`): keeps the color in the compiled output but
   creates NO editable field. For a background that provably cannot show —

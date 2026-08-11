@@ -444,19 +444,23 @@ each other up, and the report says so when they do.
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
   on the swap, or text renders reversed.
-- **A column-order swap cannot move a physical `align`.** If a row pins its
-  outer content to the block's edge — a logo `align="left"` beside a button
-  `align="right"` — the flip moves the COLUMNS but leaves the alignments
-  pointing where they were, so both end up facing inward and the content
-  collapses into the middle with dead space at the edges (measured
-  2026-08-10: 238px of span lost). There is no run-time fix: one EN Select
-  cannot drive mirrored values in two places, and the columns must keep
-  their `direction:ltr` text shield. The importer suppresses the control
-  when both outer columns pin to opposite edges; for a single outward pin,
-  declare it with `data-no-direction-toggle`. Ship the mirrored arrangement
-  as its own block, the way `Story Card (image left…)` and `(image right…)`
-  already are. Content that is centered, or that fills its column, flips
-  cleanly and keeps the control.
+- **The column-order control ships BOTH arrangements, so alignment moves
+  with the columns.** `align` is physical: a logo `align="left"` beside a
+  button `align="right"` points outward as authored, and a naive flip leaves
+  both facing inward, collapsing the content into the middle (measured
+  2026-08-10: 238px of span lost). Since 2026-08-11 the importer stores the
+  whole row twice — one fragment per order, with box-level alignment already
+  mirrored and the Outlook cells reordered — so the flip is correct
+  everywhere, Outlook included. Two consequences for authoring:
+  a pinned member's **Alignment field disappears** (it is baked into each
+  order; one field cannot hold two values), and a pinned image that is ALSO
+  link-wrapped keeps a shared alignment across both orders, because anything
+  behind another fragment resolves to one value — align such an image
+  outside the link, or expect to set its alignment by hand after a flip.
+  `mj-text` is never affected: it fills its column, so its align moves
+  glyphs, not layout. Where the mirrored arrangement is really a different
+  design, declare `data-no-direction-toggle` and ship it as its own block,
+  the way `Story Card (image left…)` and `(image right…)` already are.
 - **Buttons side by side are hand-rolled, and the row needs a declared
   height.** `mj-button` compiles to its own table and cannot sit next to
   another in one column, so a row of buttons is inline-block pills inside a
