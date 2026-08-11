@@ -719,11 +719,9 @@
           <h1>
             Lorem ipsum quis malesuada sed quam faucibus.
           </h1>
-          <a href="https://www.example.com" data-style-color data-style-href>
-            <h1>
-              Lorem ipsum quis malesuada sed quam faucibus.
-            </h1>
-          </a>
+          <h1>
+            <a href="https://www.example.com" data-style-color data-style-href>Lorem ipsum quis malesuada sed quam faucibus.</a>
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -754,11 +752,9 @@
           <h1>
             Lorem ipsum quis malesuada sed quam faucibus.
           </h1>
-          <a href="https://www.example.com" data-style-color data-style-href>
-            <h1>
-              Lorem ipsum quis malesuada sed quam faucibus.
-            </h1>
-          </a>
+          <h1>
+            <a href="https://www.example.com" data-style-color data-style-href>Lorem ipsum quis malesuada sed quam faucibus.</a>
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.

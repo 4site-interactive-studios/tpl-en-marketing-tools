@@ -923,6 +923,14 @@ by all major clients; the trade-off was accepted deliberately.)
   whole vocabulary so no block field ever shares a tag with a
   template-level one (the 2026-08-10 shadowing rule; same precedent as
   email_title after its revert).
+- **The shipped CSS must contain zero child combinators** (measured
+  2026-08-11, PoC round-trip through a real EN account): EN's block
+  editor HTML-escapes text nodes on every open/save, so each `>` in the
+  head_styles CSS becomes `&gt;` the first time an editor opens the
+  block — the selector turns invalid and the rule silently dies in every
+  client. Import and send are clean; the editor alone corrupts. The rule
+  and the replacement selector idioms are portable and live in the
+  authoring guide §2d; the importer's guard is below under Validator.
 
 ## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
@@ -982,6 +990,14 @@ Gmail-style snippets would show BOTH lines. Consequences:
   leaving the spacing hard-coded). These warnings track the upstream
   bottom-only conversion; overlay/background-image insets keep theirs until
   converted or explicitly exempted.
+- Editor-safe CSS guard (`validateEditorSafeCss`): every CSS payload a
+  block ships — `<style>` contents in the block HTML, and `<style>`
+  contents inside replacement values, which covers the Template Styles
+  block's head_styles default — is scanned for child-combinator
+  selectors, and each one warns. EN's block editor escapes `>` in text
+  nodes on open/save, invalidating the selector (guide §2d); comments
+  are stripped before scanning, so a `>` inside a CSS comment stays
+  legal.
 - `data-*` contract warnings are whitelisted, never "fixed".
 
 ## Import pipeline decisions

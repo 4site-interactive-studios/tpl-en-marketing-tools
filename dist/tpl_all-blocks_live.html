@@ -361,6 +361,20 @@
       }
     }
 
+    /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside an
+   HTML-type Replacement (the Template Styles block's head_styles), and EN's
+   block editor HTML-escapes `>` to `&gt;` in Replacement text on every
+   open/save — the escaped selector is invalid CSS and the rule silently
+   dies (guide §2). Where the old `>` chains targeted MJML's unclassable
+   structural elements, two measured idioms stand in:
+   - section/column OUTER table:  table[align=center]  (only outer tables
+     carry align=center in the non-MSO DOM)
+   - column wrapper td (exists only when a column authors padding/border/
+     background): td[style*=vertical-align] — widget tds never carry
+     vertical-align inline; the section's own main td: td[style*=direction].
+   Attribute selectors are inert in Gmail; acceptable here because the dark
+   branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
+   the two mobile rules using them are cosmetic insets. */
     div[data-container] {
       /* Email builder compatability styles */
       max-width: 600px;
@@ -429,11 +443,11 @@ li {
       mso-line-height-rule: exactly;
     }
 
-    .wysiwyg>div>*:first-child {
+    .wysiwyg div *:first-child {
       margin-top: 0;
     }
 
-    .wysiwyg>div>*:last-child {
+    .wysiwyg div *:last-child {
       margin-bottom: 0;
     }
 
@@ -493,7 +507,7 @@ li {
         text-align: center !important;
       }
 
-      td.button>table {
+      td.button table {
         float: none !important;
         display: inline-table !important;
         margin: 0 auto !important;
@@ -516,15 +530,15 @@ li {
       /* Fixed-width dividers and buttons span their container on narrow
      screens — a px width would force table min-width and overflow the
      viewport. Buttons opt in via css-class="button fixed-width". */
-      .divider>p {
+      .divider p {
         width: 100% !important;
       }
 
-      .fixed-width>table {
+      .fixed-width table {
         width: 100% !important;
       }
 
-      .fixed-width>table a {
+      .fixed-width table a {
         width: auto !important;
       }
 
@@ -542,12 +556,14 @@ li {
         height: auto !important;
       }
 
-      .two-col-column>table>tbody>tr>td {
+      /* The column's own gutter padding lands on MJML's wrapper td — the only
+     td under the column carrying vertical-align inline (see header note) */
+      .two-col-column td[style*=vertical-align] {
         padding: 0 !important;
       }
 
       /* Add space below image on mobile when it is collapsed to single column */
-      .two-col-image>table {
+      .two-col-image table {
         margin-bottom: 15px !important;
       }
 
@@ -557,8 +573,9 @@ li {
         margin-bottom: 20px !important;
       }
 
-      /* Inset sections: collapse the wide desktop gutters to the standard 32px */
-      .inset-gutter>table>tbody>tr>td {
+      /* Inset sections: collapse the wide desktop gutters to the standard 32px.
+     The section's main td is the only one carrying direction inline. */
+      .inset-gutter td[style*=direction] {
         padding-left: 32px !important;
         padding-right: 32px !important;
       }
@@ -600,16 +617,16 @@ li {
       }
 
       [data-ogsc] .block,
-      [data-ogsc] .block>table,
+      [data-ogsc] .block table[align=center],
       [data-ogsc] .spacer-block td {
         background-color: #000000 !important;
       }
 
       [data-ogsc] .quote-block,
-      [data-ogsc] .quote-block>table,
+      [data-ogsc] .quote-block table[align=center],
       [data-ogsc] .cta-button-block,
-      [data-ogsc] .cta-button-block>table,
-      [data-ogsc] .highlighted-text-column>table>tbody>tr>td {
+      [data-ogsc] .cta-button-block table[align=center],
+      [data-ogsc] .highlighted-text-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 
@@ -660,7 +677,7 @@ li {
         color: #000000 !important;
       }
 
-      [data-ogsc] .divider>p {
+      [data-ogsc] .divider p {
         border-color: #ffffff !important;
       }
 
@@ -709,17 +726,21 @@ li {
         color: #ffffff !important;
       }
 
+      /* table[align=center] = the section's outer table only (it carries the
+     authored background inline). Bonus over the old `>` form: it also
+     reaches background-image sections, whose outer table sits under an
+     extra positioning div the child combinator never crossed. */
       .block,
-      .block>table,
+      .block table[align=center],
       .spacer-block td {
         background-color: #000000 !important;
       }
 
       .quote-block,
-      .quote-block>table,
+      .quote-block table[align=center],
       .cta-button-block,
-      .cta-button-block>table,
-      .highlighted-text-column>table>tbody>tr>td {
+      .cta-button-block table[align=center],
+      .highlighted-text-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 
@@ -759,7 +780,7 @@ li {
         background-color: #000000 !important;
       }
 
-      .divider>p {
+      .divider p {
         border-color: #ffffff !important;
       }
 
@@ -3293,9 +3314,9 @@ li {
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                           <h1> Lorem ipsum quis malesuada sed quam faucibus. </h1>
-                          <a href="https://www.example.com" data-style-color data-style-href>
-                            <h1> Lorem ipsum quis malesuada sed quam faucibus. </h1>
-                          </a>
+                          <h1>
+                            <a href="https://www.example.com" data-style-color data-style-href>Lorem ipsum quis malesuada sed quam faucibus.</a>
+                          </h1>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor. </p>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://www.example.com" data-style-color data-style-href>Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.</a>
                           </p>
@@ -3327,9 +3348,9 @@ li {
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                           <h1> Lorem ipsum quis malesuada sed quam faucibus. </h1>
-                          <a href="https://www.example.com" data-style-color data-style-href>
-                            <h1> Lorem ipsum quis malesuada sed quam faucibus. </h1>
-                          </a>
+                          <h1>
+                            <a href="https://www.example.com" data-style-color data-style-href>Lorem ipsum quis malesuada sed quam faucibus.</a>
+                          </h1>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor. </p>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://www.example.com" data-style-color data-style-href>Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.</a>
                           </p>

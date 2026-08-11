@@ -309,6 +309,52 @@ for (const f of LOCAL_DOCS) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// 11. No child combinator in any head-CSS selector (styles.css or an inline
+//     <mj-style>). The whole head lands in the Template Styles block's
+//     head_styles Replacement, and EN's block editor HTML-escapes `>` to
+//     `&gt;` in Replacement text on every open/save — the escaped selector
+//     is invalid CSS and the rule silently dies (guide §2). Proven by a
+//     round-trip PoC through the real EN account, 2026-08-11: import and
+//     send are clean; one open in the editor corrupts every `>` selector.
+// ---------------------------------------------------------------------------
+{
+  const cssSources = [['src/styles.css', css]];
+  for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+    const text = read(`src/${f}`) || '';
+    for (const m of text.matchAll(/<mj-style[^>]*>([\s\S]*?)<\/mj-style>/g)) {
+      cssSources.push([`src/${f} <mj-style>`, m[1]]);
+    }
+  }
+  for (const [name, source] of cssSources) {
+    const stripped = (source || '').replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const m of stripped.matchAll(/([^{}]+)\{/g)) {
+      const sel = m[1].trim();
+      if (sel.includes('>')) {
+        warn(`${name} selector "${sel.replace(/\s+/g, ' ')}" uses a child combinator — EN's block editor escapes \`>\` in the head_styles Replacement and the rule silently dies (guide §2); use a class, table[align=center] (outer table), or td[style*=vertical-align] (column wrapper td) instead`);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 12. No block-level element nested inside an <a> in source MJML. styles.css
+//     paces wysiwyg content with descendant `*:first-child`/`*:last-child`
+//     rules (the child-combinator forms died with assertion 11), which reach
+//     INTO wrappers: an <a><h1>…</h1></a> heading loses both margins because
+//     the h1 is its wrapper's only child. Author <h1><a>…</a></h1> instead.
+//     Exception: an <a> styled display:block is a deliberate block link
+//     (Question Block) whose inner elements carry explicit inline margins.
+// ---------------------------------------------------------------------------
+for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+  const text = read(`src/${f}`) || '';
+  for (const m of text.matchAll(/<a\b[^>]*>\s*<(h[1-6]|p|ul|ol|div)\b/g)) {
+    if (/display\s*:\s*block/.test(m[0])) continue;
+    const line = text.slice(0, m.index).split('\n').length;
+    warn(`src/${f}:${line} wraps <${m[1]}> inside an <a> — the wysiwyg first/last-child pacing rules reach into wrappers and strip its margins; put the <a> inside the block element instead`);
+  }
+}
+
 console.log(
   warnings
     ? `check-docs: ${warnings} WARNING(S) — see above`

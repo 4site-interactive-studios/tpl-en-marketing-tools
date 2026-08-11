@@ -183,6 +183,56 @@ MJML must interleave above it invert to white and cover the content
 area, and Outlook flips the white text dark regardless — two
 independent kills. Asset contrast remains the only defense here.
 
+### 2d. The block editor escapes `>` — never ship a child combinator
+
+EN's **block editor** HTML-escapes text nodes on every open/save: each
+`>` in CSS text becomes `&gt;` (tag syntax keeps its own `>`; only text
+content is encoded). An escaped selector is invalid CSS, and clients
+silently drop the rule. Measured 2026-08-11 by a full round-trip through
+a real EN account: **import is clean, send is clean — one visit to the
+block in EN's editor corrupts every child-combinator selector** in that
+block's CSS, including CSS held in an HTML-type Replacement (a Template
+Styles / head-CSS block).
+
+The failure signature is nasty because paired rules decouple: in a dark
+scheme authored as `.block p { color:#fff }` + `.block > table {
+background:#000 }`, the text rule survives the editor and the background
+rule dies — white-on-white text. Per-rule recovery also is not guaranteed
+everywhere: treat one invalid selector as potentially poisoning the whole
+sheet in stricter engines.
+
+**Therefore: no child combinators anywhere in CSS that ships to EN** —
+head styles, `<mj-style>`, or `<style>` inside block markup. For MJML's
+unclassable structural elements, two measured stand-ins cover the usual
+targets, quote-free so nothing in them can be escaped:
+
+```css
+/* the section/column OUTER table (the one carrying the authored
+   background inline) — only outer tables carry align=center in the
+   non-MSO DOM: */
+.block table[align=center] { background-color: #000000 !important; }
+
+/* the column WRAPPER td (exists only when a column authors padding /
+   border / background; widget tds never carry vertical-align inline): */
+.two-col-column td[style*=vertical-align] { padding: 0 !important; }
+
+/* the section's own main td carries direction inline: */
+.inset-gutter td[style*=direction] { padding-left: 32px !important; }
+```
+
+Caveat: attribute selectors are inert in Gmail. That is acceptable for
+dark-mode branches (Gmail exposes no dark hook anyway, §2c) and for
+cosmetic mobile insets; anything Gmail-critical must stay class-based or
+become a plain descendant selector. And a descendant selector reaches
+INTO wrappers, so pacing rules like `.wysiwyg div *:first-child
+{ margin-top: 0 }` require that authored content never nest a block
+element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
+`<a><h1>…</h1></a>`.
+
+The importer warns on any child combinator in a block's shipped CSS, and
+an EN-side bug report exists; until EN fixes the editor, treat this as a
+permanent authoring rule.
+
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
 The single highest-leverage authoring convention.
@@ -526,6 +576,11 @@ each other up, and the report says so when they do.
 6a. Confirm no `<mj-preview>` in broadcast sources — EN injects its own
    preheader from the per-email Preview Text setting (§2), and a
    template-baked one doubles the inbox snippet.
+6b. Confirm no child combinator in ANY CSS that ships to EN — head
+   styles, `<mj-style>`, or `<style>` inside block markup. EN's block
+   editor escapes `>` to `&gt;` on open/save and the rule silently dies
+   (§2d). Selectors extracted from the compiled `<style>` blocks must
+   contain zero `>`.
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.
@@ -577,6 +632,9 @@ Non-negotiables while you work:
 - Any CSS that must survive EN's inliner untouched has to be nested inside
   a conditional media query. Bare @media screen does not work.
 - Any dark-mode rule that must beat an inlined base rule needs !important.
+- No CSS child combinator anywhere that ships to EN: the EN block editor
+  escapes `>` to `&gt;` on open/save and the rule silently dies. Use
+  classes, plain descendants, or the guide §2d attribute-selector idioms.
 - An editable background image must bind ALL FOUR compiled carriers.
 
 When you finish, run the QA checklist in section 8 of the guide and report
