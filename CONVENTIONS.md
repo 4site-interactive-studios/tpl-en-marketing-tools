@@ -703,11 +703,21 @@ sort — it is purely the panel/export display order.
   signature card) is a swap of two peers, and naming that "Image Position"
   describes the wrong thing (2026-08-10, user-reported on CTA Hero (green
   button)). Structurally identical columns are excluded (reversing =
-  swapping contents, which per-column fields already allow), and so are
-  SYMMETRIC layouts — (width, signature) pairs reading the same forwards
-  and backwards, e.g. the `25px spacer | content | 25px spacer` Outlook
-  pattern, where reversing is the identity (2026-08-09, audit-proven;
-  infoNote explains). Grouped columns target the mj-group's direction.
+  swapping contents, which per-column fields already allow) — with
+  identity judged INCLUSIVE of the structures inside the columns
+  (2026-08-11, user-decided): the deep signature covers descendant
+  members and their layout attributes, masking only content values
+  (src/href/alt/title) and `data-*` annotation
+  (`deepMemberSignature`, src/core/mjmlProps.ts). Two plain images side
+  by side still count as identical (swap = swap the URLs), but mirrored
+  insets, alignments, differing member widths, or per-column colors — a
+  logo beside a photo (Logo Hero (w/ image, green)), the Tri-color
+  divider's three stripes — make the swap a real layout change and keep
+  the control. Also excluded are SYMMETRIC layouts — (width, deep
+  signature) pairs reading the same forwards and backwards, e.g. the
+  `25px spacer | content | 25px spacer` Outlook pattern, where reversing
+  is the identity (2026-08-09, audit-proven; infoNote explains). Grouped
+  columns target the mj-group's direction.
 
   **The value is the whole ROW, twice — not a direction keyword**
   (2026-08-11). The control's two option VALUES are complete compiled
