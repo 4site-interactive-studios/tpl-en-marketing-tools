@@ -805,17 +805,23 @@ sort — it is purely the panel/export display order.
 
 ## The programmatic RAW HTML utility block
 
-Every block export additionally carries one synthetic block the MJML never
-authored: **"Utility — RAW HTML"** (`rawHtmlBlockExport`,
+Block exports can carry one synthetic block the MJML never authored:
+**"Utility — RAW HTML"** (`rawHtmlBlockExport`,
 `src/core/export/blockExport.ts`). Its content is exactly
 `{replacement~raw_html}` — a single HTML-type Replacement (EN's raw-code
 box, a distinct type from RTE's rich-text editor) — so editors can paste
 arbitrary markup (probe blocks, one-off embeds) straight into a broadcast
 without a template round-trip. Semantics:
 
-- Appended once to every block-export JSON regardless of the selection or
-  group filter; in the per-group ZIP it ships as its OWN file
-  (`en-block-utility-raw-html.json`) so bulk imports never duplicate it.
+- Shown as a visible row at the END of the export panel's block list
+  ("generated at export" badge), CHECKED by default — exporting a single
+  block no longer silently brings it along; uncheck it like any block
+  (2026-08-11, user-decided; supersedes the earlier
+  append-regardless-of-selection behavior). "Select all" / "All groups"
+  re-include it; a specific group filter drops it (it belongs to no
+  group). The per-group ZIP honors the same row and ships it as its OWN
+  file (`en-block-utility-raw-html.json`) so bulk imports never
+  duplicate it.
 - Stamped with the current settings (client, owner, DEFAULT folder — it
   belongs to no category, so per-category folders don't apply).
 - Its thumbnail follows the standard base-name convention
@@ -855,17 +861,24 @@ by all major clients; the trade-off was accepted deliberately.)
 - EN JSON imports are untouched: a template pasted from EN keeps its
   styles wherever they are (round-trips stay byte-stable). Extraction runs
   only when a project is created from MJML.
-- The block sits before the first "Category — X" divider: no category
-  prefix, default EN folder.
+- The block is named **"Utility — Template Styles"** with
+  `category: 'Utility'` — the same shape as "Utility — RAW HTML" — so
+  replacement sections and the thumbnail slug still mirror the base name
+  via `blockBaseName` (2026-08-11, user-decided). Its EN folder comes
+  from the import form's "Utilities" entry when one exists (i.e. the
+  source has a Utilities category divider); otherwise default folder. It
+  still sits FIRST in the block list, before the first "Category — X"
+  divider.
 - Its thumbnail is a designed explainer asset shipped with the App
   (`public/thumbnail-template-styles.png`, same visual language as the
   RAW HTML one — dark slate card, green `{ }` icon, "keep it the FIRST
   block" subtitle), used in the thumbnails ZIP instead of a real block
   render: the block's content is an invisible stylesheet, so a render
-  would be a blank white card (2026-08-10, user-decided). Falls back to
-  the name card if the asset cannot be fetched; the standard
-  `thumbnail-template-styles.png` naming keeps probes and uploads
-  working unchanged.
+  would be a blank white card (2026-08-10, user-decided). The ZIP job
+  detects the block by content (`isStyleOnlyHtml`), not name, per the
+  detection rule above. Falls back to the name card if the asset cannot
+  be fetched; the standard `thumbnail-template-styles.png` naming keeps
+  probes and uploads working unchanged.
 - The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES`
   regardless of which target mints them — content blocks keep reserving
   the whole vocabulary so no block field ever shares a tag with the theme
