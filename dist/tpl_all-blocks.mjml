@@ -1706,7 +1706,7 @@
     <!-- END: Photo Grid (2x2) -->
 
     <!-- START: Category — Image & Text Layouts -->
-    <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Images and Text"></mj-raw>
+    <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Text and Images"></mj-raw>
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>

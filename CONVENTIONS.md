@@ -619,8 +619,10 @@ sort — it is purely the panel/export display order.
   also use the plain name (`blockBaseName`) so existing
   `thumbnail-<slug>.png` assets keep matching. Dividers, pre-divider
   blocks, and user renames are left alone. Declared short names
-  (2026-07-29): Headers/Heroes, Text, Buttons, Images, Images and Text,
-  Engagement, Utility, Signature, Footer. (2026-08-03, user-decided:
+  (2026-07-29): Headers/Heroes, Text, Buttons, Images, Text and Images,
+  Engagement, Utility, Signature, Footer. ("Images and Text" became
+  "Text and Images" 2026-08-11, user-decided, so the prefix sorts next
+  to "Text" in EN's block lists.) (2026-08-03, user-decided:
   the empty Fundraising & Campaign category was removed and Content
   Features merged into Engagement & Interactive — Progress Meter,
   Countdown Card, and the Content blocks all live under Engagement now;
