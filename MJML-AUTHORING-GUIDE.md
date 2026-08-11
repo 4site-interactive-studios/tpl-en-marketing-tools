@@ -67,7 +67,19 @@ Text** setting, and prepended to the text/plain part too (measured
 `<mj-preview>` in a broadcast template**: its compiled preheader div
 would sit right after EN's injected one and inbox snippets would show
 both lines. (Autoresponder sources that don't send through Marketing
-Tools broadcasts may still need their own.) EN also converts
+Tools broadcasts may still need their own.)
+
+The same reasoning covers the TITLE. `<mj-title>` compiles to two carriers
+— the head `<title>` and an `aria-label` MJML mirrors onto the body
+wrapper — and the importer STRIPS both, creating no field for either. The
+sender types the title in EN when they build the send, so a template copy
+would only ask for it twice and go stale immediately. Authoring
+`<mj-title>` is harmless (your own previews use it); just don't expect it
+to reach the EN template. The aria-label removal is also an accessibility
+gain: that wrapper spans the whole email, so a screen reader would
+announce the entire body as one string repeating the title.
+
+EN also converts
 `background-color` in a style
 attribute into a `bgcolor` **attribute** on `<body>` and `<td>`. The
 BLOCK pipeline applies the same rewrites to custom block markup, and
@@ -369,9 +381,25 @@ declared intent; keep them accurate for every property you touch.
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Width"). Tokens: `align`, `direction`, `width`, `spacing-below` |
 
-**Two rules for all of them.** They are valueless flags, so write
-`data-no-display-toggle`, not `="true"`. And never remove, rename, or "fix"
-one; they are the only channel your design intent has into the importer.
+**Three rules for all of them.** They are valueless flags, so write
+`data-no-display-toggle`, not `="true"`. Never remove, rename, or "fix" one
+on a hunch — they are the only channel your design intent has into the
+importer, and a flag you don't understand is one you haven't traced yet.
+
+But a flag must EARN its place. The importer checks every one of these on
+import: it strips the attribute, regenerates the block, and compares. If the
+output is byte-identical the flag does nothing, and the block reports it —
+"changes nothing … Remove it from the MJML". Act on that. A flag the importer
+ignores still reads as a deliberate decision to the next person, and it ships
+in the compiled HTML of every block that carries it.
+
+Two things that check has already taught us: a `dark-only` image twin never
+gets its own Display toggle (the importer folds it into its light pair), so
+`data-no-display-toggle` on one is always inert; and a component in a block
+that generates no Display fields at all does not need opting out of them.
+Note the check removes one attribute at a time, so when a block reports
+several, remove them one at a time and re-import between — flags can prop
+each other up, and the report says so when they do.
 
 ---
 
@@ -415,6 +443,30 @@ one; they are the only channel your design intent has into the importer.
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
   on the swap, or text renders reversed.
+- **Buttons side by side are hand-rolled, and the row needs a declared
+  height.** `mj-button` compiles to its own table and cannot sit next to
+  another in one column, so a row of buttons is inline-block pills inside a
+  single `mj-text` (`.cta-group` wrapping `.cta-item`), with MSO
+  conditional cells so Outlook gets a real table row. Two consequences:
+  - The row wraps on a phone whenever the pills are wider than the screen —
+    which fixed-width variants guarantee, since their widths are sized to
+    exactly fill the 600px content box. A `@media` rule
+    (`.cta-item { display:block; margin:0 0 16px }`) turns the wrap into a
+    clean stack, but a client that strips `<style>` never sees it and falls
+    back to inline-block wrapping.
+  - In that fallback the row's height comes from the line box, and a
+    renderer that sizes line boxes from `line-height` instead of growing
+    them to fit inline-blocks will **overlap** the wrapped rows (measured
+    2026-08-10, Gmail app on Android). So declare it: put
+    `line-height: <pill height>px` on `.cta-group` and `line-height: 0` on
+    each `.cta-item`. Pill height is
+    `padding-top + padding-bottom + line-height x rendered lines` (49px for
+    a one-line pill at 12px padding and 25px line-height; 74px when a `<br>`
+    makes it two). The pair is deliberate: the group's value is the floor,
+    and zeroing the item stops the inherited strut from inflating the pill —
+    without it the row grows 7px on desktop. Keep the numbers in step with
+    the padding, line-height, and line count, exactly like the width formula
+    these blocks already document.
 
 ---
 

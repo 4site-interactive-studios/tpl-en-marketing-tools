@@ -186,7 +186,7 @@ const ASSET_ROOT_ID = 'bd6ca9cefa6fb6e0adf1';
 for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
   const text = read(`src/${f}`) || '';
   if (text.includes(ASSET_ROOT_ID)) {
-    warn(`src/${f} contains the absolute EN asset root — source must stay relative (guide §7); the absolute form is emitted into <name>.cdn.html`);
+    warn(`src/${f} contains the absolute EN asset root — source must stay relative (guide §7); the absolute form is emitted into <name>_live.html`);
   } else if (text.includes('rackcdn.com')) {
     warn(`src/${f} references an off-root rackcdn.com URL — asset-root rewriting and the missing-at-root audit skip absolute URLs; move the file into src/assets/ and reference it relatively (guide §7)`);
   }

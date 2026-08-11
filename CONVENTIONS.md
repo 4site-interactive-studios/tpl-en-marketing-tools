@@ -800,28 +800,46 @@ by all major clients; the trade-off was accepted deliberately.)
   only when a project is created from MJML.
 - The block sits before the first "Category — X" divider: no category
   prefix, default EN folder.
+- Its thumbnail is a designed explainer asset shipped with the App
+  (`public/thumbnail-template-styles.png`, same visual language as the
+  RAW HTML one — dark slate card, green `{ }` icon, "keep it the FIRST
+  block" subtitle), used in the thumbnails ZIP instead of a real block
+  render: the block's content is an invisible stylesheet, so a render
+  would be a blank white card (2026-08-10, user-decided). Falls back to
+  the name card if the asset cannot be fetched; the standard
+  `thumbnail-template-styles.png` naming keeps probes and uploads
+  working unchanged.
 - The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES`
   regardless of which target mints them — content blocks keep reserving
   the whole vocabulary so no block field ever shares a tag with the theme
   fields (the 2026-08-10 shadowing rule).
 
-## Per-email shell fields: Email Title, and why Preview Text gets NONE (2026-08-10, user-decided)
+## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
-One EN template serves many emails, but MJML bakes `<mj-title>` into the
-shell two ways — the head `<title>` and the wrapper div's `aria-label`
-(MJML ≥4.14 accessibility output) — per-SEND content EN cannot edit after
-the template exists. Baked in for TPL imports
-(`enableShellContentReplacements`, src/core/templateProps.ts):
+One EN template serves many emails. The title and the preview text belong
+to a SEND, not to a template, and the sender already types both in EN when
+they build the email. A template that carries either one is asking for the
+same string twice — and whatever value stays baked in is wrong for every
+email after the first.
 
-- **`email_title` ("Email Title")**: a Text replacement created ahead of
-  the theme fields; ONE tag drives both the `<title>` text and the
-  `aria-label` value. The aria-label is the authoritative copy; the title
-  joins the same tag only when its text is identical (MJML guarantees
-  this) — a diverged title stays hard-coded rather than silently unifying
-  on delete-restore. Named in `TEMPLATE_REPLACEMENT_NAMES` so content
-  blocks can never mint a colliding tag. Values already carrying
-  `{replacement~…}` are left alone (EN-import safety); generation happens
-  only at MJML import, like every other shell replacement.
+**The title gets no field, and neither carrier survives**
+(`enableShellContentReplacements`, src/core/templateProps.ts). MJML bakes
+`<mj-title>` into the shell two ways, and the importer strips both:
+
+- the head `<title>` element, and
+- the `aria-label` MJML ≥4.14 mirrors onto the body wrapper div.
+
+The aria-label is the one that actually misbehaves: that wrapper spans the
+ENTIRE email, so a screen reader announces the whole body as a single
+string that only repeats the title. Removing it is an accessibility gain,
+not a loss. Nothing else on the wrapper tag is touched —
+`aria-roledescription`, `role`, `lang`, `dir` and the inline style all
+stay.
+
+An earlier same-day design made this an `email_title` Text replacement
+driving both carriers; it was reverted for the reason above, and
+`email_title` left `TEMPLATE_REPLACEMENT_NAMES` with it (nothing mints it
+now, so nothing can collide with it).
 
 **Preview text deliberately gets NO replacement.** Measured 2026-08-10 by
 sending a blank template (no preheader element in its content) through
@@ -973,7 +991,11 @@ importer whitelists all data-*-only MJML validator warnings
   EN folder routing. Precedence: block's own attr > import-form input >
   category divider's attr > account default
   (`src/core/blocks.ts` `assignBlockFolders`). Divider values prefill the
-  import form.
+  import form. Detection is a plain regex over the block's raw source
+  fragment (`folderIdOf`), so a block whose only content is an
+  `<mj-include>` (the include tag is replaced wholesale when partials
+  inline) can carry the attribute on an HTML comment between its START
+  comment and the include — `<!-- data-folder="6409" … -->`.
 - **`data-category-short="<name>"`** (raw MJML; on category dividers,
   same div as data-folder): the category's short display name
   ("Headers/Heroes" for "Headers and Heroes"). When present it replaces
@@ -1045,6 +1067,48 @@ importer whitelists all data-*-only MJML validator warnings
   normalizer (`scripts/annotate-excluded.mjs`) strips the whole importer
   directive family before grouping, so flagging one variant never orphans
   its `data-fully-exclude` twin.
+
+### Every flag must earn its place — the dead-flag check
+
+A flag the importer ignores is worse than no flag. It reads as a deliberate
+decision forever, nothing in the source says it stopped mattering, and it
+ships in the compiled HTML of every block that carries it. So the rule is:
+**if removing a `data-*` changes nothing, the source should not have it.**
+
+`src/core/flagAudit.ts` proves this per occurrence rather than guessing —
+strip the attribute from the block's MJML, regenerate with the SAME config,
+instance regions, and viewport declarations, and compare the generated merge
+tags, fields, and notes. Byte-identical means the flag earns nothing. It runs
+on every import and the findings land in the block's `infoNotes`, so the
+validator surfaces them at 'info' level next to the other "why is this field
+missing" explanations.
+
+Two rules keep it honest:
+
+- **Scope is the flags the importer READS** (`data-no-*`,
+  `data-width-options`, `data-desktop-only-*`, `data-mobile-only-*`).
+  `data-style-*` is authoring annotation this generator never consults, and
+  routing/segmentation flags (`data-import-exclude`, `data-fully-exclude`,
+  `data-folder`, `data-en-path`, `data-category-short`) are read BEFORE
+  generation — testing either family against the generator would call every
+  one of them dead.
+- **A flag name inside a comment is prose, not markup.** The convention is to
+  comment WHY a flag is there, and a good comment names it; a match only
+  counts inside an opening `<mj-…>` tag.
+
+Single-occurrence removal cannot see flags that prop each other up (two
+members each opting out of a control that only exists while one of them is
+in), so when a block has several dead flags the check also removes the whole
+set at once; if THAT differs, every finding is marked to be removed one at a
+time. Same blind spot the single-field dropdown sweep has, same remedy.
+
+Findings on the TPL catalogs (2026-08-10): five dead
+`data-no-display-toggle` flags — both texts in the Progress Meter Block
+(which generates no Display fields at all), and the light/dark image twins in
+the two Footers. **A dark twin never gets its own Display toggle** — the
+generator folds it into its light pair — so the flag on a `dark-only` image
+was always inert. All five removed upstream, with the block field inventory
+verified byte-identical before and after.
 
 ## EN's CSS inliner (not optional — measure it, don't fight it)
 

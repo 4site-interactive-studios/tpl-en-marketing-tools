@@ -68,18 +68,18 @@ Every `src/*.mjml` compiles to **two** files in `dist/`:
 
 | Output | Asset URLs | Debugger | Use |
 | :--- | :--- | :--- | :--- |
-| `<name>.html` | relative (`assets/x.png`) | **kept** | working copy; what the preview server serves |
-| `<name>.cdn.html` | absolute | **stripped** | paste-in ready for an EN send / autoresponder |
+| `<name>_local-debug.html` | relative (`assets/x.png`) | **kept** | working copy; what the preview server serves |
+| `<name>_live.html` | absolute | **stripped** | paste-in ready for an EN send / autoresponder |
 
 **Neither is what the importer reads.** It consumes `src/<name>.mjml` (the
 build copies the raw sources into `dist/` alongside the HTML) and explicitly
 *rejects* compiled HTML with a plain-English error — see CONVENTIONS.md.
-The `.cdn.html` rewrite therefore duplicates the importer's own
+The `_live.html` rewrite therefore duplicates the importer's own
 `rewriteAssetPaths` on purpose: that one feeds block/template JSON from the
 MJML, this one feeds a paste-in HTML send. Both assume EN's flat CDN folder.
 
-`scripts/emit-cdn-variants.mjs` produces the second from the first as the last
-build step. It rewrites all four carriers MJML emits for one background image
+`scripts/emit-variants.mjs` names both as the last build step: it renames the
+compiler's own output to `_local-debug.html` and writes `_live.html` beside it. It rewrites all four carriers MJML emits for one background image
 (guide §4) plus `<img src>`, and removes every `<script>` and the 🐞 toolbar.
 
 **TPL's EN asset root** (flat folder — filenames must be unique repo-wide):

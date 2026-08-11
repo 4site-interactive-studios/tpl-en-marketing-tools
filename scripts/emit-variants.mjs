@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /**
- * Emit a send-ready twin of every compiled page — runs LAST in the build.
+ * Name the two compiled variants of every page — runs LAST in the build.
  *
- * Each src/*.mjml therefore produces two files in dist/:
+ * Each src/*.mjml therefore produces two files in dist/, named for what they
+ * are FOR rather than for how they were made:
  *
- *   <name>.html       relative asset paths + the debug overlay — the working
- *                     copy, and what the preview server serves.
- *   <name>.cdn.html   absolute asset URLs + no debugger — paste-in ready for
- *                     an EN send or an autoresponder, with nothing that
- *                     depends on this repo being served.
+ *   <name>_local-debug.html   relative asset paths + the debug overlay — the
+ *                             working copy, and what the preview server
+ *                             serves. This is the compiler's own output,
+ *                             renamed in place.
+ *   <name>_live.html          absolute asset URLs + no debugger — paste-in
+ *                             ready for an EN send or an autoresponder, with
+ *                             nothing that depends on this repo being served.
  *
  * Source MJML always keeps RELATIVE paths (guide §7: authoring absolute CDN
  * URLs defeats environment portability). The absolute form is a build
@@ -29,7 +32,7 @@
  * plus ordinary <img src>. EN's CDN folders are flat, so every path collapses
  * to <ASSET_ROOT><filename> regardless of any subdirectory in source.
  */
-import { readdirSync, readFileSync, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, renameSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -78,16 +81,25 @@ function stripDebugger(html) {
 }
 
 for (const f of readdirSync(DIST)) {
-  if (!f.endsWith('.html') || f.endsWith('.cdn.html')) continue;
+  // Only the compiler's raw <name>.html is input; both named variants are
+  // outputs and must never be reprocessed (absolutizing twice is a no-op,
+  // but stripping an already-stripped page would hide a real regression).
+  if (!f.endsWith('.html') || f.endsWith('_live.html') || f.endsWith('_local-debug.html')) {
+    continue;
+  }
   const src = readFileSync(join(DIST, f), 'utf8');
   const { html: noDebug, removed } = stripDebugger(src);
   const { html, count } = absolutize(noDebug);
-  const name = f.replace(/\.html$/, '.cdn.html');
-  writeFileSync(join(DIST, name), html);
+
+  const live = f.replace(/\.html$/, '_live.html');
+  const local = f.replace(/\.html$/, '_local-debug.html');
+  writeFileSync(join(DIST, live), html);
+  renameSync(join(DIST, f), join(DIST, local));
 
   const leftover = (html.match(/["'(]assets\//g) || []).length;
   console.log(
-    `cdn: ${name} — ${count} asset URLs absolutized, ${removed} bytes of debug chrome removed` +
+    `variants: ${local} + ${live} — ${count} asset URLs absolutized, ` +
+      `${removed} bytes of debug chrome removed` +
       (leftover ? `, WARN ${leftover} relative refs remain` : ''),
   );
 }

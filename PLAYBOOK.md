@@ -24,10 +24,10 @@ src/
   assets/              ← images + debug.js (synced to dist at build)
 scripts/               ← build passes (§2)
   annotate-excluded.mjs  restore-excluded.mjs
-  emit-cdn-variants.mjs  watch.mjs
+  emit-variants.mjs      watch.mjs
 dist/                  ← build output; this is what gets served/previewed
-  <name>.html          ← relative assets + debugger (working copy)
-  <name>.cdn.html      ← absolute assets, no debugger (send-ready, §2)
+  <name>_local-debug.html ← relative assets + debugger (working copy)
+  <name>_live.html        ← absolute assets, no debugger (send-ready, §2)
   assets/originals/    ← full-res originals, NOT synced/overwritten by builds
 CLAUDE.md              ← repo-specific instructions agents load first
 MJML-AUTHORING-GUIDE.md  ← MIRROR, do not edit — authoring rules + QA checklist
@@ -36,15 +36,15 @@ CONVENTIONS.md         ← MIRROR, do not edit — the importer's contract
 ```
 
 Multiple pages are free: the build globs `src/*.mjml`, so adding
-`src/anything.mjml` yields `dist/anything.html` **and**
-`dist/anything.cdn.html` with no config change — see §2 for the difference
+`src/anything.mjml` yields `dist/anything_local-debug.html` **and**
+`dist/anything_live.html` with no config change — see §2 for the difference
 between the two, and CLAUDE.md for the catalogs' roles (notably that
 `tpl_all-blocks.mjml` is a curated subset of `mjml_all-blocks.mjml`, not a mirror of it).
 
 ## 2. Build pipeline (`package.json`)
 
 ```json
-"build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/ && node scripts/emit-cdn-variants.mjs && node scripts/check-docs.mjs",
+"build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/ && node scripts/emit-variants.mjs && node scripts/check-docs.mjs",
 "watch": "node scripts/watch.mjs",
 "preview": "npx --yes http-server ./dist -p 8642 -c-1"
 ```
@@ -92,8 +92,9 @@ Each step exists for a reason:
 - `cp ./src/*.mjml ./dist/` — ships raw (un-annotated) sources next to the
   compiled HTML for the converter and as the debugger's fallback source of
   exclusion flags (§5).
-- `scripts/emit-cdn-variants.mjs` — **send-ready twin.** For each
-  `dist/<name>.html` it writes `dist/<name>.cdn.html` with every relative
+- `scripts/emit-variants.mjs` — **names both variants.** It renames each
+  compiled `dist/<name>.html` to `dist/<name>_local-debug.html` and writes
+  `dist/<name>_live.html` beside it, with every relative
   asset path rewritten to an absolute URL under the EN asset root, and all
   dev chrome removed (every `<script>` — the debugger plus the two injected
   JSON payloads — and the 🐞 toolbar). The rewrite covers all four carriers
@@ -242,7 +243,7 @@ live counts:
 | EDIT | Copy changes | Copies a JSON changeset keyed by ORIGINAL block names (the stable identifiers): per-block `newName`, `deleted: true`, and `textEdits` (`{before, after}` per changed text node, diffed against a baseline snapshotted when edit mode first turns on), plus a full-page `order` array when blocks were moved. Paste it to Claude to apply against the MJML source. Caveat: blocks whose text is rewritten by live scripts (countdown timers) can't hold manual text edits |
 | EXCLUDED | Highlight all excluded | Red tint + red ✕ over every excluded block — both `data-fully-exclude` variants and `data-import-exclude` chrome |
 | EXCLUDED | Export / Copy .mjml | The page's raw .mjml with every excluded/dev-only top-level block removed and every mj-include inlined (type="css" becomes mj-style; partials spliced in) — fully self-contained and compilable from anywhere. A scope selector (shown when the page has Category headers) narrows the export to one category section, or downloads a .zip containing one .mjml per section plus the full template (dependency-free store-mode zip); Copy is disabled in zip mode |
-| EXCLUDED | Copy HTML | The compiled page as served, minus every `<script>` (the debugger and both injected JSON payloads) and the 🐞 toolbar — i.e. the send-ready HTML. Re-fetches from the server so debugger surgery can never leak in; on `file://` pages it falls back to a cleaned clone of the live DOM. Same output as `<name>.cdn.html` but with relative asset paths |
+| EXCLUDED | Copy HTML | The compiled page as served, minus every `<script>` (the debugger and both injected JSON payloads) and the 🐞 toolbar — i.e. the send-ready HTML. Re-fetches from the server so debugger surgery can never leak in; on `file://` pages it falls back to a cleaned clone of the live DOM. Same output as `<name>_live.html` but with relative asset paths |
 | EXCLUDED | Hide all excluded | Hides all of those blocks — what remains is exactly what imports (one block per structure group) |
 
 Exclusion detection reads the `[data-fully-exclude]` / `[data-import-exclude]`
@@ -544,7 +545,7 @@ Client support, since dark mode is not uniformly addressable:
 - **Paths and the flat CDN folder** are governed by
   MJML-AUTHORING-GUIDE.md §7: source stays relative, and filenames must be
   unique repo-wide because every asset resolves to `<root>/<filename>`. The
-  absolute-URL form is a build artifact (`<name>.cdn.html`, §2), never
+  absolute-URL form is a build artifact (`<name>_live.html`, §2), never
   authored.
 
 ## 9. Verification workflow (per change)
@@ -571,7 +572,7 @@ change.
 Copy verbatim, then adapt:
 
 - [ ] `package.json` build/watch/preview scripts (§2) + `mjml` dependency
-- [ ] `scripts/` (annotate-excluded, restore-excluded, emit-cdn-variants,
+- [ ] `scripts/` (annotate-excluded, restore-excluded, emit-variants,
       watch) + add `.build` to .gitignore
 - [ ] `src/assets/debug.js` — fully generic, no project-specific code
 - [ ] `src/partials/debug-toolbar.mjml` — the 🐞 launcher
