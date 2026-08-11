@@ -475,16 +475,22 @@ each other up, and the report says so when they do.
   - In that fallback the row's height comes from the line box, and a
     renderer that sizes line boxes from `line-height` instead of growing
     them to fit inline-blocks will **overlap** the wrapped rows (measured
-    2026-08-10, Gmail app on Android). So declare it: put
-    `line-height: <pill height>px` on `.cta-group` and `line-height: 0` on
-    each `.cta-item`. Pill height is
-    `padding-top + padding-bottom + line-height x rendered lines` (49px for
-    a one-line pill at 12px padding and 25px line-height; 74px when a `<br>`
-    makes it two). The pair is deliberate: the group's value is the floor,
-    and zeroing the item stops the inherited strut from inflating the pill —
-    without it the row grows 7px on desktop. Keep the numbers in step with
-    the padding, line-height, and line count, exactly like the width formula
-    these blocks already document.
+    2026-08-10, Gmail app on Android). This is a known, UNFIXED cosmetic
+    issue — and the obvious fix is a trap worth recording.
+
+    Declaring the row height inline (`line-height: <pill height>px` on
+    `.cta-group`, `line-height: 0` on each `.cta-item`) reasons correctly in
+    every browser and was verified byte-identical on desktop and mobile.
+    It still shipped a **severe** regression: Outlook's Word engine honours
+    `line-height: 0` on the item, collapses the line box, and renders every
+    hand-rolled pill as a thin bar with **invisible label text** (reported
+    2026-08-11, reverted the same day). A real `mj-button` is unaffected —
+    only these inline-block rows.
+
+    So: do NOT put `line-height` on `.cta-group` / `.cta-item`. Any future
+    attempt at the wrap spacing must be invisible to Word — a media-query
+    rule rather than an inline style — and must be proven in Outlook before
+    it ships, not just in a browser.
 
 ---
 
