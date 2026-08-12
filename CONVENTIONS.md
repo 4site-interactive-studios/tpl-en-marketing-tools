@@ -924,13 +924,16 @@ by all major clients; the trade-off was accepted deliberately.)
   template-level one (the 2026-08-10 shadowing rule; same precedent as
   email_title after its revert).
 - **The shipped CSS must contain zero child combinators** (measured
-  2026-08-11, PoC round-trip through a real EN account): EN's block
-  editor HTML-escapes text nodes on every open/save, so each `>` in the
-  head_styles CSS becomes `&gt;` the first time an editor opens the
-  block — the selector turns invalid and the rule silently dies in every
-  client. Import and send are clean; the editor alone corrupts. The rule
-  and the replacement selector idioms are portable and live in the
-  authoring guide §2d; the importer's guard is below under Validator.
+  2026-08-11): somewhere in EN's editing surfaces, `>` in CSS text gets
+  HTML-escaped to `&gt;` — a production send carried `.block&gt;table`
+  while the block's export was clean — and the escaped selector silently
+  dies in every client. The surface-matrix probe
+  (docs/en-editor-escape-probe.html) has so far CLEARED import, send,
+  the inliner, and a no-changes open/save in the block-library editor
+  (stored blocks byte-identical); the remaining suspects are the email
+  builder's raw-code box and content-modifying edits. The rule and the
+  replacement selector idioms are portable and live in the authoring
+  guide §2d; the importer's guard is below under Validator.
 
 ## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
@@ -994,8 +997,8 @@ Gmail-style snippets would show BOTH lines. Consequences:
   block ships — `<style>` contents in the block HTML, and `<style>`
   contents inside replacement values, which covers the Template Styles
   block's head_styles default — is scanned for child-combinator
-  selectors, and each one warns. EN's block editor escapes `>` in text
-  nodes on open/save, invalidating the selector (guide §2d); comments
+  selectors, and each one warns. EN escapes `>` in CSS text somewhere in
+  its editing surfaces, invalidating the selector (guide §2d); comments
   are stripped before scanning, so a `>` inside a CSS comment stays
   legal.
 - `data-*` contract warnings are whitelisted, never "fixed".

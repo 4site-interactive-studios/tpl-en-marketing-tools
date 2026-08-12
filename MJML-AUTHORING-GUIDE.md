@@ -183,21 +183,28 @@ MJML must interleave above it invert to white and cover the content
 area, and Outlook flips the white text dark regardless — two
 independent kills. Asset contrast remains the only defense here.
 
-### 2d. The block editor escapes `>` — never ship a child combinator
+### 2d. EN escapes `>` in shipped CSS — never author a child combinator
 
-EN's **block editor** HTML-escapes text nodes on every open/save: each
-`>` in CSS text becomes `&gt;` (tag syntax keeps its own `>`; only text
-content is encoded). An escaped selector is invalid CSS, and clients
-silently drop the rule. Measured 2026-08-11 by a full round-trip through
-a real EN account: **import is clean, send is clean — one visit to the
-block in EN's editor corrupts every child-combinator selector** in that
-block's CSS, including CSS held in an HTML-type Replacement (a Template
-Styles / head-CSS block).
+Somewhere in EN's editing surfaces, `>` in CSS text gets HTML-escaped to
+`&gt;` (tag syntax keeps its own `>`; only text content is encoded). An
+escaped selector is invalid CSS, and clients silently drop the rule. The
+corruption is real and measured — a production send carried
+`.block&gt;table` while the block's export was clean — but the exact
+surface is still being isolated (2026-08-11 surface-matrix probe,
+`docs/en-editor-escape-probe.html` in the canonical repo): import is
+clean, send is clean, EN's **inliner handles `>` correctly** (it inlined
+a top-level child-combinator rule properly at template save), and a
+no-changes open/save through the **block-library editor is
+non-destructive** (stored blocks byte-identical afterward — the editor
+merely DISPLAYS text HTML-encoded). Remaining suspects: the email
+builder's replacement raw-code box, and edit paths that actually modify
+content. Until the surface is pinned down, treat every editing surface as
+hostile to `>`.
 
 The failure signature is nasty because paired rules decouple: in a dark
 scheme authored as `.block p { color:#fff }` + `.block > table {
-background:#000 }`, the text rule survives the editor and the background
-rule dies — white-on-white text. Per-rule recovery also is not guaranteed
+background:#000 }`, the text rule survives and the background rule dies —
+white-on-white text. Per-rule recovery also is not guaranteed
 everywhere: treat one invalid selector as potentially poisoning the whole
 sheet in stricter engines.
 
@@ -230,8 +237,9 @@ element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
 `<a><h1>…</h1></a>`.
 
 The importer warns on any child combinator in a block's shipped CSS, and
-an EN-side bug report exists; until EN fixes the editor, treat this as a
-permanent authoring rule.
+an EN-side bug report is being prepared from the probe's observed
+results; until EN fixes the escaping, treat this as a permanent authoring
+rule.
 
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
@@ -577,10 +585,10 @@ each other up, and the report says so when they do.
    preheader from the per-email Preview Text setting (§2), and a
    template-baked one doubles the inbox snippet.
 6b. Confirm no child combinator in ANY CSS that ships to EN — head
-   styles, `<mj-style>`, or `<style>` inside block markup. EN's block
-   editor escapes `>` to `&gt;` on open/save and the rule silently dies
-   (§2d). Selectors extracted from the compiled `<style>` blocks must
-   contain zero `>`.
+   styles, `<mj-style>`, or `<style>` inside block markup. EN escapes
+   `>` to `&gt;` somewhere in its editing surfaces and the rule silently
+   dies (§2d). Selectors extracted from the compiled `<style>` blocks
+   must contain zero `>`.
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.
@@ -632,9 +640,10 @@ Non-negotiables while you work:
 - Any CSS that must survive EN's inliner untouched has to be nested inside
   a conditional media query. Bare @media screen does not work.
 - Any dark-mode rule that must beat an inlined base rule needs !important.
-- No CSS child combinator anywhere that ships to EN: the EN block editor
-  escapes `>` to `&gt;` on open/save and the rule silently dies. Use
-  classes, plain descendants, or the guide §2d attribute-selector idioms.
+- No CSS child combinator anywhere that ships to EN: EN escapes `>` to
+  `&gt;` somewhere in its editing surfaces and the rule silently dies.
+  Use classes, plain descendants, or the guide §2d attribute-selector
+  idioms.
 - An editable background image must bind ALL FOUR compiled carriers.
 
 When you finish, run the QA checklist in section 8 of the guide and report

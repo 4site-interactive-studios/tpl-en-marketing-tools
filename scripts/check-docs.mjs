@@ -312,11 +312,13 @@ for (const f of LOCAL_DOCS) {
 // ---------------------------------------------------------------------------
 // 11. No child combinator in any head-CSS selector (styles.css or an inline
 //     <mj-style>). The whole head lands in the Template Styles block's
-//     head_styles Replacement, and EN's block editor HTML-escapes `>` to
-//     `&gt;` in Replacement text on every open/save — the escaped selector
-//     is invalid CSS and the rule silently dies (guide §2). Proven by a
-//     round-trip PoC through the real EN account, 2026-08-11: import and
-//     send are clean; one open in the editor corrupts every `>` selector.
+//     head_styles Replacement, and somewhere in EN's editing surfaces `>`
+//     gets HTML-escaped to `&gt;` — the escaped selector is invalid CSS and
+//     the rule silently dies (guide §2d). Measured 2026-08-11: a production
+//     send carried the escaped form while its export was clean; the
+//     surface-matrix probe has cleared import, send, the inliner, and
+//     no-changes library-editor saves, so treat every editing surface as
+//     hostile to `>` until the culprit is pinned down.
 // ---------------------------------------------------------------------------
 {
   const cssSources = [['src/styles.css', css]];
@@ -331,7 +333,7 @@ for (const f of LOCAL_DOCS) {
     for (const m of stripped.matchAll(/([^{}]+)\{/g)) {
       const sel = m[1].trim();
       if (sel.includes('>')) {
-        warn(`${name} selector "${sel.replace(/\s+/g, ' ')}" uses a child combinator — EN's block editor escapes \`>\` in the head_styles Replacement and the rule silently dies (guide §2); use a class, table[align=center] (outer table), or td[style*=vertical-align] (column wrapper td) instead`);
+        warn(`${name} selector "${sel.replace(/\s+/g, ' ')}" uses a child combinator — EN escapes \`>\` in shipped CSS somewhere in its editing surfaces and the rule silently dies (guide §2d); use a class, table[align=center] (outer table), or td[style*=vertical-align] (column wrapper td) instead`);
       }
     }
   }
