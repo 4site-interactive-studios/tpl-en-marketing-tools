@@ -105,6 +105,32 @@ author CSS — it RESETS the background in CSS clients, overriding both
 the `bgcolor` and legacy `background=` attributes. See §4 for the
 carrier consequences.
 
+Three more findings, first measured 2026-08-11 with import/edit/send
+round-trips of a two-rule probe block and an A/B logo probe through a
+real account:
+
+- **`>` in CSS text gets HTML-escaped somewhere in EN's editing
+  surfaces** (`&gt;`; tag delimiters stay intact). Since `style` is a
+  raw-text element, entities are never decoded there: every
+  child-combinator selector becomes invalid CSS and is silently dropped
+  by the client. The classic casualty is a paired dark-mode rule —
+  `.block p { color: #fff }` survives while `.block > table {
+  background: #000 }` dies, leaving white text on a white panel. The
+  block editor DISPLAYS HTML-Replacement CSS escaped, but the
+  2026-08-12 surface-matrix rounds cleared open/save as
+  non-destructive; §2d carries the full reconciled account and the
+  authoring rule (**no child combinators in CSS that ships to EN**).
+- **EN splits comma-separated selector groups into individual rules**
+  (`.a, .b, .c { … }` → three rules). Harmless alone, but it means one
+  authored group can end up half-alive after the escaping above, and
+  sent CSS never diffs cleanly against authored CSS.
+- **The `bgcolor` ATTRIBUTE does not resist Outlook's dark-mode
+  inversion.** A panel colored via `bgcolor="#362229"` inverts to the
+  same pale pink as one colored via CSS `background-color` (measured
+  A/B, Outlook 2021 + M365 on Windows, dark mode). Attributes buy no
+  protection — light-ink transparent PNGs on dark panels need per-mode
+  asset variants or a baked-in background instead.
+
 ### 2a. The escape hatch
 
 **A conditional media query is EN's "do not touch" wrapper.** Anything
@@ -243,9 +269,15 @@ element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
 `<a><h1>…</h1></a>`.
 
 The importer warns on any child combinator in a block's shipped CSS, and
-an EN-side bug report is being prepared from the probe's observed
-results; until EN fixes the escaping, treat this as a permanent authoring
-rule.
+an EN-side bug report with a minimal PoC block lives at
+`docs/en-bug-html-replacement-escapes-css.md` in the canonical repo;
+until EN fixes the escaping, treat this as a permanent authoring rule.
+The most consistent reading of all measurements so far: the editor
+escapes the DISPLAYED value, an untouched save writes the original back,
+and the escape persists only when the field content is actually edited
+and resubmitted (or re-serialized by a visual mode) — which is why
+freshly imported blocks send clean and long-lived production blocks with
+edit history shipped `.block&gt;table`.
 
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
