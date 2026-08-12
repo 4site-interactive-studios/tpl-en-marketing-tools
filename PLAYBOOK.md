@@ -549,34 +549,34 @@ Client support, since dark mode is not uniformly addressable:
   unique repo-wide because every asset resolves to `<root>/<filename>`. The
   absolute-URL form is a build artifact (`<name>_live.html`, §2), never
   authored.
-- **`staff-carrie-besnette-hauser-signature_black.png` is deliberately
-  opaque** (flattened onto white 2026-08-12): every use sits on a `#ffffff`
-  section, so light-mode rendering is unchanged, but Outlook desktop dark —
-  which darkens the card while leaving images untouched — now shows a legible
-  white chip instead of black ink on a black card. Do not "restore" its
-  transparency; the `_white.png` twin still handles CSS dark mode via
-  `dark-only`.
+- **Contrast outlines are the standard for transparent text/lettering art**
+  (adopted 2026-08-12, superseding the brief signature flatten from earlier
+  the same day): every transparent PNG whose ink depends on its background —
+  the four wordmark variants, both signatures, both quote glyphs, both
+  Giving Tuesday badges, both `text-and-arrow` graphics, the podcast cover,
+  and the state outline — carries a rim in the opposite polarity (light ink →
+  `#362229` plum rim, dark ink → white rim), drawn from the image's own
+  alpha. The rim is invisible on the intended background and becomes the
+  contrast border when a client (Outlook desktop dark, guide §2c) inverts
+  the surface without touching the image. Mechanics that keep pairs safe:
+  the canvas is EXPANDED so the rim never clips at the artwork's edge, every
+  variant in a family grows by the same margin so light/dark twins keep
+  matching dimensions, and each `mj-image` `width` attribute was scaled by
+  the canvas-growth ratio so the artwork renders at its pre-outline size.
+  A new asset in one of these families must receive the same treatment and
+  the same margin; untouched originals live in `dist/assets/originals/`.
 
 ### Pending asset work (needs designed art — from the 2026-08-11 EoA rounds)
 
-Two defects are asset-shaped and cannot be fixed in markup; guide §2c is the
-governing rule (Outlook desktop dark inverts surface colors but never touches
-images, and the `dark-only` swap cannot reach Outlook, so "asset contrast is
-the only defense"):
+The self-contrasting wordmark need was RESOLVED 2026-08-12 by the contrast
+outlines above. Still open:
 
-1. **Self-contrasting wordmark.** Dark and maroon heroes/footers send Outlook
-   the light-green/white-ink wordmark as their light copy; when Outlook dark
-   flips the plum/maroon/black surface to light, the wordmark disappears.
-   Needs a knockout/outline variant that reads on both light and dark ground.
-   Wire-in once it exists: either swap the `light-only` src on dark-surface
-   blocks, or serve Outlook alone the new asset via the guide-§2c
-   `<!--[if mso]>` hand-picked-asset conditional (documented, not yet used
-   anywhere in `src/`).
-2. **Footer social icons on a baked chip.** The four `icon-*` social PNGs are
-   white ink on transparency over the Footer's `#000000` section; Outlook
-   dark inverts the section to white and the icons vanish. Needs re-cuts on a
-   baked dark chip (e.g. `#362229` rounded square) that survives either
-   surface.
+1. **Footer social icons.** The four `icon-*` social PNGs are white ink on
+   transparency over the Footer's `#000000` section; Outlook dark inverts
+   the section to white and the icons vanish. They render through
+   `mj-social`, not `mj-image`, so they were not part of the outline pass —
+   the prescribed fix is the same contrast-outline treatment (plum rim),
+   applied when these are next re-cut.
 
 One further art call, lower stakes: `photo-person_overlay.jpg`'s baked
 overlay fades to `#000000` abruptly (~10% of its height). The hero's fallback
