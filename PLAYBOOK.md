@@ -564,7 +564,11 @@ Client support, since dark mode is not uniformly addressable:
   matching dimensions, and each `mj-image` `width` attribute was scaled by
   the canvas-growth ratio so the artwork renders at its pre-outline size.
   A new asset in one of these families must receive the same treatment and
-  the same margin; untouched originals live in `dist/assets/originals/`.
+  the same margin; untouched originals live in `dist/assets/originals/`, and
+  `scripts/outline-assets.py` (Pillow) regenerates every treated file from
+  that archive byte-identically — it owns the exact parameters (rim = 4.5%
+  of the original's short side, odd, feathered 0.6; family margin = max
+  family rim // 2 + 2) and prints the width-rescale ratios.
 
 ### Pending asset work (needs designed art — from the 2026-08-11 EoA rounds)
 
