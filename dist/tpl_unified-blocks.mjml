@@ -313,7 +313,7 @@
      -->
     <mj-section
         css-class="overlay-image-block block"
-        background-color="#362229" background-url="assets/photo-person_overlay.jpg"
+        background-color="#000000" background-url="assets/photo-person_overlay.jpg"
         background-size="cover"
         background-repeat="no-repeat"
         background-position="center bottom" padding="350px 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size

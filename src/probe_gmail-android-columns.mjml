@@ -1,0 +1,216 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — Gmail Android two-column shrink (2026-08-12).
+      Not a catalog page. Send dist/probe_gmail-android-columns_live.html
+      through EN to EoA and read the android gmailapp renders (light + dark,
+      plus a non-Gmail/IMAP account if the test set has one):
+
+        A CONTROL      — Story Card (image left) exactly as shipped (240/296 px columns).
+                         Expected to reproduce the shrunken stacked columns.
+        B PERCENT      — same card with 43% / 53% columns. If A shrinks and B
+                         fills the viewport, switch the catalog to percent columns.
+        C GROUP        — same px card inside mj-group (columns never stack;
+                         widths become inline percentages). Side-by-side at
+                         every width is the accepted trade-off if it wins.
+        D MIN-WIDTH    — control plus a top-level .probe-minw-* rule EN's
+                         inliner will inline onto the column divs. Tests
+                         whether an inlined min-width alone holds the width.
+
+      Verdict rule: pick the first of B/C/D that renders correctly in the
+      failing client AND still matches A everywhere A was already correct.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE — Gmail Android columns</mj-title>
+
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-button width="auto"
+        css-class="button"
+        font-size="18px"
+        font-weight="700"
+        font-family="Tahoma, sans-serif"
+        line-height="25px"
+        border-radius="100px"
+        inner-padding="12px 16px"
+        letter-spacing="2px"
+        color="#ffffff"
+        background-color="#006837"
+      />
+      <mj-image padding="0" />
+      <mj-class
+        name="caption"
+        font-size="10px"
+        line-height="16px"
+        padding="8px 0 0 0"
+      />
+    </mj-attributes>
+
+    <mj-style>
+      .probe-minw-240 { min-width: 240px; }
+      .probe-minw-296 { min-width: 296px; }
+
+      @media (max-width: 599px) {
+        .caption {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+      }
+    </mj-style>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+  <mj-body css-class="email-body" background-color="#ffffff">
+
+    <!-- START: Probe Label A -->
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">A — CONTROL (240/296 PX)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label A -->
+
+    <!-- START: Probe A Control -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">A control card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe A Control -->
+
+    <!-- START: Probe Label B -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">B — PERCENT COLUMNS (45/53)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label B -->
+
+    <!-- START: Probe B Percent -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="45%" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="53%" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">B percent card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe B Percent -->
+
+    <!-- START: Probe Label C -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">C — MJ-GROUP (NO STACKING)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label C -->
+
+    <!-- START: Probe C Group -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-group>
+        <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+          <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" css-class="two-col-image light-only" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" css-class="two-col-image dark-only" />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-text align="right" mj-class="caption" padding="0">
+            <span>Photograph by Photographer</span>
+          </mj-text>
+        </mj-column>
+        <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+          <mj-text padding="0 0 16px">
+            <h3 style="color:#362229;">C group card heading.</h3>
+            <p style="font-size:16px;">
+              Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+              vitae quisque commodo volutpat ut. Cursus ...
+            </p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe C Group -->
+
+    <!-- START: Probe Label D -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">D — CONTROL + INLINED MIN-WIDTH</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label D -->
+
+    <!-- START: Probe D MinWidth -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column probe-minw-240" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column probe-minw-296" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">D min-width card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe D MinWidth -->
+
+  </mj-body>
+</mjml>

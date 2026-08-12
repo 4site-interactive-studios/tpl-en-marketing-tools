@@ -549,6 +549,39 @@ Client support, since dark mode is not uniformly addressable:
   unique repo-wide because every asset resolves to `<root>/<filename>`. The
   absolute-URL form is a build artifact (`<name>_live.html`, §2), never
   authored.
+- **`staff-carrie-besnette-hauser-signature_black.png` is deliberately
+  opaque** (flattened onto white 2026-08-12): every use sits on a `#ffffff`
+  section, so light-mode rendering is unchanged, but Outlook desktop dark —
+  which darkens the card while leaving images untouched — now shows a legible
+  white chip instead of black ink on a black card. Do not "restore" its
+  transparency; the `_white.png` twin still handles CSS dark mode via
+  `dark-only`.
+
+### Pending asset work (needs designed art — from the 2026-08-11 EoA rounds)
+
+Two defects are asset-shaped and cannot be fixed in markup; guide §2c is the
+governing rule (Outlook desktop dark inverts surface colors but never touches
+images, and the `dark-only` swap cannot reach Outlook, so "asset contrast is
+the only defense"):
+
+1. **Self-contrasting wordmark.** Dark and maroon heroes/footers send Outlook
+   the light-green/white-ink wordmark as their light copy; when Outlook dark
+   flips the plum/maroon/black surface to light, the wordmark disappears.
+   Needs a knockout/outline variant that reads on both light and dark ground.
+   Wire-in once it exists: either swap the `light-only` src on dark-surface
+   blocks, or serve Outlook alone the new asset via the guide-§2c
+   `<!--[if mso]>` hand-picked-asset conditional (documented, not yet used
+   anywhere in `src/`).
+2. **Footer social icons on a baked chip.** The four `icon-*` social PNGs are
+   white ink on transparency over the Footer's `#000000` section; Outlook
+   dark inverts the section to white and the icons vanish. Needs re-cuts on a
+   baked dark chip (e.g. `#362229` rounded square) that survives either
+   surface.
+
+One further art call, lower stakes: `photo-person_overlay.jpg`'s baked
+overlay fades to `#000000` abruptly (~10% of its height). The hero's fallback
+color now matches the baked black (2026-08-12), so uncovered area blends, but
+only a re-graded fade can soften the photo-to-black transition itself.
 
 ## 9. Verification workflow (per change)
 
