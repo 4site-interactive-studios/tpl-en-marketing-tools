@@ -262,7 +262,21 @@ targets, quote-free so nothing in them can be escaped:
 Caveat: attribute selectors are inert in Gmail. That is acceptable for
 dark-mode branches (Gmail exposes no dark hook anyway, §2c) and for
 cosmetic mobile insets; anything Gmail-critical must stay class-based or
-become a plain descendant selector. And a descendant selector reaches
+become a plain descendant selector.
+
+**These two constraints together rule out the obvious fix for a
+Gmail-only layout bug**, so expect to work harder there. A worked example
+(2026-08-12): an external reviewer proposed changing
+`.first-column, .second-column { margin-bottom: 20px !important }` to
+`.first-column > table, …` on the grounds that some clients ignore margin
+on a `div` — correct diagnosis, unusable form. The child combinator is
+exactly what EN escapes; the attribute-selector stand-in is inert in
+Gmail, which is the failing client; and a bare `.first-column table`
+descendant would also hit every nested image and button table in that
+column. The escape-safe options are to scope the descendant to a LEAF
+component whose only table is its own (the `.two-col-image table`
+precedent above), or to change the structure upstream so a class lands
+where the rule needs it. Verify by render either way. And a descendant selector reaches
 INTO wrappers, so pacing rules like `.wysiwyg div *:first-child
 { margin-top: 0 }` require that authored content never nest a block
 element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
@@ -364,6 +378,27 @@ Two companion rules for background sections, both Outlook:
 - **Always author a real `background-color` alongside `background-url`.**
   Without one, MJML omits `color=` on the `v:fill` and Outlook shows black
   or transparent whenever the image fails to load.
+
+  **Under investigation (2026-08-12): that same pairing may be what blanks
+  the image in the Word engine.** Every background section in the v4
+  catalog renders as a flat slab of exactly its `background-color` in
+  `outlook2021_win11_*`, while MT's NGS reference — same MJML technique,
+  same `v:rect`/`v:textbox` shape — renders its photo. Checked against the
+  delivered HTML of both: not delivery (all four carriers arrive with
+  absolute URLs), not the image (all four hero photos are baseline JPEG),
+  and not block-specific (the small "Hello World" band fails too, so we
+  have no working counter-example of our own). The single markup
+  difference is that we set `background-color` AND `background-url`, which
+  makes MJML emit `bgcolor=` on the Outlook conditional table and `color=`
+  on the `v:fill`; NGS sets neither.
+
+  Do not act on this yet — the two rules pull against each other, and
+  dropping the colour outright would trade a blank Outlook image for a
+  blank Outlook fallback. `src/probe_outlook-background-image.mjml` (TPL)
+  sends all three shapes at once: current, NGS-style url-only, and the
+  colour moved out to an `mj-wrapper` behind the section, which is the only
+  shape that could satisfy both rules. Settle it by render, then rewrite
+  this bullet with the result.
 - **Outlook cannot honor horizontal section padding inside a `v:rect`.**
   Give background sections vertical-only padding and fake the gutters with
   an `mj-group` of narrow spacer columns around the content column.
