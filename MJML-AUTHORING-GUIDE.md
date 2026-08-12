@@ -42,10 +42,15 @@ Two consequences shape everything else:
 
 ## 2. EN's CSS inliner: measured behavior
 
-EN runs its own CSS inliner on every template save, and **it cannot be
+EN runs its own CSS inliner on everything it sends, and **it cannot be
 turned off**. This is the single most surprising part of the platform, so
 know it cold. Measured 2026-08-07 with a 14-probe file through the template
-pipeline.
+pipeline. Timing refinement (measured 2026-08-11, escape-probe round 2t):
+the inliner is a SEND/RENDER-TIME transform — the STORED template keeps
+your source verbatim (a top-level rule was still raw in the exported
+template while the sent copy arrived inlined), so exports round-trip your
+source and every verdict below describes what reaches the client, not
+what EN stores.
 
 | Construct | What EN does | Consequence |
 | :---- | :---- | :---- |
@@ -193,13 +198,14 @@ corruption is real and measured — a production send carried
 surface is still being isolated (2026-08-11 surface-matrix probe,
 `docs/en-editor-escape-probe.html` in the canonical repo): import is
 clean, send is clean, EN's **inliner handles `>` correctly** (it inlined
-a top-level child-combinator rule properly at template save), and a
-no-changes open/save through the **block-library editor is
-non-destructive** (stored blocks byte-identical afterward — the editor
-merely DISPLAYS text HTML-encoded). Remaining suspects: the email
-builder's replacement raw-code box, and edit paths that actually modify
-content. Until the surface is pinned down, treat every editing surface as
-hostile to `>`.
+a top-level child-combinator rule properly at send time), and open/save
+round-trips through the **block-library editor, the template editor, and
+the email builder's replacement raw-code box are all non-destructive**
+(stored artifacts byte-identical afterward — the block editor merely
+DISPLAYS text HTML-encoded). Remaining suspects: WYSIWYG/visual edit
+modes that re-serialize the DOM, and legacy EN artifacts with unknown
+edit history. Until the surface is pinned down, treat every editing
+surface as hostile to `>`.
 
 The failure signature is nasty because paired rules decouple: in a dark
 scheme authored as `.block p { color:#fff }` + `.block > table {

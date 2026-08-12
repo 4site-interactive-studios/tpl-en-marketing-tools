@@ -929,11 +929,12 @@ by all major clients; the trade-off was accepted deliberately.)
   while the block's export was clean — and the escaped selector silently
   dies in every client. The surface-matrix probe
   (docs/en-editor-escape-probe.html) has so far CLEARED import, send,
-  the inliner, and a no-changes open/save in the block-library editor
-  (stored blocks byte-identical); the remaining suspects are the email
-  builder's raw-code box and content-modifying edits. The rule and the
-  replacement selector idioms are portable and live in the authoring
-  guide §2d; the importer's guard is below under Validator.
+  the inliner, block-library open/save, the template editor, and the
+  email builder's raw-code box (stored artifacts byte-identical after
+  each); the remaining suspects are WYSIWYG/visual edit modes and the
+  legacy pre-2026-08-10 EN artifacts. The rule and the replacement
+  selector idioms are portable and live in the authoring guide §2d; the
+  importer's guard is below under Validator.
 
 ## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
