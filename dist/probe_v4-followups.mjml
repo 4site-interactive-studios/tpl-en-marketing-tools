@@ -1,0 +1,330 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — Outlook background-image void (2026-08-12).
+      Not a catalog page. Send dist/probe_outlook-background-image_live.html
+      through EN to EoA and read outlook2021_win11_* and m365_w11_* first.
+
+      THE FINDING THIS TESTS
+      Every background-image section in the v4 catalog renders as a flat
+      colour slab in the Word engine, while MT's NGS reference renders its
+      photo. Verified 2026-08-12 against the delivered HTML of both:
+
+        * not delivery  — our v:rect / v:fill / background= / url() all
+                          arrive with absolute URLs
+        * not the image — all four hero photos are baseline JPEG (SOF0)
+        * not the block — the "Hello World" band fails too, so there is no
+                          working counter-example in our own catalog
+
+      The one markup difference: our section sets background-color AND
+      background-url; NGS sets only background-url. That makes MJML emit
+      bgcolor="…" on the Outlook conditional table and color="…" on the
+      v:fill. NGS emits neither, and the slab we see is exactly that colour
+      — so the fallback appears to be beating the image in Word.
+
+      VARIANTS (identical content, only the fallback plumbing differs)
+
+        A CONTROL   background-color + background-url, exactly as shipped.
+                    Expected: flat maroon slab, no photo.
+        B NGS SHAPE background-url only. Expected: the photo renders.
+                    Cost if adopted bare: an image-blocked Outlook shows
+                    white, with no brand fallback at all.
+        C WRAPPER   background-url only on the section, the fallback colour
+                    moved OUT to an mj-wrapper behind it. Expected: the
+                    photo renders AND a blocked image still falls back to
+                    brand colour, because the wrapper paints behind the
+                    section rather than inside its VML rect.
+
+      VERDICT RULE
+      Prefer C if it shows the photo — it is the only variant that keeps a
+      fallback. Fall back to B if C also slabs (which would mean the
+      wrapper's own bgcolor reaches the rect). If A renders the photo too,
+      the diagnosis is wrong and nothing should be changed on this evidence.
+
+      Check every other client as well: whichever variant wins must not
+      regress Apple Mail / iOS / Gmail, where A already renders correctly.
+    -->
+    <!--
+      COMBINED PROBE (2026-08-13) — two independent questions in one send,
+      because they fit: measured 369px + 1960px tall at 375px wide, against
+      EoA's 7500px screenshot cap, and the two heads share no colliding
+      selectors (the columns probe's only extras are .probe-minw-*, which
+      apply solely to elements carrying them).
+
+      Bands are prefixed so the two lettered series cannot be confused:
+        BG  A/B/C   — Outlook background-image void  (read outlook2021_*, m365_*)
+        COL A/B/C/D — Gmail Android column shrink    (read android*_gmailapp_*)
+
+      Each series keeps its own verdict rule, stated in the source probes
+      src/probe_outlook-background-image.mjml and
+      src/probe_gmail-android-columns.mjml. Those remain canonical; this file
+      exists only to spend one EoA run instead of two.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE — Outlook background + Gmail columns</mj-title>
+
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-image padding="0" />
+    </mj-attributes>
+
+    <mj-style>
+      .probe-minw-240 { min-width: 240px; }
+      .probe-minw-296 { min-width: 296px; }
+
+      @media (max-width: 599px) {
+        .caption {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+      }
+    </mj-style>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+
+  <mj-body css-class="email-body" background-color="#ffffff">
+
+
+    <!-- START: Probe Label A -->
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG A — CONTROL (COLOR + URL)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label A -->
+
+    <!-- START: Probe A Control -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="16px 0 16px"
+    >
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px" vertical-align="middle">
+          <mj-text color="#ffffff" align="center" padding="0 32px 8px">A — expect a FLAT SLAB in Outlook</mj-text>
+        </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe A Control -->
+
+    <!-- START: Probe Label B -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG B — URL ONLY (NGS SHAPE)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label B -->
+
+    <!-- START: Probe B Url Only -->
+    <mj-section data-fully-exclude
+      css-class="image-block block"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="16px 0 16px"
+    >
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px" vertical-align="middle">
+          <mj-text color="#ffffff" align="center" padding="0 32px 8px">B — expect the PHOTO in Outlook</mj-text>
+        </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe B Url Only -->
+
+    <!-- START: Probe Label C -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG C — FALLBACK ON A WRAPPER</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label C -->
+
+    <!-- START: Probe C Wrapper Fallback -->
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section
+        css-class="image-block block"
+        background-url="assets/photo-river.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center center" padding="16px 0 16px"
+      >
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-text color="#ffffff" align="center" padding="0 32px 8px">C — expect the PHOTO, with a brand fallback behind it</mj-text>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe C Wrapper Fallback -->
+
+  
+
+
+    <!-- START: Probe Label A -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL A — CONTROL (240/296 PX)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label A -->
+
+    <!-- START: Probe A Control -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">A control card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe A Control -->
+
+    <!-- START: Probe Label B -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL B — PERCENT COLUMNS (45/53)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label B -->
+
+    <!-- START: Probe B Percent -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="45%" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="53%" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">B percent card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe B Percent -->
+
+    <!-- START: Probe Label C -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL C — MJ-GROUP (NO STACKING)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label C -->
+
+    <!-- START: Probe C Group -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-group>
+        <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+          <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" css-class="two-col-image light-only" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" css-class="two-col-image dark-only" />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-text align="right" mj-class="caption" padding="0">
+            <span>Photograph by Photographer</span>
+          </mj-text>
+        </mj-column>
+        <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+          <mj-text padding="0 0 16px">
+            <h3 style="color:#362229;">C group card heading.</h3>
+            <p style="font-size:16px;">
+              Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+              vitae quisque commodo volutpat ut. Cursus ...
+            </p>
+          </mj-text>
+          <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe C Group -->
+
+    <!-- START: Probe Label D -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL D — CONTROL + INLINED MIN-WIDTH</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label D -->
+
+    <!-- START: Probe D MinWidth -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column probe-minw-240" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column probe-minw-296" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 16px">
+          <h3 style="color:#362229;">D min-width card heading.</h3>
+          <p style="font-size:16px;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
+            vitae quisque commodo volutpat ut. Cursus ...
+          </p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0">Read more</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe D MinWidth -->
+
+  </mj-body>
+</mjml>

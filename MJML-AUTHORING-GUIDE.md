@@ -375,30 +375,42 @@ logical image) and to any value duplicated into an MSO conditional.
 
 Two companion rules for background sections, both Outlook:
 
-- **Always author a real `background-color` alongside `background-url`.**
-  Without one, MJML omits `color=` on the `v:fill` and Outlook shows black
-  or transparent whenever the image fails to load.
+- **Never put `background-color` on a section that also has
+  `background-url` — put it on an `mj-wrapper` behind it instead.**
+  MJML copies a section's background colour onto the Outlook `v:fill` as
+  `color=`, and the Word engine paints that colour INSTEAD of the photo, so
+  every background hero renders as a flat slab. Measured 2026-08-13 (EoA test
+  aBPD6k1l, three variants of the same band):
 
-  **Under investigation (2026-08-12): that same pairing may be what blanks
-  the image in the Word engine.** Every background section in the v4
-  catalog renders as a flat slab of exactly its `background-color` in
-  `outlook2021_win11_*`, while MT's NGS reference — same MJML technique,
-  same `v:rect`/`v:textbox` shape — renders its photo. Checked against the
-  delivered HTML of both: not delivery (all four carriers arrive with
-  absolute URLs), not the image (all four hero photos are baseline JPEG),
-  and not block-specific (the small "Hello World" band fails too, so we
-  have no working counter-example of our own). The single markup
-  difference is that we set `background-color` AND `background-url`, which
-  makes MJML emit `bgcolor=` on the Outlook conditional table and `color=`
-  on the `v:fill`; NGS sets neither.
+  | shape | Outlook 2021 Win | M365 Win | M365 **Mac** | Apple/iOS/Gmail |
+  | :---- | :---- | :---- | :---- | :---- |
+  | colour + url on the section | **slab** | **slab** | photo | photo |
+  | url only | photo | photo | photo | photo |
+  | url on section, colour on a wrapper | photo | photo | photo | photo |
 
-  Do not act on this yet — the two rules pull against each other, and
-  dropping the colour outright would trade a blank Outlook image for a
-  blank Outlook fallback. `src/probe_outlook-background-image.mjml` (TPL)
-  sends all three shapes at once: current, NGS-style url-only, and the
-  colour moved out to an `mj-wrapper` behind the section, which is the only
-  shape that could satisfy both rules. Settle it by render, then rewrite
-  this bullet with the result.
+  So this is Word-engine-specific, not "Outlook" — M365 on Mac renders the
+  old shape fine, which is why the failure looked inconsistent. In dark
+  mode the slab is worse than useless: Outlook inverts the maroon to pink.
+  Dropping the colour outright would fix the photo but leave an
+  image-blocked client with no brand fallback, hence the wrapper — it
+  paints BEHIND the section, so it never reaches the VML rect:
+
+```xml
+<mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+  <mj-section background-url="assets/photo.jpg" background-size="cover"
+              background-repeat="no-repeat" background-position="center center"
+              padding="16px 0">
+    …
+  </mj-section>
+</mj-wrapper>
+```
+
+  Two importer consequences to expect, both harmless but visible: the
+  colour field is now named **Wrapper** Background Color (merge tag
+  `wrapper_background_color`, not `block_background_color`), and the
+  wrapper contributes its own four padding fields. Re-import rather than
+  hand-editing blocks already in EN.
+
 - **Outlook cannot honor horizontal section padding inside a `v:rect`.**
   Give background sections vertical-only padding and fake the gutters with
   an `mj-group` of narrow spacer columns around the content column.
