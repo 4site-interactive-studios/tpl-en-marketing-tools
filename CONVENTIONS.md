@@ -385,6 +385,58 @@ documented trade-offs, not new discoveries: the `.inset-gutter` /
 `.two-col-column` mobile `!important` pinning and grow-direction asymmetry
 (see "Known but NOT suppressed" above).
 
+## Dark-Mode Image Audit — every light/dark image pair, ink from pixels
+
+The `Dark Audit` header button runs the dark-mode legibility audit for any
+imported project. It answers three questions per block: which images swap
+for dark mode (and which merely pretend to), whether each asset's ink can
+survive a ground of the opposite polarity, and which combinations deserve
+an eyeball in real renders. Implementation: `src/core/darkModeAudit.ts`
+(enumeration + classification + flags — pure, vitest-covered against a
+scripted fake pixel reader), `src/components/darkModeAuditPixels.ts` (the
+browser pixel reader), `src/components/DarkModeImageAuditPanel.tsx` (the
+tile table), `src/core/darkModeAuditReport.ts` (the downloadable markdown
+work order).
+
+Mechanics, in the order they matter:
+
+- **Enumeration substitutes the whole block html BEFORE tokenizing.** Most
+  images never exist as literal `<img>` tags in the canonical string — the
+  display-toggle pattern stores entire image fragments inside Select
+  defaults, and srcs live in Image/ImageURL defaults. Swap roles are found
+  by climbing ancestors from each `<img>` (compiled MJML puts `css-class`
+  on the wrapper table, never the img); adjacent light/dark twins pair
+  WITHOUT requiring src equality, mirroring the importer's own
+  `mergeSwapPairs`. A pair pointing at one file is reported as
+  `same-src-pair` — scaffolding that exposes the Dark Mode Image URL field
+  but ships no visible swap. This is html-based on purpose: EN imports
+  carry no `mjmlSource`, and the audit must work for them too.
+- **Four renditions per pair**: the light and dark image, each on a white
+  tile and a dark tile. The dark tile defaults to the darkest surface the
+  template itself authors (background replacement defaults, background
+  carriers in the html, the body background — minimum luma, `#111111`
+  fallback) and is overridable in the panel. Tiles are plain `<img>`
+  elements — image DISPLAY is CORS-exempt, so they render off any host.
+- **Ink classification** runs on pixels (Rec.601 luma, 0–255): >5%
+  transparency makes an asset transparent-ink; among its opaque pixels a
+  >50% majority above luma 190 is `light` ink, below 80 is `dark`;
+  **≥15% of BOTH polarities is `self-contrast`** — the contrast-outline
+  signature (a rim in the opposite polarity of the ink), checked before
+  the majorities so outlined art never re-flags; the rest are `colored`
+  or `opaque`, which carry their own contrast. Pixel reads require a
+  CORS-clean fetch, which only the project's Source URL provides (GitHub
+  raw serves CORS headers; the asset CDN measurably does not — see the
+  asset-currency section below). Without one, ink reports an explicit
+  `unknown` with the fix named — never a silent wrong answer.
+- **Flags are concerns, never verdicts**: `bg-dependent-ink` (transparent
+  ink whose polarity matches what its authored surface inverts TO, with no
+  distinct dark artwork — the strongest signal, per the measured guide-§2c
+  failure model: Outlook desktop dark inverts surfaces, never images),
+  `dark-cutout-on-dark`, `white-chip-on-dark`, and informational
+  `orphan-swap-class` / `same-src-pair` / `pixels-unreadable`. The
+  markdown report is a work order for an agent in the template repo,
+  pointing at the contrast-outline recipe as the proven remedy.
+
 ## Viewport-scoped controls — codified audit truths
 
 The 2026-08-09 audit round on the unified catalog (458 Selects, two
