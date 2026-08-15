@@ -394,7 +394,9 @@ one-selector edit:
 Body copy holds its 29 CSS inset either way. Applied to the seven blocks
 that pair a `fluid-on-mobile` image with two or more columns.
 
-The importer warns on any child combinator in a block's shipped CSS, and
+The importer warns on any child combinator in a block's shipped CSS —
+both in a `<style>` element and in the whole value of a CSS-type field,
+so head styles are covered wherever they ride — and
 an EN-side bug report with a minimal PoC block lives at
 `docs/en-bug-html-replacement-escapes-css.md` in the canonical repo;
 until EN fixes the escaping, treat this as a permanent authoring rule.

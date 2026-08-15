@@ -80,8 +80,10 @@ Non-negotiables while you work:
   ignore the grid. Change the en-tools-config head declaration
   deliberately, in every src/*.mjml that declares one, in the same
   commit.
-- EN runs a CSS inliner on every template save and it cannot be turned
-  off. Any CSS that must survive it untouched has to be nested inside a
+- EN runs a CSS inliner on every SEND and it cannot be turned off. It is
+  a send/render-time transform: the stored template keeps your source
+  verbatim, so an export proves nothing — verify against the delivered
+  HTML. Any CSS that must survive untouched has to be nested inside a
   CONDITIONAL media query (bare @media screen does not work). [data-ogsc]
   rules at top level are deleted outright.
 - Any rule inside a media query that must beat an inlined base rule needs
@@ -931,8 +933,20 @@ trade-off was accepted deliberately.)
 - A `<style media="…">` keeps its condition by being re-wrapped as
   `@media … { … }` on the way out. Dropping the tag without that would
   silently make a conditional sheet unconditional — MJML emits exactly
-  one such element (`<style media="screen and (min-width:480px)">`,
-  carrying the `.moz-text-html` desktop widths).
+  one such element, carrying the `.moz-text-html` desktop widths. Its
+  condition tracks `<mj-breakpoint>`, so it reads
+  `screen and (min-width:600px)` throughout this catalog and
+  `min-width:480px` only in a source that leaves MJML's default alone.
+- **A sheet containing `@import` is left behind whole**, in the shell.
+  `@import` must precede every style rule in its stylesheet, and
+  extraction CONCATENATES sheets — MJML emits its reset sheet first and
+  `mj-style` last, so a merged `@import` would land mid-sheet and be
+  discarded by every parser. Keeping the element intact keeps the
+  `@import` first inside its own sheet (2026-08-15). Idiomatic MJML
+  never trips this: `mj-font`'s `@import` already rides a
+  downlevel-revealed wrapper, which stays behind for its own reason. It
+  bites only a hand-written `@import` in `<mj-style>` / `<mj-include
+  type="css">` — which is therefore not per-email editable.
 - **The block's content is a builder placeholder plus ONE CSS-type
   replacement** (2026-08-11, user-decided — supersedes the CSS-derived
   theme Selects that briefly lived here; the type changed HTML → CSS on
@@ -1012,10 +1026,27 @@ trade-off was accepted deliberately.)
   two: `isSpacerOnlyHtml` (src/core/blocks.ts) requires at least one
   mj-spacer div (`height` + `line-height` in its inline style) and
   nothing in the block that can put ink on the page — no image, link,
-  rule, `background:url()`, or text beyond the hairspace the spacer
-  itself carries. Unlike RAW HTML, the Spacer is a real catalog block,
-  so the missing-thumbnail probe and the ZIP filename already cover it
-  through the normal base-name path.
+  rule, visible ground or border, Outlook-only art inside a conditional
+  comment, or text beyond the hairspace the spacer itself carries.
+  Unlike RAW HTML, the Spacer is a real catalog block, so the
+  missing-thumbnail probe and the ZIP filename already cover it through
+  the normal base-name path.
+- **The detector errs toward REJECTION, deliberately.** A false negative
+  costs a real render (correct, merely unstyled); a false positive ships
+  a card labelled "SPACER" for a block that is not one. The rule that
+  forced this: **a coloured ground is ink.** The Tri-color Divider is
+  three 4px `mj-spacer` columns whose only content is
+  `container-background-color`, so with an image-only ground test it
+  read as blank space and shipped the Spacer card under
+  `thumbnail-divider-tri-color.png` (caught by audit, 2026-08-15). The
+  ground test must NOT be a blanket one, though: white, `transparent`,
+  and an unresolved `{replacement~…}` all count as *not* ink, because
+  the genuine Spacer's own `<td>` carries
+  `background:{replacement~spacer_background_color}` after generation
+  and `#ffffff` before it. Also invisible without explicit handling: the
+  tokenizer emits an MSO conditional as ONE comment token, so `walk()`
+  never enters it and VML/`mso`-only imagery has to be matched in the
+  comment text.
 - The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (now
   including `head_styles`) even though only `background_color` and
   `head_styles` are minted today — content blocks keep reserving the
@@ -1088,13 +1119,18 @@ Gmail-style snippets would show BOTH lines. Consequences:
   bottom-only conversion; overlay/background-image insets keep theirs until
   converted or explicitly exempted.
 - Editor-safe CSS guard (`validateEditorSafeCss`): every CSS payload a
-  block ships — `<style>` contents in the block HTML, and `<style>`
-  contents inside replacement values, which covers the Template Styles
-  block's head_styles default — is scanned for child-combinator
-  selectors, and each one warns. EN escapes `>` in CSS text somewhere in
-  its editing surfaces, invalidating the selector (guide §2d); comments
-  are stripped before scanning, so a `>` inside a CSS comment stays
-  legal.
+  block ships is scanned for child-combinator selectors, and each one
+  warns. Two carriers, because a Replacement can hold CSS either way:
+  `<style>` contents (in the block HTML and inside replacement values),
+  and the WHOLE value of a **CSS-type** replacement, which is bare rules
+  with no `<style>` to unwrap. The second branch is what covers the
+  Template Styles block's `head_styles` field — the largest CSS payload
+  the importer emits. It was added 2026-08-15 with the CSS Editor
+  switch: the guard had gone blind to exactly the payload it exists for,
+  because the head CSS stopped being wrapped in a `<style>` the regex
+  could find. EN escapes `>` in CSS text when a code field is edited and
+  resubmitted, invalidating the selector (guide §2d); comments are
+  stripped before scanning, so a `>` inside a CSS comment stays legal.
 - `data-*` contract warnings are whitelisted, never "fixed".
 
 ## Import pipeline decisions
@@ -1420,7 +1456,9 @@ verified byte-identical before and after.
 - **`[data-ogsc]` at TOP LEVEL does not survive.** `src/styles.css` carries
   13 such rule blocks (lines ~212–297, the deliberate Outlook.com dark
   branch including its `.dark-only`/`.light-only` pair). At top level every
-  one is removed on template save. **Wrapped upstream 2026-08-07**
+  one is removed at send time — the exported template still shows the raw
+  rule, so this can only be verified against delivered HTML.
+  **Wrapped upstream 2026-08-07**
   (`src/styles.css:220`, `@media only screen and (max-width: 9999px)`) so
   the whole branch now survives; do not unwrap it.
 
