@@ -116,10 +116,10 @@ real account:
   by the client. The classic casualty is a paired dark-mode rule —
   `.block p { color: #fff }` survives while `.block > table {
   background: #000 }` dies, leaving white text on a white panel. The
-  block editor DISPLAYS HTML-Replacement CSS escaped, but the
-  2026-08-12 surface-matrix rounds cleared open/save as
-  non-destructive; §2d carries the full reconciled account and the
-  authoring rule (**no child combinators in CSS that ships to EN**).
+  trigger is now pinned down (2026-08-13, four sends): **editing** the
+  field persists the escape; opening and saving it untouched does not.
+  §2d carries the full reconciled account and the authoring rule (**no
+  child combinators in CSS that ships to EN**).
 - **EN splits comma-separated selector groups into individual rules**
   (`.a, .b, .c { … }` → three rules). Harmless alone, but it means one
   authored group can end up half-alive after the escaping above, and
@@ -235,22 +235,52 @@ the artwork survive the inversion.**
 
 ### 2d. EN escapes `>` in shipped CSS — never author a child combinator
 
-Somewhere in EN's editing surfaces, `>` in CSS text gets HTML-escaped to
-`&gt;` (tag syntax keeps its own `>`; only text content is encoded). An
-escaped selector is invalid CSS, and clients silently drop the rule. The
-corruption is real and measured — a production send carried
-`.block&gt;table` while the block's export was clean — but the exact
-surface is still being isolated (2026-08-11 surface-matrix probe,
-`docs/en-editor-escape-probe.html` in the canonical repo): import is
-clean, send is clean, EN's **inliner handles `>` correctly** (it inlined
-a top-level child-combinator rule properly at send time), and open/save
-round-trips through the **block-library editor, the template editor, and
-the email builder's replacement raw-code box are all non-destructive**
-(stored artifacts byte-identical afterward — the block editor merely
-DISPLAYS text HTML-encoded). Remaining suspects: WYSIWYG/visual edit
-modes that re-serialize the DOM, and legacy EN artifacts with unknown
-edit history. Until the surface is pinned down, treat every editing
-surface as hostile to `>`.
+In EN's editing surfaces, `>` in CSS text gets HTML-escaped to `&gt;`
+(tag syntax keeps its own `>`; only text content is encoded). An escaped
+selector is invalid CSS, and clients silently drop the rule.
+
+**Reproduced and scoped (2026-08-13, four structured sends against one
+account).** The trigger is an **edit**, not an open and not a save: an
+untouched open+save round-trip delivered a byte-identical payload, while
+editing the CSS held in an **HTML-type Replacement** corrupted the child
+combinator in the very next send. Import is clean, send is clean, and
+EN's **inliner handles `>` correctly** on its own. Scope is narrow and
+worth knowing: in those same sends, six child combinators living in
+ordinary **block markup** came through raw every time — only the
+Replacement VALUE is affected. That explains the field evidence exactly
+(freshly imported blocks send clean; long-lived blocks with edit history
+shipped escaped selectors). Full report and a one-block PoC:
+`docs/en-bug-html-replacement-escapes-css.md` in the canonical repo.
+
+Two traps cost us a send each, so budget for them when you verify this
+yourself:
+
+- **A canary rule that matches nothing is pruned.** EN's inliner drops
+  rules with no matching element, so a throwaway `.abcd { color:
+  initial }` vanishes and the send comes back byte-identical —
+  indistinguishable from "no bug".
+- **A plain rule is inlined**, which dissolves the selector and destroys
+  the evidence. Keep canaries inside a conditional media query, where
+  EN returns them verbatim.
+
+**EN offers two code fields, and they are not interchangeable.** The
+**HTML Editor** (`"type": "HTML"`) holds markup — a whole `<style>`
+element, tags included. The **CSS Editor** (`"type": "CSS"`) holds
+stylesheet text only; the `<style>` wrapper belongs to the block's own
+content around the merge tag. Whether the CSS Editor escapes `>` the
+same way is UNVERIFIED as of 2026-08-15 — the authoring rule below
+stands until a send proves otherwise.
+
+The field choice has a real authoring consequence: a CSS field can hold
+rules and nothing else, so **anything conditional cannot travel into a
+per-email-editable styles block and has to stay in the email template**
+— MSO conditional comments (`<!--[if lte mso 11]><style>…`), stylesheet
+`<link>`s, and any `<style>` inside a `<!--[if !mso]><!-->` wrapper. In
+practice that means the rules you most want to fix post-hoc should be
+authored as PLAIN CSS in `<mj-style>` or an `<mj-include type="css">`.
+A `<style media="…">` is fine — the condition survives by being
+rewritten as `@media … { … }` — but a conditional COMMENT is markup and
+stays put.
 
 The failure signature is nasty because paired rules decouple: in a dark
 scheme authored as `.block p { color:#fff }` + `.block > table {

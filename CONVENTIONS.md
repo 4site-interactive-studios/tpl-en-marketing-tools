@@ -908,51 +908,77 @@ without a template round-trip. Semantics:
 EN cannot propagate template edits into existing draft emails — a changed
 template means recreating every draft from scratch. CSS is the template
 part that actually needs post-hoc fixes, so at MJML import
-(`extractHeadStyles`, src/core/headStyles.ts) every `<style>` element,
-stylesheet `<link>`, and style-bearing MSO conditional comment is moved OUT
-of the shell's `<head>` into a synthetic **"Template Styles"** block placed
-FIRST in the block list. Editors drop it in as the first block of every
-email; a CSS fix then ships by swapping that one block inside a draft
-instead of rebuilding the whole email. (`<style>` inside `<body>` is parsed
-by all major clients; the trade-off was accepted deliberately.)
+(`extractHeadStyles`, src/core/headStyles.ts) the STYLESHEET TEXT of every
+plain `<style>` element in the shell's `<head>` is moved OUT into a
+synthetic **"Template Styles"** block placed FIRST in the block list.
+Editors drop it in as the first block of every email; a CSS fix then ships
+by swapping that one block inside a draft instead of rebuilding the whole
+email. (`<style>` inside `<body>` is parsed by all major clients; the
+trade-off was accepted deliberately.)
 
-- The head keeps `<title>`, metas, the MSO OfficeDocumentSettings block,
-  and scripts. Downlevel-revealed wrappers (`<!--[if !mso]><!--> …
-  <!--<![endif]-->`) travel only when everything inside them is moving
-  (the mj-font link + @import pair); a wrapper around a meta stays.
-- **The block's content is a builder placeholder plus ONE HTML-type
+- **Only CSS travels** (2026-08-15, revised when EN's CSS Editor field
+  was discovered): the field is `type: "CSS"`, which holds bare rules
+  and nothing else, so anything that is markup rather than a rule STAYS
+  in the email template — stylesheet `<link>`s (mj-font loaders),
+  style-bearing MSO conditional comments
+  (`<!--[if lte mso 11]><style>.mj-outlook-group-fix…`), and any
+  `<style>` sitting inside a downlevel-revealed wrapper
+  (`<!--[if !mso]><!--> … <!--<![endif]-->`), whose whole point is the
+  client targeting that unwrapping the rules would discard. The head
+  also keeps `<title>`, metas, the MSO OfficeDocumentSettings block, and
+  scripts. Those carriers are therefore NOT per-email editable — the
+  trade the CSS field buys.
+- A `<style media="…">` keeps its condition by being re-wrapped as
+  `@media … { … }` on the way out. Dropping the tag without that would
+  silently make a conditional sheet unconditional — MJML emits exactly
+  one such element (`<style media="screen and (min-width:480px)">`,
+  carrying the `.moz-text-html` desktop widths).
+- **The block's content is a builder placeholder plus ONE CSS-type
   replacement** (2026-08-11, user-decided — supersedes the CSS-derived
-  theme Selects that briefly lived here): `buildStylesBlockHtml()`
-  emits a hidden `<span id="head-styles">` and a `<style>` targeting
-  EN's `.en__emailbuilder__block` wrapper — inside EN's email builder
-  the block renders as a labeled black band ("Email Template — Head CSS
+  theme Selects that briefly lived here; the type changed HTML → CSS on
+  2026-08-15): `buildStylesBlockHtml()` emits a hidden
+  `<span id="head-styles">` and a `<style>` targeting EN's
+  `.en__emailbuilder__block` wrapper — inside EN's email builder the
+  block renders as a labeled black band ("Email Template — Head CSS
   Styles Block") instead of a zero-height sliver, while at send time the
   span stays display:none and EN's inliner prunes the builder-only rules
-  (they match nothing) — followed by `{replacement~head_styles}`. The
-  `head_styles` replacement (type `HTML`, EN's raw-code box; label "Head
-  CSS Styles"; section = the base block name) carries the ENTIRE
-  extracted head CSS as its default, values hard-coded — so the CSS is
-  self-editable per email, in place, without any template round-trip.
+  (they match nothing) — followed by
+  `<style type="text/css">{replacement~head_styles}</style>`. **The
+  block owns that `<style>` wrapper**, because a CSS-type value carries
+  rules only. The `head_styles` replacement (type `CSS`, EN's CSS
+  Editor; label "Head CSS Styles"; section = the base block name)
+  carries the extracted head CSS as its default, values hard-coded — so
+  the CSS is self-editable per email, in place, without any template
+  round-trip.
 - No theme Selects exist on the block: the extracted CSS keeps its
   authored literal values. The shell's template replacements keep only
   what remains inline there: the body/wrapper `background_color`.
-- **CAVEAT (2026-08-11, measured; refined 2026-08-12):** EN's block
-  editor DISPLAYS the CSS text inside an HTML-type Replacement
-  HTML-escaped (`>` → `&gt;`; import and send are clean, and an
-  untouched open/save round-trips byte-identical), but a production
-  block with edit history did ship escaped selectors — the escape
-  persists when the field content is actually edited and resubmitted.
-  Until EN fixes it, the head CSS must use NO child combinators (guide
-  §2d; a bug report with a PoC block lives at
-  docs/en-bug-html-replacement-escapes-css.md).
+- **CAVEAT (2026-08-11, measured; reproduced and scoped 2026-08-13):**
+  EN HTML-escapes `>` in the CSS held by an **HTML-type** Replacement
+  (`>` → `&gt;`), killing every child-combinator selector silently. Four
+  structured sends pinned the trigger down: an **edit** persists the
+  escape; import, send, and an untouched open+save are all clean
+  (byte-identical payloads). Scope is the Replacement VALUE only — six
+  child combinators in ordinary block markup came through raw in the
+  same sends. Two measurement traps, each of which cost a round: EN
+  PRUNES rules matching nothing (so a `.abcd { color: initial }` canary
+  vanishes and looks like a pass), and a plain rule is INLINED (which
+  dissolves the selector you are trying to inspect) — canaries must
+  match a real element and sit inside a conditional media query. Full
+  report and PoC block: docs/en-bug-html-replacement-escapes-css.md.
+  Whether the CSS Editor (`type: "CSS"`) escapes the same way is
+  UNVERIFIED as of 2026-08-15 and is the reason the type changed; until
+  a send proves otherwise the head CSS must use NO child combinators
+  (guide §2d).
 - Detection elsewhere is content-based (`isStyleOnlyHtml`), never
   name-based — the detector accepts `<style>`s, stylesheet `<link>`s,
-  the `#head-styles` marker span, and bare merge-tag text: previews,
-  thumbnails, and the padding audit re-compose the styles block into
-  their document `<head>` (`composePreviewChrome`, which drops the
-  marker span and lets the head_styles tag substitute downstream), so
-  per-block rendering keeps the template styling even though the shell
-  head is CSS-free.
+  the `#head-styles` marker span, and bare merge-tag text (where the
+  head_styles tag stood before the block owned its own `<style>`):
+  previews, thumbnails, and the padding audit re-compose the styles
+  block into their document `<head>` (`composePreviewChrome`, which
+  drops the marker span and lets the head_styles tag substitute
+  downstream), so per-block rendering keeps the template styling even
+  though the shell head carries only its conditional CSS.
 - EN JSON imports are untouched: a template pasted from EN keeps its
   styles wherever they are (round-trips stay byte-stable). Extraction runs
   only when a project is created from MJML.
@@ -978,24 +1004,30 @@ by all major clients; the trade-off was accepted deliberately.)
   detection rule above. Falls back to the name card if the asset cannot
   be fetched; the standard `thumbnail-template-styles.png` naming keeps
   probes and uploads working unchanged.
+- **The Spacer block gets the same treatment** (2026-08-15,
+  user-decided): a block that is nothing but vertical space snapshots as
+  an empty card, so the ZIP ships `public/thumbnail-spacer.png` (same
+  visual language — dark slate card, green measure-between-two-rules
+  icon) instead of a render. Detection is content-based like the other
+  two: `isSpacerOnlyHtml` (src/core/blocks.ts) requires at least one
+  mj-spacer div (`height` + `line-height` in its inline style) and
+  nothing in the block that can put ink on the page — no image, link,
+  rule, `background:url()`, or text beyond the hairspace the spacer
+  itself carries. Unlike RAW HTML, the Spacer is a real catalog block,
+  so the missing-thumbnail probe and the ZIP filename already cover it
+  through the normal base-name path.
 - The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (now
   including `head_styles`) even though only `background_color` and
   `head_styles` are minted today — content blocks keep reserving the
   whole vocabulary so no block field ever shares a tag with a
   template-level one (the 2026-08-10 shadowing rule; same precedent as
   email_title after its revert).
-- **The shipped CSS must contain zero child combinators** (measured
-  2026-08-11): somewhere in EN's editing surfaces, `>` in CSS text gets
-  HTML-escaped to `&gt;` — a production send carried `.block&gt;table`
-  while the block's export was clean — and the escaped selector silently
-  dies in every client. The surface-matrix probe
-  (docs/en-editor-escape-probe.html) has so far CLEARED import, send,
-  the inliner, block-library open/save, the template editor, and the
-  email builder's raw-code box (stored artifacts byte-identical after
-  each); the remaining suspects are WYSIWYG/visual edit modes and the
-  legacy pre-2026-08-10 EN artifacts. The rule and the replacement
-  selector idioms are portable and live in the authoring guide §2d; the
-  importer's guard is below under Validator.
+- **The shipped CSS must contain zero child combinators** — the escape
+  above, reproduced 2026-08-13 and triggered by EDITING the field. The
+  rule and the escape-safe selector idioms (`.class element` is the one
+  form that survives both EN's escaping and Gmail's indifference to
+  attribute selectors) are portable and live in the authoring guide
+  §2d; the importer's guard is below under Validator.
 
 ## Per-send strings the template must NOT own: title, preview text (2026-08-10, user-decided)
 
