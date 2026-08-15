@@ -275,9 +275,13 @@ The field choice has a real authoring consequence: a CSS field can hold
 rules and nothing else, so **anything conditional cannot travel into a
 per-email-editable styles block and has to stay in the email template**
 — MSO conditional comments (`<!--[if lte mso 11]><style>…`), stylesheet
-`<link>`s, and any `<style>` inside a `<!--[if !mso]><!-->` wrapper. In
-practice that means the rules you most want to fix post-hoc should be
-authored as PLAIN CSS in `<mj-style>` or an `<mj-include type="css">`.
+`<link>`s, and any `<style>` inside a downlevel-revealed wrapper (either
+spelling: `<!--[if !mso]><!-->…<!--<![endif]-->` or the bare
+`<![if !mso]>…<![endif]>`). A `<style>` containing `@import` also stays,
+because merging sheets would move the `@import` out of first position
+and CSS discards it there. In practice that means the rules you most
+want to fix post-hoc should be authored as PLAIN CSS in `<mj-style>` or
+an `<mj-include type="css">`.
 A `<style media="…">` is fine — the condition survives by being
 rewritten as `@media … { … }` — but a conditional COMMENT is markup and
 stays put.

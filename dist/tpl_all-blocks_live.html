@@ -361,11 +361,13 @@
       }
     }
 
-    /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside an
-   HTML-type Replacement (the Template Styles block's head_styles), and
-   somewhere in EN's editing surfaces `>` gets HTML-escaped to `&gt;` — the
-   escaped selector is invalid CSS and the rule silently dies (guide §2d;
-   surface isolation in progress). Where the old `>` chains targeted MJML's unclassable
+    /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside a
+   CSS-type Replacement (EN's CSS Editor — the Template Styles block's
+   head_styles), and in EN's editing surfaces `>` gets HTML-escaped to
+   `&gt;` — the escaped selector is invalid CSS and the rule silently dies
+   (guide §2d). Reproduced 2026-08-13 for the HTML Editor field, where an
+   EDIT persists the escape; whether the CSS Editor does the same is still
+   UNVERIFIED. Where the old `>` chains targeted MJML's unclassable
    structural elements, two measured idioms stand in:
    - section/column OUTER table:  table[align=center]  (only outer tables
      carry align=center in the non-MSO DOM)

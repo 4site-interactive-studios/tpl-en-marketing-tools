@@ -924,9 +924,12 @@ trade-off was accepted deliberately.)
   in the email template — stylesheet `<link>`s (mj-font loaders),
   style-bearing MSO conditional comments
   (`<!--[if lte mso 11]><style>.mj-outlook-group-fix…`), and any
-  `<style>` sitting inside a downlevel-revealed wrapper
-  (`<!--[if !mso]><!--> … <!--<![endif]-->`), whose whole point is the
-  client targeting that unwrapping the rules would discard. The head
+  `<style>` sitting inside a downlevel-revealed wrapper — **both
+  spellings**, the comment form `<!--[if !mso]><!--> … <!--<![endif]-->`
+  and the bare `<![if !mso]> … <![endif]>` (the tokenizer files the bare
+  form as a doctype token, so the two behaved oppositely until
+  2026-08-15) — whose whole point is the client targeting that
+  unwrapping the rules would discard. The head
   also keeps `<title>`, metas, the MSO OfficeDocumentSettings block, and
   scripts. Those carriers are therefore NOT per-email editable — the
   trade the CSS field buys.
@@ -1040,13 +1043,29 @@ trade-off was accepted deliberately.)
   read as blank space and shipped the Spacer card under
   `thumbnail-divider-tri-color.png` (caught by audit, 2026-08-15). The
   ground test must NOT be a blanket one, though: white, `transparent`,
-  and an unresolved `{replacement~…}` all count as *not* ink, because
-  the genuine Spacer's own `<td>` carries
+  and a merge tag that RESOLVES to either all count as *not* ink,
+  because the genuine Spacer's own `<td>` carries
   `background:{replacement~spacer_background_color}` after generation
   and `#ffffff` before it. Also invisible without explicit handling: the
   tokenizer emits an MSO conditional as ONE comment token, so `walk()`
   never enters it and VML/`mso`-only imagery has to be matched in the
   comment text.
+- **Classify against RESOLVED values — pass the block's replacements.**
+  `isSpacerOnlyHtml(html, replacements)` substitutes defaults before the
+  ink test, because by the time a block reaches the thumbnail job the
+  generator has rewritten every ground into `{replacement~…}` and the
+  literal colours are gone. Skipping this is how the Tri-color Divider
+  survived the ground test for one day (2026-08-15): a fixture taken
+  from the COMPILED catalog classified correctly while the real,
+  generated block did not. **Any test for this detector must use the
+  post-generation shape** — a merge-tag fixture with its defaults —
+  or it cannot fail. A tag with no matching field stays unresolved and
+  counts as unknown, not ink.
+- One helper owns the choice for both consumers:
+  `shippedThumbnailFor(block)` (src/components/thumbnailRender.ts), used
+  by the thumbnails ZIP and by the in-app Replacements Visualizer. They
+  drifted before — the ZIP shipped the designed cards while the
+  Visualizer rendered the same blocks as blank white tiles.
 - The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (now
   including `head_styles`) even though only `background_color` and
   `head_styles` are minted today — content blocks keep reserving the
@@ -1400,8 +1419,13 @@ verified byte-identical before and after.
   are authored wrong.
 - **Measuring it**: `docs/en-css-inliner-probe.html` round-trips one
   uniquely-marked probe per construct. Measured 2026-08-07 by saving it as a
-  Marketing Tools TEMPLATE and test-sending it (block pipeline not yet
-  measured separately):
+  Marketing Tools TEMPLATE and test-sending it. The BLOCK pipeline was
+  measured separately on 2026-08-09 and behaves the same way with one
+  addition: a `<style>` inside block markup goes through the same inliner —
+  plain rules are inlined and the element removed from the body, while
+  conditional media queries are kept verbatim but HOISTED into the email's
+  head stylesheet, with same-condition queries merged. Hoisting makes block
+  CSS global to the whole email, so scope block class names (guide §2):
 
 | Probe | Construct | Verdict | Consequence |
 | :---- | :---- | :---- | :---- |
@@ -1454,13 +1478,14 @@ verified byte-identical before and after.
     (Outlook.com is a web client and honors media queries); base layout CSS
     does not.
 - **`[data-ogsc]` at TOP LEVEL does not survive.** `src/styles.css` carries
-  13 such rule blocks (lines ~212–297, the deliberate Outlook.com dark
-  branch including its `.dark-only`/`.light-only` pair). At top level every
-  one is removed at send time — the exported template still shows the raw
-  rule, so this can only be verified against delivered HTML.
-  **Wrapped upstream 2026-08-07**
-  (`src/styles.css:220`, `@media only screen and (max-width: 9999px)`) so
-  the whole branch now survives; do not unwrap it.
+  13 such rule blocks — the deliberate Outlook.com dark branch including
+  its `.dark-only`/`.light-only` pair. At top level every one is removed at
+  send time — the exported template still shows the raw rule, so this can
+  only be verified against delivered HTML. **Wrapped upstream 2026-08-07**
+  in the sole `@media only screen and (max-width: 9999px)` block in that
+  file (grep for it — line numbers here drifted once already and sent a
+  reader to unrelated code) so the whole branch now survives; do not
+  unwrap it.
 
 ## Process
 
