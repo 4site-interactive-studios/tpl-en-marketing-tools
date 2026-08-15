@@ -214,6 +214,25 @@ MJML must interleave above it invert to white and cover the content
 area, and Outlook flips the white text dark regardless — two
 independent kills. Asset contrast remains the only defense here.
 
+**Re-tested 2026-08-13 (EoA VJBgKzaU) and the rejection stands**, with
+one refinement worth having. Using the wrapper shape from §4 — the
+section carries `background-url` only, the fallback colour sits on an
+`mj-wrapper` — removes the first kill: the ground DID stay black in both
+Word engines, where the older bgcolor-layered attempt went white. But the
+second kill is untouched and decisive: Outlook still inverts the live
+text independently, so white copy lands dark-on-black and becomes less
+readable than the plain colour ground it replaced. **An image ground is
+never a dark-mode technique for anything containing live text** — it
+desynchronises the ground from an inversion it cannot prevent.
+
+The same run confirmed the defense positively. A footer left as a plain
+colour ground still inverts plum to pink in Word-engine dark mode, but
+with the contrast-outline treatment every asset stayed legible on it —
+the rim carries the mark, and the copy inverts to dark on the now-light
+ground. Off-brand colour, intact legibility, no code change. That is the
+accepted end state for Outlook desktop dark: **let it invert, and make
+the artwork survive the inversion.**
+
 ### 2d. EN escapes `>` in shipped CSS — never author a child combinator
 
 Somewhere in EN's editing surfaces, `>` in CSS text gets HTML-escaped to
