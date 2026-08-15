@@ -200,6 +200,29 @@ p {
     padding: 0 !important;
   }
 
+  /* Flush-to-edge imagery on mobile (2026-08-13, EoA dnYN8bje).
+     A 240/296px card on a ~333 CSS px screen loses 80px — a quarter of the
+     width — to section + column gutters, which is what the QA round read as
+     "images not full bleed". The columns were never the problem: the image
+     always filled its column exactly.
+
+     `.class td` is the only selector form that survives the whole chain: EN
+     escapes child combinators (2d) and Gmail ignores attribute selectors, and
+     both of those failed here. The second rule puts the inset back on copy
+     only, and wins because two classes outrank `.flush-mobile-capflush td`.
+     Captions are deliberately NOT in that list — they stay flush with the
+     photo, which is the alignment the catalog authors (padding="8px 0 0").
+     Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
+  .flush-mobile-capflush td {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .flush-mobile-capflush .wysiwyg {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
   /* Add space below image on mobile when it is collapsed to single column */
   .two-col-image table {
     margin-bottom: 15px !important;

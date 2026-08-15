@@ -276,11 +276,74 @@ descendant would also hit every nested image and button table in that
 column. The escape-safe options are to scope the descendant to a LEAF
 component whose only table is its own (the `.two-col-image table`
 precedent above), or to change the structure upstream so a class lands
-where the rule needs it. Verify by render either way. And a descendant selector reaches
+where the rule needs it. Verify by render either way.
+
+**`.class element` IS the house pattern — it reaches everything**
+(measured 2026-08-13 across four EoA rounds). It is the one selector form
+that survives the whole chain: EN escapes child combinators, Gmail ignores
+attribute selectors, and a plain `.class td` is honoured by both. That
+unblocks a category of fixes previously treated as impossible, because
+MJML's structural `<td>`s carry no class of their own and were considered
+unreachable. Pair it with a two-class override to put exceptions back:
+
+```css
+@media (max-width: 599px) {
+  .flush-mobile-capflush td { padding-left: 0 !important; }        /* 0,1,1 */
+  .flush-mobile-capflush .wysiwyg { padding-left: 16px !important; } /* 0,2,0 wins */
+}
+```
+
+Two classes outrank one class plus an element, so the second rule wins
+exactly where its class lands and the first governs everything else. This
+is how the catalog takes imagery flush to the screen edge on mobile while
+copy keeps a readable inset. Verified: image 262.7 -> 326.0 CSS px, copy
+held at 29, desktop byte-identical to the control. It also cleanly
+outranks an incumbent single-class rule, so an older `.caption
+{ padding-left: 16px }` does not have to be removed to be overridden.
+
+And a descendant selector reaches
 INTO wrappers, so pacing rules like `.wysiwyg div *:first-child
 { margin-top: 0 }` require that authored content never nest a block
 element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
 `<a><h1>…</h1></a>`.
+
+### 2e. Mobile gutters — the "images aren't full bleed" finding
+
+**There is no column-shrink bug.** A QA round read Gmail Android as
+shrinking two-column cards; four probe rounds disproved it. Pixel 10 is
+1080 device px at DPR 3, so Gmail lays the email out at **~333 CSS px**,
+and on that screen a card loses 80 CSS px — a quarter of the width — to
+section (32×2) and column (8×2) gutters. The image always filled its
+column exactly: predicted 252.7 vs measured 251.0, while the competing
+"column padding removed" model predicted 268.7 and was off by 17.7.
+Cross-checked against background bands in the same render, which carry no
+side padding and do span the full container. The ratio is not
+client-specific either — 0.755 on Gmail Android, 0.746 on iPhone.
+
+That is why percent columns, `mj-group` and inlined `min-width` all
+measured identically to the control: there was nothing for them to fix.
+**Diagnose gutters before restructuring columns.**
+
+Measured options, same card, Gmail Android (EoA pTdFUx7a / dnYN8bje):
+
+| treatment | image | desktop |
+| :---- | :---- | :---- |
+| control — section 32, column 8 | 262.7 CSS | — |
+| tighter — section 16 | 290.7 | changes |
+| authored flush — section 0, column 0 | 332.7 | changes |
+| **`.flush-mobile-capflush` (shipped)** | **326.0** | **untouched** |
+
+The CSS route wins because it costs no desktop change. Caption alignment
+is the only open choice, and both forms are proven — switching is a
+one-selector edit:
+
+| | caption | shipped |
+| :---- | :---- | :---- |
+| caption with the PHOTO (flush) | 14 CSS | **yes** — matches `padding="8px 0 0"` |
+| caption with the COPY (inset) | 30 CSS | add `.flush-mobile-capflush .caption` to the override rule |
+
+Body copy holds its 29 CSS inset either way. Applied to the seven blocks
+that pair a `fluid-on-mobile` image with two or more columns.
 
 The importer warns on any child combinator in a block's shipped CSS, and
 an EN-side bug report with a minimal PoC block lives at

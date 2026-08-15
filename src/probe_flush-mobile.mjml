@@ -1,0 +1,198 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — .flush-mobile, the two-rule gutter fix (2026-08-13).
+      Not a catalog page. Send dist/probe_flush-mobile_live.html through EN to
+      EoA and read android16_gmailapp_pixel10_* and iphone17_* first, then
+      confirm DESKTOP is untouched in gmailcom-* and applemail16.
+
+      WHAT IS ALREADY PROVEN (probe pTdFUx7a, measured not eyeballed)
+      There is no column-shrink bug: the image always fills its column, and
+      the narrow look is gutter on a ~333 CSS px screen. Measured image
+      widths there: control 262.7 CSS, flush-authored 332.7 (= the container
+      exactly), and — the key result — a CONTROL-markup card carrying only a
+      class-only mobile rule reached 326.3. So `.class td` DOES reach Gmail,
+      where child combinators (EN escapes them) and attribute selectors
+      (inert in Gmail) both fail. Mobile gutters are fixable in CSS with
+      desktop untouched.
+
+      WHAT THAT PROBE ALSO EXPOSED
+      The blunt rule strips the body copy's inset too, and it makes caption
+      alignment WORSE. Caption offset from the photo's left edge, same run:
+      control +49.7 CSS, blunt-rule +46.7, flush-authored +56.7. The photo
+      goes edge-to-edge while the caption stays put, so it ends up stranded
+      between the photo edge and the text column. This reproduces the QA
+      report's "captions appear off the edge of the image".
+
+      THE PROPOSAL UNDER TEST
+      Two rules. The first takes every gutter to zero on mobile; the second
+      puts a deliberate inset back on text only. `.wysiwyg` and `.caption`
+      sit on their own <td>s (verified in the compiled output), and a
+      two-class selector outranks `.flush-mobile td`, so the second rule wins
+      where it applies.
+
+      VARIANTS (identical markup; only the CSS class on the section differs)
+
+        H1 CONTROL   no class. The baseline to measure against.
+        H2 INSET     .flush-mobile. Images flush to the screen edge; text AND
+                     caption inset 16px. Caption aligns with the body column.
+        H3 CAP-FLUSH .flush-mobile-capflush. Same, except the caption keeps
+                     zero inset so it aligns with the PHOTO's left edge
+                     instead of the text.
+
+      H2 vs H3 is a taste call and the reason both are here: with the photo
+      full-bleed the caption cannot align with both the photo and the copy.
+      Pick from the render.
+
+      WHAT RUN 1 ALREADY SETTLED (test exYrw8U6, measured)
+      Images: H1 262.7 CSS, H2 332.7, H3 326.0. Body copy held its inset at
+      29 CSS in BOTH H2 and H3, so the two-class override beats
+      `.flush-mobile td` in Gmail. Desktop rendered identical to the control
+      in Apple Mail. The mechanism works; both caption treatments are viable.
+
+      WHAT THIS RUN ADDS — the incumbent .caption rule
+      Run 1 omitted the catalog's own `.caption { padding-left: 16px }`, so
+      the new rules were never tested against the rule they will actually sit
+      beside. Predicted resolution, by specificity:
+
+        H2  `.flush-mobile .caption` (0,2,0) beats both the incumbent
+            `.caption` (0,1,0) and `.flush-mobile td` (0,1,1)  -> 16px inset
+        H3  `.flush-mobile-capflush td` (0,1,1) beats the incumbent
+            `.caption` (0,1,0)                                 -> 0, flush
+
+      If H3's caption comes back INSET rather than flush, the incumbent won
+      and it has to be removed from the catalog rather than left to fight.
+
+      VERDICT RULE
+      1. H2/H3 images stay ~326-333 CSS px, H1 stays ~262 (regression check).
+      2. H2/H3 body copy keeps its inset (regression check).
+      3. H2 caption inset, H3 caption FLUSH with the photo — the new result.
+      4. DESKTOP identical across all three (regression check).
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE — flush-mobile</mj-title>
+
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-image padding="0" />
+    </mj-attributes>
+
+    <mj-style>
+      @media (max-width: 599px) {
+        /* THE INCUMBENT. Copied verbatim from tpl_unified-blocks.mjml so the
+           new rules are tested against what they will actually coexist with.
+           The first run of this probe omitted it, which left the interaction
+           below unproven. */
+        .caption {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+
+        /* No child combinator (EN escapes those) and no attribute selector
+           (inert in Gmail). Class-only descendant is the one form proven to
+           reach every client — probe pTdFUx7a, 2026-08-13. */
+        .flush-mobile td,
+        .flush-mobile-capflush td {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        /* Two classes outrank `.flush-mobile td`, so the inset comes back
+           for copy only. Images keep the flush treatment above. */
+        .flush-mobile .wysiwyg,
+        .flush-mobile .caption,
+        .flush-mobile-capflush .wysiwyg {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+      }
+    </mj-style>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+
+  <mj-body css-class="email-body" background-color="#ffffff">
+
+    <!-- START: Flush Label H1 -->
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">H1 — CONTROL (NO CLASS)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush Label H1 -->
+
+    <!-- START: Flush H1 Control -->
+    <mj-section css-class="two-col-image-text-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text css-class="caption" align="left" font-size="10px" line-height="16px" padding="8px 0 0 0">Caption — watch where this sits.</mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 8px"><h3 style="margin:0;">H1 control heading.</h3></mj-text>
+        <mj-text padding="0">Body copy — this should keep a readable inset in H2 and H3, never run to the screen edge.</mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush H1 Control -->
+
+    <!-- START: Flush Label H2 -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">H2 — FLUSH, CAPTION WITH THE COPY</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush Label H2 -->
+
+    <!-- START: Flush H2 Inset -->
+    <mj-section css-class="two-col-image-text-block block flush-mobile" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text css-class="caption" align="left" font-size="10px" line-height="16px" padding="8px 0 0 0">Caption — should align with the BODY COPY.</mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 8px"><h3 style="margin:0;">H2 inset heading.</h3></mj-text>
+        <mj-text padding="0">Body copy — this should keep a readable inset in H2 and H3, never run to the screen edge.</mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush H2 Inset -->
+
+    <!-- START: Flush Label H3 -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">H3 — FLUSH, CAPTION WITH THE PHOTO</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush Label H3 -->
+
+    <!-- START: Flush H3 Capflush -->
+    <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image" />
+        <mj-text css-class="caption" align="left" font-size="10px" line-height="16px" padding="8px 0 0 0">Caption — should align with the PHOTO's left edge.</mj-text>
+      </mj-column>
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 8px"><h3 style="margin:0;">H3 cap-flush heading.</h3></mj-text>
+        <mj-text padding="0">Body copy — this should keep a readable inset in H2 and H3, never run to the screen edge.</mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Flush H3 Capflush -->
+
+  </mj-body>
+</mjml>

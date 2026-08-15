@@ -2,7 +2,7 @@
 <html lang="en" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-  <title>PROBE — Gmail Android columns</title>
+  <title>PROBE — mobile gutters</title>
   <!--[if !mso]><!-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<![endif]-->
@@ -73,14 +73,9 @@
         max-width: 296px;
       }
 
-      .mj-column-per-45 {
-        width: 45% !important;
-        max-width: 45%;
-      }
-
-      .mj-column-per-53 {
-        width: 53% !important;
-        max-width: 53%;
+      .mj-column-px-360 {
+        width: 360px !important;
+        max-width: 360px;
       }
     }
   </style>
@@ -100,14 +95,9 @@
       max-width: 296px;
     }
 
-    .moz-text-html .mj-column-per-45 {
-      width: 45% !important;
-      max-width: 45%;
-    }
-
-    .moz-text-html .mj-column-per-53 {
-      width: 53% !important;
-      max-width: 53%;
+    .moz-text-html .mj-column-px-360 {
+      width: 360px !important;
+      max-width: 360px;
     }
   </style>
   <style type="text/css">
@@ -122,18 +112,12 @@
     }
   </style>
   <style type="text/css">
-    .probe-minw-240 {
-      min-width: 240px;
-    }
-
-    .probe-minw-296 {
-      min-width: 296px;
-    }
-
+    /* G4 only. Class-only + plain descendant: no child combinator (EN
+         escapes those) and no attribute selector (inert in Gmail). */
     @media (max-width: 599px) {
-      .caption {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
+      .probe-flush td {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
     }
 
@@ -760,24 +744,60 @@ li {
     }
   </style>
   <!--
-      PROBE — Gmail Android two-column shrink (2026-08-12).
-      Not a catalog page. Send dist/probe_gmail-android-columns_live.html
-      through EN to EoA and read the android gmailapp renders (light + dark,
-      plus a non-Gmail/IMAP account if the test set has one):
+      PROBE — mobile gutters and caption alignment (2026-08-13).
+      Not a catalog page. Send dist/probe_mobile-gutters_live.html through EN
+      to EoA and read android16_gmailapp_pixel10_* and iphone17_* first.
 
-        A CONTROL      — Story Card (image left) exactly as shipped (240/296 px columns).
-                         Expected to reproduce the shrunken stacked columns.
-        B PERCENT      — same card with 43% / 53% columns. If A shrinks and B
-                         fills the viewport, switch the catalog to percent columns.
-        C GROUP        — same px card inside mj-group (columns never stack;
-                         widths become inline percentages). Side-by-side at
-                         every width is the accepted trade-off if it wins.
-        D MIN-WIDTH    — control plus a top-level .probe-minw-* rule EN's
-                         inliner will inline onto the column divs. Tests
-                         whether an inlined min-width alone holds the width.
+      WHY THIS EXISTS — the previous column probe answered the wrong question
+      The Gmail-Android "columns shrink" finding does not reproduce. Measured
+      from the aBPD6k1l render: Pixel 10 is 1080 device px at DPR 3, so Gmail
+      lays the email out at ~333 CSS px. The image measured 251 CSS px, and
+      "container minus section padding (32x2) minus column padding (8x2)"
+      predicts 252.7 — within 1.7px. The competing model (column padding
+      removed) predicts 268.7 and is off by 17.7. Cross-checked against the
+      background bands in the same render, which carry no side padding and do
+      span the full container.
 
-      Verdict rule: pick the first of B/C/D that renders correctly in the
-      failing client AND still matches A everywhere A was already correct.
+      So the image already fills its column exactly. What looks like shrinkage
+      is 80 CSS px of gutter on a 333 px screen — 24% of the width — and it is
+      NOT client-specific: the image/container ratio is 0.755 on Gmail Android
+      and 0.746 on iPhone. That is why percent columns, mj-group and inlined
+      min-width all measured identically to the control: there was nothing for
+      them to fix.
+
+      WHAT IS ACTUALLY UNDECIDED
+      How much gutter the design wants on a narrow screen, and whether the
+      caption can sit flush with its image. Every variant below is a real
+      authoring choice; pick by eye from the renders.
+
+        G1 CONTROL   section 16/32, column 0/8   — today's Story Card.
+                     Predicts ~251 CSS px of image on Gmail Android.
+        G2 TIGHTER   section 16/16, column 0/8   — halves the section gutter.
+                     Predicts ~283. Changes desktop too (536 -> 568 content).
+        G3 FLUSH     section 16/0,  column 0/0   — image runs to the email
+                     edge. Predicts ~333. Biggest change; desktop card becomes
+                     full-bleed, which may not suit every block.
+        G4 CSS TEST  markup identical to G1, plus a CLASS-ONLY descendant rule
+                     (.probe-flush td) that zeroes side padding below 600px.
+                     This is the ONLY variant that could fix mobile without
+                     touching desktop — but it is a blunt instrument: it hits
+                     EVERY td inside the card, so watch whether the body copy
+                     loses its inset too. It also answers a standing question:
+                     whether a class-only descendant rule reaches Gmail at all
+                     (child combinators are escaped by EN, and attribute
+                     selectors are inert in Gmail — see guide 2d).
+
+      READ IT LIKE THIS
+      Compare each variant's image width AND whether the caption's left edge
+      lines up with the image's left edge. The QA report said captions sit
+      "off the edge of the image"; if that reproduces here it will be visible
+      as a caption starting left of the photo.
+
+      G4 is the interesting one. If it renders like G3 in Gmail with the body
+      copy still readable, CSS can solve this and desktop stays untouched. If
+      G4 matches G1 in Gmail, class-only descendant rules do not reach it
+      either, and the fix has to be authored (G2 or G3), which is a design
+      decision rather than a bug fix.
     -->
   <meta name="color-scheme" content="light dark" />
   <meta name="supported-color-schemes" content="light dark" />
@@ -785,8 +805,8 @@ li {
 </head>
 
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
-  <div aria-label="PROBE — Gmail Android columns" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
-    <!-- START: Probe Label A -->
+  <div aria-label="PROBE — mobile gutters" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
+    <!-- START: Gutter Label G1 -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
@@ -800,7 +820,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">A — CONTROL (240/296 PX)</p>
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">G1 — CONTROL (SECTION 32 / COLUMN 8)</p>
                         </div>
                       </td>
                     </tr>
@@ -814,7 +834,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe Label A --><!-- START: Probe A Control -->
+    <!-- END: Gutter Label G1 --><!-- START: Gutter G1 Control -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -830,35 +850,21 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                              <td align="center" class="two-col-image" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
                                       <td style="width:224px;" class="mj-full-width-mobile">
-                                        <a href="https://www.example.com" target="_blank">
-                                          <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
-                                        </a>
+                                        <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
                                       </td>
                                     </tr>
                                   </tbody>
                                 </table>
                               </td>
                             </tr>
-                            <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
-                                  <tbody>
-                                    <tr>
-                                      <td style="width:224px;" class="mj-full-width-mobile"><a href="https://www.example.com" target="_blank"><img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" /></a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr><!--<![endif]-->
-                            <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
+                              <td align="left" class="caption" style="font-size:0px;padding:8px 0 0 0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:left;color:#000000;">Caption — should sit flush with the photo's left edge.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -877,24 +883,15 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                  <h3 style="color:#362229;">A control card heading.</h3>
-                                  <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
+                                  <h3 style="margin:0;">G1 control heading.</h3>
                                 </div>
                               </td>
                             </tr>
                             <tr>
-                              <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                  <tbody>
-                                    <tr>
-                                      <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -911,7 +908,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe A Control --><!-- START: Probe Label B -->
+    <!-- END: Gutter G1 Control --><!-- START: Gutter Label G2 -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" data-fully-exclude="true" style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
@@ -925,7 +922,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">B — PERCENT COLUMNS (45/53)</p>
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">G2 — TIGHTER SECTION (16 / 8)</p>
                         </div>
                       </td>
                     </tr>
@@ -939,15 +936,15 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe Label B --><!-- START: Probe B Percent -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!-- END: Gutter Label G2 --><!-- START: Gutter G2 Tighter -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="two-col-image-text-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:241.2px;" ><![endif]-->
-              <div class="mj-column-per-45 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+            <td style="direction:ltr;font-size:0px;padding:16px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
+              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -955,35 +952,21 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                              <td align="center" class="two-col-image" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
                                       <td style="width:224px;" class="mj-full-width-mobile">
-                                        <a href="https://www.example.com" target="_blank">
-                                          <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
-                                        </a>
+                                        <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
                                       </td>
                                     </tr>
                                   </tbody>
                                 </table>
                               </td>
                             </tr>
-                            <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
-                                  <tbody>
-                                    <tr>
-                                      <td style="width:224px;" class="mj-full-width-mobile"><a href="https://www.example.com" target="_blank"><img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" /></a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr><!--<![endif]-->
-                            <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
+                              <td align="left" class="caption" style="font-size:0px;padding:8px 0 0 0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:left;color:#000000;">Caption — should sit flush with the photo's left edge.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -993,8 +976,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:284.08px;" ><![endif]-->
-              <div class="mj-column-per-53 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
+              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -1002,24 +985,15 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                  <h3 style="color:#362229;">B percent card heading.</h3>
-                                  <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
+                                  <h3 style="margin:0;">G2 tighter heading.</h3>
                                 </div>
                               </td>
                             </tr>
                             <tr>
-                              <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                  <tbody>
-                                    <tr>
-                                      <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -1036,7 +1010,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe B Percent --><!-- START: Probe Label C -->
+    <!-- END: Gutter G2 Tighter --><!-- START: Gutter Label G3 -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" data-fully-exclude="true" style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
@@ -1050,7 +1024,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">C — MJ-GROUP (NO STACKING)</p>
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">G3 — FLUSH (SECTION 0 / COLUMN 0)</p>
                         </div>
                       </td>
                     </tr>
@@ -1064,144 +1038,48 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe Label C --><!-- START: Probe C Group -->
+    <!-- END: Gutter Label G3 --><!-- START: Gutter G3 Flush -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:240px;" ><![endif]-->
-                <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:44.776119402985074%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                    <tbody>
-                      <tr>
-                        <td style="vertical-align:top;padding:0 8px;">
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-                            <tbody>
-                              <tr>
-                                <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                    <tbody>
-                                      <tr>
-                                        <td style="width:224px;">
-                                          <a href="https://www.example.com" target="_blank">
-                                            <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
-                                          </a>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                              <!--[if !mso]><!-->
-                              <tr>
-                                <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                    <tbody>
-                                      <tr>
-                                        <td style="width:224px;"><a href="https://www.example.com" target="_blank"><img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" /></a></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr><!--<![endif]-->
-                              <tr>
-                                <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                                  <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!--[if mso | IE]></td><td style="vertical-align:top;width:296px;" ><![endif]-->
-                <div class="mj-column-px-296 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:55.223880597014926%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                    <tbody>
-                      <tr>
-                        <td style="vertical-align:top;padding:0 8px;">
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-                            <tbody>
-                              <tr>
-                                <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                  <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                    <h3 style="color:#362229;">C group card heading.</h3>
-                                    <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                    <tbody>
-                                      <tr>
-                                        <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                          <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!--[if mso | IE]></td></tr></table><![endif]-->
-              </div>
-              <!--[if mso | IE]></td></tr></table><![endif]-->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe C Group --><!-- START: Probe Label D -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="text-block block" data-fully-exclude="true" style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
-        <tbody>
-          <tr>
-            <td style="direction:ltr;font-size:0px;padding:8px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
+              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">D — CONTROL + INLINED MIN-WIDTH</p>
-                        </div>
+                      <td style="vertical-align:top;padding:0;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="center" class="two-col-image" style="font-size:0px;padding:0;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
+                                  <tbody>
+                                    <tr>
+                                      <td style="width:240px;" class="mj-full-width-mobile">
+                                        <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="240" height="auto" />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="caption" style="font-size:0px;padding:8px 8px 0 8px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:left;color:#000000;">Caption — should sit flush with the photo's left edge.</div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td></tr></table><![endif]-->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe Label D --><!-- START: Probe D MinWidth -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="two-col-image-text-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
-        <tbody>
-          <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook probe-minw-240-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
-              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column probe-minw-240" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:360px;" ><![endif]-->
+              <div class="mj-column-px-360 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -1209,35 +1087,90 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                  <h3 style="margin:0;">G3 flush heading.</h3>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut.</div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- END: Gutter G3 Flush --><!-- START: Gutter Label G4 -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="text-block block" data-fully-exclude="true" style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#000000;background-color:#000000;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">G4 — G1 + CLASS-ONLY MOBILE RULE</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- END: Gutter Label G4 --><!-- START: Gutter G4 Css Test -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook probe-flush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="two-col-image-text-block block probe-flush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:top;width:240px;" ><![endif]-->
+              <div class="mj-column-px-240 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tbody>
+                    <tr>
+                      <td style="vertical-align:top;padding:0 8px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="center" class="two-col-image" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
                                       <td style="width:224px;" class="mj-full-width-mobile">
-                                        <a href="https://www.example.com" target="_blank">
-                                          <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
-                                        </a>
+                                        <img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" />
                                       </td>
                                     </tr>
                                   </tbody>
                                 </table>
                               </td>
                             </tr>
-                            <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
-                                  <tbody>
-                                    <tr>
-                                      <td style="width:224px;" class="mj-full-width-mobile"><a href="https://www.example.com" target="_blank"><img alt="Children exploring plants in a schoolyard garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="224" height="auto" /></a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr><!--<![endif]-->
-                            <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
+                              <td align="left" class="caption" style="font-size:0px;padding:8px 0 0 0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:left;color:#000000;">Caption — should sit flush with the photo's left edge.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -1247,8 +1180,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook probe-minw-296-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
-              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column probe-minw-296" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:top;width:296px;" ><![endif]-->
+              <div class="mj-column-px-296 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -1256,24 +1189,15 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                  <h3 style="color:#362229;">D min-width card heading.</h3>
-                                  <p style="font-size:16px;"> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus ... </p>
+                                  <h3 style="margin:0;">G4 css-rule heading.</h3>
                                 </div>
                               </td>
                             </tr>
                             <tr>
-                              <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
-                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                  <tbody>
-                                    <tr>
-                                      <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://www.example.com" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:2px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> Read more </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut.</div>
                               </td>
                             </tr>
                           </tbody>
@@ -1290,7 +1214,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Probe D MinWidth -->
+    <!-- END: Gutter G4 Css Test -->
   </div>
 </body>
 

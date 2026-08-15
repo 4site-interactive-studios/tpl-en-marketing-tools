@@ -795,7 +795,7 @@
 
     <!-- START: Images 2x1 -->
     <mj-section
-      css-class="two-col-images-block block"
+      css-class="two-col-images-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-column css-class="two-col-column first-column" width="300px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -845,7 +845,7 @@
 
     <!-- START: Images 3x1 -->
     <mj-section
-      css-class="three-col-images-block block"
+      css-class="three-col-images-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -949,7 +949,7 @@
 
     <!-- START: Story Card 2x1 -->
     <mj-section
-        css-class="two-col-image-text-button-block block"
+        css-class="two-col-image-text-button-block block flush-mobile-capflush"
         background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-column css-class="two-col-column first-column" width="250px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1017,7 +1017,7 @@
 
     <!-- START: Story Card (no heading, image on the side) -->
     <mj-section
-      css-class="two-col-image-text-block block"
+      css-class="two-col-image-text-block block flush-mobile-capflush"
       background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
     >
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1057,7 +1057,7 @@
 
     <!-- START: Story Card (image left, middle-aligned) -->
     <mj-section
-      css-class="two-col-image-text-block block"
+      css-class="two-col-image-text-block block flush-mobile-capflush"
       background-color="#FFFFFF" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1104,7 +1104,7 @@
 
     <!-- START: Story Card (image right, middle-aligned) -->
     <mj-section
-        css-class="two-col-image-text-block block"
+        css-class="two-col-image-text-block block flush-mobile-capflush"
         background-color="#FFFFFF"
         direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
@@ -1152,7 +1152,7 @@
 
     <!-- START: Story Card (image left, no button) -->
     <mj-section
-      css-class="two-col-image-text-block block"
+      css-class="two-col-image-text-block block flush-mobile-capflush"
       background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
     >
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
