@@ -212,7 +212,11 @@ the repaint group in BOTH dark branches — `.image-block
 table[align=center], .overlay-image-block table[align=center] {
 background-color: transparent !important }` — and a rule that every
 `background-url` section must carry one of those classes so the exemption
-can reach it.
+can reach it. The exemption is CONFIRMED on the wire and in renders
+(2026-08-18, probe MeKGcu…): all five catalog hero shapes — section,
+wrapper-carried, and ancestor-nested — show their photos in Apple Mail
+dark and Outlook.com dark, with the as-shipped hero pixel-identical to
+its no-`block` control.
 
 The dark-mode strategy has exactly two hooks, and both survive EN:
 `@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
@@ -558,6 +562,8 @@ branches end the repaint group with an equal-specificity exemption
 `.image-block table[align=center], .overlay-image-block
 table[align=center] { background-color: transparent !important }`. If you
 add a new hero class, extend the exemption or inherit one of these.
+Confirmed across all five hero shapes 2026-08-18 (probe MeKGcu…, Apple
+Mail dark and Outlook.com dark all photo, no lid).
 
 The same principle applies to light/dark image pairs (two `<img>` tags, one
 logical image) and to any value duplicated into an MSO conditional.

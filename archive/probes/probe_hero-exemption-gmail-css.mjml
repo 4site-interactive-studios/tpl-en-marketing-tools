@@ -1,0 +1,297 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE - hero-exemption confirmation + Gmail merged-block isolation
+      (2026-08-18). Not a catalog page. Paste the compiled _live.html into EN
+      as a raw-HTML email template and send to EoA. Read the DELIVERED html
+      first (/app/acidtest/display/email_html/<TEST_ID>), then the renders.
+
+      Two series, one send (the probe_v4-followups pattern):
+
+      SERIES E - does the dark-hero exemption work?  (read Apple Mail dark
+      and Outlook.com dark. Probe 0Mgmjr convicted the .block repaint of
+      painting a black lid over every background-photo hero; the fix - the
+      .image-block/.overlay-image-block transparency exemption in both dark
+      branches of styles.css - shipped 2026-08-18 but its fixed state has
+      never been rendered. This send compiles WITH the exemption.)
+
+      E1  HERO AS SHIPPED     section css-class="image-block block" - the
+                              exact shape that slabbed black in 0Mgmjr P1.
+                              PHOTO in dark = exemption confirmed.
+                              BLACK SLAB = exemption failed; reopen item 1.
+      E2  HERO CONTROL        same minus "block" - the repaint cannot fire.
+                              Photo expected; anchors comparability to 0Mgmjr.
+      E3  OVERLAY HERO        section css-class="overlay-image-block block" -
+                              the second exemption class.
+      E4  WRAPPER HERO        css-class="image-block block" on an mj-WRAPPER
+                              spanning an inner section (the CTA Hero with
+                              Heading shape) - exemption must reach every
+                              descendant table under the classed div.
+      E5  NESTED HERO         the Countdown shape: outer .block wrapper >
+                              colour wrapper > image-block section (repaint
+                              fires from the ANCESTOR class, exemption from
+                              the section's own) - the shape hooked with
+                              css-class="image-block" on 2026-08-18.
+
+      SERIES G - why did Gmail apply ZERO rules from the merged conditional
+      block in Send B (EoA Hd4yy, 2026-08-18)?  Even the plain class-selector
+      control died in Gmail web AND app, while Apple Mail and Outlook.com
+      fired both rules and the delivered payload provably carried them.
+      EN merges same-condition media queries into ONE block at send, so each
+      G test uses a DISTINCT max-width condition to stay its own block:
+
+      G0  IN THE DIRTY BLOCK  clean class rule authored at (max-width: 9999px)
+                              - EN merges it into the production block beside
+                              the [data-ogsc] and td[style*] neighbours.
+                              Reproduces Send B.
+      G1  CLEAN BLOCK         same rule alone at (max-width: 9998px).
+      G2  DATA-OGSC NEIGHBOUR same rule + one [data-ogsc] rule, 9997px.
+      G3  STYLE-ATTR NEIGHBOUR same rule + one td[style*=...] rule, 9996px.
+
+      VERDICT RULES (read Gmail web light + Gmail app light; every canary
+      paints an 8px magenta top border on its own labelled row):
+        all four fire            -> Send B does not reproduce; suspect that
+                                    round's minimal email, close the item.
+        G1 fires, G0 dead        -> the production merged block specifically
+                                    is rejected; G2/G3 say which neighbour:
+          G2 dead                -> a [data-ogsc] rule poisons its whole block
+          G3 dead                -> a td[style*] rule poisons its whole block
+          G2+G3 fire             -> neighbours innocent; suspect size or
+                                    position - bisect next round.
+        G1 dead too              -> Gmail drops every conditional block here;
+                                    mobile CSS is inert in Gmail, escalate.
+      Apple Mail / Outlook.com: all four magenta borders expected (delivery
+      control). Word engines: none expected (no @media support) - that is
+      the known baseline, not a finding.
+
+      LIFECYCLE - this probe carries the reassess-composite round's last
+      open claim (the exemption). When this round is read and recorded,
+      archive BOTH this file and probe_reassess-composite.mjml per
+      CLAUDE.md "Probe lifecycle".
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE - hero exemption + Gmail merged block</mj-title>
+
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-image padding="0" />
+      <mj-button css-class="button" />
+    </mj-attributes>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+
+    <mj-style>
+      /* SERIES G canaries. Distinct max-width conditions keep G1-G3 out of
+         EN's same-condition merge; G0 deliberately matches the production
+         condition so EN folds it into the dirty block. Neighbour rules need
+         no matching element - EN returns conditional blocks verbatim,
+         without pruning. */
+      @media only screen and (max-width: 9999px) {
+        .g0-canary { border-top: 8px solid #FF00FF !important; }
+      }
+      @media only screen and (max-width: 9998px) {
+        .g1-canary { border-top: 8px solid #FF00FF !important; }
+      }
+      @media only screen and (max-width: 9997px) {
+        .g2-canary { border-top: 8px solid #FF00FF !important; }
+        [data-ogsc] .g2-dark-neighbour { background-color: #000000 !important; }
+      }
+      @media only screen and (max-width: 9996px) {
+        .g3-canary { border-top: 8px solid #FF00FF !important; }
+        .g3-neighbour td[style*=vertical-align] { padding: 0 !important; }
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body css-class="email-body" background-color="#ffffff">
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">E1 - HERO AS SHIPPED (image-block block)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe E1 Hero As Shipped -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe E1 Hero As Shipped -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">E2 - HERO CONTROL (image-block, no block)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe E2 Hero Control -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe E2 Hero Control -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">E3 - OVERLAY HERO (overlay-image-block block)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe E3 Overlay Hero -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#000000" padding="0" data-style-background-color>
+      <mj-section css-class="overlay-image-block block" background-url="assets/photo-person_overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center bottom" padding="120px 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-text css-class="overlay" data-style-alignment padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+              <h1 style="text-align: center">Overlay hero - photo must show in dark</h1>
+            </mj-text>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe E3 Overlay Hero -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">E4 - WRAPPER HERO (image-block block on mj-wrapper)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe E4 Wrapper Hero -->
+    <!-- Fallback colour lives on the OUTER wrapper, NOT the tag carrying the image: MJML copies a background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). The image sits on an inner wrapper because in the catalog it spans multiple sections. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-wrapper css-class="image-block block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0" data-style-background-url data-style-background-position data-style-background-size>
+        <mj-section padding="48px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+          <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+              <h1 style="color:#ffffff;">Wrapper hero - photo must show in dark</h1>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+      </mj-wrapper>
+    </mj-wrapper>
+    <!-- END: Probe E4 Wrapper Hero -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">E5 - NESTED HERO (image-block section under a .block wrapper)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe E5 Nested Hero -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px">
+      <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+      <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+        <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+          <mj-group>
+            <mj-column width="25px">&nbsp;</mj-column>
+            <mj-column width="452px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+              <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+                <h2 style="color:#ffffff;">Nested hero - photo must show in dark</h2>
+              </mj-text>
+            </mj-column>
+            <mj-column width="25px">&nbsp;</mj-column>
+          </mj-group>
+        </mj-section>
+      </mj-wrapper>
+    </mj-wrapper>
+    <!-- END: Probe E5 Nested Hero -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">SERIES G - GMAIL MERGED-BLOCK ISOLATION</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- START: Probe G0 Dirty Block -->
+    <mj-section css-class="g0-canary" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:16px;font-family:Menlo,Consolas,monospace;">G0 - rule lives IN the production merged block (9999px). Magenta top border above this line = Gmail applies the dirty block.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe G0 Dirty Block -->
+
+    <!-- START: Probe G1 Clean Block -->
+    <mj-section css-class="g1-canary" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:16px;font-family:Menlo,Consolas,monospace;">G1 - rule alone in a CLEAN block (9998px). Magenta = clean conditional blocks survive Gmail.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe G1 Clean Block -->
+
+    <!-- START: Probe G2 Data-Ogsc Neighbour -->
+    <mj-section css-class="g2-canary" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:16px;font-family:Menlo,Consolas,monospace;">G2 - clean rule + one [data-ogsc] neighbour (9997px). Dead while G1 fires = an attribute-selector rule poisons its whole block in Gmail.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe G2 Data-Ogsc Neighbour -->
+
+    <!-- START: Probe G3 Style-Attr Neighbour -->
+    <mj-section css-class="g3-canary" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:16px;font-family:Menlo,Consolas,monospace;">G3 - clean rule + one td[style*] neighbour (9996px). Dead while G1 fires = a style-attribute selector poisons its whole block in Gmail.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe G3 Style-Attr Neighbour -->
+
+  </mj-body>
+</mjml>

@@ -16,8 +16,5 @@ moved here. To re-run a round, move the file back to `src/` and rebuild.
 | `probe_outlook-background-image.mjml` | Word-engine colour-slab-beats-photo when a section carries both background attributes (2026-08-12/13, EoA aBPD6k1l) — productized as check-catalog §1 | guide §4, `scripts/check-catalog.mjs` |
 | `probe_outlook-dark-footer.mjml` | Outlook desktop dark footer inversion; wordmark needs self-contrast (2026-08-13) — resolved by the contrast-outline asset pass | PLAYBOOK.md |
 | `probe_v4-followups.mjml` | Combined re-send of the BG + COL series to spend one EoA run (2026-08-13); the two source probes above stay canonical | guide §4, §2e |
-
-Still ACTIVE in `src/`: `probe_reassess-composite.mjml` — its 0Mgmjr…
-round is read, but its rebuilt `_live.html` now carries the dark-hero
-exemption and is the instrument for that fix's confirmation send. It
-archives when that confirmation lands.
+| `probe_reassess-composite.mjml` | Composite re-assessment round P1–P10 (2026-08-18, EoA 0Mgmjr…): hero-lid conviction, Word rescale fixes, pill cure, tinted-panel hooks, anchor auto-close | guide §2c/§4/§2d, check-catalog §5 |
+| `probe_hero-exemption-gmail-css.mjml` | E1–E5: dark-hero exemption CONFIRMED across all five hero shapes; G0–G3: Gmail applies the merged conditional block on production-shaped emails — Send B's zero was the minimal email (2026-08-18, EoA MeKGcu…) | guide §2c/§4, future-enhancements §3, styles.css |
