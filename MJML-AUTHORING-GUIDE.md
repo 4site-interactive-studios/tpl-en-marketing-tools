@@ -653,23 +653,33 @@ times keeps independent Replacement choices for each copy (measured
 pair (completed 2026-08-18; before that the reveal half had never been
 written and the class hid content everywhere).** When one slot genuinely
 needs different MARKUP per viewport — not just different visibility, which
-the toggles above already cover — the pattern is three pieces, and all
-three are load-bearing:
+the toggles above already cover — the pattern is four layers, each serving
+a different slice of the client matrix (the `.dark-only` swap runs the
+same cascade in production):
 
-1. The hide lives in an ALWAYS-TRUE media query
-   (`@media only screen and (max-width: 9998px)`) so EN keeps it as a
-   stylesheet rule instead of inlining `display:none` onto the element
-   (§2a). The condition is deliberately DISTINCT from the OWA block's
-   9999px: EN merges same-condition queries into one block, which could
-   move the hide after the reveal and invert the cascade.
-2. The reveal (`display: block !important`) sits in the 599px mobile
-   block, LATER in the sheet — equal specificity, equal importance, so
-   source order decides the tie at mobile widths.
-3. The mobile variant's markup is wrapped in
+1. A PLAIN top-level hide, which EN inlines onto the element at send
+   (`!important` stripped). This is the layer for clients that read no
+   `<style>` at all — the Gmail app on non-Google/IMAP accounts strips
+   head styles entirely, and forwarding drops them in most clients. There
+   the inline hide is the only rule standing: the desktop fork shows, the
+   mobile fork hides — one coherent fork instead of two.
+2. The SAME hide again inside an always-true media query
+   (`@media only screen and (max-width: 9998px)`), which EN keeps
+   verbatim (§2a) — the stylesheet copy for any path where the inline
+   was lost but styles are respected. The condition is deliberately
+   DISTINCT from the OWA block's 9999px: EN merges same-condition
+   queries into one block, which could move the hide after the reveal
+   and invert the cascade.
+3. The reveal (`display: block !important`) sits in the 599px mobile
+   block, LATER in the sheet. It beats BOTH hide layers: the inlined
+   copy is plain after EN's `!important` strip (an `!important`
+   stylesheet rule outranks a plain inline style), and the wrapped copy
+   loses the equal-specificity tie on source order.
+4. The mobile variant's markup is wrapped in
    `<!--[if !mso]><!--> … <!--<![endif]-->`: the Word engines ignore
-   `@media` wholesale, so without the wrapper Outlook desktop renders BOTH
-   forks. TPL's `check-catalog` warns on any `mobile-only` element outside
-   the wrapper.
+   `@media` wholesale AND ignore `display:none`, so without the wrapper
+   Outlook desktop renders BOTH forks. TPL's `check-catalog` warns on
+   any `mobile-only` element outside the wrapper.
 
 Use it sparingly: each fork mints its own Replacement fields, doubling the
 editor surface for one logical slot and letting the variants drift. The

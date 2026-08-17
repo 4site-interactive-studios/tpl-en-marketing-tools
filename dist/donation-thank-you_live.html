@@ -228,17 +228,33 @@ li {
     }
 
     /* Viewport-forked content, the sanctioned pair (completed 2026-08-18 —
-   the reveal below was missing since the sheet's beginning, so the class
-   hid content everywhere). The hide lives in an ALWAYS-TRUE media query so
-   EN keeps it as a stylesheet rule instead of inlining display:none onto
-   the element (guide §2a) — and in a DISTINCT condition (9998px, not the
-   OWA block's 9999px) so EN's same-condition merge cannot move it after
-   the 599px reveal: the reveal must come later in the cascade to win the
-   tie at mobile widths. Word ignores @media entirely, so every element
-   classed mobile-only MUST also sit inside <!--[if !mso]><!--> … 
-   <!--<![endif]--> or Outlook desktop renders both forks (check-catalog
-   asserts this). Use sparingly: each fork mints its own Replacement
-   fields, doubling the editor surface for one logical slot. */
+   the reveal was missing since the sheet's beginning, so the class hid
+   content everywhere). The hide is authored TWICE, on the .dark-only
+   precedent, because the two copies serve different clients:
+
+   1. The PLAIN copy below: EN inlines it onto the element at send
+      (!important stripped), which is what covers the style-stripping
+      audience — Gmail app on non-Google/IMAP accounts drops <style>
+      entirely, and forwarding drops head styles in most clients. There
+      the inline hide is the only rule standing: one fork shows (desktop),
+      not two.
+   2. The WRAPPED copy: an always-true media query EN keeps verbatim
+      (guide §2a), so the hide also survives as a stylesheet rule wherever
+      styles are respected but the inline was lost (edited block HTML).
+      Its condition is deliberately DISTINCT (9998px, not the OWA block's
+      9999px) so EN's same-condition merge cannot move it after the 599px
+      reveal.
+
+   The reveal (599px block, later in the sheet) beats BOTH copies: the
+   inline hide is plain after EN's !important-strip, and the wrapped hide
+   loses the equal-specificity tie on source order. Word ignores @media
+   AND display:none, so every element classed mobile-only MUST also sit
+   inside <!--[if !mso]><!--> … <!--<![endif]--> (check-catalog asserts
+   this). Use sparingly: each fork mints its own Replacement fields. */
+    .mobile-only {
+      display: none;
+    }
+
     @media only screen and (max-width: 9998px) {
       .mobile-only {
         display: none !important;
