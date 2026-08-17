@@ -659,13 +659,18 @@ output is byte-identical the flag does nothing, and the block reports it —
 ignores still reads as a deliberate decision to the next person, and it ships
 in the compiled HTML of every block that carries it.
 
-Two things that check has already taught us: a `dark-only` image twin never
-gets its own Display toggle (the importer folds it into its light pair), so
-`data-no-display-toggle` on one is always inert; and a component in a block
-that generates no Display fields at all does not need opting out of them.
-Note the check removes one attribute at a time, so when a block reports
-several, remove them one at a time and re-import between — flags can prop
-each other up, and the report says so when they do.
+Two things that check has already taught us — the first one twice, which is
+why it is now also a build-time warning in the reference repo's
+`check-catalog` lint rather than prose alone. The importer folds an adjacent
+light/dark twin pair into ONE logical element, and it is the **second twin
+by authoring order** (whichever colour that is — author light-first and it
+is the dark one) that is dropped before any flag on it is read: so every
+`data-no-*` opt-out flag on the second twin is always inert. Put the flag on
+the FIRST twin; it governs the pair. And a component in a block that
+generates no fields of the relevant kind at all does not need opting out of
+them. Note the check removes one attribute at a time, so when a block
+reports several, remove them one at a time and re-import between — flags
+can prop each other up, and the report says so when they do.
 
 ---
 

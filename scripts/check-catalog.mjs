@@ -354,8 +354,81 @@ guard('column geometry check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// 4. No importer opt-out flag on the SECOND twin of a light/dark pair.
+//    The importer folds an adjacent light-only/dark-only twin pair — same
+//    component, consecutive, values equal apart from src — into ONE logical
+//    element: the second of the pair is dropped from every census BEFORE any
+//    flag on it is read (mergeSwapPairs, then the swapDropped filter). So an
+//    opt-out flag there is computed and discarded. It keys on ORDER, not
+//    colour: TPL authors light-first, so it is the dark twin today, but a
+//    dark-first pair would invert it.
+//    Caused by: five dead data-no-display-toggle flags on footer logo dark
+//    twins. Removed 2026-08-10 per the documented rule, re-entered via a
+//    file rename and again via aa4d813 (which read the flag's absence as a
+//    gap and "fixed" it), re-found by the 2026-08-17 dead-flag audit. A rule
+//    that lives only in prose loses; this assertion is the durable copy.
+// ---------------------------------------------------------------------------
+
+/** The five importer opt-out flags — all read only AFTER the twin merge. */
+const OPT_OUT_FLAGS = [
+  'data-no-display-toggle',
+  'data-no-link-toggle',
+  'data-no-width-toggle',
+  'data-no-background-color',
+  'data-no-direction-toggle',
+];
+
+guard('inert twin flag check', () => {
+  /** Attributes as a comparable map, dropping what the merge ignores:
+   *  src (deliberately excluded from the importer's equality test),
+   *  css-class (the light-only/dark-only discriminator), and every data-*
+   *  (annotation, not structure — same reasoning as normalize()). */
+  const comparable = (attrs) => {
+    const map = new Map();
+    for (const a of attrs.matchAll(/([\w-]+)(?:\s*=\s*"([^"]*)")?/g)) {
+      if (a[1] === 'src' || a[1] === 'css-class' || a[1].startsWith('data-')) continue;
+      map.set(a[1], a[2] ?? '');
+    }
+    return map;
+  };
+  const sameAttrs = (a, b) =>
+    a.size === b.size && [...a].every(([k, v]) => b.get(k) === v);
+
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    for (const block of topBlocks(text)) {
+      // Elements of each mj-* component in document order, as the merge sees them
+      const byName = new Map();
+      for (const m of block.body.matchAll(/<(mj-[\w-]+)\b([^>]*?)\/?>/g)) {
+        if (m[1] === 'mj-raw') continue;
+        const list = byName.get(m[1]) ?? [];
+        list.push({ attrs: m[2], index: m.index });
+        byName.set(m[1], list);
+      }
+      for (const list of byName.values()) {
+        for (let i = 0; i + 1 < list.length; i += 1) {
+          const [a, b] = [list[i], list[i + 1]];
+          const cls = (e) => (/\scss-class="([^"]*)"/.exec(e.attrs) || [, ''])[1];
+          const twins =
+            (cls(a).includes('light-only') && cls(b).includes('dark-only')) ||
+            (cls(a).includes('dark-only') && cls(b).includes('light-only'));
+          if (!twins || !sameAttrs(comparable(a.attrs), comparable(b.attrs))) continue;
+          for (const flag of OPT_OUT_FLAGS) {
+            if (!new RegExp(`(?:^|\\s)${flag}(?:[\\s/=]|$)`, 'i').test(b.attrs)) continue;
+            warn(
+              `src/${f}:${lineAt(text, block.start + b.index)} "${block.name}" — ${flag} on the SECOND twin of a light/dark pair is inert: the importer folds it into the first twin before any flag on it is read, so the FIRST twin's flag governs the pair; delete this one`,
+            );
+          }
+          i += 1; // the pair is consumed, exactly as the merge consumes it
+        }
+      }
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, dark-mode hooks, column geometry clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, dark-mode hooks, column geometry, twin flags clean`,
 );

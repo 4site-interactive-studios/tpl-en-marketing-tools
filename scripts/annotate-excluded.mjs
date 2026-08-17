@@ -47,7 +47,7 @@ function normalize(body) {
   // so they must stay in one subsumption group — otherwise flagging one
   // variant orphans its twin's data-fully-exclude.
   let s = body.replace(
-    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|desktop-only-[a-z-]+|mobile-only-[a-z-]+)/g,
+    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+)/g,
     '',
   );
   // data-folder routes a block to an EN folder — importer annotation too

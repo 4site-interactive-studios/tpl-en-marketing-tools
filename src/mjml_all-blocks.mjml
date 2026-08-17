@@ -2908,7 +2908,7 @@
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2934,7 +2934,7 @@
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2956,7 +2956,7 @@
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2978,7 +2978,7 @@
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Unsubscribe</a></p>

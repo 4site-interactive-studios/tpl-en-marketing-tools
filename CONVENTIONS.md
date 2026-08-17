@@ -1287,9 +1287,14 @@ importer whitelists all data-*-only MJML validator warnings
   detection must use `hasAttrFlag` (`src/core/mjmlProps.ts`), which accepts
   both forms. A bare `data-no-display-toggle` was being ignored entirely
   until 2026-07-31 for exactly this reason.
-- **`data-no-width-toggle`** (valueless, on mj-column): opts a lone
-  fixed-px column out of the enumerated Column Width Select — for inset
-  boxes whose width is load-bearing design geometry.
+- **`data-no-width-toggle`** (valueless, on mj-column OR on an
+  mj-section/mj-wrapper frame): on a lone fixed-px column it opts out of
+  the enumerated Column Width Select — for inset boxes whose width is
+  load-bearing design geometry. On a frame it pins the gutter out of the
+  Block Width preset Select (the width-preset consumer in
+  `src/core/mjmlProps.ts`), the same effect a structurally pinned gutter
+  gets automatically. The two consumers are mutually exclusive by
+  construction: a block containing any px column never offers the preset.
 - **`data-width-options`** (VALUED — the one exception in this family, on
   mj-column): `data-width-options="150,250,350"` curates that column's
   Column Width ladder, overriding en-tools-config `columnWidthsPx` and
@@ -1391,10 +1396,23 @@ time. Same blind spot the single-field dropdown sweep has, same remedy.
 Findings on the TPL catalogs (2026-08-10): five dead
 `data-no-display-toggle` flags — both texts in the Progress Meter Block
 (which generates no Display fields at all), and the light/dark image twins in
-the two Footers. **A dark twin never gets its own Display toggle** — the
-generator folds it into its light pair — so the flag on a `dark-only` image
-was always inert. All five removed upstream, with the block field inventory
-verified byte-identical before and after.
+the two Footers. **The SECOND twin (by authoring order) of a merged
+light/dark pair never gets its own toggle of any kind** — `mergeSwapPairs`
+folds it into the first twin BEFORE any opt-out flag on it is read, so every
+flag in the `data-no-*` family is inert there. The rule keys on order, not
+colour: TPL authors light-first, so today it is always the dark twin, but a
+dark-first pair would invert it.
+
+This finding has now recurred twice, which is the real lesson. The
+2026-08-10 removal did not survive a catalog file rename, and on 2026-08-16
+a fix re-added the flag to a dark twin after reading its absence as a gap —
+against this very passage. The 2026-08-17 audit re-found all five; they are
+removed again, and the rule now lives where prose cannot lose it: TPL's
+`check-catalog.mjs` warns at build time on ANY opt-out flag on the second
+twin of a matched pair. (The same session closed two adjacent gaps:
+`data-no-direction-toggle` was missing from `IMPORTER_FLAG_RE` — the audit
+had never tested it — and from TPL `normalize()`'s strip list, where
+toggling it could split a subsumption group.)
 
 ## EN's CSS inliner (not optional — measure it, don't fight it)
 
