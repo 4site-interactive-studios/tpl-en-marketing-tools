@@ -66,7 +66,7 @@ what EN stores.
 | Rule matching nothing | pruned | harmless |
 | `vertical-align` in a td's style | **moved to a `valign` ATTRIBUTE** | `td[style*=vertical-align]` selectors die in the inbox (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered tds kept it inline; `direction` survives in style) |
 | CSS comments | **STRIPPED** at send | comment weight never reaches recipients — it costs the CSS Editor box, not the payload |
-| `<a>` wrapping a `<table>` | **anchor AUTO-CLOSED before the table** | the delivered link arrives EMPTY with the table expelled after it — the row is unclickable in every client (measured 2026-08-18, probe 0Mgmjr…: 167 delivered chars to `</a>` where the build wraps 1,160). Anchor per CELL around inline content, never around a table |
+| `<a>` wrapping a `<table>` | **anchor AUTO-CLOSED before the table** | the delivered link arrives EMPTY with the table expelled after it — the row is unclickable in every client (measured 2026-08-18, probe 0Mgmjr…: 167 delivered chars to `</a>` where the build wraps 1,160). Anchor per CELL around inline content, never around a table — share one URL across the cells with `data-link-group` (§5) |
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
 first child of `<body>` — filled from each email's per-send **Preview
@@ -729,9 +729,11 @@ declared intent; keep them accurate for every property you touch.
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below` |
+| `data-link-group="<name>"` | on raw `<a>` tags inside hand-authored markup: sibling anchors sharing a group name AND a byte-identical href are ONE logical link — the importer mints a single URL field and splices its tag into every member, so the value can never desync. This is the shape for a clickable row: EN auto-closes an `<a>` that wraps a `<table>` (§2), so the row splits into per-cell anchors that share the group. Members with differing hrefs fall back to separate fields, and the TPL build warns; a lone member is an inert flag the dead-flag audit reports |
 
-**Three rules for all of them.** They are valueless flags, so write
-`data-no-display-toggle`, not `="true"`. Never remove, rename, or "fix" one
+**Three rules for all of them.** Apart from the valued trio
+(`data-folder`, `data-category-short`, `data-link-group`) they are
+valueless flags, so write `data-no-display-toggle`, not `="true"`. Never remove, rename, or "fix" one
 on a hunch — they are the only channel your design intent has into the
 importer, and a flag you don't understand is one you haven't traced yet.
 

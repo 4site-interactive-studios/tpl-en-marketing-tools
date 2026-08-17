@@ -1325,6 +1325,24 @@ importer whitelists all data-*-only MJML validator warnings
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link
   must never be removable (e.g. a legally required logo link).
+- **`data-link-group="<name>"`** (valued, on raw `<a>` tags inside
+  hand-authored component markup): sibling anchors in one scanned fragment
+  that share a group name and a byte-identical href are ONE logical link.
+  The first member mints the URL field (`scanEmbeddedAnchors`); later
+  members ride as `extraFragments` on that candidate, and pass 1 splices
+  the same tag into every carrier — one value, several carriers, nothing
+  to desync (added 2026-08-18 for the Question Block row: EN auto-closes
+  an `<a>` wrapping a `<table>`, so the row is per-cell anchors sharing
+  a group). Failure modes are deliberate: members with DIFFERING hrefs
+  fall back to separate per-anchor fields (fail open — they are not one
+  link; TPL `check-catalog` §6 warns), and a member whose compiled
+  fragment cannot be resolved drops the WHOLE field (fail closed — a
+  partial bind would recreate the desync; every anchor keeps its authored
+  href). A lone member is inert and the dead-flag audit reports it —
+  raw-element flags are audited by removing the attribute from source AND
+  compiled html together, mirroring a real rebuild. Raw-anchor URL fields
+  have no Link toggle (that is mj-image-only), so the group has no toggle
+  to desync either.
 - **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
   Select (`src/core/mjmlProps.ts` columnMembers) — used for

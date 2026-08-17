@@ -3310,18 +3310,22 @@ li {
                           <tbody>
                             <tr>
                               <td align="left" class="question-response" style="font-size:0px;padding:0;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><a href="https://www.example.com" style="display:block;text-decoration:none;color:inherit;" data-style-color data-style-href>
-                                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-                                      <tr>
-                                        <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
-                                          <img src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" />
-                                        </td>
-                                        <td valign="top" style="padding:8px 16px 12px 0px;">
-                                          <p style="margin:0;">Each list item will function as a link in the email directing users to a dedicated page on your site.</p>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </a></div>
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!-- EN auto-closes an <a> that wraps a <table> (measured 2026-08-18,
+               probe 0Mgmjr - the row anchor arrived EMPTY and nothing was
+               clickable), so the row link is per-cell anchors sharing ONE URL
+               field via data-link-group: same group + byte-identical hrefs =
+               one replacement spliced into every member, nothing to desync. -->
+                                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+                                    <tr>
+                                      <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
+                                        <a href="https://www.example.com" data-link-group="row" style="display:block;"><img src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
+                                      </td>
+                                      <td valign="top" style="padding:8px 16px 12px 0px;">
+                                        <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" style="display:block;text-decoration:none;color:inherit;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
                               </td>
                             </tr>
                           </tbody>

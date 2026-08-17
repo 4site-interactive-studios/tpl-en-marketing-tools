@@ -338,14 +338,10 @@ guard('inert twin flag check', () => {
 /**
  * Known anchor-wraps-table instances tracked elsewhere and deliberately not
  * fixed yet. One dated line each — delete when the block is restructured.
+ * (The Question Block sat here 2026-08-18 until its per-cell restructure
+ * landed the same day; the set now enforces the rule with zero exceptions.)
  */
-const ANCHOR_ALLOWLIST = new Set([
-  // 2026-08-18, audit item 7: the Question Block row anchor arrives EMPTY on
-  // the wire (probe 0Mgmjr… — EN auto-closes it before the child table, so
-  // the row is unclickable in every client). The fix is the block's queued
-  // restructure: per-cell anchors around inline content.
-  'Question Block',
-]);
+const ANCHOR_ALLOWLIST = new Set([]);
 
 guard('anchor-wraps-table check', () => {
   for (const f of sources) {
@@ -368,8 +364,46 @@ guard('anchor-wraps-table check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// 6. data-link-group integrity. Sibling anchors sharing a group name and a
+//    byte-identical href fold into ONE URL field at import (the Question Block
+//    row shape). Two author errors defeat the fold silently: a lone member
+//    (nothing to fold — inert flag; the app's dead-flag audit also reports
+//    it) and mismatched hrefs (the importer fails open to separate fields,
+//    which is exactly the desync the group exists to prevent).
+// ---------------------------------------------------------------------------
+
+guard('link-group integrity check', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    // Group scope is one mj-text's inner markup; block scope is a safe
+    // over-approximation for a lint (a block holds one mj-text of this kind).
+    const blocks = [...text.matchAll(/<!-- START: (.+?) -->([\s\S]*?)<!-- END: \1 -->/g)];
+    for (const b of blocks) {
+      const groups = new Map();
+      for (const a of b[2].matchAll(/<a\s[^>]*data-link-group\s*=\s*"([^"]+)"[^>]*>/gi)) {
+        const href = /\bhref\s*=\s*"([^"]*)"/.exec(a[0]);
+        const list = groups.get(a[1]) ?? [];
+        list.push({ href: href ? href[1] : '', index: b.index + a.index });
+        groups.set(a[1], list);
+      }
+      for (const [name, members] of groups) {
+        if (members.length < 2) {
+          warn(
+            `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${b[1]}" has a single member — the flag folds nothing; group another anchor or drop it`,
+          );
+        } else if (new Set(members.map((m) => m.href)).size > 1) {
+          warn(
+            `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${b[1]}" mixes hrefs — the importer falls back to separate fields that can desync; make every member's href byte-identical`,
+          );
+        }
+      }
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups clean`,
 );
