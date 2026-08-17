@@ -496,11 +496,23 @@ importer already holds (`shell.beforeBlocks`), `parseAttributeClassDefaults`
 adds the template-wide `<mj-attributes>` css-class defaults so an element
 with no authored class still matches (TPL gives every `mj-button`
 `css-class="button"`, which is why button alignment is pinned everywhere),
-and the generator prefixes the label at import. Only `align`, `width` and
-`height` map to CSS properties today, and an unrecognized selector pins
-nothing — it fails closed to a normal always-on control that the audit can
-still catch. This is why viewport labels survive re-import without anyone
-running the audit and applying its verdicts by hand.
+and the generator prefixes the label at import. `align`, `width`, `height`
+and the four `padding-*` sides map to CSS properties (padding since
+2026-08-17, when the flush-mobile rules left eight Block Padding Left/Right
+fields mislabeled until the audit caught them); a per-side padding query
+also honors a pinned `padding` SHORTHAND, and per-side Selects decomposed
+from one `padding` attribute are scoped individually — the flush classes
+zero left/right below the breakpoint while top/bottom keep working. An
+unrecognized selector pins nothing — it fails closed to a normal always-on
+control that the audit can still catch. One deliberate narrowing: a
+selector's pin keys on the class tokens of its FIRST compound only. In the
+house `.class element` pattern the scope class is always first; taking
+every token would over-pin — `.flush-mobile-capflush .wysiwyg { padding-…
+!important }` restores copy insets inside flush blocks only, but `wysiwyg`
+is the template-wide default on every `mj-text`, and pinning that token
+would label every text field in the catalog desktop-only. This is why
+viewport labels survive re-import without anyone running the audit and
+applying its verdicts by hand.
 
 Two carriers, one value: a pin only settles the question when it covers
 EVERY compiled carrier of the value. MJML writes a button's `align` onto
