@@ -227,8 +227,22 @@ li {
       margin-bottom: 0;
     }
 
-    .mobile-only {
-      display: none !important;
+    /* Viewport-forked content, the sanctioned pair (completed 2026-08-18 —
+   the reveal below was missing since the sheet's beginning, so the class
+   hid content everywhere). The hide lives in an ALWAYS-TRUE media query so
+   EN keeps it as a stylesheet rule instead of inlining display:none onto
+   the element (guide §2a) — and in a DISTINCT condition (9998px, not the
+   OWA block's 9999px) so EN's same-condition merge cannot move it after
+   the 599px reveal: the reveal must come later in the cascade to win the
+   tie at mobile widths. Word ignores @media entirely, so every element
+   classed mobile-only MUST also sit inside <!--[if !mso]><!--> … 
+   <!--<![endif]--> or Outlook desktop renders both forks (check-catalog
+   asserts this). Use sparingly: each fork mints its own Replacement
+   fields, doubling the editor surface for one logical slot. */
+    @media only screen and (max-width: 9998px) {
+      .mobile-only {
+        display: none !important;
+      }
     }
 
     .two-col-column h3 {
@@ -274,6 +288,13 @@ li {
     @media (max-width: 599px) {
       .desktop-only {
         display: none !important;
+      }
+
+      /* The reveal half of .mobile-only (see the 9998px block above). Source
+     order after the hide is load-bearing: equal specificity, equal
+     importance — later wins. */
+      .mobile-only {
+        display: block !important;
       }
 
       /* Buttons center on mobile regardless of desktop alignment — a

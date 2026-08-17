@@ -402,8 +402,41 @@ guard('link-group integrity check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// 7. mobile-only needs its MSO guard. The .mobile-only hide/reveal pair lives
+//    entirely in media queries (completed 2026-08-18 — the hide is wrapped so
+//    EN cannot inline it), and the Word engines ignore @media wholesale: an
+//    element classed mobile-only that Word can parse renders in Outlook
+//    desktop alongside its desktop fork. The mobile variant must sit inside
+//    the revealed conditional <!--[if !mso]><!--> … <!--<![endif]--> so Word
+//    never sees it.
+// ---------------------------------------------------------------------------
+
+guard('mobile-only MSO-guard check', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    const spans = [];
+    let i = 0;
+    for (;;) {
+      const open = text.indexOf('<!--[if !mso]><!-->', i);
+      if (open === -1) break;
+      const close = text.indexOf('<!--<![endif]-->', open);
+      if (close === -1) break;
+      spans.push([open, close]);
+      i = close + 1;
+    }
+    for (const m of text.matchAll(/css-class="[^"]*\bmobile-only\b[^"]*"/g)) {
+      const inside = spans.some(([a, b]) => m.index > a && m.index < b);
+      if (!inside)
+        warn(
+          `src/${f}:${lineAt(text, m.index)} an element classed mobile-only sits outside <!--[if !mso]><!--> … <!--<![endif]--> — Word ignores @media, so Outlook desktop would render BOTH forks; wrap the mobile variant in the revealed conditional`,
+        );
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups, mobile-only guards clean`,
 );
