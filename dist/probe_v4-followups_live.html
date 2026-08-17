@@ -174,8 +174,12 @@
    - section/column OUTER table:  table[align=center]  (only outer tables
      carry align=center in the non-MSO DOM)
    - column wrapper td (exists only when a column authors padding/border/
-     background): td[style*=vertical-align] — widget tds never carry
-     vertical-align inline; the section's own main td: td[style*=direction].
+     background): pair td[style*=vertical-align] WITH td[valign] — EN's
+     inliner moves vertical-align out of the style attribute into a valign
+     attribute at send (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered
+     tds kept it inline), so the style form only matches previews and the
+     valign form only matches the inbox. The section's own main td:
+     td[style*=direction] — direction survives inline (20 of 20 delivered).
    Attribute selectors are inert in Gmail; acceptable here because the dark
    branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
    the two mobile rules using them are cosmetic insets. */
@@ -362,7 +366,8 @@ li {
 
       /* The column's own gutter padding lands on MJML's wrapper td — the only
      td under the column carrying vertical-align inline (see header note) */
-      .two-col-column td[style*=vertical-align] {
+      .two-col-column td[style*=vertical-align],
+      .two-col-column td[valign] {
         padding: 0 !important;
       }
 
@@ -455,7 +460,9 @@ li {
       [data-ogsc] .cta-button-block table[align=center],
       [data-ogsc] .caption-panel,
       [data-ogsc] .highlighted-text-column td[style*=vertical-align],
-      [data-ogsc] .stat-row-column td[style*=vertical-align] {
+      [data-ogsc] .highlighted-text-column td[valign],
+      [data-ogsc] .stat-row-column td[style*=vertical-align],
+      [data-ogsc] .stat-row-column td[valign] {
         background-color: #000000 !important;
       }
 
@@ -577,7 +584,9 @@ li {
       .cta-button-block table[align=center],
       .caption-panel,
       .highlighted-text-column td[style*=vertical-align],
-      .stat-row-column td[style*=vertical-align] {
+      .highlighted-text-column td[valign],
+      .stat-row-column td[style*=vertical-align],
+      .stat-row-column td[valign] {
         background-color: #000000 !important;
       }
 

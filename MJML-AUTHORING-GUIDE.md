@@ -64,6 +64,8 @@ what EN stores.
 | Rule with `!important`, when inlined | inlined, **`!important` stripped** | priority does not survive inlining |
 | `@media screen` (no condition) | **flattened and INLINED** | not a safe hiding place |
 | Rule matching nothing | pruned | harmless |
+| `vertical-align` in a td's style | **moved to a `valign` ATTRIBUTE** | `td[style*=vertical-align]` selectors die in the inbox (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered tds kept it inline; `direction` survives in style) |
+| CSS comments | **STRIPPED** at send | comment weight never reaches recipients — it costs the CSS Editor box, not the payload |
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
 first child of `<body>` — filled from each email's per-send **Preview
@@ -177,6 +179,21 @@ dark-on-dark and no asset swap happens.
 ---
 
 ### 2c. Where dark mode can and cannot reach
+
+**First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
+renders):** an authored light ground with NO dark hook at all — an
+mj-column carrying `background-color="#ffffff"` and no css-class — rendered
+dark and legible in Apple Mail, the Gmail app, Outlook.com, and both Word
+engines. EN rewrites the inline colour to a `bgcolor` attribute at send,
+and every dark client transforms that ground itself; the white-on-white
+failure predicted from the LOCAL build (1.00:1 with the dark branch forced
+on) never reached an inbox. Two consequences: dark-mode claims must be
+measured on the DELIVERED html, never the compiled build — the artifact
+the prediction was made against does not survive the inliner — and an
+explicit dark rule is a belt over the clients' own braces, worth writing
+when you need a SPECIFIC colour rather than "not broken". This is one
+email and one round: strong evidence, not a licence to delete hooks that
+already ship.
 
 The dark-mode strategy has exactly two hooks, and both survive EN:
 `@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
@@ -305,17 +322,31 @@ targets, quote-free so nothing in them can be escaped:
 .block table[align=center] { background-color: #000000 !important; }
 
 /* the column WRAPPER td (exists only when a column authors padding /
-   border / background; widget tds never carry vertical-align inline): */
-.two-col-column td[style*=vertical-align] { padding: 0 !important; }
+   border / background). PAIR BOTH FORMS: EN's inliner moves
+   vertical-align out of the style attribute into a valign attribute at
+   send, so the style form matches only previews and the valign form
+   matches only the inbox (measured 2026-08-18, EoA aafUJU… — 0 of 107
+   delivered tds kept it inline): */
+.two-col-column td[style*=vertical-align],
+.two-col-column td[valign] { padding: 0 !important; }
 
-/* the section's own main td carries direction inline: */
+/* the section's own main td carries direction inline, and direction
+   SURVIVES the inliner (20 of 20 delivered) — no pairing needed: */
 .inset-gutter td[style*=direction] { padding-left: 32px !important; }
 ```
 
-Caveat: attribute selectors are inert in Gmail. That is acceptable for
-dark-mode branches (Gmail exposes no dark hook anyway, §2c) and for
+Caveat one: attribute selectors are inert in Gmail. That is acceptable
+for dark-mode branches (Gmail exposes no dark hook anyway, §2c) and for
 cosmetic mobile insets; anything Gmail-critical must stay class-based or
 become a plain descendant selector.
+
+Caveat two, and it cost this repo a dead rule for five days: **check any
+`[style*=…]` selector against the DELIVERED html, not the compiled
+build.** The inliner rewrites style attributes (bgcolor, valign, the
+background shorthand), so a selector that matches every td in dist/ can
+match zero in the inbox. `td[style*=vertical-align]` shipped as a
+single-surface form on 2026-08-13 and was only caught when the delivered
+payload was inspected directly.
 
 **These two constraints together rule out the obvious fix for a
 Gmail-only layout bug**, so expect to work harder there. A worked example

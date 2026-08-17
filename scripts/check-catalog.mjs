@@ -113,123 +113,18 @@ guard('both-attribute background check', () => {
 });
 
 // ---------------------------------------------------------------------------
-// 2. A light container background inside a .block section needs a dark-mode
-//    hook, or the dark branch whitens the text and leaves the ground light.
-//
-//    Two carriers, two selector shapes, and the difference is the whole
-//    mechanism:
-//      mj-column background-color      -> a <td> whose class sits on the
-//                                         PARENT div, so it needs `.T td…`
-//      container-background-color      -> the element's OWN classed <td>,
-//                                         so it needs a bare `.T`
-//    `.block` only ever has a `table[align=center]` descendant form, never
-//    `td`, which is why a column background is never covered by it.
+// 2. RETIRED (2026-08-18): "a light container background inside a .block
+//    section needs a dark-mode hook". The premise was measured wrong on the
+//    delivered payload (EoA aafUJU…, all five dark-capable renders): EN's
+//    inliner rewrites background-color to a bgcolor ATTRIBUTE at send, and
+//    every dark client — Apple Mail, Gmail app, Outlook.com, and both Word
+//    engines — transforms that ground itself. The predicted white-on-white
+//    (Quiz Block answer card, 1.00:1 against the LOCAL build) rendered dark
+//    and legible everywhere. The check was flagging a non-defect: the local
+//    artifact it reasoned from does not survive to the inbox.
+//    Lesson kept here because the check itself was born from one: dark-mode
+//    claims must be measured against the DELIVERED html, never dist/.
 // ---------------------------------------------------------------------------
-
-/**
- * Known-unhooked backgrounds that are tracked elsewhere and deliberately not
- * fixed yet. One line each, dated, with the reason — delete the line when the
- * finding is closed. Same shape as check-docs.mjs's NOT_BLOCKS.
- */
-const UNHOOKED_ALLOWLIST = new Set([
-  // 2026-08-15, catalog audit item 2a: the answer-reveal card measures 1.00:1
-  // in dark mode. The fix (a hook + a rule) is prescribed but the block also
-  // has an open design question about its border colour, so it is held.
-  'Quiz Block (2x2 buttons)',
-]);
-
-/** Perceived luminance 0..1. Catalog grounds cluster at 0.97/1.0 (flag) and 0.41 (keep). */
-const luminance = (hex) => {
-  const h = hex.replace('#', '');
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
-  if (full.length !== 6) return 0;
-  const [r, g, b] = [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16));
-  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-};
-
-guard('unhooked dark background check', () => {
-  const css = read('src/styles.css') || '';
-  /** Slice a media block's body by brace depth — the check-docs.mjs idiom. */
-  const branchBody = (marker) => {
-    const start = css.indexOf(marker);
-    if (start < 0) return null;
-    let depth = 0;
-    for (let i = start; i < css.length; i += 1) {
-      if (css[i] === '{') depth += 1;
-      else if (css[i] === '}' && (depth -= 1) === 0) {
-        return css.slice(start, i).replace(/\/\*[\s\S]*?\*\//g, '');
-      }
-    }
-    return null;
-  };
-
-  /** Class tokens each branch hooks, split by the shape that can reach a td. */
-  const hooks = (body) => {
-    const self = new Set();
-    const desc = new Set();
-    if (!body) return { self, desc };
-    for (const rule of body.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
-      if (!/background(-color)?\s*:/.test(rule[2])) continue;
-      for (const sel of rule[1].split(',')) {
-        const s = sel.trim().replace(/^\[data-ogsc\]\s*/, '');
-        let m = /^\.([\w-]+)(?::[\w-]+)?$/.exec(s);
-        if (m) self.add(m[1]);
-        else if ((m = /^\.([\w-]+)\s+td\b/.exec(s))) desc.add(m[1]);
-      }
-    }
-    return { self, desc };
-  };
-
-  const dark = hooks(branchBody('@media (prefers-color-scheme: dark)'));
-  const ogsc = hooks(branchBody('@media only screen and (max-width: 9999px)'));
-  // A hook only counts when BOTH branches carry it — one branch alone leaves
-  // half the clients unpainted.
-  const selfHook = (t) => dark.self.has(t) && ogsc.self.has(t);
-  const descHook = (t) => dark.desc.has(t) && ogsc.desc.has(t);
-
-  const classesOf = (tag) => ((/\scss-class="([^"]*)"/.exec(tag) || [, ''])[1]).split(/\s+/).filter(Boolean);
-  const isBlockToken = (t) => t === 'block' || t.endsWith('-block');
-
-  for (const f of sources) {
-    const text = read(`src/${f}`) || '';
-    for (const block of topBlocks(text)) {
-      if (UNHOOKED_ALLOWLIST.has(block.name)) continue;
-      const stack = [];
-      for (const m of block.body.matchAll(/<(\/?)(mj-[\w-]+)\b([^>]*?)(\/?)>/g)) {
-        const [, closing, name, attrs, selfClose] = m;
-        if (closing) {
-          for (let i = stack.length - 1; i >= 0; i -= 1) {
-            if (stack[i].name === name) {
-              stack.splice(i, 1);
-              break;
-            }
-          }
-          continue;
-        }
-        const tokens = classesOf(m[0]);
-        const ancestors = stack.flatMap((s) => s.tokens);
-        const inBlock = [...ancestors, ...tokens].some(isBlockToken);
-
-        const col = /\sbackground-color="(#[0-9a-fA-F]{3,6})"/.exec(attrs);
-        const con = /\scontainer-background-color="(#[0-9a-fA-F]{3,6})"/.exec(attrs);
-        // Sections and wrappers ARE reached by `.block`; only columns are not.
-        const carrier = name === 'mj-column' && col ? col : con && con;
-        if (inBlock && carrier && luminance(carrier[1]) > 0.6) {
-          const covered = con
-            ? tokens.some(selfHook) || ancestors.some(descHook)
-            : [...ancestors, ...tokens].some(descHook);
-          if (!covered) {
-            const at = lineAt(text, block.start + m.index);
-            warn(
-              `src/${f}:${at} "${block.name}" — ${con ? 'container-background-color' : 'background-color'} ${carrier[1]} on <${name}> has no dark-mode hook, so the dark branch whitens the text onto a light ground; add a css-class and a ${con ? '`.T`' : '`.T td[style*=vertical-align]`'} rule to BOTH dark branches in src/styles.css`,
-            );
-          }
-        }
-        if (!selfClose) stack.push({ name, tokens });
-      }
-    }
-  }
-});
 
 // ---------------------------------------------------------------------------
 // 3. Fixed-width columns must fit the frame they sit in.
@@ -430,5 +325,5 @@ guard('inert twin flag check', () => {
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, dark-mode hooks, column geometry, twin flags clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags clean`,
 );
