@@ -849,6 +849,21 @@ can prop each other up, and the report says so when they do.
 
 ---
 
+**Word ignores CSS box geometry on spans — size inline chips by their
+text.** `display:inline-block`, `width`, and `height` on a `<span>` all die
+in the Word engines, so a numeral chip built as a fixed-width span collapses
+to the digit's own width — a sliver of background around cramped text
+(measured 2026-08-18, probe 0Mgmjr… renders; the fix shipped the same day on
+the Steps Block chips). The robust shape is character-driven geometry Word
+cannot ignore: pad the content with `&nbsp;` INSIDE the span and set a
+monospace stack so the width is predictable —
+`<span style="…;font-family:Menlo,Consolas,'Courier New',monospace;">&nbsp;1&nbsp;</span>`.
+Drop any fixed `width` when you do (the padding and the width fight), and
+keep `line-height` for the modern-client chip height; Word renders the run
+at its own line box, which is honest typography rather than a broken box.
+This is the span-level twin of the MSO spacer-td rule above: when Word must
+get geometry right, carry it in text or table attributes, never in span CSS.
+
 ## 7. Assets
 
 - **EN's CDN folders are flat.** Every asset resolves to
