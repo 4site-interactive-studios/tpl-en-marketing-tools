@@ -1,0 +1,363 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE - composite re-assessment round (2026-08-18). Not a catalog page.
+      Paste dist/probe_reassess-composite_live.html into EN as a raw-HTML email
+      template and send to EoA. Read the DELIVERED html first
+      (/app/acidtest/display/email_html/<TEST_ID>), then the renders.
+
+      WHAT EACH REGION SETTLES
+
+      P1  HERO AS SHIPPED   the exact catalog hero: colour on the wrapper,
+                            photo on a section carrying css-class="image-block
+                            block". Open question (audit item 1): in Apple Mail
+                            dark / Outlook.com dark, does our own
+                            `.block table[align=center] { background:#000 }`
+                            paint a black lid over the photo after EN's
+                            shorthand rebuild drops the table's url()?
+      P2  HERO CONTROL      byte-identical except the section class is
+                            "image-block" alone - the dark rule CANNOT fire.
+                            P1 black + P2 photo = rule convicted.
+                            P1 photo + P2 photo = prediction dead, rule fine.
+      P3  HIGHLIGHTED TEXT  #CEE4C5 column ground, hook shipped 2026-08-15 as
+      P4  STAT ROW          td[style*=vertical-align], td[valign]. Do the
+                            hooks fire in dark clients, or do clients rescue
+                            the tinted grounds themselves? (item 14)
+      P5  VIDEO (INSET)     the three rescaled-column blocks (item 13):
+      P6  COUNTDOWN         25+454+25 / 25+452+25 / 224+278. Verdict: columns
+      P7  STORY (ORANGE)    side by side at desktop, nothing wrapped, Watch
+                            button centred. Outlook Windows render REQUIRED -
+                            the Word reflow is the only unmeasured half.
+      P8  STEPS BLOCK       as authored. Re-check the chips in all five dark
+                            renders (the old "persists in dark" claim was
+                            measured on the wrong artifact); M365 dark showed
+                            them cramped in aafUJU. (item 6)
+      P9  PILLS CONTROL     the current two-line row. Word: first label sits
+                            ~16px left of centre (confirmed aafUJU).
+      P10 PILLS FIXED       same row with the two proposed Word fixes: width
+                            attr on the MSO spacer td, and dual opening tags
+                            so Word never sees margin-right. Verdict: both
+                            labels centred in Word, non-Word byte-identical
+                            to P9. (item 23)
+
+      Separate send B (not this file): the CSS-Editor `>` canary - see the
+      instructions that shipped with this probe.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE - composite re-assessment</mj-title>
+
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-image padding="0" />
+      <mj-button css-class="button" />
+    </mj-attributes>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+
+  <mj-body css-class="email-body" background-color="#ffffff">
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P1 - HERO AS SHIPPED (image-block block)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P1 Hero As Shipped -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-section css-class="image-block block" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe P1 Hero As Shipped -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P2 - HERO CONTROL (image-block, no block)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P2 Hero Control -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-section css-class="image-block" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe P2 Hero Control -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P3 - HIGHLIGHTED TEXT (hook: td valign pair)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P3 Highlighted Text -->
+    <mj-section
+      css-class="text-block block"
+      background-color="#ffffff" padding="16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction
+    >
+      <mj-column css-class="highlighted-text-column" width="480px" border-left="4px solid #006837" background-color="#CEE4C5" data-style-background-color data-style-border padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-family: Arial, sans-serif;">
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            Fermentum sit id pharetra tortor.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe P3 Highlighted Text -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P4 - STAT ROW OFF-WHITE (hook: td valign pair)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P4 Stat Row -->
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
+          <p style="font-size:16px;"><b>Supporter ID:</b></p>
+          <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
+          <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
+          <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Still able to make an impact!</a></p>
+          <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
+          <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+        </mj-text>
+        <mj-button width="auto" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe P4 Stat Row -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P5 - VIDEO BLOCK INSET (25+454+25)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P5 Video Inset -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px 0">
+      <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+      <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+        <mj-section background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="90px 0 90px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="454px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Watch&nbsp;&nbsp;▷</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+      </mj-wrapper>
+    </mj-wrapper>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 48px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe P5 Video Inset -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P6 - COUNTDOWN CARD (25+452+25)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P6 Countdown -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px">
+      <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+      <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+        <mj-section background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="452px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+            <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+              <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
+              <h3 style="color:#ffffff;margin:0 0 16px;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
+            </mj-text>
+            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+            <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+              <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
+              <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
+            </mj-text>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+      </mj-wrapper>
+    </mj-wrapper>
+    <!-- END: Probe P6 Countdown -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P7 - STORY CARD ORANGE (224+278)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P7 Story Orange -->
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h2 style="color:#362229;">More Stories for You</h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="8px 32px 16px" border="none">
+      <mj-section background-color="#ffffff" border="1px solid #F7941D" padding="16px 16px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <h3><a href="https://www.example.com" style="color:#006837;" data-style-color data-style-href>Lorem Ipsum Dolor Sit Amet</a></h3>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" border-left="1px solid #F7941D" border-right="1px solid #F7941D" border-bottom="1px solid #F7941D" padding="8px 16px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+        <mj-column css-class="two-col-column first-column" width="224px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column css-class="two-col-column" width="278px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:16px;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe P7 Story Orange -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P8 - STEPS BLOCK (as authored)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P8 Steps -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+        <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">1</span>&nbsp; <b>Share your name.</b></p>
+          <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">2</span>&nbsp; <b>Thank [Agency Name].</b></p>
+          <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">3</span>&nbsp; <b>Say why this matters to you.</b></p>
+          <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">4</span>&nbsp; <b>Add your personal touch.</b></p>
+          <p style="font-size:16px;margin-top:0;">Share a meaningful park memory or experience&mdash;something that helped you learn or feel connected.</p>
+          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;width:20px;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;border-radius:3px;">5</span>&nbsp; <b>Close with your request.</b></p>
+          <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
+        </mj-text>
+        <mj-button width="auto"
+          href="https://www.example.com"
+          align="left" data-style-align padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
+        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;" data-style-color data-style-href>[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe P8 Steps -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P9 - PILLS CONTROL (current markup)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P9 Pills Control -->
+  <!--
+    SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+      width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+      => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
+    If padding/gap/count change, update width:252px on every <a data-style-color data-style-href> AND width="252"/width:252px on every MSO <td>.
+  -->
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-text css-class="two-line-cta" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" style="text-align:center;font-size:0;" data-style-align><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </mj-text>
+    </mj-column>
+  </mj-section>
+    <!-- END: Probe P9 Pills Control -->
+
+    <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">P10 - PILLS FIXED (spacer width + dual open)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- START: Probe P10 Pills Fixed -->
+  <!--
+    SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
+      width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
+      => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
+    If padding/gap/count change, update width:252px on every <a data-style-color data-style-href> AND width="252"/width:252px on every MSO <td>.
+  -->
+  <mj-section data-fully-exclude css-class="block" background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-text css-class="two-line-cta" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" style="text-align:center;font-size:0;" data-style-align><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </mj-text>
+    </mj-column>
+  </mj-section>
+    <!-- END: Probe P10 Pills Fixed -->
+
+  </mj-body>
+</mjml>
