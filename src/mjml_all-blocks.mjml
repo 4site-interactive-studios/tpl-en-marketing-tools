@@ -85,9 +85,9 @@
     <!-- START: Logo Hero (no CTA) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -96,9 +96,9 @@
     <!-- START: Logo Hero (light green, centered) -->
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -107,9 +107,9 @@
     <!-- START: Logo Hero (dark, left) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -118,9 +118,9 @@
     <!-- START: Logo Hero (dark, centered) -->
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -129,9 +129,9 @@
     <!-- START: Logo Hero (off-white bordered, left) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -140,9 +140,9 @@
     <!-- START: Logo Hero (off-white bordered, centered) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -151,9 +151,9 @@
     <!-- START: Logo Hero (dark red, left) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -162,9 +162,9 @@
     <!-- START: Logo Hero (dark red, centered) -->
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -181,14 +181,14 @@
           alt="Logo"
           href="https://www.example.com"
           width="154px"
-          css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          css-class="light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
           href="https://www.example.com"
           width="154px"
-          css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          css-class="dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -205,14 +205,14 @@
           alt="Logo"
           href="https://www.example.com"
           width="154px"
-          css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          css-class="light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
           href="https://www.example.com"
           width="154px"
-          css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          css-class="dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -222,18 +222,18 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text align="right" color="#ffffff" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
-          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
@@ -244,18 +244,18 @@
     <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text align="left" color="#ffffff" data-style-alignment padding="0 0 8px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
-          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
@@ -276,7 +276,7 @@
           width="154px"
           padding="0 16px 0 0"
           css-class="light-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          align="left" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
@@ -285,7 +285,7 @@
           width="154px"
           padding="0 16px 0 0"
           css-class="dark-only"
-          align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -296,7 +296,7 @@
           width="104px"
           padding="0 0 0 16px"
           css-class="light-only"
-          align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          align="right" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/state-north-carolina.png"
@@ -305,7 +305,7 @@
           width="104px"
           padding="0 0 0 16px"
           css-class="dark-only"
-          align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       </mj-group>
@@ -316,9 +316,9 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -332,9 +332,9 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -348,15 +348,15 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/text-and-arrow_1.png" href="https://www.example.com" alt="Protecting the places birds call home" width="205px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/text-and-arrow_1.png" href="https://www.example.com" alt="Protecting the places birds call home" width="205px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/text-and-arrow_1.png" href="https://www.example.com" alt="Protecting the places birds call home" width="205px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/text-and-arrow_1.png" href="https://www.example.com" alt="Protecting the places birds call home" width="205px" padding="0 0 0 16px" align="right" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
@@ -367,15 +367,15 @@
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -387,15 +387,15 @@
     <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="auto" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -410,9 +410,9 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -428,15 +428,15 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-button width="160px" href="https://www.example.com" align="right" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Read more</mj-button>
         </mj-column>
@@ -451,9 +451,9 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column vertical-align="middle" width="220px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="330px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -479,9 +479,9 @@
       <mj-section padding="48px 32px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-group>
           <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -500,9 +500,9 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -552,7 +552,7 @@
             width="154px"
             padding="0 16px 0 0"
             css-class="light-only"
-            align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            align="left" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
@@ -561,7 +561,7 @@
             width="154px"
             padding="0 16px 0 0"
             css-class="dark-only"
-            align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="bottom" width="275px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -1039,17 +1039,17 @@
       <mj-column width="480px" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-image
           src="assets/icon-quotes_black.png"
-          alt="Quotation Symbol"
+          alt=""
           width="47px"
           padding="0 0 32px"
-          css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+          css-class="light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/icon-quotes_white.png"
-          alt="Quotation Symbol"
+          alt=""
           width="47px"
           padding="0 0 32px"
-          css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+          css-class="dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-style-alignment padding="0 0 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 16px;">
@@ -1460,14 +1460,14 @@
           alt="Image Alt Text"
           href="https://www.example.com"
           width="600px"
-          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg"
           alt="Image Alt Text"
           href="https://www.example.com"
           width="600px"
-          padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -1489,9 +1489,9 @@
     <!-- START: Image (full-bleed) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1503,9 +1503,9 @@
     <!-- START: Image (inset) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1517,9 +1517,9 @@
     <!-- START: Image (bikers) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1540,7 +1540,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="292px"
@@ -1548,7 +1548,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1561,7 +1561,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="292px"
@@ -1569,7 +1569,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1589,7 +1589,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -1597,7 +1597,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1610,7 +1610,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -1618,7 +1618,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1631,7 +1631,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -1639,7 +1639,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1697,29 +1697,29 @@
     <!-- START: Photo Grid (2x2) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/icon-rollover-qcd-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/icon-donor-advised-fund.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/icon-planned-giving.png" alt="Placeholder icon" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/icon-giving-tuesday-2x.png" alt="Placeholder graphic" href="https://www.example.com" width="220px" align="center" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -1740,9 +1740,9 @@
     <!-- START: Story Card (full width) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -1772,9 +1772,9 @@
     <!-- START: Story Card (full width, centered button) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-river.jpg" alt="Aerial view of a river winding through autumn forest" href="https://www.example.com" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
@@ -1813,7 +1813,7 @@
             href="https://www.example.com"
             padding="0 0 16px"
             align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+            fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-kayak.jpg" width="230px"
@@ -1821,7 +1821,7 @@
             href="https://www.example.com"
             padding="0 0 16px"
             align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+            fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3>Lorem ipsum dolor consectur</h3>
@@ -1843,7 +1843,7 @@
             href="https://www.example.com"
             padding="0 0 16px"
             align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+            fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-garden.jpg" width="230px"
@@ -1851,7 +1851,7 @@
             href="https://www.example.com"
             padding="0 0 16px"
             align="center"
-            fluid-on-mobile="true" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+            fluid-on-mobile="true" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3>Lorem ipsum dolor consectur</h3>
@@ -1872,9 +1872,9 @@
     <!-- START: Story Card (no heading, image on the side) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -1893,9 +1893,9 @@
     <!-- START: Story Card (image right) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -1917,9 +1917,9 @@
     <!-- START: Story Card (image left) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" data-style-background-color data-style-border padding="0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -1951,7 +1951,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0 0 8px"
-            css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            css-class="two-col-image light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-forest.jpg" width="220px"
@@ -1960,7 +1960,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0 0 8px"
-            css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            css-class="two-col-image dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -1999,7 +1999,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0 0 8px"
-            css-class="two-col-image light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            css-class="two-col-image light-only" data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-hiking-duo.jpg" width="220px"
@@ -2008,7 +2008,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0 0 8px"
-            css-class="two-col-image dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            css-class="two-col-image dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -2044,7 +2044,7 @@
           href="https://www.example.com"
           padding="0 0 8px"
           align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image light-only" fluid-on-mobile="true" data-style-align />
+          width="224px" data-style-src data-style-href data-style-width css-class="two-col-image light-only" fluid-on-mobile="true" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/image-ranking.png"
@@ -2052,7 +2052,7 @@
           href="https://www.example.com"
           padding="0 0 8px"
           align="center"
-          width="224px" data-style-src data-style-href data-style-alt data-style-width css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode data-style-align />
+          width="224px" data-style-src data-style-href data-style-width css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <span>Photograph by Photographer</span>
@@ -2085,9 +2085,9 @@
       </mj-section>
       <mj-section background-color="#ffffff" border-left="1px solid #F7941D" border-right="1px solid #F7941D" border-bottom="1px solid #F7941D" padding="8px 16px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column css-class="two-col-column first-column" width="224px" vertical-align="top" data-style-background-color data-style-border padding="0 16px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column css-class="two-col-column" width="278px" vertical-align="top" data-style-background-color data-style-border padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2125,9 +2125,9 @@
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="120px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="416px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2150,9 +2150,9 @@
           </mj-text>
         </mj-column>
         <mj-column width="156px" vertical-align="top" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/premium-bag.png" alt="Placeholder product" href="https://www.example.com" width="140px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/premium-bag.png" alt="Placeholder product" href="https://www.example.com" width="140px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/premium-bag.png" alt="Placeholder product" href="https://www.example.com" width="140px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/premium-bag.png" alt="Placeholder product" href="https://www.example.com" width="140px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
@@ -2167,9 +2167,9 @@
         <mj-group data-no-direction-toggle>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column vertical-align="top" width="248px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="302px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2193,9 +2193,9 @@
         <mj-group data-no-direction-toggle>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column vertical-align="top" width="248px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-            <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+            <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0" align="left" data-style-src data-style-href data-style-width data-style-align />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0" align="left" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="302px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2375,18 +2375,18 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 25-34</a>
@@ -2395,18 +2395,18 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5FC9C5" border-radius="18px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 45-54</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;" data-style-align data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href>AGES 65+</a>
@@ -2466,9 +2466,9 @@
     <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="56px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="480px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2553,9 +2553,9 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="90px" vertical-align="top" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="446px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2592,9 +2592,9 @@
     <mj-section css-class="image-block block" background-color="#006837" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column width="112px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-podcast.png" alt="People. Nature. Big Ideas podcast" width="92px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-podcast.png" alt="People. Nature. Big Ideas podcast" width="92px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-podcast.png" alt="People. Nature. Big Ideas podcast" width="92px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-podcast.png" alt="People. Nature. Big Ideas podcast" width="92px" align="left" padding="0 16px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="424px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
@@ -2624,15 +2624,15 @@
           </mj-text>
         </mj-column>
         <mj-column width="78px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-spotify.png" alt="Listen on Spotify" href="https://www.example.com" width="62px" align="right" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-spotify.png" alt="Listen on Spotify" href="https://www.example.com" width="62px" align="right" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-spotify.png" alt="Listen on Spotify" href="https://www.example.com" width="62px" align="right" padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-spotify.png" alt="Listen on Spotify" href="https://www.example.com" width="62px" align="right" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="78px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/icon-apple-podcast.png" alt="Listen on Apple Podcasts" href="https://www.example.com" width="62px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/icon-apple-podcast.png" alt="Listen on Apple Podcasts" href="https://www.example.com" width="62px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-apple-podcast.png" alt="Listen on Apple Podcasts" href="https://www.example.com" width="62px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/icon-apple-podcast.png" alt="Listen on Apple Podcasts" href="https://www.example.com" width="62px" align="right" padding="0 0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
@@ -2686,18 +2686,18 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-person-and-bird-4.png" alt="Keith Maley and a ring-necked pheasant" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-person-and-bird-4.png" alt="Keith Maley and a ring-necked pheasant" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-person-and-bird-4.png" alt="Keith Maley and a ring-necked pheasant" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-person-and-bird-4.png" alt="Keith Maley and a ring-necked pheasant" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;"><b>Keith Maley:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
@@ -2706,18 +2706,18 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color data-mobile-only-spacing-below>
           <p style="font-size:16px;"><b>Taj Schottland:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-person-and-bird-3.png" alt="Jeff Danter and a great egret" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/photo-person-and-bird-3.png" alt="Jeff Danter and a great egret" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-person-and-bird-3.png" alt="Jeff Danter and a great egret" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-person-and-bird-3.png" alt="Jeff Danter and a great egret" width="248px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:16px;"><b>Jeff Danter:</b> &ldquo;My favorite TPL-protected birding spot is the Chattahoochee RiverLands. This green oasis that runs through the heart of suburban Atlanta is a natural migration corridor that fills with the songs of hundreds of species every spring.&rdquo;</p>
@@ -2802,12 +2802,12 @@
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px"
               alt="Carrie Besnette Hauser"
-              padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+              padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px"
               alt="Carrie Besnette Hauser"
-              padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+              padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column
@@ -2820,7 +2820,7 @@
               width="234px"
              padding="0 0 8px"
               align="left"
-              css-class="light-only" data-style-src data-style-href data-style-alt data-style-width data-style-align />
+              css-class="light-only" data-style-src data-style-href data-style-width data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_white.png"
@@ -2828,7 +2828,7 @@
               width="234px"
              padding="0 0 8px"
               align="left"
-              css-class="dark-only" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+              css-class="dark-only" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text font-size="16px" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-family: Arial, sans-serif;">
@@ -2848,18 +2848,18 @@
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-group>
         <mj-column vertical-align="middle" width="130px" css-class="signature-img" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="406px" css-class="signature-text" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
           </mj-text>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
             <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
@@ -2875,9 +2875,9 @@
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
         </mj-text>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
@@ -2909,9 +2909,9 @@
         <mj-text color="#ffffff" align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2924,9 +2924,9 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -2935,9 +2935,9 @@
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2957,9 +2957,9 @@
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -2979,9 +2979,9 @@
         <mj-text align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;" data-style-color data-style-href>Unsubscribe</a></p>
@@ -3001,13 +3001,13 @@
           alt="Logo"
           src="assets/logo-tpl_color-light-green-text.png"
           width="154px"
-          href="https://www.example.com" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
+          href="https://www.example.com" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           alt="Logo"
           src="assets/logo-tpl_color-light-green-text.png"
           width="154px"
-          href="https://www.example.com" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          href="https://www.example.com" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>

@@ -1343,6 +1343,22 @@ importer whitelists all data-*-only MJML validator warnings
   compiled html together, mirroring a real rebuild. Raw-anchor URL fields
   have no Link toggle (that is mj-image-only), so the group has no toggle
   to desync either.
+- **Universal Alt Text (2026-08-18) — and `data-style-alt` retired.** Every
+  `mj-image` whose `alt` attribute is PRESENT mints an Alt Text field,
+  `alt=""` included: the attribute scan admits the empty value for alt
+  alone, and a positional pass (`mjmlProps.ts`, "Empty-alt Alt Text
+  fields") inserts the tag between the quotes of every compiled `alt=""`
+  carrier — value-search cannot find an empty string. Carriers are matched
+  by the logical image's src set (the light img plus its merged dark twin)
+  and taken in document order, so two same-src images keep separate
+  fields; a logical image that cannot account for every expected carrier
+  claims nothing (a partial bind would desync the twins). A MISSING alt
+  attribute still mints nothing — authors write `alt` on every image,
+  empty for decorative. `data-style-alt` was removed from all TPL sources
+  the same day (262 instances): the importer never read it — the
+  `data-style-*` vocabulary is authoring annotation, with zero generation
+  consumers — and alt editability is now unconditional, so the token
+  claims nothing the behavior doesn't already deliver.
 - **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
   Select (`src/core/mjmlProps.ts` columnMembers) — used for

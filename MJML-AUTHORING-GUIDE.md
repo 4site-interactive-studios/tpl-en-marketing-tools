@@ -715,6 +715,16 @@ Flag the properties meant to be editable, one flag per property:
 `data-style-dark-mode`. Padding always expands to all four sides. These are
 declared intent; keep them accurate for every property you touch.
 
+Alt text is the exception, and needs no flag at all (decision 2026-08-18):
+**every `mj-image` exposes an editable Alt Text field unconditionally,
+`alt=""` included** — an authored empty alt is the correct value for a
+decorative image (screen readers skip it), and the importer keeps the field
+with an empty default so an editor can fill it without a source round-trip.
+The old `data-style-alt` token is retired; write the `alt` attribute on
+every image — real copy for meaningful images, `alt=""` for decoration —
+and the field follows. A light/dark image pair binds BOTH compiled alts to
+the one field (§4: one value, every carrier).
+
 ### The rest of the `data-*` contract
 
 | Attribute | Meaning |
@@ -881,6 +891,12 @@ get geometry right, carry it in text or table attributes, never in span CSS.
   a checker will catch it.
 
 ---
+
+**Alt text, every image, no exceptions**: meaningful images carry real
+descriptive copy; decorative images (glyphs, ornaments, spacer art) carry
+`alt=""` — never a label like "Quotation Symbol" that narrates chrome to a
+screen reader, and never a MISSING alt attribute (clients read the filename
+aloud). The Alt Text field survives either way (§5).
 
 ## 8. QA checklist before you call a template done
 
