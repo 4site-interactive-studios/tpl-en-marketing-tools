@@ -329,6 +329,41 @@ for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml')
   }
 }
 
+// ---------------------------------------------------------------------------
+// 13. Every rule in the inline-avoidance block has its plain twin (learning
+//     2026-08-18, guide §2a). The (max-width: 9998px) block exists purely to
+//     keep unconditional rules OUT of EN's inliner — but the inliner is the
+//     delivery mechanism for clients that strip <style> (Gmail on IMAP
+//     accounts, forwards), so each wrapped rule must ALSO exist as a plain
+//     top-level rule that EN inlines. A wrapped rule without its twin is
+//     invisible to the style-stripping audience; that is how .mobile-only
+//     shipped half-built for months.
+// ---------------------------------------------------------------------------
+{
+  const blockMatch = css.match(/@media only screen and \(max-width:\s*9998px\)\s*\{([\s\S]*?)\n\}/);
+  if (blockMatch) {
+    // The twin must sit at TOP LEVEL: test the sheet with every media block
+    // and comment removed, so neither a nested lookalike nor a selector
+    // named in prose can satisfy the check.
+    const beforeBlock = css.slice(0, css.indexOf(blockMatch[0]));
+    const afterBlock = css.slice(css.indexOf(blockMatch[0]) + blockMatch[0].length);
+    const topLevelOnly = (beforeBlock + afterBlock)
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/@media[^{]*\{(?:[^{}]*\{[^}]*\})*[^{}]*\}/g, '');
+    for (const rule of blockMatch[1].matchAll(/([^{}/]+)\{[^}]*\}/g)) {
+      const selector = rule[1].trim();
+      const plainRe = new RegExp(
+        `${selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{`,
+      );
+      if (!plainRe.test(topLevelOnly)) {
+        warn(
+          `styles.css: "${selector}" lives in the 9998px inline-avoidance block without a plain top-level twin — style-stripping clients (Gmail on IMAP, forwards) never see it; author the same rule at top level so EN inlines it (guide §2a)`,
+        );
+      }
+    }
+  }
+}
+
 console.log(
   warnings
     ? `check-docs: ${warnings} WARNING(S) — see above`

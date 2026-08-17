@@ -156,6 +156,26 @@ Two caveats:
   which ignores media queries entirely. Use it for dark mode, mobile, and
   `[data-ogsc]`. Do not park base layout CSS there.
 
+**The wrap defends against the inliner — which is also its cost, so a
+defensive always-true wrap ships as a PAIR (learning 2026-08-18).** A
+handful of clients still read NO stylesheet at all — the Gmail app on
+non-Google/IMAP accounts strips `<style>` wholesale, and forwarding drops
+head styles in most clients — and for them the inliner is the delivery
+mechanism: a rule that only exists inside a media query never reaches
+those recipients. So when you wrap an unconditional rule in an always-true
+condition purely to keep it OUT of the inliner (the `.mobile-only` hide),
+author the SAME rule twice: the plain top-level twin, which EN inlines
+onto the element (the layer for style-stripping clients), and the wrapped
+copy, which survives as a stylesheet rule where the inline was lost. Any
+rule meant to OVERRIDE the pair later must beat both layers — `!important`
+outranks the inlined twin (EN strips its `!important` when inlining, §2b)
+and later source order wins against the wrapped copy. The `.dark-only`
+swap has run this exact cascade in production since the beginning; TPL's
+build asserts the pairing so the plain twin cannot silently go missing.
+The rule does NOT apply to wraps that exist for RETENTION of
+conditional-context selectors — `[data-ogsc]` matches nothing at send
+time, so it has no meaningful inline form.
+
 ### 2b. The `!important` rule that bites people
 
 Any rule inside a retained media query that must beat a base rule **needs
