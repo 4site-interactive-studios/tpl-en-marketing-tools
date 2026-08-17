@@ -30,6 +30,10 @@ still resolve, the demo/example delta is exactly the documented subset, no
 top-level `[data-ogsc]`, every dark-mode declaration carries `!important`, no
 absolute CDN URL in source, every `§N` cross-reference resolves, and the
 mirrors still carry their header. Run it alone with `npm run check-docs`.
+`scripts/check-catalog.mjs` is its sibling for the blocks: both-attribute
+backgrounds, unhooked dark-mode grounds, and fixed-width columns overflowing
+their frame (that one needs a built `dist/`). Run it with
+`npm run check-catalog`. Both are WARN-only; the build must print zero.
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.
 

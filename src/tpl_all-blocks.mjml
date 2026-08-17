@@ -466,7 +466,9 @@
     <!-- END: CTA Hero (fixed height, logo and background image) -->
 
     <!-- START: CTA Hero with Heading (logo and background image) -->
-    <mj-wrapper css-class="block" background-color="#362229" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
+    <!-- Fallback colour lives on the OUTER wrapper, NOT the tag carrying the image: MJML copies a background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the image it still covers a blocked photo. The image sits on an inner wrapper rather than a section because it spans BOTH sections below. -->
+    <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
+      <mj-wrapper css-class="image-block block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0" data-style-background-url data-style-background-position data-style-background-size>
       <mj-section padding="48px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
         <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-text align="center" color="#ffffff" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
@@ -486,7 +488,8 @@
             <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Learn More</mj-button>
           </mj-column>
         </mj-group>
-      </mj-section>
+        </mj-section>
+      </mj-wrapper>
     </mj-wrapper>
     <!-- END: CTA Hero with Heading (logo and background image) -->
 
@@ -1172,7 +1175,7 @@
     <!-- END: Two-Line Banner (light green, hero lead-in) -->
     <!-- START: Stat Row (off-white) -->
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+      <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text align="center" data-style-alignment padding="0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
           <p style="font-size:16px;"><b>Supporter ID:</b></p>
@@ -1668,14 +1671,13 @@
     <!-- END: Video Block (full-bleed) -->
 
     <!-- START: Video Block (inset) -->
-    <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px 0">
       <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
       <mj-wrapper background-color="#362229" padding="0" data-style-background-color>
         <mj-section background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="90px 0 90px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-border data-style-direction data-style-background-url data-style-background-position data-style-background-size>
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="550px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-column width="454px" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" data-style-align padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>Watch&nbsp;&nbsp;▷</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -2596,12 +2598,12 @@
           css-class="signature-img" data-style-background-color data-style-border padding="0 8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px"
-              alt="Custom alt text"
+              alt="Carrie Besnette Hauser"
               padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="light-only" data-style-align />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px"
-              alt="Custom alt text"
+              alt="Carrie Besnette Hauser"
               padding="0" data-style-src data-style-href data-style-alt data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
@@ -2611,7 +2613,7 @@
           css-class="signature-text" data-style-background-color data-style-border padding="0 0 0 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_black.png"
-              alt="Signature Image"
+              alt="Signature"
               width="234px"
              padding="0 0 8px"
               align="left"
@@ -2619,7 +2621,7 @@
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_white.png"
-              alt="Signature Image"
+              alt="Signature"
               width="234px"
              padding="0 0 8px"
               align="left"
@@ -2727,12 +2729,12 @@
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-align />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-alt data-style-width data-style-dark-mode data-style-align />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;" data-style-color data-style-href>Unsubscribe</a></p>

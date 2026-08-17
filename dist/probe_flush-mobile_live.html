@@ -422,7 +422,9 @@ li {
       [data-ogsc] .quote-block table[align=center],
       [data-ogsc] .cta-button-block,
       [data-ogsc] .cta-button-block table[align=center],
-      [data-ogsc] .highlighted-text-column td[style*=vertical-align] {
+      [data-ogsc] .caption-panel,
+      [data-ogsc] .highlighted-text-column td[style*=vertical-align],
+      [data-ogsc] .stat-row-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 
@@ -532,11 +534,19 @@ li {
         background-color: #000000 !important;
       }
 
+      /* Two shapes, and the difference is load-bearing. A column's
+     background-color lands on a td whose class sits on the PARENT div, so it
+     needs the descendant form; a container-background-color lands on the
+     element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
+     has a table[align=center] descendant form, never td, which is why a
+     column ground is never covered by it (audit 2026-08-15). */
       .quote-block,
       .quote-block table[align=center],
       .cta-button-block,
       .cta-button-block table[align=center],
-      .highlighted-text-column td[style*=vertical-align] {
+      .caption-panel,
+      .highlighted-text-column td[style*=vertical-align],
+      .stat-row-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 

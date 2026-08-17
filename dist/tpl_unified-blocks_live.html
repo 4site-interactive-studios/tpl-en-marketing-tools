@@ -551,7 +551,9 @@ li {
       [data-ogsc] .quote-block table[align=center],
       [data-ogsc] .cta-button-block,
       [data-ogsc] .cta-button-block table[align=center],
-      [data-ogsc] .highlighted-text-column td[style*=vertical-align] {
+      [data-ogsc] .caption-panel,
+      [data-ogsc] .highlighted-text-column td[style*=vertical-align],
+      [data-ogsc] .stat-row-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 
@@ -661,11 +663,19 @@ li {
         background-color: #000000 !important;
       }
 
+      /* Two shapes, and the difference is load-bearing. A column's
+     background-color lands on a td whose class sits on the PARENT div, so it
+     needs the descendant form; a container-background-color lands on the
+     element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
+     has a table[align=center] descendant form, never td, which is why a
+     column ground is never covered by it (audit 2026-08-15). */
       .quote-block,
       .quote-block table[align=center],
       .cta-button-block,
       .cta-button-block table[align=center],
-      .highlighted-text-column td[style*=vertical-align] {
+      .caption-panel,
+      .highlighted-text-column td[style*=vertical-align],
+      .stat-row-column td[style*=vertical-align] {
         background-color: #000000 !important;
       }
 
@@ -1509,9 +1519,9 @@ li {
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                           <h1> Lorem ipsum quis malesuada sed quam faucibus. </h1>
-                          <h1>
+                          <h2>
                             <a href="https://www.example.com" data-style-color data-style-href>Lorem ipsum quis malesuada sed quam faucibus.</a>
-                          </h1>
+                          </h2>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor. </p>
                           <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://www.example.com" data-style-color data-style-href>Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.</a>
                           </p>
@@ -4606,7 +4616,7 @@ li {
                                     <tbody>
                                       <tr>
                                         <td style="width:100px;">
-                                          <img alt="Custom alt text" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+                                          <img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
                                         </td>
                                       </tr>
                                     </tbody>
@@ -4619,7 +4629,7 @@ li {
                                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                     <tbody>
                                       <tr>
-                                        <td style="width:100px;"><img alt="Custom alt text" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+                                        <td style="width:100px;"><img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -4646,7 +4656,7 @@ li {
                                     <tbody>
                                       <tr>
                                         <td style="width:234px;">
-                                          <img alt="Signature Image" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="234" height="auto" />
+                                          <img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="234" height="auto" />
                                         </td>
                                       </tr>
                                     </tbody>
@@ -4659,7 +4669,7 @@ li {
                                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                     <tbody>
                                       <tr>
-                                        <td style="width:234px;"><img alt="Signature Image" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_white.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="234" height="auto" /></td>
+                                        <td style="width:234px;"><img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_white.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="234" height="auto" /></td>
                                       </tr>
                                     </tbody>
                                   </table>

@@ -493,11 +493,15 @@ logical image) and to any value duplicated into an MSO conditional.
 
 Two companion rules for background sections, both Outlook:
 
-- **Never put `background-color` on a section that also has
-  `background-url` — put it on an `mj-wrapper` behind it instead.**
-  MJML copies a section's background colour onto the Outlook `v:fill` as
+- **Never put `background-color` on any `mj-section` OR `mj-wrapper` that
+  also has `background-url` — put it on a wrapper BEHIND that tag instead.**
+  MJML copies the background colour onto the Outlook `v:fill` as
   `color=`, and the Word engine paints that colour INSTEAD of the photo, so
-  every background hero renders as a flat slab. Measured 2026-08-13 (EoA test
+  every background hero renders as a flat slab. It applies to both tags
+  because `mj-wrapper` emits the identical VML — a 2026-08-14 sweep that
+  fixed 25 sections read this rule as section-only and left one wrapper
+  slabbing for a day (caught 2026-08-15; TPL's `check-catalog` now asserts
+  it for both tag names). Measured 2026-08-13 (EoA test
   aBPD6k1l, three variants of the same band):
 
   | shape | Outlook 2021 Win | M365 Win | M365 **Mac** | Apple/iOS/Gmail |

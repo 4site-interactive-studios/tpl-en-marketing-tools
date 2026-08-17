@@ -1,0 +1,361 @@
+#!/usr/bin/env node
+/**
+ * Catalog defect checker — the sibling of check-docs.mjs, for the BLOCKS
+ * rather than the prose.
+ *
+ * A 2026-08-15 audit of the catalog found that its defects were not random:
+ * they clustered into a handful of patterns, and every one of them was
+ * arithmetic or a grep. Each assertion below encodes a pattern that actually
+ * shipped, so the next instance prints a warning at build time instead of
+ * surviving to an inbox.
+ *
+ * Deliberately separate from check-docs.mjs: different input domain (compiled
+ * dist/ + src/*.mjml + styles.css, vs *.md), and `npm run check-docs` is run
+ * standalone while editing prose, where a stale dist/ would produce bogus
+ * geometry warnings.
+ *
+ * Same contract as check-docs.mjs: cheap, textual, warnings-only. This is a
+ * lint, not a parser — it must never be the reason a build fails to produce
+ * output. Every assertion is wrapped so one throwing cannot lose the others.
+ */
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'utf8') : null);
+
+let warnings = 0;
+const warn = (msg) => {
+  console.warn(`  WARN catalog: ${msg}`);
+  warnings += 1;
+};
+
+/** 1-based line of an offset, the check-docs.mjs idiom. */
+const lineAt = (text, index) => text.slice(0, index).split('\n').length;
+
+/** Catalog sources. probe_* files are deliberate experiments, not catalog pages. */
+const sources = readdirSync(join(ROOT, 'src'))
+  .filter((n) => n.endsWith('.mjml') && !n.startsWith('probe_'))
+  .sort();
+
+/** Run an assertion without letting a throw take the rest of the pass down. */
+const guard = (label, fn) => {
+  try {
+    fn();
+  } catch (err) {
+    warn(`${label} could not run (${err.message}) — the other checks still ran`);
+  }
+};
+
+// ---------------------------------------------------------------------------
+// 0. The topBlocks copy below must not drift from its original.
+//    annotate-excluded.mjs runs rmSync(.build) at top level, so importing it
+//    from a lint would delete and rebuild the compile input. The helper is
+//    copied instead — this assertion is what keeps the copy honest.
+// ---------------------------------------------------------------------------
+
+/** Copied from scripts/annotate-excluded.mjs (MARKER + topBlocks). */
+const MARKER = /<!--\s*(START|END):\s*(.+?)\s*-->/g;
+
+function topBlocks(text) {
+  const stack = [];
+  const out = [];
+  let m;
+  MARKER.lastIndex = 0;
+  while ((m = MARKER.exec(text))) {
+    if (m[1] === 'START') {
+      stack.push({ name: m[2], start: MARKER.lastIndex, open: m.index });
+    } else {
+      for (let i = stack.length - 1; i >= 0; i -= 1) {
+        if (stack[i].name === m[2]) {
+          const open = stack.splice(i, 1)[0];
+          if (stack.length <= 1 && open.name !== 'Main Content') {
+            out.push({ name: open.name, body: text.slice(open.start, m.index), start: open.open });
+          }
+          break;
+        }
+      }
+    }
+  }
+  return out;
+}
+
+guard('topBlocks drift check', () => {
+  const origin = read('scripts/annotate-excluded.mjs') || '';
+  if (!origin.includes('function topBlocks(text)') || !origin.includes(String(MARKER.source))) {
+    warn(
+      'scripts/annotate-excluded.mjs no longer contains the topBlocks/MARKER shape this file copied — re-sync the copy at the top of check-catalog.mjs',
+    );
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 1. A section OR wrapper must never carry background-color AND background-url.
+//    MJML copies the colour onto the Outlook v:fill as color=, and the Word
+//    engine paints that INSTEAD of the photo — every such hero renders as a
+//    flat slab (measured 2026-08-13, EoA aBPD6k1l). The fallback colour goes
+//    on an mj-wrapper BEHIND the image-carrying tag.
+//    Caused by: a 25-section sweep fixed every mj-section and missed the one
+//    mj-wrapper, because the rule was written section-only (guide §4).
+// ---------------------------------------------------------------------------
+
+guard('both-attribute background check', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    for (const m of text.matchAll(/<mj-(?:section|wrapper)\b[^>]*>/g)) {
+      if (!/\sbackground-color=/.test(m[0]) || !/\sbackground-url=/.test(m[0])) continue;
+      warn(
+        `src/${f}:${lineAt(text, m.index)} carries background-color AND background-url on one tag — Word paints the colour instead of the photo; move the fallback colour to an mj-wrapper behind it (guide §4)`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 2. A light container background inside a .block section needs a dark-mode
+//    hook, or the dark branch whitens the text and leaves the ground light.
+//
+//    Two carriers, two selector shapes, and the difference is the whole
+//    mechanism:
+//      mj-column background-color      -> a <td> whose class sits on the
+//                                         PARENT div, so it needs `.T td…`
+//      container-background-color      -> the element's OWN classed <td>,
+//                                         so it needs a bare `.T`
+//    `.block` only ever has a `table[align=center]` descendant form, never
+//    `td`, which is why a column background is never covered by it.
+// ---------------------------------------------------------------------------
+
+/**
+ * Known-unhooked backgrounds that are tracked elsewhere and deliberately not
+ * fixed yet. One line each, dated, with the reason — delete the line when the
+ * finding is closed. Same shape as check-docs.mjs's NOT_BLOCKS.
+ */
+const UNHOOKED_ALLOWLIST = new Set([
+  // 2026-08-15, catalog audit item 2a: the answer-reveal card measures 1.00:1
+  // in dark mode. The fix (a hook + a rule) is prescribed but the block also
+  // has an open design question about its border colour, so it is held.
+  'Quiz Block (2x2 buttons)',
+]);
+
+/** Perceived luminance 0..1. Catalog grounds cluster at 0.97/1.0 (flag) and 0.41 (keep). */
+const luminance = (hex) => {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  if (full.length !== 6) return 0;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16));
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+};
+
+guard('unhooked dark background check', () => {
+  const css = read('src/styles.css') || '';
+  /** Slice a media block's body by brace depth — the check-docs.mjs idiom. */
+  const branchBody = (marker) => {
+    const start = css.indexOf(marker);
+    if (start < 0) return null;
+    let depth = 0;
+    for (let i = start; i < css.length; i += 1) {
+      if (css[i] === '{') depth += 1;
+      else if (css[i] === '}' && (depth -= 1) === 0) {
+        return css.slice(start, i).replace(/\/\*[\s\S]*?\*\//g, '');
+      }
+    }
+    return null;
+  };
+
+  /** Class tokens each branch hooks, split by the shape that can reach a td. */
+  const hooks = (body) => {
+    const self = new Set();
+    const desc = new Set();
+    if (!body) return { self, desc };
+    for (const rule of body.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      if (!/background(-color)?\s*:/.test(rule[2])) continue;
+      for (const sel of rule[1].split(',')) {
+        const s = sel.trim().replace(/^\[data-ogsc\]\s*/, '');
+        let m = /^\.([\w-]+)(?::[\w-]+)?$/.exec(s);
+        if (m) self.add(m[1]);
+        else if ((m = /^\.([\w-]+)\s+td\b/.exec(s))) desc.add(m[1]);
+      }
+    }
+    return { self, desc };
+  };
+
+  const dark = hooks(branchBody('@media (prefers-color-scheme: dark)'));
+  const ogsc = hooks(branchBody('@media only screen and (max-width: 9999px)'));
+  // A hook only counts when BOTH branches carry it — one branch alone leaves
+  // half the clients unpainted.
+  const selfHook = (t) => dark.self.has(t) && ogsc.self.has(t);
+  const descHook = (t) => dark.desc.has(t) && ogsc.desc.has(t);
+
+  const classesOf = (tag) => ((/\scss-class="([^"]*)"/.exec(tag) || [, ''])[1]).split(/\s+/).filter(Boolean);
+  const isBlockToken = (t) => t === 'block' || t.endsWith('-block');
+
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    for (const block of topBlocks(text)) {
+      if (UNHOOKED_ALLOWLIST.has(block.name)) continue;
+      const stack = [];
+      for (const m of block.body.matchAll(/<(\/?)(mj-[\w-]+)\b([^>]*?)(\/?)>/g)) {
+        const [, closing, name, attrs, selfClose] = m;
+        if (closing) {
+          for (let i = stack.length - 1; i >= 0; i -= 1) {
+            if (stack[i].name === name) {
+              stack.splice(i, 1);
+              break;
+            }
+          }
+          continue;
+        }
+        const tokens = classesOf(m[0]);
+        const ancestors = stack.flatMap((s) => s.tokens);
+        const inBlock = [...ancestors, ...tokens].some(isBlockToken);
+
+        const col = /\sbackground-color="(#[0-9a-fA-F]{3,6})"/.exec(attrs);
+        const con = /\scontainer-background-color="(#[0-9a-fA-F]{3,6})"/.exec(attrs);
+        // Sections and wrappers ARE reached by `.block`; only columns are not.
+        const carrier = name === 'mj-column' && col ? col : con && con;
+        if (inBlock && carrier && luminance(carrier[1]) > 0.6) {
+          const covered = con
+            ? tokens.some(selfHook) || ancestors.some(descHook)
+            : [...ancestors, ...tokens].some(descHook);
+          if (!covered) {
+            const at = lineAt(text, block.start + m.index);
+            warn(
+              `src/${f}:${at} "${block.name}" — ${con ? 'container-background-color' : 'background-color'} ${carrier[1]} on <${name}> has no dark-mode hook, so the dark branch whitens the text onto a light ground; add a css-class and a ${con ? '`.T`' : '`.T td[style*=vertical-align]`'} rule to BOTH dark branches in src/styles.css`,
+            );
+          }
+        }
+        if (!selfClose) stack.push({ name, tokens });
+      }
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 3. Fixed-width columns must fit the frame they sit in.
+//    A block copied into a narrower container keeps its old column widths;
+//    inline-blocks wrap on ANY overflow, so a two-column card silently becomes
+//    one column in every CSS client, and Word won't shrink its ghost cells.
+//
+//    Reads the COMPILED output, because the frame is only resolved there.
+//    Width comes from the class name (mj-column-px-240), never the inline
+//    percentage: inside a plain mj-section every px column emits width:100%,
+//    so percentage-summing both misses real overflows and flags clean blocks.
+// ---------------------------------------------------------------------------
+
+guard('column geometry check', () => {
+  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
+  // _live.html only: _local-debug.html embeds the whole source MJML as JSON,
+  // including its own START: markers, which mis-attributes every later hit.
+  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  if (!pages.length) {
+    console.log('  check-catalog: no dist/*_live.html — run npm run build; skipping column geometry');
+    return;
+  }
+
+  for (const page of pages) {
+    const html = read(`dist/${page}`) || '';
+    const base = page.replace(/_live\.html$/, '');
+    const srcText = read(`src/${base}.mjml`);
+    if (srcText === null) continue; // a page with no source is not ours to police
+
+    // MJML's [if mso | IE] conditionals mirror the column tree exactly, so the
+    // frames they open give sibling identity without a tree parser.
+    // The section content td carrying `direction:ltr` is REAL markup, not part
+    // of an MSO conditional, so it needs its own branch — a plain section's
+    // frame comes from nowhere else.
+    const events = [
+      ...html.matchAll(
+        /<!--\[if mso \| IE\]>([\s\S]*?)<!\[endif\]-->|<div class="mj-column-(px|per)-([\d-]+) mj-outlook-group-fix[^"]*"|<div [^>]*style="[^"]*max-width:(\d+)px|<td[^>]*style="([^"]*direction:\s*ltr[^"]*)"/g,
+      ),
+    ];
+
+    // `cell` is the width of the innermost open cell. A conditional <table>
+    // opens a frame whose width is that cell — the tds INSIDE it are the
+    // sibling columns, not the frame. That distinction is the whole check:
+    // MJML nests an mj-group's columns one conditional deeper, so a group's
+    // children are measured against the cell the GROUP occupies.
+    let carrier = 600; // mj-body default; no catalog page overrides it
+    let cell = 600;
+    const frames = [];
+    const hits = [];
+
+    const closeFrame = (at) => {
+      const f = frames.pop();
+      if (!f) return;
+      cell = f.savedCell; // sibling cells are scoped to their frame
+      if (f.cols.length < 2) return;
+      const sum = f.cols.reduce((a, b) => a + b, 0);
+      if (sum > f.frame + 1) hits.push({ ...f, sum, at });
+    };
+
+    /** Horizontal insets a content td takes out of its carrier. */
+    const inset = (style) => {
+      let pad = 0;
+      const p = /(?:^|;)\s*padding:\s*([^;]+)/.exec(style);
+      if (p) {
+        const v = p[1].trim().split(/\s+/).map((x) => parseFloat(x) || 0);
+        pad += v.length === 1 ? 2 * v[0] : v.length <= 3 ? 2 * v[1] : v[1] + v[3];
+      }
+      for (const side of ['left', 'right']) {
+        const s = new RegExp(`padding-${side}:\\s*(\\d+)`).exec(style);
+        if (s) pad += Number(s[1]);
+        const b = new RegExp(`border-${side}:\\s*(\\d+)`).exec(style);
+        if (b) pad += Number(b[1]);
+      }
+      const b = /(?:^|;)\s*border:\s*(\d+)/.exec(style);
+      if (b) pad += 2 * Number(b[1]);
+      return pad;
+    };
+
+    for (const e of events) {
+      if (e[5] !== undefined) {
+        // A section's own content td is the innermost content box from here
+        // on, so it always resets `cell` — outer frames stay open across a
+        // whole block, so gating this on frame depth would silently skip
+        // every plain section nested inside a wrapper.
+        cell = carrier - inset(e[5]);
+        continue;
+      }
+      if (e[4]) {
+        carrier = Number(e[4]); // most recent constrained wrapper, not the max
+        continue;
+      }
+      if (e[2]) {
+        const raw = e[3].replace('-', '.');
+        const px = e[2] === 'px' ? Number(raw) : (cell * Number(raw)) / 100;
+        if (frames.length) frames[frames.length - 1].cols.push(px);
+        continue;
+      }
+      for (const t of (e[1] || '').matchAll(/<table[^>]*>|<\/table>|<td[^>]*style="([^"]*)"/g)) {
+        if (t[0].startsWith('</table')) {
+          closeFrame(e.index);
+          continue;
+        }
+        if (t[0].startsWith('<table')) {
+          frames.push({ frame: cell, cols: [], savedCell: cell });
+          continue;
+        }
+        const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
+        if (w) cell = Number(w[1]);
+      }
+    }
+    while (frames.length) closeFrame(html.length);
+
+    for (const hit of hits) {
+      const marker = html.lastIndexOf('<!-- START: ', hit.at);
+      const name = marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
+      const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
+      const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
+      warn(
+        `src/${base}.mjml${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
+      );
+    }
+  }
+});
+
+console.log(
+  warnings
+    ? `check-catalog: ${warnings} WARNING(S) — see above`
+    : `check-catalog: ${sources.length} sources verified — backgrounds, dark-mode hooks, column geometry clean`,
+);

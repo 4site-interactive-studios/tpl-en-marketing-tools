@@ -113,6 +113,17 @@ Each step exists for a reason:
   still carry their DO-NOT-EDIT header. WARN-only, like the annotate pass —
   it never blocks a build. Run alone with `npm run check-docs`.
 
+- `scripts/check-catalog.mjs` — **catalog lint**, the sibling of the above for
+  the BLOCKS rather than the prose. A 2026-08-15 audit found the catalog's
+  defects were not random but clustered into patterns that are all arithmetic
+  or a grep, so each is now a build-time assertion: no tag carrying both
+  `background-color` and `background-url` (Word paints the colour instead of
+  the photo), every light container background inside a `.block` section has a
+  dark-mode hook in BOTH branches, and no set of fixed-width columns exceeds
+  its frame. The last one reads compiled `dist/*_live.html`, because the frame
+  is only resolved there — it skips with a note if `dist/` is absent. Same
+  WARN-only contract. Run alone with `npm run check-catalog`.
+
 Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
 (`-c-1` disables caching so rebuilds show immediately); `npm run preview` is
 the same server from the CLI. Always preview from `dist/`, never from `src/`.
@@ -593,8 +604,9 @@ These steps are repo-specific and run **in addition to** the QA checklist in
 MJML-AUTHORING-GUIDE.md §8, which CLAUDE.md requires after every source
 change.
 
-1. `npm run build` must exit clean — zero `WARN` lines from either the
-   annotate pass (structure groups) or `check-docs` (documentation drift).
+1. `npm run build` must exit clean — zero `WARN` lines from the annotate
+   pass (structure groups), `check-docs` (documentation drift), or
+   `check-catalog` (block defects).
 2. START/END pairing audit: scan each `.mjml` for unmatched/misnested markers
    (the debugger also warns in console).
 3. Headless-Chrome screenshots of `dist/*.html` at ~700px and ~480px; compare
