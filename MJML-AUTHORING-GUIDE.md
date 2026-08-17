@@ -244,7 +244,7 @@ it the opposite background: prefer wordmarks and icons that carry
 their own contrast (knockout/outline), or serve Outlook a hand-picked
 single asset via `<!--[if mso]>`. The solid-color background-tile
 pin was probed and REJECTED (2026-08-09, 15-client EoA matrix,
-docs/en-bg-tile-probe.html in the canonical repo): the VML fill itself
+docs/archive/en-bg-tile-probe.html in the canonical repo): the VML fill itself
 does resist Outlook's dark inversion, but the HTML `bgcolor` layers
 MJML must interleave above it invert to white and cover the content
 area, and Outlook flips the white text dark regardless — two
@@ -303,9 +303,14 @@ yourself:
 **HTML Editor** (`"type": "HTML"`) holds markup — a whole `<style>`
 element, tags included. The **CSS Editor** (`"type": "CSS"`) holds
 stylesheet text only; the `<style>` wrapper belongs to the block's own
-content around the merge tag. Whether the CSS Editor escapes `>` the
-same way is UNVERIFIED as of 2026-08-15 — the authoring rule below
-stands until a send proves otherwise.
+content around the merge tag. The CSS Editor is measured CLEAN
+(2026-08-18, EoA Hd4yy…): the canary pair, added to the Head CSS Styles
+field and EDITED-and-resubmitted — the exact trigger that corrupts the
+HTML surface — delivered its `>` byte-intact and fired in Apple Mail
+and Outlook.com. The escape is an HTML-surface defect only. The
+authoring rule below still stands: template CSS can pass through
+HTML-type fields and edit histories you don't control, and the
+escape-safe idioms cost nothing.
 
 The field choice has a real authoring consequence: a CSS field can hold
 rules and nothing else, so **anything conditional cannot travel into a
@@ -623,7 +628,7 @@ Link URL): every combination of a two-toggle chain rendered its exact
 expected state with zero literal tags. Structuring controls as
 fragments-within-fragments (a link toggle nested inside a show/hide
 toggle) is therefore safe. The probe block that measured this is
-reusable: `docs/en-nesting-probe.json` in the canonical repo.
+reusable: `docs/archive/en-nesting-probe.json` in the canonical repo.
 
 ### Show/hide
 
@@ -870,9 +875,10 @@ can prop each other up, and the report says so when they do.
    template-baked one doubles the inbox snippet.
 6b. Confirm no child combinator in ANY CSS that ships to EN — head
    styles, `<mj-style>`, or `<style>` inside block markup. EN escapes
-   `>` to `&gt;` somewhere in its editing surfaces and the rule silently
-   dies (§2d). Selectors extracted from the compiled `<style>` blocks
-   must contain zero `>`.
+   `>` to `&gt;` when an HTML-type field is edited (the CSS Editor is
+   measured clean, 2026-08-18) and the rule silently dies (§2d).
+   Selectors extracted from the compiled `<style>` blocks must contain
+   zero `>`.
 6c. Verify every `[style*=…]` selector and every dark-mode legibility
    claim against the DELIVERED html
    (`/app/acidtest/display/email_html/<TEST_ID>`) and real client
@@ -893,6 +899,12 @@ can prop each other up, and the report says so when they do.
    control the importer generated, or a label does not say where the control
    works; either the source or the importer needs a decision
    (§5 "Viewport-scoped controls").
+10. When a QA round closes — every claim its probe files were built to
+   test measured and recorded — ARCHIVE those probe files (move them to
+   the repo's archive directory, updating citations) in the same session
+   that records the last verdict. The working tree should carry only
+   live instruments; archived probes remain the reusable fixtures for
+   re-measuring EN if its behavior is suspected to have changed.
 
 ---
 
@@ -933,7 +945,7 @@ Non-negotiables while you work:
   a conditional media query. Bare @media screen does not work.
 - Any dark-mode rule that must beat an inlined base rule needs !important.
 - No CSS child combinator anywhere that ships to EN: EN escapes `>` to
-  `&gt;` somewhere in its editing surfaces and the rule silently dies.
+  `&gt;` when an HTML-type field is edited and the rule silently dies.
   Use classes, plain descendants, or the guide §2d attribute-selector
   idioms.
 - An editable background image must bind ALL FOUR compiled carriers.

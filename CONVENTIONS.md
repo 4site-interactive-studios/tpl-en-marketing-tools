@@ -755,7 +755,7 @@ sort — it is purely the panel/export display order.
   Light/dark pairs toggle as one unit. Generated BEFORE Display, so a
   Display fragment nests {replacement~image_N_link} — EN resolves
   option-value tags recursively at that depth, VERIFIED 2026-08-09 with
-  the nesting probe (docs/en-nesting-probe.json): the FULL Display ×
+  the nesting probe (docs/archive/en-nesting-probe.json): the FULL Display ×
   Link matrix ran in one real TPL send, all four combinations rendered
   their exact expected state, zero literal tags. The same send also
   proved the same block added multiple times keeps INDEPENDENT
@@ -999,10 +999,14 @@ trade-off was accepted deliberately.)
   dissolves the selector you are trying to inspect) — canaries must
   match a real element and sit inside a conditional media query. Full
   report and PoC block: docs/en-bug-html-replacement-escapes-css.md.
-  Whether the CSS Editor (`type: "CSS"`) escapes the same way is
-  UNVERIFIED as of 2026-08-15 and is the reason the type changed; until
-  a send proves otherwise the head CSS must use NO child combinators
-  (guide §2d).
+  The CSS Editor (`type: "CSS"`) was cleared by a live canary
+  2026-08-18 (EoA Hd4yy…): the two-rule pair from the bug report, added
+  to the Head CSS Styles field, EDITED and resubmitted, delivered `>`
+  byte-intact (2 occurrences, 0 escaped) and fired in Apple Mail and
+  Outlook.com. The escape is an HTML-type-Replacement defect only —
+  which vindicates the 2026-08-15 type change. The authoring ban on
+  child combinators stays regardless (guide §2d): the HTML surface
+  still escapes, and Gmail/Word add their own reasons.
 - Detection elsewhere is content-based (`isStyleOnlyHtml`), never
   name-based — the detector accepts `<style>`s, stylesheet `<link>`s,
   the `#head-styles` marker span, and bare merge-tag text (where the
@@ -1451,7 +1455,7 @@ toggling it could split a subsumption group.)
   while text stays dark-on-dark and no light/dark asset swap happens. That
   combination means the media queries were stripped, not that the blocks
   are authored wrong.
-- **Measuring it**: `docs/en-css-inliner-probe.html` round-trips one
+- **Measuring it**: `docs/archive/en-css-inliner-probe.html` round-trips one
   uniquely-marked probe per construct. Measured 2026-08-07 by saving it as a
   Marketing Tools TEMPLATE and test-sending it. The BLOCK pipeline was
   measured separately on 2026-08-09 and behaves the same way with one

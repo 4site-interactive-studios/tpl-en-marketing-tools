@@ -113,3 +113,16 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
 - Run `npm run build` after any source change; it must print zero `WARN`
   lines. Then run the guide's §8 QA checklist and report what each check
   returned.
+- **Probe lifecycle.** `src/probe_*.mjml` files are temporary instruments
+  (check-catalog already skips the `probe_` prefix; nothing else in the
+  pipeline names them). When every claim a probe was built to test is
+  measured and recorded, archive it in the SAME session that records the
+  last verdict: `git mv` the source into `archive/probes/`, `git rm` its
+  three dist artifacts (the raw `.mjml` copy plus the `_live.html` and
+  `_local-debug.html` variants — the build never cleans dist, so they
+  linger otherwise), and add a row to `archive/probes/README.md`. A probe
+  still
+  carrying any unverified claim stays in `src/`. `archive/` is invisible
+  to the build (annotate-excluded reads `src/` non-recursively). Archive,
+  never delete — annotated probes are the instruments for re-measuring EN
+  later.

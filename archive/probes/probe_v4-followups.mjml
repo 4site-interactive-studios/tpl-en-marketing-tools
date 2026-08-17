@@ -1,27 +1,73 @@
 <mjml lang="en">
   <mj-head>
     <!--
-      PROBE — Gmail Android two-column shrink (2026-08-12).
-      Not a catalog page. Send dist/probe_gmail-android-columns_live.html
-      through EN to EoA and read the android gmailapp renders (light + dark,
-      plus a non-Gmail/IMAP account if the test set has one):
+      ARCHIVED 2026-08-18 — round complete, verdicts recorded (see
+      archive/probes/README.md). Header below kept as the historical
+      record; the dist/ artifacts it names are no longer built.
 
-        A CONTROL      — Story Card (image left) exactly as shipped (240/296 px columns).
-                         Expected to reproduce the shrunken stacked columns.
-        B PERCENT      — same card with 43% / 53% columns. If A shrinks and B
-                         fills the viewport, switch the catalog to percent columns.
-        C GROUP        — same px card inside mj-group (columns never stack;
-                         widths become inline percentages). Side-by-side at
-                         every width is the accepted trade-off if it wins.
-        D MIN-WIDTH    — control plus a top-level .probe-minw-* rule EN's
-                         inliner will inline onto the column divs. Tests
-                         whether an inlined min-width alone holds the width.
+      PROBE — Outlook background-image void (2026-08-12).
+      Not a catalog page. Send probe_outlook-background-image (compiled
+      _live variant) through EN to EoA and read outlook2021_win11_* and
+      m365_w11_* first.
 
-      Verdict rule: pick the first of B/C/D that renders correctly in the
-      failing client AND still matches A everywhere A was already correct.
+      THE FINDING THIS TESTS
+      Every background-image section in the v4 catalog renders as a flat
+      colour slab in the Word engine, while MT's NGS reference renders its
+      photo. Verified 2026-08-12 against the delivered HTML of both:
+
+        * not delivery  — our v:rect / v:fill / background= / url() all
+                          arrive with absolute URLs
+        * not the image — all four hero photos are baseline JPEG (SOF0)
+        * not the block — the "Hello World" band fails too, so there is no
+                          working counter-example in our own catalog
+
+      The one markup difference: our section sets background-color AND
+      background-url; NGS sets only background-url. That makes MJML emit
+      bgcolor="…" on the Outlook conditional table and color="…" on the
+      v:fill. NGS emits neither, and the slab we see is exactly that colour
+      — so the fallback appears to be beating the image in Word.
+
+      VARIANTS (identical content, only the fallback plumbing differs)
+
+        A CONTROL   background-color + background-url, exactly as shipped.
+                    Expected: flat maroon slab, no photo.
+        B NGS SHAPE background-url only. Expected: the photo renders.
+                    Cost if adopted bare: an image-blocked Outlook shows
+                    white, with no brand fallback at all.
+        C WRAPPER   background-url only on the section, the fallback colour
+                    moved OUT to an mj-wrapper behind it. Expected: the
+                    photo renders AND a blocked image still falls back to
+                    brand colour, because the wrapper paints behind the
+                    section rather than inside its VML rect.
+
+      VERDICT RULE
+      Prefer C if it shows the photo — it is the only variant that keeps a
+      fallback. Fall back to B if C also slabs (which would mean the
+      wrapper's own bgcolor reaches the rect). If A renders the photo too,
+      the diagnosis is wrong and nothing should be changed on this evidence.
+
+      Check every other client as well: whichever variant wins must not
+      regress Apple Mail / iOS / Gmail, where A already renders correctly.
+    -->
+    <!--
+      COMBINED PROBE (2026-08-13) — two independent questions in one send,
+      because they fit: measured 369px + 1960px tall at 375px wide, against
+      EoA's 7500px screenshot cap, and the two heads share no colliding
+      selectors (the columns probe's only extras are .probe-minw-*, which
+      apply solely to elements carrying them).
+
+      Bands are prefixed so the two lettered series cannot be confused:
+        BG  A/B/C   — Outlook background-image void  (read outlook2021_*, m365_*)
+        COL A/B/C/D — Gmail Android column shrink    (read android*_gmailapp_*)
+
+      Each series keeps its own verdict rule, stated in the source probes
+      probe_outlook-background-image.mjml and
+      probe_gmail-android-columns.mjml (beside this file in
+      archive/probes/). Those remain canonical; this file
+      exists only to spend one EoA run instead of two.
     -->
     <mj-breakpoint width="600px" />
-    <mj-title>PROBE — Gmail Android columns</mj-title>
+    <mj-title>PROBE — Outlook background + Gmail columns</mj-title>
 
     <mj-attributes>
       <mj-text
@@ -32,25 +78,7 @@
         line-height="24px"
         css-class="wysiwyg"
       />
-      <mj-button width="auto"
-        css-class="button"
-        font-size="18px"
-        font-weight="700"
-        font-family="Tahoma, sans-serif"
-        line-height="25px"
-        border-radius="100px"
-        inner-padding="12px 16px"
-        letter-spacing="2px"
-        color="#ffffff"
-        background-color="#006837"
-      />
       <mj-image padding="0" />
-      <mj-class
-        name="caption"
-        font-size="10px"
-        line-height="16px"
-        padding="8px 0 0 0"
-      />
     </mj-attributes>
 
     <mj-style>
@@ -72,13 +100,105 @@
     </mj-raw>
     <mj-include path="./styles.css" type="css" />
   </mj-head>
+
   <mj-body css-class="email-body" background-color="#ffffff">
+
 
     <!-- START: Probe Label A -->
     <mj-section css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">A — CONTROL (240/296 PX)</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG A — CONTROL (COLOR + URL)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label A -->
+
+    <!-- START: Probe A Control -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#362229"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="16px 0 16px"
+    >
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px" vertical-align="middle">
+          <mj-text color="#ffffff" align="center" padding="0 32px 8px">A — expect a FLAT SLAB in Outlook</mj-text>
+        </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe A Control -->
+
+    <!-- START: Probe Label B -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG B — URL ONLY (NGS SHAPE)</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label B -->
+
+    <!-- START: Probe B Url Only -->
+    <mj-section data-fully-exclude
+      css-class="image-block block"
+      background-url="assets/photo-river.jpg"
+      background-size="cover"
+      background-repeat="no-repeat"
+      background-position="center center" padding="16px 0 16px"
+    >
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px" vertical-align="middle">
+          <mj-text color="#ffffff" align="center" padding="0 32px 8px">B — expect the PHOTO in Outlook</mj-text>
+        </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: Probe B Url Only -->
+
+    <!-- START: Probe Label C -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BG C — FALLBACK ON A WRAPPER</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Probe Label C -->
+
+    <!-- START: Probe C Wrapper Fallback -->
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section
+        css-class="image-block block"
+        background-url="assets/photo-river.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center center" padding="16px 0 16px"
+      >
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-text color="#ffffff" align="center" padding="0 32px 8px">C — expect the PHOTO, with a brand fallback behind it</mj-text>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Probe C Wrapper Fallback -->
+
+  
+
+
+    <!-- START: Probe Label A -->
+    <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL A — CONTROL (240/296 PX)</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -112,7 +232,7 @@
     <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">B — PERCENT COLUMNS (45/53)</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL B — PERCENT COLUMNS (45/53)</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -146,7 +266,7 @@
     <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">C — MJ-GROUP (NO STACKING)</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL C — MJ-GROUP (NO STACKING)</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -182,7 +302,7 @@
     <mj-section data-fully-exclude css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">D — CONTROL + INLINED MIN-WIDTH</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">COL D — CONTROL + INLINED MIN-WIDTH</p>
         </mj-text>
       </mj-column>
     </mj-section>
