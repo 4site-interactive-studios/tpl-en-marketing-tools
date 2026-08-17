@@ -66,6 +66,7 @@ what EN stores.
 | Rule matching nothing | pruned | harmless |
 | `vertical-align` in a td's style | **moved to a `valign` ATTRIBUTE** | `td[style*=vertical-align]` selectors die in the inbox (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered tds kept it inline; `direction` survives in style) |
 | CSS comments | **STRIPPED** at send | comment weight never reaches recipients — it costs the CSS Editor box, not the payload |
+| `<a>` wrapping a `<table>` | **anchor AUTO-CLOSED before the table** | the delivered link arrives EMPTY with the table expelled after it — the row is unclickable in every client (measured 2026-08-18, probe 0Mgmjr…: 167 delivered chars to `</a>` where the build wraps 1,160). Anchor per CELL around inline content, never around a table |
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
 first child of `<body>` — filled from each email's per-send **Preview
@@ -185,7 +186,7 @@ renders):** an authored light ground with NO dark hook at all — an
 mj-column carrying `background-color="#ffffff"` and no css-class — rendered
 dark and legible in Apple Mail, the Gmail app, Outlook.com, and both Word
 engines. EN rewrites the inline colour to a `bgcolor` attribute at send,
-and every dark client transforms that ground itself; the white-on-white
+and every dark-capable client in the matrix transformed that ground itself; the white-on-white
 failure predicted from the LOCAL build (1.00:1 with the dark branch forced
 on) never reached an inbox. Two consequences: dark-mode claims must be
 measured on the DELIVERED html, never the compiled build — the artifact
@@ -194,6 +195,24 @@ explicit dark rule is a belt over the clients' own braces, worth writing
 when you need a SPECIFIC colour rather than "not broken". This is one
 email and one round: strong evidence, not a licence to delete hooks that
 already ship.
+
+**The mercy has a hard limit, convicted by controlled A/B (2026-08-18,
+probe 0Mgmjr…): clients rescue what EN delivers, but they honour YOUR dark
+CSS as intent.** The authored dark rule `.block table[align=center] {
+background-color: #000000 !important }` painted an opaque black lid over
+every background-photo hero in Apple Mail dark AND Outlook.com dark — EN's
+shorthand rebuild strips the `url()` from the hero's outer table (§4), the
+photo survives only on the div BEHIND that table, and the repaint then
+filled the table black on top of it. The identical hero minus the `block`
+class showed the photo. So the clients' own transforms are a safety net
+under missing hooks, never under wrong ones: a kept-media-query rule you
+author fires exactly as written, on delivered geometry you may not have
+pictured. The catalog's fix is an equal-specificity exemption placed AFTER
+the repaint group in BOTH dark branches — `.image-block
+table[align=center], .overlay-image-block table[align=center] {
+background-color: transparent !important }` — and a rule that every
+`background-url` section must carry one of those classes so the exemption
+can reach it.
 
 The dark-mode strategy has exactly two hooks, and both survive EN:
 `@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
@@ -346,7 +365,10 @@ build.** The inliner rewrites style attributes (bgcolor, valign, the
 background shorthand), so a selector that matches every td in dist/ can
 match zero in the inbox. `td[style*=vertical-align]` shipped as a
 single-surface form on 2026-08-13 and was only caught when the delivered
-payload was inspected directly.
+payload was inspected directly. The paired idiom above is verified in the
+other direction too: the 2026-08-18 composite probe (0Mgmjr…) delivered
+0 of 80 real tds with `vertical-align` still inline, so the `[valign]`
+form is the only one firing in the inbox.
 
 **These two constraints together rule out the obvious fix for a
 Gmail-only layout bug**, so expect to work harder there. A worked example
@@ -519,6 +541,19 @@ never author `full-width` + `background-url` for EN.** TPL's
 check-docs enforces this; every current TPL background block is
 constrained, which is why the bug never fired in production.
 
+**The same url()-drop makes background heroes vulnerable to your own dark
+CSS.** After EN, the photo exists ONLY on the wrapper div; the outer table
+above it is a colourable void. Any dark-branch rule that repaints outer
+tables (`.block table[align=center]`) paints an opaque lid OVER the photo
+— convicted by controlled A/B 2026-08-18 (probe 0Mgmjr…, Apple Mail dark
+and Outlook.com dark: as-shipped hero = black slab, identical hero minus
+the `block` class = photo). The catalog's cure: every `background-url`
+section carries `image-block` or `overlay-image-block`, and both dark
+branches end the repaint group with an equal-specificity exemption
+`.image-block table[align=center], .overlay-image-block
+table[align=center] { background-color: transparent !important }`. If you
+add a new hero class, extend the exemption or inherit one of these.
+
 The same principle applies to light/dark image pairs (two `<img>` tags, one
 logical image) and to any value duplicated into an MSO conditional.
 
@@ -654,6 +689,12 @@ codifies what it proves, so expect:
   pill but leaves a WRAPPED label following the desktop setting — so the
   control measures inert for short copy and comes alive for long copy.
   Pin both (`td.button`, `td.button table td`) or claim nothing.
+- **The pins reach the inbox.** The `@media only screen and (max-width:…)`
+  blocks the pins live in are kept verbatim by EN's inliner, and the pin
+  rules themselves (`td.button` pair, `.flush-mobile-*`, `.inset-gutter`,
+  `.two-col-column`) arrive byte-intact in delivered payloads (measured
+  2026-08-18, EoA aafUJU…). A "Desktop …" label therefore describes inbox
+  behaviour, not merely preview behaviour.
 
 ### Signal intent with `data-style-*`
 
@@ -832,6 +873,14 @@ can prop each other up, and the report says so when they do.
    `>` to `&gt;` somewhere in its editing surfaces and the rule silently
    dies (§2d). Selectors extracted from the compiled `<style>` blocks
    must contain zero `>`.
+6c. Verify every `[style*=…]` selector and every dark-mode legibility
+   claim against the DELIVERED html
+   (`/app/acidtest/display/email_html/<TEST_ID>`) and real client
+   renders — never `dist/` and never a forced dark branch in a browser.
+   EN rewrites style attributes at send (`vertical-align`→`valign`,
+   colour→`bgcolor`, background shorthand rebuilt), so the local artifact
+   lies in both directions. Third recurrence of this error class
+   (2026-08-11, -12, -18); it graduates to a rule.
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

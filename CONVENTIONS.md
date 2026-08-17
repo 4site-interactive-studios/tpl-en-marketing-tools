@@ -512,7 +512,11 @@ every token would over-pin — `.flush-mobile-capflush .wysiwyg { padding-…
 is the template-wide default on every `mj-text`, and pinning that token
 would label every text field in the catalog desktop-only. This is why
 viewport labels survive re-import without anyone running the audit and
-applying its verdicts by hand.
+applying its verdicts by hand. The labels' premise — that the pinning
+CSS actually reaches the inbox — is measured, not assumed: EN keeps the
+mobile media queries verbatim at send, and the pin rules (`td.button` and
+its carrier twin, `.flush-mobile-*`, `.inset-gutter`, `.two-col-column`)
+arrive byte-intact in the delivered payload (EoA aafUJU…, 2026-08-18).
 
 Two carriers, one value: a pin only settles the question when it covers
 EVERY compiled carrier of the value. MJML writes a button's `align` onto

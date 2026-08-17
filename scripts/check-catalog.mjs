@@ -142,6 +142,8 @@ guard('column geometry check', () => {
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   // _live.html only: _local-debug.html embeds the whole source MJML as JSON,
   // including its own START: markers, which mis-attributes every later hit.
+  // These regexes are tuned to MJML's own output shape — never point this
+  // check at DELIVERED html, whose attributes EN rewrites (valign, bgcolor).
   const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — run npm run build; skipping column geometry');
@@ -322,8 +324,52 @@ guard('inert twin flag check', () => {
   }
 });
 
+
+// ---------------------------------------------------------------------------
+// 5. An <a> must never wrap a <table> (or other block-level markup).
+//    EN's inliner AUTO-CLOSES the anchor at the first table: the delivered
+//    payload carries `<a …></a><table…>` — an EMPTY link with the row content
+//    expelled after it, unclickable in every client. Measured 2026-08-18
+//    (probe 0Mgmjr… vs its compiled build: 167 delivered chars to </a> where
+//    the build wraps 1,160). The Question Block was the catalog's only
+//    instance; this keeps the shape from coming back.
+// ---------------------------------------------------------------------------
+
+/**
+ * Known anchor-wraps-table instances tracked elsewhere and deliberately not
+ * fixed yet. One dated line each — delete when the block is restructured.
+ */
+const ANCHOR_ALLOWLIST = new Set([
+  // 2026-08-18, audit item 7: the Question Block row anchor arrives EMPTY on
+  // the wire (probe 0Mgmjr… — EN auto-closes it before the child table, so
+  // the row is unclickable in every client). The fix is the block's queued
+  // restructure: per-cell anchors around inline content.
+  'Question Block',
+]);
+
+guard('anchor-wraps-table check', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    // Comments narrate markup ("update width on every <a …>") — scan real
+    // markup only, so a match that STARTS inside <!-- … --> is skipped.
+    const inComment = (i) => {
+      const open = text.lastIndexOf('<!--', i);
+      return open !== -1 && text.indexOf('-->', open) > i;
+    };
+    for (const m of text.matchAll(/<a\s[^>]*>(?:(?!<\/a>)[\s\S])*?<(table|div|section)\b/gi)) {
+      if (inComment(m.index)) continue;
+      const region = text.lastIndexOf('<!-- START: ', m.index);
+      const name = region < 0 ? '' : (/<!-- START: (.+?) -->/.exec(text.slice(region)) || [, ''])[1];
+      if (ANCHOR_ALLOWLIST.has(name)) continue;
+      warn(
+        `src/${f}:${lineAt(text, m.index)} an <a> wraps a <${m[1]}> — EN auto-closes the anchor there and the delivered link arrives EMPTY (unclickable in every client); use per-cell anchors around inline content instead`,
+      );
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors clean`,
 );

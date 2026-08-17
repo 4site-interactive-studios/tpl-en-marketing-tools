@@ -422,6 +422,11 @@ li {
         background-color: #000000 !important;
       }
 
+      [data-ogsc] .image-block table[align=center],
+      [data-ogsc] .overlay-image-block table[align=center] {
+        background-color: transparent !important;
+      }
+
       [data-ogsc] .quote-block,
       [data-ogsc] .quote-block table[align=center],
       [data-ogsc] .cta-button-block,
@@ -538,6 +543,18 @@ li {
       .block table[align=center],
       .spacer-block td {
         background-color: #000000 !important;
+      }
+
+      /* Background-photo heroes: the .block repaint above would paint an opaque
+     black lid over the photo. EN's send-time shorthand rebuild strips the
+     url() from the hero section's outer table (measured, delivered payload
+     0Mgmjr…), so the photo lives on the DIV behind it — the table must stay
+     see-through. Convicted by controlled A/B 2026-08-18: P1 as-shipped =
+     black slab, P2 identical-minus-`block` = photo, Apple Mail dark AND
+     Outlook.com dark. Equal specificity, later in the sheet, so it wins. */
+      .image-block table[align=center],
+      .overlay-image-block table[align=center] {
+        background-color: transparent !important;
       }
 
       /* Two shapes, and the difference is load-bearing. A column's
