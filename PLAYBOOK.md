@@ -12,7 +12,6 @@ short version.
 ```
 src/
   mjml_all-blocks.mjml     ← full block catalog (the 9 "Category — X" dividers)
-  tpl_all-blocks.mjml      ← curated SUBSET of the catalog (see CLAUDE.md)
   tpl_unified-blocks.mjml  ← master template
   donation-thank-you.mjml
   recurring-donation-thank-you.mjml    ← standalone autoresponders
@@ -38,8 +37,7 @@ CONVENTIONS.md         ← MIRROR, do not edit — the importer's contract
 Multiple pages are free: the build globs `src/*.mjml`, so adding
 `src/anything.mjml` yields `dist/anything_local-debug.html` **and**
 `dist/anything_live.html` with no config change — see §2 for the difference
-between the two, and CLAUDE.md for the catalogs' roles (notably that
-`tpl_all-blocks.mjml` is a curated subset of `mjml_all-blocks.mjml`, not a mirror of it).
+between the two, and CLAUDE.md for the catalogs' roles.
 
 ## 2. Build pipeline (`package.json`)
 
@@ -141,7 +139,7 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
   whole email as one string repeating the title). The sender titles the
   email in EN itself.
 - **NO `mj-preview` in broadcast sources** (tpl_unified-blocks,
-  mjml_all-blocks, tpl_all-blocks): EN Marketing Tools injects its own
+  mjml_all-blocks): EN Marketing Tools injects its own
   hidden preheader `<p>` from each email's per-send **Preview Text**
   setting (measured 2026-08-10 on a blank-template send — it also prepends
   the text to the text/plain part), so a template-baked preheader would

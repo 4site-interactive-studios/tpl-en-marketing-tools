@@ -30,7 +30,6 @@ const LOCAL_DOCS = ['PLAYBOOK.md', 'CLAUDE.md', 'README.MD'].filter((f) => read(
 const MIRRORS = ['MJML-AUTHORING-GUIDE.md', 'CONVENTIONS.md'];
 
 const demo = read('src/mjml_all-blocks.mjml') || '';
-const example = read('src/tpl_all-blocks.mjml') || '';
 const blockNames = (src) => new Set([...src.matchAll(/<!-- START: (.+?) -->/g)].map((m) => m[1]));
 const demoBlocks = blockNames(demo);
 
@@ -79,33 +78,6 @@ for (const f of LOCAL_DOCS) {
 //    Caused by: CONVENTIONS' lead-in says "keep them in sync", which reads as
 //    "make the lists identical". CLAUDE.md records the real, intentional delta.
 // ---------------------------------------------------------------------------
-const EXPECTED_ONLY_IN_DEMO = [
-  'Story Card (orange-bordered)',
-  'Text w/ Background Image',
-  'Photo Card (green CTA)',
-  'Photo Card (outline CTA)',
-  'Progress Meter Block',
-  'Countdown Card',
-  'Question Block',
-  'Footer',
-];
-if (example) {
-  const exampleBlocks = blockNames(example);
-  const onlyDemo = [...demoBlocks].filter((n) => !exampleBlocks.has(n));
-  const onlyExample = [...exampleBlocks].filter((n) => !demoBlocks.has(n));
-  const unexpected = onlyDemo.filter((n) => !EXPECTED_ONLY_IN_DEMO.includes(n));
-  const missing = EXPECTED_ONLY_IN_DEMO.filter((n) => !onlyDemo.includes(n));
-  for (const n of unexpected) {
-    warn(`"${n}" is in mjml_all-blocks.mjml but not tpl_all-blocks.mjml, and is not in the documented subset (CLAUDE.md)`);
-  }
-  for (const n of missing) {
-    warn(`"${n}" is documented as omitted from tpl_all-blocks.mjml but is present — update CLAUDE.md or the catalog`);
-  }
-  for (const n of onlyExample) {
-    warn(`"${n}" exists only in tpl_all-blocks.mjml; the curated set is a subset of the catalog, never a superset`);
-  }
-}
-
 // ---------------------------------------------------------------------------
 // 3. No [data-ogsc] rule at top level in styles.css.
 //    Caused by: EN's inliner deletes them outright, silently removing the

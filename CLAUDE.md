@@ -42,29 +42,18 @@ that produces the count cannot.
 | File | Role |
 | :--- | :--- |
 | `src/mjml_all-blocks.mjml` | full block catalog with `Category — X` dividers (formerly demo.mjml) |
-| `src/tpl_all-blocks.mjml` | **curated subset** of the catalog, see below (formerly example.mjml) |
 | `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) |
 | `src/donation-thank-you.mjml`, `src/recurring-donation-thank-you.mjml` | standalone autoresponders |
 
-**`tpl_all-blocks.mjml` is a curated subset, not a mirror of `mjml_all-blocks.mjml`.**
-CONVENTIONS.md's lead-in prompt says the two catalogs "carry the same block
-set — KEEP THEM IN SYNC." That is true for every block they *share*: a change
-to a shared block belongs in both. It is **not** an instruction to equalize
-the block lists. `tpl_all-blocks.mjml` deliberately omits eight blocks:
-
-    Story Card (orange-bordered)   Text w/ Background Image
-    Photo Card (green CTA)         Photo Card (outline CTA)
-    Progress Meter Block           Countdown Card
-    Question Block                 Footer
-
-They were removed on request to make a shorter demonstration page. Do not
-"restore parity" by adding them back. Verify the delta is still exactly those
-eight, and nothing else, with:
-
-```bash
-diff <(grep -oE '<!-- START: [^>]*-->' src/mjml_all-blocks.mjml) \
-     <(grep -oE '<!-- START: [^>]*-->' src/tpl_all-blocks.mjml)
-```
+**`tpl_all-blocks.mjml` was removed on 2026-08-15.** It was a strict subset of
+`mjml_all-blocks.mjml` — 135 of its 143 blocks, differing by exactly one line
+(the `mj-title`) — created to give a shorter demonstration page. It carried
+nothing unique, was never once edited independently in its lifetime, and
+required a matching edit on 14 of the 15 catalog commits in its last 90 days.
+That sync tax was its whole cost and its whole risk. If a shorter showcase is
+wanted again, derive it at build time from the full catalog rather than
+maintaining a second copy: `scripts/annotate-excluded.mjs` already reads
+`src/*.mjml` and writes transformed copies to `.build/`, which is the hook.
 
 ## Two HTML outputs per page
 
