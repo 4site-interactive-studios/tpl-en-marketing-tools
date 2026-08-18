@@ -243,6 +243,13 @@ day, same account, same client matrix:
   Every Gmail surface shares the sanitizer, so an oversized stylesheet
   costs hover states, dark rules, and desktop refinements for Gmail
   users on every device — not just Android phones.
+- The importer's answer (2026-08-18): the Head CSS Styles field ships a
+  COMPACT form of the extracted stylesheet (comments stripped, one rule
+  per line — the app would otherwise beautify ~12KB of pretty-printing
+  into the field), and the Template Styles block carries a live Gmail
+  budget meter (16,384 hard / 14,000 target) that itemizes EN-hoisted
+  block styles. Budget the DELIVERED size, not the authored size —
+  authored comments and formatting are free.
 
 Consequences: (1) every responsive or dark behavior that lives ONLY in
 head CSS silently dies in the Gmail app once the delivered stylesheet

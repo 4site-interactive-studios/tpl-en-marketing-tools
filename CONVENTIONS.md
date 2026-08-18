@@ -1058,6 +1058,27 @@ trade-off was accepted deliberately.)
   carries the extracted head CSS as its default, values hard-coded — so
   the CSS is self-editable per email, in place, without any template
   round-trip.
+- **The field ships the COMPACT form** (`compactCss`,
+  `src/core/headStyles.ts`, 2026-08-18): comments stripped (EN strips
+  them at send anyway, and a comment can never re-trigger the
+  cssParserHazard outage class), one rule per line, @media wrappers on
+  their own lines with indented one-line rules. Reason: Gmail discards
+  the ENTIRE head stylesheet past **16,384 total `<style>` bytes**
+  (guide §2b-bis — drop-whole, every Gmail surface), and the app's
+  formatter otherwise beautifies ~12KB of pretty-printing into the
+  field (measured: 27,126 delivered where the compiled sheet held
+  14,976 sans comments). Both defaultValue and originalValue are
+  compact; the authored form lives in the TPL repo. compactCss NEVER
+  merges/reorders @media, shortens hex, or rewrites selectors — each
+  breaks a measured behavior or an app feature (see the §2b-bis
+  coupling notes).
+- **The Gmail CSS budget meter** (`CssBudgetMeter`, shown on the block's
+  panel; `validateCssBudget` mirrors it in the issues badge): used =
+  shell-remaining `<style>` bytes + the field's current bytes, against
+  the 16,384 hard limit with a 14,000 working target (headroom for
+  EN-hoisted block styles, which the meter itemizes as "+N if
+  included"). Warning past the target, error past the limit. The
+  exported block name never carries byte counts.
 - No theme Selects exist on the block: the extracted CSS keeps its
   authored literal values. The shell's template replacements keep only
   what remains inline there: the body/wrapper `background_color`.

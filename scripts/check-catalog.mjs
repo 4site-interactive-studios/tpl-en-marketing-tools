@@ -438,8 +438,64 @@ guard('mobile-only MSO-guard check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// §8 Gmail CSS budget + importer head-CSS couplings (2026-08-18).
+// Gmail discards the ENTIRE head stylesheet past 16,384 total <style> bytes
+// (guide §2b-bis). The importer ships the field in compact form; this guard
+// simulates that (strip comments, collapse whitespace runs) per compiled
+// page and warns past the 14,000-byte working target. It also protects the
+// two silent app couplings nothing else connects across the repos: the
+// Column Width dropdown needs every 50px ladder rung to keep a live
+// `.mj-column-px-N` class, and the inert audit's Desktop labels need the
+// td.button mobile pins to keep parsing.
+// ---------------------------------------------------------------------------
+
+guard('Gmail CSS budget + head coupling check', () => {
+  const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
+  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
+  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  if (!pages.length) {
+    console.log('  check-catalog: no dist/*_live.html — skipping the CSS budget check');
+    return;
+  }
+  for (const page of pages) {
+    const html = read(`dist/${page}`) || '';
+    const headEnd = html.indexOf('</head>');
+    const head = headEnd === -1 ? html : html.slice(0, headEnd);
+    let css = '';
+    for (const m of head.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) css += m[1];
+    const compact = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ');
+    if (compact.length > 14000) {
+      warn(
+        `dist/${page}: compact head CSS is ${compact.length} bytes — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
+      );
+    }
+    const live = new Set(
+      [...css.matchAll(/\.mj-column-px-(\d+)\s*[,{]/g)].map((m) => parseInt(m[1], 10)),
+    );
+    const missing = RUNGS.filter((n) => !live.has(n));
+    if (missing.length) {
+      warn(
+        `dist/${page}: Column Width ladder rung(s) ${missing.join(', ')} have no live .mj-column-px-N head class — the importer silently drops those dropdown options (styles.css authors the ladder; keep every rung)`,
+      );
+    }
+    const mobileBlocks = [...css.matchAll(/@media[^{]*max-width\s*:\s*(\d+)px[^{]*\{/g)];
+    const hasButtonPin = mobileBlocks.some((m) => {
+      if (parseInt(m[1], 10) >= 600) return false;
+      // crude body scan from this block onward — enough for a presence check
+      const from = css.slice(m.index ?? 0, (m.index ?? 0) + 4000);
+      return /td\.button[^{]*\{[^}]*!important/.test(from);
+    });
+    if (!hasButtonPin) {
+      warn(
+        `dist/${page}: no td.button !important rule found in a sub-600px media block — the inert audit's Desktop label pins would vanish (parseMobilePins reads these)`,
+      );
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups, mobile-only guards clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups, mobile-only guards, CSS budget clean`,
 );
