@@ -69,34 +69,34 @@
     <!-- START: Main Content -->
 
     <!-- START: Logo Hero (no CTA) -->
-    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" data-style-src data-style-href data-style-width data-style-align />
+    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column vertical-align="middle">
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
     <!-- END: Logo Hero (no CTA) -->
 
     <!-- START: Heading -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align><mj-text align="center" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color><h1 style="color:#362229;">Thank you for your ongoing support!</h1></mj-text></mj-column>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
+      <mj-column><mj-text align="center" padding="0"><h1 style="color:#362229;">Thank you for your ongoing support!</h1></mj-text></mj-column>
     </mj-section>
     <!-- END: Heading -->
 
     <!-- START: Image (full-bleed) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text align="right" mj-class="caption" data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -106,10 +106,10 @@
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
       css-class="text-block block inset-gutter"
-      background-color="#ffffff" padding="0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-fully-exclude
+      background-color="#ffffff" padding="0 32px" data-fully-exclude
     >
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+      <mj-column>
+        <mj-text padding="0">
           <p>
             Dear {user_data~First Name} {user_data~Last Name},
           </p>
@@ -133,7 +133,7 @@
           <p>
             Once again, thank you for your generous support. We hope
             you&rsquo;ll visit
-            <a href="https://www.tpl.org" style="color:#006837;" data-style-color data-style-href><strong>tpl.org</strong></a>
+            <a href="https://www.tpl.org" style="color:#006837;"><strong>tpl.org</strong></a>
             often to see how your donation is connecting everyone to the
             outdoors.
           </p>
@@ -143,23 +143,23 @@
     <!-- END: WYSIWYG Text (inset) -->
 
     <!-- START: Signature Card (round photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
       <mj-group>
-        <mj-column vertical-align="middle" width="130px" css-class="signature-img" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+        <mj-column vertical-align="middle" width="130px" css-class="signature-img">
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 20px 0 0" border-radius="60px" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="406px" css-class="signature-text" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-column vertical-align="middle" width="406px" css-class="signature-text">
+          <mj-text padding="0">
             <p style="font-style:italic;font-size:15px;margin:0 0 8px;">Thank you for making this work possible.</p>
           </mj-text>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+          <mj-text padding="0">
             <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
           </mj-text>
         </mj-column>
@@ -168,15 +168,15 @@
     <!-- END: Signature Card (round photo) -->
 
     <!-- START: Body Text (inset) -->
-    <mj-section css-class="text-block block body-text-block inset-gutter" background-color="#ffffff" padding="16px 64px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+    <mj-section css-class="text-block block body-text-block inset-gutter" background-color="#ffffff" padding="16px 64px">
+      <mj-column>
+        <mj-text padding="0">
           <p style="font-size:16px;">
             Questions, or need to update or cancel your recurring gift?
             Email
-            <a href="mailto:donor.outreach@tpl.org" style="color:#006837;" data-style-color data-style-href>donor.outreach@tpl.org</a>
+            <a href="mailto:donor.outreach@tpl.org" style="color:#006837;">donor.outreach@tpl.org</a>
             or call
-            <a href="tel:800-714-5263" style="color:#006837;" data-style-color data-style-href>1-800-714-5263</a>
+            <a href="tel:800-714-5263" style="color:#006837;">1-800-714-5263</a>
             at any time.
           </p>
         </mj-text>
@@ -186,26 +186,26 @@
 
     <!-- START: Footer (w/ image) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
-      <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://tpl.org/donate" align="center" data-style-align padding="0 0 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction data-style-color data-style-href data-style-width>DONATE</mj-button>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://tpl.org/donate" align="center" padding="0 0 32px">DONATE</mj-button>
+        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
-        <mj-text color="#ffffff" align="center" data-style-alignment padding="0 0 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+        <mj-text color="#ffffff" align="center" padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
           <p style="font-size:14px;line-height:21px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}.</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle data-style-src data-style-href data-style-width data-style-align />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-style-src data-style-href data-style-width data-style-dark-mode data-style-align />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
-          <p style="font-size:14px;"><a href="https://fundraise.tpl.org/page/1000752/subscriptions/1?chain" style="color:#ffffff;" data-campaign-id="1000752" data-custom-urls="[]" data-custom-urls-enabled="false" data-name="Subscription_Management_Page" data-type="campaignpage_url_pb" data-style-color data-style-href>Manage Subscription</a></p>
+        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0">
+          <p style="font-size:14px;"><a href="https://fundraise.tpl.org/page/1000752/subscriptions/1?chain" style="color:#ffffff;" data-campaign-id="1000752" data-custom-urls="[]" data-custom-urls-enabled="false" data-name="Subscription_Management_Page" data-type="campaignpage_url_pb">Manage Subscription</a></p>
         </mj-text>
       </mj-column>
     </mj-section>

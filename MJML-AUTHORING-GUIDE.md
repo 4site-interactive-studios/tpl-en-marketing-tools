@@ -774,13 +774,23 @@ codifies what it proves, so expect:
   2026-08-18, EoA aafUJU…). A "Desktop …" label therefore describes inbox
   behaviour, not merely preview behaviour.
 
-### Signal intent with `data-style-*`
+### The data-style vocabulary is RETIRED — one survivor
 
-Flag the properties meant to be editable, one flag per property:
-`data-style-color`, `data-style-background-color`, `data-style-src`,
-`data-style-href`, `data-style-padding-top` … `-left`,
-`data-style-dark-mode`. Padding always expands to all four sides. These are
-declared intent; keep them accurate for every property you touch.
+The per-property intent flags (data-style-color, data-style-href, the
+padding quartet, and the rest of the family) were audited 2026-08-18 and
+proven fully inert: the importer mints fields from the authored VALUES, and
+stripping all 8,376 instances changed zero generated fields (strip test
+through the real generator, both catalogs). They were pruned from every
+source the same day. Do not author new ones — the audit
+(`npm run audit-data-attrs`, or the Test Center's data-* tab) flags any
+unclaimed annotation.
+
+**The one survivor is `data-style-dark-mode`**, which is NOT an importer
+flag: the TPL build's annotate pass reads it to fold a dark image twin
+into its light partner when counting removable variants. Keep it on every
+dark-only image twin. Real intent signalling is the `data-*` contract
+below — opt-outs, viewport declarations, `data-link-group` — all of which
+the importer actually reads.
 
 Alt text is the exception, and needs no flag at all (decision 2026-08-18):
 **every `mj-image` exposes an editable Alt Text field unconditionally,
