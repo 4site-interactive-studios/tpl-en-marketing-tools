@@ -4,7 +4,7 @@
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
-      "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E" }
+      "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
     } -->
     <mj-breakpoint width="600px" />
     <mj-title>TPL Email Template — Block Catalog</mj-title>
@@ -797,11 +797,11 @@
          2026-08-18). -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="light-only" />
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1041,7 +1041,7 @@
           src="assets/photo-butterfly.jpg" width="224px"
           alt="Placeholder photo"
           href="https://www.example.com"
-          padding="0 0 8px"
+          padding="0"
           align="center"
           fluid-on-mobile="true"
           css-class="two-col-image light-only" />
@@ -1050,12 +1050,12 @@
           src="assets/photo-butterfly.jpg" width="224px"
           alt="Placeholder photo"
           href="https://www.example.com"
-          padding="0 0 8px"
+          padding="0"
           align="center"
           fluid-on-mobile="true"
           css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1083,7 +1083,7 @@
             href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
-            padding="0 0 8px"
+            padding="0"
             css-class="two-col-image light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
@@ -1092,10 +1092,10 @@
             href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
-            padding="0 0 8px"
+            padding="0"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1131,7 +1131,7 @@
             href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
-            padding="0 0 8px"
+            padding="0"
             css-class="two-col-image light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
@@ -1140,10 +1140,10 @@
             href="https://www.example.com"
             align="center"
             fluid-on-mobile="true"
-            padding="0 0 8px"
+            padding="0"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1176,7 +1176,7 @@
           src="assets/image-ranking.png"
           alt="Placeholder ranking graphic"
           href="https://www.example.com"
-          padding="0 0 8px"
+          padding="0"
           align="center"
           width="224px" css-class="two-col-image light-only" fluid-on-mobile="true" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -1184,11 +1184,11 @@
           src="assets/image-ranking.png"
           alt="Placeholder ranking graphic"
           href="https://www.example.com"
-          padding="0 0 8px"
+          padding="0"
           align="center"
           width="224px" css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>

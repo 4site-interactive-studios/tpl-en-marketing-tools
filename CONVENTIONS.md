@@ -217,7 +217,16 @@ unhandled (none exist upstream; documented limitation).
 **`data-inset-toggle`** (opt-in, 2026-08-18): a flagged spacing component
 mints its Inset Selects even when a side is 0 — "None" is on the closed
 scale, so a flush element (an image caption matching its photo's edge)
-stays adjustable without an authoring round-trip. The flag never
+stays adjustable without an authoring round-trip. The flag also unlocks
+**Spacing Above** (same closed scale, zero included) and relaxes the
+top-must-be-0 gate: THE CAPTION PACING EXCEPTION (user-decided
+2026-08-18) — a caption owns its gap ABOVE itself (`padding="8px 0 0"`,
+image bottom 0), so Display-hiding the caption removes the gap with it
+instead of stranding 8px of white space under the photo. This is a
+deliberate deviation from the vertical-pacing convention (inter-element
+space is otherwise the UPPER element's bottom padding) and applies ONLY
+to flagged elements; everything unflagged keeps the template-wide gate.
+Spacing Above sorts directly before Spacing Below. The flag never
 overrides the closed scale (off-scale sides stay literal), never
 bypasses the other gates (sole-member consolidation still wins — do NOT
 flag a column's only member, the dead-flag audit will report it), and is

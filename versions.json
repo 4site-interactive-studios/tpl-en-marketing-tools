@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 3,
-    "hash": "630121687388"
+    "version": 4,
+    "hash": "f7f7f06a3c54"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 3,
-    "hash": "1439c85babf2"
+    "version": 4,
+    "hash": "83dbc10892d9"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -292,20 +292,20 @@
     "hash": "a0f24665d3bb"
   },
   "block:Image (bikers)": {
-    "version": 3,
-    "hash": "a2554def43de"
+    "version": 4,
+    "hash": "22fb5eadd407"
   },
   "block:Image (full-bleed)": {
-    "version": 3,
-    "hash": "d869462ca241"
+    "version": 4,
+    "hash": "c529cbb94073"
   },
   "block:Image (inset)": {
-    "version": 3,
-    "hash": "bce48824291d"
+    "version": 4,
+    "hash": "dedf20218444"
   },
   "block:Image 1x1": {
-    "version": 2,
-    "hash": "63bb18df7999"
+    "version": 3,
+    "hash": "8fdf3129eb93"
   },
   "block:Images 2x1": {
     "version": 4,
@@ -484,28 +484,28 @@
     "hash": "ebdb8bf755b1"
   },
   "block:Story Card (image left)": {
-    "version": 4,
-    "hash": "7f1ac0d748bd"
+    "version": 5,
+    "hash": "a0be4f5e5b79"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 4,
-    "hash": "977913a638f2"
+    "version": 5,
+    "hash": "837e5c0902bc"
   },
   "block:Story Card (image left, no button)": {
-    "version": 3,
-    "hash": "8d41d3ca5636"
+    "version": 4,
+    "hash": "4c9ca6d98d59"
   },
   "block:Story Card (image right)": {
-    "version": 4,
-    "hash": "85bc40c7f9ff"
+    "version": 5,
+    "hash": "11cfda61372e"
   },
   "block:Story Card (image right, middle-aligned)": {
-    "version": 4,
-    "hash": "f2ce41fde04e"
+    "version": 5,
+    "hash": "627cb7d41d09"
   },
   "block:Story Card (no heading, image on the side)": {
-    "version": 5,
-    "hash": "08939f0af6a3"
+    "version": 6,
+    "hash": "b17b056a8c64"
   },
   "block:Story Card (orange-bordered)": {
     "version": 3,
@@ -584,12 +584,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 6,
-    "hash": "7a05b944dfaf"
+    "version": 7,
+    "hash": "f8f2c34b50df"
   },
   "email-template": {
-    "version": 9,
-    "hash": "66f7c83e69fc"
+    "version": 10,
+    "hash": "2e81e9630a29"
   },
   "partial:debug-toolbar": {
     "version": 1,
