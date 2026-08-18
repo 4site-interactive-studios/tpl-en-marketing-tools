@@ -226,6 +226,13 @@ day, same account, same client matrix:
 - A standalone probe whose delivered head CSS was 715 bytes rendered with
   every media query honoured — including `mj-full-width-mobile` image
   scaling and the min-width:600 column classes (EoA fHTqInbC…).
+- Confirmed under full production conditions with the head-CSS canary
+  block riding a real EN-built email (EoA 5BTkRd…, 27,126 delivered CSS
+  bytes): the Gmail app showed the always-on canary RED and both
+  viewport canaries inert (stylesheet dropped whole), while iPhone
+  showed green + the mobile canary firing. The canary block (Utility —
+  Probe Block (head CSS canary)) stays in the catalog as the live
+  instrument for the CSS-diet round.
 
 Consequences: (1) every responsive or dark behavior that lives ONLY in
 head CSS silently dies in the Gmail app once the delivered stylesheet
