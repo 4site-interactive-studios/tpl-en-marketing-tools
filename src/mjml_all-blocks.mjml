@@ -1474,18 +1474,6 @@
     </mj-section>
     <!-- END: Image -->
 
-    <!-- START: Caption -->
-    <mj-section
-      css-class="block caption"
-      background-color="#ffffff" padding="8px 0 0"
-    >
-      <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption" padding="0">
-          <span>Photography by Photographers Name, Agency</span>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Caption -->
 
     <!-- START: Image (full-bleed) -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0">

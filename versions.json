@@ -123,10 +123,6 @@
     "version": 2,
     "hash": "a9781b39f3e3"
   },
-  "block:Caption": {
-    "version": 2,
-    "hash": "31bc7e0f31e6"
-  },
   "block:Category — Buttons": {
     "version": 3,
     "hash": "2b82ca188fc0"
@@ -576,12 +572,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 2,
-    "hash": "30ab69017381"
+    "version": 3,
+    "hash": "8c48543928ad"
   },
   "email-template": {
-    "version": 4,
-    "hash": "3cbf1a3430fb"
+    "version": 5,
+    "hash": "3d7acc87a2a7"
   },
   "partial:debug-toolbar": {
     "version": 1,

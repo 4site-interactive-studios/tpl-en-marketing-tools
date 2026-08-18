@@ -55,6 +55,16 @@ wanted again, derive it at build time from the full catalog rather than
 maintaining a second copy: `scripts/annotate-excluded.mjs` already reads
 `src/*.mjml` and writes transformed copies to `.build/`, which is the hook.
 
+**The standalone `Caption` block was removed on 2026-08-18** (user
+decision): every image block already carries its caption inline (the
+`mj-class="caption"` text under the photo), so a detached caption
+section had no remaining use and one more block to scroll past. The
+`caption` mj-class, the mobile 16px caption indent, and all inline
+captions are untouched. Recover the markup from git history or from any
+image block's trailing caption section (`css-class="block caption"`,
+`padding="8px 0 0"`) if a detached caption is ever wanted again; the
+already-uploaded EN block must be deleted in EN by hand.
+
 ## Two HTML outputs per page
 
 Every `src/*.mjml` compiles to **two** files in `dist/`:
