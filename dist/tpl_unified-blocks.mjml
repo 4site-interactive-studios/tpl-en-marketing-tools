@@ -1633,15 +1633,63 @@
     <!-- END: Quiz Block (2x2 photos) -->
 
     <!-- START: Feedback Poll Block -->
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+    <!-- The QA'd decomposed shape (swapped in 2026-08-18, replacing the
+         pre-QA monolith): question section + one answer-row section per
+         answer, matching the library's stackable Feedback Poll Option.
+         This template block ships the three-answer default as ONE block;
+         to vary the answer count in a send, stack the library's Feedback
+         Poll Option block instead. -->
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
       <mj-column data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
         <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
-          <p style="font-size:16px;"><img src="assets/icon-heart_green.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Very important</a></p>
-          <p style="font-size:16px;"><img src="assets/icon-thumbs-up.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Somewhat important</a></p>
-          <p style="font-size:16px;"><img src="assets/icon-prohibited.png" alt="" width="22" height="22" style="vertical-align:middle;border:0;" />&nbsp;&nbsp;<a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Not important</a></p>
         </mj-text>
       </mj-column>
+    </mj-section>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-group>
+        <mj-column width="56px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column width="480px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Very important</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-group>
+        <mj-column width="56px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column width="480px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Somewhat important</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 16px" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-background-color data-style-border data-style-direction>
+      <mj-group>
+        <mj-column width="56px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="light-only" data-style-align />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" data-style-src data-style-href data-style-width css-class="dark-only" data-style-dark-mode data-style-align />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column width="480px" vertical-align="middle" data-style-background-color data-style-border data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-vertical-align>
+          <mj-text data-style-alignment padding="0" data-style-padding-top data-style-padding-right data-style-padding-bottom data-style-padding-left data-style-color>
+            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;" data-style-color data-style-href>Not important</a></p>
+          </mj-text>
+        </mj-column>
+      </mj-group>
     </mj-section>
     <!-- END: Feedback Poll Block -->
 
