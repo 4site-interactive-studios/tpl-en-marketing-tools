@@ -1400,7 +1400,14 @@ importer whitelists all data-*-only MJML validator warnings
   - **trailing spacing absorbed by a taller sibling column**, live only
     once the columns stack (`data-mobile-only-spacing-below`);
   - **column order that the mobile stack flattens**
-    (`data-desktop-only-direction`).
+    (`data-desktop-only-direction`);
+  - **per-side padding whose inertness is content-geometry** — the poll
+    question's right padding moves nothing at 600px while its one-line
+    copy fits (`data-mobile-only-padding-right`, honored in the per-side
+    Select path since 2026-08-18). This is the borderline case: if the
+    copy ever grows to wrap at desktop the control comes alive there, so
+    the source carries a comment saying when to drop the flag — and the
+    audit's re-measure catches a stale claim either way.
 
   A declaration is a CLAIM, not an escape hatch: the audit still measures
   every option, and a false claim comes back as a FAIL on the very next

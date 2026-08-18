@@ -2451,7 +2451,11 @@
     </mj-section>
     <!-- END: Question Block -->
     <!-- START: Feedback Poll Block -->
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px 8px">
+    <!-- data-mobile-only-padding-right: the one-line question leaves the right
+         padding nothing to move at 600px (left-aligned copy, white ground) —
+         the audit measures it live at 375 only. If real question copy ever
+         wraps at desktop, the control comes alive there: drop the flag then. -->
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px 8px" data-mobile-only-padding-right>
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>

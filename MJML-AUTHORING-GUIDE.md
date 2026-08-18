@@ -815,7 +815,7 @@ the one field (§4: one value, every carrier).
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
-| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below` |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below`, and the four `padding-<side>`s (per-side scoping for content-dependent inertness the stylesheet cannot express — the poll question's right padding, 2026-08-18) |
 | `data-link-group="<name>"` | on raw `<a>` tags inside hand-authored markup: sibling anchors sharing a group name AND a byte-identical href are ONE logical link — the importer mints a single URL field and splices its tag into every member, so the value can never desync. This is the shape for a clickable row: EN auto-closes an `<a>` that wraps a `<table>` (§2), so the row splits into per-cell anchors that share the group. Members with differing hrefs fall back to separate fields, and the TPL build warns; a lone member is an inert flag the dead-flag audit reports |
 
 **Three rules for all of them.** Apart from the valued trio
