@@ -210,7 +210,7 @@ dark-on-dark and no asset swap happens.
 
 ---
 
-### 2b-bis. The Gmail app's CSS size cliff (measured 2026-08-18)
+### 2b-bis. Gmail's CSS size cliff — every Gmail surface (measured 2026-08-18)
 
 The Gmail app does not categorically drop head styles — it drops them by
 SIZE, and it drops them WHOLE. Measured as a controlled pair on the same
@@ -237,6 +237,12 @@ day, same account, same client matrix:
   the drop is whole. The canary block (Utility — Probe Block (head CSS
   canary)) stays in the catalog as the live instrument for the CSS-diet
   round; its acceptance test is a full-template send showing GREEN.
+- The cliff is NOT mobile-only: Gmail DESKTOP webmail (Chrome) showed
+  the identical pair — full template RED with every canary inert, blank
+  template GREEN with the desktop canary firing purple (same EoA pair).
+  Every Gmail surface shares the sanitizer, so an oversized stylesheet
+  costs hover states, dark rules, and desktop refinements for Gmail
+  users on every device — not just Android phones.
 
 Consequences: (1) every responsive or dark behavior that lives ONLY in
 head CSS silently dies in the Gmail app once the delivered stylesheet
