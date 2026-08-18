@@ -236,7 +236,12 @@ instead of stranding 8px of white space under the photo. This is a
 deliberate deviation from the vertical-pacing convention (inter-element
 space is otherwise the UPPER element's bottom padding) and applies ONLY
 to flagged elements; everything unflagged keeps the template-wide gate.
-Spacing Above sorts directly before Spacing Below. The flag never
+Spacing Above sorts directly before Spacing Below. The pacing VALIDATOR
+honors the exception too (user-dropped 2026-08-18): a flagged element's
+top padding never raises the "carries top padding — move it up" warning
+(`validateColumnPacing`), because the gap is minted as an editable
+Spacing Above rather than hard-coded; unflagged elements keep warning.
+The flag never
 overrides the closed scale (off-scale sides stay literal), never
 bypasses the other gates (sole-member consolidation still wins — do NOT
 flag a column's only member, the dead-flag audit will report it), and is
