@@ -210,7 +210,7 @@
       <mj-column vertical-align="middle" width="50%">
           <mj-button width="auto"
             href="https://www.example.com"
-            align="right" padding="0">
+            align="right" padding="0" color="#ffffff" background-color="#006837">
             Read more
           </mj-button>
       </mj-column>
@@ -253,7 +253,7 @@
         <mj-column vertical-align="middle" width="275px">
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com"
-              align="right" padding="0">
+              align="right" padding="0" color="#ffffff" background-color="#006837">
               Read more
             </mj-button>
         </mj-column>
@@ -298,7 +298,7 @@
         <mj-column vertical-align="bottom" width="275px">
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com"
-              align="right" padding="0">
+              align="right" padding="0" color="#ffffff" background-color="#006837">
               Read more
             </mj-button>
         </mj-column>
@@ -333,7 +333,7 @@
               <h1 style="text-align: center">Placeholder message for special occasion </h1>
             </mj-text>
             <mj-button css-class="button fixed-width" width="auto"
-              href="https://www.example.com" padding="0 32px 8px">
+              href="https://www.example.com" padding="0 32px 8px" color="#ffffff" background-color="#006837">
               Button
             </mj-button>
           </mj-column>
@@ -544,7 +544,7 @@
       <mj-column vertical-align="middle">
           <mj-button width="auto"
             href="https://www.example.com"
-            align="left" padding="0 0 16px">
+            align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">
             Left button
           </mj-button>
       </mj-column>
@@ -559,7 +559,7 @@
       <mj-column vertical-align="middle">
           <mj-button width="auto"
             href="https://www.example.com"
-            align="center" padding="0 0 16px">
+            align="center" padding="0 0 16px" color="#ffffff" background-color="#006837">
             Center button
           </mj-button>
       </mj-column>
@@ -574,7 +574,7 @@
       <mj-column vertical-align="middle">
           <mj-button width="auto"
             href="https://www.example.com"
-            align="right" padding="0 0 16px">
+            align="right" padding="0 0 16px" color="#ffffff" background-color="#006837">
             Right button
           </mj-button>
       </mj-column>
@@ -589,7 +589,7 @@
       <mj-column vertical-align="middle">
           <mj-button css-class="button fixed-width"
             href="https://www.example.com"
-            align="center" width="300px" padding="0 0 16px">
+            align="center" width="300px" padding="0 0 16px" color="#ffffff" background-color="#006837">
             Fixed width Fixed width Fixed width Fixed width 
           </mj-button>
       </mj-column>
@@ -967,7 +967,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0">
+          align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
       </mj-column>
@@ -997,7 +997,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0">
+          align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
       </mj-column>
@@ -1039,7 +1039,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0" data-mobile-only-spacing-below>Learn More</mj-button>
+          align="left" padding="0" data-mobile-only-spacing-below color="#ffffff" background-color="#006837">Learn More</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (no heading, image on the side) -->
@@ -1084,7 +1084,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0">
+          align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
       </mj-column>
@@ -1132,7 +1132,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0">
+          align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
       </mj-column>
@@ -1511,7 +1511,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0 0 16px">Learn More</mj-button>
+          align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">Learn More</mj-button>
         <mj-text padding="0">
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
