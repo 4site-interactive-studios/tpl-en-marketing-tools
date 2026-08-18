@@ -1117,6 +1117,14 @@ aloud). The Alt Text field survives either way (§5).
    is frozen and an editor cannot indent it. Never flag a caption that
    is its column's only member (the flag is inert there and the
    dead-flag audit reports it).
+7b. Confirm every button label is authored ALL CAPS (2026-08-18,
+   user-decided) — literal text, never `text-transform`, so the minted
+   Text fields stay per-email re-caseable. BOTH carriers: mj-button
+   content AND raw pill anchors (the `border-radius:100px` `<a>`s inside
+   cta-groups, which are not mj-buttons). This rule escaped twice — once
+   past a bulk transform (the first button after the `mj-attributes`
+   defaults element), once as the pill-anchor family — so the TPL build
+   guard now enforces it (check-catalog "ALL-CAPS button label check").
 8. Send a real test: dark mode on, and a ≤480px viewport. The inliner
    failures are invisible in source and in the editor.
 9. After import, open the Test Center's Inert Audit tab, run it, and read the Check

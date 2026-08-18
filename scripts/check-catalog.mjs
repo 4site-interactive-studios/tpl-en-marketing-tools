@@ -458,6 +458,51 @@ guard('mobile-only MSO-guard check', () => {
 // audit's Desktop labels need the td.button mobile pins to keep parsing.
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// §9 ALL-CAPS button labels (2026-08-18, user-decided). Every button label
+// ships uppercase as its authored default — literal text, so the minted
+// Text fields stay per-email re-caseable. Two carriers, because this rule
+// escaped twice: mj-button content (the bulk transform missed the first
+// button after the mj-attributes defaults element) and raw pill anchors
+// (border-radius:100px <a>s inside cta-groups, which are not mj-buttons at
+// all). Entities, tags, and {replacement~…} merge tags don't count as
+// letters.
+// ---------------------------------------------------------------------------
+
+guard('ALL-CAPS button label check', () => {
+  const stripNonText = (s) =>
+    s.replace(/<[^>]+>|&[#a-zA-Z0-9]+;|\{[^}]*\}/g, '');
+  for (const name of sources) {
+    const src = read(`src/${name}`) ?? '';
+    const offenders = [];
+    // mj-button contents — paired scan that skips self-closed elements
+    // (the mj-attributes defaults declaration)
+    for (const m of src.matchAll(/<mj-button\b(?:[^>]*?)(\/?)>/g)) {
+      if (m[1] === '/') continue;
+      const close = src.indexOf('</mj-button>', m.index + m[0].length);
+      if (close === -1) continue;
+      const text = stripNonText(src.slice(m.index + m[0].length, close));
+      const letters = text.replace(/[^a-zA-Z]/g, '');
+      if (letters && letters !== letters.toUpperCase()) {
+        offenders.push(`mj-button "${text.trim().slice(0, 40)}"`);
+      }
+    }
+    // pill anchors — the raw-html button family
+    for (const m of src.matchAll(/<a[^>]*border-radius:100px[^>]*>([\s\S]*?)<\/a>/g)) {
+      const text = stripNonText(m[1]);
+      const letters = text.replace(/[^a-zA-Z]/g, '');
+      if (letters && letters !== letters.toUpperCase()) {
+        offenders.push(`pill anchor "${text.trim().slice(0, 40)}"`);
+      }
+    }
+    for (const o of offenders) {
+      warn(
+        `src/${name}: ${o} is not ALL CAPS — button labels ship uppercase defaults (editors re-case per email via the Text field)`,
+      );
+    }
+  }
+});
+
 guard('Gmail CSS budget + head coupling check', () => {
   const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
   const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts

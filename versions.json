@@ -40,28 +40,28 @@
     "hash": "569f7b49d92d"
   },
   "block:CTA Buttons 2x1": {
-    "version": 2,
-    "hash": "66c60579c8b2"
+    "version": 3,
+    "hash": "d31bf781be30"
   },
   "block:CTA Buttons 2x1 (centered)": {
-    "version": 2,
-    "hash": "6d7c4a96ea06"
+    "version": 3,
+    "hash": "13f8d334a22a"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
     "version": 3,
     "hash": "86aac5a2a87c"
   },
   "block:CTA Buttons 2x1 (right)": {
-    "version": 2,
-    "hash": "405e24ff3052"
+    "version": 3,
+    "hash": "dea4f51b65c3"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 4,
     "hash": "e893effbdcda"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 2,
-    "hash": "9d612dc09d88"
+    "version": 3,
+    "hash": "b9c21f5cff6f"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
     "version": 3,
@@ -236,12 +236,12 @@
     "hash": "bedb2862b50e"
   },
   "block:Heading (linked), Text, and CTA": {
-    "version": 2,
-    "hash": "7bfd1aa720fc"
+    "version": 3,
+    "hash": "85a6c4c0db8e"
   },
   "block:Heading (linked), Text, and CTA (full width)": {
-    "version": 2,
-    "hash": "f9139f91b246"
+    "version": 3,
+    "hash": "a9f84fe959e6"
   },
   "block:Heading (off-white bordered)": {
     "version": 2,
