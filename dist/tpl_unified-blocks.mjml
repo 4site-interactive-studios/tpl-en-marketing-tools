@@ -254,7 +254,7 @@
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com"
               align="right" padding="0" color="#ffffff" background-color="#006837">
-              Read more
+              READ MORE
             </mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -299,7 +299,7 @@
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com"
               align="right" padding="0" color="#ffffff" background-color="#006837">
-              Read more
+              READ MORE
             </mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -334,7 +334,7 @@
             </mj-text>
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com" padding="0 32px 8px" color="#ffffff" background-color="#006837">
-              Button
+              BUTTON
             </mj-button>
           </mj-column>
 
@@ -545,7 +545,7 @@
           <mj-button width="auto"
             href="https://www.example.com"
             align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            Left button
+            LEFT BUTTON
           </mj-button>
       </mj-column>
     </mj-section>
@@ -560,7 +560,7 @@
           <mj-button width="auto"
             href="https://www.example.com"
             align="center" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            Center button
+            CENTER BUTTON
           </mj-button>
       </mj-column>
     </mj-section>
@@ -575,7 +575,7 @@
           <mj-button width="auto"
             href="https://www.example.com"
             align="right" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            Right button
+            RIGHT BUTTON
           </mj-button>
       </mj-column>
     </mj-section>
@@ -590,7 +590,7 @@
           <mj-button css-class="button fixed-width"
             href="https://www.example.com"
             align="center" width="300px" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            Fixed width Fixed width Fixed width Fixed width 
+            FIXED WIDTH FIXED WIDTH FIXED WIDTH FIXED WIDTH 
           </mj-button>
       </mj-column>
     </mj-section>
@@ -608,7 +608,7 @@
           border="2px solid #006837"
           href="https://www.example.com"
           align="center" padding="0 0 16px">
-            Center outline button
+            CENTER OUTLINE BUTTON
           </mj-button>
       </mj-column>
     </mj-section>
@@ -625,7 +625,7 @@
           background-color="#FFFFFF"
           href="https://www.example.com"
           align="center" padding="0 0 16px">
-            Center text button
+            CENTER TEXT BUTTON
           </mj-button>
       </mj-column>
     </mj-section>
@@ -1066,7 +1066,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0" data-mobile-only-spacing-below color="#ffffff" background-color="#006837">Learn More</mj-button>
+          align="left" padding="0" data-mobile-only-spacing-below color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (no heading, image on the side) -->
@@ -1538,7 +1538,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">Learn More</mj-button>
+          align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
         <mj-text padding="0">
           <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
