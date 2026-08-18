@@ -148,17 +148,27 @@ inside `<mj-head>` (parsed from the prepared source by
   precedence (`data-width-options` beats it) and the head-class guard.
   `geometryReachPx` is the hard-coded-geometry
   threshold. `brandColors` (optional; name → hex) declares the brand
-  palette: the declared colors LEAD every color dropdown in BOTH groups
-  (text and background), in declaration order, under their declared names
-  ("Snow - #f5faf1") — **included even when no block uses the color
-  yet** — and censused extras follow, auto-named by nearest CSS color as
-  before (auto-names never collide with declared names). Invalid hex
+  palette: the declared colors join every color group under their
+  declared names ("Snow - #f5faf1") — **included even when no block uses
+  the color yet** — and censused extras are auto-named by nearest CSS
+  color (auto-names never collide with declared names). Invalid hex
   values are skipped per entry with a parse warning. Without the key the
   palette is derived purely from the color census, unchanged.
   (`extractBrandColors`, `src/core/colors.ts`.) Partial declarations
   merge over the defaults per key; unknown
   keys are ignored; invalid keys fall back to defaults with a parse
   warning surfaced in the issues badge.
+- **Palette order** (2026-08-18, user-specified — supersedes both the
+  declaration-order lead and the earlier hue-band sort): every color
+  group renders in a PERCEPTUAL PATH ORDER, dark → light — the shortest
+  open path through OKLab (Ottosson 2020 conversion; unweighted
+  Euclidean; solved as a cycle with a zero-distance dummy node:
+  nearest-neighbor tour, 2-opt to convergence, split at the dummy,
+  oriented by endpoint L). Declaration order decides nothing but names.
+  This is the default order everywhere the list renders — dropdown
+  options, the sidebar palette, exports — with no UI control
+  (`orderColorsPerceptually`, `src/core/colors.ts`; acceptance fixture
+  in `colors.test.ts` pins total path length and max step).
 - **Persistence**: parsed at import, stored as `Project.templateConfig`,
   reused on re-imports and by validation.
 - **Out-of-sync flagging**: every import-time snap (authored value ≠
