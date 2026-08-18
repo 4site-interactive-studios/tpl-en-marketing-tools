@@ -76,7 +76,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -323,7 +323,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7941D" padding="0">Learn More</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7931E" padding="0">Learn More</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -458,7 +458,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="330px">
-            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" background-color="#F7941D" font-size="16px" padding="0">Learn More</mj-button>
+            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" background-color="#F7931E" font-size="16px" padding="0">Learn More</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -486,7 +486,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
-            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7941D" padding="0">Learn More</mj-button>
+            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0">Learn More</mj-button>
           </mj-column>
         </mj-group>
         </mj-section>
@@ -507,7 +507,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="275px">
-            <mj-button css-class="button fixed-width" width="160px" href="https://www.example.com" align="right" background-color="#F7941D" padding="0">Learn More</mj-button>
+            <mj-button css-class="button fixed-width" width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0">Learn More</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -525,7 +525,7 @@
           <mj-text align="center" color="#ffffff" padding="0 0 16px">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
           </mj-text>
-          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7941D" padding="0">Learn More</mj-button>
+          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0">Learn More</mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -619,7 +619,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1096,7 +1096,7 @@
         <mj-text padding="0">
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
           <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;">LOREM IPSUM DOLOR SIT</a></p>
-          <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7941D;font-weight:bold;">FRIDAY</span></p>
+          <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7931E;font-weight:bold;">FRIDAY</span></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1184,7 +1184,7 @@
           <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
           <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
           <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-          <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+          <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
         </mj-text>
         <mj-button width="auto" href="https://www.example.com" align="center" padding="0 0 32px">Learn More</mj-button>
       </mj-column>
@@ -1201,7 +1201,7 @@
             <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
             <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
             <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
-            <p style="font-size:15px;margin-top:0;color:#F7941D;"><b>Deadline: Midnight, December 31, 2025</b></p>
+            <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
           </mj-text>
           <mj-button width="auto" href="https://www.example.com" align="center" padding="0">Learn More</mj-button>
         </mj-column>
@@ -1214,7 +1214,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1387,7 +1387,7 @@
     <mj-column vertical-align="middle">
       <mj-text css-class="two-line-cta" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1443,7 +1443,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1731,7 +1731,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2077,14 +2077,14 @@
       </mj-column>
     </mj-section>
     <mj-wrapper css-class="block" background-color="#ffffff" padding="8px 32px 16px" border="none">
-      <mj-section background-color="#ffffff" border="1px solid #F7941D" padding="16px 16px 0">
+      <mj-section background-color="#ffffff" border="1px solid #F7931E" padding="16px 16px 0">
         <mj-column>
           <mj-text padding="0">
             <h3><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h3>
           </mj-text>
         </mj-column>
       </mj-section>
-      <mj-section background-color="#ffffff" border-left="1px solid #F7941D" border-right="1px solid #F7941D" border-bottom="1px solid #F7941D" padding="8px 16px 16px">
+      <mj-section background-color="#ffffff" border-left="1px solid #F7931E" border-right="1px solid #F7931E" border-bottom="1px solid #F7931E" padding="8px 16px 16px">
         <mj-column css-class="two-col-column first-column" width="224px" vertical-align="top" padding="0 16px 0 0">
           <mj-image src="assets/image-ranking.png" alt="Placeholder ranking graphic" href="https://www.example.com" padding="0" align="center" width="200px" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2204,7 +2204,7 @@
               <h3 style="color:#362229;padding:12px 8px 0;">Urge<br />Congress<br />to Protect<br />America&rsquo;s<br />Wildlife</h3>
               <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
             </mj-text>
-            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#ffffff" color="#F7941D" border="2px solid #F7941D" padding="0">Learn More</mj-button>
+            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#ffffff" color="#F7931E" border="2px solid #F7931E" padding="0">Learn More</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -2217,7 +2217,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2240,15 +2240,15 @@
               <tr>
                 <td align="left" style="padding-right:12px;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
-                  <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$600,000</p>
+                  <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$600,000</p>
                 </td>
                 <td align="left" style="padding-right:12px;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
-                  <p style="font-size:18px;font-weight:700;color:#8DC63F;margin:0;">$400,500</p>
+                  <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$400,500</p>
                 </td>
                 <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
                   <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
-                  <p style="font-size:18px;font-weight:700;color:#F7941D;margin:0;">$200,000</p>
+                  <p style="font-size:18px;font-weight:700;color:#F7931E;margin:0;">$200,000</p>
                 </td>
                 <td width="30%">&nbsp;</td>
               </tr>
@@ -2262,7 +2262,7 @@
               </tr>
             </table>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" padding="0">Learn More</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0">Learn More</mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -2282,7 +2282,7 @@
               <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
               <h3 style="color:#ffffff;margin:0 0 16px;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
             </mj-text>
-            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7941D" padding="0 0 16px">Learn More</mj-button>
+            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px">Learn More</mj-button>
             <mj-text align="center" color="#ffffff" padding="0">
               <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
               <p style="font-size:10px;line-height:14px;color:#ffffff;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
@@ -2346,12 +2346,12 @@
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5FC9C5" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8DC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8DC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#5FC9C5;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7941D" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7941D;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:1px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -2376,18 +2376,18 @@
     </mj-section>
     <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7941D" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8DC63F" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a>
@@ -2743,7 +2743,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">UTILITIES</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">UTILITIES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2781,7 +2781,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">SIGNATURES</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">SIGNATURES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2896,7 +2896,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8DC63F;font-family:Menlo,Consolas,monospace;">FOOTERS</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">FOOTERS</p>
         </mj-text>
       </mj-column>
     </mj-section>

@@ -56,8 +56,8 @@
     "hash": "405e24ff3052"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 2,
-    "hash": "e27b752b8c5b"
+    "version": 3,
+    "hash": "e391ce7674e8"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 2,
@@ -72,20 +72,20 @@
     "hash": "3260cf9bef08"
   },
   "block:CTA Hero (centered w/ background image)": {
-    "version": 2,
-    "hash": "aa1b6fb4934a"
+    "version": 3,
+    "hash": "cfcb2f38d994"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
     "version": 2,
     "hash": "09a1c41d4e47"
   },
   "block:CTA Hero (centered w/ background image, logo + button)": {
-    "version": 2,
-    "hash": "173682531f2a"
+    "version": 3,
+    "hash": "82d0f8a76bbe"
   },
   "block:CTA Hero (fixed height, logo and background image)": {
-    "version": 2,
-    "hash": "85b425a70b26"
+    "version": 3,
+    "hash": "0609642a9959"
   },
   "block:CTA Hero (green button)": {
     "version": 2,
@@ -96,8 +96,8 @@
     "hash": "a667efa28d79"
   },
   "block:CTA Hero (orange button)": {
-    "version": 2,
-    "hash": "1d5f92817fe4"
+    "version": 3,
+    "hash": "73478a4f885c"
   },
   "block:CTA Hero (w/ badge image)": {
     "version": 2,
@@ -116,8 +116,8 @@
     "hash": "69a0ecb0e5ec"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 2,
-    "hash": "593e023dfaf9"
+    "version": 3,
+    "hash": "0c0a3c28d1bd"
   },
   "block:CTA Text Block": {
     "version": 2,
@@ -128,48 +128,48 @@
     "hash": "31bc7e0f31e6"
   },
   "block:Category — Buttons": {
-    "version": 2,
-    "hash": "d95a46ecf7e0"
+    "version": 3,
+    "hash": "2b82ca188fc0"
   },
   "block:Category — Engagement & Interactive": {
-    "version": 2,
-    "hash": "424278976d27"
+    "version": 3,
+    "hash": "1eebc76933c2"
   },
   "block:Category — Footers": {
-    "version": 2,
-    "hash": "174a4800def7"
+    "version": 3,
+    "hash": "37ba2451b7ec"
   },
   "block:Category — Headers and Heroes": {
-    "version": 2,
-    "hash": "8c6bdc970816"
+    "version": 3,
+    "hash": "39ebdee8415d"
   },
   "block:Category — Image & Text Layouts": {
-    "version": 2,
-    "hash": "2d529d07225a"
+    "version": 3,
+    "hash": "a5cc17ea1cd1"
   },
   "block:Category — Images & Media": {
-    "version": 2,
-    "hash": "e3aa17575f2b"
+    "version": 3,
+    "hash": "9479f0ec9673"
   },
   "block:Category — Signatures": {
-    "version": 2,
-    "hash": "1e47f0f54969"
+    "version": 3,
+    "hash": "40ee6b9c45c4"
   },
   "block:Category — Text Blocks": {
-    "version": 2,
-    "hash": "cb7c33d199ce"
+    "version": 3,
+    "hash": "8fa77d6a78fb"
   },
   "block:Category — Utilities": {
-    "version": 2,
-    "hash": "314f1a9b9b7d"
+    "version": 3,
+    "hash": "6de0b8a8c6b5"
   },
   "block:Countdown Card": {
-    "version": 2,
-    "hash": "0c013e0c559a"
+    "version": 3,
+    "hash": "587bfbf2eaac"
   },
   "block:Deadline Panel": {
-    "version": 2,
-    "hash": "b0a1d6523705"
+    "version": 3,
+    "hash": "53a2a2f0d9bb"
   },
   "block:Divider (Single-color)": {
     "version": 2,
@@ -384,8 +384,8 @@
     "hash": "ae65e5b9ab0d"
   },
   "block:Photo Card (outline CTA)": {
-    "version": 2,
-    "hash": "028600a353cf"
+    "version": 3,
+    "hash": "70341c4c2eec"
   },
   "block:Photo Grid (2x2)": {
     "version": 2,
@@ -404,20 +404,20 @@
     "hash": "604dc6a7bd6a"
   },
   "block:Progress Meter Block": {
-    "version": 2,
-    "hash": "76a1c2e01292"
+    "version": 3,
+    "hash": "a97d12a98d01"
   },
   "block:Question Block": {
     "version": 2,
     "hash": "6f5010c3307f"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 2,
-    "hash": "d5735e0a2926"
+    "version": 3,
+    "hash": "9cd712564c42"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 2,
-    "hash": "56abfb8a2b8b"
+    "version": 3,
+    "hash": "b6d230d5b1af"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 2,
@@ -448,12 +448,12 @@
     "hash": "4d590f5d0aac"
   },
   "block:Stat Row (green)": {
-    "version": 2,
-    "hash": "04b29f42b7cf"
+    "version": 3,
+    "hash": "539be18f8218"
   },
   "block:Stat Row (off-white)": {
-    "version": 2,
-    "hash": "35d0448326ed"
+    "version": 3,
+    "hash": "b1e958eb6421"
   },
   "block:Steps Block": {
     "version": 2,
@@ -500,8 +500,8 @@
     "hash": "a39b1bf9856d"
   },
   "block:Story Card (orange-bordered)": {
-    "version": 2,
-    "hash": "21fc25ae7145"
+    "version": 3,
+    "hash": "8d5d54da1fbb"
   },
   "block:Story Card 2x1": {
     "version": 2,
@@ -580,8 +580,8 @@
     "hash": "30ab69017381"
   },
   "email-template": {
-    "version": 3,
-    "hash": "ad45dbb4dc93"
+    "version": 4,
+    "hash": "3cbf1a3430fb"
   },
   "partial:debug-toolbar": {
     "version": 1,
@@ -592,7 +592,7 @@
     "hash": "3ee1e0a8e3f6"
   },
   "partial:tri-color-divider": {
-    "version": 2,
-    "hash": "22c74ddd98a1"
+    "version": 3,
+    "hash": "00668b609b63"
   }
 }
