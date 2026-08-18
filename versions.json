@@ -300,8 +300,8 @@
     "hash": "bce48824291d"
   },
   "block:Image 1x1": {
-    "version": 1,
-    "hash": "68b1c4319d7a"
+    "version": 2,
+    "hash": "63bb18df7999"
   },
   "block:Images 2x1": {
     "version": 3,
@@ -580,8 +580,8 @@
     "hash": "2a26f7bc3431"
   },
   "email-template": {
-    "version": 5,
-    "hash": "3d7acc87a2a7"
+    "version": 6,
+    "hash": "ceb8a7ad67fc"
   },
   "partial:debug-toolbar": {
     "version": 1,

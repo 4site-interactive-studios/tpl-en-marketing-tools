@@ -789,6 +789,25 @@
     </mj-section>
     <!-- END: Image -->
 
+    <!-- START: Image 1x1 -->
+    <!-- Same block as the all-blocks catalog's Image 1x1, minus its
+         data-visible-duplicate: THIS catalog has no Image (full-bleed) twin,
+         so the block is structurally unique here and the flag would warn as
+         anchor misuse (per-catalog asymmetry, like the poll's per-side flag;
+         2026-08-18). -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image 1x1 -->
+
 
     <!-- START: Images 2x1 -->
     <mj-section
