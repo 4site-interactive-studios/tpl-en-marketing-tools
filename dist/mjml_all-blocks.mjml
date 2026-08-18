@@ -1192,7 +1192,7 @@
     <!-- END: Stat Row (off-white) -->
     <!-- START: Stat Row (green) -->
     <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px">
-      <mj-section background-color="#DFEEDA" border="1px solid #39B54A" padding="32px">
+      <mj-section background-color="#CEE4C5" border="1px solid #39B54A" padding="32px">
         <mj-column>
           <mj-text align="center" padding="0 0 8px">
             <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
