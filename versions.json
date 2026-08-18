@@ -288,24 +288,24 @@
     "hash": "a0f24665d3bb"
   },
   "block:Image (bikers)": {
-    "version": 2,
-    "hash": "8a20324f61ad"
+    "version": 3,
+    "hash": "a2554def43de"
   },
   "block:Image (full-bleed)": {
-    "version": 2,
-    "hash": "6059b5f8a760"
+    "version": 3,
+    "hash": "d869462ca241"
   },
   "block:Image (inset)": {
-    "version": 2,
-    "hash": "2b8887ddfcb6"
+    "version": 3,
+    "hash": "bce48824291d"
   },
   "block:Images 2x1": {
-    "version": 2,
-    "hash": "3533a6561631"
+    "version": 3,
+    "hash": "5ecfb5af18b8"
   },
   "block:Images 3x1": {
-    "version": 2,
-    "hash": "71aadcce3fe2"
+    "version": 3,
+    "hash": "08009ccde897"
   },
   "block:Join Links Block": {
     "version": 2,
@@ -412,8 +412,8 @@
     "hash": "18f091fad92d"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 4,
-    "hash": "05ecf27a07d7"
+    "version": 5,
+    "hash": "074524a4caa5"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 2,
@@ -472,28 +472,28 @@
     "hash": "ebdb8bf755b1"
   },
   "block:Story Card (image left)": {
-    "version": 3,
-    "hash": "4f26458aaf30"
+    "version": 4,
+    "hash": "7f1ac0d748bd"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 3,
-    "hash": "54334767e4dc"
+    "version": 4,
+    "hash": "977913a638f2"
   },
   "block:Story Card (image left, no button)": {
-    "version": 2,
-    "hash": "fabead2fbdcf"
+    "version": 3,
+    "hash": "8d41d3ca5636"
   },
   "block:Story Card (image right)": {
-    "version": 3,
-    "hash": "8152f25b9b41"
+    "version": 4,
+    "hash": "85bc40c7f9ff"
   },
   "block:Story Card (image right, middle-aligned)": {
-    "version": 3,
-    "hash": "d834292f6134"
+    "version": 4,
+    "hash": "f2ce41fde04e"
   },
   "block:Story Card (no heading, image on the side)": {
-    "version": 4,
-    "hash": "ea53acd8bd44"
+    "version": 5,
+    "hash": "08939f0af6a3"
   },
   "block:Story Card (orange-bordered)": {
     "version": 3,

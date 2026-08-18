@@ -804,7 +804,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -825,7 +825,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -854,7 +854,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -875,7 +875,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -896,7 +896,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1028,7 +1028,7 @@
           fluid-on-mobile="true"
           css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1068,7 +1068,7 @@
             padding="0 0 8px"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1116,7 +1116,7 @@
             padding="0 0 8px"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1161,7 +1161,7 @@
           align="center"
           width="224px" css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1614,7 +1614,7 @@
         <mj-text color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
         </mj-text>
-        <mj-text align="right" mj-class="caption" color="#ffffff" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>

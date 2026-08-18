@@ -214,6 +214,21 @@ distinguishable, and the fields sort directly under Spacing Below.
 Explicit padding-left/right attributes on content components remain
 unhandled (none exist upstream; documented limitation).
 
+**`data-inset-toggle`** (opt-in, 2026-08-18): a flagged spacing component
+mints its Inset Selects even when a side is 0 — "None" is on the closed
+scale, so a flush element (an image caption matching its photo's edge)
+stays adjustable without an authoring round-trip. The flag never
+overrides the closed scale (off-scale sides stay literal), never
+bypasses the other gates (sole-member consolidation still wins — do NOT
+flag a column's only member, the dead-flag audit will report it), and is
+strip-tested per instance like every importer flag (`IMPORTER_FLAG_RE`).
+Upstream convention: flag pattern-a captions (the mj-text beside its
+image in the same column, authored `padding="0"` = flush with the photo,
+matching the image's own side padding); the standalone caption SECTIONS
+already carry a Block Padding Left/Right frame control and get no flag.
+Mobile note: the `.caption` 16px mobile indent overrides the td padding
+under 600px, so caption Insets act at desktop.
+
 **Sole-member consolidation** (2026-07-23): when a column's content is a
 SINGLE element (Creek Quiz bands, plain text/divider blocks), that element
 gets NO Spacing Below — the frame's own padding Selects are the one pacing

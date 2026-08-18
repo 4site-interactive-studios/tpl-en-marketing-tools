@@ -1482,7 +1482,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1496,7 +1496,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1510,7 +1510,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1539,7 +1539,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1560,7 +1560,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1588,7 +1588,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1609,7 +1609,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1630,7 +1630,7 @@
           align="center"
           fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1865,7 +1865,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1886,7 +1886,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1910,7 +1910,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0 0 8px" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1951,7 +1951,7 @@
             padding="0 0 8px"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1999,7 +1999,7 @@
             padding="0 0 8px"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -2043,7 +2043,7 @@
           align="center"
           width="224px" css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -2407,7 +2407,7 @@
         <mj-text color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
         </mj-text>
-        <mj-text align="right" mj-class="caption" color="#ffffff" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>

@@ -828,6 +828,7 @@ the one field (§4: one value, every carrier).
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below`, and the four `padding-<side>`s (per-side scoping for content-dependent inertness the stylesheet cannot express — the poll question's right padding, 2026-08-18) |
 | `data-link-group="<name>"` | on raw `<a>` tags inside hand-authored markup: sibling anchors sharing a group name AND a byte-identical href are ONE logical link — the importer mints a single URL field and splices its tag into every member, so the value can never desync. This is the shape for a clickable row: EN auto-closes an `<a>` that wraps a `<table>` (§2), so the row splits into per-cell anchors that share the group. Members with differing hrefs fall back to separate fields, and the TPL build warns; a lone member is an inert flag the dead-flag audit reports |
+| `data-inset-toggle` | opt-in on a spacing component (mj-text/image/button/divider): mint the Inset Right/Left Selects even when the authored side is 0, so a flush element (an image's caption sitting on the photo's edge) stays adjustable. The closed scale still applies, and a flag on a column's only member is inert (sole-member consolidation) — the dead-flag audit reports it |
 
 **Three rules for all of them.** Apart from the valued trio
 (`data-folder`, `data-category-short`, `data-link-group`) they are
@@ -1017,6 +1018,11 @@ aloud). The Alt Text field survives either way (§5).
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.
+7a. Confirm every image caption that sits flush with its photo carries
+   `data-inset-toggle` (§5) — without it the caption's zero side padding
+   is frozen and an editor cannot indent it. Never flag a caption that
+   is its column's only member (the flag is inert there and the
+   dead-flag audit reports it).
 8. Send a real test: dark mode on, and a ≤480px viewport. The inliner
    failures are invisible in source and in the editor.
 9. After import, open the Test Center's Inert Audit tab, run it, and read the Check
