@@ -323,7 +323,7 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">Learn More</mj-button>
+          <mj-button width="auto" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>

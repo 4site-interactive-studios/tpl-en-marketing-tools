@@ -211,7 +211,7 @@
           <mj-button width="auto"
             href="https://www.example.com"
             align="right" padding="0" color="#ffffff" background-color="#006837">
-            Read more
+            READ MORE
           </mj-button>
       </mj-column>
       </mj-group>
