@@ -235,12 +235,14 @@ day, same account, same client matrix:
   delivered CSS bytes, EoA XK3793…) showed GREEN + firing mobile canary
   in the very same Gmail app — stylesheet size is the only variable, and
   the drop is whole. The canary block (Utility — Probe Block (head CSS
-  canary)) is a PERMANENT catalog instrument (user decision 2026-08-18,
-  after its acceptance test — a full-template send showing GREEN —
-  passed; verdict bullet below): it costs nothing unless added to an
-  email, and adding it to any suspect send is the instant Gmail-budget
-  diagnostic. It is the one probe exempt from the archive-when-verified
-  lifecycle.
+  canary)) is ARCHIVED with every verdict recorded (user decision
+  2026-08-18, closing the round after its acceptance test — a
+  full-template send showing GREEN — passed; verdict bullet below;
+  supersedes the same-day permanent-instrument call). The annotated
+  instrument lives in the TPL repo at
+  `archive/probes/probe_head-css-canary.mjml` — paste it back into both
+  catalogs, re-import, and send whenever Gmail's budget behavior needs
+  re-measuring.
 - The cliff is NOT mobile-only: Gmail DESKTOP webmail (Chrome) showed
   the identical pair — full template RED with every canary inert, blank
   template GREEN with the desktop canary firing purple (same EoA pair).

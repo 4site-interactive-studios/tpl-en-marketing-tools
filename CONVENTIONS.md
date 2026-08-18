@@ -1440,7 +1440,9 @@ importer whitelists all data-*-only MJML validator warnings
   (`src/state/store.ts`, `ExportPanel`), with an override warning when
   exported directly.
 - **`data-probe`** (raw MJML; block-level, 2026-08-18, user-decided):
-  the block is a PROBE INSTRUMENT (the head-CSS canary). It imports,
+  the block is a PROBE INSTRUMENT (canonical example: the head-CSS
+  canary, now archived in TPL `archive/probes/` — the mechanism stays
+  for every future probe block). It imports,
   previews, and sends like any block, but its colors are measurement
   signals, not design: the brand-color census skips the flagged region
   (`src/core/colors.ts` `stripNonPaletteRegions` via

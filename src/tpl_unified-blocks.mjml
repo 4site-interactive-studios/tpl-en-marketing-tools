@@ -808,7 +808,6 @@
     </mj-section>
     <!-- END: Image 1x1 -->
 
-
     <!-- START: Images 2x1 -->
     <mj-section
       css-class="two-col-images-block block flush-mobile-capflush"
@@ -1724,53 +1723,6 @@
     </mj-section>
     <mj-raw></div></mj-raw>
     <!-- END: Category — Utilities -->
-
-    <!-- START: Probe Block (head CSS canary) -->
-    <!-- PERMANENT INSTRUMENT (2026-08-18, guide §2b-bis): four canary bars
-         that make a real send's head-CSS survival visible per client. Bar 1's
-         rule hides inside the always-true max-width:9999px wrapper because EN
-         INLINES plain rules at send — a plain canary would lie green
-         everywhere. The block's own style element is HOISTED into the head
-         stylesheet by EN (measured 2026-08-09), so the canaries share the
-         fate of the template CSS they probe. Import-excluded: never ships in
-         a real send unless deliberately overridden. Permanent (user decision
-         2026-08-18): the instant Gmail-budget diagnostic for any suspect
-         send; data-probe keeps its signal colors out of the app's palette
-         census and color-usage audit. -->
-    <mj-raw><div data-import-exclude="true"></mj-raw>
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-probe>
-      <mj-column>
-        <mj-text padding="0 0 8px">
-          <p style="font-size:14px;font-weight:700;">PROBE — head CSS canary (dev block; exclude from real sends)</p>
-          <p style="font-size:12px;">Bar 1 GREEN = this client applied the head stylesheet, RED = dropped it (the Gmail-app size cliff). Bar 2 BLUE only under 600px. Bar 3 PURPLE only at 600px and up. Bar 4 WHITE-ON-BLACK only in dark mode.</p>
-        </mj-text>
-        <mj-raw><style>
-@media only screen and (max-width: 9999px) {
-  .probe-canary-head { background-color: #1a7a1a !important; }
-}
-@media only screen and (max-width: 599px) {
-  .probe-canary-mobile { background-color: #1d4ed8 !important; }
-}
-@media only screen and (min-width: 600px) {
-  .probe-canary-desktop { background-color: #6b21a8 !important; }
-}
-@media (prefers-color-scheme: dark) {
-  .probe-canary-dark { background-color: #000000 !important; color: #ffffff !important; }
-}
-</style></mj-raw>
-        <mj-raw><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr><td class="probe-canary-head" style="background-color:#b91c1c;color:#ffffff;font-family:Tahoma,sans-serif;font-size:14px;font-weight:bold;padding:10px 12px;">1 &mdash; HEAD CSS: green applied / red dropped</td></tr>
-<tr><td style="font-size:4px;line-height:4px;">&nbsp;</td></tr>
-<tr><td class="probe-canary-mobile" style="background-color:#9ca3af;color:#ffffff;font-family:Tahoma,sans-serif;font-size:14px;font-weight:bold;padding:10px 12px;">2 &mdash; MOBILE RULES: blue under 600px / gray otherwise</td></tr>
-<tr><td style="font-size:4px;line-height:4px;">&nbsp;</td></tr>
-<tr><td class="probe-canary-desktop" style="background-color:#9ca3af;color:#ffffff;font-family:Tahoma,sans-serif;font-size:14px;font-weight:bold;padding:10px 12px;">3 &mdash; DESKTOP RULES: purple at 600px+ / gray otherwise</td></tr>
-<tr><td style="font-size:4px;line-height:4px;">&nbsp;</td></tr>
-<tr><td class="probe-canary-dark" style="background-color:#f3f4f6;color:#362229;font-family:Tahoma,sans-serif;font-size:14px;font-weight:bold;padding:10px 12px;">4 &mdash; DARK BRANCH: white-on-black in dark mode / light otherwise</td></tr>
-</table></mj-raw>
-      </mj-column>
-    </mj-section>
-    <mj-raw></div></mj-raw>
-    <!-- END: Probe Block (head CSS canary) -->
 
     <!-- START: Spacer -->
     <mj-section css-class="spacer-block block" padding="0">

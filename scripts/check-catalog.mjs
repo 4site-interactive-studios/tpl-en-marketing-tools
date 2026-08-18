@@ -461,7 +461,7 @@ guard('mobile-only MSO-guard check', () => {
 guard('Gmail CSS budget + head coupling check', () => {
   const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
   const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts
-  const HOIST_ALLOWANCE = 700; // canary block + builder chrome, delivered
+  const HOIST_ALLOWANCE = 700; // a re-added diagnostic canary + builder chrome, delivered
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
   if (!pages.length) {
