@@ -207,6 +207,10 @@
     "version": 2,
     "hash": "39d3635ec107"
   },
+  "block:Footer (w/ image, snow)": {
+    "version": 1,
+    "hash": "f44f70c3044a"
+  },
   "block:Heading": {
     "version": 2,
     "hash": "6c167793e204"
@@ -576,12 +580,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 4,
-    "hash": "2a26f7bc3431"
+    "version": 5,
+    "hash": "36ef5299f060"
   },
   "email-template": {
-    "version": 6,
-    "hash": "ceb8a7ad67fc"
+    "version": 7,
+    "hash": "8e701f110bfe"
   },
   "partial:debug-toolbar": {
     "version": 1,

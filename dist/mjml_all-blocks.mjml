@@ -2968,6 +2968,39 @@
     </mj-section>
     <!-- END: Footer (w/ image) -->
 
+    <!-- START: Footer (w/ image, snow) -->
+    <!-- data-visible-duplicate: the Snow-ground twin of Footer (w/ image) —
+         same structure, light palette (user decision 2026-08-18). Deliberately
+         visible alongside its anchor; never re-flag into the excluded family.
+         The light arrow asset (text-and-arrow_3.png) is a programmatic Earth
+         recolor of _2's white fill — swap the file if design supplies final
+         artwork; the dark-mode twin keeps the white _2 art for the black
+         repaint. -->
+    <mj-include path="./partials/tri-color-divider.mjml" />
+    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-visible-duplicate>
+      <mj-column>
+        <mj-image src="assets/text-and-arrow_3.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
+        <mj-text align="center" data-no-display-toggle padding="0 0 16px">
+          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+        </mj-text>
+        <mj-text align="center" data-no-display-toggle padding="0 0 16px">
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+        </mj-text>
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text align="center" data-no-display-toggle padding="0">
+          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#006837;">Contact Us</a> | <a href="https://www.example.com" style="color:#006837;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#006837;">Unsubscribe</a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (w/ image, snow) -->
+
     <!-- START: Footer (off-white) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-fully-exclude>
