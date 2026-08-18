@@ -163,12 +163,6 @@ p {
 
 
 
-/* .caption {
-  font-size: 10px;
-  line-height: 16px;
-  font-style: italic;
-} */
-
 @media (max-width: 599px) {
   .desktop-only {
     display: none !important;
@@ -284,14 +278,6 @@ p {
     padding-left: 32px !important;
     padding-right: 32px !important;
   }
-
-  .question-response-symbol {
-    width: 40px !important;
-  }
-
-  .question-response-text {
-    width: calc(100% - 40px) !important;
-  }
 }
 
 /* dark mode styles */
@@ -332,10 +318,6 @@ p {
     background-color: transparent !important;
   }
 
-  [data-ogsc] .quote-block,
-  [data-ogsc] .quote-block table[align=center],
-  [data-ogsc] .cta-button-block,
-  [data-ogsc] .cta-button-block table[align=center],
   [data-ogsc] .caption-panel,
   [data-ogsc] .highlighted-text-column td[style*=vertical-align],
   [data-ogsc] .highlighted-text-column td[valign],
@@ -368,7 +350,6 @@ p {
   [data-ogsc] .block span,
   [data-ogsc] .block li,
   [data-ogsc] .block div,
-  [data-ogsc] .pre-footer-text span,
   [data-ogsc] .quote-block p,
   [data-ogsc] .footer-block p {
     color: #ffffff !important;
@@ -430,8 +411,7 @@ p {
   .wysiwyg h3,
   .wysiwyg h4,
   .wysiwyg h5,
-  .wysiwyg h6,
-  .pre-footer-text span {
+  .wysiwyg h6 {
     color: #ffffff !important;
   }
 
@@ -470,10 +450,6 @@ p {
      element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
      has a table[align=center] descendant form, never td, which is why a
      column ground is never covered by it (audit 2026-08-15). */
-  .quote-block,
-  .quote-block table[align=center],
-  .cta-button-block,
-  .cta-button-block table[align=center],
   .caption-panel,
   .highlighted-text-column td[style*=vertical-align],
   .highlighted-text-column td[valign],
@@ -626,61 +602,6 @@ p {
   .moz-text-html .mj-column-per-33-33 {
     width: 33.33% !important;
     max-width: 33.33%;
-  }
-
-  .moz-text-html .mj-column-px-50 {
-    width: 50px !important;
-    max-width: 50px;
-  }
-
-  .moz-text-html .mj-column-px-100 {
-    width: 100px !important;
-    max-width: 100px;
-  }
-
-  .moz-text-html .mj-column-px-150 {
-    width: 150px !important;
-    max-width: 150px;
-  }
-
-  .moz-text-html .mj-column-px-200 {
-    width: 200px !important;
-    max-width: 200px;
-  }
-
-  .moz-text-html .mj-column-px-250 {
-    width: 250px !important;
-    max-width: 250px;
-  }
-
-  .moz-text-html .mj-column-px-300 {
-    width: 300px !important;
-    max-width: 300px;
-  }
-
-  .moz-text-html .mj-column-px-350 {
-    width: 350px !important;
-    max-width: 350px;
-  }
-
-  .moz-text-html .mj-column-px-400 {
-    width: 400px !important;
-    max-width: 400px;
-  }
-
-  .moz-text-html .mj-column-px-450 {
-    width: 450px !important;
-    max-width: 450px;
-  }
-
-  .moz-text-html .mj-column-px-500 {
-    width: 500px !important;
-    max-width: 500px;
-  }
-
-  .moz-text-html .mj-column-px-550 {
-    width: 550px !important;
-    max-width: 550px;
   }
 }
 
