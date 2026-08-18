@@ -99,7 +99,7 @@ p {
 
    1. The PLAIN copy below: EN inlines it onto the element at send
       (!important stripped), which is what covers the style-stripping
-      audience — Gmail app on non-Google/IMAP accounts drops <style>
+      audience — Gmail app on non-Google/IMAP accounts drops style blocks
       entirely, and forwarding drops head styles in most clients. There
       the inline hide is the only rule standing: one fork shows (desktop),
       not two.
@@ -114,7 +114,7 @@ p {
    inline hide is plain after EN's !important-strip, and the wrapped hide
    loses the equal-specificity tie on source order. Word ignores @media
    AND display:none, so every element classed mobile-only MUST also sit
-   inside <!--[if !mso]><!--> … <!--<![endif]--> (check-catalog asserts
+   inside the revealed [if !mso] conditional wrapper (check-catalog asserts
    this). Use sparingly: each fork mints its own Replacement fields. */
 .mobile-only {
   display: none;
@@ -189,7 +189,7 @@ p {
   }
 
   /* MJML writes the button's align onto TWO cells: the outer td.button
-     (pinned above) and the inner cell holding the <a>. Without this the
+     (pinned above) and the inner cell holding the anchor. Without this the
      pill centers but a label that WRAPS keeps its desktop alignment
      inside it — ragged text in a centered button, and an "inert on
      mobile" control that silently comes back to life the moment the copy
@@ -471,7 +471,7 @@ p {
   .block span,
   .block li,
   /* mj-text compiles to a div carrying inline color — text authored without
-     a <p>/<span> wrapper is only reachable here */
+     a paragraph/span wrapper is only reachable here */
   .block div {
     color: #ffffff !important;
   }

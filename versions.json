@@ -580,8 +580,8 @@
     "hash": "d0eca2e0053e"
   },
   "email-template": {
-    "version": 1,
-    "hash": "565fb758c11d"
+    "version": 2,
+    "hash": "7b3d43fa4a03"
   },
   "partial:debug-toolbar": {
     "version": 1,

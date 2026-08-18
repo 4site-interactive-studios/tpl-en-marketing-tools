@@ -379,6 +379,30 @@ for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml')
   }
 }
 
+// ---------------------------------------------------------------------------
+// 15. No tag-like text anywhere in CSS — comments included. The importer
+//     inlines this sheet into an <mj-style> before parsing, and mjml's
+//     htmlparser2 runs in HTML mode: a literal style/script/title/textarea
+//     opener in a CSS comment flips the tokenizer into raw-text mode and
+//     swallows the REST OF THE DOCUMENT — every import fails with mjml's
+//     misleading "Malformed MJML" (the 2026-08-18 outage: "drops <style>"
+//     written in a comment broke every TPL import for three hours).
+//     Deliberately strict: banning every `<` followed by a letter, `!`, or
+//     `/` is simple and fails closed; name tags in prose instead.
+// ---------------------------------------------------------------------------
+{
+  const cssFiles = readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.css'));
+  for (const f of cssFiles) {
+    const text = read(`src/${f}`) || '';
+    for (const m of text.matchAll(/<[a-zA-Z!/]/g)) {
+      const line = text.slice(0, m.index).split('\n').length;
+      warn(
+        `src/${f}:${line} contains tag-like text ("${text.slice(m.index, m.index + 12).replace(/\n/g, ' ')}…") — the importer inlines this sheet into an <mj-style> and mjml's HTML-mode tokenizer chokes on it (the 2026-08-18 Malformed-MJML outage); name tags in prose instead`,
+      );
+    }
+  }
+}
+
 console.log(
   warnings
     ? `check-docs: ${warnings} WARNING(S) — see above`

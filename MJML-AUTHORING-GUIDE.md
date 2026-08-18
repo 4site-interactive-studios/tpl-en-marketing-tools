@@ -176,6 +176,17 @@ The rule does NOT apply to wraps that exist for RETENTION of
 conditional-context selectors — `[data-ogsc]` matches nothing at send
 time, so it has no meaningful inline form.
 
+**And never write tag-like text inside CSS — comments included (outage
+2026-08-18).** Any consumer that inlines the stylesheet into an
+`<mj-style>` before parsing (the importer does) tokenizes the CSS as HTML:
+a literal `style`/`script`/`title`/`textarea` opener in a comment flips
+the tokenizer into raw-text mode and silently swallows the rest of the
+document — every import fails with MJML's misleading "Malformed MJML"
+error. An unterminated comment marker does the same via the comment
+state. Name tags in prose ("drops style blocks", "the revealed
+`[if !mso]` conditional"); the importer now raises a precise error on a
+hazardous sheet, and TPL's build warns before one can ship.
+
 ### 2b. The `!important` rule that bites people
 
 Any rule inside a retained media query that must beat a base rule **needs
