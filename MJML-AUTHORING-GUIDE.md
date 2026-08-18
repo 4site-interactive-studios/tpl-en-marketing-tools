@@ -998,7 +998,7 @@ aloud). The Alt Text field survives either way (§5).
    light-only assets survive the client's own auto-darkening.
 8. Send a real test: dark mode on, and a ≤480px viewport. The inliner
    failures are invisible in source and in the editor.
-9. After import, open the Inert Dropdown Audit, run it, and read the Check
+9. After import, open the Test Center's Inert Audit tab, run it, and read the Check
    column: **every row should say PASS**. PASS means the field behaves the
    way its label and kind promise — including the intended-inert ones (link
    toggles, Outlook fallback colors). Any FAIL means the template pins a
