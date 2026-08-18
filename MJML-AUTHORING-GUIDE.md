@@ -230,9 +230,13 @@ day, same account, same client matrix:
   block riding a real EN-built email (EoA 5BTkRd…, 27,126 delivered CSS
   bytes): the Gmail app showed the always-on canary RED and both
   viewport canaries inert (stylesheet dropped whole), while iPhone
-  showed green + the mobile canary firing. The canary block (Utility —
-  Probe Block (head CSS canary)) stays in the catalog as the live
-  instrument for the CSS-diet round.
+  showed green + the mobile canary firing. The controlled pair closed
+  the same day: the identical canary block in a BLANK EN template (487
+  delivered CSS bytes, EoA XK3793…) showed GREEN + firing mobile canary
+  in the very same Gmail app — stylesheet size is the only variable, and
+  the drop is whole. The canary block (Utility — Probe Block (head CSS
+  canary)) stays in the catalog as the live instrument for the CSS-diet
+  round; its acceptance test is a full-template send showing GREEN.
 
 Consequences: (1) every responsive or dark behavior that lives ONLY in
 head CSS silently dies in the Gmail app once the delivered stylesheet
