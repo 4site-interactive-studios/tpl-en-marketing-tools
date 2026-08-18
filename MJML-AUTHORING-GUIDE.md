@@ -210,6 +210,36 @@ dark-on-dark and no asset swap happens.
 
 ---
 
+### 2b-bis. The Gmail app's CSS size cliff (measured 2026-08-18)
+
+The Gmail app does not categorically drop head styles — it drops them by
+SIZE, and it drops them WHOLE. Measured as a controlled pair on the same
+day, same account, same client matrix:
+
+- A real 3-block send carrying the full template head CSS (28,331 bytes
+  delivered) rendered in the Gmail app with the ENTIRE `<style>` ignored:
+  the mobile rules at byte offset 12.4K did not apply (well before any
+  16K clip point — the drop is all-or-nothing, not a truncation), the
+  dark rules did not apply (the background painted Gmail's own #121212
+  auto-dark, not the template's #000000), while inline-style behavior
+  (column stacking) was intact (EoA 3ZeoECY…).
+- A standalone probe whose delivered head CSS was 715 bytes rendered with
+  every media query honoured — including `mj-full-width-mobile` image
+  scaling and the min-width:600 column classes (EoA fHTqInbC…).
+
+Consequences: (1) every responsive or dark behavior that lives ONLY in
+head CSS silently dies in the Gmail app once the delivered stylesheet
+crosses the cliff — budget the DELIVERED CSS size, not the authored size;
+(2) the §2a inline-first doctrine is the armor: the no-CSS rendering of
+every element should already be the correct MOBILE rendering, with
+desktop pinned by min-width rules and MSO cells. The same probe measured
+the inline-first image pattern (attribute width for Word + inline
+`width:100%` for everyone else + desktop capped by column classes and MSO
+cells) rendering correctly in the Gmail app, Apple Mail, Gmail webmail,
+and Outlook desktop — and EN's inliner leaves inline `width:` on img and
+table untouched (11/11 carriers delivered verbatim; the
+`vertical-align`→`valign` rewrite does NOT extend to width).
+
 ### 2c. Where dark mode can and cannot reach
 
 **First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
