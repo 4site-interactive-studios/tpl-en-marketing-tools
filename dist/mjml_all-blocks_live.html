@@ -8181,10 +8181,12 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Question Block --><!-- START: Feedback Poll Block --><!-- data-mobile-only-padding-right: the one-line question leaves the right
-         padding nothing to move at 600px (left-aligned copy, white ground) —
-         the audit measures it live at 375 only. If real question copy ever
-         wraps at desktop, the control comes alive there: drop the flag then. -->
+    <!-- END: Question Block --><!-- START: Feedback Poll Block --><!-- No data-mobile-only-padding-right here, unlike the unified copy: this
+         catalog's poll block is the question section ALONE, whose symmetric
+         32px gutter takes the width-preset path — no per-side Select exists
+         for the flag to scope, so it audits dead (measured 2026-08-18). The
+         unified copy keeps the flag: its block bundles the option rows, whose
+         56px icon column disables the preset and revives the per-side path. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
