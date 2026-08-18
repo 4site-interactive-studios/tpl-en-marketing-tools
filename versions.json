@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 5,
-    "hash": "2dbfee8f04f8"
+    "version": 6,
+    "hash": "2c81c121bbf1"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 5,
-    "hash": "5b72146e6d0b"
+    "version": 6,
+    "hash": "9fd06e3e3e03"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -40,32 +40,32 @@
     "hash": "569f7b49d92d"
   },
   "block:CTA Buttons 2x1": {
-    "version": 3,
-    "hash": "d31bf781be30"
+    "version": 4,
+    "hash": "e2a8f3f2e3d9"
   },
   "block:CTA Buttons 2x1 (centered)": {
-    "version": 3,
-    "hash": "13f8d334a22a"
+    "version": 4,
+    "hash": "e987793819a7"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 3,
-    "hash": "86aac5a2a87c"
+    "version": 4,
+    "hash": "c6de31bfa3f9"
   },
   "block:CTA Buttons 2x1 (right)": {
-    "version": 3,
-    "hash": "dea4f51b65c3"
+    "version": 4,
+    "hash": "e140ace119e3"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 4,
     "hash": "e893effbdcda"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 3,
-    "hash": "b9c21f5cff6f"
+    "version": 4,
+    "hash": "2ac18dd16b56"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 3,
-    "hash": "56e3567a63a1"
+    "version": 4,
+    "hash": "5f037ee400de"
   },
   "block:CTA Hero (arrow graphic)": {
     "version": 2,
@@ -208,8 +208,8 @@
     "hash": "39d3635ec107"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 2,
-    "hash": "03fd182bec66"
+    "version": 3,
+    "hash": "30ecccebbb26"
   },
   "block:Heading": {
     "version": 2,
@@ -236,12 +236,12 @@
     "hash": "bedb2862b50e"
   },
   "block:Heading (linked), Text, and CTA": {
-    "version": 3,
-    "hash": "85a6c4c0db8e"
+    "version": 4,
+    "hash": "02885eaaf81f"
   },
   "block:Heading (linked), Text, and CTA (full width)": {
-    "version": 3,
-    "hash": "a9f84fe959e6"
+    "version": 4,
+    "hash": "910bcdc5c05a"
   },
   "block:Heading (off-white bordered)": {
     "version": 2,
@@ -420,12 +420,12 @@
     "hash": "18f091fad92d"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 6,
-    "hash": "d2e4ef86f175"
+    "version": 7,
+    "hash": "d55987652dd2"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 2,
-    "hash": "61f13bd9b5c8"
+    "version": 3,
+    "hash": "c8d17788be8b"
   },
   "block:Quiz Block (multiple choice)": {
     "version": 2,
@@ -580,12 +580,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 9,
-    "hash": "9af00eee1839"
+    "version": 10,
+    "hash": "93d0cde4c2ed"
   },
   "email-template": {
-    "version": 13,
-    "hash": "2e29e7f9ecff"
+    "version": 14,
+    "hash": "6f74ab1301ab"
   },
   "head-css": {
     "version": 1,
