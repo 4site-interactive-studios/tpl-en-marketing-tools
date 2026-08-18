@@ -2845,7 +2845,7 @@
               src="assets/staff-carrie-besnette-hauser-signature_black.png"
               alt="Signature"
               width="234px"
-             padding="0 0 8px"
+             padding="0"
               align="left"
               css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2853,11 +2853,11 @@
               src="assets/staff-carrie-besnette-hauser-signature_white.png"
               alt="Signature"
               width="234px"
-             padding="0 0 8px"
+             padding="0"
               align="left"
               css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text font-size="16px" padding="0">
+          <mj-text data-inset-toggle font-size="16px" padding="8px 0 0">
             <p style="font-family: Arial, sans-serif;">
               Carrie Besnette-Hauser
               <br />
@@ -2884,11 +2884,11 @@
           <mj-text padding="0">
             <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
           </mj-text>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="light-only" />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0" align="left" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text padding="0">
+          <mj-text data-inset-toggle padding="8px 0 0">
             <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
           </mj-text>
         </mj-column>
@@ -2902,11 +2902,11 @@
         <mj-text padding="0">
           <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
         </mj-text>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="light-only" />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0" align="left" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text padding="0">
+        <mj-text data-inset-toggle padding="8px 0 0">
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
         </mj-text>
       </mj-column>

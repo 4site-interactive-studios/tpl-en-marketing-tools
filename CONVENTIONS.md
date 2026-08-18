@@ -250,6 +250,13 @@ Upstream convention: flag pattern-a captions (the mj-text beside its
 image in the same column, authored `padding="0"` = flush with the photo,
 matching the image's own side padding); the standalone caption SECTIONS
 already carry a Block Padding Left/Right frame control and get no flag.
+The idiom covers caption-LIKE texts too (2026-08-18, user-directed
+sweep): a signature card's name/title text under its signature image is
+a caption — image bottom 0, text flagged with `padding="8px 0 …"`. The
+mirror case stays put: where the element ABOVE is the hideable one (the
+footer's arrow image, a badge above a button), IT keeps its bottom 8px,
+because hiding it should remove the gap — same logic, pointed the other
+way.
 Mobile note: the `.caption` 16px mobile indent overrides the td padding
 under 600px, so caption Insets act at desktop.
 
