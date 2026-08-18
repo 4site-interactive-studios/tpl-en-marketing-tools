@@ -1738,7 +1738,7 @@
     <mj-raw><div data-import-exclude="true"></mj-raw>
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
       <mj-column>
-        <mj-text padding="0 0 8px" data-no-display-toggle>
+        <mj-text padding="0 0 8px">
           <p style="font-size:14px;font-weight:700;">PROBE — head CSS canary (dev block; exclude from real sends)</p>
           <p style="font-size:12px;">Bar 1 GREEN = this client applied the head stylesheet, RED = dropped it (the Gmail-app size cliff). Bar 2 BLUE only under 600px. Bar 3 PURPLE only at 600px and up. Bar 4 WHITE-ON-BLACK only in dark mode.</p>
         </mj-text>
