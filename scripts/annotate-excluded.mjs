@@ -47,7 +47,7 @@ function normalize(body) {
   // so they must stay in one subsumption group — otherwise flagging one
   // variant orphans its twin's data-fully-exclude.
   let s = body.replace(
-    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
+    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
     '',
   );
   // data-folder routes a block to an EN folder — importer annotation too
@@ -262,11 +262,24 @@ function structureManifest(text, file) {
     for (const [i, b] of members.entries()) {
       manifest[b.name] = anchorName;
       const flagged = b.body.includes('data-fully-exclude');
+      // data-visible-duplicate: this member's duplication is a deliberate
+      // product decision and the block must remain importable — exempt from
+      // the duplicate WARN. The flag is stripped in normalize() (annotation,
+      // not structure), so it can never change the block's group key.
+      const visibleDup = b.body.includes('data-visible-duplicate');
       if (i === 0 && flagged && !parentOf.has(key)) {
         console.warn(`  WARN ${file}: "${b.name}" is the group anchor but is flagged data-fully-exclude (and no other block subsumes it)`);
         flagIssues++;
       }
-      if (i > 0 && !flagged) {
+      if (i === 0 && visibleDup) {
+        console.warn(`  WARN ${file}: "${b.name}" is its group's anchor — data-visible-duplicate is meaningless there, remove it`);
+        flagIssues++;
+      }
+      if (visibleDup && flagged) {
+        console.warn(`  WARN ${file}: "${b.name}" carries BOTH data-visible-duplicate and data-fully-exclude — contradictory, pick one`);
+        flagIssues++;
+      }
+      if (i > 0 && !flagged && !visibleDup) {
         console.warn(`  WARN ${file}: "${b.name}" duplicates "${members[0].name}" but is NOT flagged data-fully-exclude`);
         flagIssues++;
       }
