@@ -133,6 +133,7 @@ inside `<mj-head>` (parsed from the prepared source by
 ```html
 <!-- en-tools-config {
   "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48 },
+  "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16 } },
   "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32 },
   "geometryReachPx": 64,
   "brandColors": { "Snow": "#F5FAF1", "Fern": "#39B54A" }
@@ -141,7 +142,25 @@ inside `<mj-head>` (parsed from the prepared source by
 
 - **Semantics**: `spacingScale` (name → px; needs a 0 step and ≥2 entries;
   names and step count are free) drives every pacing Select's options,
-  labels, and snapping targets. `widthPresets` (name → px) drives the
+  labels, and snapping targets. `classSpacingScales` (optional; class
+  name → scale, each validated by the same rules as `spacingScale`)
+  scopes an override scale to elements whose `mj-class` OR `css-class`
+  list names the key (read quote-agnostically) — options, snapping, and
+  snap notes for that element's spacing fields; first declared key wins;
+  invalid entries are skipped per class with a parse warning. It covers
+  content components' Spacing Above/Below and Insets AND frame padding
+  Selects (sections/wrappers/columns, including the vertical Selects of
+  the Block Padding composite) — so both inline captions
+  (`mj-class="caption"`) and the standalone caption SECTIONS
+  (`css-class="block caption"`) ride the same grid. Spacer heights and
+  the Block Padding Left/Right preset deliberately stay on the main
+  scale/presets. This is how captions ride a Quarter - 4px grid without
+  widening every other spacing dropdown (2026-08-18, user-decided).
+  The effective geometry reach must cover the largest step of EVERY
+  declared scale, class scales included — checked unconditionally, even
+  when `geometryReachPx` is omitted. Range eligibility is shared — a
+  class scale never changes what counts as geometry
+  (`configForAttrs`, `src/core/mjmlProps.ts`). `widthPresets` (name → px) drives the
   Block Padding Left/Right dropdown. `columnWidthsPx` (optional; a non-empty array of
   whole px numbers ≥ 50, e.g. `[120, 240, 480]`) curates the Column
   Width ladder template-wide — see the column-width bullet for the
@@ -230,9 +249,12 @@ scale, so a flush element (an image caption matching its photo's edge)
 stays adjustable without an authoring round-trip. The flag also unlocks
 **Spacing Above** (same closed scale, zero included) and relaxes the
 top-must-be-0 gate: THE CAPTION PACING EXCEPTION (user-decided
-2026-08-18) — a caption owns its gap ABOVE itself (`padding="8px 0 0"`,
+2026-08-18) — a caption owns its gap ABOVE itself (`padding="4px 0 0"`,
 image bottom 0), so Display-hiding the caption removes the gap with it
-instead of stranding 8px of white space under the photo. This is a
+instead of stranding white space under the photo. Photo captions ride
+the caption class scale (`classSpacingScales.caption`) with its
+**Quarter - 4px** step and default to Quarter (user decision
+2026-08-18); before that they authored 8px on the main scale. This is a
 deliberate deviation from the vertical-pacing convention (inter-element
 space is otherwise the UPPER element's bottom padding) and applies ONLY
 to flagged elements; everything unflagged keeps the template-wide gate.
@@ -249,10 +271,16 @@ strip-tested per instance like every importer flag (`IMPORTER_FLAG_RE`).
 Upstream convention: flag pattern-a captions (the mj-text beside its
 image in the same column, authored `padding="0"` = flush with the photo,
 matching the image's own side padding); the standalone caption SECTIONS
-already carry a Block Padding Left/Right frame control and get no flag.
+already carry a Block Padding Left/Right frame control and get no flag —
+their gap is the SECTION's top padding, authored `4px` on the caption
+scale too (the section's `css-class="block caption"` matches the
+`caption` key, so its Block Padding Top Select offers Quarter).
 The idiom covers caption-LIKE texts too (2026-08-18, user-directed
 sweep): a signature card's name/title text under its signature image is
-a caption — image bottom 0, text flagged with `padding="8px 0 …"`. The
+a caption — image bottom 0, text flagged with `padding="8px 0 …"`.
+Caption-LIKE texts carry no `mj-class="caption"`, so they stay on the
+MAIN scale (Half - 8px, no Quarter) — only true photo captions ride the
+finer caption grid. The
 mirror case stays put: where the element ABOVE is the hideable one (the
 footer's arrow image, a badge above a button), IT keeps its bottom 8px,
 because hiding it should remove the gap — same logic, pointed the other
@@ -1043,9 +1071,9 @@ by swapping that one block inside a draft instead of rebuilding the whole
 email. (`<style>` inside `<body>` is parsed by all major clients; the
 trade-off was accepted deliberately.)
 
-- **Only CSS travels** (2026-08-15, revised when EN's CSS Editor field
-  was discovered): the field is `type: "CSS"`, which holds bare rules
-  and nothing else, so anything that is markup rather than a rule STAYS
+- **Only CSS travels** (2026-08-15, unchanged by the 2026-08-18 inline
+  switch): the block's content `<style>` holds bare rules and nothing
+  else, so anything that is markup rather than a rule STAYS
   in the email template — stylesheet `<link>`s (mj-font loaders),
   style-bearing MSO conditional comments
   (`<!--[if lte mso 11]><style>.mj-outlook-group-fix…`), and any
@@ -1056,8 +1084,9 @@ trade-off was accepted deliberately.)
   2026-08-15) — whose whole point is the client targeting that
   unwrapping the rules would discard. The head
   also keeps `<title>`, metas, the MSO OfficeDocumentSettings block, and
-  scripts. Those carriers are therefore NOT per-email editable — the
-  trade the CSS field buys.
+  scripts. (Since 2026-08-18 nothing in the block is per-email editable
+  anyway — the carrier split now exists for the extraction seam, the
+  budget accounting, and the swap-one-block update path.)
 - A `<style media="…">` keeps its condition by being re-wrapped as
   `@media … { … }` on the way out. Dropping the tag without that would
   silently make a conditional sheet unconditional — MJML emits exactly
@@ -1075,47 +1104,48 @@ trade-off was accepted deliberately.)
   downlevel-revealed wrapper, which stays behind for its own reason. It
   bites only a hand-written `@import` in `<mj-style>` / `<mj-include
   type="css">` — which is therefore not per-email editable.
-- **The block's content is a builder placeholder plus ONE CSS-type
-  replacement** (2026-08-11, user-decided — supersedes the CSS-derived
-  theme Selects that briefly lived here; the type changed HTML → CSS on
-  2026-08-15): `buildStylesBlockHtml()` emits a hidden
-  `<span id="head-styles">` and a `<style>` targeting EN's
-  `.en__emailbuilder__block` wrapper — inside EN's email builder the
-  block renders as a labeled black band ("Email Template — Head CSS
-  Styles Block") instead of a zero-height sliver. The span stays
-  display:none in the send; the builder-only rules are NOT pruned — EN
-  ships them (~313 delivered bytes, measured 2026-08-18), and the budget
-  meter counts them. The placeholder is followed by the **BARE**
-  `{replacement~head_styles}` tag. The `head_styles` replacement (type
-  `CSS`, EN's CSS Editor; label "Head CSS Styles"; section = the base
-  block name) carries the extracted head CSS as its default, values
-  hard-coded — so the CSS is self-editable per email, in place, without
-  any template round-trip.
-- **The tag is BARE — never wrap it in a `<style>` of your own**
-  (2026-08-18, measured): EN's CSS Editor substitutes a CSS-type value
-  wrapped in its OWN bare `<style>` at render (seen nested in the EN
-  message preview, us2 templateId 492). When the block html supplied a
-  second wrapper, EN's send pipeline ingested the stylesheet **once per
-  wrapper** — every delivered head carried TWO full copies of the
-  stylesheet (24,952 bytes, over the Gmail cliff, canary red) until the
-  wrapper was removed, which took the same send to 13,325 bytes and
-  turned the canary green on Gmail app and web (EoA TlHVjaQ…). Local
-  previews re-create EN's wrap (`wrapBareCssTags`,
-  `src/core/render.ts`) — in `composePreviewChrome` for the composed
-  head and in `buildPreviewDoc` for the block's own preview — wrapping
-  only tags NOT already inside a `<style>`, so legacy persisted projects
-  (whose block html still owns the wrapper) never double-wrap. Projects
-  persisted during the wrapped era (2026-08-15→18) are HEALED on load:
-  the store's persist migration (v5) runs `unwrapLegacyStylesBlockHtml`
-  over every block, so a re-export of an old project ships the bare
-  shape instead of re-planting the doubling bug in EN. The SAME heal
-  runs in `importBlocks` (`src/core/export/importer.ts`, 2026-08-18) —
-  EN-JSON imports persist at the current schema version, so the persist
-  migration never sees them. This is the ONE deliberate byte change in
-  the otherwise byte-stable EN round-trip: a wrapped-era export's
-  styles block re-exports bare (pinned in `roundtrip.test.ts`); every
-  other block round-trips byte-exact.
-- **The field ships the COMPACT form** (`compactCss`,
+- **The block's content is a builder placeholder plus the compact CSS
+  hard-coded in ONE content `<style>` — and NO replacements**
+  (2026-08-18, user-decided: per-email CSS edits are deliberately
+  disabled, nothing for EN's editor to expose; supersedes the
+  2026-08-15→18 CSS-type "Head CSS Styles" field, which superseded the
+  2026-08-11 HTML-type field): `buildStylesBlockHtml(compact, version?)`
+  emits a hidden `<span id="head-styles">`, a chrome `<style>` targeting
+  EN's `.en__emailbuilder__block` wrapper — inside EN's email builder
+  the block renders as a labeled black band instead of a zero-height
+  sliver — and the compact CSS in its own `<style>`. The band's label
+  text carries the CSS revision: **"Email Template — Head CSS Styles
+  Block vN"**, N = the source repo's `versions.json` `head-css` entity
+  (fetched best-effort at `../versions.json` then `./versions.json`
+  relative to the imported URL; pasted sources go unversioned). The EN
+  block NAME stays a stable "Utility — Template Styles" across
+  revisions (user-decided) so re-uploads line up in the library. The
+  span stays display:none in the send; the builder-only rules are NOT
+  pruned — EN ships them (~313 delivered bytes, measured 2026-08-18),
+  and the budget meter counts them.
+- **Exactly ONE content wrapper — EN ingests a stylesheet once per
+  `<style>`** (2026-08-18, measured): during the CSS-Editor era, EN
+  substituted the CSS-type value wrapped in its OWN bare `<style>` at
+  render (seen nested in the EN message preview, us2 templateId 492);
+  with the block html supplying a second wrapper, EN's send pipeline
+  ingested the stylesheet **once per wrapper** — every delivered head
+  carried TWO full copies (24,952 bytes, over the Gmail cliff, canary
+  red) until the block's wrapper was removed, which took the same send
+  to 13,325 bytes and turned the canary green on Gmail app and web
+  (EoA TlHVjaQ…). The current inline shape carries the CSS in exactly
+  one content `<style>` and no merge tag, so there is nothing for EN to
+  wrap. LEGACY shapes still get the measured treatment: local previews
+  re-create EN's wrap for field-carrying blocks (`wrapBareCssTags`,
+  `src/core/render.ts` — in `composePreviewChrome` and
+  `buildPreviewDoc`, wrapping only tags NOT already inside a `<style>`),
+  wrapped-era persisted projects are HEALED on load (persist migration
+  v5 runs `unwrapLegacyStylesBlockHtml`), and the SAME heal runs in
+  `importBlocks` (`src/core/export/importer.ts`) — EN-JSON imports
+  persist at the current schema version, so the persist migration never
+  sees them. That heal is the ONE deliberate byte change in the
+  otherwise byte-stable EN round-trip (pinned in `roundtrip.test.ts`);
+  every other block round-trips byte-exact.
+- **The block ships the COMPACT form** (`compactCss`,
   `src/core/headStyles.ts`, 2026-08-18): comments stripped (EN strips
   them at send anyway, and a comment can never re-trigger the
   cssParserHazard outage class), one rule per line, @media wrappers on
@@ -1123,17 +1153,18 @@ trade-off was accepted deliberately.)
   the ENTIRE head stylesheet past **16,384 total `<style>` bytes**
   (guide §2b-bis — drop-whole, every Gmail surface), and the app's
   formatter otherwise beautifies ~12KB of pretty-printing into the
-  field (measured: 27,126 delivered where the compiled sheet held
-  14,976 sans comments). Both defaultValue and originalValue are
-  compact; the authored form lives in the TPL repo. compactCss NEVER
-  merges/reorders @media, shortens hex, or rewrites selectors — each
-  breaks a measured behavior or an app feature (see the §2b-bis
-  coupling notes).
+  payload (measured: 27,126 delivered where the compiled sheet held
+  14,976 sans comments). The authored form lives in the TPL repo.
+  compactCss NEVER merges/reorders @media, shortens hex, or rewrites
+  selectors — each breaks a measured behavior or an app feature (see
+  the §2b-bis coupling notes).
 - **The Gmail CSS budget meter** (`CssBudgetMeter`, shown on the block's
   panel; `validateCssBudget` mirrors it in the issues badge): estimated
   DELIVERED bytes = shell-remaining `<style>` bytes +
-  `EN_CSS_REPRINT_FACTOR` × (the field's current bytes + the block's own
-  builder-chrome `<style>` bytes), against the 16,384 hard limit with a
+  `EN_CSS_REPRINT_FACTOR` × (the block's `<style>` bytes — the inline
+  CSS plus builder chrome — plus a legacy field's bytes when an
+  EN-imported block still carries one; detection is content-based via
+  `isStyleOnlyHtml`), against the 16,384 hard limit with a
   14,000 working target (headroom for EN-hoisted block styles, which the
   meter itemizes as "+N if included", also ×factor). EN re-prints all
   head CSS at send — comments stripped, plain top-level rules inlined
@@ -1179,13 +1210,15 @@ trade-off was accepted deliberately.)
   shape, and also where the tag stood in pre-2026-08-15 projects):
   previews, thumbnails, and the padding audit re-compose the styles
   block into their document `<head>` (`composePreviewChrome`, which
-  drops the marker span, wraps the bare tag the way EN does, and lets
-  the head_styles tag substitute downstream), so per-block rendering
+  drops the marker span, carries the inline CSS literally, and — for a
+  legacy field-carrying block — wraps the bare tag the way EN does so
+  the head_styles tag substitutes downstream), so per-block rendering
   keeps the template styling even though the shell head carries only
   its conditional CSS.
-- EN JSON imports are untouched: a template pasted from EN keeps its
-  styles wherever they are (round-trips stay byte-stable). Extraction runs
-  only when a project is created from MJML.
+- EN JSON imports keep their styles wherever they are; extraction runs
+  only when a project is created from MJML. The single exception is the
+  wrapped-era styles-block heal above — the one deliberate byte change
+  in the otherwise byte-stable round-trip.
 - The block is named **"Utility — Template Styles"** with
   `category: 'Utility'` — the same shape as "Utility — RAW HTML" — so
   replacement sections and the thumbnail slug still mirror the base name
@@ -1253,12 +1286,13 @@ trade-off was accepted deliberately.)
   by the thumbnails ZIP and by the in-app Replacements Visualizer. They
   drifted before — the ZIP shipped the designed cards while the
   Visualizer rendered the same blocks as blank white tiles.
-- The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (now
-  including `head_styles`) even though only `background_color` and
-  `head_styles` are minted today — content blocks keep reserving the
-  whole vocabulary so no block field ever shares a tag with a
-  template-level one (the 2026-08-10 shadowing rule; same precedent as
-  email_title after its revert).
+- The theme merge-tag names stay in `TEMPLATE_REPLACEMENT_NAMES` (still
+  including `head_styles`) even though only `background_color` is
+  minted today — the styles block mints no field since 2026-08-18, but
+  legacy EN imports may still carry `head_styles`, and content blocks
+  keep reserving the whole vocabulary so no block field ever shares a
+  tag with a template-level one (the 2026-08-10 shadowing rule; same
+  precedent as email_title after its revert).
 - **The shipped CSS must contain zero child combinators** — the escape
   above, reproduced 2026-08-13 and triggered by EDITING the field. The
   rule and the escape-safe selector idioms (`.class element` is the one
@@ -1329,12 +1363,13 @@ Gmail-style snippets would show BOTH lines. Consequences:
   warns. Two carriers, because a Replacement can hold CSS either way:
   `<style>` contents (in the block HTML and inside replacement values),
   and the WHOLE value of a **CSS-type** replacement, which is bare rules
-  with no `<style>` to unwrap. The second branch is what covers the
-  Template Styles block's `head_styles` field — the largest CSS payload
-  the importer emits. It was added 2026-08-15 with the CSS Editor
-  switch: the guard had gone blind to exactly the payload it exists for,
-  because the head CSS stopped being wrapped in a `<style>` the regex
-  could find. EN escapes `>` in CSS text when a code field is edited and
+  with no `<style>` to unwrap. The first branch covers the Template
+  Styles block's inline CSS — the largest CSS payload the importer
+  emits — since the 2026-08-18 inline switch; the second was added
+  2026-08-15 with the CSS Editor switch (the guard had gone blind to
+  exactly the payload it exists for, because the head CSS stopped being
+  wrapped in a `<style>` the regex could find) and still covers legacy
+  field-carrying EN imports. EN escapes `>` in CSS text when a code field is edited and
   resubmitted, invalidating the selector (guide §2d); comments are
   stripped before scanning, so a `>` inside a CSS comment stays legal.
 - `data-*` contract warnings are whitelisted, never "fixed".

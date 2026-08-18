@@ -2,6 +2,7 @@
   <mj-head>
     <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
@@ -40,7 +41,7 @@
         name="caption"
         font-size="10px"
         line-height="16px"
-        padding="8px 0 0 0"
+        padding="4px 0 0 0"
       />
     </mj-attributes>
 
@@ -95,7 +96,7 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
       <mj-column vertical-align="middle">
         <mj-text align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>

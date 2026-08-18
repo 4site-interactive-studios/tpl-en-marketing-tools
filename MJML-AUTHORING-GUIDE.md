@@ -249,23 +249,31 @@ day, same account, same client matrix:
   Every Gmail surface shares the sanitizer, so an oversized stylesheet
   costs hover states, dark rules, and desktop refinements for Gmail
   users on every device — not just Android phones.
-- The importer's answer (2026-08-18): the Head CSS Styles field ships a
+- The importer's answer (2026-08-18): the Template Styles block ships a
   COMPACT form of the extracted stylesheet (comments stripped, one rule
   per line — the app would otherwise beautify ~12KB of pretty-printing
-  into the field), and the Template Styles block carries a live Gmail
-  budget meter (16,384 hard / 14,000 target) that itemizes EN-hoisted
-  block styles. Budget the DELIVERED size, not the authored size —
-  authored comments and formatting are free.
-- **EN wraps a CSS-type replacement value in its own bare `<style>` at
-  render — never add a wrapper of your own** (measured 2026-08-18). A
-  block html that wrapped the `{replacement~head_styles}` tag nested two
-  `<style>` tags, and EN's send pipeline ingested the stylesheet ONCE
-  PER WRAPPER: every delivered head carried two full copies (24,952
-  bytes — over the cliff with a compact field that measured 9,713 bytes
-  in the editor). Removing the wrapper took the very same email to
-  13,325 delivered bytes. The doubling is invisible in EN's editor (the
-  field shows one compact copy) — it shows only in the DELIVERED
-  payload, as every distinctive selector appearing twice.
+  into the payload) hard-coded in the block's own single content
+  `<style>` — per-email CSS edits are disabled by design, and the
+  builder band's label shows the CSS revision ("Email Template — Head
+  CSS Styles Block vN", from the repo's versions.json head-css entity).
+  The block carries a live Gmail budget meter (16,384 hard / 14,000
+  target) that itemizes EN-hoisted block styles. Budget the DELIVERED
+  size, not the authored size — authored comments and formatting are
+  free.
+- **EN ingests a stylesheet once per `<style>` wrapper — carry exactly
+  one** (measured 2026-08-18, during the 2026-08-15→18 era when the
+  head CSS rode a CSS-type field). EN wraps a CSS-type replacement
+  value in its own bare `<style>` at render; a block html that ALSO
+  wrapped the `{replacement~head_styles}` tag nested two `<style>`
+  tags, and EN's send pipeline ingested the stylesheet ONCE PER
+  WRAPPER: every delivered head carried two full copies (24,952 bytes —
+  over the cliff with a compact field that measured 9,713 bytes in the
+  editor). Removing the extra wrapper took the very same email to
+  13,325 delivered bytes. The doubling was invisible in EN's editor —
+  it showed only in the DELIVERED payload, as every distinctive
+  selector appearing twice. The current inline shape carries the CSS in
+  exactly one content `<style>` with no merge tag, so there is nothing
+  for EN to wrap.
 - **EN re-prints all head CSS at send**: comments stripped, plain
   top-level rules inlined away and removed, same-condition `@media`
   blocks merged, comma selector groups split, colon-space formatting
@@ -439,9 +447,10 @@ authoring rule below still stands: template CSS can pass through
 HTML-type fields and edit histories you don't control, and the
 escape-safe idioms cost nothing.
 
-The field choice has a real authoring consequence: a CSS field can hold
-rules and nothing else, so **anything conditional cannot travel into a
-per-email-editable styles block and has to stay in the email template**
+The split has a real authoring consequence: the styles block's content
+`<style>` holds rules and nothing else (as the CSS field did before it),
+so **anything conditional cannot travel into the styles block and has
+to stay in the email template**
 — MSO conditional comments (`<!--[if lte mso 11]><style>…`), stylesheet
 `<link>`s, and any `<style>` inside a downlevel-revealed wrapper (either
 spelling: `<!--[if !mso]><!-->…<!--<![endif]-->` or the bare
@@ -577,7 +586,7 @@ one-selector edit:
 
 | | caption | shipped |
 | :---- | :---- | :---- |
-| caption with the PHOTO (flush) | 14 CSS | **yes** — matches `padding="8px 0 0"` |
+| caption with the PHOTO (flush) | 14 CSS | **yes** — matches the flush caption form (today `padding="4px 0 0"`; measured at 8px) |
 | caption with the COPY (inset) | 30 CSS | add `.flush-mobile-capflush .caption` to the override rule |
 
 Body copy holds its 29 CSS inset either way. Applied to the seven blocks
@@ -622,11 +631,30 @@ carries it:
 ```html
 <!-- en-tools-config {
   "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+  "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
   "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
   "geometryReachPx": 64,
   "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
 } -->
 ```
+
+`classSpacingScales` (optional, class name → scale) scopes an override
+scale to elements whose `mj-class` OR `css-class` names the key: that
+element's spacing dropdowns — Spacing Above/Below and Insets on content
+components, AND the per-side frame padding Selects on
+sections/wrappers/columns — offer, snap to, and label THAT scale
+instead of the main one. (Spacer heights and the Block Padding
+Left/Right preset stay on the main vocabulary.) TPL uses it to give
+captions a **Quarter - 4px** step: inline captions
+(`mj-class="caption"`) author `padding="4px 0 0"`, and the standalone
+caption sections (`css-class="block caption"`) author the same 4px as
+their section top padding — both default to Quarter without the 4px
+option widening every other spacing dropdown in the catalog. Each class
+scale follows the same rules as `spacingScale` (0 step, ≥2 entries),
+and the effective geometry reach must cover its largest step (checked
+even when `geometryReachPx` is omitted). Caption-LIKE texts without a
+declared class (signature name texts) stay on the main scale at
+Half - 8px.
 
 `brandColors` (optional, name → hex) declares the brand palette by its
 real names. Declared colors lead every color dropdown in all three
@@ -920,7 +948,7 @@ the one field (§4: one value, every carrier).
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below`, and the four `padding-<side>`s (per-side scoping for content-dependent inertness the stylesheet cannot express — the poll question's right padding, 2026-08-18) |
 | `data-link-group="<name>"` | on raw `<a>` tags inside hand-authored markup: sibling anchors sharing a group name AND a byte-identical href are ONE logical link — the importer mints a single URL field and splices its tag into every member, so the value can never desync. This is the shape for a clickable row: EN auto-closes an `<a>` that wraps a `<table>` (§2), so the row splits into per-cell anchors that share the group. Members with differing hrefs fall back to separate fields, and the TPL build warns; a lone member is an inert flag the dead-flag audit reports |
-| `data-inset-toggle` | opt-in on a spacing component (mj-text/image/button/divider): mint the Inset Right/Left Selects AND Spacing Above even at 0, and allow an on-scale top padding. The caption pacing pattern: author the gap on the caption's TOP (`padding="8px 0 0"`, image bottom 0) so hiding the caption removes its gap too. The closed scale still applies, and a flag on a column's only member is inert (sole-member consolidation) — the dead-flag audit reports it |
+| `data-inset-toggle` | opt-in on a spacing component (mj-text/image/button/divider): mint the Inset Right/Left Selects AND Spacing Above even at 0, and allow an on-scale top padding. The caption pacing pattern: author the gap on the caption's TOP (`padding="4px 0 0"` on the caption class scale's Quarter step, image bottom 0) so hiding the caption removes its gap too; caption-LIKE texts without `mj-class="caption"` (signature names) author `8px 0 0` on the main scale. The closed scale still applies, and a flag on a column's only member is inert (sole-member consolidation) — the dead-flag audit reports it |
 | `data-visible-duplicate` | on a block whose structure deliberately duplicates its dedup-group anchor but must stay importable (an obvious-name alias, a separately-shipped layout variant). Exempts the block from the build's unflagged-duplicate WARN; a build that dedup-groups blocks needs an equivalent escape hatch or every deliberate twin fights the gate. Misuse (on a group anchor, or combined with a full exclusion) should warn. Pair with a dated caveat comment |
 | `data-probe` | on a probe-instrument block (a canary): its colors are measurement signals, not design — the importer excludes the flagged region from the brand-color census and the color-usage audit, so signal hexes never pollute color dropdowns. Probe bars should still use colors the template already carries (§ probe colors); the flag keeps even those from counting as design usage |
 

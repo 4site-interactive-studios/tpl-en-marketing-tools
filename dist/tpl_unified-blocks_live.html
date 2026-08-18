@@ -523,7 +523,8 @@ li {
      both of those failed here. The second rule puts the inset back on copy
      only, and wins because two classes outrank `.flush-mobile-capflush td`.
      Captions are deliberately NOT in that list — they stay flush with the
-     photo, which is the alignment the catalog authors (padding="8px 0 0").
+     photo, which is the alignment the catalog authors (padding="4px 0 0",
+     the caption scale's Quarter step since 2026-08-18; 8px before that).
      Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
       .flush-mobile-capflush td {
         padding-left: 0 !important;
@@ -867,6 +868,7 @@ li {
   </style>
   <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
@@ -2334,7 +2336,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
@@ -2367,7 +2369,7 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                      <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                       </td>
                     </tr>
@@ -2387,7 +2389,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
               <div class="mj-column-px-300 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
@@ -2495,7 +2497,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
               <div class="mj-column-px-200 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
@@ -2774,7 +2776,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 16px;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 16px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>
@@ -2842,7 +2844,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 16px;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 16px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>
@@ -2924,7 +2926,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>
@@ -3020,7 +3022,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>
@@ -3117,7 +3119,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>
@@ -3214,7 +3216,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer</span></div>
                               </td>
                             </tr>

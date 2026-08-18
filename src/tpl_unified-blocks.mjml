@@ -2,6 +2,7 @@
   <mj-head>
     <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
@@ -40,7 +41,7 @@
         name="caption"
         font-size="10px"
         line-height="16px"
-        padding="8px 0 0 0"
+        padding="4px 0 0 0"
       />
     </mj-attributes>
 
@@ -795,13 +796,13 @@
          so the block is structurally unique here and the flag would warn as
          anchor misuse (per-catalog asymmetry, like the poll's per-side flag;
          2026-08-18). -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 0 8px">
       <mj-column vertical-align="middle">
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -811,7 +812,7 @@
     <!-- START: Images 2x1 -->
     <mj-section
       css-class="two-col-images-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0"
+      background-color="#ffffff" padding="0 0 8px"
     >
       <mj-column css-class="two-col-column first-column" width="300px" vertical-align="middle" padding="0 8px 0 0">
         <mj-image
@@ -861,7 +862,7 @@
     <!-- START: Images 3x1 -->
     <mj-section
       css-class="three-col-images-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0"
+      background-color="#ffffff" padding="0 0 8px"
     >
       <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" padding="0 8px">
         <mj-image
@@ -984,7 +985,7 @@
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 16px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 16px">
           <span>Photograph by Photographer</span>
         </mj-text>
         <mj-text padding="0 0 16px">
@@ -1017,7 +1018,7 @@
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 16px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 16px">
           <span>Photograph by Photographer</span>
         </mj-text>
         <mj-text padding="0 0 16px">
@@ -1060,7 +1061,7 @@
           fluid-on-mobile="true"
           css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1100,7 +1101,7 @@
             padding="0"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1148,7 +1149,7 @@
             padding="0"
             css-class="two-col-image dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1193,7 +1194,7 @@
           align="center"
           width="224px" css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>

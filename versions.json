@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 4,
-    "hash": "f7f7f06a3c54"
+    "version": 5,
+    "hash": "2dbfee8f04f8"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 4,
-    "hash": "83dbc10892d9"
+    "version": 5,
+    "hash": "5b72146e6d0b"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -292,28 +292,28 @@
     "hash": "a0f24665d3bb"
   },
   "block:Image (bikers)": {
-    "version": 4,
-    "hash": "22fb5eadd407"
+    "version": 5,
+    "hash": "3b6313b3358f"
   },
   "block:Image (full-bleed)": {
-    "version": 4,
-    "hash": "c529cbb94073"
+    "version": 5,
+    "hash": "9d9c605399fe"
   },
   "block:Image (inset)": {
-    "version": 4,
-    "hash": "dedf20218444"
+    "version": 5,
+    "hash": "12a1b469510f"
   },
   "block:Image 1x1": {
-    "version": 3,
-    "hash": "8fdf3129eb93"
+    "version": 4,
+    "hash": "e5231b4d60d9"
   },
   "block:Images 2x1": {
-    "version": 4,
-    "hash": "39c9ccd70cfe"
+    "version": 5,
+    "hash": "f290584745ca"
   },
   "block:Images 3x1": {
-    "version": 4,
-    "hash": "c813ab1c6cf4"
+    "version": 5,
+    "hash": "16ebeec79353"
   },
   "block:Join Links Block": {
     "version": 2,
@@ -472,44 +472,44 @@
     "hash": "43a5055fcf18"
   },
   "block:Story Card (full width)": {
-    "version": 4,
-    "hash": "be037595b95a"
+    "version": 5,
+    "hash": "562961ba5836"
   },
   "block:Story Card (full width, centered button)": {
-    "version": 4,
-    "hash": "6a0e192dff76"
+    "version": 5,
+    "hash": "1890e8b46802"
   },
   "block:Story Card (image left)": {
-    "version": 6,
-    "hash": "2f3d04c0774d"
+    "version": 7,
+    "hash": "601d54fe0fd3"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 5,
-    "hash": "837e5c0902bc"
+    "version": 6,
+    "hash": "2e9b3635a7d5"
   },
   "block:Story Card (image left, no button)": {
-    "version": 4,
-    "hash": "4c9ca6d98d59"
+    "version": 5,
+    "hash": "dbae6ec51525"
   },
   "block:Story Card (image right)": {
-    "version": 6,
-    "hash": "ca7309e63986"
+    "version": 7,
+    "hash": "60aada99fabd"
   },
   "block:Story Card (image right, middle-aligned)": {
-    "version": 5,
-    "hash": "627cb7d41d09"
+    "version": 6,
+    "hash": "04c6bfb29b31"
   },
   "block:Story Card (no heading, image on the side)": {
-    "version": 7,
-    "hash": "872443722456"
+    "version": 8,
+    "hash": "773dd1ddeee5"
   },
   "block:Story Card (orange-bordered)": {
     "version": 3,
     "hash": "8d5d54da1fbb"
   },
   "block:Story Card 2x1": {
-    "version": 4,
-    "hash": "e19fd2825fa9"
+    "version": 5,
+    "hash": "614a9ab373ea"
   },
   "block:Subscription Panel": {
     "version": 2,
@@ -564,12 +564,12 @@
     "hash": "ace703979037"
   },
   "block:Video Block (full-bleed)": {
-    "version": 3,
-    "hash": "4ec353fc968a"
+    "version": 4,
+    "hash": "df78d4af68d9"
   },
   "block:Video Block (inset)": {
-    "version": 3,
-    "hash": "42b11f07ec51"
+    "version": 4,
+    "hash": "02aae4b368f0"
   },
   "block:WYSIWYG Text (full width)": {
     "version": 2,
@@ -580,12 +580,16 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 8,
-    "hash": "d6fa60d07d08"
+    "version": 9,
+    "hash": "9af00eee1839"
   },
   "email-template": {
-    "version": 12,
-    "hash": "135ea048d6c3"
+    "version": 13,
+    "hash": "2e29e7f9ecff"
+  },
+  "head-css": {
+    "version": 1,
+    "hash": "d77e28ff179c"
   },
   "partial:debug-toolbar": {
     "version": 1,

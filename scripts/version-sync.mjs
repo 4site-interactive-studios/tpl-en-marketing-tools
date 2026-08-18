@@ -23,6 +23,17 @@
  *  - block:<name>             the block's marker regions concatenated
  *                              across mjml_all + tpl_unified (a divergent
  *                              copy in either catalog bumps the one entity).
+ *  - head-css                 the COMPILED head <style> contents of
+ *                              dist/tpl_unified-blocks_live.html — the exact
+ *                              CSS the importer bakes into the Template
+ *                              Styles block, whose EN name carries this
+ *                              version ("Utility — Template Styles vN").
+ *                              Compiled, not source: mjml generates
+ *                              structural head CSS (column ladders) that
+ *                              source hashing would miss. Because dist is
+ *                              stale when the main pass runs (pre-compile),
+ *                              the build re-syncs this ONE entity after
+ *                              emit-variants via `--head-css`.
  *
  * A renamed block starts over at version 1 under its new name; git history
  * carries the lineage. Entities that no longer exist are dropped from the
@@ -74,6 +85,14 @@ function shellOf(text) {
   return out + text.slice(pos);
 }
 
+/** Compiled head <style> contents of the unified master's live artifact */
+export function headCssContent() {
+  const html = read('dist/tpl_unified-blocks_live.html');
+  return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+    .map((m) => m[1])
+    .join('\n');
+}
+
 export function computeEntities() {
   const entities = {};
   const unified = read('src/tpl_unified-blocks.mjml');
@@ -81,6 +100,7 @@ export function computeEntities() {
 
   entities['email-template'] = sha(shellOf(unified) + '\n@@styles@@\n' + read('src/styles.css'));
   entities['catalog-shell'] = sha(shellOf(all));
+  entities['head-css'] = sha(headCssContent());
 
   for (const f of ['donation-thank-you.mjml', 'recurring-donation-thank-you.mjml']) {
     if (read(`src/${f}`)) entities[`autoresponder:${f.replace('.mjml', '')}`] = sha(read(`src/${f}`));
@@ -130,6 +150,31 @@ export function syncedManifest() {
     }
   }
   return { manifest, bumped };
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv.includes('--head-css')) {
+  // Post-compile pass: dist is now FRESH — re-sync only the head-css entity
+  // against the committed baseline and rewrite the manifest in place.
+  const base = baseline();
+  const hash = sha(headCssContent());
+  const manifest = JSON.parse(read('versions.json') || '{}');
+  const prev = base['head-css'];
+  const next = !prev
+    ? { version: 1, hash }
+    : prev.hash === hash
+      ? prev
+      : { version: prev.version + 1, hash };
+  const changed = JSON.stringify(manifest['head-css']) !== JSON.stringify(next);
+  manifest['head-css'] = next;
+  const sorted = {};
+  for (const k of Object.keys(manifest).sort()) sorted[k] = manifest[k];
+  writeFileSync(join(ROOT, 'versions.json'), JSON.stringify(sorted, null, 2) + '\n');
+  console.log(
+    changed
+      ? `version-sync --head-css: head-css -> v${next.version} (${next.hash})`
+      : `version-sync --head-css: head-css steady at v${next.version}`,
+  );
+  process.exit(0);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

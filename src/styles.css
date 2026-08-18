@@ -250,7 +250,8 @@ p {
      both of those failed here. The second rule puts the inset back on copy
      only, and wins because two classes outrank `.flush-mobile-capflush td`.
      Captions are deliberately NOT in that list — they stay flush with the
-     photo, which is the alignment the catalog authors (padding="8px 0 0").
+     photo, which is the alignment the catalog authors (padding="4px 0 0",
+     the caption scale's Quarter step since 2026-08-18; 8px before that).
      Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
   .flush-mobile-capflush td {
     padding-left: 0 !important;
