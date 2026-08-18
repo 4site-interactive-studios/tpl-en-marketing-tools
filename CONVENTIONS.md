@@ -1344,6 +1344,17 @@ importer whitelists all data-*-only MJML validator warnings
   the block renders in previews but starts unchecked in exports
   (`src/state/store.ts`, `ExportPanel`), with an override warning when
   exported directly.
+- **`data-visible-duplicate`** (raw MJML; block-level, 2026-08-18): the
+  block's structure deliberately duplicates its dedup-group anchor AND it
+  must remain importable — a product decision, not redundancy (Image 1x1
+  is the full-bleed shape under the name an editor actually looks for;
+  the fixed-width CTA rows are separately-shipped layouts whose widths
+  normalize() masks). The TPL build's annotate-excluded honors it: the
+  flagged member is exempt from the "duplicates X but is NOT flagged"
+  WARN, while a flag on a group ANCHOR or alongside `data-fully-exclude`
+  warns as misuse. The importer itself never reads it (the data-* audit
+  registry claims it as a TPL pipeline consumer). Always pair it with a
+  dated caveat comment naming the anchor and the decision.
 - **`data-folder="<id>"`** (raw MJML; on category dividers and blocks):
   EN folder routing. Precedence: block's own attr > import-form input >
   category divider's attr > account default
