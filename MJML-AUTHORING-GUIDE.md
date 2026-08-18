@@ -531,9 +531,19 @@ carries it:
 <!-- en-tools-config {
   "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
   "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-  "geometryReachPx": 64
+  "geometryReachPx": 64,
+  "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E" }
 } -->
 ```
+
+`brandColors` (optional, name → hex) declares the brand palette by its
+real names. Declared colors lead every color dropdown in both groups —
+text and background — in declaration order, labeled "Snow - #f5faf1",
+and they are offered **even before any block uses them**, so editors
+always pick from the full brand sheet. Colors found in the source but
+not declared still appear after them, auto-named by nearest CSS color.
+Without the key, the palette is derived purely from the colors the
+template actually uses.
 
 **Why bottom-only matters**: it is what lets blocks stack in any order and
 still pace correctly. If element A owns the gap below it, A + B and A + C

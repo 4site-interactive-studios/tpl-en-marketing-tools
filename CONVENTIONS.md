@@ -134,7 +134,8 @@ inside `<mj-head>` (parsed from the prepared source by
 <!-- en-tools-config {
   "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48 },
   "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32 },
-  "geometryReachPx": 64
+  "geometryReachPx": 64,
+  "brandColors": { "Snow": "#F5FAF1", "Fern": "#39B54A" }
 } -->
 ```
 
@@ -146,7 +147,16 @@ inside `<mj-head>` (parsed from the prepared source by
   Width ladder template-wide — see the column-width bullet for the
   precedence (`data-width-options` beats it) and the head-class guard.
   `geometryReachPx` is the hard-coded-geometry
-  threshold. Partial declarations merge over the defaults per key; unknown
+  threshold. `brandColors` (optional; name → hex) declares the brand
+  palette: the declared colors LEAD every color dropdown in BOTH groups
+  (text and background), in declaration order, under their declared names
+  ("Snow - #f5faf1") — **included even when no block uses the color
+  yet** — and censused extras follow, auto-named by nearest CSS color as
+  before (auto-names never collide with declared names). Invalid hex
+  values are skipped per entry with a parse warning. Without the key the
+  palette is derived purely from the color census, unchanged.
+  (`extractBrandColors`, `src/core/colors.ts`.) Partial declarations
+  merge over the defaults per key; unknown
   keys are ignored; invalid keys fall back to defaults with a parse
   warning surfaced in the issues badge.
 - **Persistence**: parsed at import, stored as `Project.templateConfig`,
@@ -158,7 +168,7 @@ inside `<mj-head>` (parsed from the prepared source by
   burn-down list for bringing the source in line with its own declaration.
 - **Rule for agents**: never leave authored values silently off-grid — fix
   the value, or change the declaration deliberately (every src/*.mjml
-  that declares one — TPL has five — same commit).
+  that declares one — TPL has four — same commit).
 
 ## Geometry guard — what never gets a spacing field
 

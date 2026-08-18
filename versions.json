@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 2,
-    "hash": "50ad42d73dc1"
+    "version": 3,
+    "hash": "630121687388"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 2,
-    "hash": "9c425700c6fd"
+    "version": 3,
+    "hash": "1439c85babf2"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -576,12 +576,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 1,
-    "hash": "d0eca2e0053e"
+    "version": 2,
+    "hash": "30ab69017381"
   },
   "email-template": {
-    "version": 2,
-    "hash": "7b3d43fa4a03"
+    "version": 3,
+    "hash": "ad45dbb4dc93"
   },
   "partial:debug-toolbar": {
     "version": 1,
