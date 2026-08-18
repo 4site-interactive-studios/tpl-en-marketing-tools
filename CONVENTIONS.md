@@ -878,6 +878,29 @@ sort — it is purely the panel/export display order.
   they can't inherit mj-attributes defaults, and surfacing them gave
   button-links MORE knobs than real buttons (`ANCHOR_STYLE_PROPS`).
   Supersedes the earlier "keep Font Size editable" note for button-links.
+- **Pill Background Color claims the MSO twin cell too** (2026-08-18): a
+  pill's chip color is authored twice — `background-color` in the `<a>`'s
+  inline style AND `bgcolor` on its `[if mso]` conditional `<td>` (Word
+  ignores the div/anchor styles). The Background Color candidate pairs
+  the k-th bg-authoring anchor with the k-th bgcolor-carrying conditional
+  cell in the same mj-text and splices ONE tag into both carriers
+  (all-or-nothing, the link-group binding). When the pairing cannot be
+  proven — cell count ≠ anchor count, or any position's values differ —
+  every background field in that fragment is withheld with an infoNote:
+  a partial bind IS the Outlook desync the twin exists to prevent
+  (`scanEmbeddedAnchors`, msoBgTds). A fragment with NO conditional
+  bgcolor cells keeps the single-carrier claim (a div-only row has no
+  Outlook copy to desync). Pill Text Color has no MSO analogue (the
+  shared `<a>` renders in Word with its inline color) — single carrier
+  by design. Single-run stacked anchors (`<a><span>X</span></a>`) mint
+  the plain `label` field (2026-08-18; the two-line gate no longer
+  requires ≥2 runs).
+- **Plain-markup button-ish links stay RTE-editable** (2026-08-18,
+  assessed): an anchor styled as a button inside an mj-text whose inner
+  markup is NOT complex (no MSO conditionals, tables, or divs — e.g. the
+  big Footer's bare DONATE/link row) never reaches the button-link
+  scanner; the whole mj-text mints as one RTE Content field, and the
+  label and colors are edited there. Deliberate — no dedicated fields.
 - **Column widths: enumerated dropdown for lone inset-box columns ONLY**
   (2026-08-09, closing future-enhancements #1 v1). A section's single
   fixed-px column (Highlighted Text's 480px card) gets a "Desktop Column
