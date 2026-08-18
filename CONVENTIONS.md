@@ -1009,9 +1009,12 @@ without a template round-trip. Semantics:
   (2026-08-11, user-decided; supersedes the earlier
   append-regardless-of-selection behavior). "Select all" / "All groups"
   re-include it; a specific group filter drops it (it belongs to no
-  group). The per-group ZIP honors the same row and ships it as its OWN
-  file (`en-block-utility-raw-html.json`) so bulk imports never
-  duplicate it.
+  group). The per-group ZIP honors the same row and appends it to the
+  UTILITIES group file (`en-blocks-utilities.json`, last item —
+  2026-08-18, user-decided; supersedes the separate
+  `en-block-utility-raw-html.json`, which now ships only when no
+  utilities group exists). It lands in exactly ONE file either way, so
+  bulk imports never duplicate it.
 - Stamped with the current settings (client, owner, DEFAULT folder — it
   belongs to no category, so per-category folders don't apply).
 - Its thumbnail follows the standard base-name convention
