@@ -537,8 +537,9 @@ carries it:
 ```
 
 `brandColors` (optional, name → hex) declares the brand palette by its
-real names. Declared colors lead every color dropdown in both groups —
-text and background — in declaration order, labeled "Snow - #f5faf1",
+real names. Declared colors lead every color dropdown in all three
+groups — text, background, and border — in declaration order, labeled
+"Snow - #f5faf1",
 and they are offered **even before any block uses them**, so editors
 always pick from the full brand sheet. Colors found in the source but
 not declared still appear after them, auto-named by nearest CSS color.

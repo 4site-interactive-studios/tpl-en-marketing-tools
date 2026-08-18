@@ -711,7 +711,8 @@ sort — it is purely the panel/export display order.
 ## Replacement typing (what becomes a dropdown)
 
 - **Colors** → Select backed by the project's brand palette (text vs
-  background groups), defaults normalized to lowercase hex, authored casing
+  background vs border groups — border added 2026-08-18, user-decided),
+  defaults normalized to lowercase hex, authored casing
   kept in `originalValue`. The palette is TEMPLATE-AUTHORED only
   (2026-08-01 QA): a hex enters it via an attribute value or inline style
   in an importable block, or an mj-attributes default. Stripped before
@@ -719,8 +720,14 @@ sort — it is purely the panel/export display order.
   shims, dark-mode overrides, and hover states are rendering plumbing,
   never dropdown options), debug-block regions, and data-fully-exclude
   variants (leaf blocks only — container wrappers never match). Border
-  colors never feed the palette either — borders export as plain Text
-  fields, not palette dropdowns. A color the stylesheet or an excluded
+  colors census into the border group only — the standalone
+  `border-color` property, plus the hex inside compound values
+  (`border="1px solid #hex"`, per-side variants) — never into text or
+  background, so a hairline can't become a "brand" background.
+  `border-color` replacements are Selects backed by the border group
+  (they drew from the background group before 2026-08-18); compound
+  `border` attributes still export as plain Text fields — a compound
+  value can't be a color dropdown. A color the stylesheet or an excluded
   variant shares with live block markup survives via those occurrences
   (e.g. #8CC63F is authored in blocks, so its dark-mode override in the
   stylesheet costs it nothing).
@@ -728,10 +735,14 @@ sort — it is purely the panel/export display order.
   each occurrence is classified by the property owning it
   (`countColorRoles`, src/core/colorUsage.ts) — `color:`/`color=` counts
   as text; `background`/`background-color`/`bgcolor`/`fillcolor` as
-  background — so a hex living in both palette groups shows different
+  background; `border-color` and open compound border values as border —
+  so a hex living in several palette groups shows different
   numbers per row, and click-to-filter targets that role's block set.
-  Borders, shadows, and other roles count in NEITHER badge (the palette
+  Shadows, gradient stops, and other roles count in NO badge (the palette
   dropdowns never drive them); their total is named in the tooltip.
+  Projects imported before the border group existed have no stored
+  `border` list — every consumer treats a missing list as empty, and a
+  Re-import materializes it.
 - **Fonts** → Select over the document's font-family stacks.
 - **Enumerable attributes** (align, vertical-align, direction, target,
   font-weight — keywords normalized to numeric) → constrained Selects.
