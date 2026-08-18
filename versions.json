@@ -56,8 +56,8 @@
     "hash": "405e24ff3052"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 3,
-    "hash": "e391ce7674e8"
+    "version": 4,
+    "hash": "e893effbdcda"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 2,
@@ -412,8 +412,8 @@
     "hash": "6f5010c3307f"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 4,
-    "hash": "5040e9ae5c13"
+    "version": 5,
+    "hash": "18f091fad92d"
   },
   "block:Quiz Block (2x2 photos)": {
     "version": 4,
@@ -496,8 +496,8 @@
     "hash": "e76122ccc035"
   },
   "block:Story Card (no heading, image on the side)": {
-    "version": 2,
-    "hash": "a39b1bf9856d"
+    "version": 3,
+    "hash": "1bd58f40e796"
   },
   "block:Story Card (orange-bordered)": {
     "version": 3,
