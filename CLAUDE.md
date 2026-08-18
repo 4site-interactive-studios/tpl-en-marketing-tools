@@ -113,6 +113,13 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
 - Run `npm run build` after any source change; it must print zero `WARN`
   lines. Then run the guide's §8 QA checklist and report what each check
   returned.
+- **Versioning.** `versions.json` gives every artifact an integer version
+  (the email template's shell+stylesheet, each block, each autoresponder
+  and partial), anchored to content hashes. The build's `version-sync`
+  first step bumps any entity whose content differs from its LAST COMMIT;
+  check-docs warns when the manifest is stale. Never hand-edit or reset
+  it — the committed history is the ledger. Full contract:
+  CONVENTIONS.md "Versioning".
 - **Probe lifecycle.** `src/probe_*.mjml` files are temporary instruments
   (check-catalog already skips the `probe_` prefix; nothing else in the
   pipeline names them). When every claim a probe was built to test is

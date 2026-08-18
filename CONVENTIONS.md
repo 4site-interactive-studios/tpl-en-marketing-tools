@@ -1572,3 +1572,39 @@ toggling it could split a subsumption group.)
   restores as the canonical 4-token expansion).
 - Deferred ideas go to docs/future-enhancements.md with enough context to
   pick up cold.
+
+## Versioning (2026-08-18)
+
+Every EN artifact and the app itself carry an integer version, anchored to
+content hashes so increments are mechanical and can never be lost:
+
+- **TPL `versions.json`** — one entry per entity: `email-template` (the
+  tpl_unified SHELL — every leaf `<!-- START/END -->` block region replaced
+  by a name sentinel — plus styles.css), `catalog-shell` (mjml_all's shell),
+  `autoresponder:<file>`, `partial:<file>`, and `block:<name>` (the block's
+  leaf marker regions concatenated across BOTH catalogs, so a divergent copy
+  in either bumps the one entity). Markers nest ("Main Content" wraps a
+  catalog), so blocks are the LEAF pairs.
+- **App `app-version.json`** — one entity covering index.html plus
+  everything under src/.
+
+**"Directly changed" is the bump rule, made precise by the entity
+definitions**: editing a block's markup bumps that block alone; editing
+styles.css or the template shell bumps `email-template` alone; editing app
+code bumps the app. A stylesheet change that alters how every block RENDERS
+still bumps only the template — versions track what was edited, not what
+was affected downstream.
+
+**Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
+build): the baseline is the manifest AS COMMITTED (`git show
+HEAD:versions.json` / `HEAD:app-version.json`); an entity whose current
+hash differs from the committed one gets `committed version + 1`.
+Consequences: rebuilding never double-bumps; local iteration cannot inflate
+numbers (an entity sits exactly one ahead of HEAD until committed); the
+committed history of the manifest IS the version ledger. TPL check-docs
+assertion 14 warns when the manifest on disk is stale relative to the
+sources. Never hand-edit a manifest, never reset a number. A renamed block
+starts over at version 1 under its new name (git history carries the
+lineage); entities that no longer exist drop from the manifest. The app
+displays its version in the header (`__APP_VERSION__`, defined at build
+from app-version.json).

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A template for building EN marketing tools projects using MJML.",
   "scripts": {
-    "build": "node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/ && node scripts/emit-variants.mjs && node scripts/check-docs.mjs && node scripts/check-catalog.mjs",
+    "build": "node scripts/version-sync.mjs && node scripts/annotate-excluded.mjs && mjml ./.build/*.mjml -o ./dist/ --config.allowIncludes=true --config.validationLevel=skip && node scripts/restore-excluded.mjs && rsync -a --delete --exclude='originals/' ./src/assets/ ./dist/assets/ && cp ./src/*.mjml ./dist/ && node scripts/emit-variants.mjs && node scripts/check-docs.mjs && node scripts/check-catalog.mjs",
     "watch": "node scripts/watch.mjs",
     "preview": "npx --yes http-server ./dist -p 8642 -c-1",
     "check-docs": "node scripts/check-docs.mjs",

@@ -376,27 +376,30 @@ guard('anchor-wraps-table check', () => {
 guard('link-group integrity check', () => {
   for (const f of sources) {
     const text = read(`src/${f}`) || '';
-    // Group scope is one mj-text's inner markup; block scope is a safe
-    // over-approximation for a lint (a block holds one mj-text of this kind).
-    const blocks = [...text.matchAll(/<!-- START: (.+?) -->([\s\S]*?)<!-- END: \1 -->/g)];
-    for (const b of blocks) {
-      const groups = new Map();
-      for (const a of b[2].matchAll(/<a\s[^>]*data-link-group\s*=\s*"([^"]+)"[^>]*>/gi)) {
-        const href = /\bhref\s*=\s*"([^"]*)"/.exec(a[0]);
-        const list = groups.get(a[1]) ?? [];
-        list.push({ href: href ? href[1] : '', index: b.index + a.index });
-        groups.set(a[1], list);
-      }
-      for (const [name, members] of groups) {
-        if (members.length < 2) {
-          warn(
-            `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${b[1]}" has a single member — the flag folds nothing; group another anchor or drop it`,
-          );
-        } else if (new Set(members.map((m) => m.href)).size > 1) {
-          warn(
-            `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${b[1]}" mixes hrefs — the importer falls back to separate fields that can desync; make every member's href byte-identical`,
-          );
-        }
+    // Group scope is one mj-text's inner markup; the NEAREST enclosing
+    // START marker is the honest block scope (markers nest — a flat regex
+    // would swallow everything into the outer "Main Content" region and
+    // let same-named groups in different blocks collide).
+    const groups = new Map();
+    for (const a of text.matchAll(/<a\s[^>]*data-link-group\s*=\s*"([^"]+)"[^>]*>/gi)) {
+      const at = text.lastIndexOf('<!-- START: ', a.index);
+      const block = at < 0 ? '' : (/<!-- START: (.+?) -->/.exec(text.slice(at)) || [, ''])[1];
+      const href = /\bhref\s*=\s*"([^"]*)"/.exec(a[0]);
+      const key = `${block}\u0000${a[1]}`;
+      const list = groups.get(key) ?? [];
+      list.push({ href: href ? href[1] : '', index: a.index });
+      groups.set(key, list);
+    }
+    for (const [key, members] of groups) {
+      const [block, name] = key.split('\u0000');
+      if (members.length < 2) {
+        warn(
+          `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${block}" has a single member — the flag folds nothing; group another anchor or drop it`,
+        );
+      } else if (new Set(members.map((m) => m.href)).size > 1) {
+        warn(
+          `src/${f}:${lineAt(text, members[0].index)} data-link-group="${name}" in "${block}" mixes hrefs — the importer falls back to separate fields that can desync; make every member's href byte-identical`,
+        );
       }
     }
   }

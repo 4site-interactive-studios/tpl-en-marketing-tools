@@ -1,0 +1,145 @@
+#!/usr/bin/env node
+/**
+ * version-sync — content-hash-anchored versioning for every EN artifact.
+ *
+ * Each entity below gets an integer version in versions.json. The baseline
+ * is the manifest AS COMMITTED (git show HEAD:versions.json), so a bump
+ * means "this entity's content differs from the last commit": rebuilding
+ * never double-bumps, and iterating locally cannot inflate numbers — an
+ * entity is exactly one version ahead of HEAD until the change is
+ * committed, at which point the new manifest becomes the next baseline.
+ * The committed history of versions.json IS the version ledger; never
+ * hand-edit the file and never reset a number.
+ *
+ * Entities and what "directly changed" means for each:
+ *  - email-template            tpl_unified-blocks.mjml SHELL (every
+ *                              <!-- START/END --> block region replaced by
+ *                              a name sentinel) + styles.css. Block edits
+ *                              inside the file bump the BLOCK, not this.
+ *  - catalog-shell             mjml_all-blocks.mjml shell, same treatment
+ *                              (mj-attributes defaults, category dividers).
+ *  - autoresponder:<file>     each thank-you file, whole.
+ *  - partial:<file>           each src/partials/*.mjml, whole.
+ *  - block:<name>             the block's marker regions concatenated
+ *                              across mjml_all + tpl_unified (a divergent
+ *                              copy in either catalog bumps the one entity).
+ *
+ * A renamed block starts over at version 1 under its new name; git history
+ * carries the lineage. Entities that no longer exist are dropped from the
+ * manifest (history preserves their final version).
+ */
+import { createHash } from 'node:crypto';
+import { execSync } from 'node:child_process';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'utf8') : '');
+const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 12);
+
+const CATALOGS = ['mjml_all-blocks.mjml', 'tpl_unified-blocks.mjml'];
+
+/**
+ * START/END markers NEST (a "Main Content" region wraps a whole catalog),
+ * so blocks are the LEAF pairs — regions containing no other marker pair.
+ * Container pairs stay part of the shell.
+ */
+function leafRegions(text) {
+  const tokens = [...text.matchAll(/<!-- (START|END): (.+?) -->/g)];
+  const stack = [];
+  const leaves = [];
+  for (const t of tokens) {
+    if (t[1] === 'START') {
+      stack.push({ name: t[2], start: t.index, hasChild: false });
+    } else {
+      const top = stack.pop();
+      if (!top || top.name !== t[2]) continue; // unbalanced — leave to check-docs
+      if (!top.hasChild) leaves.push({ name: top.name, start: top.start, end: t.index + t[0].length });
+      if (stack.length) stack[stack.length - 1].hasChild = true;
+    }
+  }
+  return leaves;
+}
+
+/** The file with each leaf block region replaced by a stable name sentinel. */
+function shellOf(text) {
+  const leaves = leafRegions(text);
+  let out = '';
+  let pos = 0;
+  for (const l of leaves) {
+    out += text.slice(pos, l.start) + `<!-- BLOCK: ${l.name} -->`;
+    pos = l.end;
+  }
+  return out + text.slice(pos);
+}
+
+export function computeEntities() {
+  const entities = {};
+  const unified = read('src/tpl_unified-blocks.mjml');
+  const all = read('src/mjml_all-blocks.mjml');
+
+  entities['email-template'] = sha(shellOf(unified) + '\n@@styles@@\n' + read('src/styles.css'));
+  entities['catalog-shell'] = sha(shellOf(all));
+
+  for (const f of ['donation-thank-you.mjml', 'recurring-donation-thank-you.mjml']) {
+    if (read(`src/${f}`)) entities[`autoresponder:${f.replace('.mjml', '')}`] = sha(read(`src/${f}`));
+  }
+  const partialsDir = join(ROOT, 'src/partials');
+  if (existsSync(partialsDir)) {
+    for (const f of readdirSync(partialsDir).filter((n) => n.endsWith('.mjml')).sort()) {
+      entities[`partial:${f.replace('.mjml', '')}`] = sha(read(`src/partials/${f}`));
+    }
+  }
+
+  const blocks = new Map();
+  for (const file of CATALOGS) {
+    const text = file === 'mjml_all-blocks.mjml' ? all : unified;
+    for (const l of leafRegions(text)) {
+      blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n@@${file}@@\n` + text.slice(l.start, l.end));
+    }
+  }
+  for (const [name, content] of blocks) entities[`block:${name}`] = sha(content);
+  return entities;
+}
+
+export function baseline() {
+  try {
+    return JSON.parse(execSync('git show HEAD:versions.json', { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString());
+  } catch {
+    return {};
+  }
+}
+
+export function syncedManifest() {
+  const base = baseline();
+  const entities = computeEntities();
+  const manifest = {};
+  const bumped = [];
+  for (const key of Object.keys(entities).sort()) {
+    const hash = entities[key];
+    const prev = base[key];
+    if (!prev) {
+      manifest[key] = { version: 1, hash };
+      if (Object.keys(base).length) bumped.push(`${key} -> v1 (new)`);
+    } else if (prev.hash === hash) {
+      manifest[key] = prev;
+    } else {
+      manifest[key] = { version: prev.version + 1, hash };
+      bumped.push(`${key} -> v${prev.version + 1}`);
+    }
+  }
+  return { manifest, bumped };
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const { manifest, bumped } = syncedManifest();
+  const out = JSON.stringify(manifest, null, 2) + '\n';
+  const current = read('versions.json');
+  if (current !== out) writeFileSync(join(ROOT, 'versions.json'), out);
+  console.log(
+    bumped.length
+      ? `version-sync: ${bumped.length} bump(s) vs HEAD — ${bumped.join(', ')}`
+      : `version-sync: ${Object.keys(manifest).length} entities, all at their committed versions`,
+  );
+}

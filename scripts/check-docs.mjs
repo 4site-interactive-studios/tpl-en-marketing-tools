@@ -364,6 +364,21 @@ for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml')
   }
 }
 
+// ---------------------------------------------------------------------------
+// 14. versions.json is in sync with the sources. The build's version-sync
+//     step bumps each entity's integer version when its content differs
+//     from the last COMMIT (never hand-edit, never reset — the committed
+//     history of versions.json is the version ledger). A stale manifest
+//     here means a source was edited without running npm run build.
+// ---------------------------------------------------------------------------
+{
+  const { syncedManifest } = await import('./version-sync.mjs');
+  const expected = JSON.stringify(syncedManifest().manifest, null, 2) + '\n';
+  if ((read('versions.json') || '') !== expected) {
+    warn('versions.json is out of sync with the sources — run npm run build (version-sync is its first step)');
+  }
+}
+
 console.log(
   warnings
     ? `check-docs: ${warnings} WARNING(S) — see above`
