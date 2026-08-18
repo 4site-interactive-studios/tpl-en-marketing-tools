@@ -441,17 +441,27 @@ guard('mobile-only MSO-guard check', () => {
 // ---------------------------------------------------------------------------
 // §8 Gmail CSS budget + importer head-CSS couplings (2026-08-18).
 // Gmail discards the ENTIRE head stylesheet past 16,384 total <style> bytes
-// (guide §2b-bis). The importer ships the field in compact form; this guard
-// simulates that (strip comments, collapse whitespace runs) per compiled
-// page and warns past the 14,000-byte working target. It also protects the
-// two silent app couplings nothing else connects across the repos: the
-// Column Width dropdown needs every 50px ladder rung to keep a live
-// `.mj-column-px-N` class, and the inert audit's Desktop labels need the
-// td.button mobile pins to keep parsing.
+// (guide §2b-bis). The importer ships the field in compact form, and EN
+// RE-PRINTS it at send — comments stripped, plain top-level rules inlined
+// away, comma groups split, colon-space formatting — inflating a compact
+// field ×1.30 net (measured 2026-08-18, EoA TlHVjaQ…: 9,713 compact →
+// 12,644 delivered; EN_CSS_REPRINT_FACTOR in the importer's headStyles.ts,
+// keep the two in step). This guard simulates the compact field per
+// compiled page, estimates the DELIVERED size (×1.30), and warns when a
+// shipping master passes the 14,000-byte working target or when ANY page
+// would land within a canary-block + builder-chrome hoist (~700 delivered
+// bytes) of the cliff. The full mjml_all-blocks catalog deliberately rides
+// ~100 bytes inside that last check — any styles.css growth should trip it.
+// The guard also protects the two silent app couplings nothing else
+// connects across the repos: the Column Width dropdown needs every 50px
+// ladder rung to keep a live `.mj-column-px-N` class, and the inert
+// audit's Desktop labels need the td.button mobile pins to keep parsing.
 // ---------------------------------------------------------------------------
 
 guard('Gmail CSS budget + head coupling check', () => {
   const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
+  const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts
+  const HOIST_ALLOWANCE = 700; // canary block + builder chrome, delivered
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
   if (!pages.length) {
@@ -464,10 +474,26 @@ guard('Gmail CSS budget + head coupling check', () => {
     const head = headEnd === -1 ? html : html.slice(0, headEnd);
     let css = '';
     for (const m of head.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) css += m[1];
-    const compact = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ');
-    if (compact.length > 14000) {
+    // Simulate the importer's compactCss: strip comments, tighten around
+    // punctuation, then add back its one-line-per-rule newline/indent
+    // overhead (~3 bytes per rule) so the byte count tracks the real field.
+    const tight = css
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/\s*([{};:,])\s*/g, '$1')
+      .replace(/;}/g, '}');
+    const ruleLines = (tight.match(/}/g) || []).length;
+    const compactBytes = tight.length + 3 * ruleLines;
+    const estimated = Math.round(EN_CSS_REPRINT_FACTOR * compactBytes);
+    const isShippingMaster = !page.startsWith('mjml_all-blocks');
+    if (isShippingMaster && estimated > 14000) {
       warn(
-        `dist/${page}: compact head CSS is ${compact.length} bytes — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
+        `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
+      );
+    }
+    if (estimated + HOIST_ALLOWANCE > 16384) {
+      warn(
+        `dist/${page}: estimated delivered head CSS ${estimated} bytes + ${HOIST_ALLOWANCE} hoisted (canary + builder chrome) crosses Gmail's 16,384 cliff — trim styles.css before anything else lands`,
       );
     }
     const live = new Set(

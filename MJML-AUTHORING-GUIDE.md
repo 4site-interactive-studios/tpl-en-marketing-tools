@@ -236,7 +236,8 @@ day, same account, same client matrix:
   in the very same Gmail app — stylesheet size is the only variable, and
   the drop is whole. The canary block (Utility — Probe Block (head CSS
   canary)) stays in the catalog as the live instrument for the CSS-diet
-  round; its acceptance test is a full-template send showing GREEN.
+  round; its acceptance test — a full-template send showing GREEN —
+  passed 2026-08-18 (verdict bullet below).
 - The cliff is NOT mobile-only: Gmail DESKTOP webmail (Chrome) showed
   the identical pair — full template RED with every canary inert, blank
   template GREEN with the desktop canary firing purple (same EoA pair).
@@ -250,6 +251,30 @@ day, same account, same client matrix:
   budget meter (16,384 hard / 14,000 target) that itemizes EN-hoisted
   block styles. Budget the DELIVERED size, not the authored size —
   authored comments and formatting are free.
+- **EN wraps a CSS-type replacement value in its own bare `<style>` at
+  render — never add a wrapper of your own** (measured 2026-08-18). A
+  block html that wrapped the `{replacement~head_styles}` tag nested two
+  `<style>` tags, and EN's send pipeline ingested the stylesheet ONCE
+  PER WRAPPER: every delivered head carried two full copies (24,952
+  bytes — over the cliff with a compact field that measured 9,713 bytes
+  in the editor). Removing the wrapper took the very same email to
+  13,325 delivered bytes. The doubling is invisible in EN's editor (the
+  field shows one compact copy) — it shows only in the DELIVERED
+  payload, as every distinctive selector appearing twice.
+- **EN re-prints all head CSS at send**: comments stripped, plain
+  top-level rules inlined away and removed, same-condition `@media`
+  blocks merged, comma selector groups split, colon-space formatting
+  restored. Net on a compact field: **×1.30 delivered vs authored**
+  (measured: 9,713 → 12,644). Budget against the re-printed size — the
+  importer's meter and TPL's check-catalog §8 both apply the factor.
+- **Acceptance verdict (2026-08-18, EoA TlHVjaQ…, 13,325 delivered
+  bytes): PASS.** Canary bar 1 GREEN on the Gmail Android app and Gmail
+  desktop webmail, light and dark; mobile bar firing blue on phones,
+  desktop bar firing purple on webmail; dark bar firing white-on-black
+  in the Android dark render (Gmail webmail keeps email content light —
+  expected client behavior, not a failure). The cliff round is closed:
+  a full-template EN send now delivers its entire head stylesheet on
+  every Gmail surface.
 
 Consequences: (1) every responsive or dark behavior that lives ONLY in
 head CSS silently dies in the Gmail app once the delivered stylesheet

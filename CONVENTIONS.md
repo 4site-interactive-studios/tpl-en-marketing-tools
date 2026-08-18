@@ -1057,16 +1057,33 @@ trade-off was accepted deliberately.)
   `<span id="head-styles">` and a `<style>` targeting EN's
   `.en__emailbuilder__block` wrapper — inside EN's email builder the
   block renders as a labeled black band ("Email Template — Head CSS
-  Styles Block") instead of a zero-height sliver, while at send time the
-  span stays display:none and EN's inliner prunes the builder-only rules
-  (they match nothing) — followed by
-  `<style type="text/css">{replacement~head_styles}</style>`. **The
-  block owns that `<style>` wrapper**, because a CSS-type value carries
-  rules only. The `head_styles` replacement (type `CSS`, EN's CSS
-  Editor; label "Head CSS Styles"; section = the base block name)
-  carries the extracted head CSS as its default, values hard-coded — so
-  the CSS is self-editable per email, in place, without any template
-  round-trip.
+  Styles Block") instead of a zero-height sliver. The span stays
+  display:none in the send; the builder-only rules are NOT pruned — EN
+  ships them (~313 delivered bytes, measured 2026-08-18), and the budget
+  meter counts them. The placeholder is followed by the **BARE**
+  `{replacement~head_styles}` tag. The `head_styles` replacement (type
+  `CSS`, EN's CSS Editor; label "Head CSS Styles"; section = the base
+  block name) carries the extracted head CSS as its default, values
+  hard-coded — so the CSS is self-editable per email, in place, without
+  any template round-trip.
+- **The tag is BARE — never wrap it in a `<style>` of your own**
+  (2026-08-18, measured): EN's CSS Editor substitutes a CSS-type value
+  wrapped in its OWN bare `<style>` at render (seen nested in the EN
+  message preview, us2 templateId 492). When the block html supplied a
+  second wrapper, EN's send pipeline ingested the stylesheet **once per
+  wrapper** — every delivered head carried TWO full copies of the
+  stylesheet (24,952 bytes, over the Gmail cliff, canary red) until the
+  wrapper was removed, which took the same send to 13,325 bytes and
+  turned the canary green on Gmail app and web (EoA TlHVjaQ…). Local
+  previews re-create EN's wrap (`wrapBareCssTags`,
+  `src/core/render.ts`) — in `composePreviewChrome` for the composed
+  head and in `buildPreviewDoc` for the block's own preview — wrapping
+  only tags NOT already inside a `<style>`, so legacy persisted projects
+  (whose block html still owns the wrapper) never double-wrap. Projects
+  persisted during the wrapped era (2026-08-15→18) are HEALED on load:
+  the store's persist migration (v5) runs `unwrapLegacyStylesBlockHtml`
+  over every block, so a re-export of an old project ships the bare
+  shape instead of re-planting the doubling bug in EN.
 - **The field ships the COMPACT form** (`compactCss`,
   `src/core/headStyles.ts`, 2026-08-18): comments stripped (EN strips
   them at send anyway, and a comment can never re-trigger the
@@ -1082,12 +1099,25 @@ trade-off was accepted deliberately.)
   breaks a measured behavior or an app feature (see the §2b-bis
   coupling notes).
 - **The Gmail CSS budget meter** (`CssBudgetMeter`, shown on the block's
-  panel; `validateCssBudget` mirrors it in the issues badge): used =
-  shell-remaining `<style>` bytes + the field's current bytes, against
-  the 16,384 hard limit with a 14,000 working target (headroom for
-  EN-hoisted block styles, which the meter itemizes as "+N if
-  included"). Warning past the target, error past the limit. The
-  exported block name never carries byte counts.
+  panel; `validateCssBudget` mirrors it in the issues badge): estimated
+  DELIVERED bytes = shell-remaining `<style>` bytes +
+  `EN_CSS_REPRINT_FACTOR` × (the field's current bytes + the block's own
+  builder-chrome `<style>` bytes), against the 16,384 hard limit with a
+  14,000 working target (headroom for EN-hoisted block styles, which the
+  meter itemizes as "+N if included", also ×factor). EN re-prints all
+  head CSS at send — comments stripped, plain top-level rules inlined
+  away, comma groups split, colon-space formatting — a net ×1.30 on a
+  compact field (measured 2026-08-18, EoA TlHVjaQ…: 9,713 compact →
+  12,644 delivered incl. merged-wrapper share). Warning past the target,
+  error past the limit. TPL's check-catalog §8 runs the same estimate
+  over every compiled page (keep its hardcoded factor in step with
+  `headStyles.ts`). The two deliberately differ on HOISTED extras: the
+  app meter prices the canary/chrome at raw × factor (worst case — EN
+  strips their comments, so the true delivered size is smaller), while
+  the TPL guard uses the measured ~700 delivered bytes; the full
+  mjml_all-blocks catalog is therefore EXPECTED to show red in-app while
+  the build guard still passes it — the shipping masters must be green
+  under both. The exported block name never carries byte counts.
 - No theme Selects exist on the block: the extracted CSS keeps its
   authored literal values. The shell's template replacements keep only
   what remains inline there: the body/wrapper `background_color`.
@@ -1114,13 +1144,14 @@ trade-off was accepted deliberately.)
   still escapes, and Gmail/Word add their own reasons.
 - Detection elsewhere is content-based (`isStyleOnlyHtml`), never
   name-based — the detector accepts `<style>`s, stylesheet `<link>`s,
-  the `#head-styles` marker span, and bare merge-tag text (where the
-  head_styles tag stood before the block owned its own `<style>`):
+  the `#head-styles` marker span, and bare merge-tag text (the current
+  shape, and also where the tag stood in pre-2026-08-15 projects):
   previews, thumbnails, and the padding audit re-compose the styles
   block into their document `<head>` (`composePreviewChrome`, which
-  drops the marker span and lets the head_styles tag substitute
-  downstream), so per-block rendering keeps the template styling even
-  though the shell head carries only its conditional CSS.
+  drops the marker span, wraps the bare tag the way EN does, and lets
+  the head_styles tag substitute downstream), so per-block rendering
+  keeps the template styling even though the shell head carries only
+  its conditional CSS.
 - EN JSON imports are untouched: a template pasted from EN keeps its
   styles wherever they are (round-trips stay byte-stable). Extraction runs
   only when a project is created from MJML.

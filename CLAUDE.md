@@ -143,3 +143,9 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
   to the build (annotate-excluded reads `src/` non-recursively). Archive,
   never delete — annotated probes are the instruments for re-measuring EN
   later.
+- **Probe colors.** Probe instruments (canary bars, test swatches) use
+  colors the template already carries — the brand palette or the extended
+  background-Select entries (Crimson, Royal Blue, Purple, Sage, …) —
+  never a newly invented hex (user decision 2026-08-18: canary bar text
+  is Earth `#362229`, not an ad-hoc `#111111`). Signal semantics pick the
+  nearest existing color, not a new one.
