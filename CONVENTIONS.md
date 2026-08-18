@@ -722,7 +722,7 @@ sort — it is purely the panel/export display order.
   colors never feed the palette either — borders export as plain Text
   fields, not palette dropdowns. A color the stylesheet or an excluded
   variant shares with live block markup survives via those occurrences
-  (e.g. #8DC63F is authored in blocks, so its dark-mode override in the
+  (e.g. #8CC63F is authored in blocks, so its dark-mode override in the
   stylesheet costs it nothing).
   The panel's usage badges are **role-aware** (2026-08-03, user-decided):
   each occurrence is classified by the property owning it
