@@ -2144,7 +2144,10 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Buttons 3x1 (dynamic width) --><!-- START: CTA Buttons 3x1 (fixed width) --><!--
+    <!-- END: CTA Buttons 3x1 (dynamic width) --><!-- START: CTA Buttons 3x1 (fixed width) --><!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). --><!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
@@ -2188,7 +2191,10 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: CTA Buttons 3x1 (fixed width) --><!-- START: CTA Buttons 2x1 (fixed width) --><!--
+    <!-- END: CTA Buttons 3x1 (fixed width) --><!-- START: CTA Buttons 2x1 (fixed width) --><!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). --><!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 

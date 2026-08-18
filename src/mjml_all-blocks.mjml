@@ -1353,6 +1353,10 @@
     <!-- END: CTA Buttons 2x1 (right) -->
 
   <!-- START: CTA Buttons 2x1 (fixed width) -->
+    <!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -1365,7 +1369,7 @@
 
     If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-visible-duplicate>
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1407,6 +1411,10 @@
     <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
     <!-- START: CTA Buttons 3x1 (fixed width) -->
+    <!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). -->
     <!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -1419,7 +1427,7 @@
 
       If any value changes, update width:157px on every <a> AND width="157"/width:157px on every MSO <td>.
     -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-desktop-only-width>
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-desktop-only-width data-visible-duplicate>
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1516,6 +1524,25 @@
       </mj-column>
     </mj-section>
     <!-- END: Image (bikers) -->
+
+    <!-- START: Image 1x1 -->
+    <!-- data-visible-duplicate: deliberately the same shape as Image
+         (full-bleed) under an obvious name — the single full-bleed image an
+         editor looks for when the variant names don't ring a bell (user
+         decision 2026-08-18). Must stay importable; never re-flag as a
+         data-fully-exclude duplicate. -->
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-visible-duplicate>
+      <mj-column vertical-align="middle">
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Image 1x1 -->
 
     <!-- START: Images 2x1 -->
     <mj-section

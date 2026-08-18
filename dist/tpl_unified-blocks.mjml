@@ -680,6 +680,10 @@
     <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
     <!-- START: CTA Buttons 3x1 (fixed width) -->
+    <!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). -->
     <!--
       SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -692,7 +696,7 @@
 
       If any value changes, update width:157px on every <a> AND width="157"/width:157px on every MSO <td>.
     -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-desktop-only-width>
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-desktop-only-width data-visible-duplicate>
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -704,6 +708,10 @@
     <!-- END: CTA Buttons 3x1 (fixed width) -->
 
   <!-- START: CTA Buttons 2x1 (fixed width) -->
+    <!-- data-visible-duplicate: normalize() masks pill widths and strips the
+         fixed-width class, so this block groups with the dynamic-width row —
+         the fixed-width variant is a deliberate, separately-shipped layout
+         (surfaced when comment stripping joined the groups, 2026-08-18). -->
   <!--
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
@@ -716,7 +724,7 @@
 
     If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-visible-duplicate>
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->

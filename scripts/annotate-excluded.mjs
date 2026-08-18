@@ -40,13 +40,22 @@ const REMOVE = [
 // content refs: value irrelevant, presence structural -> value masked
 const MASK = ['src', 'alt', 'href', 'background-url', 'background-size', 'background-position', 'background-repeat'];
 
+// Ordinary HTML comments are annotation (caveat notes, formulas) and never
+// structure — but MSO conditional comments ARE structure (Outlook
+// scaffolding), so only non-conditional comments are stripped.
+function stripAnnotationComments(body) {
+  return body.replace(/<!--(?!\[if|<!\[endif)[\s\S]*?-->/g, '');
+}
+
 function normalize(body) {
   // Importer directives are ANNOTATION, not structure: they say which fields
   // the importer generates and how it labels them, never what the block
   // renders. Two blocks that differ only by a directive still look the same,
   // so they must stay in one subsumption group — otherwise flagging one
-  // variant orphans its twin's data-fully-exclude.
-  let s = body.replace(
+  // variant orphans its twin's data-fully-exclude. A dated caveat comment
+  // above a section is annotation for the same reason — and worse, a comment
+  // NAMING a flag would otherwise read as the flag itself downstream.
+  let s = stripAnnotationComments(body).replace(
     /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
     '',
   );
@@ -261,12 +270,15 @@ function structureManifest(text, file) {
     if (parentOf.has(key)) subsumed++;
     for (const [i, b] of members.entries()) {
       manifest[b.name] = anchorName;
-      const flagged = b.body.includes('data-fully-exclude');
+      // Flag detection on the comment-stripped body: a caveat comment that
+      // NAMES a flag must never read as the flag being present.
+      const tagBody = stripAnnotationComments(b.body);
+      const flagged = tagBody.includes('data-fully-exclude');
       // data-visible-duplicate: this member's duplication is a deliberate
       // product decision and the block must remain importable — exempt from
       // the duplicate WARN. The flag is stripped in normalize() (annotation,
       // not structure), so it can never change the block's group key.
-      const visibleDup = b.body.includes('data-visible-duplicate');
+      const visibleDup = tagBody.includes('data-visible-duplicate');
       if (i === 0 && flagged && !parentOf.has(key)) {
         console.warn(`  WARN ${file}: "${b.name}" is the group anchor but is flagged data-fully-exclude (and no other block subsumes it)`);
         flagIssues++;

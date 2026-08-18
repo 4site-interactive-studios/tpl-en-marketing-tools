@@ -48,8 +48,8 @@
     "hash": "6d7c4a96ea06"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 2,
-    "hash": "afe93230b834"
+    "version": 3,
+    "hash": "86aac5a2a87c"
   },
   "block:CTA Buttons 2x1 (right)": {
     "version": 2,
@@ -64,8 +64,8 @@
     "hash": "9d612dc09d88"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 2,
-    "hash": "bb3faf494751"
+    "version": 3,
+    "hash": "56e3567a63a1"
   },
   "block:CTA Hero (arrow graphic)": {
     "version": 2,
@@ -298,6 +298,10 @@
   "block:Image (inset)": {
     "version": 3,
     "hash": "bce48824291d"
+  },
+  "block:Image 1x1": {
+    "version": 1,
+    "hash": "68b1c4319d7a"
   },
   "block:Images 2x1": {
     "version": 3,
@@ -572,8 +576,8 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 3,
-    "hash": "8c48543928ad"
+    "version": 4,
+    "hash": "2a26f7bc3431"
   },
   "email-template": {
     "version": 5,
