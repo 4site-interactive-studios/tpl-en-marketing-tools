@@ -1108,7 +1108,13 @@ trade-off was accepted deliberately.)
   persisted during the wrapped era (2026-08-15→18) are HEALED on load:
   the store's persist migration (v5) runs `unwrapLegacyStylesBlockHtml`
   over every block, so a re-export of an old project ships the bare
-  shape instead of re-planting the doubling bug in EN.
+  shape instead of re-planting the doubling bug in EN. The SAME heal
+  runs in `importBlocks` (`src/core/export/importer.ts`, 2026-08-18) —
+  EN-JSON imports persist at the current schema version, so the persist
+  migration never sees them. This is the ONE deliberate byte change in
+  the otherwise byte-stable EN round-trip: a wrapped-era export's
+  styles block re-exports bare (pinned in `roundtrip.test.ts`); every
+  other block round-trips byte-exact.
 - **The field ships the COMPACT form** (`compactCss`,
   `src/core/headStyles.ts`, 2026-08-18): comments stripped (EN strips
   them at send anyway, and a comment can never re-trigger the
