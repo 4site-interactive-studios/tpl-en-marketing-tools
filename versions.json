@@ -407,6 +407,10 @@
     "version": 2,
     "hash": "604dc6a7bd6a"
   },
+  "block:Probe Block (head CSS canary)": {
+    "version": 1,
+    "hash": "1cbf1c18e42c"
+  },
   "block:Progress Meter Block": {
     "version": 4,
     "hash": "84fe42c44b3d"
@@ -580,12 +584,12 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 5,
-    "hash": "36ef5299f060"
+    "version": 6,
+    "hash": "7a05b944dfaf"
   },
   "email-template": {
-    "version": 7,
-    "hash": "8e701f110bfe"
+    "version": 8,
+    "hash": "f29b7ff78d9e"
   },
   "partial:debug-toolbar": {
     "version": 1,
