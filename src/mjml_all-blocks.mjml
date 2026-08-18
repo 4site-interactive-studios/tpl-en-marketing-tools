@@ -1826,7 +1826,7 @@
             src="assets/photo-kayak.jpg" width="230px"
             alt="Custom alt text"
             href="https://www.example.com"
-            padding="0 0 16px"
+            padding="0"
             align="center"
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -1834,10 +1834,13 @@
             src="assets/photo-kayak.jpg" width="230px"
             alt="Custom alt text"
             href="https://www.example.com"
-            padding="0 0 16px"
+            padding="0"
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 16px">
+          <span>Photograph by Photographer</span>
+        </mj-text>
         <mj-text padding="0 0 16px">
           <h3>Lorem ipsum dolor consectur</h3>
           <p>
@@ -1856,7 +1859,7 @@
             src="assets/photo-garden.jpg" width="230px"
             alt="Custom alt text"
             href="https://www.example.com"
-            padding="0 0 16px"
+            padding="0"
             align="center"
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -1864,10 +1867,13 @@
             src="assets/photo-garden.jpg" width="230px"
             alt="Custom alt text"
             href="https://www.example.com"
-            padding="0 0 16px"
+            padding="0"
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="8px 0 16px">
+          <span>Photograph by Photographer</span>
+        </mj-text>
         <mj-text padding="0 0 16px">
           <h3>Lorem ipsum dolor consectur</h3>
           <p>
