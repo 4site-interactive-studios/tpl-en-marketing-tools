@@ -1524,7 +1524,7 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0 0 16px">
-          <h3 style="text-align:center;color:#2E9E44;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+          <h3 style="text-align:center;color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
@@ -1540,7 +1540,7 @@
           href="https://www.example.com"
           align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
         <mj-text padding="0">
-          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#2E9E44;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#39B54A;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1726,17 +1726,19 @@
     <!-- END: Category — Utilities -->
 
     <!-- START: Probe Block (head CSS canary) -->
-    <!-- TEMPORARY INSTRUMENT (2026-08-18, guide §2b-bis): four canary bars
+    <!-- PERMANENT INSTRUMENT (2026-08-18, guide §2b-bis): four canary bars
          that make a real send's head-CSS survival visible per client. Bar 1's
          rule hides inside the always-true max-width:9999px wrapper because EN
          INLINES plain rules at send — a plain canary would lie green
          everywhere. The block's own style element is HOISTED into the head
          stylesheet by EN (measured 2026-08-09), so the canaries share the
          fate of the template CSS they probe. Import-excluded: never ships in
-         a real send unless deliberately overridden. Archive with verdicts
-         when the CSS-diet round closes. -->
+         a real send unless deliberately overridden. Permanent (user decision
+         2026-08-18): the instant Gmail-budget diagnostic for any suspect
+         send; data-probe keeps its signal colors out of the app's palette
+         census and color-usage audit. -->
     <mj-raw><div data-import-exclude="true"></mj-raw>
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="block" background-color="#ffffff" padding="16px 32px" data-probe>
       <mj-column>
         <mj-text padding="0 0 8px">
           <p style="font-size:14px;font-weight:700;">PROBE — head CSS canary (dev block; exclude from real sends)</p>
@@ -1869,6 +1871,23 @@
     </mj-section>
     <!-- END: Signature Card (square photo) -->
 
+    <!-- START: Signature Card (no photo) -->
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
+        </mj-text>
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="light-only" />
+        <mj-raw><!--[if !mso]><!--></mj-raw>
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0 0 8px" align="left" css-class="dark-only" data-style-dark-mode />
+        <mj-raw><!--<![endif]--></mj-raw>
+        <mj-text padding="0">
+          <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Signature Card (no photo) -->
+
     <!-- START: Category — Footers -->
     <mj-raw><div data-import-exclude="true" data-folder="6410" data-category-short="Footer"></mj-raw>
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
@@ -1916,7 +1935,7 @@
          artwork; the dark-mode twin keeps the white _2 art for the black
          repaint. -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-visible-duplicate>
+    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px" data-visible-duplicate>
       <mj-column>
         <mj-image src="assets/text-and-arrow_3.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>

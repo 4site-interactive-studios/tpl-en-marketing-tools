@@ -1421,6 +1421,20 @@ importer whitelists all data-*-only MJML validator warnings
   the block renders in previews but starts unchecked in exports
   (`src/state/store.ts`, `ExportPanel`), with an override warning when
   exported directly.
+- **`data-probe`** (raw MJML; block-level, 2026-08-18, user-decided):
+  the block is a PROBE INSTRUMENT (the head-CSS canary). It imports,
+  previews, and sends like any block, but its colors are measurement
+  signals, not design: the brand-color census skips the flagged region
+  (`src/core/colors.ts` `stripNonPaletteRegions` via
+  `src/core/blocks.ts` `isProbeBlock`), and the sidebar color-usage
+  audit skips the imported block (`BrandColorsEditor`, testing the
+  block's persisted `mjmlSource`) — so a probe-only hex never surfaces
+  in a color dropdown or a usage badge. A hex the probe shares with real
+  block markup survives via its other occurrences. Deliberately NOT in
+  `IMPORTER_FLAG_RE`: the flag changes the palette, never the block's
+  own generated fields, so the dead-flag strip test (which fingerprints
+  generator output only) would misjudge it dead; the data-* audit's
+  consumer classification covers it instead.
 - **`data-visible-duplicate`** (raw MJML; block-level, 2026-08-18): the
   block's structure deliberately duplicates its dedup-group anchor AND it
   must remain importable — a product decision, not redundancy (Image 1x1
