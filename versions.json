@@ -588,11 +588,11 @@
     "hash": "47dc4c153b25"
   },
   "partial:green-rule-divider": {
-    "version": 1,
-    "hash": "3ee5da126d0f"
+    "version": 2,
+    "hash": "3ee1e0a8e3f6"
   },
   "partial:tri-color-divider": {
-    "version": 1,
-    "hash": "823a95323fa8"
+    "version": 2,
+    "hash": "22c74ddd98a1"
   }
 }
