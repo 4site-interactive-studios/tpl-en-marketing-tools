@@ -3,6 +3,6 @@
   <mj-group>
     <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7931E" /></mj-column>
     <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8CC63F" /></mj-column>
-    <mj-column width="200px"><mj-spacer height="4px" container-background-color="#5FC9C5" /></mj-column>
+    <mj-column width="200px"><mj-spacer height="4px" container-background-color="#5DD8D8" /></mj-column>
   </mj-group>
 </mj-section>

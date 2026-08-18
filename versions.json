@@ -412,12 +412,12 @@
     "hash": "6f5010c3307f"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 3,
-    "hash": "9cd712564c42"
+    "version": 4,
+    "hash": "5040e9ae5c13"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 3,
-    "hash": "b6d230d5b1af"
+    "version": 4,
+    "hash": "05ecf27a07d7"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 2,
@@ -592,7 +592,7 @@
     "hash": "3ee1e0a8e3f6"
   },
   "partial:tri-color-divider": {
-    "version": 3,
-    "hash": "00668b609b63"
+    "version": 4,
+    "hash": "e63591a25b76"
   }
 }
