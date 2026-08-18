@@ -308,12 +308,12 @@
     "hash": "63bb18df7999"
   },
   "block:Images 2x1": {
-    "version": 3,
-    "hash": "5ecfb5af18b8"
+    "version": 4,
+    "hash": "39c9ccd70cfe"
   },
   "block:Images 3x1": {
-    "version": 3,
-    "hash": "08009ccde897"
+    "version": 4,
+    "hash": "c813ab1c6cf4"
   },
   "block:Join Links Block": {
     "version": 2,
@@ -392,12 +392,12 @@
     "hash": "70341c4c2eec"
   },
   "block:Photo Grid (2x2)": {
-    "version": 2,
-    "hash": "951d01ea113b"
+    "version": 3,
+    "hash": "2b7be1087ea8"
   },
   "block:Photo and Text Grid (2x2)": {
-    "version": 2,
-    "hash": "a2e95d4a0eb2"
+    "version": 3,
+    "hash": "731d5356fd7d"
   },
   "block:Podcast Episode Block": {
     "version": 2,
@@ -424,8 +424,8 @@
     "hash": "18f091fad92d"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 5,
-    "hash": "074524a4caa5"
+    "version": 6,
+    "hash": "d2e4ef86f175"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 2,

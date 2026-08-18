@@ -821,7 +821,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="light-only" />
+          fluid-on-mobile="true" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="292px"
@@ -829,7 +829,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
+          fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -842,7 +842,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="light-only" />
+          fluid-on-mobile="true" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="292px"
@@ -850,7 +850,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
+          fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -871,7 +871,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="light-only" />
+          fluid-on-mobile="true" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -879,7 +879,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
+          fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -892,7 +892,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="light-only" />
+          fluid-on-mobile="true" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -900,7 +900,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
+          fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -913,7 +913,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="light-only" />
+          fluid-on-mobile="true" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-family.jpg" width="184px"
@@ -921,7 +921,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
+          fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -1348,7 +1348,7 @@
       </mj-column>
     </mj-section>
     <mj-section
-      css-class="image-block block"
+      css-class="image-block block flush-mobile-capflush"
       background-color="#362229" padding="8px 32px 0"
     >
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
@@ -1357,14 +1357,14 @@
           alt="Keith Maley and a ring-necked pheasant"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="light-only" />
+         padding="0 0 16px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-4.png"
           alt="Keith Maley and a ring-necked pheasant"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="dark-only" data-style-dark-mode />
+         padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;"><b>Keith Maley:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
@@ -1376,14 +1376,14 @@
           alt="Ronda Lee Chapman and a northern flicker"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="light-only" />
+         padding="0 0 16px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-1.png"
           alt="Ronda Lee Chapman and a northern flicker"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="dark-only" data-style-dark-mode />
+         padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
@@ -1391,7 +1391,7 @@
       </mj-column>
     </mj-section>
     <mj-section
-      css-class="image-block block"
+      css-class="image-block block flush-mobile-capflush"
       background-color="#362229" padding="8px 32px 0"
     >
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
@@ -1400,14 +1400,14 @@
           alt="Taj Schottland and a northern cardinal"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="light-only" />
+         padding="0 0 16px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-2.png"
           alt="Taj Schottland and a northern cardinal"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="dark-only" data-style-dark-mode />
+         padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" padding="0 0 16px" data-mobile-only-spacing-below>
           <p style="font-size:16px;"><b>Taj Schottland:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
@@ -1419,14 +1419,14 @@
           alt="Jeff Danter and a great egret"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="light-only" />
+         padding="0 0 16px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-3.png"
           alt="Jeff Danter and a great egret"
           width="248px"
           align="center"
-         padding="0 0 16px" css-class="dark-only" data-style-dark-mode />
+         padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;"><b>Jeff Danter:</b> &ldquo;My favorite TPL-protected birding spot is the Chattahoochee RiverLands. This green oasis that runs through the heart of suburban Atlanta is a natural migration corridor that fills with the songs of hundreds of species every spring.&rdquo;</p>
@@ -1596,40 +1596,40 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="image-block block" background-color="#362229" padding="8px 32px 0">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="8px 32px 0">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="image-block block" background-color="#362229" padding="0 32px">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="0 32px">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 45-54</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="light-only" />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" padding="0 0 16px">
           <a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 65+</a>

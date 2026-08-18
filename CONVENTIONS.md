@@ -916,6 +916,22 @@ sort — it is purely the panel/export display order.
   big Footer's bare DONATE/link row) never reaches the button-link
   scanner; the whole mj-text mints as one RTE Content field, and the
   label and colors are edited there. Deliberate — no dedicated fields.
+- **`inline-fluid` grid images** (css-class token on mj-image,
+  2026-08-18; probe_fullbleed-grid-images, guide §2b-bis): the compiled
+  image's constraining inner td is rewritten from `width:Npx` to
+  `width:100%` on EVERY compile — `applyInlineFluid` in
+  `src/core/mjml.ts` (main and instrumented compiles share the hook, so
+  region offsets never skew) and its mirror in TPL
+  `scripts/restore-excluded.mjs` for dist parity. The img keeps its
+  Word-facing width ATTRIBUTE and its stock inline `width:100%`, so the
+  no-CSS rendering is the correct mobile rendering; desktop is capped by
+  the min-width:600 column classes and Outlook by its MSO cells. A
+  bordered fluid image also gains `box-sizing:border-box` (100% includes
+  the border — the quiz tiles' 3px frames otherwise overflow the
+  viewport). Flagged images mint NO "Width in Pixels" field: the width
+  attribute would edit Outlook alone — the banned Outlook-only copy.
+  Both twins of a swap pair must carry the token (attrs-equal pairing).
+  Fail-open per image, idempotent.
 - **Column widths: enumerated dropdown for lone inset-box columns ONLY**
   (2026-08-09, closing future-enhancements #1 v1). A section's single
   fixed-px column (Highlighted Text's 480px card) gets a "Desktop Column

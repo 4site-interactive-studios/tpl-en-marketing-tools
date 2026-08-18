@@ -240,6 +240,14 @@ and Outlook desktop — and EN's inliner leaves inline `width:` on img and
 table untouched (11/11 carriers delivered verbatim; the
 `vertical-align`→`valign` rewrite does NOT extend to width).
 
+The pattern ships as the **`inline-fluid` css-class token** on grid
+mj-images (both twins of a swap pair): the build rewrites the compiled
+image's constraining td to `width:100%` (bordered images also gain
+`box-sizing:border-box`), and the importer deliberately mints no Width
+field for flagged images — the width attribute would edit Outlook alone.
+Author it on any side-by-side image whose stacked mobile rendering
+should be full-bleed.
+
 ### 2c. Where dark mode can and cannot reach
 
 **First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
