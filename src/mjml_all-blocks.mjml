@@ -1684,9 +1684,8 @@
     <!-- END: Video Block (full-bleed) -->
 
     <!-- START: Video Block (inset) -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px 0">
-      <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-      <mj-wrapper background-color="#362229" padding="0">
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. It used to be a second, nested wrapper so the frame could stay #ffffff, but mj-wrapper inside mj-wrapper is invalid MJML; the frame is now the fallback colour instead (2026-08-19). -->
+    <mj-wrapper css-class="block" background-color="#362229" padding="16px 48px 0">
         <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="90px 0 90px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -1696,7 +1695,6 @@
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
     </mj-section>
-      </mj-wrapper>
     </mj-wrapper>
     <mj-section css-class="block caption" background-color="#ffffff" padding="4px 48px 0">
       <mj-column vertical-align="middle">
@@ -2292,9 +2290,8 @@
     <!-- END: Progress Meter Block -->
 
     <!-- START: Countdown Card -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="16px 48px">
-      <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-      <mj-wrapper background-color="#362229" padding="0">
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. It used to be a second, nested wrapper so the frame could stay #ffffff, but mj-wrapper inside mj-wrapper is invalid MJML; the frame is now the fallback colour instead (2026-08-19). -->
+    <mj-wrapper css-class="block" background-color="#362229" padding="16px 48px">
         <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -2319,7 +2316,6 @@
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
     </mj-section>
-      </mj-wrapper>
     </mj-wrapper>
     <!-- END: Countdown Card -->
 

@@ -160,8 +160,8 @@
     "hash": "6de0b8a8c6b5"
   },
   "block:Countdown Card": {
-    "version": 8,
-    "hash": "6cf5398b8a06"
+    "version": 9,
+    "hash": "2a7bf2ec2512"
   },
   "block:Deadline Panel": {
     "version": 3,
@@ -568,8 +568,8 @@
     "hash": "df78d4af68d9"
   },
   "block:Video Block (inset)": {
-    "version": 4,
-    "hash": "02aae4b368f0"
+    "version": 5,
+    "hash": "bd8d38b2714c"
   },
   "block:WYSIWYG Text (full width)": {
     "version": 3,
