@@ -180,36 +180,36 @@
     "hash": "ea2450ed2e32"
   },
   "block:Feedback Poll Block": {
-    "version": 4,
-    "hash": "031cc21fd397"
+    "version": 5,
+    "hash": "6c2c94a2f14c"
   },
   "block:Feedback Poll Option": {
-    "version": 2,
-    "hash": "dada2c556b0a"
+    "version": 3,
+    "hash": "05ada566de27"
   },
   "block:Footer": {
     "version": 3,
     "hash": "d570f3d8bc16"
   },
   "block:Footer (dark)": {
-    "version": 2,
-    "hash": "9e2102e841c0"
+    "version": 3,
+    "hash": "a6161592a829"
   },
   "block:Footer (light green)": {
-    "version": 2,
-    "hash": "ee4008d45ca4"
+    "version": 3,
+    "hash": "a5617412fe94"
   },
   "block:Footer (off-white)": {
-    "version": 2,
-    "hash": "0d3bcafcb60d"
+    "version": 3,
+    "hash": "581c14ba4efb"
   },
   "block:Footer (w/ image)": {
-    "version": 2,
-    "hash": "39d3635ec107"
+    "version": 3,
+    "hash": "d1b787e8b017"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 3,
-    "hash": "30ecccebbb26"
+    "version": 4,
+    "hash": "5b3a3873ae3a"
   },
   "block:Heading": {
     "version": 2,
@@ -288,32 +288,32 @@
     "hash": "6543e2121d4f"
   },
   "block:Image": {
-    "version": 2,
-    "hash": "a0f24665d3bb"
+    "version": 3,
+    "hash": "7a353b8a2399"
   },
   "block:Image (bikers)": {
-    "version": 5,
-    "hash": "3b6313b3358f"
+    "version": 6,
+    "hash": "bcffdb59482a"
   },
   "block:Image (full-bleed)": {
-    "version": 5,
-    "hash": "9d9c605399fe"
+    "version": 6,
+    "hash": "e812e19c6dc3"
   },
   "block:Image (inset)": {
-    "version": 5,
-    "hash": "12a1b469510f"
+    "version": 6,
+    "hash": "444a1cee9069"
   },
   "block:Image 1x1": {
-    "version": 4,
-    "hash": "e5231b4d60d9"
+    "version": 5,
+    "hash": "d5a013fc50bf"
   },
   "block:Images 2x1": {
-    "version": 5,
-    "hash": "f290584745ca"
+    "version": 6,
+    "hash": "40aed90aa230"
   },
   "block:Images 3x1": {
-    "version": 6,
-    "hash": "b069177899fc"
+    "version": 7,
+    "hash": "308467a92977"
   },
   "block:Join Links Block": {
     "version": 2,
@@ -480,28 +480,28 @@
     "hash": "1890e8b46802"
   },
   "block:Story Card (image left)": {
-    "version": 7,
-    "hash": "601d54fe0fd3"
+    "version": 8,
+    "hash": "0e4d991fe1a2"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 6,
-    "hash": "2e9b3635a7d5"
+    "version": 7,
+    "hash": "a510480e5e33"
   },
   "block:Story Card (image left, no button)": {
-    "version": 5,
-    "hash": "dbae6ec51525"
+    "version": 6,
+    "hash": "c9456293e448"
   },
   "block:Story Card (image right)": {
-    "version": 7,
-    "hash": "60aada99fabd"
+    "version": 8,
+    "hash": "fb9a4eeb76ab"
   },
   "block:Story Card (image right, middle-aligned)": {
-    "version": 6,
-    "hash": "04c6bfb29b31"
+    "version": 7,
+    "hash": "a67932165447"
   },
   "block:Story Card (no heading, image on the side)": {
-    "version": 8,
-    "hash": "773dd1ddeee5"
+    "version": 9,
+    "hash": "22a1db6edcd2"
   },
   "block:Story Card (orange-bordered)": {
     "version": 4,
@@ -580,16 +580,16 @@
     "hash": "a5010c947068"
   },
   "catalog-shell": {
-    "version": 10,
-    "hash": "93d0cde4c2ed"
+    "version": 11,
+    "hash": "5b4ee471cbf4"
   },
   "email-template": {
-    "version": 15,
-    "hash": "7e81cee5738f"
+    "version": 16,
+    "hash": "993146d817d1"
   },
   "head-css": {
-    "version": 3,
-    "hash": "e57c4ac23c9d"
+    "version": 4,
+    "hash": "4a170858bde1"
   },
   "partial:debug-toolbar": {
     "version": 1,

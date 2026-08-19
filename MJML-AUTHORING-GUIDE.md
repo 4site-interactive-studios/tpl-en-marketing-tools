@@ -176,6 +176,22 @@ The rule does NOT apply to wraps that exist for RETENTION of
 conditional-context selectors — `[data-ogsc]` matches nothing at send
 time, so it has no meaningful inline form.
 
+**EN merges same-condition `@media` blocks into the FIRST occurrence's
+position (measured 2026-08-19, EoA delivered heads).** Two blocks with the
+byte-identical condition string anywhere in the document come back as ONE
+block sitting where the EARLIER one stood — every rule from the later
+block moves forward with it. Any cascade that depends on source order
+(a hide block that a later same-specificity reveal must beat) is silently
+inverted if the reveal's condition also appears in an earlier block. Two
+defenses, use both: give order-dependent blocks conditions that are
+deliberately distinct from every other block's (TPL's 9998px hide vs the
+9999px OWA block), and keep each condition string authored in exactly ONE
+place — a second `(max-width: 599px)` block in an `<mj-style>` head
+dragged the stylesheet's entire mobile block ahead of the hide it had to
+follow. Note the merge matches conditions textually:
+`only screen and (max-width:599px)` (MJML's own emission) and
+`(max-width: 599px)` are different strings and do not merge.
+
 **And never write tag-like text inside CSS — comments included (outage
 2026-08-18).** Any consumer that inlines the stylesheet into an
 `<mj-style>` before parsing (the importer does) tokenizes the CSS as HTML:
@@ -521,9 +537,11 @@ exactly what EN escapes; the attribute-selector stand-in is inert in
 Gmail, which is the failing client; and a bare `.first-column table`
 descendant would also hit every nested image and button table in that
 column. The escape-safe options are to scope the descendant to a LEAF
-component whose only table is its own (the `.two-col-image table`
-precedent above), or to change the structure upstream so a class lands
-where the rule needs it. Verify by render either way.
+component whose only table is its own (the `.two-col-image table` rule
+served as that precedent until 2026-08-19, when captions moved under the
+images and made it redundant — the FORM remains the house pattern), or
+to change the structure upstream so a class lands where the rule needs
+it. Verify by render either way.
 
 **`.class element` IS the house pattern — it reaches everything**
 (measured 2026-08-13 across four EoA rounds). It is the one selector form
@@ -1186,6 +1204,25 @@ aloud). The Alt Text field survives either way (§5).
    cheapest way to run this — 54 of the blocks here sit at exactly 32/32,
    so any block off that number is either deliberate or a bug, and the
    outliers name themselves (measured 2026-08-18: five did).
+6e. Confirm no fixed-px column inside an `mj-group` relies on its px width
+   surviving on mobile — `mj-group` never stacks and converts every child
+   column to a PERCENTAGE, so a 56px icon column becomes ~10% and shrinks
+   with the viewport, and any fixed inline padding inside it eats the
+   shrunken width first (measured 2026-08-19: a 24px poll icon rendered
+   0.5px at 375px). Pin such columns with the signature-block pattern —
+   a mobile rule setting the icon column's `width: <px> !important` and
+   the text column's `width: calc(100% - <px>) !important`.
+6f. Confirm each `@media` condition string that ends up in the compiled
+   head appears exactly ONCE, and that any order-dependent pair keeps
+   deliberately distinct conditions — EN folds same-condition blocks into
+   the first occurrence's position (§2a, measured 2026-08-19).
+6g. If an EoA payload shows NO EN-inliner fingerprints — no
+   `mso-table-lspace: 0pt` style fragments inlined onto tds, only the bare
+   MJML `<style>` output — the test bypassed EN entirely and proves
+   nothing about the template or the send path. Fetch the delivered HTML
+   (`/app/acidtest/display/email_html/<TEST_ID>`) and check for inliner
+   fingerprints BEFORE diagnosing a "regression" (2026-08-19: a styleless
+   non-EN payload mimicked a catastrophic mobile-CSS regression).
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

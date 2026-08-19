@@ -108,7 +108,13 @@ p {
       styles are respected but the inline was lost (edited block HTML).
       Its condition is deliberately DISTINCT (9998px, not the OWA block's
       9999px) so EN's same-condition merge cannot move it after the 599px
-      reveal.
+      reveal. The merge's direction is MEASURED (2026-08-19, EoA delivered
+      heads): EN folds every same-condition block into the FIRST
+      occurrence's position. That is why the 599px reveal below must be
+      the ONLY (max-width: 599px) block in the whole compiled head — a
+      second copy earlier in the document (the catalogs' old mj-style
+      block) dragged this sheet's reveal in front of the 9998px hide and
+      inverted the order this pair depends on.
 
    The reveal (599px block, later in the sheet) beats BOTH copies: the
    inline hide is plain after EN's !important-strip, and the wrapped hide
@@ -170,9 +176,30 @@ p {
 
   /* The reveal half of .mobile-only (see the 9998px block above). Source
      order after the hide is load-bearing: equal specificity, equal
-     importance — later wins. */
+     importance — later wins. This must stay the ONLY (max-width: 599px)
+     block EN sees: EN folds same-condition blocks into the first
+     occurrence's position (measured 2026-08-19), so a second 599px block
+     earlier in the compiled head would drag this reveal ahead of the
+     hide. The .caption/.cta-item rules below moved here from the
+     catalogs' mj-style block for exactly that reason. */
   .mobile-only {
     display: block !important;
+  }
+
+  /* Indents the caption (!important beats the inline td padding) */
+  .caption {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Side by Side CTA Buttons */
+  .cta-item {
+    display: block !important;
+    margin: 0 0 16px 0 !important;
+  }
+
+  .cta-item:last-child {
+    margin-bottom: 0 !important;
   }
 
   /* Buttons center on mobile regardless of desktop alignment — a
@@ -274,15 +301,39 @@ p {
     padding-right: 16px !important;
   }
 
-  /* Add space below image on mobile when it is collapsed to single column */
-  .two-col-image table {
-    margin-bottom: 15px !important;
-  }
-
   /* Add space below first column on mobile when it is collapsed to single column */
   .first-column,
   .second-column {
     margin-bottom: 20px !important;
+  }
+
+  /* Images blocks: uniform 16px rhythm between stacked images on mobile
+     (user decision 2026-08-19 — EoA round read the 8px/0 group boundaries
+     as "lost" spacing). A column followed by another image in the SAME
+     section carries the full 16px; a section's last column carries 8px
+     because the section's own 8px Block Padding Bottom completes the gap;
+     the truly full-bleed singles (section padding 0) carry the full 16px
+     on their lone column. Distinct from .first-column/.second-column,
+     which the story cards keep at 20px. */
+  .image-stack-gap {
+    margin-bottom: 16px !important;
+  }
+
+  .image-stack-gap-half {
+    margin-bottom: 8px !important;
+  }
+
+  /* Feedback Poll option rows: pin the icon column so the mj-group
+     percentage math cannot squeeze it (56px compiles to 10.4478%, which
+     is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
+     left 0.5px of icon; measured 2026-08-19, EoA B4uCpmh6). Same calc
+     pattern as .signature-img/.signature-text above. */
+  .poll-icon {
+    width: 56px !important;
+  }
+
+  .poll-text {
+    width: calc(100% - 56px) !important;
   }
 
   /* Inset sections: collapse the wide desktop gutters to the standard 32px.

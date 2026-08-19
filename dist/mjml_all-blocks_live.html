@@ -402,25 +402,6 @@
     }
   </style>
   <style type="text/css">
-    @media (max-width: 599px) {
-
-      /* Indents the caption */
-      .caption {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-
-      /* Side by Side CTA Buttons */
-      .cta-item {
-        display: block !important;
-        margin: 0 0 16px 0 !important;
-      }
-
-      .cta-item:last-child {
-        margin-bottom: 0 !important;
-      }
-    }
-
     /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside a
    CSS-type Replacement (EN's CSS Editor — the Template Styles block's
    head_styles), and in EN's editing surfaces `>` gets HTML-escaped to
@@ -533,7 +514,13 @@ li {
       styles are respected but the inline was lost (edited block HTML).
       Its condition is deliberately DISTINCT (9998px, not the OWA block's
       9999px) so EN's same-condition merge cannot move it after the 599px
-      reveal.
+      reveal. The merge's direction is MEASURED (2026-08-19, EoA delivered
+      heads): EN folds every same-condition block into the FIRST
+      occurrence's position. That is why the 599px reveal below must be
+      the ONLY (max-width: 599px) block in the whole compiled head — a
+      second copy earlier in the document (the catalogs' old mj-style
+      block) dragged this sheet's reveal in front of the 9998px hide and
+      inverted the order this pair depends on.
 
    The reveal (599px block, later in the sheet) beats BOTH copies: the
    inline hide is plain after EN's !important-strip, and the wrapped hide
@@ -593,9 +580,30 @@ li {
 
       /* The reveal half of .mobile-only (see the 9998px block above). Source
      order after the hide is load-bearing: equal specificity, equal
-     importance — later wins. */
+     importance — later wins. This must stay the ONLY (max-width: 599px)
+     block EN sees: EN folds same-condition blocks into the first
+     occurrence's position (measured 2026-08-19), so a second 599px block
+     earlier in the compiled head would drag this reveal ahead of the
+     hide. The .caption/.cta-item rules below moved here from the
+     catalogs' mj-style block for exactly that reason. */
       .mobile-only {
         display: block !important;
+      }
+
+      /* Indents the caption (!important beats the inline td padding) */
+      .caption {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Side by Side CTA Buttons */
+      .cta-item {
+        display: block !important;
+        margin: 0 0 16px 0 !important;
+      }
+
+      .cta-item:last-child {
+        margin-bottom: 0 !important;
       }
 
       /* Buttons center on mobile regardless of desktop alignment — a
@@ -697,15 +705,39 @@ li {
         padding-right: 16px !important;
       }
 
-      /* Add space below image on mobile when it is collapsed to single column */
-      .two-col-image table {
-        margin-bottom: 15px !important;
-      }
-
       /* Add space below first column on mobile when it is collapsed to single column */
       .first-column,
       .second-column {
         margin-bottom: 20px !important;
+      }
+
+      /* Images blocks: uniform 16px rhythm between stacked images on mobile
+     (user decision 2026-08-19 — EoA round read the 8px/0 group boundaries
+     as "lost" spacing). A column followed by another image in the SAME
+     section carries the full 16px; a section's last column carries 8px
+     because the section's own 8px Block Padding Bottom completes the gap;
+     the truly full-bleed singles (section padding 0) carry the full 16px
+     on their lone column. Distinct from .first-column/.second-column,
+     which the story cards keep at 20px. */
+      .image-stack-gap {
+        margin-bottom: 16px !important;
+      }
+
+      .image-stack-gap-half {
+        margin-bottom: 8px !important;
+      }
+
+      /* Feedback Poll option rows: pin the icon column so the mj-group
+     percentage math cannot squeeze it (56px compiles to 10.4478%, which
+     is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
+     left 0.5px of icon; measured 2026-08-19, EoA B4uCpmh6). Same calc
+     pattern as .signature-img/.signature-text above. */
+      .poll-icon {
+        width: 56px !important;
+      }
+
+      .poll-text {
+        width: calc(100% - 56px) !important;
       }
 
       /* Inset sections: collapse the wide desktop gutters to the standard 32px.
@@ -1036,6 +1068,11 @@ li {
     } -->
   <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
   <!-- Baseline everything inherits -->
+  <!-- No mj-style @media blocks here: EN merges same-condition @media
+         blocks into the FIRST occurrence's position (measured 2026-08-19,
+         EoA delivered heads), so a 599px block in this head would drag
+         styles.css's 599px rules ahead of the order-dependent hides that
+         precede them there. All mobile rules live in styles.css. -->
   <meta name="color-scheme" content="light dark" />
   <meta name="supported-color-schemes" content="light dark" />
   <meta name="format-detection" content="telephone=no" />
@@ -4942,14 +4979,14 @@ li {
       </div>
       <!--[if mso | IE]></td></tr></table><![endif]-->
     </div><!-- END: Category — Images & Media --><!-- START: Image -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block flush-mobile-capflush" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -4990,14 +5027,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Image --><!-- START: Image (full-bleed) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -5043,14 +5080,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Image (full-bleed) --><!-- START: Image (inset) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block flush-mobile-capflush" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:16px 48px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:504px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-outlook" style="vertical-align:middle;width:504px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -5096,14 +5133,14 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Image (inset) --><!-- START: Image (bikers) -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block flush-mobile-capflush" data-fully-exclude="true" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -5148,21 +5185,23 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Image (bikers) --><!-- START: Image 1x1 --><!-- data-visible-duplicate: deliberately the same shape as Image
-         (full-bleed) under an obvious name — the single full-bleed image an
-         editor looks for when the variant names don't ring a bell (user
-         decision 2026-08-18). Must stay importable; never re-flag as a
-         data-fully-exclude duplicate. Diverges by design since 2026-08-18:
-         this variant carries the 8px Block Padding Bottom; Image
-         (full-bleed) stays truly full-bleed. -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="image-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+    <!-- END: Image (bikers) --><!-- START: Image 1x1 --><!-- Deliberately Image (full-bleed) under an obvious name — the single
+         full-bleed image an editor looks for when the variant names don't
+         ring a bell (user decision 2026-08-18). Must stay importable.
+         Diverges by design since 2026-08-18, and structurally since
+         2026-08-19: this variant carries the 8px Block Padding Bottom plus
+         the half stack gap (8+8 = the uniform mobile 16); Image
+         (full-bleed) stays truly full-bleed and carries the full 16px gap.
+         No data-visible-duplicate: the stack-gap split made it its own
+         structure group, so the flag would warn as anchor misuse. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="image-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-half-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -5214,8 +5253,8 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
-              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
+              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5261,8 +5300,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
-              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-half-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
+              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5322,8 +5361,8 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook first-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column first-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5369,8 +5408,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook second-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column second-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -5416,8 +5455,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-half-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -6263,7 +6302,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6279,7 +6318,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6359,7 +6398,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6375,7 +6414,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6456,7 +6495,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6472,7 +6511,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6553,7 +6592,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6569,7 +6608,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6650,7 +6689,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6666,7 +6705,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6747,7 +6786,7 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="two-col-image light-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -6763,7 +6802,7 @@ li {
                             </tr>
                             <!--[if !mso]><!-->
                             <tr>
-                              <td align="center" class="two-col-image dark-only" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="center" class="dark-only" style="font-size:0px;padding:0;word-break:break-word;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;" class="mj-full-width-mobile">
                                   <tbody>
                                     <tr>
@@ -8178,8 +8217,13 @@ li {
             <td style="direction:ltr;font-size:0px;padding:0 32px 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:56px;" ><![endif]-->
-                <div class="mj-column-px-56 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:10.44776119402985%;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><![endif]-->
+                <!-- poll-icon/poll-text pin the group's column split on mobile
+             (signature-img precedent): without them the 56px icon column
+             compiles to 10.4478% and the fixed 32px gap padding squeezes
+             the icon to under 1px at 375px (measured 2026-08-19, EoA). -->
+                <!--[if mso | IE]><td style="vertical-align:middle;width:56px;" ><![endif]-->
+                <div class="mj-column-px-56 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:10.44776119402985%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -8211,7 +8255,7 @@ li {
                   </table>
                 </div>
                 <!--[if mso | IE]></td><td style="vertical-align:middle;width:480px;" ><![endif]-->
-                <div class="mj-column-px-480 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:89.55223880597015%;">
+                <div class="mj-column-px-480 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:89.55223880597015%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -9722,7 +9766,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">
-                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                         </div>
                       </td>
                     </tr>
@@ -9883,7 +9927,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">
-                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                         </div>
                       </td>
                     </tr>
@@ -10050,7 +10094,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                         </div>
                       </td>
                     </tr>
@@ -10184,7 +10228,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                         </div>
                       </td>
                     </tr>
@@ -10318,7 +10362,7 @@ li {
                     <tr>
                       <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+                          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                         </div>
                       </td>
                     </tr>

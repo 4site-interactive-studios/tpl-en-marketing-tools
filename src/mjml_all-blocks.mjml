@@ -45,19 +45,11 @@
       />
     </mj-attributes>
 
-    <mj-style>
-      @media (max-width: 599px) {
-        /* Indents the caption */
-        .caption {
-          padding-left: 16px !important;
-          padding-right: 16px !important;
-        }
-
-        /* Side by Side CTA Buttons */
-        .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
-        .cta-item:last-child { margin-bottom: 0 !important; }
-      }
-    </mj-style>
+    <!-- No mj-style @media blocks here: EN merges same-condition @media
+         blocks into the FIRST occurrence's position (measured 2026-08-19,
+         EoA delivered heads), so a 599px block in this head would drag
+         styles.css's 599px rules ahead of the order-dependent hides that
+         precede them there. All mobile rules live in styles.css. -->
 
     <mj-raw>
       <meta name="color-scheme" content="light dark" />
@@ -1456,10 +1448,10 @@
 
     <!-- START: Image -->
     <mj-section
-      css-class="image-block block"
+      css-class="image-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0" data-fully-exclude
     >
-      <mj-column vertical-align="middle">
+      <mj-column vertical-align="middle" css-class="image-stack-gap">
         <mj-image
           src="assets/photo-family.jpg"
           alt="Image Alt Text"
@@ -1479,8 +1471,8 @@
     <!-- END: Image -->
 
     <!-- START: Image (full-bleed) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle" css-class="image-stack-gap">
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
@@ -1493,8 +1485,8 @@
     <!-- END: Image (full-bleed) -->
 
     <!-- START: Image (inset) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 48px" data-fully-exclude>
-      <mj-column vertical-align="middle">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 48px" data-fully-exclude>
+      <mj-column vertical-align="middle" css-class="image-stack-gap">
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" css-class="dark-only" data-style-dark-mode />
@@ -1507,8 +1499,8 @@
     <!-- END: Image (inset) -->
 
     <!-- START: Image (bikers) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0" data-fully-exclude>
-      <mj-column vertical-align="middle">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0" data-fully-exclude>
+      <mj-column vertical-align="middle" css-class="image-stack-gap">
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
@@ -1521,15 +1513,17 @@
     <!-- END: Image (bikers) -->
 
     <!-- START: Image 1x1 -->
-    <!-- data-visible-duplicate: deliberately the same shape as Image
-         (full-bleed) under an obvious name — the single full-bleed image an
-         editor looks for when the variant names don't ring a bell (user
-         decision 2026-08-18). Must stay importable; never re-flag as a
-         data-fully-exclude duplicate. Diverges by design since 2026-08-18:
-         this variant carries the 8px Block Padding Bottom; Image
-         (full-bleed) stays truly full-bleed. -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 0 8px" data-visible-duplicate>
-      <mj-column vertical-align="middle">
+    <!-- Deliberately Image (full-bleed) under an obvious name — the single
+         full-bleed image an editor looks for when the variant names don't
+         ring a bell (user decision 2026-08-18). Must stay importable.
+         Diverges by design since 2026-08-18, and structurally since
+         2026-08-19: this variant carries the 8px Block Padding Bottom plus
+         the half stack gap (8+8 = the uniform mobile 16); Image
+         (full-bleed) stays truly full-bleed and carries the full 16px gap.
+         No data-visible-duplicate: the stack-gap split made it its own
+         structure group, so the flag would warn as anchor misuse. -->
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 0 8px">
+      <mj-column vertical-align="middle" css-class="image-stack-gap-half">
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
@@ -1546,7 +1540,7 @@
       css-class="two-col-images-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 0 8px"
     >
-      <mj-column css-class="two-col-column first-column" width="300px" vertical-align="middle" padding="0 8px 0 0">
+      <mj-column css-class="two-col-column image-stack-gap" width="300px" vertical-align="middle" padding="0 8px 0 0">
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
@@ -1567,7 +1561,7 @@
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="300px" vertical-align="middle" padding="0 0 0 8px">
+      <mj-column css-class="two-col-column image-stack-gap-half" width="300px" vertical-align="middle" padding="0 0 0 8px">
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
@@ -1595,7 +1589,7 @@
       css-class="three-col-images-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 0 8px"
     >
-      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" padding="0 16px 0 0">
+      <mj-column css-class="two-col-column image-stack-gap" width="200px" vertical-align="middle" padding="0 16px 0 0">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1616,7 +1610,7 @@
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column second-column" width="200px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column image-stack-gap" width="200px" vertical-align="middle" padding="0 8px">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1637,7 +1631,7 @@
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 0 0 16px">
+      <mj-column css-class="two-col-column image-stack-gap-half" width="200px" vertical-align="middle" padding="0 0 0 16px">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1889,9 +1883,9 @@
     <!-- START: Story Card (no heading, image on the side) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px">
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
-        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -1910,9 +1904,9 @@
     <!-- START: Story Card (image right) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px" data-fully-exclude>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
-        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-hiking-duo.jpg" width="224px" alt="Two people hiking in an autumn forest" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -1934,9 +1928,9 @@
     <!-- START: Story Card (image left) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px" data-fully-exclude>
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
-        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image light-only" />
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="two-col-image dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-garden.jpg" width="224px" alt="Children exploring plants in a schoolyard garden" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -1968,7 +1962,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0"
-            css-class="two-col-image light-only" />
+            css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-forest.jpg" width="220px"
@@ -1977,7 +1971,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0"
-            css-class="two-col-image dark-only" data-style-dark-mode />
+            css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -2016,7 +2010,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0"
-            css-class="two-col-image light-only" />
+            css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
             src="assets/photo-hiking-duo.jpg" width="220px"
@@ -2025,7 +2019,7 @@
             align="center"
             fluid-on-mobile="true"
             padding="0"
-            css-class="two-col-image dark-only" data-style-dark-mode />
+            css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -2061,7 +2055,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          width="224px" css-class="two-col-image light-only" fluid-on-mobile="true" />
+          width="224px" css-class="light-only" fluid-on-mobile="true" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/image-ranking.png"
@@ -2069,7 +2063,7 @@
           href="https://www.example.com"
           padding="0"
           align="center"
-          width="224px" css-class="two-col-image dark-only" fluid-on-mobile="true" data-style-dark-mode />
+          width="224px" css-class="dark-only" fluid-on-mobile="true" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photograph by Photographer</span>
@@ -2496,13 +2490,17 @@
     <!-- START: Feedback Poll Option -->
     <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px">
       <mj-group>
-        <mj-column width="56px" vertical-align="middle">
+        <!-- poll-icon/poll-text pin the group's column split on mobile
+             (signature-img precedent): without them the 56px icon column
+             compiles to 10.4478% and the fixed 32px gap padding squeezes
+             the icon to under 1px at 375px (measured 2026-08-19, EoA). -->
+        <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="480px" vertical-align="middle">
+        <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Very important</a></p>
           </mj-text>
@@ -2938,7 +2936,7 @@
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text color="#ffffff" align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2964,7 +2962,7 @@
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2997,7 +2995,7 @@
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -3019,7 +3017,7 @@
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -3041,7 +3039,7 @@
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
