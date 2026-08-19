@@ -404,7 +404,41 @@ ONLY that option applied (every other field at its default) at 600px
 375px (mobile), light mode only, and compares raster **pixels** (SHA-256
 over the RGBA bytes), not geometry — color and font fields are in scope. A
 field is INERT at a viewport iff every option rasters byte-identical to
-the all-defaults baseline. Implementation: `src/core/inertAudit.ts`
+the all-defaults baseline.
+
+**Every cell renders under TWO copy lengths** (`AUDIT_COPY_PROFILES`):
+`single-line`, and `wrapped` — copy long enough to wrap onto a second line
+in any container the catalog has, including caption type at 10px. A
+control is inert only if it moves nothing under BOTH. The two hashes are
+JOINED into one composite, so equality still means "identical" and every
+downstream consumer — storage, resume, the report, `assessRow` — is
+untouched.
+
+This exists because the placeholder copy was hiding live controls.
+Measured 2026-08-18: of five fields the sweep called "dead — no option
+changes any pixel at either viewport", FOUR were live as soon as the copy
+was longer than the catalog's own placeholder. A Block Padding Left/Right
+control cannot move a CENTRED "Lorem Ipsum" — the preset shrinks both
+sides equally and the centre of a short line never moves (ink fixed at
+540,740 across every option) — but with a full sentence it re-wraps and
+the ink travels 382,898 → 473,807. A Padding Right control beside a
+LEFT-aligned heading has 263px of empty space to eat before it reaches the
+words. Short copy hides any control whose only job is to move an edge the
+text never reaches, and the failure is silent: the row reads as a dead
+control and invites someone to delete a perfectly good field.
+
+`applyCopyProfile` swaps the copy but keeps every tag and inline style, so
+heading level, font size and colour survive — the probe must measure the
+element an editor actually sees. Only `Text` and `RTE` fields are
+rewritten. A block with no copy-bearing field compiles the same body under
+both profiles and the runner dedupes it, so those blocks cost exactly what
+they did before; `auditRenderCount` still multiplies by the profile count
+because it is an honest ceiling for the ETA, not a prediction. Editing
+`PROBE_COPY` invalidates every stored row through
+`auditContextFingerprint` — a resume must never compare hashes taken under
+two different sentences.
+
+Implementation: `src/core/inertAudit.ts`
 (classification + the runner — pure, vitest-covered against a scripted
 fake engine), `src/components/inertAuditRender.ts` (iframe pool →
 `foreignObject` raster → pixel hash),
@@ -436,6 +470,29 @@ Determinism contract — what makes the matrix trustworthy:
   neutralization, breakpoint evaluation at 600 vs 375 inside the raster
   context) and REFUSES to run if any tripwire fails — a lying matrix is
   worse than no matrix.
+- **Caching is allowed only on the exact input, never on a digest of it.**
+  A key weaker than the input could collide and silently corrupt a verdict.
+  Three caches qualify, and they are the same premise the "inert at
+  defaults" short-circuit already rests on — the raster is a pure function
+  of the substituted body at a fixed viewport: identical body strings within
+  one block × viewport render ONCE (`runInertAudit`); `stubImages`
+  memoizes body→stubbed-body once the placeholder map has frozen; and the
+  raster tail is skipped when the serialized SVG is byte-identical to one
+  already hashed at that width. Only `ok` outcomes are reusable — a failed
+  render is evicted so the next cell needing it gets a fresh attempt.
+  **The baseline re-verify passes `bypassCache` and therefore reads and
+  writes none of them**; a cached witness is not a witness.
+- **Parallelism is a timing knob, never a verdict knob.** The two viewports
+  run concurrently and option cells run `concurrency`-wide against an
+  iframe pool of the same size (default `hardwareConcurrency - 2`, clamped
+  3-8, overridable per machine in the panel and stored under its own
+  `en-tools:inert-audit:concurrency` key — machine-local, so deliberately
+  NOT in `Settings`, which travels with the project). Contention can only
+  make a render slower, and a slow render times out to unstable → one retry
+  → **unproven**. The failure direction is one-way: starving a render can
+  never manufacture an `inert`. Each viewport still re-verifies its
+  baseline strictly AFTER its own cells drain, so "the baseline hashed the
+  same before and after this block's renders" keeps its exact meaning.
 
 Verdict vocabulary the matrix never conflates: **inert** (proven, per
 viewport) · **inert at defaults** (the option's substituted body is
