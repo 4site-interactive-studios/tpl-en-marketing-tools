@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 8,
-    "hash": "29d8d69529e2"
+    "version": 9,
+    "hash": "023bb49ae908"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 8,
-    "hash": "a9d63f00cd75"
+    "version": 9,
+    "hash": "f3377f4627ef"
   },
   "block:Body Text (inset)": {
     "version": 2,

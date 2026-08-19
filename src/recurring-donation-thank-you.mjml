@@ -45,19 +45,12 @@
       />
     </mj-attributes>
 
-    <mj-style>
-      @media (max-width: 599px) {
-        /* Indents the caption */
-        .caption {
-          padding-left: 16px !important;
-          padding-right: 16px !important;
-        }
-
-        /* Side by Side CTA Buttons */
-        .cta-item { display: block !important; margin: 0 0 16px 0 !important; }
-        .cta-item:last-child { margin-bottom: 0 !important; }
-      }
-    </mj-style>
+    <!-- No mj-style @media blocks here: EN merges same-condition @media
+         blocks into the FIRST occurrence's position (measured 2026-08-19,
+         EoA delivered heads), so a 599px block in this head would drag
+         styles.css's 599px rules ahead of the order-dependent hides that
+         precede them there. The caption/cta-item rules this block used to
+         carry live in styles.css since 2026-08-19. -->
 
     <mj-raw>
       <meta name="color-scheme" content="light dark" />
@@ -88,8 +81,8 @@
     <!-- END: Heading -->
 
     <!-- START: Image (full-bleed) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
+      <mj-column vertical-align="middle" css-class="image-stack-gap">
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
@@ -196,7 +189,7 @@
         </mj-text>
         <mj-text color="#ffffff" align="center" padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
-          <p style="font-size:14px;line-height:21px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}.</b></p>
+          <p style="font-size:14px;line-height:21px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
