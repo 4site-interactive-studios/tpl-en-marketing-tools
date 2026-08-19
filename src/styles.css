@@ -307,21 +307,11 @@ p {
     margin-bottom: 20px !important;
   }
 
-  /* Images blocks: uniform 16px rhythm between stacked images on mobile
-     (user decision 2026-08-19 — EoA round read the 8px/0 group boundaries
-     as "lost" spacing). A column followed by another image in the SAME
-     section carries the full 16px; a section's last column carries 8px
-     because the section's own 8px Block Padding Bottom completes the gap;
-     the truly full-bleed singles (section padding 0) carry the full 16px
-     on their lone column. Distinct from .first-column/.second-column,
-     which the story cards keep at 20px. */
-  .image-stack-gap {
-    margin-bottom: 16px !important;
-  }
-
-  .image-stack-gap-half {
-    margin-bottom: 8px !important;
-  }
+  /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
+     decision, round two): every image caption authors padding 4px 0 8px —
+     Quarter above, Half below, both viewports — and the image sections
+     carry no bottom padding. The mobile-only image-stack-gap classes this
+     replaced are retired. */
 
   /* Feedback Poll option rows: pin the icon column so the mj-group
      percentage math cannot squeeze it (56px compiles to 10.4478%, which

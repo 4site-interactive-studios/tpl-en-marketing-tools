@@ -1,6 +1,6 @@
 <!-- data-no-background-color: the three columns tile the full content width with opaque spacers, so this background can never show. It stays as a fallback but gets no editable field (audited 2026-08-10). -->
 <mj-section css-class="divider-block block" background-color="#ffffff" padding="0" data-no-background-color>
-  <mj-group>
+  <mj-group data-no-direction-toggle>
     <mj-column width="200px"><mj-spacer height="4px" container-background-color="#F7931E" /></mj-column>
     <mj-column width="200px"><mj-spacer height="4px" container-background-color="#8CC63F" /></mj-column>
     <mj-column width="200px"><mj-spacer height="4px" container-background-color="#5DD8D8" /></mj-column>

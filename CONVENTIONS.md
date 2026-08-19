@@ -844,9 +844,12 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
 
 - **Group words (roles)**: an authored `data-group-label` wins verbatim on
   any content element ("Quote", "Episode Title", "Row Link"). An `mj-text`
-  otherwise infers: lone plain `<h1>`–`<h6>` → **Heading**; a `caption`
-  class token (mj-class or css-class) → **Caption**; all-`<p>` prose →
-  **Paragraph Copy**; anything else stays **Text**. Other components keep
+  otherwise infers: a `cta-group` pill row → **Button Row** (its only
+  own fields are the row's Spacing Below/Display — the embedded pills
+  still mint their own Button groups); lone `<h1>`–`<h6>` (markup inner
+  allowed) → **Heading**; a `caption` class token (mj-class or css-class)
+  → **Caption**; all-`<p>` prose → **Paragraph Copy**; anything else
+  stays **Text**. Other components keep
   their component word (Image, Button, Divider…). Roles number in their
   own ladders — a Heading never consumes a Text ordinal.
 - **Block header = the block's name, always first** — for single- AND
@@ -857,7 +860,12 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   glyph — it is a parent)**, carrying that band's frame settings, whose
   merge tags read `section_2_padding_top` (…was `block_2_…`). (An
   mj-section whose frame fields are all suppressed still anchors its
-  content's grouping.)
+  content's grouping.) Twin frames with IDENTICAL authored values each
+  claim their own copies: frame occurrence-matching partitions the
+  document into per-frame territories (own element plus its preceding
+  MSO ghost copies), fixed 2026-08-19 — before that the first section
+  claimed every copy and its identical sibling minted no frame fields
+  at all (the Photo and Text Grid's field-less Section 3).
 - **Content groups**: in a **single-band block they carry NO glyph** —
   `Heading`, `Text`, `Column 1 Button` sit directly under the block header
   (the glyph implied a hierarchy that wasn't there). In a **multi-band
@@ -1044,9 +1052,12 @@ sort — it is purely the panel/export display order.
   Replacement selections per instance. `data-no-link-toggle` opts out
   upstream. Label is bare "Link", sorted directly under Display.
 - **Heading Level toggles** (2026-08-19, user-decided): an `mj-text`
-  flagged `data-heading-level-toggle` whose ENTIRE content is one
-  plain-text `<h1>`–`<h6>` gets a "Heading Level" Select of H1–H4 (plus
-  the authored level when it's h5/h6). Each option's value is the full
+  flagged `data-heading-level-toggle` whose ENTIRE content is one lone
+  `<h1>`–`<h6>` gets a "Heading Level" Select of H1–H4 (plus the
+  authored level when it's h5/h6). Markup INSIDE the heading is allowed
+  (relaxed same day for the linked header rows — the anchor rides inside
+  the narrowed Content value); siblings beside the heading, or another
+  heading close within, still void the flag with an import note. Each option's value is the full
   compiled heading with its tag swapped and attributes preserved; the
   Content field is narrowed to the heading's INNER text and rides inside
   every option as a nested tag, so level and copy can never desync.
@@ -1759,12 +1770,17 @@ importer whitelists all data-*-only MJML validator warnings
   `src/core/mjmlProps.ts`), the same effect a structurally pinned gutter
   gets automatically. The two consumers are mutually exclusive by
   construction: a block containing any px column never offers the preset.
-- **`data-width-options`** (VALUED — the one exception in this family, on
-  mj-column): `data-width-options="150,250,350"` curates that column's
-  Column Width ladder, overriding en-tools-config `columnWidthsPx` and
-  the default 50px steps. Whole px numbers ≥ 50, comma-separated; each
-  still needs a live `.mj-column-px-N` head class and must fit the row.
-  An unparseable list is ignored with an infoNote.
+- **`data-width-options`** (VALUED, on mj-column AND mj-divider):
+  on a column, `data-width-options="150,250,350"` curates its Column
+  Width ladder, overriding en-tools-config `columnWidthsPx` and the
+  default 50px steps — whole px numbers ≥ 50, each still needing a live
+  `.mj-column-px-N` head class and fitting the row. On an mj-divider
+  (2026-08-19), the list ships the divider's Width as a Select ladder
+  verbatim (no head-class guard — divider widths are plain inline
+  `width:Npx`), with an `Original (Npx)` escape appended for an
+  off-ladder authored width; without the flag the free "Width in
+  Pixels" number stays. An unparseable list is ignored with an
+  infoNote either way.
 - **`data-no-link-toggle`** (valueless, on mj-image): opts the image out
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link
@@ -1798,8 +1814,9 @@ importer whitelists all data-*-only MJML validator warnings
 - **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
   user-decided): mints the "Heading Level" H1–H4 Select and narrows the
   Content field to the heading's inner text (see Other generated
-  controls). Requires the mj-text's entire content to be one plain-text
-  heading; anything else voids the flag with an import note.
+  controls). Requires the mj-text's entire content to be one lone
+  heading (inner markup allowed, 2026-08-19); siblings or a second
+  heading void the flag with an import note.
 - **`data-group-label="<words>"`** (valued; on any content element AND on
   raw `<a>` tags inside complex markup, 2026-08-19, user-decided): the
   authored group word, verbatim — it names the panel group, prefixes the

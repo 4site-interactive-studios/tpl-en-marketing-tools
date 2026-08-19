@@ -286,6 +286,9 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
+        <mj-text align="right" color="#ffffff" padding="0 0 8px">
+          <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
+        </mj-text>
         <mj-image
           src="assets/state-north-carolina.png"
           alt="Logo"
@@ -702,7 +705,7 @@
       background-color="#ffffff" padding="16px 32px 0"
     >
       <mj-column vertical-align="middle">
-        <mj-text padding="0">
+        <mj-text data-heading-level-toggle padding="0">
           <h2><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
@@ -712,7 +715,7 @@
     <!-- START: Linked Header Row (w/ icon) -->
     <mj-section css-class="text-block block header-row-block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
-        <mj-text padding="0">
+        <mj-text data-heading-level-toggle padding="0">
           <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
@@ -1480,7 +1483,7 @@
       css-class="image-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0" data-fully-exclude
     >
-      <mj-column vertical-align="middle" css-class="image-stack-gap">
+      <mj-column vertical-align="middle">
         <mj-image
           src="assets/photo-family.jpg"
           alt="Image Alt Text"
@@ -1501,12 +1504,12 @@
 
     <!-- START: Image (full-bleed) -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle" css-class="image-stack-gap">
+      <mj-column vertical-align="middle">
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1515,12 +1518,12 @@
 
     <!-- START: Image (inset) -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 48px" data-fully-exclude>
-      <mj-column vertical-align="middle" css-class="image-stack-gap">
+      <mj-column vertical-align="middle">
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" width="504px" alt="Family celebrating on a mountain overlook" href="https://www.example.com" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1529,12 +1532,12 @@
 
     <!-- START: Image (bikers) -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0" data-fully-exclude>
-      <mj-column vertical-align="middle" css-class="image-stack-gap">
+      <mj-column vertical-align="middle">
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-bikers.jpg" alt="Two people biking on a country trail" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1542,22 +1545,21 @@
     <!-- END: Image (bikers) -->
 
     <!-- START: Image 1x1 -->
-    <!-- Deliberately Image (full-bleed) under an obvious name — the single
-         full-bleed image an editor looks for when the variant names don't
-         ring a bell (user decision 2026-08-18). Must stay importable.
-         Diverges by design since 2026-08-18, and structurally since
-         2026-08-19: this variant carries the 8px Block Padding Bottom plus
-         the half stack gap (8+8 = the uniform mobile 16); Image
-         (full-bleed) stays truly full-bleed and carries the full 16px gap.
-         No data-visible-duplicate: the stack-gap split made it its own
-         structure group, so the flag would warn as anchor misuse. -->
-    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 0 8px">
-      <mj-column vertical-align="middle" css-class="image-stack-gap-half">
+    <!-- data-visible-duplicate: deliberately Image (full-bleed) under an
+         obvious name — the single full-bleed image an editor looks for when
+         the variant names don't ring a bell (user decision 2026-08-18).
+         Must stay importable. Since 2026-08-19 round two the caption owns
+         the rhythm (4px above / 8px below) and the stack-gap classes are
+         retired, so this variant normalizes back into Image (full-bleed)'s
+         structure group as a follow-on member — the flag is meaningful
+         again (it would only warn on a group ANCHOR). -->
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0" data-visible-duplicate>
+      <mj-column vertical-align="middle">
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1567,9 +1569,9 @@
     <!-- START: Images 2x1 -->
     <mj-section
       css-class="two-col-images-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 0 8px"
+      background-color="#ffffff" padding="0"
     >
-      <mj-column css-class="two-col-column image-stack-gap" width="300px" vertical-align="middle" padding="0 8px 0 0">
+      <mj-column css-class="two-col-column" width="300px" vertical-align="middle" padding="0 8px 0 0">
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
@@ -1586,11 +1588,11 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column image-stack-gap-half" width="300px" vertical-align="middle" padding="0 0 0 8px">
+      <mj-column css-class="two-col-column" width="300px" vertical-align="middle" padding="0 0 0 8px">
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
@@ -1607,7 +1609,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1616,9 +1618,9 @@
     <!-- START: Images 3x1 -->
     <mj-section
       css-class="three-col-images-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 0 8px"
+      background-color="#ffffff" padding="0"
     >
-      <mj-column css-class="two-col-column image-stack-gap" width="200px" vertical-align="middle" padding="0 16px 0 0">
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 16px 0 0">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1635,11 +1637,11 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column image-stack-gap" width="200px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 8px">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1656,11 +1658,11 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column image-stack-gap-half" width="200px" vertical-align="middle" padding="0 0 0 16px">
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 0 0 16px">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1677,7 +1679,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1860,8 +1862,10 @@
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 16px">
           <span>Photograph by Photographer</span>
         </mj-text>
-        <mj-text padding="0 0 16px">
+        <mj-text padding="0 0 8px">
           <h3>Lorem ipsum dolor consectur</h3>
+        </mj-text>
+        <mj-text padding="0 0 16px">
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut.
@@ -1893,8 +1897,10 @@
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 16px">
           <span>Photograph by Photographer</span>
         </mj-text>
-        <mj-text padding="0 0 16px">
+        <mj-text padding="0 0 8px">
           <h3>Lorem ipsum dolor consectur</h3>
+        </mj-text>
+        <mj-text padding="0 0 16px">
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut.
@@ -1909,7 +1915,7 @@
     </mj-section>
     <!-- END: Story Card 2x1 -->
 
-    <!-- START: Story Card (no heading, image on the side) -->
+    <!-- START: Story Card (image on the side) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px">
       <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
         <mj-image src="assets/photo-butterfly.jpg" width="224px" alt="Placeholder photo" href="https://www.example.com" padding="0" align="center" fluid-on-mobile="true" css-class="light-only" />
@@ -1921,6 +1927,9 @@
         </mj-text>
       </mj-column>
       <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+        <mj-text padding="0 0 8px">
+          <h3>Lorem ipsum dolor consectur</h3>
+        </mj-text>
         <mj-text padding="0 0 16px">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -1928,7 +1937,7 @@
         <mj-button width="auto" href="https://www.example.com" align="left" padding="0" data-mobile-only-spacing-below color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Story Card (no heading, image on the side) -->
+    <!-- END: Story Card (image on the side) -->
 
     <!-- START: Story Card (image right) -->
     <mj-section css-class="two-col-image-text-block block flush-mobile-capflush" background-color="#ffffff" direction="rtl" padding="16px 32px" data-fully-exclude>
@@ -2419,9 +2428,11 @@
     <!-- START: Quiz Block (2x2 photos) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
       <mj-column>
-        <mj-text color="#ffffff" padding="0">
+        <mj-text color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
-          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
+        </mj-text>
+        <mj-text color="#ffffff" padding="0">
+          <h3>Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2593,6 +2604,8 @@
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+        </mj-text>
+        <mj-text padding="0 0 16px">
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
@@ -2751,8 +2764,8 @@
     <!-- START: Photo and Text Grid (2x2) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
       <mj-column>
-        <mj-text padding="0">
-          <h3 style="color:#ffffff;">Here's what's inspiring our TPL birders:</h3>
+        <mj-text color="#ffffff" padding="0">
+          <h3>Here's what's inspiring our TPL birders:</h3>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2832,8 +2845,9 @@
           css-class="divider"
           border-width="3px"
           border-color="#006837"
-          padding="0 16px"
+          padding="0"
           width="300px"
+          data-width-options="50,100,150,200,250,300,350,400,450,500,550,600"
         />
       </mj-column>
     </mj-section>
@@ -2920,9 +2934,9 @@
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="130px" css-class="signature-img">
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" css-class="light-only" />
+          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="406px" css-class="signature-text">

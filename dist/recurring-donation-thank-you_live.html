@@ -421,22 +421,11 @@ li {
         margin-bottom: 20px !important;
       }
 
-      /* Images blocks: uniform 16px rhythm between stacked images on mobile
-     (user decision 2026-08-19 — EoA round read the 8px/0 group boundaries
-     as "lost" spacing). A column followed by another image in the SAME
-     section carries the full 16px; a section's last column carries 8px
-     because the section's own 8px Block Padding Bottom completes the gap;
-     the truly full-bleed singles (section padding 0) carry the full 16px
-     on their lone column. Distinct from .first-column/.second-column,
-     which the story cards keep at 20px. */
-      .image-stack-gap {
-        margin-bottom: 16px !important;
-      }
-
-      .image-stack-gap-half {
-        margin-bottom: 8px !important;
-      }
-
+      /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
+     decision, round two): every image caption authors padding 4px 0 8px —
+     Quarter above, Half below, both viewports — and the image sections
+     carry no bottom padding. The mobile-only image-stack-gap classes this
+     replaced are retired. */
       /* Feedback Poll option rows: pin the icon column so the mj-group
      percentage math cannot squeeze it (56px compiles to 10.4478%, which
      is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
@@ -877,8 +866,8 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -909,8 +898,8 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
-                        <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
+                      <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photographer Adair Rutledge</span></div>
                       </td>
                     </tr>
                   </tbody>
@@ -974,7 +963,7 @@ li {
                             <tbody>
                               <tr>
                                 <td style="width:110px;">
-                                  <img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;border-radius:60px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="110" height="auto" />
+                                  <img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="110" height="auto" />
                                 </td>
                               </tr>
                             </tbody>
@@ -987,7 +976,7 @@ li {
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
-                                <td style="width:110px;"><img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser.png" style="border:0;border-radius:60px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="110" height="auto" /></td>
+                                <td style="width:110px;"><img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="110" height="auto" /></td>
                               </tr>
                             </tbody>
                           </table>

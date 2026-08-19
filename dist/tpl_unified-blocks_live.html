@@ -541,22 +541,11 @@ li {
         margin-bottom: 20px !important;
       }
 
-      /* Images blocks: uniform 16px rhythm between stacked images on mobile
-     (user decision 2026-08-19 — EoA round read the 8px/0 group boundaries
-     as "lost" spacing). A column followed by another image in the SAME
-     section carries the full 16px; a section's last column carries 8px
-     because the section's own 8px Block Padding Bottom completes the gap;
-     the truly full-bleed singles (section padding 0) carry the full 16px
-     on their lone column. Distinct from .first-column/.second-column,
-     which the story cards keep at 20px. */
-      .image-stack-gap {
-        margin-bottom: 16px !important;
-      }
-
-      .image-stack-gap-half {
-        margin-bottom: 8px !important;
-      }
-
+      /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
+     decision, round two): every image caption authors padding 4px 0 8px —
+     Quarter above, Half below, both viewports — and the image sections
+     carry no bottom padding. The mobile-only image-stack-gap classes this
+     replaced are retired. */
       /* Feedback Poll option rows: pin the icon column so the mj-group
      percentage math cannot squeeze it (56px compiles to 10.4478%, which
      is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
@@ -1088,6 +1077,13 @@ li {
                 <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
+                      <tr>
+                        <td align="right" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                          <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:right;color:#ffffff;">
+                            <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
+                          </div>
+                        </td>
+                      </tr>
                       <tr>
                         <td align="right" class="light-only" style="font-size:0px;padding:0 0 0 16px;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
@@ -2311,8 +2307,8 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-half-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -2362,9 +2358,9 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-stack-gap-half-outlook" style="vertical-align:middle;width:600px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
                     <tr>
@@ -2395,7 +2391,7 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
+                      <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                       </td>
                     </tr>
@@ -2415,9 +2411,9 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
-              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
+              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -2452,7 +2448,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                               </td>
                             </tr>
@@ -2463,8 +2459,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-half-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
-              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:middle;width:300px;" ><![endif]-->
+              <div class="mj-column-px-300 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -2499,7 +2495,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                               </td>
                             </tr>
@@ -2523,9 +2519,9 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0 0 8px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="two-col-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -2560,7 +2556,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                               </td>
                             </tr>
@@ -2571,8 +2567,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -2607,7 +2603,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                               </td>
                             </tr>
@@ -2618,8 +2614,8 @@ li {
                   </tbody>
                 </table>
               </div>
-              <!--[if mso | IE]></td><td class="two-col-column-outlook image-stack-gap-half-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
-              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column image-stack-gap-half" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+              <!--[if mso | IE]></td><td class="two-col-column-outlook" style="vertical-align:middle;width:200px;" ><![endif]-->
+              <div class="mj-column-px-200 mj-outlook-group-fix two-col-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>
@@ -2654,7 +2650,7 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                              <td align="right" class="wysiwyg" style="font-size:0px;padding:4px 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#000000;"><span>Photograph by Photographer&rsquo;s Name, AGENCY</span></div>
                               </td>
                             </tr>
@@ -2807,9 +2803,15 @@ li {
                               </td>
                             </tr>
                             <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                   <h3>Lorem ipsum dolor consectur</h3>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                   <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. </p>
                                 </div>
                               </td>
@@ -2875,9 +2877,15 @@ li {
                               </td>
                             </tr>
                             <tr>
-                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                   <h3>Lorem ipsum dolor consectur</h3>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                   <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. </p>
                                 </div>
                               </td>
@@ -2909,7 +2917,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Story Card 2x1 --><!-- START: Story Card (no heading, image on the side) -->
+    <!-- END: Story Card 2x1 --><!-- START: Story Card (image on the side) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -2972,6 +2980,13 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
+                              <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                  <h3>Lorem ipsum dolor consectur</h3>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
                               <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                   <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -3005,7 +3020,7 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Story Card (no heading, image on the side) --><!-- START: Story Card (image left, middle-aligned) -->
+    <!-- END: Story Card (image on the side) --><!-- START: Story Card (image left, middle-aligned) -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="two-col-image-text-block-outlook block-outlook flush-mobile-capflush-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="two-col-image-text-block block flush-mobile-capflush" data-fully-exclude="true" style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
@@ -3578,8 +3593,8 @@ li {
                   <tbody>
                     <tr>
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <h3 style="color:#ffffff;">Here's what's inspiring our TPL birders:</h3>
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
+                          <h3>Here's what's inspiring our TPL birders:</h3>
                         </div>
                       </td>
                     </tr>
@@ -4002,6 +4017,12 @@ li {
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                           <h3 style="text-align:center;color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
                           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                           <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
@@ -4178,10 +4199,16 @@ li {
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
                           <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
-                          <h3 style="color:#ffffff;">Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
+                          <h3>Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
                         </div>
                       </td>
                     </tr>
@@ -4727,7 +4754,7 @@ li {
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="center" class="divider" style="font-size:0px;padding:0 16px;word-break:break-word;">
+                      <td align="center" class="divider" style="font-size:0px;padding:0;word-break:break-word;">
                         <p style="border-top:solid 3px #006837;font-size:1px;margin:0px auto;width:300px;">
                         </p>
                         <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 3px #006837;font-size:1px;margin:0px auto;width:300px;" role="presentation" width="300px" ><tr><td style="height:0;line-height:0;"> &nbsp;

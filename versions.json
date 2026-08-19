@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 9,
-    "hash": "023bb49ae908"
+    "version": 10,
+    "hash": "663f6b37d9df"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 9,
-    "hash": "f3377f4627ef"
+    "version": 10,
+    "hash": "e67fbf269fe5"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -168,8 +168,8 @@
     "hash": "53a2a2f0d9bb"
   },
   "block:Divider (Single-color)": {
-    "version": 2,
-    "hash": "a9ab3ded6770"
+    "version": 3,
+    "hash": "0346cb86844a"
   },
   "block:Divider (Tri-color)": {
     "version": 1,
@@ -288,44 +288,44 @@
     "hash": "6543e2121d4f"
   },
   "block:Image": {
-    "version": 3,
-    "hash": "7a353b8a2399"
+    "version": 4,
+    "hash": "0ac256101d6d"
   },
   "block:Image (bikers)": {
-    "version": 6,
-    "hash": "bcffdb59482a"
+    "version": 7,
+    "hash": "f5e0bbb7a1bf"
   },
   "block:Image (full-bleed)": {
-    "version": 6,
-    "hash": "e812e19c6dc3"
+    "version": 7,
+    "hash": "cc90dfb9f40f"
   },
   "block:Image (inset)": {
-    "version": 6,
-    "hash": "444a1cee9069"
+    "version": 7,
+    "hash": "5cfa9fb34f35"
   },
   "block:Image 1x1": {
-    "version": 5,
-    "hash": "d5a013fc50bf"
+    "version": 6,
+    "hash": "af0823ad170e"
   },
   "block:Images 2x1": {
-    "version": 6,
-    "hash": "40aed90aa230"
+    "version": 7,
+    "hash": "6763bd23b8c3"
   },
   "block:Images 3x1": {
-    "version": 7,
-    "hash": "308467a92977"
+    "version": 8,
+    "hash": "cae12a0a2d83"
   },
   "block:Join Links Block": {
     "version": 2,
     "hash": "145bcbc66e54"
   },
   "block:Linked Header Row": {
-    "version": 2,
-    "hash": "840d2e1bae07"
+    "version": 3,
+    "hash": "5f4b97ce31b7"
   },
   "block:Linked Header Row (w/ icon)": {
-    "version": 2,
-    "hash": "f63375f41ba2"
+    "version": 3,
+    "hash": "5a347e43eaea"
   },
   "block:Linked List Block": {
     "version": 2,
@@ -368,8 +368,8 @@
     "hash": "03a7d27029cf"
   },
   "block:Logo Hero (w/ image, green)": {
-    "version": 3,
-    "hash": "35a2b36ba9ca"
+    "version": 4,
+    "hash": "6d6acea94f88"
   },
   "block:Logo Hero (w/ text and image)": {
     "version": 3,
@@ -396,8 +396,8 @@
     "hash": "2b7be1087ea8"
   },
   "block:Photo and Text Grid (2x2)": {
-    "version": 5,
-    "hash": "e9cc63f24291"
+    "version": 6,
+    "hash": "9c2ece4fa0a6"
   },
   "block:Podcast Episode Block": {
     "version": 4,
@@ -420,8 +420,8 @@
     "hash": "c72379f90e15"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 8,
-    "hash": "1bdd84414193"
+    "version": 9,
+    "hash": "ab898e3f8459"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 3,
@@ -440,8 +440,8 @@
     "hash": "c417c6aeb2fb"
   },
   "block:Signature Card (round photo)": {
-    "version": 4,
-    "hash": "235c7194f17c"
+    "version": 5,
+    "hash": "472531340d9b"
   },
   "block:Signature Card (square photo)": {
     "version": 6,
@@ -460,8 +460,8 @@
     "hash": "2c0e7ca39136"
   },
   "block:Steps Block": {
-    "version": 5,
-    "hash": "124b6d4c3607"
+    "version": 6,
+    "hash": "67691875e1c1"
   },
   "block:Steps Block (photo)": {
     "version": 2,
@@ -491,6 +491,10 @@
     "version": 6,
     "hash": "c9456293e448"
   },
+  "block:Story Card (image on the side)": {
+    "version": 1,
+    "hash": "81d48877735c"
+  },
   "block:Story Card (image right)": {
     "version": 8,
     "hash": "fb9a4eeb76ab"
@@ -499,17 +503,13 @@
     "version": 7,
     "hash": "a67932165447"
   },
-  "block:Story Card (no heading, image on the side)": {
-    "version": 9,
-    "hash": "22a1db6edcd2"
-  },
   "block:Story Card (orange-bordered)": {
     "version": 4,
     "hash": "80dbf6cf852f"
   },
   "block:Story Card 2x1": {
-    "version": 7,
-    "hash": "d1d784a22572"
+    "version": 8,
+    "hash": "9cae55133f2e"
   },
   "block:Subscription Panel": {
     "version": 2,
@@ -580,16 +580,16 @@
     "hash": "6ce779d3b504"
   },
   "catalog-shell": {
-    "version": 12,
-    "hash": "0822d660b634"
+    "version": 13,
+    "hash": "0e1a668900ba"
   },
   "email-template": {
-    "version": 18,
-    "hash": "26177b6e61f3"
+    "version": 19,
+    "hash": "e1600bc6527d"
   },
   "head-css": {
-    "version": 5,
-    "hash": "dc372d056540"
+    "version": 6,
+    "hash": "9afb846284b9"
   },
   "partial:debug-toolbar": {
     "version": 1,
@@ -600,7 +600,7 @@
     "hash": "52bea11de559"
   },
   "partial:tri-color-divider": {
-    "version": 4,
-    "hash": "e63591a25b76"
+    "version": 5,
+    "hash": "7f5908a470c2"
   }
 }

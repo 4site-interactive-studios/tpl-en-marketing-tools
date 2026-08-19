@@ -82,13 +82,13 @@
 
     <!-- START: Image (full-bleed) -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
-      <mj-column vertical-align="middle" css-class="image-stack-gap">
+      <mj-column vertical-align="middle">
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
-          <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
+          <span>Photographer Adair Rutledge</span>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -136,9 +136,9 @@
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="130px" css-class="signature-img">
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" css-class="light-only" />
+          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" border-radius="60px" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="406px" css-class="signature-text">
