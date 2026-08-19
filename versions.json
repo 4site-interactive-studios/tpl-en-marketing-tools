@@ -416,8 +416,8 @@
     "hash": "c257afedeade"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 5,
-    "hash": "18f091fad92d"
+    "version": 6,
+    "hash": "c72379f90e15"
   },
   "block:Quiz Block (2x2 photos)": {
     "version": 8,
@@ -584,12 +584,12 @@
     "hash": "5b4ee471cbf4"
   },
   "email-template": {
-    "version": 16,
-    "hash": "993146d817d1"
+    "version": 17,
+    "hash": "cf7f3deb88b3"
   },
   "head-css": {
-    "version": 4,
-    "hash": "4a170858bde1"
+    "version": 5,
+    "hash": "dc372d056540"
   },
   "partial:debug-toolbar": {
     "version": 1,

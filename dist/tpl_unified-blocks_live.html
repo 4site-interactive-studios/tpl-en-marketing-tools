@@ -674,7 +674,7 @@ li {
 
       [data-ogsc] .question-response {
         background-color: #000000 !important;
-        border-color: #eee !important;
+        border-color: #000000 !important;
         color: #ffffff !important;
       }
 
@@ -795,9 +795,12 @@ li {
       /* Tri-color divider: intentionally NOT adapted — its three brand-color
      bars (orange/green/teal, authored as spacer td backgrounds) read fine
      on black. Only the single-color divider above inverts. */
+      /* Border matches the repainted ground so dark mirrors light's
+     invisible-border behavior — the old #eee drew a visible outline around
+     the Question Block on black (user decision 2026-08-19, EoA 8ryXNAL). */
       .question-response {
         background-color: #000000 !important;
-        border-color: #eee !important;
+        border-color: #000000 !important;
         color: #ffffff !important;
       }
 
@@ -4074,8 +4077,13 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><![endif]-->
+              <!-- highlighted-text-column: the dark-mode repaint for a column that
+           authors its own background (td[valign] descendant form). Without it
+           the white panel survives dark mode while .block p forces the copy
+           white — white-on-white (EoA 8ryXNAL, iPhone dark, 2026-08-19). -->
+              <!--[if mso | IE]><td class="highlighted-text-column-outlook" style="vertical-align:top;width:536px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix highlighted-text-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                   <tbody>
                     <tr>

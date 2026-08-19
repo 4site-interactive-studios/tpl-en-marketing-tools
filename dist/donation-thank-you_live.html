@@ -573,7 +573,7 @@ li {
 
       [data-ogsc] .question-response {
         background-color: #000000 !important;
-        border-color: #eee !important;
+        border-color: #000000 !important;
         color: #ffffff !important;
       }
 
@@ -694,9 +694,12 @@ li {
       /* Tri-color divider: intentionally NOT adapted — its three brand-color
      bars (orange/green/teal, authored as spacer td backgrounds) read fine
      on black. Only the single-color divider above inverts. */
+      /* Border matches the repainted ground so dark mirrors light's
+     invisible-border behavior — the old #eee drew a visible outline around
+     the Question Block on black (user decision 2026-08-19, EoA 8ryXNAL). */
       .question-response {
         background-color: #000000 !important;
-        border-color: #eee !important;
+        border-color: #000000 !important;
         color: #ffffff !important;
       }
 

@@ -1568,7 +1568,11 @@
       </mj-column>
     </mj-section>
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
-      <mj-column border="1px solid #39B54A" background-color="#ffffff" padding="8px 0 0">
+      <!-- highlighted-text-column: the dark-mode repaint for a column that
+           authors its own background (td[valign] descendant form). Without it
+           the white panel survives dark mode while .block p forces the copy
+           white — white-on-white (EoA 8ryXNAL, iPhone dark, 2026-08-19). -->
+      <mj-column css-class="highlighted-text-column" border="1px solid #39B54A" background-color="#ffffff" padding="8px 0 0">
         <mj-text align="center" padding="0 0 8px">
           <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Reveal the answer.</a></p>
         </mj-text>
