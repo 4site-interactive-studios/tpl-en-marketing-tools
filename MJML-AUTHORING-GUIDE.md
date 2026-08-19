@@ -798,6 +798,21 @@ Two companion rules for background sections, both Outlook:
 
 ## 5. Authoring for good Replacements
 
+### Author copy color on the element, never inline on a dark ground (2026-08-19, user-decided)
+
+EN's rich-text editor edits every Content field on a WHITE ground, with
+none of the block's section chrome. Copy whose color is authored INLINE
+in the content (`<h3 style="color:#ffffff;">` on a dark section) is
+therefore white-on-white while being edited — invisible — and, because
+the color lives inside the RTE value rather than on an `mj-*` attribute,
+the importer mints no Text Color control an editor could reach for
+(measured on Photo and Text Grid, 2026-08-19). Author the color on the
+`mj-text` element (`color="#ffffff"`): the email renders identically,
+the editor shows default-black editable copy, and a palette Select
+mints. The same reasoning applies to any styling an editor should own —
+inline styles inside content are frozen; element attributes become
+fields.
+
 ### One idea per mj-text (2026-08-19, user-decided)
 
 The importer's unit of editability is the `mj-text` ELEMENT: one element
