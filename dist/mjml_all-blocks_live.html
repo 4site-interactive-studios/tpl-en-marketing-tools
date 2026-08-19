@@ -7589,6 +7589,11 @@ li {
                                                 </table>
                                               </td>
                                             </tr>
+                                            <!-- color="#ffffff" here is LOAD-BEARING, not decoration: mj-attributes defaults mj-text to
+             color="#000000" (top of this file), so deleting it paints the countdown BLACK on the dark
+             photo. It reads redundant only because the two <p>s below used to hard-code the same white
+             inline — which is exactly what defeated the Text 3 Text Color control until 2026-08-18.
+             The container now owns the colour; leave it owning it. -->
                                             <tr>
                                               <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">

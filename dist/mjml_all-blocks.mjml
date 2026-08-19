@@ -2306,7 +2306,12 @@
             <h3 style="color:#ffffff;margin:0;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
           </mj-text>
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
-            <mj-text align="center" color="#ffffff" padding="0">
+            <!-- color="#ffffff" here is LOAD-BEARING, not decoration: mj-attributes defaults mj-text to
+             color="#000000" (top of this file), so deleting it paints the countdown BLACK on the dark
+             photo. It reads redundant only because the two <p>s below used to hard-code the same white
+             inline — which is exactly what defeated the Text 3 Text Color control until 2026-08-18.
+             The container now owns the colour; leave it owning it. -->
+        <mj-text align="center" color="#ffffff" padding="0">
               <p style="font-size:32px;line-height:36px;font-weight:400;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
               <p style="font-size:10px;line-height:14px;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
             </mj-text>
