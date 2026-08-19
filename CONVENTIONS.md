@@ -1606,7 +1606,17 @@ Gmail-style snippets would show BOTH lines. Consequences:
   (prettier took ~46s on a ~1MB doc; js-beautify ~60ms). The instrumented
   parallel compile stays unformatted (ordinal matching only). Formatting is
   fail-open.
-- Thumbnail probing is async, after load — never blocks the import.
+- Thumbnail probing is async, after load — never blocks the import. It
+  runs once per project + asset root (`thumbnailsProbedRoot` records the
+  root; only missing thumbnails are probed when the root changes), and a
+  Re-import rebuilds the project with NO probe state and NO per-block
+  thumbnails, so the probe re-runs against the current block names — a
+  block renamed between imports picks up its `thumbnail-<new-slug>.png`
+  automatically (verified live + pinned by `src/state/store.test.ts`,
+  2026-08-19). The inverse does not hold: a thumbnail uploaded (or a CDN
+  404-cache expiring) AFTER the probe recorded the root is not detected
+  until the next Re-import or root change — upload thumbnails before
+  importing, or Re-import again afterwards.
 - **One background image = FOUR compiled carriers.** MJML expands a single
   `mj-section background-url` into the div's inline `background:` shorthand,
   the wrapper table's `background=` attribute, a second `url()` in that
