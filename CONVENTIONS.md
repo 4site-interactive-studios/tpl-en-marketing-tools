@@ -490,20 +490,25 @@ Determinism contract — what makes the matrix trustworthy:
   `inert`. Each viewport still re-verifies its baseline strictly AFTER its
   own cells drain, so "the baseline hashed the same before and after this
   block's renders" keeps its exact meaning.
-- **The concurrency default is 8** (user decision 2026-08-19), chosen off
-  the Speed Test ladder rather than by taste: 1 / 2 / 4 / 8 measured
-  **1.00× / 3.48× / 5.62× / 6.37×** over an identical scope, all four passes
-  returning the same verdict digest. The curve is already flattening by 8 —
-  4→8 bought only 13%, because `load` (browser-internal iframe parsing) is
-  over half the stage time and does not compress with more workers — which
-  is why the ladder stops there. The panel's "Parallel" control persists per
-  machine under its own `en-tools:inert-audit:concurrency:v2` key
-  (deliberately NOT in `Settings`, which travels with the project; the key
-  is version-suffixed because a stored value silently wins over the default,
-  so a default change has to move the key to reach anyone who already opened
-  the panel). Lower it on a machine with few cores: at 1 the two viewports
-  contend for the single iframe (measured poolWait 48%), making it slower
-  than the 3-wide the audit originally shipped with.
+- **The concurrency default is 1, and raising it does not help.** Measured
+  by the Speed Test on a real foreground tab (12-core Mac, 101 catalog rows,
+  2060 renders per pass): **1-wide 20.73s · 2-wide 19.21s · 4-wide 20.62s ·
+  8-wide 21.31s** — eight is SLOWER than one, and all four passes returned
+  the same verdict digest. The cause is in the same report: cumulative
+  `load` rises 11.8s → 98.4s from 1-wide to 8-wide while wall clock stays
+  flat, so each render gets ~8× slower when eight run at once. Iframe parse,
+  layout and the foreignObject raster all run on the renderer main thread —
+  there is no idle time for a second worker to fill, and a wider pool only
+  time-slices the same thread. **An earlier 6.37× reading was an artifact of
+  a THROTTLED background tab**, where clamped timers give every render a
+  fixed latency floor that overlapping can hide; that floor does not exist
+  in the foreground. Never raise this default on the strength of a hidden-tab
+  run. The panel control persists per machine under
+  `en-tools:inert-audit:concurrency:v3` — machine-local, so deliberately NOT
+  in `Settings`, which travels with the project — and is written ONLY on an
+  explicit edit: storing it on mount (as it did briefly on 2026-08-19)
+  stamps the current default into every browser that opens the panel, after
+  which no later default change can reach them.
 
 Three report downloads, strictly nested — **full** ⊇ **Findings Only** ⊇
 **Failed Only** — each on its own filename so they can sit side by side.
