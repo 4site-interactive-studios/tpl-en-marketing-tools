@@ -408,19 +408,17 @@
     <!-- START: CTA Hero (logo and background image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 0 16px">
+      <mj-section css-class="image-block block" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 32px 16px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column vertical-align="middle" width="275px">
+          <mj-column vertical-align="middle" width="50%">
             <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
             <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
-          <mj-column vertical-align="middle" width="275px">
+          <mj-column vertical-align="middle" width="50%">
             <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -449,19 +447,17 @@
     <!-- START: CTA Hero (fixed height, logo and background image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 0 32px">
+      <mj-section css-class="image-block block" background-url="assets/photo-trail.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column vertical-align="middle" width="220px">
+          <mj-column vertical-align="middle" width="40%">
             <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
             <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
-          <mj-column vertical-align="middle" width="330px">
+          <mj-column vertical-align="middle" width="60%">
             <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" background-color="#F7931E" font-size="16px" padding="0" color="#ffffff">LEARN MORE</mj-button>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -474,7 +470,7 @@
       <!-- data-mobile-only-width: the centered heading carries its own line break and never reaches the gutter at 600px, so symmetric presets move nothing there; at 375px the wider presets force a wrap. Measured INERT desktop / live mobile by the inert audit 2026-08-18. Drop the flag if the heading copy ever wraps at desktop. -->
       <mj-section padding="48px 32px 8px" data-mobile-only-width>
         <mj-column>
-          <mj-text align="center" color="#ffffff" padding="0">
+          <mj-text align="center" padding="0">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
           </mj-text>
         </mj-column>
@@ -499,19 +495,17 @@
     <!-- START: CTA Hero (centered w/ background image, logo + button) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#006837" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 0 32px" data-fully-exclude>
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="160px 32px 32px" data-fully-exclude>
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column vertical-align="middle" width="275px">
+          <mj-column vertical-align="middle" width="50%">
             <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
             <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
-          <mj-column vertical-align="middle" width="275px">
+          <mj-column vertical-align="middle" width="50%">
             <mj-button css-class="button fixed-width" width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -520,16 +514,14 @@
     <!-- START: CTA Hero (centered w/ background image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#006837" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 0 48px">
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
         <mj-column width="550px">
-          <mj-text align="center" color="#ffffff" padding="0 0 16px">
+          <mj-text align="center" padding="0 0 16px">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
           </mj-text>
           <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -543,11 +535,10 @@
         background-url="assets/photo-trail.jpg"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center center" padding="264px 0 16px" data-fully-exclude
+        background-position="center center" padding="264px 32px 16px" data-fully-exclude
       >
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-        <mj-column vertical-align="bottom" width="275px">
+        <mj-column vertical-align="bottom" width="50%">
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
@@ -567,14 +558,13 @@
             align="left" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="bottom" width="275px">
+        <mj-column vertical-align="bottom" width="50%">
             <mj-button css-class="button fixed-width" width="auto"
               href="https://www.example.com"
               align="right" padding="0" color="#ffffff" background-color="#006837">
               READ MORE
             </mj-button>
         </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -594,11 +584,10 @@
           css-class="overlay-image-block block" background-url="assets/photo-person_overlay.jpg"
           background-size="cover"
           background-repeat="no-repeat"
-          background-position="center bottom" padding="360px 0 48px"
+          background-position="center bottom" padding="360px 32px 48px"
       >
         <mj-group>
           <!-- Spacer column - required to be done this way for Outlook -->
-          <mj-column width="25px">&nbsp;</mj-column>
 
           <mj-column width="550px">
             <mj-text css-class="overlay" padding="0 32px 16px">
@@ -611,7 +600,6 @@
           </mj-column>
 
           <!-- Spacer column - required to be done this way for Outlook -->
-          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -734,7 +722,7 @@
     <!-- START: WYSIWYG Text (full width) -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="0" data-fully-exclude
+      background-color="#ffffff" padding="0 32px" data-fully-exclude
     >
       <mj-column>
         <mj-text padding="0">
@@ -1824,9 +1812,9 @@
     <!-- START: Story Card 2x1 -->
     <mj-section
         css-class="two-col-image-text-button-block block flush-mobile-capflush"
-        background-color="#ffffff" padding="16px"
+        background-color="#ffffff" padding="16px 32px"
     >
-      <mj-column css-class="two-col-column first-column" width="250px" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column first-column" width="50%" vertical-align="top" padding="0 8px">
         <mj-image
             src="assets/photo-kayak.jpg" width="230px"
             alt="Custom alt text"
@@ -1859,7 +1847,7 @@
           PLACEHOLDER
         </mj-button>
       </mj-column>
-      <mj-column css-class="two-col-column" width="250px" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column" width="50%" vertical-align="top" padding="0 8px">
         <mj-image
             src="assets/photo-garden.jpg" width="230px"
             alt="Custom alt text"
@@ -2257,9 +2245,11 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
         <mj-column width="550px">
-          <mj-text align="center" color="#ffffff" padding="0">
-            <p style="font-size:16px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE DAY</p>
-            <h2 style="color:#ffffff;margin:0 0 16px;">Lorem Ipsum Dolor Sit Amet</h2>
+          <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
+            <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
+          </mj-text>
+          <mj-text align="center" padding="0 0 16px">
+            <h2 style="color:#ffffff;margin:0;">Lorem Ipsum Dolor Sit Amet</h2>
           </mj-text>
           <mj-text color="#ffffff" padding="0 0 8px">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
@@ -2304,10 +2294,12 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="452px">
-            <mj-text align="center" color="#ffffff" padding="0">
-              <p style="font-size:15px;font-weight:700;letter-spacing:2px;color:#CEE4C5;margin:0 0 8px;">DEADLINE: MIDNIGHT</p>
-              <h3 style="color:#ffffff;margin:0 0 16px;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
-            </mj-text>
+            <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
+            <p style="font-size:15px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
+          </mj-text>
+          <mj-text align="center" padding="0 0 16px">
+            <h3 style="color:#ffffff;margin:0;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
+          </mj-text>
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
             <mj-text align="center" color="#ffffff" padding="0">
               <p style="font-size:32px;line-height:36px;font-weight:400;color:#ffffff;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
@@ -2817,7 +2809,7 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (square photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0 32px">
       <mj-column width="480px">
         <mj-text padding="0">
           <p style="font-style: italic;">
@@ -2826,7 +2818,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 16px 32px">
       <mj-group width="480px">
         <mj-column
           vertical-align="top"
@@ -3086,8 +3078,7 @@
       <mj-group width="480px">
         <mj-column width="33%" vertical-align="middle">
           <mj-text
-            css-class="footer-text"
-            color="#ffffff" padding="0"
+            css-class="footer-text" padding="0"
           >
             <p style="text-align: center;">
               <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com">DONATE</a>
@@ -3096,8 +3087,7 @@
         </mj-column>
         <mj-column width="66%"  border-left="2px solid #4d4d4d" vertical-align="middle">
           <mj-text
-            css-class="footer-text"
-            color="#ffffff" padding="0"
+            css-class="footer-text" padding="0"
           >
             <p style="text-align: center;">
               <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com">MANAGE SUBSCRIPTION</a>
@@ -3114,8 +3104,7 @@
     >
       <mj-column width="480px">
         <mj-text
-          css-class="footer-text"
-          color="#ffffff" data-no-display-toggle padding="0 0 48px"
+          css-class="footer-text" data-no-display-toggle padding="0 0 48px"
         >
           <p>
             Photos by:  Anand Varma, Wallace W. Nutting, Tamara Merino, Photo Ark: ANIMALS OF EARTH

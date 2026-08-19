@@ -72,28 +72,28 @@
     "hash": "3260cf9bef08"
   },
   "block:CTA Hero (centered w/ background image)": {
-    "version": 5,
-    "hash": "976b288b6bbe"
+    "version": 6,
+    "hash": "71da7c102c23"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
-    "version": 4,
-    "hash": "9839f46a57bf"
+    "version": 5,
+    "hash": "814ddb4f9eb0"
   },
   "block:CTA Hero (centered w/ background image, logo + button)": {
-    "version": 5,
-    "hash": "ac1aa56939bb"
+    "version": 6,
+    "hash": "e6ee3a56f6fe"
   },
   "block:CTA Hero (fixed height, logo and background image)": {
-    "version": 5,
-    "hash": "b595339d1db0"
+    "version": 6,
+    "hash": "8bbe3c0fc875"
   },
   "block:CTA Hero (green button)": {
     "version": 5,
     "hash": "f313e6591aba"
   },
   "block:CTA Hero (logo and background image)": {
-    "version": 4,
-    "hash": "205d177653c0"
+    "version": 5,
+    "hash": "1407b261fbaf"
   },
   "block:CTA Hero (orange button)": {
     "version": 5,
@@ -112,12 +112,12 @@
     "hash": "28268bb5254c"
   },
   "block:CTA Hero (w/ large background image)": {
-    "version": 4,
-    "hash": "cd6fc65b5a5f"
+    "version": 5,
+    "hash": "5b32d20799cf"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 6,
-    "hash": "32f37db6fbe3"
+    "version": 7,
+    "hash": "248b53cf6f2a"
   },
   "block:CTA Text Block": {
     "version": 2,
@@ -160,8 +160,8 @@
     "hash": "6de0b8a8c6b5"
   },
   "block:Countdown Card": {
-    "version": 5,
-    "hash": "c2ebb565d329"
+    "version": 6,
+    "hash": "8c53b82093b0"
   },
   "block:Deadline Panel": {
     "version": 3,
@@ -188,8 +188,8 @@
     "hash": "dada2c556b0a"
   },
   "block:Footer": {
-    "version": 2,
-    "hash": "b8944359a4b0"
+    "version": 3,
+    "hash": "d570f3d8bc16"
   },
   "block:Footer (dark)": {
     "version": 2,
@@ -408,8 +408,8 @@
     "hash": "604dc6a7bd6a"
   },
   "block:Progress Meter Block": {
-    "version": 5,
-    "hash": "bb77714063b9"
+    "version": 6,
+    "hash": "c87b54913030"
   },
   "block:Question Block": {
     "version": 2,
@@ -444,8 +444,8 @@
     "hash": "235c7194f17c"
   },
   "block:Signature Card (square photo)": {
-    "version": 4,
-    "hash": "0da83b3616ee"
+    "version": 5,
+    "hash": "204f2fd69925"
   },
   "block:Spacer": {
     "version": 2,
@@ -508,8 +508,8 @@
     "hash": "80dbf6cf852f"
   },
   "block:Story Card 2x1": {
-    "version": 5,
-    "hash": "614a9ab373ea"
+    "version": 6,
+    "hash": "e95f0125251b"
   },
   "block:Subscription Panel": {
     "version": 2,
@@ -572,8 +572,8 @@
     "hash": "02aae4b368f0"
   },
   "block:WYSIWYG Text (full width)": {
-    "version": 2,
-    "hash": "04e7eacec44a"
+    "version": 3,
+    "hash": "df4bb6324ecf"
   },
   "block:WYSIWYG Text (inset)": {
     "version": 2,
@@ -584,12 +584,12 @@
     "hash": "93d0cde4c2ed"
   },
   "email-template": {
-    "version": 14,
-    "hash": "6f74ab1301ab"
+    "version": 15,
+    "hash": "7e81cee5738f"
   },
   "head-css": {
-    "version": 1,
-    "hash": "d77e28ff179c"
+    "version": 2,
+    "hash": "971ec54577dc"
   },
   "partial:debug-toolbar": {
     "version": 1,

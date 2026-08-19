@@ -539,6 +539,20 @@ byte-identical runs) hardened into policy (user-decided):
   `blockHasBackgroundImage`). The exemption is `paletteGroup: 'background'`
   only: a TEXT color renders ON TOP of the image, so its inertness is not
   explained by the image failing to load and it stays a finding.
+  A THIRD exemption joined them 2026-08-18: **an Inset whose opposite side
+  is live**. `data-inset-toggle` mints the pair together, and only the side
+  the copy is pushed away from can move it — a right-aligned caption cannot
+  be moved by its left inset. That is the element's CURRENT Alignment
+  talking, not a broken control: flip Alignment and the dead side comes
+  alive. Without the exemption the pair returns as a FAIL on every sweep
+  with no honest fix available (5 such rows in the go-live sweep). A pair
+  dead on BOTH sides still reports.
+- **A viewport qualifier counts wherever it sits in the label**, not only
+  leading (2026-08-18): the enumerated column ladder instances its label as
+  "Column 1 - Desktop Width" and is desktop-only by construction, so an
+  anchored `^` check read it as unqualified and proposed "Desktop Column 1
+  - Desktop Width". `labelViewport` / `stripViewportPrefix` read the word
+  anywhere; a qualifier that CONTRADICTS the measurement is still corrected.
 - **A Select inert at exactly ONE viewport keeps working but its LABEL says
   where**: `Desktop ` prefix when it is inert at 375px, `Mobile ` when
   inert at 600px ("Desktop Alignment", "Mobile Spacing Below"). LABELS

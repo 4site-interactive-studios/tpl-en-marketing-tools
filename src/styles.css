@@ -249,9 +249,20 @@ p {
      escapes child combinators (2d) and Gmail ignores attribute selectors, and
      both of those failed here. The second rule puts the inset back on copy
      only, and wins because two classes outrank `.flush-mobile-capflush td`.
-     Captions are deliberately NOT in that list — they stay flush with the
-     photo, which is the alignment the catalog authors (padding="4px 0 0",
-     the caption scale's Quarter step since 2026-08-18; 8px before that).
+
+     SCOPE, corrected 2026-08-18: the restore rule reaches EVERY mj-text in a
+     flush block, captions included — MJML stamps the template-wide wysiwyg
+     css-class default onto every one, so a caption cell compiles to a table
+     cell carrying class wysiwyg, and `.flush-mobile-capflush .wysiwyg`
+     (0,2,0) outranks `.flush-mobile-capflush td` (0,1,1). The IMAGE goes flush; the
+     copy AND its caption keep the 16px inset, which reads as a caption
+     aligned to the copy rather than to the photo. An earlier note here
+     claimed captions stayed flush with the photo; that was never what
+     shipped. Both rules pin horizontal padding with !important either way,
+     so the importer labels a caption's Inset controls desktop-only in both
+     readings (conventions "Where the labels come from"). To make captions
+     genuinely flush, exclude them from the restore rule — do NOT rely on the
+     bare `td` rule winning, it cannot.
      Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
   .flush-mobile-capflush td {
     padding-left: 0 !important;
