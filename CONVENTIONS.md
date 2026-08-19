@@ -484,15 +484,22 @@ Determinism contract — what makes the matrix trustworthy:
   writes none of them**; a cached witness is not a witness.
 - **Parallelism is a timing knob, never a verdict knob.** The two viewports
   run concurrently and option cells run `concurrency`-wide against an
-  iframe pool of the same size (default `hardwareConcurrency - 2`, clamped
-  3-8, overridable per machine in the panel and stored under its own
-  `en-tools:inert-audit:concurrency` key — machine-local, so deliberately
-  NOT in `Settings`, which travels with the project). Contention can only
-  make a render slower, and a slow render times out to unstable → one retry
-  → **unproven**. The failure direction is one-way: starving a render can
-  never manufacture an `inert`. Each viewport still re-verifies its
-  baseline strictly AFTER its own cells drain, so "the baseline hashed the
-  same before and after this block's renders" keeps its exact meaning.
+  iframe pool of the same size. Contention can only make a render slower,
+  and a slow render times out to unstable → one retry → **unproven**. The
+  failure direction is one-way: starving a render can never manufacture an
+  `inert`. Each viewport still re-verifies its baseline strictly AFTER its
+  own cells drain, so "the baseline hashed the same before and after this
+  block's renders" keeps its exact meaning.
+- **The concurrency default is 1** (user decision 2026-08-19): a sweep must
+  not make the machine unusable out of the box. Because it is a pure timing
+  knob, RAISING it is the supported way to go fast — the panel's "Parallel"
+  control persists per machine under its own
+  `en-tools:inert-audit:concurrency` key (deliberately NOT in `Settings`,
+  which travels with the project). Measured on the same 101 catalog rows:
+  **32.9s at 8-wide vs 4 rows in 94.3s at 1-wide** — at least 12×, and
+  slower than the 3-wide the audit originally shipped with, because at 1 the
+  two viewports contend for the single iframe (poolWait 48%).
+  `hardwareConcurrency - 2`, clamped 3-8, is a good value to type in.
 
 Verdict vocabulary the matrix never conflates: **inert** (proven, per
 viewport) · **inert at defaults** (the option's substituted body is
