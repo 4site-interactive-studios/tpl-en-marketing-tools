@@ -2,7 +2,10 @@
   <mj-head>
     <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-      "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
+      "classSpacingScales": {
+        "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 }
+      },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
@@ -581,10 +584,10 @@
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#000000" padding="0">
       <mj-section
-          css-class="overlay-image-block block" background-url="assets/photo-person_overlay.jpg"
+          css-class="overlay-image-block block hero-reveal" background-url="assets/photo-person_overlay.jpg"
           background-size="cover"
           background-repeat="no-repeat"
-          background-position="center bottom" padding="360px 32px 48px"
+          background-position="center bottom" padding="350px 32px 48px"
       >
         <mj-group>
 
@@ -717,18 +720,27 @@
     <!-- END: Linked Header Row (w/ icon) -->
 
     <!-- START: WYSIWYG Text (full width) -->
+    <!-- Un-flagged 2026-08-19: the heading/body split + Heading Level
+         Select made this the family's canonical (it was "deliberately
+         excluded, no canonical" since 2026-07-29, when it was one
+         monolithic mj-text). The unified master has always shipped it
+         unflagged; the inset variant stays excluded as its duplicate. -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column>
+        <!-- Heading and body are separate mj-texts so each mints its own
+             Content field and Display toggle, and the heading's level is
+             editable via data-heading-level-toggle (user decisions
+             2026-08-19). The old second, LINKED heading demo is gone; the
+             body's second paragraph still demos an inline link. The
+             heading stays on one line: the narrowed Content field's value
+             is matched by text search in the compiled HTML. -->
+        <mj-text data-heading-level-toggle padding="0 0 16px">
+          <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
+        </mj-text>
         <mj-text padding="0">
-          <h1>
-            Lorem ipsum quis malesuada sed quam faucibus.
-          </h1>
-          <h1>
-            <a href="https://www.example.com">Lorem ipsum quis malesuada sed quam faucibus.</a>
-          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -755,13 +767,17 @@
       background-color="#ffffff" padding="0 32px" data-fully-exclude
     >
       <mj-column>
+        <!-- Heading and body are separate mj-texts so each mints its own
+             Content field and Display toggle, and the heading's level is
+             editable via data-heading-level-toggle (user decisions
+             2026-08-19). The old second, LINKED heading demo is gone; the
+             body's second paragraph still demos an inline link. The
+             heading stays on one line: the narrowed Content field's value
+             is matched by text search in the compiled HTML. -->
+        <mj-text data-heading-level-toggle padding="0 0 16px">
+          <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
+        </mj-text>
         <mj-text padding="0">
-          <h1>
-            Lorem ipsum quis malesuada sed quam faucibus.
-          </h1>
-          <h1>
-            <a href="https://www.example.com">Lorem ipsum quis malesuada sed quam faucibus.</a>
-          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -1039,11 +1055,17 @@
           padding="0 0 32px"
           css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text padding="0 0 48px">
-          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 16px;">
+        <!-- Quote and attribution are separate mj-texts so each mints its
+             own Content field and the attribution gets its own Display
+             toggle (user decision 2026-08-19). The quote's old internal
+             16px margin moved to its padding. -->
+        <mj-text padding="0 0 16px">
+          <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 0;">
             Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
             Arcu eu tincidunt amet eleifend placerat adipiscing.
           </p>
+        </mj-text>
+        <mj-text padding="0 0 48px">
           <p style="font-size: 14px; letter-spacing: 2px; font-weight: 500; text-align: center; font-family: Arial, sans-serif; margin-bottom: 0;">
             - TESTIMONIAL AUTHOR
           </p>
@@ -1059,8 +1081,13 @@
       background-color="#CEE4C5" padding="16px"
     >
       <mj-column width="480px" padding="0">
-        <mj-text align="center" padding="0 0 32px">
+        <!-- Heading and body are separate mj-texts so each mints its own
+             Content field and Display toggle (one idea per mj-text,
+             user decision 2026-08-19). -->
+        <mj-text align="center" padding="0 0 16px">
           <h3>Lorem ipsum dolor</h3>
+        </mj-text>
+        <mj-text align="center" padding="0 0 32px">
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
             donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
@@ -2458,14 +2485,18 @@
                probe 0Mgmjr - the row anchor arrived EMPTY and nothing was
                clickable), so the row link is per-cell anchors sharing ONE URL
                field via data-link-group: same group + byte-identical hrefs =
-               one replacement spliced into every member, nothing to desync. -->
+               one replacement spliced into every member, nothing to desync.
+               The copy anchor carries data-text-anchor so its Label/Text
+               Color group as Text, not "Button 2", and authors a concrete
+               #000000 (renders identically to the old inherit) so the color
+               mints a palette Select (user decisions 2026-08-19). -->
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
               <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
                 <a href="https://www.example.com" data-link-group="row" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
               <td valign="top" style="padding:8px 0px 12px 0px;">
-                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" style="display:block;text-decoration:none;color:inherit;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
+                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-text-anchor style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
           </table>
@@ -2639,8 +2670,14 @@
     </mj-section>
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
-        <mj-text padding="0">
+        <!-- Heading and body are separate mj-texts so each mints its own
+             Content field and Display toggle (user decision 2026-08-19).
+             The heading keeps its link INSIDE the RTE — a plain-markup
+             linked heading stays RTE-editable by convention. -->
+        <mj-text padding="0 0 8px">
           <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+        </mj-text>
+        <mj-text padding="0">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>

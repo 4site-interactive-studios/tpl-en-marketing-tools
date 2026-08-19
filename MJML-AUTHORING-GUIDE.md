@@ -798,6 +798,24 @@ Two companion rules for background sections, both Outlook:
 
 ## 5. Authoring for good Replacements
 
+### One idea per mj-text (2026-08-19, user-decided)
+
+The importer's unit of editability is the `mj-text` ELEMENT: one element
+mints exactly one Content field, and only elements sharing a column with
+another member get a Display toggle. A heading and its body copy authored
+in ONE `mj-text` therefore freeze into a single field the editor cannot
+show/hide or restyle independently — the pattern the 2026-08-19 usability
+pass unwound across CTA Text, Quote, WYSIWYG Text, and Podcast Episode.
+Author each idea as its own element: the heading `mj-text`, the body
+`mj-text`, the attribution `mj-text`. Each gets its own Content field and
+Display toggle for free, headings become eligible for
+`data-heading-level-toggle` (the H1–H4 Select — which needs the heading
+alone, plain-text, on one line so its narrowed Content value survives the
+compiled-HTML text search), and the inter-element gap moves to the upper
+element's bottom padding per §3. Inline links inside prose stay in the
+prose (they are RTE-editable); a linked heading keeps its link inside its
+own element's RTE.
+
 ### Make dropdowns possible, not free text
 
 Anything that can be a bounded choice should be. Free-form numbers break

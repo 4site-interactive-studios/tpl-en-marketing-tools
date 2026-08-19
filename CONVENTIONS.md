@@ -156,11 +156,17 @@ inside `<mj-head>` (parsed from the prepared source by
   the Block Padding Left/Right preset deliberately stay on the main
   scale/presets. This is how captions ride a Quarter - 4px grid without
   widening every other spacing dropdown (2026-08-18, user-decided).
-  The effective geometry reach must cover the largest step of EVERY
-  declared scale, class scales included — checked unconditionally, even
-  when `geometryReachPx` is omitted. Range eligibility is shared — a
-  class scale never changes what counts as geometry
-  (`configForAttrs`, `src/core/mjmlProps.ts`). `widthPresets` (name → px) drives the
+  **A class scale carries its OWN geometry reach — its top step**
+  (`configForAttrs`, `src/core/mjmlProps.ts`; semantics change 2026-08-19,
+  user-decided for the CTA Hero reveal). A hero-reveal scale running to
+  500px therefore mints a 350px photo reserve as a Select on ITS elements
+  while everything unclassed keeps the global `geometryReachPx` — a class
+  scale never widens what counts as geometry anywhere else. The declared
+  `geometryReachPx` must still cover the MAIN scale's largest step
+  (checked unconditionally, even when the key is omitted); class scales
+  self-cover and are exempt from that check. Before 2026-08-19 the reach
+  was global and the coverage check spanned every scale — an off-scale
+  class step used to be impossible. `widthPresets` (name → px) drives the
   Block Padding Left/Right dropdown. `columnWidthsPx` (optional; a non-empty array of
   whole px numbers ≥ 50, e.g. `[120, 240, 480]`) curates the Column
   Width ladder template-wide — see the column-width bullet for the
@@ -1018,6 +1024,29 @@ sort — it is purely the panel/export display order.
   proved the same block added multiple times keeps INDEPENDENT
   Replacement selections per instance. `data-no-link-toggle` opts out
   upstream. Label is bare "Link", sorted directly under Display.
+- **Heading Level toggles** (2026-08-19, user-decided): an `mj-text`
+  flagged `data-heading-level-toggle` whose ENTIRE content is one
+  plain-text `<h1>`–`<h6>` gets a "Heading Level" Select of H1–H4 (plus
+  the authored level when it's h5/h6). Each option's value is the full
+  compiled heading with its tag swapped and attributes preserved; the
+  Content field is narrowed to the heading's INNER text and rides inside
+  every option as a nested tag, so level and copy can never desync.
+  Generated before Display, which nests it one level deeper
+  (Display ⊃ Heading Level ⊃ Content — within EN's verified resolution
+  depth). Markup inside the heading, or siblings beside it, void the flag
+  with an import note and the text falls back to the ordinary
+  whole-inner Content field. Name `text_1_heading_level` (numbered like
+  every text-family field), bare label "Heading Level", sorted with
+  Display/Link above the content fields.
+- **Text anchors inside complex markup** (2026-08-19, user-decided): an
+  `<a>` inside hand-authored table/div markup flagged `data-text-anchor`
+  mints its fields under the **Text** family (`text-link` internally)
+  instead of "Button N" — for row-link copy that is prose, not a pill
+  (the Question Block's sentence). Same fields as a button-link (Label,
+  Link URL, hex colors as palette Selects); only the grouping, names,
+  and section headers change. Its ordinals live in their own space,
+  mirrored by the column-geometry walk so unflagged anchors keep their
+  button-width mapping.
 - **Image Position / Column Order** (the content-swap control): exists to
   reverse CONTENT ordering, never to reverse text — so it is generated ONLY
   at the section/column-frame level, never on inner elements like a Text
@@ -1642,8 +1671,12 @@ importer whitelists all data-*-only MJML validator warnings
   audit (user-decided): restored canonicals Two-Line Banner (light
   green), Linked Header Row, Body Text (inset), Deadline Panel,
   Subscription Panel; DELIBERATELY fully excluded with no canonical
-  (do not re-flag as errors): WYSIWYG Text, Text w/ Bullet Lists,
+  (do not re-flag as errors): Text w/ Bullet Lists,
   Text + Link Paragraph CTA, Linked List Block, Join Links Block.
+  WYSIWYG Text left that list 2026-08-19 (user-driven block rework):
+  the heading/body split + Heading Level Select made the full-width
+  variant the family's canonical, so it is importable again; the inset
+  variant stays excluded as its duplicate.
 - **`data-import-exclude`**: dev-only labeling/visual blocks. Ships as an
   mj-raw `<div data-import-exclude>` wrapper so it SURVIVES compilation;
   the block renders in previews but starts unchecked in exports
@@ -1734,6 +1767,19 @@ importer whitelists all data-*-only MJML validator warnings
   compiled html together, mirroring a real rebuild. Raw-anchor URL fields
   have no Link toggle (that is mj-image-only), so the group has no toggle
   to desync either.
+- **`data-text-anchor`** (valueless, on raw `<a>` tags inside
+  hand-authored component markup, 2026-08-19, user-decided): the anchor
+  is prose that happens to link — its fields group under the **Text**
+  family instead of "Button N" (see "Text anchors inside complex markup"
+  under Other generated controls). Composable with `data-link-group`
+  across families: the Question Block's icon anchor (unflagged, Button)
+  mints the group URL while the flagged copy anchor rides as a carrier
+  and mints Text-family Label/Text Color.
+- **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
+  user-decided): mints the "Heading Level" H1–H4 Select and narrows the
+  Content field to the heading's inner text (see Other generated
+  controls). Requires the mj-text's entire content to be one plain-text
+  heading; anything else voids the flag with an import note.
 - **Universal Alt Text (2026-08-18) — and `data-style-alt` retired.** Every
   `mj-image` whose `alt` attribute is PRESENT mints an Alt Text field,
   `alt=""` included: the attribute scan admits the empty value for alt

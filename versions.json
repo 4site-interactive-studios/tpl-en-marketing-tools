@@ -112,16 +112,16 @@
     "hash": "28268bb5254c"
   },
   "block:CTA Hero (w/ large background image)": {
-    "version": 6,
-    "hash": "0694a08373fc"
+    "version": 7,
+    "hash": "1cdfc65c05e7"
   },
   "block:CTA Hero with Heading (logo and background image)": {
     "version": 7,
     "hash": "248b53cf6f2a"
   },
   "block:CTA Text Block": {
-    "version": 2,
-    "hash": "a9781b39f3e3"
+    "version": 3,
+    "hash": "518621bf2255"
   },
   "block:Category — Buttons": {
     "version": 3,
@@ -400,8 +400,8 @@
     "hash": "e9cc63f24291"
   },
   "block:Podcast Episode Block": {
-    "version": 2,
-    "hash": "4954d2f27e5e"
+    "version": 3,
+    "hash": "fe60229448a0"
   },
   "block:Podcast Streaming Block": {
     "version": 2,
@@ -412,8 +412,8 @@
     "hash": "c87b54913030"
   },
   "block:Question Block": {
-    "version": 3,
-    "hash": "c257afedeade"
+    "version": 4,
+    "hash": "40f73663a2bc"
   },
   "block:Quiz Block (2x2 buttons)": {
     "version": 6,
@@ -432,8 +432,8 @@
     "hash": "0824a11cf1d5"
   },
   "block:Quote Block": {
-    "version": 2,
-    "hash": "596466b4f6ed"
+    "version": 3,
+    "hash": "57eb3588fa6d"
   },
   "block:Signature Card (no photo)": {
     "version": 5,
@@ -572,20 +572,20 @@
     "hash": "bd8d38b2714c"
   },
   "block:WYSIWYG Text (full width)": {
-    "version": 3,
-    "hash": "df4bb6324ecf"
+    "version": 4,
+    "hash": "4c7a73e60872"
   },
   "block:WYSIWYG Text (inset)": {
-    "version": 2,
-    "hash": "a5010c947068"
+    "version": 3,
+    "hash": "6ce779d3b504"
   },
   "catalog-shell": {
-    "version": 11,
-    "hash": "5b4ee471cbf4"
+    "version": 12,
+    "hash": "0822d660b634"
   },
   "email-template": {
-    "version": 17,
-    "hash": "cf7f3deb88b3"
+    "version": 18,
+    "hash": "26177b6e61f3"
   },
   "head-css": {
     "version": 5,
