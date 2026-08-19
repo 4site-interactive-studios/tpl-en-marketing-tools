@@ -2729,7 +2729,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-person-and-bird-1.png" alt="Ronda Lee Chapman and a northern flicker" width="248px" align="center" padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" padding="0 0 16px">
+        <mj-text color="#ffffff" padding="0 0 16px" data-mobile-only-spacing-below>
           <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
         </mj-text>
       </mj-column>

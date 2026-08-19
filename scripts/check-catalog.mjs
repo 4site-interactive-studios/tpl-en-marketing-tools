@@ -181,7 +181,10 @@ guard('column geometry check', () => {
       const f = frames.pop();
       if (!f) return;
       cell = f.savedCell; // sibling cells are scoped to their frame
-      if (f.cols.length < 2) return;
+      // A LONE column still overflows if it is wider than its frame — the
+      // 2026-08-18 hero defect (a 550px column left in a 32px-padded
+      // section) hid here, because summing siblings skipped single-column
+      // frames entirely. Only the sibling-sum case needs two columns.
       const sum = f.cols.reduce((a, b) => a + b, 0);
       if (sum > f.frame + 1) hits.push({ ...f, sum, at });
     };
@@ -245,7 +248,9 @@ guard('column geometry check', () => {
       const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
-        `src/${base}.mjml${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
+        hit.cols.length < 2
+          ? `src/${base}.mjml${at} "${name}" — a lone ${Math.round(hit.sum)}px column in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); it overflows the body instead of filling the frame — drop its width= so it fills`
+          : `src/${base}.mjml${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
       );
     }
   }

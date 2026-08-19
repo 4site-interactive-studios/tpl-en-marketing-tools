@@ -1692,15 +1692,45 @@ importer whitelists all data-*-only MJML validator warnings
   proves live at 375px — the Quiz Block (2x2 photos) Section 4 caption's
   Text Color (renders red when changed), its Alignment (left edge 45→32)
   and Inset Right (right edge 343→279), and the Images 3x1 Column 3
-  caption's Alignment (170→0). The failure direction is one-way: the raster
-  comparison can only ever manufacture INERTNESS, never liveness. So an
-  "inert here, live there" row is EVIDENCE TO CHECK, and a "live at both
-  viewports, but flagged" row is trustworthy on its own (nothing can invent
-  liveness) — a stale flag found that way can simply be removed. Confirm an
-  inert claim by changing the property on the real element in the real
-  document and measuring what moves, THEN declare. Measure the box the
-  field actually splices into: manipulating a wrapper's outer div when the
-  field edits an inner td proves nothing.
+  caption's Alignment (170→0). A second run hours later cleared all six
+  with no change to those blocks — which is what a non-reproducible finding
+  looks like. Had they been declared, the same rows would now be FAILing as
+  false claims.
+
+  **Rows err in BOTH directions.** The same session tried to shortcut this
+  and was caught within the hour. A row reporting a FLAGGED control as live
+  at both viewports was treated as trustworthy — reasoning that a
+  false-inert bug cannot invent liveness, so a stale flag found that way
+  could just be removed — and its `data-mobile-only-spacing-below` was
+  deleted. The next run immediately asked for the flag back, and direct
+  measurement sided with the flag: on Photo and Text Grid (2x2) Section 3
+  Text 1, sweeping the field's own cell through every option (0 → 64px)
+  grows its column 452 → 516px while its sibling holds at 522px, so the
+  block height never moves. The control is genuinely desktop-inert and
+  lives only once columns stack. The reasoning was fine; the row it rested
+  on was simply wrong in the other direction.
+
+  So confirm EVERY claim, whichever way it points, by changing the property
+  on the real element in the real document and measuring what moves, THEN
+  declare. Three things make that test faithful:
+  - Measure the box the field actually splices into. Manipulating a
+    wrapper's outer div when the field edits an inner td proves nothing —
+    and neither does grabbing an inner td whose padding is 0, which is how
+    the sweep above first read a phantom 10px of movement.
+  - Sweep the ACTUAL option values, not an arbitrary delta. A control whose
+    every option is absorbed is inert even though a large enough number
+    would not be.
+  - Suspect absorption by a taller sibling first — it is the most common
+    honest reason a spacing or padding control is desktop-inert — and
+    measure BOTH columns, not just the one you are editing.
+
+  A finding can also be a real defect wearing an inert control's clothes.
+  Both heroes reported as "Wrapper Padding Right, inert @600" were inert
+  because a leftover 550px column overflowed the section (§6 of the
+  authoring guide): nothing reflowed when the wrapper narrowed. Fixing the
+  geometry made both controls live at desktop in exact 16/32/64 steps, with
+  no declaration written. Before labelling a control as scoped, check
+  whether something upstream is stopping it from working.
 
   Where the control is dead at BOTH viewports, use
   `data-no-width-toggle` (frames as well as columns) rather than a scope

@@ -1035,6 +1035,14 @@ can prop each other up, and the report says so when they do.
   Author children that FILL: omit `width` on a lone column or group so it
   takes 100%, and make group members sum to the content box exactly. The
   600px outer box is not evidence of correctness — measure an inner table.
+  Do not reach for the exact pixel figure (`width="536px"` here) — it
+  renders the same but mints a `.mj-column-px-536` head class, where 100%
+  reuses the `.mj-column-per-100` that every catalog already carries.
+  TPL's `check-catalog` geometry guard now catches the overflow half of
+  this: it was summing SIBLING widths and skipping single-column frames
+  outright, so a lone over-wide column was structurally invisible to it.
+  Opened 2026-08-18 and self-tested both ways — silent on the corrected
+  catalogs, and it names the block when the 550px column is put back.
 - **Outlook-only values are invisible everywhere else.** A padding that
   exists only inside an MSO conditional or an `mso-*` property would edit
   Outlook alone; it should not become a field.
