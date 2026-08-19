@@ -1019,6 +1019,22 @@ can prop each other up, and the report says so when they do.
   (full bleed / indented / double indent), not as ad-hoc padding.
 - **A lone fixed-px column centers in its section's slack**, so that
   section's left/right padding does nothing. Do not author controls for it.
+- **So a fixed-px child does not survive a change to its section's
+  padding** — and it fails in whichever of two directions the arithmetic
+  takes it, both silently. Measured 2026-08-18, from one padding change
+  that left the children behind:
+  - **Narrower than the box → it centers, and eats the inset.** A
+    `mj-group width="480px"` in a 552px content box centers with 36px of
+    slack per side, so a section padded `16px 16px 16px 32px` rendered its
+    photo at 68px, not 32px. The padding was correct; the group hid it.
+  - **Wider than the box → it overflows the body.** A `mj-column
+    width="550px"` (the content width from a 25px-padding era) inside a
+    section padded 32px forced the background table to 550+64 = **614px**
+    — 14px past the 600px body, so the block read as "wider than the
+    others" while its own outer box still measured exactly 600.
+  Author children that FILL: omit `width` on a lone column or group so it
+  takes 100%, and make group members sum to the content box exactly. The
+  600px outer box is not evidence of correctness — measure an inner table.
 - **Outlook-only values are invisible everywhere else.** A padding that
   exists only inside an MSO conditional or an `mso-*` property would edit
   Outlook alone; it should not become a field.
@@ -1152,6 +1168,16 @@ aloud). The Alt Text field survives either way (§5).
    colour→`bgcolor`, background shorthand rebuilt), so the local artifact
    lies in both directions. Third recurrence of this error class
    (2026-08-11, -12, -18); it graduates to a rule.
+6d. After ANY change to a section's left/right padding, re-measure the
+   blocks you touched — a fixed-px column or group left behind by that
+   change either centers (eating the new inset) or overflows the body,
+   and both are invisible in the block's own 600px outer box (§6).
+   Two mechanical checks catch the whole class: no inner `<table>` may
+   render wider than 600px, and a block's rendered content inset must
+   equal the inset you authored. A catalog-wide inset census is the
+   cheapest way to run this — 54 of the blocks here sit at exactly 32/32,
+   so any block off that number is either deliberate or a bug, and the
+   outliers name themselves (measured 2026-08-18: five did).
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

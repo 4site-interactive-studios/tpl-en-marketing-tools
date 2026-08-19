@@ -516,7 +516,7 @@
     <mj-wrapper background-color="#006837" padding="0">
       <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
         <mj-group>
-        <mj-column width="550px">
+        <mj-column>
           <mj-text align="center" padding="0 0 16px">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
           </mj-text>
@@ -572,11 +572,19 @@
 
     <!-- START: CTA Hero (w/ large background image) -->
     <!--
-      Inside a section using a background all elements must have 0 left
-      and right padding or they will be misaligned on outlook.
-      This is why we use spacer columns with a fixed width on the sides
-      of the overlay image column to create the necessary padding while
-      maintaining alignment across email clients.
+      The side inset here comes from the SECTION's own padding, not from
+      spacer columns (those were removed 2026-08-17). The column must stay
+      width-less so it fills the padded box: a fixed 550px column was left
+      behind by that removal and, against 32px of section padding, forced
+      the background table to 550+64=614px — 14px wider than the 600px
+      body, which is how it was caught (measured 2026-08-18).
+
+      Historical caution, kept because it is a measured Outlook behaviour
+      and this block has not been re-sent since the spacer columns went:
+      elements inside a background section were observed to misalign in
+      Outlook unless their own left/right padding was 0. The overlay text
+      and button below still carry 32px of their own, so confirm this
+      block on the next EoA round.
      -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#000000" padding="0">
@@ -587,9 +595,8 @@
           background-position="center bottom" padding="360px 32px 48px"
       >
         <mj-group>
-          <!-- Spacer column - required to be done this way for Outlook -->
 
-          <mj-column width="550px">
+          <mj-column>
             <mj-text css-class="overlay" padding="0 32px 16px">
               <h1 style="text-align: center">Placeholder message for special occasion </h1>
             </mj-text>
@@ -598,8 +605,6 @@
               BUTTON
             </mj-button>
           </mj-column>
-
-          <!-- Spacer column - required to be done this way for Outlook -->
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1590,7 +1595,7 @@
       css-class="three-col-images-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 0 8px"
     >
-      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column first-column" width="200px" vertical-align="middle" padding="0 16px 0 0">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1632,7 +1637,7 @@
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column" width="200px" vertical-align="middle" padding="0 0 0 16px">
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
@@ -1816,7 +1821,7 @@
     >
       <mj-column css-class="two-col-column first-column" width="50%" vertical-align="top" padding="0 8px">
         <mj-image
-            src="assets/photo-kayak.jpg" width="230px"
+            src="assets/photo-kayak.jpg" width="252px"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -1824,7 +1829,7 @@
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-kayak.jpg" width="230px"
+            src="assets/photo-kayak.jpg" width="252px"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -1849,7 +1854,7 @@
       </mj-column>
       <mj-column css-class="two-col-column" width="50%" vertical-align="top" padding="0 8px">
         <mj-image
-            src="assets/photo-garden.jpg" width="230px"
+            src="assets/photo-garden.jpg" width="252px"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -1857,7 +1862,7 @@
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-garden.jpg" width="230px"
+            src="assets/photo-garden.jpg" width="252px"
             alt="Custom alt text"
             href="https://www.example.com"
             padding="0"
@@ -2446,7 +2451,7 @@
     <!-- START: Question Block -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="0"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column padding="0">
         <mj-text css-class="question-response" padding="0">
@@ -2457,10 +2462,10 @@
                one replacement spliced into every member, nothing to desync. -->
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
-              <td valign="top" style="width:33px;padding:16px 0px 0px 16px;">
+              <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
                 <a href="https://www.example.com" data-link-group="row" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
-              <td valign="top" style="padding:8px 16px 12px 0px;">
+              <td valign="top" style="padding:8px 0px 12px 0px;">
                 <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" style="display:block;text-decoration:none;color:inherit;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
@@ -2809,8 +2814,8 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (square photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 0 32px">
-      <mj-column width="480px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px 0">
+      <mj-column>
         <mj-text padding="0">
           <p style="font-style: italic;">
             With deep appreciation,
@@ -2818,26 +2823,26 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 16px 16px 32px">
-      <mj-group width="480px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-group>
         <mj-column
           vertical-align="top"
           width="110px"
           css-class="signature-img" padding="0 8px 0 0">
           <mj-image
-              src="assets/staff-carrie-besnette-hauser.png" width="100px"
+              src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
               alt="Carrie Besnette Hauser"
               padding="0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
-              src="assets/staff-carrie-besnette-hauser.png" width="100px"
+              src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
               alt="Carrie Besnette Hauser"
               padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column
           vertical-align="middle"
-          width="365px"
+          width="426px"
           css-class="signature-text" padding="0 0 0 8px">
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_black.png"

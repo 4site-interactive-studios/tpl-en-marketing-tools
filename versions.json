@@ -72,8 +72,8 @@
     "hash": "3260cf9bef08"
   },
   "block:CTA Hero (centered w/ background image)": {
-    "version": 6,
-    "hash": "71da7c102c23"
+    "version": 7,
+    "hash": "5bbd53a34c5b"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
     "version": 5,
@@ -112,8 +112,8 @@
     "hash": "28268bb5254c"
   },
   "block:CTA Hero (w/ large background image)": {
-    "version": 5,
-    "hash": "5b32d20799cf"
+    "version": 6,
+    "hash": "0694a08373fc"
   },
   "block:CTA Hero with Heading (logo and background image)": {
     "version": 7,
@@ -312,8 +312,8 @@
     "hash": "f290584745ca"
   },
   "block:Images 3x1": {
-    "version": 5,
-    "hash": "16ebeec79353"
+    "version": 6,
+    "hash": "b069177899fc"
   },
   "block:Join Links Block": {
     "version": 2,
@@ -412,8 +412,8 @@
     "hash": "c87b54913030"
   },
   "block:Question Block": {
-    "version": 2,
-    "hash": "6f5010c3307f"
+    "version": 3,
+    "hash": "c257afedeade"
   },
   "block:Quiz Block (2x2 buttons)": {
     "version": 5,
@@ -444,8 +444,8 @@
     "hash": "235c7194f17c"
   },
   "block:Signature Card (square photo)": {
-    "version": 5,
-    "hash": "204f2fd69925"
+    "version": 6,
+    "hash": "2db203443007"
   },
   "block:Spacer": {
     "version": 2,
@@ -508,8 +508,8 @@
     "hash": "80dbf6cf852f"
   },
   "block:Story Card 2x1": {
-    "version": 6,
-    "hash": "e95f0125251b"
+    "version": 7,
+    "hash": "d1d784a22572"
   },
   "block:Subscription Panel": {
     "version": 2,
@@ -588,8 +588,8 @@
     "hash": "7e81cee5738f"
   },
   "head-css": {
-    "version": 2,
-    "hash": "971ec54577dc"
+    "version": 3,
+    "hash": "e57c4ac23c9d"
   },
   "partial:debug-toolbar": {
     "version": 1,
