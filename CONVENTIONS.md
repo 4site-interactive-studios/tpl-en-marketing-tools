@@ -1685,7 +1685,24 @@ importer whitelists all data-*-only MJML validator warnings
 
   A declaration is a CLAIM, not an escape hatch: the audit still measures
   every option, and a false claim comes back as a FAIL on the very next
-  run. Where the control is dead at BOTH viewports, use
+  run.
+
+  **Never write a scope flag straight off an audit report.** Measured
+  2026-08-18: a sweep reported six controls inert at 375px that a browser
+  proves live at 375px — the Quiz Block (2x2 photos) Section 4 caption's
+  Text Color (renders red when changed), its Alignment (left edge 45→32)
+  and Inset Right (right edge 343→279), and the Images 3x1 Column 3
+  caption's Alignment (170→0). The failure direction is one-way: the raster
+  comparison can only ever manufacture INERTNESS, never liveness. So an
+  "inert here, live there" row is EVIDENCE TO CHECK, and a "live at both
+  viewports, but flagged" row is trustworthy on its own (nothing can invent
+  liveness) — a stale flag found that way can simply be removed. Confirm an
+  inert claim by changing the property on the real element in the real
+  document and measuring what moves, THEN declare. Measure the box the
+  field actually splices into: manipulating a wrapper's outer div when the
+  field edits an inner td proves nothing.
+
+  Where the control is dead at BOTH viewports, use
   `data-no-width-toggle` (frames as well as columns) rather than a scope
   flag — there is no honest label for a control that never does anything.
 
