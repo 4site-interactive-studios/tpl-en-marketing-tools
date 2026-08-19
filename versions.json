@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 7,
-    "hash": "47e7d7f9e95b"
+    "version": 8,
+    "hash": "29d8d69529e2"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 7,
-    "hash": "d7a9fa041db8"
+    "version": 8,
+    "hash": "a9d63f00cd75"
   },
   "block:Body Text (inset)": {
     "version": 2,
@@ -116,8 +116,8 @@
     "hash": "cd6fc65b5a5f"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 5,
-    "hash": "07a1817ff55d"
+    "version": 6,
+    "hash": "32f37db6fbe3"
   },
   "block:CTA Text Block": {
     "version": 2,
@@ -368,12 +368,12 @@
     "hash": "03a7d27029cf"
   },
   "block:Logo Hero (w/ image, green)": {
-    "version": 2,
-    "hash": "52896c82a504"
+    "version": 3,
+    "hash": "35a2b36ba9ca"
   },
   "block:Logo Hero (w/ text and image)": {
-    "version": 2,
-    "hash": "d1dfde71fc19"
+    "version": 3,
+    "hash": "8accfc234435"
   },
   "block:Logo Hero (w/ text and image, centered)": {
     "version": 2,
@@ -420,8 +420,8 @@
     "hash": "18f091fad92d"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 7,
-    "hash": "d55987652dd2"
+    "version": 8,
+    "hash": "1bdd84414193"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 3,
@@ -436,16 +436,16 @@
     "hash": "596466b4f6ed"
   },
   "block:Signature Card (no photo)": {
-    "version": 4,
-    "hash": "b086d3f382c1"
+    "version": 5,
+    "hash": "c417c6aeb2fb"
   },
   "block:Signature Card (round photo)": {
-    "version": 3,
-    "hash": "2dc571315762"
+    "version": 4,
+    "hash": "235c7194f17c"
   },
   "block:Signature Card (square photo)": {
-    "version": 3,
-    "hash": "84a83be95eed"
+    "version": 4,
+    "hash": "0da83b3616ee"
   },
   "block:Spacer": {
     "version": 2,
@@ -504,8 +504,8 @@
     "hash": "773dd1ddeee5"
   },
   "block:Story Card (orange-bordered)": {
-    "version": 3,
-    "hash": "8d5d54da1fbb"
+    "version": 4,
+    "hash": "80dbf6cf852f"
   },
   "block:Story Card 2x1": {
     "version": 5,
@@ -552,8 +552,8 @@
     "hash": "ee2985f2923c"
   },
   "block:Two-Line Banner (light green)": {
-    "version": 2,
-    "hash": "191a4c534879"
+    "version": 3,
+    "hash": "eac19b08a759"
   },
   "block:Two-Line Banner (light green, hero lead-in)": {
     "version": 2,
@@ -596,8 +596,8 @@
     "hash": "47dc4c153b25"
   },
   "partial:green-rule-divider": {
-    "version": 2,
-    "hash": "3ee1e0a8e3f6"
+    "version": 3,
+    "hash": "52bea11de559"
   },
   "partial:tri-color-divider": {
     "version": 4,

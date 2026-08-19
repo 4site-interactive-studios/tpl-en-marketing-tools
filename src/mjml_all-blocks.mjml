@@ -233,7 +233,7 @@
           <mj-text align="right" color="#ffffff" padding="0 0 8px">
             <p style="font-size:12px;line-height:14px;margin:0;">North Carolina</p>
           </mj-text>
-          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" />
+          <mj-image css-class="light-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-mobile-only-inset-left />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image css-class="dark-only" src="assets/state-north-carolina.png" alt="North Carolina" href="https://www.example.com" width="104px" padding="0 0 0 16px" align="right" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
@@ -471,7 +471,8 @@
     <!-- Fallback colour lives on the OUTER wrapper, NOT the tag carrying the image: MJML copies a background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the image it still covers a blocked photo. The image sits on an inner wrapper rather than a section because it spans BOTH sections below. -->
     <mj-wrapper background-color="#362229" padding="0">
       <mj-wrapper css-class="image-block block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
-      <mj-section padding="48px 32px 8px">
+      <!-- data-mobile-only-width: the centered heading carries its own line break and never reaches the gutter at 600px, so symmetric presets move nothing there; at 375px the wider presets force a wrap. Measured INERT desktop / live mobile by the inert audit 2026-08-18. Drop the flag if the heading copy ever wraps at desktop. -->
+      <mj-section padding="48px 32px 8px" data-mobile-only-width>
         <mj-column>
           <mj-text align="center" color="#ffffff" padding="0">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
@@ -1116,7 +1117,8 @@
     <!-- END: Subscription Panel -->
 
     <!-- START: Two-Line Banner (light green) -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px">
+    <!-- data-mobile-only-width: the two centered caps lines clear every preset at 600px, so the gutter is invisible at desktop; at 375px the wider steps force a wrap. Measured INERT desktop / live mobile 2026-08-18. Drop the flag if the banner copy ever wraps at desktop. -->
+    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px" data-mobile-only-width>
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
@@ -2100,7 +2102,8 @@
       </mj-column>
     </mj-section>
     <mj-wrapper css-class="block" background-color="#ffffff" padding="8px 32px 16px" border="none">
-      <mj-section background-color="#ffffff" border="1px solid #F7931E" padding="16px 16px 0">
+      <!-- data-mobile-only-padding-right: the short left-aligned heading link leaves the right padding nothing to move at 600px; at 375px it wraps and the right padding sets the wrap point. Same shape as the poll question. Measured INERT desktop / live mobile 2026-08-18. -->
+      <mj-section background-color="#ffffff" border="1px solid #F7931E" padding="16px 16px 0" data-mobile-only-padding-right>
         <mj-column>
           <mj-text padding="0">
             <h3><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h3>
@@ -2442,7 +2445,7 @@
         <mj-text color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
         </mj-text>
-        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
+        <mj-text data-inset-toggle data-mobile-only-inset-left align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>
@@ -2860,7 +2863,7 @@
               align="left"
               css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle font-size="16px" padding="8px 0 0">
+          <mj-text data-inset-toggle data-mobile-only-inset-right font-size="16px" padding="8px 0 0">
             <p style="font-family: Arial, sans-serif;">
               Carrie Besnette-Hauser
               <br />
@@ -2891,7 +2894,7 @@
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle padding="8px 0 0">
+          <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
             <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
           </mj-text>
         </mj-column>
@@ -2909,7 +2912,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle padding="8px 0 0">
+        <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
         </mj-text>
       </mj-column>

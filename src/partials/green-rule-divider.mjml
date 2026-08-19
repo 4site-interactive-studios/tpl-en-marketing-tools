@@ -1,3 +1,4 @@
-<mj-section css-class="divider-block block" background-color="#ffffff" padding="0">
+<!-- data-no-background-color: the full-width opaque spacer tiles the whole content width, so this background can never show. It stays as a fallback but gets no editable field (same verdict as tri-color-divider; caught by the 2026-08-18 inert-audit sweep, which found the field dead at both viewports on every block that includes this partial). -->
+<mj-section css-class="divider-block block" background-color="#ffffff" padding="0" data-no-background-color>
   <mj-column><mj-spacer height="3px" container-background-color="#39B54A" /></mj-column>
 </mj-section>

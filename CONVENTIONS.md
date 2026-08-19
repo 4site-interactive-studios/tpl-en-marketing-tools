@@ -594,7 +594,27 @@ house `.class element` pattern the scope class is always first; taking
 every token would over-pin — `.flush-mobile-capflush .wysiwyg { padding-…
 !important }` restores copy insets inside flush blocks only, but `wysiwyg`
 is the template-wide default on every `mj-text`, and pinning that token
-would label every text field in the catalog desktop-only. This is why
+would label every text field in the catalog desktop-only.
+
+**A pin must reach the BOX the control edits** (2026-08-18, a second
+narrowing from the same family of mistakes). Rules come in two forms and
+they are not interchangeable: a SELF-form rule (`.caption`, `td.button`)
+pins the element that carries the class, while a SCOPE-form rule
+(`.flush-mobile-capflush td`) pins boxes NESTED inside it. That matters
+because MJML puts a section/wrapper/column `css-class` on the outer
+`<div>` while the authored padding lands on an inner `<td>`. So
+`parseMobileScopePins` keeps only the scope-form rules, and:
+- a FRAME's padding Selects consult the SCOPE map against the frame's own
+  classes (its padding cell is nested inside its own classed div) — the
+  Block Padding Left/Right preset included, which had never asked at all;
+- a content element's INSETS consult the SCOPE map against its ANCESTOR
+  frames' classes, plus the self map for a rule that names it directly —
+  that is how `.flush-mobile-capflush td` reaches a caption cell whose
+  only class is the template-wide `wysiwyg` default;
+- everything else keeps asking the self map, unchanged.
+Reading self-form rules as if they scoped the inner cell is what stamped a
+false "Desktop Padding Right" on the Video Blocks: `.caption` indents the
+caption section's div and cannot pin its padding control. This is why
 viewport labels survive re-import without anyone running the audit and
 applying its verdicts by hand. The labels' premise — that the pinning
 CSS actually reaches the inbox — is measured, not assumed: EN keeps the
@@ -1617,9 +1637,11 @@ importer whitelists all data-*-only MJML validator warnings
   only one viewport, and the importer prefixes its LABEL accordingly
   ("Desktop Block Padding Left/Right", "Mobile Spacing Below"). The merge-tag NAME never
   changes. Tokens use the `data-style-*` property vocabulary where one
-  exists — `align`, `direction`, `width` — plus `spacing-below` for the
-  pacing control. Put the flag on the frame for `width`/`direction`, on the
-  content component for `spacing-below`/`align`. This is the channel for
+  exists — `align`, `direction`, `width` — plus `spacing-below`,
+  `spacing-above`, the four `padding-<side>`s, and `inset-right` /
+  `inset-left` (2026-08-18). Put the flag on the frame for
+  `width`/`direction`/`padding-<side>`, on the content component for
+  `spacing-*`/`inset-*`/`align`. This is the channel for
   the cases no static rule can reach:
   - a **centered, content-sized child in a uniformly painted frame** — the
     gutter changes, nothing moves (CTA Button's pill is centered by the
@@ -1637,6 +1659,15 @@ importer whitelists all data-*-only MJML validator warnings
     copy ever grows to wrap at desktop the control comes alive there, so
     the source carries a comment saying when to drop the flag — and the
     audit's re-measure catches a stale claim either way.
+  - **an inset that only bites once the box shrinks** — a right-aligned
+    line or a fixed-width image that clears its container at 600px and
+    only meets it at 375px (`data-mobile-only-inset-right` on the
+    signature cards' name text and the quiz credit line;
+    `data-mobile-only-inset-left` on the Logo Hero state map). Inference
+    can only ever say "Desktop" — a mobile-only verdict is rendered
+    geometry no stylesheet states — so these must be declared. The
+    reverse, a caption inside a flush-mobile section, needs no flag: the
+    scope pin says it (see "Where the labels come from").
 
   A declaration is a CLAIM, not an escape hatch: the audit still measures
   every option, and a false claim comes back as a FAIL on the very next

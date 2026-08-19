@@ -890,9 +890,24 @@ codifies what it proves, so expect:
   stack. Neither is derivable from CSS, so mark the owning element
   `data-desktop-only-width`, `data-mobile-only-spacing-below`,
   `data-desktop-only-direction` (tokens: `align`, `direction`, `width`,
-  `spacing-below`). It is a claim the audit re-checks, not an escape
+  `spacing-below`, `spacing-above`, the four `padding-<side>`s, and
+  `inset-right` / `inset-left`). A third shape joins the list: an inset
+  that only bites once the box shrinks — a right-aligned line or a
+  fixed-width image that clears its container at 600px and meets it at
+  375px — is `data-mobile-only-inset-right` / `-inset-left`, because CSS
+  inference can only ever conclude "Desktop". It is a claim the audit
+  re-checks, not an escape
   hatch — and where a control is dead at BOTH viewports use
   `data-no-width-toggle` instead, since no label makes it honest.
+- **And pin the box the control actually edits.** An `mj-section` /
+  `mj-wrapper` / `mj-column` `css-class` lands on the outer `<div>` while
+  its `padding` lands on an inner `<td>`. So `.caption { padding-left:
+  16px !important }` indents the caption block but does NOT pin the
+  section's padding control — write `.scope td` when you mean to pin what
+  is nested inside. The importer honors that distinction (a self-form rule
+  never scopes a frame's inner cell), which is also how a caption inside a
+  `.flush-mobile-capflush` section gets its Desktop-only insets with no
+  flag at all.
 - **A mobile pin must cover every carrier of the value.** MJML writes a
   button's `align` onto two cells; pinning only the outer one centers the
   pill but leaves a WRAPPED label following the desktop setting — so the
@@ -946,7 +961,7 @@ the one field (§4: one value, every carrier).
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
-| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below`, and the four `padding-<side>`s (per-side scoping for content-dependent inertness the stylesheet cannot express — the poll question's right padding, 2026-08-18) |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | this control only works at that viewport; the importer prefixes the LABEL ("Desktop Block Padding Left/Right"). Tokens: `align`, `direction`, `width`, `spacing-below`, `spacing-above`, the four `padding-<side>`s, and `inset-right` / `inset-left` (per-side and per-inset scoping for content-dependent inertness the stylesheet cannot express — the poll question's right padding, the signature cards' name insets, 2026-08-18) |
 | `data-link-group="<name>"` | on raw `<a>` tags inside hand-authored markup: sibling anchors sharing a group name AND a byte-identical href are ONE logical link — the importer mints a single URL field and splices its tag into every member, so the value can never desync. This is the shape for a clickable row: EN auto-closes an `<a>` that wraps a `<table>` (§2), so the row splits into per-cell anchors that share the group. Members with differing hrefs fall back to separate fields, and the TPL build warns; a lone member is an inert flag the dead-flag audit reports |
 | `data-inset-toggle` | opt-in on a spacing component (mj-text/image/button/divider): mint the Inset Right/Left Selects AND Spacing Above even at 0, and allow an on-scale top padding. The caption pacing pattern: author the gap on the caption's TOP (`padding="4px 0 0"` on the caption class scale's Quarter step, image bottom 0) so hiding the caption removes its gap too; caption-LIKE texts without `mj-class="caption"` (signature names) author `8px 0 0` on the main scale. The closed scale still applies, and a flag on a column's only member is inert (sole-member consolidation) — the dead-flag audit reports it |
 | `data-visible-duplicate` | on a block whose structure deliberately duplicates its dedup-group anchor but must stay importable (an obvious-name alias, a separately-shipped layout variant). Exempts the block from the build's unflagged-duplicate WARN; a build that dedup-groups blocks needs an equivalent escape hatch or every deliberate twin fights the gate. Misuse (on a group anchor, or combined with a full exclusion) should warn. Pair with a dated caveat comment |
