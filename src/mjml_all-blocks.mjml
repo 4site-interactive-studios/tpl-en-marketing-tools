@@ -2735,7 +2735,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-person-and-bird-2.png" alt="Taj Schottland and a northern cardinal" width="248px" align="center" padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" padding="0 0 16px" data-mobile-only-spacing-below>
+        <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;"><b>Taj Schottland:</b> &ldquo;When I was four years old, I saw my spark bird. It was a ring-necked pheasant (shown above) under my neighbor Mary's bird feeder. I am obsessed with their colors, size, and tameness.&rdquo;</p>
         </mj-text>
       </mj-column>
