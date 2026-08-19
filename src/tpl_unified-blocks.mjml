@@ -425,6 +425,7 @@
     >
       <mj-column width="480px" padding="0">
         <mj-image
+          data-group-label="Quote Mark"
           src="assets/icon-quotes_black.png"
           alt=""
           width="47px"
@@ -432,6 +433,7 @@
           css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
+          data-group-label="Quote Mark"
           src="assets/icon-quotes_white.png"
           alt=""
           width="47px"
@@ -442,13 +444,13 @@
              own Content field and the attribution gets its own Display
              toggle (user decision 2026-08-19). The quote's old internal
              16px margin moved to its padding. -->
-        <mj-text padding="0 0 16px">
+        <mj-text data-group-label="Quote" padding="0 0 16px">
           <p style="font-size: 30px; line-height: 38px; font-weight: 400; text-align: center; font-style: italic; margin-bottom: 0;">
             Recommended character count: ~120. Lorem ipsum dolor sit amet consectetur.
             Arcu eu tincidunt amet eleifend placerat adipiscing.
           </p>
         </mj-text>
-        <mj-text padding="0 0 48px">
+        <mj-text data-group-label="Attribution" padding="0 0 48px">
           <p style="font-size: 14px; letter-spacing: 2px; font-weight: 500; text-align: center; font-family: Arial, sans-serif; margin-bottom: 0;">
             - TESTIMONIAL AUTHOR
           </p>
@@ -1243,10 +1245,10 @@
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
               <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
-                <a href="https://www.example.com" data-link-group="row" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
+                <a href="https://www.example.com" data-link-group="row" data-group-label="Row Link" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
               <td valign="top" style="padding:8px 0px 12px 0px;">
-                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-text-anchor style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
+                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-text-anchor data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
           </table>
@@ -1293,10 +1295,10 @@
              Content field and Display toggle (user decision 2026-08-19).
              The heading keeps its link INSIDE the RTE — a plain-markup
              linked heading stays RTE-editable by convention. -->
-        <mj-text padding="0 0 8px">
+        <mj-text data-group-label="Episode Title" padding="0 0 8px">
           <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
         </mj-text>
-        <mj-text padding="0">
+        <mj-text data-group-label="Episode Description" padding="0">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>

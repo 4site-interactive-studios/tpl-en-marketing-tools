@@ -831,37 +831,53 @@ taller sibling column at desktop.
 
 ## Sections (EN panel groups) & ordering
 
-The panel is a **two-level tree**. **Header sections carry NO glyph** — they
-are parents (the block name, and each band); **leaf content groups nest one
-level down with the `└─` glyph**. So a band and its content read as
-`Section 3` / `└─ Section 3 Text`, never `└─ Section 3` / `└─ Section 3
-Text`. One consistent depth, one consistent addressing scheme per block.
-Merge-tag NAMES are unchanged by any of this (they stay `block_2_padding_top`,
-`text_1_content`, …); only the panel grouping LABELS move, so exports stay
-byte-stable. (`resolveSection` in `src/core/mjmlProps.ts`.)
+Reworked 2026-08-19 (user-decided, all four dials): **group words are
+role-aware, structural attribution is uniform, numbering is scoped to what
+the editor sees, the `└─` glyph appears only under a REAL parent header
+(Variant A), and MERGE-TAG NAMES FOLLOW THE LABELS** — the panel and the
+tag vocabulary can no longer drift apart (the old contract kept names
+byte-stable while labels moved; that ended with the catalog-wide rename,
+one version bump per block). EN emails built on previously imported blocks
+are untouched — their copies carry the old tags; the new names take effect
+on the next block/template import. (`memberIdentity` + `resolveSection` in
+`src/core/mjmlProps.ts`.)
 
+- **Group words (roles)**: an authored `data-group-label` wins verbatim on
+  any content element ("Quote", "Episode Title", "Row Link"). An `mj-text`
+  otherwise infers: lone plain `<h1>`–`<h6>` → **Heading**; a `caption`
+  class token (mj-class or css-class) → **Caption**; all-`<p>` prose →
+  **Paragraph Copy**; anything else stays **Text**. Other components keep
+  their component word (Image, Button, Divider…). Roles number in their
+  own ladders — a Heading never consumes a Text ordinal.
 - **Block header = the block's name, always first** — for single- AND
   multi-band blocks (no glyph). It carries block-level frame settings
   (band 1's padding/width/background). Never "Block 1" at the top.
 - **Bands** (each mj-section, numbered in document order): band 1 lives
   under the block-name header; **band N>1 heads a `Section N` group (no
-  glyph — it is a parent)**, carrying that band's frame settings. (An
+  glyph — it is a parent)**, carrying that band's frame settings, whose
+  merge tags read `section_2_padding_top` (…was `block_2_…`). (An
   mj-section whose frame fields are all suppressed still anchors its
   content's grouping.)
-- **Content groups** are the leaves — always nest with the glyph, addressing
-  uniform within the block (never a mix of "Column M X" and a bare "X"):
-  - **Single-column**: `└─ <Component>` (e.g. `└─ Text`, `└─ Button`),
-    numbered per-component WITHIN THE BAND when repeated: `└─ Text 1` /
-    `└─ Text 2`. In a multi-band block the band is prefixed for
-    disambiguation: `└─ Section 2 Text`.
-  - **Side-by-side columns** (a component maps one-instance-per-column onto
-    one row): `└─ Column M <Component>`, uniformly for every component in
-    the row (band-prefixed when multi-band: `└─ Section 2 Column 1 Image`).
-    (`columnPlacements` + `columnGroupOf`.)
-- **"Block N" is retired as a panel label** — it used to name three
-  unrelated things (band index, repeated-component index, segmenter
-  auto-name) with independent counters that diverged. Bands are now
-  `Section N`; component repeats are `<Component> N` scoped to their band.
+- **Content groups**: in a **single-band block they carry NO glyph** —
+  `Heading`, `Text`, `Column 1 Button` sit directly under the block header
+  (the glyph implied a hierarchy that wasn't there). In a **multi-band
+  block they nest under their band with the glyph**: `└─ Section 2 Text`.
+  An AUTHORED group word stands alone even there (`└─ Episode Title` — the
+  author chose a globally meaningful name, no Section tag).
+- **Column attribution is uniform**: whenever a role family spans 2+
+  columns of its band, EVERY member of that family carries its column —
+  `Column 1 Heading` / `Column 2 Heading` — whatever the per-column count
+  (the old one-per-column gate orphaned Story Card 2x1's second column as
+  "Text 3"/"Text 4"). Ordinals count within (band, column, role):
+  `Column 1 Text 1` / `Column 1 Text 2`.
+- **Names mirror the group + property**: `column_2_heading_content`,
+  `section_2_text_content`, `quote_content`, `quote_mark_image_url`
+  — always derivable by reading the panel. Reserved-name collisions (the
+  template-wide `text_color`) fall back to the un-deduped property words
+  (`text_text_color`), never a phantom instance number (was `text_2_color`
+  with no "Text 2" anywhere).
+- **"Block N" is retired as a panel label** — bands are `Section N`;
+  component repeats are `<Role> N` scoped to their band and column.
 - **Column/group frame settings**: `Column N Settings` / `Group N Settings`
   (headers, no glyph) only when several coexist; a lone column's frame folds
   into its band's header.
@@ -920,8 +936,11 @@ sort — it is purely the panel/export display order.
 - Inside a component's OWN section the label is bare ("Display", "Padding
   Top", "Alt Text (Describe the Image)") — the header names the component.
   Fields shown in a FOREIGN group keep their prefix (it disambiguates).
-- Merge-tag names always keep the fully qualified numbered form, with
-  stutter collapsed: `image_1_url`, not `image_1_image_url`.
+- Merge-tag names mirror the panel path (2026-08-19): group word(s) +
+  scoped ordinal + property, with stutter collapsed — `column_1_image_url`
+  (not `…_image_image_url`), `heading_level` (Heading + "Heading Level"),
+  and a multi-word role ending with the property's first word collapses it
+  once: "Row Link" + "Link URL" → `row_link_url`.
 - Free numeric px fields keep the "… in Pixels" label suffix — the px unit
   lives in the HTML right after the tag, and editors type bare numbers
   (validator enforces).
@@ -1035,9 +1054,10 @@ sort — it is purely the panel/export display order.
   (Display ⊃ Heading Level ⊃ Content — within EN's verified resolution
   depth). Markup inside the heading, or siblings beside it, void the flag
   with an import note and the text falls back to the ordinary
-  whole-inner Content field. Name `text_1_heading_level` (numbered like
-  every text-family field), bare label "Heading Level", sorted with
-  Display/Link above the content fields.
+  whole-inner Content field. Name `heading_level` (the Heading role's
+  base plus the deduped property; scoped/numbered like every member
+  field), bare label "Heading Level", sorted with Display/Link above the
+  content fields.
 - **Text anchors inside complex markup** (2026-08-19, user-decided): an
   `<a>` inside hand-authored table/div markup flagged `data-text-anchor`
   mints its fields under the **Text** family (`text-link` internally)
@@ -1780,6 +1800,17 @@ importer whitelists all data-*-only MJML validator warnings
   Content field to the heading's inner text (see Other generated
   controls). Requires the mj-text's entire content to be one plain-text
   heading; anything else voids the flag with an import note.
+- **`data-group-label="<words>"`** (valued; on any content element AND on
+  raw `<a>` tags inside complex markup, 2026-08-19, user-decided): the
+  authored group word, verbatim — it names the panel group, prefixes the
+  labels, and (names-follow-labels) forms the merge-tag base
+  (`data-group-label="Attribution"` → group `Attribution`, tags
+  `attribution_content`, its Spacing Below and Display fields). Wins over every
+  inferred role; numbers in its own ordinal ladder; in a multi-band block
+  it stands alone under its band (`└─ Episode Title`, no Section tag).
+  On a light/dark image pair, label BOTH twins identically. Stripped from
+  compiled mj-* output like every data-* attribute; on raw anchors it
+  ships in the HTML (the data-link-group precedent).
 - **Universal Alt Text (2026-08-18) — and `data-style-alt` retired.** Every
   `mj-image` whose `alt` attribute is PRESENT mints an Alt Text field,
   `alt=""` included: the attribute scan admits the empty value for alt
