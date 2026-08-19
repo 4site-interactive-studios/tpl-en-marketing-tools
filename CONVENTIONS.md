@@ -505,6 +505,22 @@ Determinism contract — what makes the matrix trustworthy:
   contend for the single iframe (measured poolWait 48%), making it slower
   than the 3-wide the audit originally shipped with.
 
+Three report downloads, strictly nested — **full** ⊇ **Findings Only** ⊇
+**Failed Only** — each on its own filename so they can sit side by side.
+Findings Only is everything not fully live (dead options, unproven) plus
+anything the checks failed. **Failed Only is narrower than "every FAIL": it
+is the fields dead at BOTH viewports that nothing excuses** (user decision
+2026-08-19) — the removal candidates. It therefore drops three things
+Findings keeps: a field dead at only ONE viewport whose label already says
+so (working as designed), a mislabelled-but-working control, and an unproven
+row (not proven dead is not dead). It also drops the deadness the audit
+expects and PASSES — link toggles, which strip only an anchor wrapper and
+move zero pixels, and a text colour under a background image — because an
+actionable list must not carry known-fine rows. Any filtered report states
+its scope and its share of the total in the header, so a short file is never
+mistaken for the whole audit. Scope selection is `selectReportScope` /
+`isDeadAtBothViewports` in `src/core/inertAuditReport.ts`, vitest-covered
+including the nesting property.
 The **Speed Test** button turns that claim into a measurement instead of a
 promise. It runs the same cold "0 → 100 rows" scope once per `Parallel`
 setting (1, 2, 4, 8), each pass re-enumerating rows and building a fresh
