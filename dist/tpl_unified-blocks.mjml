@@ -1375,7 +1375,7 @@
       background-color="#362229" padding="16px 32px 0"
     >
       <mj-column>
-        <mj-text color="#ffffff" padding="0">
+        <mj-text css-class="wysiwyg overlay" padding="0">
           <h3>Here's what's inspiring our TPL birders:</h3>
         </mj-text>
       </mj-column>
@@ -1629,10 +1629,10 @@
     <!-- START: Quiz Block (2x2 photos) -->
     <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px 0">
       <mj-column>
-        <mj-text color="#ffffff" padding="0 0 8px">
+        <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
         </mj-text>
-        <mj-text color="#ffffff" padding="0">
+        <mj-text css-class="wysiwyg overlay" padding="0">
           <h3>Guess Who's Finding Their Happiness Outside More than Ever? (It Might Surprise You!) 🤔</h3>
         </mj-text>
       </mj-column>

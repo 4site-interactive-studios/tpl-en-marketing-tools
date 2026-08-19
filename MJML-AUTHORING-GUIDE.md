@@ -806,12 +806,30 @@ in the content (`<h3 style="color:#ffffff;">` on a dark section) is
 therefore white-on-white while being edited — invisible — and, because
 the color lives inside the RTE value rather than on an `mj-*` attribute,
 the importer mints no Text Color control an editor could reach for
-(measured on Photo and Text Grid, 2026-08-19). Author the color on the
-`mj-text` element (`color="#ffffff"`): the email renders identically,
-the editor shows default-black editable copy, and a palette Select
-mints. The same reasoning applies to any styling an editor should own —
-inline styles inside content are frozen; element attributes become
-fields.
+(measured on Photo and Text Grid, 2026-08-19). The fix depends on the
+element, because the two routes to a rendered color are not equal:
+
+- **`<p>`/`<span>`/`<a>` copy**: author the color on the `mj-text`
+  element (`color="#ffffff"`). The content inherits it from the wrapper
+  div, the editor shows default-black editable copy, and a palette
+  Select mints.
+- **Headings (`h1`–`h6`)**: the attribute route FAILS. The head sheet
+  pins `h1,…,h6 { color:#000000 }`, and a direct element rule always
+  beats a color merely inherited from the wrapper div — the heading
+  ships black on the dark ground (measured on Photo and Text Grid and
+  Quiz Block 2x2 photos, 2026-08-19). Instead author
+  `css-class="wysiwyg overlay"` on the heading's `mj-text`: the sheet's
+  `.overlay h1…h6 { color:#ffffff }` out-specifies the pin and EN
+  inlines it. Two cautions: an authored `css-class` REPLACES the
+  template-wide `wysiwyg` default from `mj-attributes`, so restate it
+  (dropping it loses the `.wysiwyg div` margin trims and dark-mode
+  repaints); and do NOT also keep `color="#ffffff"` on the element —
+  the Select it mints would be inert, since the class rule overrides
+  the inherited div color it edits.
+
+The general principle stands: styling an editor should own belongs on
+`mj-*` attributes, not frozen inside content — but only where the
+attribute actually reaches the rendered element.
 
 ### One idea per mj-text (2026-08-19, user-decided)
 
