@@ -406,13 +406,33 @@ over the RGBA bytes), not geometry — color and font fields are in scope. A
 field is INERT at a viewport iff every option rasters byte-identical to
 the all-defaults baseline.
 
-**Every cell renders under TWO copy lengths** (`AUDIT_COPY_PROFILES`):
-`single-line`, and `wrapped` — copy long enough to wrap onto a second line
-in any container the catalog has, including caption type at 10px. A
-control is inert only if it moves nothing under BOTH. The two hashes are
-JOINED into one composite, so equality still means "identical" and every
-downstream consumer — storage, resume, the report, `assessRow` — is
-untouched.
+**Every cell renders under THREE copy states** (`AUDIT_COPY_PROFILES`, in
+this order):
+
+1. `as-authored` — the copy the template actually ships, untouched. Without
+   it the sweep would only ever judge a control against invented text and
+   never against what is really in the catalog.
+2. `single-line` — short enough to sit on one line.
+3. `wrapped` — long enough to wrap onto a second line in any container the
+   catalog has, including caption type at 10px.
+
+A control is inert only if it moves nothing under **all three**. The two
+substituted states exist because an editor can type copy of any length: a
+control that only bites at one end of that range is NOT dead, and
+discarding it would remove something the user can still reach (user
+decision 2026-08-19).
+
+The per-state hashes are JOINED into one composite, so equality still means
+"identical" and every downstream consumer — storage, resume, the report,
+`assessRow` — is untouched. "If not already single-line / not already
+wrapped" is handled by EXACT-BODY dedupe in `renderComposite`, never by
+guessing: when two states substitute to a byte-identical body — a block with
+no copy-bearing field, or authored copy that already equals a probe — they
+collapse to one render, so such blocks cost exactly what they did before
+copy states existed. What dedupe cannot see is authored copy that already
+happens to wrap at a given width, since wrapping is a property of the render
+and not of the string; that case pays one extra render rather than risking a
+wrong verdict.
 
 This exists because the placeholder copy was hiding live controls.
 Measured 2026-08-18: of five fields the sweep called "dead — no option
