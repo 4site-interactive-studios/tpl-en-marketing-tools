@@ -490,16 +490,20 @@ Determinism contract — what makes the matrix trustworthy:
   `inert`. Each viewport still re-verifies its baseline strictly AFTER its
   own cells drain, so "the baseline hashed the same before and after this
   block's renders" keeps its exact meaning.
-- **The concurrency default is 1** (user decision 2026-08-19): a sweep must
-  not make the machine unusable out of the box. Because it is a pure timing
-  knob, RAISING it is the supported way to go fast — the panel's "Parallel"
-  control persists per machine under its own
-  `en-tools:inert-audit:concurrency` key (deliberately NOT in `Settings`,
-  which travels with the project). Measured on the same 101 catalog rows:
-  **32.9s at 8-wide vs 4 rows in 94.3s at 1-wide** — at least 12×, and
-  slower than the 3-wide the audit originally shipped with, because at 1 the
-  two viewports contend for the single iframe (poolWait 48%).
-  `hardwareConcurrency - 2`, clamped 3-8, is a good value to type in.
+- **The concurrency default is 8** (user decision 2026-08-19), chosen off
+  the Speed Test ladder rather than by taste: 1 / 2 / 4 / 8 measured
+  **1.00× / 3.48× / 5.62× / 6.37×** over an identical scope, all four passes
+  returning the same verdict digest. The curve is already flattening by 8 —
+  4→8 bought only 13%, because `load` (browser-internal iframe parsing) is
+  over half the stage time and does not compress with more workers — which
+  is why the ladder stops there. The panel's "Parallel" control persists per
+  machine under its own `en-tools:inert-audit:concurrency:v2` key
+  (deliberately NOT in `Settings`, which travels with the project; the key
+  is version-suffixed because a stored value silently wins over the default,
+  so a default change has to move the key to reach anyone who already opened
+  the panel). Lower it on a machine with few cores: at 1 the two viewports
+  contend for the single iframe (measured poolWait 48%), making it slower
+  than the 3-wide the audit originally shipped with.
 
 The **Speed Test** button turns that claim into a measurement instead of a
 promise. It runs the same cold "0 → 100 rows" scope once per `Parallel`
