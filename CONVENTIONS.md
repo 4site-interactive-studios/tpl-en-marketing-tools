@@ -501,6 +501,25 @@ Determinism contract — what makes the matrix trustworthy:
   two viewports contend for the single iframe (poolWait 48%).
   `hardwareConcurrency - 2`, clamped 3-8, is a good value to type in.
 
+The **Speed Test** button turns that claim into a measurement instead of a
+promise. It runs the same cold "0 → 100 rows" scope once per `Parallel`
+setting (1, 2, 4, 8), each pass re-enumerating rows and building a fresh
+engine, and downloads a markdown report — wall clock, render throughput,
+per-stage breakdown, and **a verdict digest per pass**. The digest is the
+reason it exists: speed numbers are only worth reporting if every pass
+produced the same matrix, so the report states agreement outright and says
+DIVERGED (loudly, as a correctness bug rather than a speed result) if any
+setting disagrees. An unreported warm-up pass runs first so one-time costs —
+JIT, and the engine's per-URL image probes, which hit the network once and
+are then HTTP-cached — do not land on whichever concurrency went first.
+Engine setup is timed separately from the run, because building N iframes
+and running the startup tripwires is not what the sweep costs. The whole
+thing runs in memory and never touches the resume store. Implementation:
+`src/core/inertAuditBench.ts` (pure, vitest-covered — including a test that
+a concurrency-dependent verdict IS detected). Reports from a hidden or
+backgrounded tab carry a banner saying so: a throttled tab clamps timers and
+stops frames, and its numbers describe the browser, not the audit.
+
 Verdict vocabulary the matrix never conflates: **inert** (proven, per
 viewport) · **inert at defaults** (the option's substituted body is
 byte-equal to the baseline's — e.g. its tag only exists inside another
