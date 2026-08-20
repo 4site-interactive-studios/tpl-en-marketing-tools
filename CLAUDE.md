@@ -45,7 +45,7 @@ that produces the count cannot.
 | `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) |
 | `src/donation-thank-you.mjml`, `src/recurring-donation-thank-you.mjml` | standalone autoresponders |
 
-**`tpl_all-blocks.mjml` was removed on 2026-08-15.** It was a strict subset of
+**`tpl_all-blocks.mjml` was removed on 2026-08-17** (commit 17f036a, following the 2026-08-15 catalog audit). It was a strict subset of
 `mjml_all-blocks.mjml` — 135 of its 143 blocks, differing by exactly one line
 (the `mj-title`) — created to give a shorter demonstration page. It carried
 nothing unique, was never once edited independently in its lifetime, and

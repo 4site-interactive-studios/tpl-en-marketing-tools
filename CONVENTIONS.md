@@ -225,9 +225,11 @@ Values that are design geometry, not pacing, stay hard-coded with NO field
 - Frame/content paddings **above `geometryReachPx`** (default 64; the test
   is `n <= reach`, so a value EQUAL to the reach is still spacing — which
   is why a Quadruple=64 step and geometryReachPx=64 coexist): hero photo
-  reserves (Match Hero 160px, Image with overlay 350px), video bands
-  (90–110px). In composite splices the out-of-reach side stays a literal
-  while in-reach sides still get Selects.
+  reserves (Match Hero 160px), video bands (90–110px). The Image-with-overlay
+  350px reserve graduated to a Select on 2026-08-19 via its hero-reveal class
+  scale, whose own reach covers it (see the class-scale rule above). In
+  composite splices the out-of-reach side stays a literal while in-reach
+  sides still get Selects.
 - Spacer heights **below 8px** (3–4px spacers are decorative color bars —
   tri-color dividers, footers) or above 64px.
 - Padding shorthands the decomposer can't parse (%, em, calc…) — the closed
@@ -2122,17 +2124,18 @@ The same probe disproved a hypothesis worth recording so it is not re-formed:
 a block-level `<style>` is **not** destroyed by an edit either — the
 block-styled control survived identically. An earlier anomaly, where a
 delivered email lost styling that storage still had, therefore has some other
-cause and did not reproduce. The most consistent explanation left is that an
-EN email snapshots block content when BUILT, so an email built before an edit
-and sent after it delivers pre-edit content — unproven, and worth knowing
-before trusting any send-versus-storage comparison.
+cause and did not reproduce. Every candidate explanation — including the
+build-time snapshot this same measurement disproves — has been measured dead;
+the anomaly is closed as unexplained, not as solved
+(docs/future-enhancements.md keeps the diagnostic shortcut if it recurs).
 
 The anchor row was pinned down further on 2026-08-19: an anchor keeps `href`
 (and `target`) and **nothing else** — `class`, `style`, `id`, `title` and
 `data-*` all go. ProseMirror treats a link as a MARK, rebuilt from a fixed
 attribute set, while `span` and `p` are NODES and keep their attributes. So an
-RTE-embedded link can only be styled from an ancestor class, and the catalog's
-8 button-styled anchors are broken by any edit to their surrounding copy.
+RTE-embedded link can only be styled from an ancestor class — the shipped
+pattern since 2026-08-19, when the catalogs were swept to ZERO styled anchors
+inside RTE values (down from 54), so no edit can break one.
 
 Two of those are authoring rules, not curiosities. **Never put an MSO
 conditional inside an RTE value** — one edit deletes it silently. **Never rely
@@ -2412,10 +2415,10 @@ colour: TPL authors light-first, so today it is always the dark twin, but a
 dark-first pair would invert it.
 
 This finding has now recurred twice, which is the real lesson. The
-2026-08-10 removal did not survive a catalog file rename, and on 2026-08-16
+2026-08-10 removal did not survive a catalog file rename, and on 2026-08-17
 a fix re-added the flag to a dark twin after reading its absence as a gap —
-against this very passage. The 2026-08-17 audit re-found all five; they are
-removed again, and the rule now lives where prose cannot lose it: TPL's
+against this very passage. The audit later that day re-found all five; they
+are removed again, and the rule now lives where prose cannot lose it: TPL's
 `check-catalog.mjs` warns at build time on ANY opt-out flag on the second
 twin of a matched pair. (The same session closed two adjacent gaps:
 `data-no-direction-toggle` was missing from `IMPORTER_FLAG_RE` — the audit

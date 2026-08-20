@@ -843,12 +843,13 @@ appearing to pass. The correct invocation builds the referenced projects.
 **Guard.** The canonical check command is documented, with the reason attached so
 nobody "simplifies" it back.
 
-### 16. The same finding, three times
+### 16. The finding that kept coming back
 
 **Symptom.** A dead-annotation audit found five stale flags on 2026-08-10 and
-removed them. The removal did not survive a catalog file rename; on 08-16 a
+removed them. The removal did not survive a catalog file rename; on 08-17 a
 fix re-added one of the flags after reading its absence as a gap — against
-the prose explaining the removal — and the 08-17 audit re-found all five.
+the prose explaining the removal — and the audit later that day re-found all
+five.
 
 **What was actually true.** The underlying rule — that the second half of a
 merged light/dark image pair never gets its own toggle — existed only as prose,
