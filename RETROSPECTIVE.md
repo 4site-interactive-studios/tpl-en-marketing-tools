@@ -1,7 +1,7 @@
 # Project Retrospective: TPL Email Templates and Email → EN Marketing Tools
 
 **Client:** Trust for Public Land (TPL)  
-**Period:** July 20 to August 20, 2026  
+**Period:** May 25 to August 20, 2026  
 **Prepared:** August 20, 2026, by 4Site Studios, from the project's own documentation, commit history, and audit ledgers  
 **Audience:** the whole team
 
@@ -41,8 +41,8 @@ and the platform that sends it rewrites the code in transit. Our answer was
 a system where the hard problems are solved once, in the template, and
 editors work inside guardrails that make the safe choice the only choice.
 
-Over roughly one month we built two products and, along the way, a third
-thing nobody scoped.
+Over three months we built two products and, along the way, a third thing
+nobody scoped.
 
 **A complete email design system for TPL.** 134 authored block variations,
 delivered as 67 building blocks in Engaging Networks across 9 categories
@@ -88,10 +88,45 @@ guidelines. Both are tracked under "What's still open."
 
 ---
 
+## How it unfolded
+
+The two repositories carry 495 commits between May 25 and August 20, 2026.
+Five phases stand out.
+
+**Late May to mid June: bootstrap.** The catalog began as a re-skin of
+Engaging Networks' stock template and was rebranded for TPL on June 11.
+The early commits are terse and hand-built ("create more blocks", "dark
+mode improvements").
+
+**July: from mockup to system.** The catalog gained its naming grammar,
+its categories, and the in-page debug toolbar that lets anyone QA the
+library in a browser. The converter app's first commit landed July 15.
+
+**Late July to early August: the contract era.** The template began
+declaring its own expectations (spacing scale, width options, brand
+palette) in a machine-readable comment, and the converter learned to read
+them. The conventions document was written and mirrored publicly. This is
+the point where the two projects stopped being two projects.
+
+**August 6 to 15: measurement.** The tone of the work changed here.
+Instead of asserting how Engaging Networks behaves, we started measuring
+it, with probe emails sent through the real account and read across 15
+email apps. Most of the durable knowledge in this document was produced in
+these ten days, and several confident beliefs did not survive them.
+
+**August 17 to 20: industrialization.** Everything learned became
+something automatic: linters, pixel audits, content versioning, byte
+budgets. Nearly half the converter's commits (111 of 228) landed in these
+four days, and the system went live on August 18.
+
+---
+
 ## By the numbers
 
 | Measure | Where it stands |
 | :--- | :--- |
+| Project span | May 25 to August 20, 2026 (88 days), with the converter built in the final five weeks |
+| Commits | 495 across the two repos during the project (267 template, 228 converter) |
 | Authored blocks | 134 variations, delivered as 67 importable EN blocks in 9 categories |
 | Master template | 56 blocks, plus 2 autoresponders of 7 blocks each |
 | Converter app | version 59 (59 shipped iterations in about a month); roughly 22,700 lines of application code |
@@ -138,9 +173,9 @@ Nobody reads code to check the work.
 Dark mode got a three-part treatment, one technique per family of email
 apps. Every transparent logo or lettering asset that renders as a regular
 image also carries a contrast outline traced from the artwork's own
-silhouette. The rim is invisible on the intended background and becomes
-the contrast border when an email app inverts the surface without touching
-the image. That one technique is why the artwork survives dark mode in
+silhouette; the treatment is scripted and covers 14 assets. The rim is
+invisible on the intended background and becomes the contrast border when
+an email app inverts the surface without touching the image. That one technique is why the artwork survives dark mode in
 apps we cannot reach with code at all. (The four footer social icons
 render through a different component and missed the outline pass; they are
 the known exception, tracked under "What's still open.")
@@ -178,7 +213,9 @@ systems enforce this empirically:
 - a dead-switch audit that removes each authoring marker from the source
   one at a time and regenerates the output, proving every marker still
   does something; any that do nothing get deleted instead of lingering as
-  folklore
+  folklore (a retired annotation vocabulary went out this way, all 8,376
+  instances stripped after the audit proved removal changed zero generated
+  fields)
 
 The conventions the generator follows are not folklore either: 772
 automated tests encode them, and the contract document records the "why"
@@ -270,13 +307,17 @@ an automated check attached.
 EN rewrites every email's styles at send time, and it cannot be turned
 off. Fourteen probe constructs pinned its core behavior: plain rules are
 inlined onto elements (losing `!important` in the process), dark-mode and
-mobile media queries pass through verbatim, and rules that match nothing
-are deleted. A later probe round added that a stray anchor wrapping a
-table gets auto-closed, silently making the row unclickable. Two working
-rules fell out: a conditional media query is the sanctioned "do not touch"
-wrapper for anything EN must not rewrite, and any dark-mode declaration
-that must beat an inlined base rule needs `!important`, even though its
-absence looks correct in source, in preview, and in EN's own editor.
+mobile media queries pass through verbatim, rules that match nothing are
+deleted, and media blocks sharing a condition string are merged into the
+first one's position, so each condition is authored in exactly one place.
+A later probe round added that a stray anchor wrapping a table gets
+auto-closed, silently making the row unclickable. The inliner runs at send
+time, not at import, so an export proves nothing about what a recipient
+gets. Two working rules fell out: a conditional media query is the
+sanctioned "do not touch" wrapper for anything EN must not rewrite, and
+any dark-mode declaration that must beat an inlined base rule needs
+`!important`, even though its absence looks correct in source, in preview,
+and in EN's own editor.
 
 MJML adds a transit hazard of its own: a single authored background image
 compiles into four separate HTML carriers, so every editable field binds
@@ -306,9 +347,12 @@ A five-probe series established what EN's content editor does to copy on
 the first keystroke: bare text gets wrapped in a paragraph (harmlessly, if
 it is already wrapped), Outlook-only conditional comments are destroyed,
 links keep only their destination and target, and styling applied from the
-template's stylesheet survives where inline styling does not. The fix was
-to pre-apply the editor's own wrap at import time, so the first human edit
-changes nothing.
+template's stylesheet survives where inline styling does not. The
+predictive model behind all of it: the editor rebuilds links from a fixed
+attribute set, while paragraphs and spans keep their attributes, so
+anything on a link that isn't in the set is gone. The fix was to pre-apply
+the editor's own wrap at import time, so the first human edit changes
+nothing.
 
 ### Gmail's size cliff
 
@@ -317,10 +361,14 @@ entire stylesheet, whole, past exactly 16,384 bytes, on every Gmail
 surface including desktop webmail. EN re-prints head CSS at about 1.3
 times its authored size on the way out, so the build budgets the delivered
 size, a 14,000-byte working target against the 16,384-byte hard cliff, and
-meters it automatically. Also measured: the famous "columns shrink on
-Android" bug does not exist; it was gutter arithmetic (predicted 252.7 px,
-measured 251.0 px), and the fix cost two CSS rules instead of a
-restructure.
+meters it automatically. The budget is a real ceiling with a ledger: the
+stylesheet sat roughly 50 bytes clear until August 20, when deleting a
+retired width ladder returned about 1,325 delivered bytes, leaving the
+estimate at 14,997. Part of the defense is an inline-first image pattern,
+measured so that images still render correctly even when Gmail drops the
+stylesheet. Also measured: the famous "columns shrink on Android" bug does
+not exist; it was gutter arithmetic (predicted 252.7 px, measured
+251.0 px), and the fix cost two CSS rules instead of a restructure.
 
 ### Outlook's Word engine
 
@@ -403,7 +451,9 @@ findings are what make the whole editable-template design trustworthy.
 - Automatic generation of contrast-outlined assets is designed (the rim
   recipe is proven) but not built; detection shipped
 - The repo's README is the one document that rotted, precisely because no
-  linter reads it; it still describes the pre-consolidation layout
+  linter reads it; it still carries its original TO DO placeholders and
+  describes files that have since been renamed, and it is the front door
+  for anyone arriving cold
 
 ---
 
@@ -480,12 +530,29 @@ Guardrails: validator checks for both cases in the converter, a catalog
 assertion banning the literal merge tag, and a documented rule never to
 write tag-like text inside CSS comments.
 
+**The toolbar that ate the version band (August 20).** A version stamp
+meant to show inside Marketing Tools vanished, but only on the documented
+import path; the paste-in build looked fine. The block splitter takes the
+first START marker it finds, the debug toolbar's own marker pair sat above
+the band, and everything ahead of it was silently dropped: 714 bytes that
+reached none of the 77 exported blocks. Guardrails: the band now leads the
+body, and a build tripwire asserts it stays there. The transferable
+lesson: the artifacts easiest to check were exactly the ones that looked
+fine.
+
 **The dead flag that came back twice (August 10, 16, 17).** An authoring
 flag proven dead was removed, then re-added six days later by a session
 that read its absence as a gap, despite prose explaining the removal. The
 audit re-found it the next day. Guardrail: the rule moved out of prose
 into the catalog linter, and the episode coined the project's motto,
 "prefer a check over a sentence."
+
+**The flag that was ignored for weeks (fixed July 31).** The authoring
+markers are deliberately valueless, and the converter's attribute reader
+returns nothing for a bare flag, so a plain do-not-hide marker was
+silently ignored until detection switched to a presence check. Guardrail:
+the reading rule is spelled out in the contract, and the dead-switch audit
+now proves per marker that the converter actually honors it.
 
 **The audit that called live controls dead.** An early inert-control sweep
 flagged five fields as dead; four were live the moment the test copy was
@@ -509,6 +576,24 @@ still shipped a severe regression: Outlook's Word engine honors
 labels. Reverted the same day. Guardrail: line-height is banned on the
 button-group classes, and any future attempt at that spacing must be
 invisible to Word and proven in Outlook before it ships.
+
+**The near-duplicate catalog that charged rent (deleted August 17).** A
+second catalog file held a strict subset of the first: 135 of its 143
+blocks, differing by exactly one line. It was never once edited
+independently in its lifetime, and it demanded a matching edit on 14 of
+the 15 catalog commits in its last 90 days. That sync tax was its whole
+cost and its whole risk. Guardrail: the repo instructions say any future
+short demonstration page gets derived at build time from the full catalog,
+never maintained as a second copy.
+
+**Shipping ahead of the evidence (August 10).** A preview-text field was
+designed, built, and shipped, then reverted the same day when a send test
+showed EN injects its own preview text, so the field would have doubled
+every inbox snippet. The reversal was cheap because real send tests were
+routine by then; earlier in the project the same mistake would have lived
+for weeks. Guardrail: per-send strings (title, preview text) are stripped
+from the template on principle, and the checklist bans authored preview
+text in broadcast sources.
 
 **The mirror that could truncate itself.** The doc-mirroring recipe once
 risked piping a file into its own redirect, which truncates the target
