@@ -1842,8 +1842,9 @@ when the band sheet moved into the head: the sheet is now measured directly
 (454 delivered bytes), so reserving it again double-counted it. That left
 roughly 50 bytes of headroom until 2026-08-20, when TPL deleted its authored
 `.mj-column-px-*` width ladder (see "Deleting an authored ladder" above),
-returning ~1,325 delivered bytes: the all-blocks estimate is now 14,997 against
-the 16,384 cliff, about 1,387 bytes clear. The remaining trim candidates are
+returning ~1,325 delivered bytes. The margin moves with every stylesheet
+commit — run TPL's `npm run check-catalog` for the live number rather than
+trusting a figure written here. The remaining trim candidates are
 still NOT mechanical — client-injected hooks (`.moz-text-html`) and the
 dormant-but-sanctioned `.mobile-only` both look dead and are not.
 
@@ -1939,9 +1940,10 @@ dormant-but-sanctioned `.mobile-only` both look dead and are not.
 
 These attributes come from the upstream TPL repo. NEVER remove, rename, or
 "fix" them in MJML source, and never flag them as errors. MJML rejects
-data-* on its own tags, so the TPL build round-trips them
-(`scripts/annotate-excluded.mjs` → compile → `restore-excluded.mjs`); the
-importer whitelists all data-*-only MJML validator warnings
+data-* on its own tags, so the importer reads them from the raw MJML; the
+TPL build round-trips only the exclusion flags into compiled HTML
+(`scripts/annotate-excluded.mjs` → compile → `restore-excluded.mjs`), and
+the importer whitelists all data-*-only MJML validator warnings
 (`src/core/mjml.ts` `isDataAttributeWarning`).
 
 - **`data-style-*`** (valueless flags on MJML tags, and on raw `<a>`
@@ -2029,7 +2031,7 @@ importer whitelists all data-*-only MJML validator warnings
   mj-section/mj-wrapper frame): on a lone fixed-px column it opts out of
   the enumerated Column Width Select — for inset boxes whose width is
   load-bearing design geometry. On a frame it pins the gutter out of the
-  Block Width preset Select (the width-preset consumer in
+  Block Padding Left/Right preset Select (the width-preset consumer in
   `src/core/mjmlProps.ts`), the same effect a structurally pinned gutter
   gets automatically. The two consumers are mutually exclusive by
   construction: a block containing any px column never offers the preset.
@@ -2354,7 +2356,7 @@ whole span, so a miss silently drops the field
   - a **centered, content-sized child in a uniformly painted frame** — the
     gutter changes, nothing moves (CTA Button's pill is centered by the
     mobile CSS, so its Width is `data-desktop-only-width`; the single-color
-    divider is a fixed 280px centered box at desktop and only stretches
+    divider is a fixed 300px centered box at desktop and only stretches
     below the breakpoint, so it is `data-mobile-only-width`);
   - **trailing spacing absorbed by a taller sibling column**, live only
     once the columns stack (`data-mobile-only-spacing-below`);

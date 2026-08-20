@@ -294,12 +294,21 @@ Engaging Networks JSON imports. The attributes are machine-readable markers; at
 `validationLevel=skip` they compile away to nothing, so they're invisible in
 the shipped HTML (except `data-import-exclude`, deliberately).
 
-### 6a. `data-style-*` — "expose this property as editable"
+### 6a. `data-style-*` — RETIRED 2026-08-18; do not author new ones
 
-Valueless flags placed directly on MJML tags (and on raw `<a>` tags inside
-`mj-text`). They declare which style properties the converter must surface as
-Replacement options. Shorthand is always expanded — a tag with any padding gets
-all four `data-style-padding-*` flags.
+**This vocabulary is retired** (guide §5 owns the ruling). The converter
+never read these flags — it surfaces properties by scanning the raw MJML
+itself — and the strip-and-regenerate audit proved that removing all 8,376
+instances changed zero generated fields, so they came out of every source
+on 2026-08-18. The one survivor is `data-style-dark-mode`, which THIS
+repo's build consumes to pair light/dark images (§6c); keep authoring that
+one.
+
+What the vocabulary declared, kept as the historical record: valueless
+flags placed directly on MJML tags (and on raw `<a>` tags inside
+`mj-text`), naming which style properties were meant to be editor-exposed.
+Shorthand was always expanded — a tag with any padding got all four
+`data-style-padding-*` flags.
 
 | Component | Flags |
 |---|---|
@@ -351,8 +360,9 @@ Retirements are worth recording; current state is not.)
 
 A block can override its section's folder by carrying `data-folder="<id>"`
 directly on its own top-level tag (e.g. the block's `mj-section`): the
-converter resolves a block's folder as block-level `data-folder` →
-enclosing category header's `data-folder`.
+converter resolves a block's folder as block-level `data-folder` → the
+import form's folder input → enclosing category header's `data-folder` →
+the account default. Divider values prefill the import form.
 
 **`data-no-display-toggle`** (valueless, on `mj-image`/`mj-text`/`mj-button`/
 `mj-divider` only): opts a component OUT of the importer's auto-generated
@@ -641,7 +651,8 @@ Adapt per project:
       presets, and `geometryReachPx` (§6.0); identical in every `src/*.mjml`
 - [ ] `mj-head` baseline (`mj-attributes`, `mj-class`es, brand fonts/colors)
 - [ ] Wrap every block in START/END comments following the grammar
-- [ ] Apply the `data-style-*` matrix (§6a) to every tag as it's authored
+- [ ] Do NOT author the retired `data-style-*` vocabulary (§6a) — the
+      converter reads properties from the MJML itself
 - [ ] Pair every `mj-image` with a `dark-only` twin (§6c)
 - [ ] Wrap catalog chrome in `data-import-exclude` mj-raw divs (§6b)
 - [ ] Flag duplicative variants `data-fully-exclude` after the catalog settles (§6d)
