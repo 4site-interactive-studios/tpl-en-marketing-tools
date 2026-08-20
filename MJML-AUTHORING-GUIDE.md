@@ -907,11 +907,15 @@ show/hide or restyle independently — the pattern the 2026-08-19 usability
 pass unwound across CTA Text, Quote, WYSIWYG Text, and Podcast Episode.
 Author each idea as its own element: the heading `mj-text`, the body
 `mj-text`, the attribution `mj-text`. Each gets its own Content field and
-Display toggle for free, headings become eligible for
-`data-heading-level-toggle` (the H1–H4 Select — which needs the heading
-alone, plain-text, on one line so its narrowed Content value survives the
-compiled-HTML text search), and the inter-element gap moves to the upper
-element's bottom padding per §3. Inline links inside prose stay in the
+Display toggle for free, and the inter-element gap moves to the upper
+element's bottom padding per §3. **Leave the heading tag inside its
+Content value** — EN's rich-text editor offers H1–H4, so the level is
+changed in the WYSIWYG rather than through a second field, and the value
+being markup is exactly what keeps it on the RTE instead of collapsing to
+a plain Text field. (`data-heading-level-toggle` still exists for a
+template that wants the level as its own Select; it narrows Content to the
+heading's inner text, which then requires the heading to be alone,
+plain-text and on one line.) Inline links inside prose stay in the
 prose (they are RTE-editable); a linked heading keeps its link inside its
 own element's RTE.
 

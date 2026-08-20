@@ -2151,12 +2151,24 @@ whole span, so a miss silently drops the field
   a true circle. In use on the unified catalog's Signature Card (square
   photo), authored `border-radius="0"` so the default look is unchanged.
 
-- **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
-  user-decided): mints the "Heading Level" H1–H4 Select and narrows the
-  Content field to the heading's inner text (see Other generated
-  controls). Requires the mj-text's entire content to be one lone
-  heading (inner markup allowed, 2026-08-19); siblings or a second
-  heading void the flag with an import note.
+- **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19;
+  **superseded 2026-08-20, zero live uses**): mints the "Heading Level"
+  H1–H4 Select and narrows the Content field to the heading's inner text
+  (see Other generated controls). Requires the mj-text's entire content to
+  be one lone heading (inner markup allowed, 2026-08-19); siblings or a
+  second heading void the flag with an import note.
+
+  **Superseded by the WYSIWYG itself** (user decision 2026-08-20): EN's
+  rich-text editor already offers H1–H4, so a heading needs no second
+  field to change its level. Dropping the flag leaves the whole
+  `<h2>…</h2>` inside the Content value, which makes that value markup and
+  therefore an RTE — the editor changes the level in place. Two fields
+  collapse into one, and the narrowing constraint disappears with them:
+  the flag needed the heading alone, plain-text, on one line so its
+  narrowed value survived the compiled-HTML text search, and a full
+  WYSIWYG has no such requirement. Removed from all four flagged elements
+  in each catalog. The generator support is retained, unused, for
+  templates that still want the level as a separate control.
 - **`data-force-rte`** (valueless, on mj-text, 2026-08-19, user-decided):
   keeps a Content field on EN's rich-text editor when the importer would
   otherwise mint it as a plain `Text` field (see "Bare copy gets a Text

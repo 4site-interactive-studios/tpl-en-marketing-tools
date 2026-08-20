@@ -320,12 +320,12 @@
     "hash": "c94d87a8446e"
   },
   "block:Linked Header Row": {
-    "version": 4,
-    "hash": "2ef5695a2c18"
+    "version": 5,
+    "hash": "21557cd55044"
   },
   "block:Linked Header Row (w/ icon)": {
-    "version": 4,
-    "hash": "63eed08c6822"
+    "version": 5,
+    "hash": "1849394c87eb"
   },
   "block:Linked List Block": {
     "version": 3,
@@ -572,12 +572,12 @@
     "hash": "bd8d38b2714c"
   },
   "block:WYSIWYG Text (full width)": {
-    "version": 4,
-    "hash": "4c7a73e60872"
+    "version": 5,
+    "hash": "aa9156c56b3a"
   },
   "block:WYSIWYG Text (inset)": {
-    "version": 3,
-    "hash": "6ce779d3b504"
+    "version": 4,
+    "hash": "af9ce892e350"
   },
   "catalog-shell": {
     "version": 19,

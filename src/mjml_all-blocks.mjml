@@ -767,7 +767,7 @@
       background-color="#ffffff" padding="16px 32px 0"
     >
       <mj-column vertical-align="middle">
-        <mj-text data-heading-level-toggle padding="0">
+        <mj-text padding="0">
           <h2><a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
@@ -777,7 +777,7 @@
     <!-- START: Linked Header Row (w/ icon) -->
     <mj-section css-class="text-block block header-row-block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
-        <mj-text data-heading-level-toggle padding="0">
+        <mj-text padding="0">
           <h2>🦋&nbsp; <a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
@@ -796,13 +796,16 @@
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
-             Content field and Display toggle, and the heading's level is
-             editable via data-heading-level-toggle (user decisions
-             2026-08-19). The old second, LINKED heading demo is gone; the
-             body's second paragraph still demos an inline link. The
-             heading stays on one line: the narrowed Content field's value
-             is matched by text search in the compiled HTML. -->
-        <mj-text data-heading-level-toggle padding="0 0 16px">
+             Content field and Display toggle (user decision 2026-08-19).
+             The heading's Content is a FULL WYSIWYG carrying its own <h2>
+             tag: EN's rich-text editor already offers H1-H4, so the level
+             is changed there rather than through a second field. That
+             replaced data-heading-level-toggle, which narrowed Content to
+             the heading's inner text and minted a separate Heading Level
+             Select beside it (user decision 2026-08-20). The old second,
+             LINKED heading demo is gone; the body's second paragraph still
+             demos an inline link. -->
+        <mj-text padding="0 0 16px">
           <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
         </mj-text>
         <mj-text padding="0">
@@ -833,13 +836,16 @@
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
-             Content field and Display toggle, and the heading's level is
-             editable via data-heading-level-toggle (user decisions
-             2026-08-19). The old second, LINKED heading demo is gone; the
-             body's second paragraph still demos an inline link. The
-             heading stays on one line: the narrowed Content field's value
-             is matched by text search in the compiled HTML. -->
-        <mj-text data-heading-level-toggle padding="0 0 16px">
+             Content field and Display toggle (user decision 2026-08-19).
+             The heading's Content is a FULL WYSIWYG carrying its own <h2>
+             tag: EN's rich-text editor already offers H1-H4, so the level
+             is changed there rather than through a second field. That
+             replaced data-heading-level-toggle, which narrowed Content to
+             the heading's inner text and minted a separate Heading Level
+             Select beside it (user decision 2026-08-20). The old second,
+             LINKED heading demo is gone; the body's second paragraph still
+             demos an inline link. -->
+        <mj-text padding="0 0 16px">
           <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
         </mj-text>
         <mj-text padding="0">
