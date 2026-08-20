@@ -1894,6 +1894,13 @@ stylesheet support at all.
 | `<ul><li>` | a `<p>` is injected inside each `<li>` |
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
 
+The anchor row was pinned down further on 2026-08-19: an anchor keeps `href`
+(and `target`) and **nothing else** — `class`, `style`, `id`, `title` and
+`data-*` all go. ProseMirror treats a link as a MARK, rebuilt from a fixed
+attribute set, while `span` and `p` are NODES and keep their attributes. So an
+RTE-embedded link can only be styled from an ancestor class, and the catalog's
+8 button-styled anchors are broken by any edit to their surrounding copy.
+
 Two of those are authoring rules, not curiosities. **Never put an MSO
 conditional inside an RTE value** — one edit deletes it silently. **Never rely
 on an anchor's inline `style` or `rel` inside an RTE value** — colour a link

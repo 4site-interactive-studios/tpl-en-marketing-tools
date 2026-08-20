@@ -873,9 +873,19 @@ rules rather than trivia:
 - **Never put an MSO conditional inside an RTE value.** One edit deletes the
   entire conditional, silently. Conditionals belong in block markup, outside
   every replacement.
-- **Never rely on an anchor's inline `style` or `rel` inside an RTE value.**
-  Both are stripped on edit; `href` and `target` survive. Colour links from
-  the stylesheet, the same conclusion the heading-colour rule reached.
+- **An anchor inside an RTE value keeps its `href` and nothing else.**
+  Measured 2026-08-19: `class`, `style`, `id`, `title` and `data-*` are all
+  stripped on the first edit (`target` survives). There is no hook you can put
+  ON the link. Style it from an ANCESTOR class instead — put `css-class` on the
+  `mj-text` and write a descendant rule (`.cta-link a { … }`), because the
+  ancestor lives in block markup outside the replacement where the editor can
+  never reach it. EN's inliner applies such rules normally.
+
+  The reason is structural, and it predicts the rest: EN's editor is
+  ProseMirror, where a link is a **mark** and everything else here is a
+  **node**. Nodes keep their attributes — a `class` survives on a `<span>` and
+  on a `<p>` — and marks are rebuilt from a fixed attribute set, so anything
+  you hang on an `<a>` is discarded.
 
 Also measured: an already-wrapped paragraph carrying an inline style comes
 back **unchanged**, so the transform is idempotent — authoring the paragraph
