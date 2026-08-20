@@ -1616,53 +1616,50 @@ Gmail-style snippets would show BOTH lines. Consequences:
   it first would have put 45 warnings in the export panel on day one, which
   is how a check gets ignored. Against the migrated catalog it reports zero
   warnings and zero errors — only the two known lists, at info.
-**Builder bands** (2026-08-19). A block whose real content is invisible —
-head CSS, or an empty raw-HTML field — renders as a zero-height strip in EN's
-email builder that an editor cannot see or click. A band fixes that: a marker
-`<span>` that is `display:none` in the send, plus rules that only bite inside
-`.en__emailbuilder__block`, the wrapper EN puts around every block in the
-builder. Anywhere else the selector matches nothing.
+**Builder bands** (2026-08-19). A block whose real content is invisible — head
+CSS, an empty raw-HTML field — renders as a zero-height strip in EN's builder
+that an editor cannot see or click. A band gives it a body: a marker `<span>`
+that is `display:none` in the send, plus rules that only bite while the
+template is being edited.
 
-The layout is defined ONCE, on a shared `.en-tools-band` class carried in the
-Template Styles block's chrome stylesheet (`BUILDER_BAND_SHARED_CSS`), and each
-band adds only its own `content` line (`builderBandHtml(id, label)`). That
-matters because the rules are NOT pruned at send — they reach the recipient and
-count against Gmail's 16,384-byte head-CSS cliff, past which Gmail drops the
-whole stylesheet. Sharing takes three bands from 1,591 delivered bytes to 671,
-which is what makes a second and third band affordable at all.
+**One gate, one class, one layout rule; each band adds only its own
+`content`.** The gate is `:is(body):has(.en__emailbuilder__block)` (user
+design), which asks whether a block wrapper exists ANYWHERE in the document —
+true in the builder, false in a delivered email. That single question serves
+bands inside a block AND the template's own chrome, which sits outside every
+block and no descendant selector can reach. Both halves are load-bearing:
+`:has()` supplies the test, `:is()` is belt to its braces, since a selector
+carrying a pseudo-class the engine cannot parse is discarded WHOLE — a client
+understanding neither drops the rule rather than half-applying it.
 
-The shared CSS lives in the Template Styles block rather than the template's
-own sheet so it stays app-owned and works for any project, not only one whose
-stylesheet happens to define it. Chrome and content stay in SEPARATE `<style>`
-elements — EN ingests a stylesheet once per wrapper, and keeping the project
-CSS alone in its own wrapper is what the 2026-08-18 measurement bought
-(24,952 delivered bytes doubled, 13,325 single).
+Every span carries `aria-hidden="true"`. The band is editor chrome, never
+content; `display:none` already skips it in a delivered email, so this is the
+guard for the case where the CSS does not arrive and an empty span could
+otherwise be announced.
 
-Bands in use: the Template Styles block (`#head-styles`, label carries the
-head-css version), the RAW HTML utility block (`#raw-html`), and the TEMPLATE
-itself (`#template-version`, label carries the `email-template` version so a
-stale template is visible at a glance).
+Measured in a browser before shipping, both DOM states and the layout: with no
+block wrapper the span computes `display:none` at 0px; with one it computes
+`display:flex` at 50px and paints its centred label. **`height` is required** —
+dropping it collapsed the band to 19px, because a flex container whose only
+child is a `::before` shrinks to content and `max-height` never binds.
 
-**The template band needs a different gate**, and that is the interesting part.
-A block band keys off `.en__emailbuilder__block`, but the template's chrome
-sits OUTSIDE every block, so no descendant selector reaches it. The gate is
-instead `:is(body):has(.en__emailbuilder__block)` (user design, 2026-08-19),
-which asks a different question — is a block wrapper present ANYWHERE in this
-document? True in EN's builder, false in a delivered email. Both halves are
-load-bearing: `:has()` supplies the test, and `:is()` is belt to its braces,
-since a selector carrying a pseudo-class the engine cannot parse is discarded
-WHOLE, so a client understanding neither drops the rule rather than
-half-applying it. Verified in a browser both ways before shipping — with no
-block wrapper the span computes `display:none` at 0px; with one present it
-computes `display:block` at 50px and paints its label.
+Sharing is what makes more than one band affordable. EN does NOT prune the
+matchless rules at send: they reach the recipient and count against Gmail's
+16,384-byte cliff, past which Gmail drops the ENTIRE stylesheet. Copied
+verbatim, three bands cost 1,591 delivered bytes; on one shared rule, 697.
 
-The span is authored in the TEMPLATE's MJML (an `mj-raw` above the
-`<!-- START: Main Content -->` marker, so it lands in the shell rather than a
-block), not injected at export. Injecting it app-side broke the byte-exact
-import→export round-trip and would have double-injected on re-import, since the
-span becomes part of `beforeBlocks` the moment it round-trips. Its CSS stays
-app-side in the Template Styles block, so the version label comes from
-`versions.json` with no TPL build step.
+Bands in use: the Template Styles block (`#head-styles`, head-css version), the
+RAW HTML utility block (`#raw-html`), and the TEMPLATE itself
+(`#template-version`, `email-template` version, so a stale template shows at a
+glance). The template's span is authored in its MJML above the
+`<!-- START: Main Content -->` marker so it lands in the shell; injecting it at
+export instead broke the byte-exact import→export round-trip and would have
+double-injected on re-import.
+
+**Open:** the shared CSS currently ships in the Template Styles block. Moving
+it to the template `<head>` (the intent) needs an exemption in
+`extractHeadStyles`, which today splices EVERY `<style>` out of the head and
+into that block.
 
 - `data-*` contract warnings are whitelisted, never "fixed".
 
