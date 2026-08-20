@@ -9,6 +9,13 @@ against every diff under that repo's pre-commit review gate, and get linted
 for drift with every build. What follows is a record of how we got here,
 written down while the reasoning was still recoverable.
 
+> [!TIP]
+> **See the whole system in one email.**
+> [This live template in Engaging Networks](https://us2.engagingnetworks.app/page/email/message/view?templateId=582)
+> stacks one of every block. Open it before you read a word of this
+> document; everything below will make more sense once you have scrolled
+> the real thing. You will need an EN login.
+
 Findings carry the date they were measured wherever the record has one. Where
 a finding was later corrected, the correction sits alongside it rather than in
 place of it.
