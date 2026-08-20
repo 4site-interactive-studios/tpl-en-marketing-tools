@@ -1150,6 +1150,16 @@ can prop each other up, and the report says so when they do.
   stylesheet's min-width media query; seed the class for each width you
   curate, or the importer drops that option (it would render in Outlook
   alone) and says so in an info note.
+- **Anything that must reach the TEMPLATE shell has to lead the body.** The
+  importer treats every `<!-- START: X -->` … `<!-- END: X -->` pair as a
+  block, and the template shell is everything before the FIRST such marker —
+  of any name, not "Main Content" specifically. So a partial that carries its
+  own START/END markers (a debug toolbar, a dev-only banner) segments as
+  block #1, and template chrome authored after that include lands inside that
+  block instead of the shell. If the importer then drops that block, the
+  chrome disappears with it, silently. Author preheaders, builder-band spans
+  and any other template-level markup directly under `<mj-body>`, above every
+  include.
 - **Removing the control is two steps, not one.** Deleting the
   `.mj-column-px-*` rules from your stylesheet does NOT remove the dropdown.
   MJML mints a `.mj-column-px-N` class for every real column width, so the

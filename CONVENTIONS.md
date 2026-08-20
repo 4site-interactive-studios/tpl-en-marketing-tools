@@ -140,6 +140,18 @@ inside `<mj-head>` (parsed from the prepared source by
 } -->
 ```
 
+**The comment never ships** (2026-08-20, user decision). MJML passes head
+comments straight through, so the compiled `<head>` carried all ~851 bytes of
+it into `shell.beforeBlocks` and therefore into the exported template's
+`content` — internal authoring configuration sitting in the head of every
+delivered email. `stripTemplateConfigComment` removes it at IMPORT, against the
+pre-blocks slice, so every consumer of the shell sees the same bytes: the
+export, the template preview (`targetHtml`), validation, and the brand-color
+usage scan — which had been reading the palette DECLARATION as shell usage of
+every brand color. Stripping at export instead would have desynced those
+offsets from `shell.beforeBlocks`. The config is parsed from the MJML source
+(`project.inputRaw`), never from the shell, so nothing downstream loses it.
+
 - **Semantics**: `spacingScale` (name → px; needs a 0 step and ≥2 entries;
   names and step count are free) drives every pacing Select's options,
   labels, and snapping targets. `classSpacingScales` (optional; class
@@ -1667,10 +1679,26 @@ verbatim, three bands cost 1,591 delivered bytes; on one shared rule, 697.
 Bands in use: the Template Styles block (`#head-styles`, head-css version), the
 RAW HTML utility block (`#raw-html`), and the TEMPLATE itself
 (`#template-version`, `email-template` version, so a stale template shows at a
-glance). The template's span is authored in its MJML above the
-`<!-- START: Main Content -->` marker so it lands in the shell; injecting it at
-export instead broke the byte-exact import→export round-trip and would have
-double-injected on re-import.
+glance). The template's span is authored in its MJML rather than injected at
+export; injecting it broke the byte-exact import→export round-trip and would
+have double-injected on re-import.
+
+**The template band span must lead the body — above every include, not merely
+above `<!-- START: Main Content -->`** (corrected 2026-08-20, after the span
+was found missing from every exported Email Template). `shell.beforeBlocks` is
+`html.slice(0, seg.beforeEnd)`, and `beforeEnd` is the offset of the FIRST
+`<!-- START: -->` marker of ANY name — the segmenter has no special knowledge
+of "Main Content". `partials/debug-toolbar.mjml` carries its own START/END
+pair, so it segments as block #1, and a span authored below that include lands
+INSIDE the toolbar block — which `isDebugBlock()` then drops from the import
+wholesale, silently taking the span with it. The failure is quiet and
+asymmetric: the band's `<style data-en-tools-band>` lives in `<mj-head>` and
+survives, so the exported template kept a `#template-version:before` content
+rule with no element to hang it on. Only the `_live` variant ever looked
+correct, because `emit-variants.mjs` strips the toolbar there — the documented
+import path (raw MJML with includes resolved) is the broken one. check-catalog's
+"Builder band span leads the body" guard now enforces the ordering, and is
+self-tested by reverting the order.
 
 **Where each piece lives.** The shared layout and the template band's own
 label sit in the template `<head>`, in a `<style data-en-tools-band>`.

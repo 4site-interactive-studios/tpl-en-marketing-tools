@@ -92,12 +92,19 @@
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
 
-    <mj-include path="./partials/debug-toolbar.mjml" />
-
-    <!-- Marketing Tools band (see CONVENTIONS.md, Builder bands) -->
+    <!-- Marketing Tools band (see CONVENTIONS.md, Builder bands).
+         MUST STAY ABOVE the debug-toolbar include. The toolbar partial is
+         wrapped in its own START/END markers, so the importer segments it as
+         block #1 and shell.beforeBlocks stops at that START marker. Anything
+         authored below this line lands INSIDE the toolbar block — which
+         isDebugBlock() then drops from the import, silently taking the band
+         span with it and shipping a template whose head still carries the
+         #template-version content rule but no element to hang it on. -->
     <mj-raw>
       <span id="template-version" class="marketing-tools-banner" aria-hidden="true" style="display: none;"></span>
     </mj-raw>
+
+    <mj-include path="./partials/debug-toolbar.mjml" />
 
     <!-- START: Main Content -->
 

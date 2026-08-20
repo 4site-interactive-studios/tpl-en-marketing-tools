@@ -508,6 +508,47 @@ guard('ALL-CAPS button label check', () => {
 });
 
 // ---------------------------------------------------------------------------
+// §N Builder band span must lead the body (2026-08-20). The importer builds
+// shell.beforeBlocks as html.slice(0, seg.beforeEnd), and beforeEnd is the
+// offset of the FIRST '<!-- START: ... -->' marker in the document — not the
+// "Main Content" one specifically. partials/debug-toolbar.mjml carries its own
+// START/END pair, so it segments as block #1; anything authored after that
+// include therefore lands INSIDE the toolbar block, which the app then drops
+// wholesale via isDebugBlock(). That is exactly how the #template-version span
+// went missing from every exported Email Template: the head kept the band's
+// content rule while the element it targets was silently discarded with the
+// toolbar. Anything that must reach the template shell has to precede BOTH the
+// first include and the first START marker.
+// ---------------------------------------------------------------------------
+guard('Builder band span leads the body', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`);
+    if (text === null) continue;
+    const span = text.indexOf('class="marketing-tools-banner"');
+    if (span < 0) continue; // autoresponder sources carry no band
+    const bodyAt = text.indexOf('<mj-body');
+    const after = (needle) => {
+      const i = text.indexOf(needle, bodyAt);
+      return i < 0 ? Infinity : i;
+    };
+    const firstInclude = after('<mj-include');
+    const firstStart = after('<!-- START:');
+    const blocker =
+      firstInclude < span ? `<mj-include> at line ${text.slice(0, firstInclude).split('\n').length}`
+      : firstStart < span ? `<!-- START: --> marker at line ${text.slice(0, firstStart).split('\n').length}`
+      : null;
+    if (blocker) {
+      warn(
+        `src/${f}:${text.slice(0, span).split('\n').length} — the builder band span sits AFTER a ${blocker}.` +
+          ` shell.beforeBlocks stops at the first START marker, so this span lands inside that block` +
+          ` instead of the template shell and never reaches the exported Email Template. Move it directly` +
+          ` under <mj-body>, above every include.`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
 // §N Column Width opt-out. The 50px width ladder in styles.css was deleted
 // on 2026-08-20 once every block stopped offering a Column Width dropdown
 // (user decision: Highlighted Text, Quote Block, CTA Text Block and Footer
