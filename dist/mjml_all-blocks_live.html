@@ -552,6 +552,33 @@ li {
       mso-line-height-rule: exactly;
     }
 
+    /* Quiz answer pills. The styling lives here rather than inline on the anchor
+   because an anchor inside an RTE Content value keeps its href and NOTHING
+   else — EN's editor rebuilds links as ProseMirror marks and discards class,
+   style, id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook is on the mj-text, which
+   is block markup outside the replacement, so the editor cannot reach it;
+   that pattern survives an edit in storage and in the delivered email
+   (docs/archive/en-headsheet-probe.html). Descendant selector, never a child
+   combinator. */
+    .quiz-cta a {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #006837;
+      border-radius: 100px;
+      width: 200px;
+      padding: 10px 0;
+      text-align: center;
+      font-family: Tahoma, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 24px;
+      text-decoration: none;
+      mso-padding-alt: 0;
+      white-space: nowrap;
+    }
+
     .question-response {
       border: 1px solid #ffffff;
     }
@@ -7996,8 +8023,8 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 13-17</a></div>
+                              <td align="center" class="wysiwyg quiz-cta" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com">AGES 13-17</a></div>
                               </td>
                             </tr>
                           </tbody>
@@ -8043,8 +8070,8 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 25-34</a></div>
+                              <td align="center" class="wysiwyg quiz-cta" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com">AGES 25-34</a></div>
                               </td>
                             </tr>
                           </tbody>
@@ -8102,8 +8129,8 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 45-54</a></div>
+                              <td align="center" class="wysiwyg quiz-cta" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com">AGES 45-54</a></div>
                               </td>
                             </tr>
                           </tbody>
@@ -8149,8 +8176,8 @@ li {
                               </td>
                             </tr><!--<![endif]-->
                             <tr>
-                              <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com" style="display:inline-block;background-color:#ffffff;color:#006837;border-radius:100px;width:200px;padding:10px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:24px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">AGES 65+</a></div>
+                              <td align="center" class="wysiwyg quiz-cta" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;"><a href="https://www.example.com">AGES 65+</a></div>
                               </td>
                             </tr>
                           </tbody>
