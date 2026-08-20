@@ -1821,12 +1821,41 @@ importer whitelists all data-*-only MJML validator warnings
   across families: the Question Block's icon anchor (unflagged, Button)
   mints the group URL while the flagged copy anchor rides as a carrier
   and mints Text-family Label/Text Color.
+**Bare copy gets a Text field, not RTE** (2026-08-19, user-decided). EN's
+Content field is a **ProseMirror** editor whose schema requires BLOCK content
+at the document root, so it wraps an inline-only value in `<p>` the instant an
+editor clicks in and types — irreversibly, and the injected paragraph then
+matches the stylesheet's `p` rule instead of its own element's font-size (a
+10px caption shipped at 16px). A plain `Text` field is not a ProseMirror
+surface at all, so nothing is rewritten.
+
+The importer therefore mints an `mj-text` Content field as `Text` whenever its
+authored inner carries no formatting — no `<a>`, `<strong>`/`<b>`,
+`<em>`/`<i>`, `<u>`, `<br>`, `<p>`, `<h1>`–`<h6>`, `<ul>`/`<ol>`/`<li>`, and no
+MSO conditional — counting a lone `<span>` wrapper as bare (`plainCopyContent`,
+`src/core/mjmlProps.ts`). The bias is deliberate and one-directional: typing a
+field Text when it could have been RTE costs an editor formatting they probably
+never wanted, while typing it RTE when it did not need to be silently corrupts
+the markup. Measured on the full catalog, 25 of 166 Content fields (15%) leave
+the ProseMirror surface. `data-force-rte` opts an element back in.
+
+The value is **not** narrowed past its `<span>` wrapper. A narrowed caption
+would have to be re-found by value in the compiled HTML, where a short string
+("Read more") is far less unique than the whole span — a miss silently drops
+the field (`if (!occurrences.length) continue`) and a false hit splices the
+wrong place. Typing it `Text` already removes the rewrite; narrowing is an
+editor-UX refinement that needs its own occurrence fallback first.
+
 - **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
   user-decided): mints the "Heading Level" H1–H4 Select and narrows the
   Content field to the heading's inner text (see Other generated
   controls). Requires the mj-text's entire content to be one lone
   heading (inner markup allowed, 2026-08-19); siblings or a second
   heading void the flag with an import note.
+- **`data-force-rte`** (valueless, on mj-text, 2026-08-19, user-decided):
+  keeps a Content field on EN's rich-text editor when the importer would
+  otherwise mint it as a plain `Text` field (see "Bare copy gets a Text
+  field" below). For copy expected to grow a link or emphasis later.
 - **`data-group-label="<words>"`** (valued; on any content element AND on
   raw `<a>` tags inside complex markup, 2026-08-19, user-decided): the
   authored group word, verbatim — it names the panel group, prefixes the

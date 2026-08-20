@@ -831,6 +831,38 @@ The general principle stands: styling an editor should own belongs on
 `mj-*` attributes, not frozen inside content — but only where the
 attribute actually reaches the rendered element.
 
+### EN's Content editor is ProseMirror — it wraps bare copy in `<p>` (2026-08-19, measured)
+
+Click into a Content field, type one character, and EN rewrites the stored
+value. ProseMirror's schema requires BLOCK content at the document root, so an
+inline-only value is wrapped in a paragraph, permanently:
+
+```html
+<!-- authored -->
+<div style="font-size:10px;line-height:16px;…"><span>Photograph by Name, AGENCY</span></div>
+<!-- after one edit, stored -->
+<div style="font-size:10px;line-height:16px;…"><p><span>Photograph by Name, AGENCY</span></p></div>
+```
+
+The `<p>` itself is harmless; what it *matches* is not. An injected paragraph
+carries no inline style, so the stylesheet's `p` rule wins over the wrapper's
+declared size — a 10px credit line ships at 16px. Two authoring consequences:
+
+- **Do not rely on an unstyled `<p>` inheriting its element's size.** A
+  paragraph that must hold a size should pin it inline
+  (`<p style="font-size:12px;line-height:14px;margin:0;">`), which no
+  stylesheet rule can override. 147 of the catalog's 170 in-content paragraphs
+  already do this; it is the established pattern.
+- **Bare copy should not be on a rich-text field at all.** The importer now
+  types a Content field as plain `Text` when its inner carries no formatting,
+  which removes the rewrite rather than defending against it. Author
+  `data-force-rte` on the `mj-text` when copy is expected to grow a link or
+  emphasis later.
+
+This is the same underlying mechanism as §2d's `>` escape — EN parses a
+replacement value as HTML and re-serializes it on edit. Neither fires on an
+untouched save; both fire on the first keystroke.
+
 ### One idea per mj-text (2026-08-19, user-decided)
 
 The importer's unit of editability is the `mj-text` ELEMENT: one element
