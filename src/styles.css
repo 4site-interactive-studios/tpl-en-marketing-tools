@@ -328,12 +328,6 @@ p {
     width: calc(100% - 110px) !important;
   }
 
-  /* The handwriting graphic reads oversized next to the shrunken photo */
-  .signature-text img {
-    width: 140px !important;
-    height: auto !important;
-  }
-
   /* The column's own gutter padding lands on MJML's wrapper td. EN moves
      inline vertical-align to a valign ATTRIBUTE at send (measured
      2026-08-18, EoA aafUJU: 0 of 107 delivered tds kept it inline), so

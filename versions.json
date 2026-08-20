@@ -440,8 +440,8 @@
     "hash": "c417c6aeb2fb"
   },
   "block:Signature Card (photo)": {
-    "version": 3,
-    "hash": "ca258bb234b6"
+    "version": 4,
+    "hash": "fbc85cb2fe49"
   },
   "block:Signature Card (round photo)": {
     "version": 5,
@@ -588,12 +588,12 @@
     "hash": "e44b93675f1e"
   },
   "email-template": {
-    "version": 31,
-    "hash": "f5796f6ea67e"
+    "version": 32,
+    "hash": "b3bf5d772d5c"
   },
   "head-css": {
-    "version": 15,
-    "hash": "2fdee7091852"
+    "version": 16,
+    "hash": "e6700d96b50b"
   },
   "partial:debug-toolbar": {
     "version": 1,
