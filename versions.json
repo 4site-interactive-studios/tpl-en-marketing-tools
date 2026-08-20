@@ -584,12 +584,12 @@
     "hash": "0e1a668900ba"
   },
   "email-template": {
-    "version": 20,
-    "hash": "3f71c968cbde"
+    "version": 21,
+    "hash": "e1600bc6527d"
   },
   "head-css": {
-    "version": 7,
-    "hash": "48e4dc658548"
+    "version": 8,
+    "hash": "9afb846284b9"
   },
   "partial:debug-toolbar": {
     "version": 1,

@@ -1842,8 +1842,23 @@ back byte-identical. But the typed character landed OUTSIDE the closing tag,
 which is what a Text field is: a literal string input that shows the editor
 raw tags. Sending a span-wrapped caption there is safe for the data and
 hostile to the person editing it. On RTE the same value keeps its span and
-merely gains a paragraph, whose only real cost — the font-size reset — the
-stylesheet handles.
+merely gains a paragraph.
+
+That paragraph is not harmless yet, and a stylesheet rule cannot make it so.
+**EN's inliner bakes the winning `p` rule onto the injected paragraph as an
+INLINE style** — the delivered email carries
+`<p style="display:block;font-size:16px;line-height:27px;…">` inside an 18px
+element. Whatever rule wins specificity is what gets inlined, `inherit`
+included, and inline `inherit` is precisely the construct Outlook's Word
+engine cannot be relied on for. A `.wysiwyg p { font-size: inherit }` rule was
+tried and reverted for that reason (2026-08-19).
+
+The measured fix is B1's: an authored `<p>` carrying its own inline
+font-size survives **both** transforms — the editor leaves it untouched, and
+EN's inliner does not override it (B1 shipped its authored 12px/16px intact
+while the injected paragraphs got 16px/27px). Pre-wrapping copy in a
+paragraph that pins its size is therefore the durable answer, and it needs no
+stylesheet support at all.
 
 **What EN's editor actually does to an RTE value on the first keystroke:**
 
