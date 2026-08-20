@@ -508,17 +508,21 @@ guard('ALL-CAPS button label check', () => {
 });
 
 // ---------------------------------------------------------------------------
-// §N Builder band span must lead the body (2026-08-20). The importer builds
-// shell.beforeBlocks as html.slice(0, seg.beforeEnd), and beforeEnd is the
-// offset of the FIRST '<!-- START: ... -->' marker in the document — not the
-// "Main Content" one specifically. partials/debug-toolbar.mjml carries its own
-// START/END pair, so it segments as block #1; anything authored after that
-// include therefore lands INSIDE the toolbar block, which the app then drops
-// wholesale via isDebugBlock(). That is exactly how the #template-version span
-// went missing from every exported Email Template: the head kept the band's
-// content rule while the element it targets was silently discarded with the
-// toolbar. Anything that must reach the template shell has to precede BOTH the
-// first include and the first START marker.
+// §N Builder band span must lead the body (2026-08-20). A TRIPWIRE with zero
+// live instances: the template band moved to a [data-container="main"]:before
+// rule the same day, so no catalog source authors a band span any more and
+// this guard currently matches nothing. It stays because the trap it catches
+// is real and silent. shell.beforeBlocks is html.slice(0, seg.beforeEnd), and
+// beforeEnd is the offset of the FIRST '<!-- START: ... -->' marker of ANY
+// name — the segmenter has no special knowledge of "Main Content".
+// partials/debug-toolbar.mjml carries its own START/END pair, so it segments
+// as block #1; anything authored after that include lands INSIDE the toolbar
+// block, which the app then drops wholesale via isDebugBlock(). That is how
+// the #template-version span went missing from every exported Email Template
+// before the container rule replaced it: the head kept the band's content
+// rule while the element it targeted was silently discarded. If a band span
+// is ever authored into a body again, it has to precede BOTH the first
+// include and the first START marker.
 // ---------------------------------------------------------------------------
 guard('Builder band span leads the body', () => {
   for (const f of sources) {

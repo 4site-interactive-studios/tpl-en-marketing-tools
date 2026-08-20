@@ -1150,6 +1150,16 @@ can prop each other up, and the report says so when they do.
   stylesheet's min-width media query; seed the class for each width you
   curate, or the importer drops that option (it would render in Outlook
   alone) and says so in an info note.
+- **Builder-only chrome on the TEMPLATE should hang off EN's container, not
+  off markup you author in the shell.** EN's builder renders blocks inside the
+  container element and does not render the template's own surrounding markup,
+  so a marker element authored in the template shell never enters the builder
+  DOM — it will look right in your compiled HTML and do nothing in EN
+  (measured 2026-08-20). Target `[data-container="main"]:before` instead. It
+  self-gates: the stored template holds a container placeholder and a
+  delivered email holds the blocks, so only the editor ever renders that
+  attribute. Keep it as its OWN rule — one unsupported selector invalidates a
+  whole selector list, so never group it with a `:has()`-gated selector.
 - **Anything that must reach the TEMPLATE shell has to lead the body.** The
   importer treats every `<!-- START: X -->` … `<!-- END: X -->` pair as a
   block, and the template shell is everything before the FIRST such marker —

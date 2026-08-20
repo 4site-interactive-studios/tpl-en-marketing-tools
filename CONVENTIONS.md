@@ -1660,7 +1660,9 @@ block and no descendant selector can reach. Both halves are load-bearing:
 carrying a pseudo-class the engine cannot parse is discarded WHOLE — a client
 understanding neither drops the rule rather than half-applying it.
 
-Every span carries `aria-hidden="true"`. The band is editor chrome, never
+Every band SPAN carries `aria-hidden="true"` (the two block bands; the
+template band is a pseudo-element and has no node to annotate). The band is
+editor chrome, never
 content; `display:none` already skips it in a delivered email, so this is the
 guard for the case where the CSS does not arrive and an empty span could
 otherwise be announced.
@@ -1676,29 +1678,51 @@ matchless rules at send: they reach the recipient and count against Gmail's
 16,384-byte cliff, past which Gmail drops the ENTIRE stylesheet. Copied
 verbatim, three bands cost 1,591 delivered bytes; on one shared rule, 697.
 
-Bands in use: the Template Styles block (`#head-styles`, head-css version), the
-RAW HTML utility block (`#raw-html`), and the TEMPLATE itself
-(`#template-version`, `email-template` version, so a stale template shows at a
-glance). The template's span is authored in its MJML rather than injected at
-export; injecting it broke the byte-exact import→export round-trip and would
-have double-injected on re-import.
+Bands in use: the Template Styles block (`#head-styles`, head-css version) and
+the RAW HTML utility block (`#raw-html`) — both spans the app injects into the
+block's own content at export — plus the TEMPLATE itself, which works
+differently.
 
-**The template band span must lead the body — above every include, not merely
-above `<!-- START: Main Content -->`** (corrected 2026-08-20, after the span
-was found missing from every exported Email Template). `shell.beforeBlocks` is
+**The template band hangs off EN's container, not off a span** (user decision
+2026-08-20, replacing the span approach the same day it shipped). A span
+authored in the template shell does not work: EN's builder renders blocks
+inside the container and does NOT render the template's own surrounding
+markup, so a shell span never enters the builder DOM at all. The rule is
+
+```css
+[data-container="main"]:before { content: "Email Template v__TEMPLATE_VERSION__"; … }
+```
+
+and it is **self-gating**, which is why it needs no `:has()` test: the stored
+template carries the `{{container~main}}` placeholder, a delivered email
+carries the blocks themselves, and only EN's editor ever renders an element
+bearing `data-container="main"`. It also removes a whole class of failure —
+there is no body markup left to lose, so the segmentation trap below cannot
+touch it, and with no span there is no `aria-hidden` to get wrong.
+
+**Never merge the two selectors into one list.** One unsupported selector
+invalidates the WHOLE rule, so folding the container selector in beside
+`:is(body):has(…)` would let a client that cannot parse `:has()` take the
+template band down with it. They stay two rules; the ~215 delivered bytes of
+duplicated layout is the price of that isolation.
+
+**The trap that killed the span approach**, kept because it still applies to
+anything else authored in `<mj-body>`: `shell.beforeBlocks` is
 `html.slice(0, seg.beforeEnd)`, and `beforeEnd` is the offset of the FIRST
 `<!-- START: -->` marker of ANY name — the segmenter has no special knowledge
 of "Main Content". `partials/debug-toolbar.mjml` carries its own START/END
-pair, so it segments as block #1, and a span authored below that include lands
-INSIDE the toolbar block — which `isDebugBlock()` then drops from the import
-wholesale, silently taking the span with it. The failure is quiet and
-asymmetric: the band's `<style data-en-tools-band>` lives in `<mj-head>` and
-survives, so the exported template kept a `#template-version:before` content
-rule with no element to hang it on. Only the `_live` variant ever looked
-correct, because `emit-variants.mjs` strips the toolbar there — the documented
-import path (raw MJML with includes resolved) is the broken one. check-catalog's
-"Builder band span leads the body" guard now enforces the ordering, and is
-self-tested by reverting the order.
+pair, so it segments as block #1, and a span authored below that include landed
+INSIDE the toolbar block — which `isDebugBlock()` then dropped from the import
+wholesale, silently taking the span with it. Measured end-to-end through
+`fetchMjmlBundle` → `createProject` → `exportTemplate`: the span sat 714 bytes
+inside the toolbar segment and 0 of 77 exported blocks carried a copy. The
+failure was quiet and asymmetric — the band's `<style data-en-tools-band>`
+lives in `<mj-head>` and survived, so the export shipped a
+`#template-version:before` rule with no element to hang it on — and only the
+`_live` variant ever looked correct, because `emit-variants.mjs` strips the
+toolbar there while the documented import path (raw MJML, includes resolved)
+does not. check-catalog's "Builder band span leads the body" guard remains as a
+zero-instance tripwire for the next body-authored band.
 
 **Where each piece lives.** The shared layout and the template band's own
 label sit in the template `<head>`, in a `<style data-en-tools-band>`.

@@ -62,13 +62,28 @@
     <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
          this sheet in the template HEAD: the importer splices every other
          style element out into the Template Styles block, and this layout has
-         to survive an email built without that block. The gate asks whether a
-         block wrapper exists anywhere in the document, true while editing in
-         EN and false in a delivered email, so it reaches the template's own
-         chrome which sits outside every block. __TEMPLATE_VERSION__ is filled
-         in at import from versions.json; keeping the literal here is what
-         stops the version from feeding its own hash. Each BLOCK carries its
-         own span and content rule. -->
+         to survive an email built without that block. __TEMPLATE_VERSION__ is
+         filled in at import from versions.json; keeping the literal here is
+         what stops the version from feeding its own hash.
+
+         TWO SEPARATE RULES, DELIBERATELY NOT MERGED INTO ONE SELECTOR LIST.
+
+         BLOCK bands hang off a span the app injects into the block's own
+         content, gated on whether a block wrapper exists anywhere in the
+         document — true while editing in EN, false in a delivered email.
+
+         The TEMPLATE band hangs off EN's container element instead. A span
+         authored in the template shell does NOT work (measured 2026-08-20):
+         EN's builder renders blocks inside the container and does not render
+         the template's own surrounding markup, so such a span never enters
+         the builder DOM at all. [data-container="main"] IS that container,
+         and it is self-gating — the stored template carries the
+         {{container~main}} placeholder and a delivered email carries the
+         blocks themselves, so nothing bears the attribute outside the editor.
+
+         Merging the two selectors would be a live hazard: one unsupported
+         selector in a group invalidates the WHOLE rule, so a client that
+         cannot parse :has() would take the template band down with it. -->
     <mj-raw>
       <style type="text/css" data-en-tools-band>
         :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
@@ -82,8 +97,19 @@
           font-family: sans-serif;
           color: #ffffff;
         }
-        :is(body):has(.en__emailbuilder__block) #template-version:before{
+        [data-container="main"]:before{
           content: "Email Template v__TEMPLATE_VERSION__";
+          display: flex !important;
+          height: 100px;
+          width: 100%;
+          background-color: #000000;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          max-height: 50px;
+          font-weight: 700;
+          font-family: sans-serif;
+          color: #ffffff;
         }
       </style>
     </mj-raw>
@@ -91,18 +117,6 @@
     <mj-include path="./styles.css" type="css" />
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
-
-    <!-- Marketing Tools band (see CONVENTIONS.md, Builder bands).
-         MUST STAY ABOVE the debug-toolbar include. The toolbar partial is
-         wrapped in its own START/END markers, so the importer segments it as
-         block #1 and shell.beforeBlocks stops at that START marker. Anything
-         authored below this line lands INSIDE the toolbar block — which
-         isDebugBlock() then drops from the import, silently taking the band
-         span with it and shipping a template whose head still carries the
-         #template-version content rule but no element to hang it on. -->
-    <mj-raw>
-      <span id="template-version" class="marketing-tools-banner" aria-hidden="true" style="display: none;"></span>
-    </mj-raw>
 
     <mj-include path="./partials/debug-toolbar.mjml" />
 
