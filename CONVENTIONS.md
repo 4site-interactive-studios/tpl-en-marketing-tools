@@ -1894,6 +1894,15 @@ stylesheet support at all.
 | `<ul><li>` | a `<p>` is injected inside each `<li>` |
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
 
+**Open question — does editing a block cost it its block-level `<style>`?**
+The anchor probe's ancestor-class row stored byte-identical to its untouched
+twin, yet delivered WITHOUT the styles its own block `<style>` should have
+inlined, on a send made after the edit. If block CSS does not survive an edit,
+that is a separate defect. It does not change the recommendation, because TPL
+keeps its rules in the template head stylesheet rather than per-block
+`<style>` elements — but it must be confirmed with the rule in the head
+before the 43-anchor migration starts.
+
 The anchor row was pinned down further on 2026-08-19: an anchor keeps `href`
 (and `target`) and **nothing else** — `class`, `style`, `id`, `title` and
 `data-*` all go. ProseMirror treats a link as a MARK, rebuilt from a fixed
