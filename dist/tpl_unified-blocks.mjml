@@ -1887,22 +1887,22 @@
       <mj-group>
         <mj-column
           vertical-align="top"
-          width="110px"
+          width="145px"
           css-class="signature-img" padding="0 8px 0 0">
           <mj-image
-              src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser" border-radius="0" data-image-shape-toggle
+              src="assets/staff-carrie-besnette-hauser.png" width="137px" align="left"
+              alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
               padding="0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
-              src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser" border-radius="0" data-image-shape-toggle
+              src="assets/staff-carrie-besnette-hauser.png" width="137px" align="left"
+              alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
               padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column
           vertical-align="middle"
-          width="426px"
+          width="391px"
           css-class="signature-text" padding="0 0 0 8px">
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_black.png"

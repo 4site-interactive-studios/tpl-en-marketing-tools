@@ -440,8 +440,8 @@
     "hash": "c417c6aeb2fb"
   },
   "block:Signature Card (photo)": {
-    "version": 2,
-    "hash": "fb1b1bcee3b8"
+    "version": 3,
+    "hash": "ca258bb234b6"
   },
   "block:Signature Card (round photo)": {
     "version": 5,
@@ -592,8 +592,8 @@
     "hash": "f5796f6ea67e"
   },
   "head-css": {
-    "version": 14,
-    "hash": "4990b1131f75"
+    "version": 15,
+    "hash": "2fdee7091852"
   },
   "partial:debug-toolbar": {
     "version": 1,

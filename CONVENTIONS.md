@@ -2171,8 +2171,11 @@ whole span, so a miss silently drops the field
   `50%`. Note Outlook desktop's Word engine ignores `border-radius`, so
   Circle degrades to a square there; the catalog already accepts that for its
   `18px` photos. A pre-rounded PNG is the alternative when Outlook must show
-  a true circle. In use on the unified catalog's Signature Card (square
-  photo), authored `border-radius="0"` so the default look is unchanged.
+  a true circle. In use on the unified catalog's Signature Card
+  (photo), authored `border-radius="50%"` — the photo ships as a circle by
+  default (user decision 2026-08-20) and an editor picks Square to square it
+  off. The image must stay a SQUARE source file: a pre-rounded PNG would
+  render round under both options and make the control look broken.
 
   **A radius candidate must never claim a `border`** (fixed 2026-08-20).
   `contextMatches` accepts a loose substring match between the candidate's
