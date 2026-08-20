@@ -320,6 +320,21 @@ li {
       mso-line-height-rule: exactly;
     }
 
+    /* EN's Content editor is ProseMirror: its schema requires block content at the
+   document root, so it wraps bare copy in a paragraph the first time anyone
+   clicks in and types. That injected paragraph carries no inline style, so
+   without this rule the global p rule above wins over the element's own
+   declared size and a 10px caption ships at 16px. Inheriting is also the more
+   honest model — the mj-text declares the size, its paragraphs follow it.
+   Authored paragraphs that pin a size inline (147 of the catalog's 170)
+   outrank both rules and are untouched. mso-line-height-rule is restated
+   because it does not inherit usefully and Outlook needs it. */
+    .wysiwyg p {
+      font-size: inherit;
+      line-height: inherit;
+      mso-line-height-rule: exactly;
+    }
+
     .wysiwyg div *:first-child {
       margin-top: 0;
     }
