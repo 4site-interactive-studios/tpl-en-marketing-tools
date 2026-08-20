@@ -217,6 +217,44 @@ offsets from `shell.beforeBlocks`. The config is parsed from the MJML source
   the value, or change the declaration deliberately (every src/*.mjml
   that declares one — TPL has four — same commit).
 
+## Head authoring comments never ship
+
+The template `<head>` is where the 4Site templates document themselves —
+why there are no `mj-style` `@media` blocks, how the builder bands are
+gated, which selectors must never be merged into one list. That prose is
+input for the humans and agents working in the MJML repo, not email
+content, and MJML passes head comments straight through.
+
+**Head comments are dropped at IMPORT** (2026-08-20, user decision),
+by `stripHeadComments` (`src/core/headStyles.ts`), applied to the
+pre-blocks slice alongside `stripTemplateConfigComment` — same placement
+and for the same reason: every consumer of the shell (the export, the
+template preview via `targetHtml`, validation, the usage scans) must see
+the same bytes, and stripping at export instead would desync those
+offsets from `shell.beforeBlocks`. On the TPL all-blocks template the two
+strips together remove **3,590 bytes** from the head of every delivered
+email.
+
+KEPT, because they are function rather than prose:
+
+- **Conditional comments**, both downlevel-hidden
+  (`<!--[if mso]> … <![endif]-->`) and downlevel-revealed
+  (`<!--[if !mso]><!-->` … `<!--<![endif]-->`). Removing either half of a
+  revealed pair corrupts the Outlook branches the whole layout rests on.
+- **Anything inside `<style>` or `<script>`**, where a legacy `<!--` is
+  part of the sheet, not a note about it.
+
+Only the FIRST `<head>` is processed, and the body is left byte-identical
+— block comments (`<!-- START: … -->`, the `- Not Displayed` markers) are
+untouched, and the segmenter still depends on them.
+
+**Rule for agents**: document the head freely. Prose in `<mj-head>` costs
+the delivered email nothing, so the constraint on head comments is
+clarity, not byte budget. This matters because the budget is real
+elsewhere: EN rejects a message whose `contentHtml` exceeds a measured
+**299,760 bytes** with `{"message":"Message contentHtml too long"}`
+(2026-08-20 — see the authoring guide for the full measurement).
+
 ## Geometry guard — what never gets a spacing field
 
 Values that are design geometry, not pacing, stay hard-coded with NO field

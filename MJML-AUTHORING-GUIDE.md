@@ -623,6 +623,68 @@ and resubmitted (or re-serialized by a visual mode) — which is why
 freshly imported blocks send clean and long-lived production blocks with
 edit history shipped `.block&gt;table`.
 
+### 2f. EN's `contentHtml` ceiling — 299,760 bytes (measured 2026-08-20)
+
+EN caps the rendered email it will store. Exceed it and the save fails
+with an HTTP 400 from
+`PUT /messaging/api/campaign/<id>/messageandsend/<id>`:
+
+```json
+{"message":"Message contentHtml too long","messageId":-1194261769}
+```
+
+**Do not trust the error the builder shows you.** EN's `api.js` paints
+"Invalid or missing authentication token" over any non-2xx from that
+endpoint. That string appears nowhere in the actual response; the token is
+fine. Read the response body in the network tab before diagnosing.
+
+**The measurement.** Bisected against the DEV blank template (a 219-byte
+shell, pure ASCII) with a single Raw HTML block padded to an exact length:
+
+| `contentHtml` | Result |
+| --- | --- |
+| 299,760 bytes | saves |
+| 299,761 bytes | 400, "too long" |
+
+Two caveats that belong with the number:
+
+- **It is 240 short of a round 300,000**, which strongly suggests EN's real
+  limit IS 300,000 with ~240 bytes of server-side overhead wrapped around
+  what the PUT carries. That overhead was measured through the blank
+  template; a heavier production shell may carry a different amount, so
+  treat 299,760 as measured-with-this-instrument, not as a universal
+  constant.
+- **The instrument was pure ASCII**, so characters and bytes were identical
+  and the test CANNOT tell us which unit EN counts. Budget in UTF-8 BYTES,
+  which is the conservative reading since bytes ≥ characters. (In practice
+  the gap is tiny: the TPL all-blocks catalog is 365,219 characters and
+  365,254 bytes — 35 bytes, from 13 em-dashes and 3 emoji.)
+
+**Working ceiling: 285,000 bytes.** About 5% of headroom, or roughly two
+average blocks (the TPL catalog averages 7,394 bytes per block) — enough
+that a couple of edits cannot walk a passing template into a failing one,
+and enough to absorb the unexplained 240.
+
+**A single message cannot hold a full block catalog.** One of every TPL
+block, with no duplicates at all, is 289,999 bytes — 97% of the hard cap,
+and already over the working ceiling. Catalog and permutation templates
+ship SPLIT across messages; there is no trimming strategy that makes one
+message hold everything.
+
+**What actually costs bytes**, measured on that catalog:
+
+- duplicate permutation blocks — 13 copies cost 75,220 bytes;
+- MSO conditional scaffolding, which is per-block and unavoidable;
+- head authoring prose — 3,590 bytes, now stripped at import
+  (`stripHeadComments`; conventions.md, "Head authoring comments never
+  ship"), so **head comments are free** and you should document the head
+  as thoroughly as it deserves.
+
+Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
+Anything near this ceiling is far past the clip point, which is fine for a
+reference catalog and fatal for a real send.
+
+
 ## 3. Vertical pacing: bottom-only, on a closed scale
 
 The single highest-leverage authoring convention.
@@ -1422,6 +1484,12 @@ aloud). The Alt Text field survives either way (§5).
    that records the last verdict. The working tree should carry only
    live instruments; archived probes remain the reusable fixtures for
    re-measuring EN if its behavior is suspected to have changed.
+11. Check the size budget before you hand a template over: the rendered
+   `contentHtml` must stay under **285,000 bytes** (working ceiling; EN's
+   measured hard cap is 299,760 — §2f). A catalog or permutation template
+   will not fit in one message and ships split; a normal campaign email is
+   nowhere near the limit, so a template that IS near it is telling you it
+   has grown into a catalog.
 
 ---
 
