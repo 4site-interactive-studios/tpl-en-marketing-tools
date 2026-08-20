@@ -1910,6 +1910,13 @@ end-to-end; the open question is about EN's build-versus-send semantics. Relax
 the criterion deliberately if the migration proceeds — do not treat it as
 already met.
 
+**EN sends read block content LIVE, not from a build-time snapshot**
+(measured 2026-08-19, `docs/en-build-vs-send-probe.html`): a block edited
+AFTER an email was built delivered its post-edit value from that already-built
+email. The practical consequence is methodological — a storage-versus-delivery
+comparison needs no rebuild to be valid, so every such comparison in this
+series holds.
+
 The same probe disproved a hypothesis worth recording so it is not re-formed:
 a block-level `<style>` is **not** destroyed by an edit either — the
 block-styled control survived identically. An earlier anomaly, where a
