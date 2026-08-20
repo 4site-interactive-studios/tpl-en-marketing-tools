@@ -706,7 +706,7 @@
     >
       <mj-column vertical-align="middle">
         <mj-text data-heading-level-toggle padding="0">
-          <h2><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
+          <h2><a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -716,7 +716,7 @@
     <mj-section css-class="text-block block header-row-block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
         <mj-text data-heading-level-toggle padding="0">
-          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
+          <h2>🦋&nbsp; <a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -944,7 +944,7 @@
             metus. Fermentum sit id pharetra
           </p>
           <p style="font-size:16px;">
-            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra</a>
+            <a href="https://www.example.com"><strong>Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra</strong></a>
           </p>
         </mj-text>
         <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
@@ -968,7 +968,7 @@
             metus. Fermentum sit id pharetra
           </p>
           <p style="font-size:16px;">
-            <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare a quis metus. Fermentum sit idretra tortor. In viverra &gt;&gt;</a>
+            <a href="https://www.example.com"><strong>Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare a quis metus. Fermentum sit idretra tortor. In viverra &gt;&gt;</strong></a>
           </p>
         </mj-text>
         <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
@@ -980,7 +980,7 @@
     <mj-section css-class="text-block block inset-gutter" background-color="#ffffff" padding="16px 64px">
       <mj-column>
         <mj-text padding="0 0 16px">
-          <h2><a href="https://www.example.com" style="color:#006837;">Ray Has Big Ideas for Texas</a></h2>
+          <h2><a href="https://www.example.com">Ray Has Big Ideas for Texas</a></h2>
           <p style="font-size:16px;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut. Cursus sed quam ornare augue
@@ -1003,7 +1003,7 @@
     <mj-section css-class="text-block block" background-color="#ffffff" padding="16px 32px" data-fully-exclude>
       <mj-column>
         <mj-text padding="0 0 16px">
-          <h2><a href="https://www.example.com" style="color:#006837;">Ray Has Big Ideas for Texas</a></h2>
+          <h2><a href="https://www.example.com">Ray Has Big Ideas for Texas</a></h2>
           <p style="font-size:16px;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
             vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
@@ -1114,7 +1114,7 @@
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com" style="color:#006837;font-weight:bold;">LOREM IPSUM DOLOR SIT</a></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com"><strong>LOREM IPSUM DOLOR SIT</strong></a></p>
           <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7931E;font-weight:bold;">FRIDAY</span></p>
         </mj-text>
       </mj-column>
@@ -2129,7 +2129,7 @@
       <mj-section background-color="#ffffff" border="1px solid #F7931E" padding="16px 16px 0" data-mobile-only-padding-right>
         <mj-column>
           <mj-text padding="0">
-            <h3><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h3>
+            <h3><a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h3>
           </mj-text>
         </mj-column>
       </mj-section>
@@ -2182,7 +2182,7 @@
         </mj-column>
         <mj-column width="416px" vertical-align="middle">
           <mj-text padding="0">
-            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</a></p>
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -2196,7 +2196,7 @@
         <mj-column width="380px" vertical-align="middle">
           <mj-text padding="0">
             <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl.</p>
-            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Example text link &gt;&gt;</a></p>
+            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Example text link &gt;&gt;</strong></a></p>
           </mj-text>
         </mj-column>
         <mj-column width="156px" vertical-align="top">
@@ -2384,11 +2384,11 @@
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
-          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
           <p style="font-size:16px;"><b>A.</b> Lorem</p>
           <p style="font-size:16px;"><b>B.</b> Ipsum</p>
           <p style="font-size:16px;"><b>C.</b> Dolor</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur.</a></p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem ipsum dolor sit amet consectetur.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2419,7 +2419,7 @@
            white — white-on-white (EoA 8ryXNAL, iPhone dark, 2026-08-19). -->
       <mj-column css-class="highlighted-text-column" border="1px solid #39B54A" background-color="#ffffff" padding="8px 0 0">
         <mj-text align="center" padding="0 0 8px">
-          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Reveal the answer.</a></p>
+          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com"><strong>Reveal the answer.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2550,7 +2550,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Very important</a></p>
+            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Very important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -2563,7 +2563,7 @@
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:17px;">{user_data~First Name}, you're invited!</p>
-          <h2><a href="https://www.example.com" style="color:#006837;">The Great Northern Festival</a></h2>
+          <h2><a href="https://www.example.com">The Great Northern Festival</a></h2>
           <p style="font-size:17px;">
             The Main Cinema<br />
             115 SE Main Street<br />
@@ -2690,7 +2690,7 @@
              The heading keeps its link INSIDE the RTE — a plain-markup
              linked heading stays RTE-editable by convention. -->
         <mj-text data-group-label="Episode Title" padding="0 0 8px">
-          <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+          <h2><a href="https://www.example.com">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
         </mj-text>
         <mj-text data-group-label="Episode Description" padding="0">
           <p>
@@ -2729,10 +2729,10 @@
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2742,19 +2742,19 @@
     <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
       <mj-column>
         <mj-text padding="0">
-          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Advisory Board</a></h2>
+          <h2><a href="https://www.example.com">Join Our Advisory Board</a></h2>
           <p style="font-size:16px;">
             Advisory board members are TPL advocates, ambassadors, and donors
             who help increase our impact through philanthropy, advocacy,
             connections, and strategic guidance.
           </p>
-          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Team</a></h2>
+          <h2><a href="https://www.example.com">Join Our Team</a></h2>
           <p style="font-size:16px;">
             Come join a passionate team working toward a mission you believe
-            in. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">View all open positions.</a>
+            in. <a href="https://www.example.com"><strong>View all open positions.</strong></a>
           </p>
           <p style="font-size:14px;">
-            Was this email forwarded to you? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sign up here.</a>
+            Was this email forwarded to you? <a href="https://www.example.com"><strong>Sign up here.</strong></a>
           </p>
         </mj-text>
       </mj-column>
@@ -3059,7 +3059,7 @@
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#006837;">Contact Us</a> | <a href="https://www.example.com" style="color:#006837;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#006837;">Unsubscribe</a></p>
+          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>

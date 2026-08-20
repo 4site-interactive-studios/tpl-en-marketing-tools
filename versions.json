@@ -164,8 +164,8 @@
     "hash": "2a7bf2ec2512"
   },
   "block:Deadline Panel": {
-    "version": 3,
-    "hash": "53a2a2f0d9bb"
+    "version": 4,
+    "hash": "3aaf24f05ba6"
   },
   "block:Divider (Single-color)": {
     "version": 3,
@@ -176,16 +176,16 @@
     "hash": "58c4c83205a2"
   },
   "block:Event Invite Block": {
-    "version": 2,
-    "hash": "ea2450ed2e32"
+    "version": 3,
+    "hash": "7d97fdb4cc38"
   },
   "block:Feedback Poll Block": {
-    "version": 5,
-    "hash": "6c2c94a2f14c"
+    "version": 6,
+    "hash": "955a68b5be5e"
   },
   "block:Feedback Poll Option": {
-    "version": 3,
-    "hash": "05ada566de27"
+    "version": 4,
+    "hash": "34063d94ce6a"
   },
   "block:Footer": {
     "version": 3,
@@ -208,8 +208,8 @@
     "hash": "d1b787e8b017"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 4,
-    "hash": "5b3a3873ae3a"
+    "version": 5,
+    "hash": "44a808af8db5"
   },
   "block:Heading": {
     "version": 2,
@@ -236,12 +236,12 @@
     "hash": "bedb2862b50e"
   },
   "block:Heading (linked), Text, and CTA": {
-    "version": 4,
-    "hash": "02885eaaf81f"
+    "version": 5,
+    "hash": "ff20384106ea"
   },
   "block:Heading (linked), Text, and CTA (full width)": {
-    "version": 4,
-    "hash": "910bcdc5c05a"
+    "version": 5,
+    "hash": "3fefd1efbd95"
   },
   "block:Heading (off-white bordered)": {
     "version": 2,
@@ -284,8 +284,8 @@
     "hash": "9a7bd723f6aa"
   },
   "block:Icon Row": {
-    "version": 2,
-    "hash": "6543e2121d4f"
+    "version": 3,
+    "hash": "470205fddf32"
   },
   "block:Image": {
     "version": 4,
@@ -316,20 +316,20 @@
     "hash": "cae12a0a2d83"
   },
   "block:Join Links Block": {
-    "version": 2,
-    "hash": "145bcbc66e54"
+    "version": 3,
+    "hash": "c94d87a8446e"
   },
   "block:Linked Header Row": {
-    "version": 3,
-    "hash": "5f4b97ce31b7"
+    "version": 4,
+    "hash": "2ef5695a2c18"
   },
   "block:Linked Header Row (w/ icon)": {
-    "version": 3,
-    "hash": "5a347e43eaea"
+    "version": 4,
+    "hash": "63eed08c6822"
   },
   "block:Linked List Block": {
-    "version": 2,
-    "hash": "0f93ade25604"
+    "version": 3,
+    "hash": "1646f23599f4"
   },
   "block:Logo Hero (dark red, centered)": {
     "version": 2,
@@ -400,8 +400,8 @@
     "hash": "1cabaaf68588"
   },
   "block:Podcast Episode Block": {
-    "version": 4,
-    "hash": "ff29810a5147"
+    "version": 5,
+    "hash": "39a182764a21"
   },
   "block:Podcast Streaming Block": {
     "version": 2,
@@ -416,8 +416,8 @@
     "hash": "322970792bb9"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 6,
-    "hash": "c72379f90e15"
+    "version": 7,
+    "hash": "64ebc33c1728"
   },
   "block:Quiz Block (2x2 photos)": {
     "version": 11,
@@ -428,8 +428,8 @@
     "hash": "c8d17788be8b"
   },
   "block:Quiz Block (multiple choice)": {
-    "version": 2,
-    "hash": "0824a11cf1d5"
+    "version": 3,
+    "hash": "56b069194d2f"
   },
   "block:Quote Block": {
     "version": 4,
@@ -504,8 +504,8 @@
     "hash": "a67932165447"
   },
   "block:Story Card (orange-bordered)": {
-    "version": 4,
-    "hash": "80dbf6cf852f"
+    "version": 5,
+    "hash": "ee49ec45d672"
   },
   "block:Story Card 2x1": {
     "version": 8,
@@ -516,16 +516,16 @@
     "hash": "7ce4817b2b4e"
   },
   "block:Text + Image Row (image right)": {
-    "version": 2,
-    "hash": "bd9c8a17fb4d"
+    "version": 3,
+    "hash": "d10ef0a428b5"
   },
   "block:Text + Link Paragraph CTA (full width)": {
-    "version": 4,
-    "hash": "3a54b836616f"
+    "version": 5,
+    "hash": "14204f77894e"
   },
   "block:Text + Link Paragraph CTA (inset)": {
-    "version": 4,
-    "hash": "c54727c19c07"
+    "version": 5,
+    "hash": "52dc2cf94475"
   },
   "block:Text w/ Background Image": {
     "version": 2,

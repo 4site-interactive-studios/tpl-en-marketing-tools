@@ -516,7 +516,7 @@
     >
       <mj-column vertical-align="middle">
         <mj-text data-heading-level-toggle padding="0">
-          <h2>🦋&nbsp; <a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
+          <h2>🦋&nbsp; <a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -529,7 +529,7 @@
     >
       <mj-column vertical-align="middle">
         <mj-text data-heading-level-toggle padding="0">
-          <h2><a href="https://www.example.com" style="color:#006837;">Lorem Ipsum Dolor Sit Amet</a></h2>
+          <h2><a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1306,7 +1306,7 @@
              The heading keeps its link INSIDE the RTE — a plain-markup
              linked heading stays RTE-editable by convention. -->
         <mj-text data-group-label="Episode Title" padding="0 0 8px">
-          <h2><a href="https://www.example.com" style="color:#006837;">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+          <h2><a href="https://www.example.com">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
         </mj-text>
         <mj-text data-group-label="Episode Description" padding="0">
           <p>
@@ -1485,19 +1485,19 @@
     >
       <mj-column>
         <mj-text padding="0">
-          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Advisory Board</a></h2>
+          <h2><a href="https://www.example.com">Join Our Advisory Board</a></h2>
           <p style="font-size:16px;">
             Advisory board members are TPL advocates, ambassadors, and donors
             who help increase our impact through philanthropy, advocacy,
             connections, and strategic guidance.
           </p>
-          <h2><a href="https://www.example.com" style="color:#006837;">Join Our Team</a></h2>
+          <h2><a href="https://www.example.com">Join Our Team</a></h2>
           <p style="font-size:16px;">
             Come join a passionate team working toward a mission you believe
-            in. <a href="https://www.example.com" style="color:#006837;font-weight:bold;">View all open positions.</a>
+            in. <a href="https://www.example.com"><strong>View all open positions.</strong></a>
           </p>
           <p style="font-size:14px;">
-            Was this email forwarded to you? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Sign up here.</a>
+            Was this email forwarded to you? <a href="https://www.example.com"><strong>Sign up here.</strong></a>
           </p>
         </mj-text>
       </mj-column>
@@ -1521,11 +1521,11 @@
     >
       <mj-column>
         <mj-text padding="0">
-          <h3 style="text-align:center;">🐟 <a href="https://www.example.com" style="color:#006837;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
+          <h3 style="text-align:center;">🐟 <a href="https://www.example.com">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
           <p style="font-size:16px;"><b>A.</b> Lorem</p>
           <p style="font-size:16px;"><b>B.</b> Ipsum</p>
           <p style="font-size:16px;"><b>C.</b> Dolor</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem ipsum dolor sit amet consectetur.</a></p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem ipsum dolor sit amet consectetur.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1586,10 +1586,10 @@
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Lorem Ipsum Dolor Sit Amet</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1620,7 +1620,7 @@
            white — white-on-white (EoA 8ryXNAL, iPhone dark, 2026-08-19). -->
       <mj-column css-class="highlighted-text-column" border="1px solid #39B54A" background-color="#ffffff" padding="8px 0 0">
         <mj-text align="center" padding="0 0 8px">
-          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com" style="color:#006837;font-weight:bold;">Reveal the answer.</a></p>
+          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com"><strong>Reveal the answer.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1717,7 +1717,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Very important</a></p>
+            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Very important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1732,7 +1732,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Somewhat important</a></p>
+            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Somewhat important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1747,7 +1747,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com" style="color:#006837;font-weight:bold;">Not important</a></p>
+            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Not important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1948,7 +1948,7 @@
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#006837;">Contact Us</a> | <a href="https://www.example.com" style="color:#006837;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#006837;">Unsubscribe</a></p>
+          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
