@@ -1594,6 +1594,28 @@ Gmail-style snippets would show BOTH lines. Consequences:
   field-carrying EN imports. EN escapes `>` in CSS text when a code field is edited and
   resubmitted, invalidating the selector (guide §2d); comments are
   stripped before scanning, so a `>` inside a CSS comment stays legal.
+- RTE editor-safe guard (`validateRteEditorSafe`): the mechanical half of
+  the ProseMirror findings, so a value that cannot survive an edit is
+  caught at import rather than after a send. Scans every RTE value —
+  `defaultValue` plus each Select `option.value` — for three constructs,
+  at three severities chosen by whether a workaround exists:
+  - an **anchor** carrying `style`, `class`, `id`, `title`, `rel` or
+    `data-*` → **warning**. A link keeps `href` and `target` and nothing
+    else, because ProseMirror rebuilds it as a MARK from a fixed
+    attribute set. A workaround exists (style it from a class on an
+    ANCESTOR, which lives outside the replacement), so it warns and names
+    that fix.
+  - an **MSO conditional** → **error**. It is destroyed outright and
+    nothing inside a Content value can survive; the conditional has to
+    move into block markup.
+  - a **list** → **info**. A paragraph is injected inside every `<li>`,
+    no wrapping prevents it, and it is harmless — recorded so nobody
+    re-opens it as a bug.
+
+  Ordered deliberately after the catalog was migrated (2026-08-19): landing
+  it first would have put 45 warnings in the export panel on day one, which
+  is how a check gets ignored. Against the migrated catalog it reports zero
+  warnings and zero errors — only the two known lists, at info.
 - `data-*` contract warnings are whitelisted, never "fixed".
 
 ## Import pipeline decisions
