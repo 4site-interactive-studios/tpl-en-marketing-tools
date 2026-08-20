@@ -853,11 +853,30 @@ declared size — a 10px credit line ships at 16px. Two authoring consequences:
   (`<p style="font-size:12px;line-height:14px;margin:0;">`), which no
   stylesheet rule can override. 147 of the catalog's 170 in-content paragraphs
   already do this; it is the established pattern.
-- **Bare copy should not be on a rich-text field at all.** The importer now
-  types a Content field as plain `Text` when its inner carries no formatting,
-  which removes the rewrite rather than defending against it. Author
-  `data-force-rte` on the `mj-text` when copy is expected to grow a link or
-  emphasis later.
+- **Bare copy should not be on a rich-text field at all.** The importer types a
+  Content field as plain `Text` when its inner carries no markup whatsoever,
+  which removes the rewrite rather than defending against it. Copy wrapped in
+  even a bare `<span>` stays on RTE for now: a Text field holding HTML is a
+  shape neither this template nor EN has been shown to handle, and if EN
+  escapes it the way it escapes CSS (§2d) the tags would render as visible
+  text. Author `data-force-rte` on the `mj-text` when copy is expected to grow
+  a link or emphasis later.
+
+**Measured on EN template 546, 2026-08-19** — two results are hard authoring
+rules rather than trivia:
+
+- **Never put an MSO conditional inside an RTE value.** One edit deletes the
+  entire conditional, silently. Conditionals belong in block markup, outside
+  every replacement.
+- **Never rely on an anchor's inline `style` or `rel` inside an RTE value.**
+  Both are stripped on edit; `href` and `target` survive. Colour links from
+  the stylesheet, the same conclusion the heading-colour rule reached.
+
+Also measured: an already-wrapped paragraph carrying an inline style comes
+back **unchanged**, so the transform is idempotent — authoring the paragraph
+yourself makes the first edit a no-op. Headings survive untouched. A list gets
+a paragraph injected inside each item. A `<span>`'s `font-weight` is
+re-expressed as `<strong>` and its hex colour as `rgb()`.
 
 This is the same underlying mechanism as §2d's `>` escape — EN parses a
 replacement value as HTML and re-serializes it on edit. Neither fires on an

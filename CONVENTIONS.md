@@ -1829,22 +1829,52 @@ matches the stylesheet's `p` rule instead of its own element's font-size (a
 10px caption shipped at 16px). A plain `Text` field is not a ProseMirror
 surface at all, so nothing is rewritten.
 
-The importer therefore mints an `mj-text` Content field as `Text` whenever its
-authored inner carries no formatting — no `<a>`, `<strong>`/`<b>`,
-`<em>`/`<i>`, `<u>`, `<br>`, `<p>`, `<h1>`–`<h6>`, `<ul>`/`<ol>`/`<li>`, and no
-MSO conditional — counting a lone `<span>` wrapper as bare (`plainCopyContent`,
-`src/core/mjmlProps.ts`). The bias is deliberate and one-directional: typing a
-field Text when it could have been RTE costs an editor formatting they probably
-never wanted, while typing it RTE when it did not need to be silently corrupts
-the markup. Measured on the full catalog, 25 of 166 Content fields (15%) leave
-the ProseMirror surface. `data-force-rte` opts an element back in.
+The importer therefore mints an `mj-text` Content field as `Text` when its
+authored inner carries **no markup at all** — no tag, comment or conditional
+(`plainCopyContent`, `src/core/mjmlProps.ts`). `data-force-rte` opts an
+element back in.
 
-The value is **not** narrowed past its `<span>` wrapper. A narrowed caption
-would have to be re-found by value in the compiled HTML, where a short string
-("Read more") is far less unique than the whole span — a miss silently drops
-the field (`if (!occurrences.length) continue`) and a false hit splices the
-wrong place. Typing it `Text` already removes the rewrite; narrowing is an
-editor-UX refinement that needs its own occurrence fallback first.
+The bar is "no markup" rather than "no FORMATTING markup", and the reason is
+measured (EN template 546, 2026-08-19,
+`docs/en-rte-normalization-probe.html`). A `Text` field does **not** escape or
+rewrite markup — the probe's F1 row carried the same `<span>` as A2 and came
+back byte-identical. But the typed character landed OUTSIDE the closing tag,
+which is what a Text field is: a literal string input that shows the editor
+raw tags. Sending a span-wrapped caption there is safe for the data and
+hostile to the person editing it. On RTE the same value keeps its span and
+merely gains a paragraph, whose only real cost — the font-size reset — the
+stylesheet handles.
+
+**What EN's editor actually does to an RTE value on the first keystroke:**
+
+| Construct | Result |
+| --- | --- |
+| bare copy, lone `<span>`, two inline siblings | wrapped in ONE `<p>`; spans and `class` survive |
+| `<span style="font-weight:700;color:#362229">` | style re-expressed as marks — `font-weight` becomes `<strong>`, hex becomes `rgb()` |
+| `<p>` already present, with or without inline style | **UNCHANGED — the transform is IDEMPOTENT** |
+| `<h1>`–`<h6>` with inline style | UNCHANGED |
+| `<br>`, `<strong>`, `<em>`, entities | preserved (the `<br>` is not split into paragraphs) |
+| `<a href target rel style>` | **`rel` and `style` STRIPPED**; `href` and `target` kept |
+| `<ul><li>` | a `<p>` is injected inside each `<li>` |
+| MSO conditional comment | **DESTROYED — the whole conditional is removed** |
+
+Two of those are authoring rules, not curiosities. **Never put an MSO
+conditional inside an RTE value** — one edit deletes it silently. **Never rely
+on an anchor's inline `style` or `rel` inside an RTE value** — colour a link
+from the stylesheet or the element, which is the same conclusion the
+"author copy color on the element" rule already reached for headings.
+
+Idempotence is the important one: because an already-wrapped paragraph
+carrying an inline style survives untouched, **authoring the `<p>` ourselves
+makes the editor's first edit a no-op**. That, not the type inference, is the
+durable fix for markup-bearing copy.
+
+The value is also not narrowed past a `<span>` wrapper, which would make only
+the words editable — a narrowed caption has to be re-found by value in the
+compiled HTML, where a short string ("Read more") is far less unique than the
+whole span, so a miss silently drops the field
+(`if (!occurrences.length) continue`) and a false hit splices the wrong place.
+
 
 - **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
   user-decided): mints the "Heading Level" H1–H4 Select and narrows the
