@@ -1616,6 +1616,31 @@ Gmail-style snippets would show BOTH lines. Consequences:
   it first would have put 45 warnings in the export panel on day one, which
   is how a check gets ignored. Against the migrated catalog it reports zero
   warnings and zero errors — only the two known lists, at info.
+**Builder bands** (2026-08-19). A block whose real content is invisible —
+head CSS, or an empty raw-HTML field — renders as a zero-height strip in EN's
+email builder that an editor cannot see or click. A band fixes that: a marker
+`<span>` that is `display:none` in the send, plus rules that only bite inside
+`.en__emailbuilder__block`, the wrapper EN puts around every block in the
+builder. Anywhere else the selector matches nothing.
+
+The layout is defined ONCE, on a shared `.en-tools-band` class carried in the
+Template Styles block's chrome stylesheet (`BUILDER_BAND_SHARED_CSS`), and each
+band adds only its own `content` line (`builderBandHtml(id, label)`). That
+matters because the rules are NOT pruned at send — they reach the recipient and
+count against Gmail's 16,384-byte head-CSS cliff, past which Gmail drops the
+whole stylesheet. Sharing takes three bands from 1,591 delivered bytes to 671,
+which is what makes a second and third band affordable at all.
+
+The shared CSS lives in the Template Styles block rather than the template's
+own sheet so it stays app-owned and works for any project, not only one whose
+stylesheet happens to define it. Chrome and content stay in SEPARATE `<style>`
+elements — EN ingests a stylesheet once per wrapper, and keeping the project
+CSS alone in its own wrapper is what the 2026-08-18 measurement bought
+(24,952 delivered bytes doubled, 13,325 single).
+
+Bands in use: the Template Styles block (`#head-styles`, label carries the
+head-css version) and the RAW HTML utility block (`#raw-html`).
+
 - `data-*` contract warnings are whitelisted, never "fixed".
 
 ## Import pipeline decisions
