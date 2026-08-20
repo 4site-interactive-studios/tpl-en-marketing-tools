@@ -898,9 +898,16 @@ li {
          EN's builder renders blocks inside the container and does not render
          the template's own surrounding markup, so such a span never enters
          the builder DOM at all. [data-container="main"] IS that container,
-         and it is self-gating — the stored template carries the
-         {{container~main}} placeholder and a delivered email carries the
-         blocks themselves, so nothing bears the attribute outside the editor.
+         and it is self-gating — the stored template carries EN's container
+         placeholder there and a delivered email carries the blocks
+         themselves, so nothing bears the attribute outside the editor.
+
+         Do NOT write EN's container merge tag literally anywhere in this
+         file. autoEnableTemplateReplacements splits the shell on the FIRST
+         occurrence of that tag, so a literal in a comment splits the head at
+         the comment instead of at the real container: the comment loses its
+         terminator, swallows the whole stylesheet, and every light/dark image
+         pair renders both halves. Measured 2026-08-20; check-catalog guards it.
 
          Merging the two selectors would be a live hazard: one unsupported
          selector in a group invalidates the WHOLE rule, so a client that

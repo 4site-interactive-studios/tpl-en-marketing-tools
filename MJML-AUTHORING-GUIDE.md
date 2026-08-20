@@ -1150,6 +1150,15 @@ can prop each other up, and the report says so when they do.
   stylesheet's min-width media query; seed the class for each width you
   curate, or the importer drops that option (it would render in Outlook
   alone) and says so in an info note.
+- **Never write EN's block-container merge tag literally in your MJML** —
+  not in markup, and not in a comment. The importer joins the template shell
+  around that tag and splits it back on the FIRST occurrence, so a stray
+  literal truncates the shell at your literal instead of at the real
+  container. When that truncation lands inside an HTML comment, the comment
+  loses its terminator and silently swallows every `<style>` after it: the
+  head stylesheet is simply gone, with no error anywhere. Symptom to
+  recognise — dark-mode/light-mode pairs both rendering, because the rule
+  hiding one of them never parsed. Describe the placeholder in prose instead.
 - **Builder-only chrome on the TEMPLATE should hang off EN's container, not
   off markup you author in the shell.** EN's builder renders blocks inside the
   container element and does not render the template's own surrounding markup,

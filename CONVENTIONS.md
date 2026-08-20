@@ -1707,6 +1707,23 @@ bearing `data-container="main"`. It also removes a whole class of failure —
 there is no body markup left to lose, so the segmentation trap below cannot
 touch it, and with no span there is no `aria-hidden` to get wrong.
 
+**Never write the container merge tag literally in a source** (2026-08-20).
+Documenting the container rule above, the MJML head comment spelled
+`{{container~main}}` out — and that one literal broke the whole catalog.
+`autoEnableTemplateReplacements` joins the shell as
+`beforeBlocks + CONTAINER_TAG + afterBlocks` and splits it back on the FIRST
+occurrence, so the split landed at the comment instead of the real container:
+`beforeBlocks` was truncated mid-comment, the comment lost its terminator,
+and the unterminated comment swallowed the entire head stylesheet that
+followed it. Measured in a browser: **0 `<style>` elements and 0 CSS rules**
+in the block preview, so `.dark-only{display:none}` never parsed and every
+light/dark image pair rendered BOTH halves. After the fix, 39 rules and
+`display:none` at 0×0. It would also have been wrong at export, shipping a
+second container placeholder. Two guards now: check-catalog rejects the
+literal in any source, and `validateShell` errors when the shell carries more
+than the one tag `templateContent` contributes. Describe the placeholder in
+prose; never type it.
+
 **Never merge the two selectors into one list.** One unsupported selector
 invalidates the WHOLE rule, so folding the container selector in beside
 `:is(body):has(…)` would let a client that cannot parse `:has()` take the

@@ -508,6 +508,38 @@ guard('ALL-CAPS button label check', () => {
 });
 
 // ---------------------------------------------------------------------------
+// §N No literal EN container merge tag in a source (2026-08-20). The importer
+// joins the template shell as beforeBlocks + CONTAINER_TAG + afterBlocks and
+// then splits it back on the FIRST occurrence of that tag
+// (autoEnableTemplateReplacements, templateProps.ts). A literal anywhere in
+// the source — including inside an HTML comment, which is how this happened —
+// makes the split land at the literal instead of at the real container:
+// beforeBlocks is truncated mid-comment, the comment loses its terminator and
+// swallows the entire stylesheet that follows it, and every rule in it dies.
+// The visible symptom was every light/dark image pair rendering BOTH halves,
+// because .dark-only{display:none} never parsed. It is also wrong at export,
+// where the literal would ship as a second container placeholder. Written as
+// split fragments here so this guard cannot trip over its own source text.
+// ---------------------------------------------------------------------------
+guard('No literal EN container tag in sources', () => {
+  const TAG = '{{' + 'container~main' + '}}';
+  for (const f of sources) {
+    const text = read(`src/${f}`);
+    if (text === null) continue;
+    let at = text.indexOf(TAG);
+    while (at !== -1) {
+      warn(
+        `src/${f}:${text.slice(0, at).split('\n').length} — literal ${TAG} in the source.` +
+          ` The importer splits the template shell on the FIRST occurrence, so this truncates` +
+          ` beforeBlocks here instead of at the real container — an unterminated comment then` +
+          ` swallows the stylesheet. Describe the placeholder in prose instead of writing it.`,
+      );
+      at = text.indexOf(TAG, at + TAG.length);
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
 // §N Builder band span must lead the body (2026-08-20). A TRIPWIRE with zero
 // live instances: the template band moved to a [data-container="main"]:before
 // rule the same day, so no catalog source authors a band span any more and
