@@ -1885,12 +1885,12 @@
           css-class="signature-img" padding="0 8px 0 0">
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser"
+              alt="Carrie Besnette Hauser" border-radius="0" data-image-shape-toggle
               padding="0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser"
+              alt="Carrie Besnette Hauser" border-radius="0" data-image-shape-toggle
               padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>

@@ -2129,6 +2129,28 @@ whole span, so a miss silently drops the field
 (`if (!occurrences.length) continue`) and a false hit splices the wrong place.
 
 
+- **`data-image-shape-toggle`** (valueless, on mj-image, 2026-08-20,
+  user-decided): ships the image's `border-radius` as a two-option Select —
+  **Square** (`0`) / **Circle** (`50%`) — instead of the free-text "Border
+  Radius" field that attribute normally mints. The image must author a
+  `border-radius`; the flag constrains that field, it does not create one.
+  Circle is a PERCENTAGE so it holds at whatever width the editor picks.
+  **Opt-in on purpose**: a radius is not always a shape choice — the Quiz
+  photos' `18px` is a soft corner that is neither shape, and
+  `imageShapeSelect` returns null for any value that is not exactly one of
+  the two, leaving the free-text field rather than silently rewriting an
+  authored value the layout depends on. **Flag BOTH twins of a light/dark
+  pair.** Pairing requires the two mj-images to be attribute-identical apart
+  from `css-class`/`data-style-dark-mode`; flagging only one splits them into
+  `image_1_*`/`image_2_*` and the shared `image_dark_url` field disappears
+  (measured 2026-08-20). Flagged on both, one Select drives both twins —
+  verified by rendering: Square → both imgs `border-radius:0`, Circle → both
+  `50%`. Note Outlook desktop's Word engine ignores `border-radius`, so
+  Circle degrades to a square there; the catalog already accepts that for its
+  `18px` photos. A pre-rounded PNG is the alternative when Outlook must show
+  a true circle. In use on the unified catalog's Signature Card (square
+  photo), authored `border-radius="0"` so the default look is unchanged.
+
 - **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19,
   user-decided): mints the "Heading Level" H1–H4 Select and narrows the
   Content field to the heading's inner text (see Other generated
