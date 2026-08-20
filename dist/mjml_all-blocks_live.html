@@ -571,6 +571,33 @@ li {
       color: #39b54a;
     }
 
+    /* ProseMirror rebuilds an em element as a MARK from a fixed attribute set,
+   so an inline font-family on it is dropped the first time an editor touches
+   the copy — the "Section 2 Paragraph Copy" report, 2026-08-20. Ancestor-class
+   styling survives (measured, docs/archive/en-headsheet-probe.html) because
+   the hook lives in block markup outside the replacement. */
+    .signature-text em {
+      font-family: Georgia, serif;
+    }
+
+    /* The Steps Block's numbered badge. A span's CLASS survives an edit while an
+   inline style is re-expressed as MARKS (measured: font-weight becomes a
+   strong element, a hex becomes rgb()) — and display, background-color,
+   height and border-radius have no mark to become, so the badge would lose
+   its shape entirely. A class keeps the span editable as plain text. */
+    .step-num {
+      display: inline-block;
+      background-color: #39B54A;
+      color: #ffffff;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: Menlo, Consolas, 'Courier New', monospace;
+      border-radius: 3px;
+    }
+
     /* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
    the ordinary footer links keep their own treatment. */
     .footer-cta a {
@@ -8524,10 +8551,10 @@ li {
                     <tr>
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Your photo(s) should capture how you experience a public outdoor space</b>&mdash;like a park, trail, schoolyard, or protected landscape.</p>
-                          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>You can enter daily with a new photo through February 9.</b> Let them know you appreciate the chance to weigh in.</p>
-                          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;3&nbsp;</span>&nbsp; <b>TPL will select the top five photos.</b> You'll then have the chance to vote for your favorite finalist from February 11-15. Watch for the voting announcement on February 11.</p>
-                          <p style="font-size:16px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;4&nbsp;</span>&nbsp; <b>All five finalists will receive a TPL prize package,</b> and the one with the most votes will also win a TPL x ENO Giving Back hammock and a one-year AllTrails Plus membership.</p>
+                          <p style="font-size:16px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Your photo(s) should capture how you experience a public outdoor space</b>&mdash;like a park, trail, schoolyard, or protected landscape.</p>
+                          <p style="font-size:16px;"><span class="step-num">&nbsp;2&nbsp;</span>&nbsp; <b>You can enter daily with a new photo through February 9.</b> Let them know you appreciate the chance to weigh in.</p>
+                          <p style="font-size:16px;"><span class="step-num">&nbsp;3&nbsp;</span>&nbsp; <b>TPL will select the top five photos.</b> You'll then have the chance to vote for your favorite finalist from February 11-15. Watch for the voting announcement on February 11.</p>
+                          <p style="font-size:16px;"><span class="step-num">&nbsp;4&nbsp;</span>&nbsp; <b>All five finalists will receive a TPL prize package,</b> and the one with the most votes will also win a TPL x ENO Giving Back hammock and a one-year AllTrails Plus membership.</p>
                         </div>
                       </td>
                     </tr>
@@ -8588,15 +8615,15 @@ li {
                     <tr>
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
                           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
                           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;3&nbsp;</span>&nbsp; <b>Say why this matters to you.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;3&nbsp;</span>&nbsp; <b>Say why this matters to you.</b></p>
                           <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;4&nbsp;</span>&nbsp; <b>Add your personal touch.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;4&nbsp;</span>&nbsp; <b>Add your personal touch.</b></p>
                           <p style="font-size:16px;margin-top:0;">Share a meaningful park memory or experience&mdash;something that helped you learn or feel connected.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;5&nbsp;</span>&nbsp; <b>Close with your request.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;5&nbsp;</span>&nbsp; <b>Close with your request.</b></p>
                           <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
                         </div>
                       </td>
@@ -8731,15 +8758,15 @@ li {
                     <tr>
                       <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
                           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;2&nbsp;</span>&nbsp; <b>Thank [Agency Name].</b></p>
                           <p style="font-size:16px;margin-top:0;">Let them know you appreciate the chance to weigh in.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;3&nbsp;</span>&nbsp; <b>Say why this matters to you.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;3&nbsp;</span>&nbsp; <b>Say why this matters to you.</b></p>
                           <p style="font-size:16px;margin-top:0;">Explain why it's essential that park interpretation reflects all of America's history&mdash;and why strong staffing and funding are needed to make that possible.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;4&nbsp;</span>&nbsp; <b>Add your personal touch.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;4&nbsp;</span>&nbsp; <b>Add your personal touch.</b></p>
                           <p style="font-size:16px;margin-top:0;">Share a meaningful park memory or experience&mdash;something that helped you learn or feel connected.</p>
-                          <p style="font-size:16px;margin-bottom:2px;"><span style="display:inline-block;background-color:#39B54A;color:#ffffff;height:20px;line-height:20px;text-align:center;font-size:13px;font-weight:700;font-family:Menlo,Consolas,'Courier New',monospace;border-radius:3px;">&nbsp;5&nbsp;</span>&nbsp; <b>Close with your request.</b></p>
+                          <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;5&nbsp;</span>&nbsp; <b>Close with your request.</b></p>
                           <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
                         </div>
                       </td>
@@ -9610,7 +9637,7 @@ li {
                                 <td align="left" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
                                   <div style="font-family:Tahoma, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                     <p style="font-family: Arial, sans-serif;"> Carrie Besnette-Hauser <br />
-                                      <em style="font-family: Georgia, serif;">Placeholder title, Example Division</em>
+                                      <em>Placeholder title, Example Division</em>
                                       <br />
                                       <b>Trust for Public Land</b>
                                     </p>

@@ -1625,14 +1625,21 @@ Gmail-style snippets would show BOTH lines. Consequences:
 - RTE editor-safe guard (`validateRteEditorSafe`): the mechanical half of
   the ProseMirror findings, so a value that cannot survive an edit is
   caught at import rather than after a send. Scans every RTE value —
-  `defaultValue` plus each Select `option.value` — for three constructs,
-  at three severities chosen by whether a workaround exists:
+  `defaultValue` plus each Select `option.value` — for four constructs,
+  at severities chosen by whether a workaround exists:
   - an **anchor** carrying `style`, `class`, `id`, `title`, `rel` or
     `data-*` → **warning**. A link keeps `href` and `target` and nothing
     else, because ProseMirror rebuilds it as a MARK from a fixed
     attribute set. A workaround exists (style it from a class on an
     ANCESTOR, which lives outside the replacement), so it warns and names
     that fix.
+  - a **styled inline element** — `em`, `strong`, `b`, `i`, `u`, `s` or a
+    `span` — carrying any style property ProseMirror has no mark for →
+    **warning** (2026-08-20). The editor re-expresses what it can and
+    silently drops the rest, so `font-weight`, `color`, `font-style` and
+    `text-decoration` survive in some form while a `font-family`,
+    `background-color`, `display` or `border-radius` is gone on the first
+    keystroke. Same workaround as the anchor, so same severity.
   - an **MSO conditional** → **error**. It is destroyed outright and
     nothing inside a Content value can survive; the conditional has to
     move into block markup.
@@ -2066,12 +2073,28 @@ stylesheet support at all.
 | --- | --- |
 | bare copy, lone `<span>`, two inline siblings | wrapped in ONE `<p>`; spans and `class` survive |
 | `<span style="font-weight:700;color:#362229">` | style re-expressed as marks — `font-weight` becomes `<strong>`, hex becomes `rgb()` |
+| an inline element styled with a property that has NO mark (`font-family`, `background-color`, `display`, `border-radius`) | that property is DROPPED — the element survives, its look does not |
 | `<p>` already present, with or without inline style | **UNCHANGED — the transform is IDEMPOTENT** |
 | `<h1>`–`<h6>` with inline style | UNCHANGED |
 | `<br>`, `<strong>`, `<em>`, entities | preserved (the `<br>` is not split into paragraphs) |
 | `<a href target rel style>` | **`rel` and `style` STRIPPED**; `href` and `target` kept |
 | `<ul><li>` | a `<p>` is injected inside each `<li>` |
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
+
+**Worked example (2026-08-20, user-reported).** The Signature Card's
+"Section 2 Paragraph Copy" changed appearance on its first edit. The value's
+`<p>` was NOT the problem — a paragraph is idempotent, per the table above.
+The damage was one `<em>` carrying `font-family: Georgia, serif`: an `em` is
+a mark, and `font-family` has no mark to become, so it vanished. Sweeping
+every RTE value in both catalogs for the same shape found 11 more instances
+in all-blocks and 6 in unified, all in the Steps Blocks, where the numbered
+badge `<span>` carried `display`, `background-color`, `height`,
+`border-radius` and a monospace `font-family` inline — a badge that would
+have lost its shape entirely. Both are now styled from the head:
+`.signature-text em` for the mark (a mark cannot carry the hook itself), and
+a `.step-num` CLASS on the span (measured: a span's `class` survives). The
+sweep is now zero in both catalogs, and `validateRteEditorSafe` keeps it
+there.
 
 **Ancestor-class styling survives an edit — measured 2026-08-19**
 (`docs/archive/en-headsheet-probe.html`, EN template 548, send after the edits). A

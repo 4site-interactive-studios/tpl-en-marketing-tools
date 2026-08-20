@@ -1184,6 +1184,15 @@ can prop each other up, and the report says so when they do.
   chrome disappears with it, silently. Author preheaders, builder-band spans
   and any other template-level markup directly under `<mj-body>`, above every
   include.
+- **Never style an inline element inside rich-text copy.** EN's editor keeps
+  only the style properties it has a mark for — `font-weight`, `color`,
+  `font-style`, `text-decoration` — and silently drops everything else the
+  first time anyone edits that field. A `font-family` on an `em`, or a
+  `display`/`background-color`/`border-radius` on a `span`, is gone. Put the
+  look in the stylesheet instead: a `span` may carry a CLASS (classes on
+  spans survive), but a mark element cannot, so style marks from a class on
+  an ANCESTOR (`.my-class em { … }`). The symptom is copy that changes
+  appearance the moment someone clicks into it and types.
 - **Removing the control is two steps, not one.** Deleting the
   `.mj-column-px-*` rules from your stylesheet does NOT remove the dropdown.
   MJML mints a `.mj-column-px-N` class for every real column width, so the

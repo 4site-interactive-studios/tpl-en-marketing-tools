@@ -439,13 +439,17 @@
     "version": 5,
     "hash": "c417c6aeb2fb"
   },
+  "block:Signature Card (photo)": {
+    "version": 1,
+    "hash": "cdc417aa85ee"
+  },
   "block:Signature Card (round photo)": {
     "version": 5,
     "hash": "472531340d9b"
   },
   "block:Signature Card (square photo)": {
-    "version": 7,
-    "hash": "8080523a52f4"
+    "version": 8,
+    "hash": "bc5da8b76a1c"
   },
   "block:Spacer": {
     "version": 2,
@@ -460,16 +464,16 @@
     "hash": "40c3a740a080"
   },
   "block:Steps Block": {
-    "version": 7,
-    "hash": "b9a873e6c753"
+    "version": 8,
+    "hash": "32425ee0ec8d"
   },
   "block:Steps Block (photo)": {
-    "version": 2,
-    "hash": "3daf5b113e2e"
+    "version": 3,
+    "hash": "e723b4512841"
   },
   "block:Steps Block (w/ arrow heading)": {
-    "version": 6,
-    "hash": "8b51e705b686"
+    "version": 7,
+    "hash": "d8a5a3a2292b"
   },
   "block:Story Card (full width)": {
     "version": 5,
@@ -584,12 +588,12 @@
     "hash": "e44b93675f1e"
   },
   "email-template": {
-    "version": 30,
-    "hash": "5f9f8f0413dd"
+    "version": 31,
+    "hash": "f5796f6ea67e"
   },
   "head-css": {
-    "version": 13,
-    "hash": "8641781c42c1"
+    "version": 14,
+    "hash": "4990b1131f75"
   },
   "partial:debug-toolbar": {
     "version": 1,
