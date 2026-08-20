@@ -270,8 +270,8 @@ day, same account, same client matrix:
   per line — the app would otherwise beautify ~12KB of pretty-printing
   into the payload) hard-coded in the block's own single content
   `<style>` — per-email CSS edits are disabled by design, and the
-  builder band's label shows the CSS revision ("Email Template — Head
-  CSS Styles Block vN", from the repo's versions.json head-css entity).
+  builder band's label shows the CSS revision ("CSS Styles Block vN",
+  from the repo's versions.json head-css entity).
   The block carries a live Gmail budget meter (16,384 hard / 14,000
   target) that itemizes EN-hoisted block styles. Budget the DELIVERED
   size, not the authored size — authored comments and formatting are

@@ -1678,6 +1678,13 @@ matchless rules at send: they reach the recipient and count against Gmail's
 16,384-byte cliff, past which Gmail drops the ENTIRE stylesheet. Copied
 verbatim, three bands cost 1,591 delivered bytes; on one shared rule, 697.
 
+The styles block's band reads **"CSS Styles Block vN"** (shortened from
+"Email Template — Head CSS Styles Block" on 2026-08-20, user decision: the
+band sits inside the block it names, so the prefix said nothing the context
+did not). `STYLES_BLOCK_PLACEHOLDER` deliberately keeps the OLD text — it is
+the legacy shape the EN-import healer recognises, and rewriting it would
+misdescribe blocks already living in EN.
+
 Bands in use: the Template Styles block (`#head-styles`, head-css version) and
 the RAW HTML utility block (`#raw-html`) — both spans the app injects into the
 block's own content at export — plus the TEMPLATE itself, which works
