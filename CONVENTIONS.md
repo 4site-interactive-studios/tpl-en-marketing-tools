@@ -1853,6 +1853,27 @@ included, and inline `inherit` is precisely the construct Outlook's Word
 engine cannot be relied on for. A `.wysiwyg p { font-size: inherit }` rule was
 tried and reverted for that reason (2026-08-19).
 
+**The importer therefore pre-applies the wrap.** Every RTE Content value that
+is inline-only ships already wrapped as
+`<p style="margin:0;font-size:Npx;line-height:Mpx;">…</p>`, with the size read
+from the wrapper `<div>` MJML stamped — the element's own declared size after
+mj-attributes and any mj-class (`preWrapRteValue` / `enclosingTextStyle`,
+`src/core/mjmlProps.ts`). The editor's first edit is then a no-op, because
+that is exactly the shape probe B1 proved it leaves alone.
+
+Values that already contain block-level markup are left untouched — a heading
+or an existing paragraph is not rewritten by the editor anyway, and a list
+must never be wrapped in a paragraph. Lists still churn (a paragraph is
+injected inside each `<li>`) and no wrap can prevent that, so nothing is
+claimed for them. When the div declares no size the wrap fails OPEN rather
+than guessing.
+
+Measured on the catalog: 23 values wrapped, 132 already block-level, 2 failed
+open, and the wrap is **pixel-identical** to the unwrapped rendering
+(10px/16px caption, 205px wide, 29px cell — before and after). The same
+caption with a naive size-less paragraph, which is what the editor produces
+today, renders at 16px/27px and 328px wide.
+
 The measured fix is B1's: an authored `<p>` carrying its own inline
 font-size survives **both** transforms — the editor leaves it untouched, and
 EN's inliner does not override it (B1 shipped its authored 12px/16px intact

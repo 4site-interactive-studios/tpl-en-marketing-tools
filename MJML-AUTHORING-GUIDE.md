@@ -853,6 +853,11 @@ declared size — a 10px credit line ships at 16px. Two authoring consequences:
   (`<p style="font-size:12px;line-height:14px;margin:0;">`), which no
   stylesheet rule can override. 147 of the catalog's 170 in-content paragraphs
   already do this; it is the established pattern.
+- **Inline-only copy now ships pre-wrapped.** The importer emits
+  `<p style="margin:0;font-size:…;line-height:…;">` around it, which is the
+  one shape the editor leaves alone, so the first edit changes nothing. You do
+  not need to author this yourself — but if you do author a paragraph, pin its
+  size inline, because that is what survives both the editor and EN's inliner.
 - **Bare copy should not be on a rich-text field at all.** The importer types a
   Content field as plain `Text` when its inner carries no markup whatsoever,
   which removes the rewrite rather than defending against it. Copy wrapped in
