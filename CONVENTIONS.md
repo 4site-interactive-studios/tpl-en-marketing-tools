@@ -1894,14 +1894,30 @@ stylesheet support at all.
 | `<ul><li>` | a `<p>` is injected inside each `<li>` |
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
 
-**Open question — does editing a block cost it its block-level `<style>`?**
-The anchor probe's ancestor-class row stored byte-identical to its untouched
-twin, yet delivered WITHOUT the styles its own block `<style>` should have
-inlined, on a send made after the edit. If block CSS does not survive an edit,
-that is a separate defect. It does not change the recommendation, because TPL
-keeps its rules in the template head stylesheet rather than per-block
-`<style>` elements — but it must be confirmed with the rule in the head
-before the 43-anchor migration starts.
+**Ancestor-class styling survives an edit — measured 2026-08-19**
+(`docs/en-headsheet-probe.html`, EN template 548, send after the edits). A
+rule in the TEMPLATE HEAD targeting a class on an ancestor
+(`.cta-link a { … }`, with `css-class` on the `mj-text`) keeps its styling
+through an edit in both storage and the delivered email, because the hook
+lives in block markup outside the replacement where the editor cannot reach.
+That is the sanctioned way to style an RTE-embedded link.
+
+The probe's own pre-registered criterion is not yet satisfied, though, and the
+distinction is worth keeping: it named "both mechanisms survive" as a reason
+NOT to assume the earlier storage-versus-delivery anomaly was a probe artifact,
+and both did survive. The evidence for the styling pattern itself is direct and
+end-to-end; the open question is about EN's build-versus-send semantics. Relax
+the criterion deliberately if the migration proceeds — do not treat it as
+already met.
+
+The same probe disproved a hypothesis worth recording so it is not re-formed:
+a block-level `<style>` is **not** destroyed by an edit either — the
+block-styled control survived identically. An earlier anomaly, where a
+delivered email lost styling that storage still had, therefore has some other
+cause and did not reproduce. The most consistent explanation left is that an
+EN email snapshots block content when BUILT, so an email built before an edit
+and sent after it delivers pre-edit content — unproven, and worth knowing
+before trusting any send-versus-storage comparison.
 
 The anchor row was pinned down further on 2026-08-19: an anchor keeps `href`
 (and `target`) and **nothing else** — `class`, `style`, `id`, `title` and
