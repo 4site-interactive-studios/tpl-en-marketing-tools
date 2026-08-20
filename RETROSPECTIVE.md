@@ -41,16 +41,18 @@ the converter repo.
 
 ## The problem we set out to solve
 
-Trust for Public Land sends email through Engaging Networks (EN). EN's
+Trust for Public Land (TPL) sends email through Engaging Networks (EN). EN's
 Marketing Tools lets an editor assemble an email from reusable **blocks** (a
 hero, a story card, a footer) and customize each one through fields shown
 beside it.
 
 Two things make that harder than it sounds.
 
-**Email is fragile.** Every mail client renders the same HTML differently, and
-the differences are not cosmetic. Outlook on Windows uses Microsoft Word as
-its rendering engine and ignores whole categories of modern CSS. The Gmail app
+**Email is fragile.** Every mail client renders the same HTML (HyperText
+Markup Language, the code an email is built from) differently, and the
+differences are not cosmetic. Outlook on Windows uses Microsoft Word as its
+rendering engine and ignores whole categories of modern CSS (Cascading Style
+Sheets, the language that controls how that code looks). The Gmail app
 rewrites colors on its own. Apple Mail, Outlook.com, and Gmail's web client
 each honor a different subset of dark-mode techniques. A design that looks
 correct in a browser can be unreadable in an inbox.
@@ -74,13 +76,14 @@ a shorthand that compiles into the nested tables email actually requires.
 Rather than one-off emails, we maintain a catalog of blocks, each one a
 complete, tested design with mobile stacking, dark-mode behavior, and Outlook
 workarounds already built in. Alongside the catalog: a 56-block master
-template, and two donation thank-you autoresponders assembled from the same
-blocks.
+template, and two donation thank-you autoresponders (automatic emails EN
+sends after a donation) assembled from the same blocks.
 
 **A converter app.** A private, browser-only tool. Point it at the template on
 GitHub and it compiles the MJML, splits it into blocks, reads the design
-intent the template declares about itself, and writes the exact JSON that EN
-imports: named, filed into folders, with real rendered thumbnails, and with
+intent the template declares about itself, and writes the exact JSON
+(JavaScript Object Notation, a structured data file) that EN imports: named,
+filed into folders, with real rendered thumbnails, and with
 every editable property already turned into a typed field. The manual
 per-block configuration became a single import of the whole library.
 
@@ -101,9 +104,9 @@ Early commits are terse and hand-built: *"create more blocks"*, *"dark mode
 improvements"*. The fossils of the original are still in the repo.
 
 **Phase 2: from a mockup to a library (July).** The catalog becomes a system.
-A naming grammar, categories, and a built-in debug overlay that lets anyone QA
-the whole library in a browser without reading code. The converter app itself
-starts on 2026-07-15.
+A naming grammar, categories, and a built-in debug overlay that lets anyone
+quality-check (QA) the whole library in a browser without reading code. The
+converter app itself starts on 2026-07-15.
 
 **Phase 3: the contract arrives (late July → early August).** The template
 begins declaring its own expectations (its spacing scale, its width options)
@@ -120,8 +123,9 @@ clients. Most of the durable knowledge in this project came out of these ten
 days, and several confident beliefs did not survive them.
 
 **Phase 5: industrialization (2026-08-17 → 08-20).** Everything learned gets
-turned into something automatic: build-time lints, pixel-level audits, content
-versioning, byte budgets. Nearly half the converter's commits (111 of 228)
+turned into something automatic: build-time lints (automated checks that scan
+the files for known mistakes), pixel-level audits, content versioning, byte
+budgets. Nearly half the converter's commits (111 of 228)
 land in these four days, and the system goes live in TPL's account on
 2026-08-18.
 
@@ -190,7 +194,9 @@ fetched and compared byte-for-byte against what we shipped.
 
 ### The CSS inliner always runs, and it cannot be turned off
 
-We pinned this down on 2026-08-05. An earlier version of the conventions
+The inliner is EN's pass that rewrites your stylesheet onto individual
+elements as inline styles. We pinned down on 2026-08-05 that it always runs
+and cannot be disabled. An earlier version of the conventions
 document wrongly told agents to disable it; that correction is preserved in
 the doc rather than edited away.
 
@@ -206,10 +212,11 @@ in the conventions document. The headlines:
 | `[data-ogsc]` nested inside a conditional media query | **Kept**. This is the rescue |
 | `div[class="x"] { … !important }` | Inlined, and **`!important` is stripped** |
 | A rule matching nothing | Pruned |
-| An MSO conditional comment | Kept intact |
+| An MSO (Microsoft Outlook-only) conditional comment | Kept intact |
 | Any rule nested in a media query | Kept, not inlined |
 
-The operative consequence: **a conditional media query is EN's "do not touch"
+The operative consequence: **a conditional media query (a CSS rule that only
+applies under a stated condition, like a screen width) is EN's "do not touch"
 wrapper.** Anything that must survive as a rule rather than an inline style
 goes inside one. Two corollaries bit us later. A media-query rule that must
 beat a base rule needs `!important` of its own, and any `!important` you wrote
@@ -233,13 +240,14 @@ An HTML-type Replacement was holding a block's `<style>` element. Import was
 clean. Send was clean. But a block that had been through EN's editor shipped
 with `>` rewritten as `&gt;`. Because `<style>` is a raw-text element in the
 HTML standard, `&gt;` is never decoded back. It stays four literal characters,
-the selector becomes invalid CSS, and the client's parser discards the rule
-silently.
+the selector (the part of a CSS rule naming what it applies to) becomes
+invalid, and the client's parser discards the rule silently.
 
 The damage pattern is what made it hard to see. Dark-mode rules come in pairs:
-`.block p` sets the text color and uses a descendant selector, so it survived;
-`.block > table` repaints the background and uses a child combinator, so it
-died. Half of each pair lived. The result was **white text on a white panel**,
+`.block p` sets the text color and uses a descendant selector (a space,
+matching anything inside), so it survived; `.block > table` repaints the
+background and uses a child combinator (the `>`, matching only a direct
+child), so it died. Half of each pair lived. The result was **white text on a white panel**,
 and on iOS Mail, entire content blocks rendering blank.
 
 Pinned by four controlled sends (2026-08-13): the trigger is an **edit**.
@@ -251,8 +259,8 @@ EN's separate CSS Editor surface was cleared on 2026-08-18.
 
 Two measurement traps cost a full send round each, and they are worth knowing
 about for any similar investigation. **EN prunes rules that match nothing**,
-so a canary selector aimed at a non-existent class vanishes and reads as a
-pass. And **a plain rule is inlined**, which dissolves the very selector you
+so a canary selector (one planted just so its survival can be checked) aimed
+at a non-existent class vanishes and reads as a pass. And **a plain rule is inlined**, which dissolves the very selector you
 were trying to inspect.
 
 Two fixes came of it. Ours shipped: `styles.css` was rewritten to contain
@@ -262,7 +270,9 @@ with an importable proof-of-concept block.
 
 ### EN's Content editor is ProseMirror, and the first keystroke rewrites your markup
 
-Measured 2026-08-19 with paired blocks from a single import. One copy got a
+ProseMirror is an open-source rich-text editing engine, and EN's Content
+field turns out to be one. Measured 2026-08-19 with paired blocks from a
+single import. One copy got a
 null edit in every field (click in, type a character, delete it, save) and its
 never-opened twin was left alone, so any difference could only have come from
 the editor.
@@ -272,30 +282,31 @@ the editor.
 | Bare copy, or a lone `<span>` | Wrapped in one `<p>`; spans and classes survive |
 | `<span style="font-weight:700; color:#362229">` | Re-expressed as marks: `<strong>`, color as `rgb()` |
 | An inline element with a property that has no mark (`font-family`, `background-color`, `display`, `border-radius`) | **That property is dropped** |
-| A `<p>` that is already there | **Unchanged. The transform is idempotent** |
+| A `<p>` that is already there | **Unchanged. The transform is idempotent (re-running it changes nothing)** |
 | `<a href target rel style>` | **`rel` and `style` stripped**; `href` and `target` kept |
 | An MSO conditional comment | **Destroyed** |
 
 Three things follow.
 
 The injected paragraph carries no inline style, so the stylesheet's `p` rule
-wins and a 10px caption ships at 16px. EN's inliner then bakes that winning
+wins and a 10px (pixel) caption ships at 16px. EN's inliner then bakes that winning
 rule onto the element as an inline style, `inherit` included, and inline
 `inherit` is exactly the construct Outlook's Word engine cannot be relied on
 for.
 
-Because the transform is **idempotent**, the fix is to pre-apply it. The
-converter now wraps values at generation time so the editor's first edit
-changes nothing. Verified end to end (23 values wrapped, 132 already
+Because the transform is **idempotent** (running it a second time changes
+nothing), the fix is to pre-apply it. The converter now wraps values at
+generation time so the editor's first edit changes nothing. Verified end to end (23 values wrapped, 132 already
 block-level, 2 failed open) and proven pixel-identical to the unwrapped
 rendering.
 
 **Node versus mark** turned out to be the predictive model. ProseMirror treats
 a link as a mark, rebuilt from a fixed attribute set, while `span` and `p` are
-nodes that keep their attributes. So an RTE-embedded link can only be styled
-from an ancestor class, which is now the sanctioned pattern, verified to
-survive both storage and delivery. The catalog's rich-text values now hold
-zero styled anchors, down from 54; link color moved to ancestor classes
+nodes that keep their attributes. So a link embedded in rich-text editor
+(RTE) content can only be styled from an ancestor class, which is now the
+sanctioned pattern, verified to survive both storage and delivery. The
+catalog's rich-text values now hold zero styled anchors (anchor is HTML's
+name for a link tag), down from 54; link color moved to ancestor classes
 (2026-08-19).
 
 ### Template edits do not reach emails that already exist
@@ -334,12 +345,13 @@ block swap rather than an email rebuild.
 - **EN ingests a stylesheet once per `<style>` wrapper.** A doubled wrapper
   delivered two full copies (24,952 bytes, over the Gmail cliff). Removing it
   took the same send to 13,325.
-- **EN injects its own preheader** from each email's Preview Text setting, so
-  a template-baked one doubles up in inbox snippets. An earlier `preview_text`
+- **EN injects its own preheader** (the preview snippet an inbox shows under
+  the subject line) from each email's Preview Text setting, so a
+  template-baked one doubles up in inbox snippets. An earlier `preview_text`
   field was shipped and reverted the same day once a send test disproved the
   assumption.
-- **Our importer strips `<title>` and the `aria-label` MJML mirrors onto the
-  body wrapper.** This is the one item in this list that is a converter
+- **Our importer strips `<title>` and the `aria-label` (the text a screen
+  reader announces) that MJML mirrors onto the body wrapper.** This is the one item in this list that is a converter
   decision rather than a measured EN behavior; it lives here because it pairs
   with the preheader finding. Removing the aria-label is an accessibility gain,
   not a loss. A screen reader was otherwise announcing the entire body as one
@@ -362,7 +374,7 @@ the drop is all-or-nothing. A 715-byte probe kept everything.
 
 The cliff sits at **16,384 bytes**. It is not mobile-only: Gmail desktop
 webmail in Chrome showed the identical pair. Every Gmail surface shares the
-sanitizer.
+sanitizer (the filter Gmail runs over incoming email code).
 
 Two consequences are now permanent. We **budget the delivered CSS, not the
 authored CSS**, with EN's 1.30× re-print factor, a working target of 14,000
@@ -396,8 +408,8 @@ inverts identically to one colored with CSS.
 and the defense.** The accepted end state for Outlook desktop dark mode is to
 let it invert and make the artwork survive the inversion, which produced a
 scripted contrast-outline treatment that adds an opposite-polarity rim to
-every transparent PNG whose ink depends on its background, applied across 14
-assets.
+every transparent PNG (an image format that supports transparency) whose ink
+depends on its background, applied across 14 assets.
 
 Two measured surprises are worth recording together. First, **a mercy**: an
 authored light ground with no dark hook at all rendered dark and legible in
@@ -408,7 +420,8 @@ round: strong evidence, not a license to delete hooks.) Second, **the mercy's
 hard limit**: our own dark rule painted an opaque black lid over every
 background-photo hero in Apple Mail dark and Outlook.com dark. Clients rescue
 what EN delivers, but they honor *your* dark CSS as intent. Fixed with an
-equal-specificity exemption for image blocks, confirmed across all five hero
+exemption for image blocks written at equal specificity (the weight CSS uses
+to decide which of two competing rules wins), confirmed across all five hero
 shapes.
 
 ### Outlook's Word engine, and things we chose to accept
@@ -421,7 +434,8 @@ shapes.
   Fixed by moving the fallback color onto a wrapper behind the section, across
   25 sections, and now guarded by a build lint.
 - **Outlook renders every button square.** It ignores `border-radius` on table
-  cells. We accepted that as graceful degradation; VML roundrect wrappers were
+  cells. We accepted that as graceful degradation; VML (Vector Markup
+  Language, Outlook's legacy drawing format) rounded-corner wrappers were
   rejected outright because they break the converter's label and color
   bindings and bloat every block.
 - **Word ignores CSS box geometry on spans.** `display:inline-block`, `width`,
@@ -437,7 +451,8 @@ A QA round read Gmail on Android as shrinking two-column story cards. Four
 probe rounds disproved it: **there is no column-shrink bug.** A Pixel 10
 reports 1080 device pixels at a 3× ratio, so Gmail lays out at roughly 333 CSS
 pixels, and a card loses 80 of them (a quarter of the width) to section and
-column gutters. The model predicted 252.7px against a measured 251.0px, while
+column gutters, the built-in side padding between content and the edge of
+its container. The model predicted 252.7px against a measured 251.0px, while
 the competing "shrink" model was off by 17.7px.
 
 The shipped fix took mobile imagery flush to the edge, moving an image from
@@ -489,8 +504,8 @@ rather than an implementation accident.
   → Primary content → Appearance → Dimensions → Position → Spacing.
 - **Colors are always dropdowns.** Every color in the template is collected
   into a brand palette, grouped by role, ordered perceptually, and
-  vanity-named. Editors do not type hex codes and off-brand colors cannot
-  creep in through everyday edits. The one documented exception: compound
+  vanity-named. Editors do not type hex codes (the six-character color codes
+  designers use) and off-brand colors cannot creep in through everyday edits. The one documented exception: compound
   border values stay plain text, because a compound value cannot be a
   dropdown.
 - **Alt text is always editable.** Every image carrying an alt attribute mints
@@ -541,7 +556,7 @@ PLAYBOOK §6.
 | `data-inset-toggle` | a spacing component | Mints Inset Selects even when a side is 0, and unlocks Spacing Above | The caption pacing exception, my call on 2026-08-18: a caption owns its gap above itself, so hiding the caption removes the gap with it instead of stranding white space under the photo |
 | `data-force-rte` | an mj-text carrying bare copy | Keeps the Content field on the rich-text editor when it would otherwise ship as a plain Text field | For copy expected to grow a link or emphasis later (2026-08-19) |
 | `data-group-label="<words>"` | any content element, or a raw anchor | Names the field group verbatim: the panel group, the label prefix, and the merge-tag base | Wins over every inferred role, so the panel says what the author meant (2026-08-19). On a light/dark pair, label both twins identically |
-| `data-link-group="<name>"` | sibling raw anchors sharing one destination | One URL field drives every anchor in the group; the value splices into all carriers | EN auto-closes an anchor wrapping a table, so the Question Block row is per-cell anchors that must never desync (2026-08-18). Differing hrefs fall back to separate fields; a member that cannot be resolved drops the whole field rather than half-binding |
+| `data-link-group="<name>"` | sibling raw anchors sharing one destination | One web-address (URL) field drives every anchor in the group; the value splices into all carriers | EN auto-closes an anchor wrapping a table, so the Question Block row is per-cell anchors that must never fall out of sync (2026-08-18). Differing destinations fall back to separate fields; a member that cannot be resolved drops the whole field rather than half-binding |
 | `data-text-anchor` | a raw anchor that is prose, not a button | Groups its fields under the Text family instead of "Button N" | A linked sentence is copy, and its panel home should say so (2026-08-19) |
 
 ### Opt-outs and viewport declarations
@@ -553,7 +568,7 @@ PLAYBOOK §6.
 | `data-no-link-toggle` | an image | No Include/Exclude Link toggle | For links that must never be removable, like a legally required logo link |
 | `data-no-direction-toggle` | the section (or group) that owns a column flip | No Image Position / Column Order control | Since 2026-08-11 the control mirrors alignment itself, so this is a taste judgment: some mirrored layouts should ship as their own block, not as a toggle |
 | `data-no-background-color` | any element with an authored background color | Keeps the color in the output but creates no field | For a background that provably cannot show (the tri-color divider's section, audited 2026-08-10); the value stays as a client fallback. A background merely covered by an image stays editable, because Outlook desktop does not load background images and the color is what shows there |
-| `data-desktop-only-<token>` / `data-mobile-only-<token>` | the element that owns the control | Prefixes the control's label with the viewport where it actually works ("Desktop Block Padding Left/Right"); the merge-tag name never changes | The channel for truths no static rule can reach: a centered pill whose width only matters at desktop, or trailing spacing a taller sibling absorbs until the columns stack. Labels only, names never, so the panel tells the truth without breaking the tag vocabulary |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | the element that owns the control | Prefixes the control's label with the viewport (the screen width the email is viewed at) where it actually works ("Desktop Block Padding Left/Right"); the merge-tag name never changes | The channel for truths no static rule can reach: a centered pill whose width only matters at desktop, or trailing spacing a taller sibling absorbs until the columns stack. Labels only, names never, so the panel tells the truth without breaking the tag vocabulary |
 
 ### Retired, and why
 
@@ -607,8 +622,9 @@ is how an earlier probe imported silently and produced nothing.
 we built something to measure it rather than argue about it:
 
 - the **Inert Dropdown Audit** renders every block × dropdown × option at two
-  viewports and compares canvas pixel hashes; a control is inert only if every
-  option rasters byte-identical to the baseline. The engine now also tests
+  viewports and compares pixel fingerprints (hashes) of the results; a control
+  is inert only if every option renders byte-for-byte identical to the
+  baseline. The engine now also tests
   three copy lengths per cell, because the go-live sweep proved short
   placeholder copy makes live controls look dead
 - the **dead-flag check** strips a markup annotation, regenerates with
@@ -650,7 +666,8 @@ workaround exists, not by how alarming the construct looks.
 
 **Versioning anchored to content, with git as the ledger.** Every block,
 partial, template and the app itself carry an integer version derived from a
-content hash, where the baseline is the manifest *as last committed*.
+content hash (a fingerprint computed from the content itself), where the
+baseline is the manifest *as last committed*.
 Rebuilding never double-bumps and local iteration cannot inflate a number.
 Versions track what was edited, not what was affected downstream: a stylesheet
 change that alters how every block renders bumps only the template. The ledger
@@ -660,9 +677,10 @@ block, the Quiz Block (2x2 photos), at 12. The churn concentrated in the
 shared layer, which is exactly where you want iteration to concentrate.
 
 **Git discipline written down after it bit us.** Parallel sessions land
-commits in both repos many times a day, so: fetch and fast-forward both before
-starting, never run a `git checkout` variant inside a scripted command, and
-verify the remote matches local `HEAD` after every push. Each of those clauses
+commits in both repos many times a day, so: fetch and fast-forward both
+before starting (pull the latest so your copy matches the shared one), never
+run a `git checkout` variant inside a scripted command, and verify after
+every push that the shared repo's latest commit equals your local one. Each of those clauses
 exists because of a specific incident (see Appendix A).
 
 **Conventions written for AI agents, not only for people.** The authoring
@@ -696,7 +714,8 @@ Open threads, recorded rather than resolved:
 - One delivered email lost styling that its stored version still had. Logged
   as **unexplained** rather than closed.
 - A palette contrast issue in the Steps Block family falls below the AA
-  threshold (white on green at 2.66:1 against a 4.5:1 floor). My call: it is
+  accessibility threshold of the Web Content Accessibility Guidelines (WCAG):
+  white on green at 2.66:1 against a 4.5:1 floor. My call: it is
   held as a client-facing accessibility recommendation rather than a silent
   change, with the exact remedy documented, because the remedy changes brand
   colors and that decision belongs to TPL.
@@ -771,8 +790,8 @@ and no dark-mode rules, for a test that had shipped a full stylesheet
 **What we believed.** Total stylesheet loss in transit: a catastrophic,
 send-blocking finding.
 
-**What was actually true.** That URL returns EoA's own application shell, not
-the email. Every test reports the identical bytes; the tell was that a
+**What was actually true.** That URL returns Email on Acid's own application
+shell, not the email. Every test reports the identical bytes; the tell was that a
 known-good test had "lost" exactly the same stylesheet.
 
 **Guard.** The delivered-HTML URL is documented as the only diagnostic source,
@@ -785,8 +804,8 @@ proves nothing. The test bypassed EN entirely.
 (zero of thirteen), which read as a field-generation bug in the converter.
 
 **What was actually true.** The evidence had been read from the `_live.html`
-build variant, whose asset URLs are already rewritten to absolute CDN paths,
-so the generator's needle matched nothing. Against the correct fixture, the
+build variant, whose asset addresses are already rewritten to absolute CDN
+(content delivery network) paths, so the generator's needle matched nothing. Against the correct fixture, the
 relative-path `_local-debug.html`, the count was 8 of 8. The finding was
 retracted in its own commit rather than quietly edited away.
 
@@ -796,8 +815,9 @@ finding sitting in a contract is not.
 
 ### 5. A concurrency speedup that was a throttled browser tab
 
-**Symptom.** Running the pixel audit with eight parallel iframes measured
-6.37× faster than one. The default was changed to eight.
+**Symptom.** Running the pixel audit with eight parallel iframes (embedded
+browser frames) measured 6.37× faster than one. The default was changed to
+eight.
 
 **What was actually true.** The measurement had been taken in a **background
 tab**, which the browser throttles. Re-measured on a real foreground tab:
@@ -923,13 +943,15 @@ it ships.
 **Symptom.** A commit that had been "pushed" returned a 404 on GitHub.
 
 **What was actually true.** A stray `git checkout HEAD~0` inside a scripted
-command detached `HEAD`. The next commit landed off-branch, and `git push
-origin main` exited 0 as a no-op: it pushed the stale local `main` ref.
+command detached `HEAD` (git lost track of which branch was active). The next
+commit landed off-branch, and `git push origin main` exited 0 (the success
+code) while doing nothing: it pushed the stale local copy of `main`.
 
 **Guard, now written into both repos' working instructions.** Never run a
 `git checkout` variant inside a compound or scripted command; confirm the
-branch before committing; and after every push, verify the remote ref equals
-local `HEAD`. **A push that prints nothing and exits 0 is not proof.**
+branch before committing; and after every push, verify the shared repo's
+latest commit equals your local one. **A push that prints nothing and exits 0
+is not proof.**
 
 ### 14. Two rounds, one build
 
@@ -1034,13 +1056,23 @@ send.
 **Inliner**: the transform EN applies at send time, moving stylesheet rules
 onto individual elements.
 
-**RTE / WYSIWYG**: EN's rich-text editing surface, built on ProseMirror.
+**RTE / WYSIWYG**: EN's rich-text editing surface, built on ProseMirror. RTE
+is rich-text editor; WYSIWYG is "what you see is what you get".
 
 **Email on Acid (EoA)**: the service used to render one sent email across
 dozens of real email clients for comparison.
 
 **Child combinator**: the `>` in a CSS selector like `.block > table`,
 meaning "a direct child of". The character EN's editor escapes.
+
+**Gutter**: the built-in side padding between content and the edge of its
+container.
+
+**Linter / lint**: an automated check that scans files for known mistakes and
+reports them; ours warn on every build.
+
+**Viewport**: the screen width an email is viewed at. Desktop and phone are
+the two that matter here.
 
 **Merge tag**: a placeholder token EN substitutes when it assembles an email;
 the container merge tag marks where block content lands in the template shell.
