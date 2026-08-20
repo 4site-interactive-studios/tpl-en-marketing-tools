@@ -1656,10 +1656,30 @@ glance). The template's span is authored in its MJML above the
 export instead broke the byte-exact import→export round-trip and would have
 double-injected on re-import.
 
-**Open:** the shared CSS currently ships in the Template Styles block. Moving
-it to the template `<head>` (the intent) needs an exemption in
-`extractHeadStyles`, which today splices EVERY `<style>` out of the head and
-into that block.
+**Where each piece lives.** The shared layout and the template band's own
+label sit in the template `<head>`, in a `<style data-en-tools-band>`.
+`extractHeadStyles` skips that marker and leaves it there; every other
+`<style>` in the head is still spliced out into the Template Styles block. The
+exemption exists because the layout has to work for an email built WITHOUT that
+block, and it follows the precedent already in that function, where styles
+inside a revealed MSO conditional are left alone. Each BLOCK then carries only
+its own span and `content` rule.
+
+The template head's label carries `__TEMPLATE_VERSION__`, not a number. The
+placeholder is deliberate: `version-sync` hashes the SOURCE, so a baked-in
+version would feed its own hash and bump on every build. `fetchMjmlBundle`
+fills it in from `versions.json` at import, matching the leading ` v` so a
+missing manifest yields a clean "Email Template" rather than a dangling "v".
+
+**Budget note.** `HOIST_ALLOWANCE` in TPL's `check-catalog` dropped 700 → 250
+when the band sheet moved into the head: the sheet is now measured directly
+(454 delivered bytes), so reserving it again double-counted it. Headroom under
+Gmail's cliff is now roughly 50 bytes — **`styles.css` needs a real trim before
+anything else lands.** A mechanical trim is NOT available: the obvious
+candidates are client-injected hooks (`.moz-text-html`), the `.mj-column-px-*`
+width ladder the importer offers as Select options an editor can still choose,
+and the dormant-but-sanctioned `.mobile-only`. Deleting any of them breaks
+something.
 
 - `data-*` contract warnings are whitelisted, never "fixed".
 

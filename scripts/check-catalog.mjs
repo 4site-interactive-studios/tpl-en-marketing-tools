@@ -511,7 +511,13 @@ guard('ALL-CAPS button label check', () => {
 guard('Gmail CSS budget + head coupling check', () => {
   const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
   const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts
-  const HOIST_ALLOWANCE = 700; // a re-added diagnostic canary + builder chrome, delivered
+  // Reserves space for CSS that is hoisted at send and therefore invisible to
+  // the measurement below. It was 700 (canary + builder chrome) until
+  // 2026-08-20, when the builder-band sheet moved INTO the template head to
+  // survive an email built without the Template Styles block. That sheet is
+  // now measured directly — 454 delivered bytes — so reserving it again would
+  // double-count it. What remains is the diagnostic canary.
+  const HOIST_ALLOWANCE = 250;
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
   if (!pages.length) {

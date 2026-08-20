@@ -59,6 +59,35 @@
       <meta name="supported-color-schemes" content="light dark" />
       <meta name="format-detection" content="telephone=no" />
     </mj-raw>
+    <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
+         this sheet in the template HEAD: the importer splices every other
+         style element out into the Template Styles block, and this layout has
+         to survive an email built without that block. The gate asks whether a
+         block wrapper exists anywhere in the document, true while editing in
+         EN and false in a delivered email, so it reaches the template's own
+         chrome which sits outside every block. __TEMPLATE_VERSION__ is filled
+         in at import from versions.json; keeping the literal here is what
+         stops the version from feeding its own hash. Each BLOCK carries its
+         own span and content rule. -->
+    <mj-raw>
+      <style type="text/css" data-en-tools-band>
+        :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
+          display: flex !important;
+          height: 50px;
+          width: 100%;
+          background-color: #000000;
+          justify-content: center;
+          align-items: center;
+          font-weight: 700;
+          font-family: sans-serif;
+          color: #ffffff;
+        }
+        :is(body):has(.en__emailbuilder__block) #template-version:before{
+          content: "Email Template v__TEMPLATE_VERSION__";
+        }
+      </style>
+    </mj-raw>
+
     <mj-include path="./styles.css" type="css" />
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
