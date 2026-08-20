@@ -432,8 +432,8 @@
     "hash": "56b069194d2f"
   },
   "block:Quote Block": {
-    "version": 5,
-    "hash": "b56961e9ebec"
+    "version": 6,
+    "hash": "8f8918309cf0"
   },
   "block:Signature Card (no photo)": {
     "version": 6,
@@ -568,32 +568,32 @@
     "hash": "ace703979037"
   },
   "block:Video Block (full-bleed)": {
-    "version": 4,
-    "hash": "df78d4af68d9"
+    "version": 5,
+    "hash": "e6faf81246f1"
   },
   "block:Video Block (inset)": {
-    "version": 5,
-    "hash": "bd8d38b2714c"
+    "version": 6,
+    "hash": "9276d4a9afeb"
   },
-  "block:WYSIWYG Text (full width)": {
-    "version": 5,
-    "hash": "aa9156c56b3a"
+  "block:WYSIWYG Text": {
+    "version": 1,
+    "hash": "91cbed81068d"
   },
   "block:WYSIWYG Text (inset)": {
     "version": 4,
     "hash": "af9ce892e350"
   },
   "catalog-shell": {
-    "version": 19,
-    "hash": "e44b93675f1e"
+    "version": 20,
+    "hash": "b3c836973d28"
   },
   "email-template": {
-    "version": 32,
-    "hash": "b3bf5d772d5c"
+    "version": 33,
+    "hash": "7fd10b475cd9"
   },
   "head-css": {
-    "version": 16,
-    "hash": "e6700d96b50b"
+    "version": 17,
+    "hash": "b63443f11977"
   },
   "partial:debug-toolbar": {
     "version": 1,

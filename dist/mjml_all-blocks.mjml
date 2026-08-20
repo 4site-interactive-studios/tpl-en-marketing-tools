@@ -784,7 +784,7 @@
     </mj-section>
     <!-- END: Linked Header Row (w/ icon) -->
 
-    <!-- START: WYSIWYG Text (full width) -->
+    <!-- START: WYSIWYG Text -->
     <!-- Un-flagged 2026-08-19: the heading/body split + Heading Level
          Select made this the family's canonical (it was "deliberately
          excluded, no canonical" since 2026-07-29, when it was one
@@ -792,7 +792,7 @@
          unflagged; the inset variant stays excluded as its duplicate. -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="0 32px"
+      background-color="#ffffff" padding="0 32px 16px"
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
@@ -827,7 +827,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG Text (full width) -->
+    <!-- END: WYSIWYG Text -->
 
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
@@ -1109,7 +1109,7 @@
     <!-- START: Quote Block -->
     <mj-section
       css-class="quote-block block"
-      background-color="#FFFFFF" padding="32px 16px 0"
+      background-color="#FFFFFF" padding="32px 16px 16px"
     >
       <mj-column data-no-width-toggle width="480px" padding="0">
         <mj-image

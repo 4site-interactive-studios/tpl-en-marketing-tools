@@ -660,6 +660,11 @@ Two caveats that belong with the number:
   the gap is tiny: the TPL all-blocks catalog is 365,219 characters and
   365,254 bytes — 35 bytes, from 13 em-dashes and 3 emoji.)
 
+The importer flags this for you: it projects shell + every block and reports
+`info` past 285,000, `warning` past 299,760, and never an error — a catalog
+library is expected to exceed a budget no single email spends (conventions.md,
+"Message size is advisory, never enforced").
+
 **Working ceiling: 285,000 bytes.** About 5% of headroom, or roughly two
 average blocks (the TPL catalog averages 7,394 bytes per block) — enough
 that a couple of edits cannot walk a passing template into a failing one,

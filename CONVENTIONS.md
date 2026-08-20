@@ -244,6 +244,12 @@ KEPT, because they are function rather than prose:
 - **Anything inside `<style>` or `<script>`**, where a legacy `<!--` is
   part of the sheet, not a note about it.
 
+Blank-line runs in the head collapse to a single newline — both the gaps a
+strip leaves behind and the ones MJML's own compile leaves between
+`mj-head` children (the gap after the `lte mso 11` conditional). Safe only
+because `<style>` and `<script>` are masked out first: inside a sheet a
+blank line is formatting, not a gap.
+
 Only the FIRST `<head>` is processed, and the body is left byte-identical
 — block comments (`<!-- START: … -->`, the `- Not Displayed` markers) are
 untouched, and the segmenter still depends on them.
@@ -254,6 +260,27 @@ clarity, not byte budget. This matters because the budget is real
 elsewhere: EN rejects a message whose `contentHtml` exceeds a measured
 **299,760 bytes** with `{"message":"Message contentHtml too long"}`
 (2026-08-20 — see the authoring guide for the full measurement).
+
+## Message size is advisory, never enforced
+
+`validateMessageSizeBudget` (`src/core/validate.ts`) projects the delivered
+message — shell plus EVERY block — and flags it against EN's measured
+`contentHtml` ceiling. **It never raises an error** (2026-08-20, user
+decision): a real email draws on a SUBSET of the library, so the projection
+is a ceiling rather than a prediction, and a catalog template is expected to
+exceed it.
+
+| Projected bytes | Level | Reading |
+| --- | --- | --- |
+| ≤ 285,000 | silent | comfortable |
+| > 285,000 | `info` | inside the headroom band; worth tracking as the library grows |
+| > 299,760 | `warning` | an email using every block would fail to save |
+
+The point is that an EN Marketing Tools or Marketing Automations buildout
+meets the limit while there is still room to plan around it, rather than at
+the moment a save 400s behind an error message that says nothing about size.
+Bytes are UTF-8, matching how the ceiling was measured
+(`EN_CONTENT_HTML_LIMIT` / `EN_CONTENT_HTML_TARGET`, guide §2f).
 
 ## Geometry guard — what never gets a spacing field
 

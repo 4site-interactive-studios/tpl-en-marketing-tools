@@ -409,10 +409,10 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Text Blocks -->
 
-    <!-- START: WYSIWYG Text (full width) -->
+    <!-- START: WYSIWYG Text -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="0 32px"
+      background-color="#ffffff" padding="0 32px 16px"
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
@@ -447,7 +447,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG Text (full width) -->
+    <!-- END: WYSIWYG Text -->
 
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
@@ -492,7 +492,7 @@
     <!-- START: Quote Block -->
     <mj-section
       css-class="quote-block block"
-      background-color="#FFFFFF" padding="32px 16px 0"
+      background-color="#FFFFFF" padding="32px 16px 16px"
     >
       <mj-column data-no-width-toggle width="480px" padding="0">
         <mj-image
@@ -1007,6 +1007,50 @@
       </mj-column>
     </mj-section>
     <!-- END: Images 3x1 -->
+
+    <!-- START: Video Block (full-bleed) -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="110px 0 110px">
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px">
+          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+        </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Block (full-bleed) -->
+
+    <!-- START: Video Block (inset) -->
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. It used to be a second, nested wrapper so the frame could stay #ffffff, but mj-wrapper inside mj-wrapper is invalid MJML; the frame is now the fallback colour instead (2026-08-19). -->
+    <mj-wrapper css-class="block" background-color="#362229" padding="16px 48px 0">
+        <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="90px 0 90px">
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="454px">
+            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+    </mj-wrapper>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 48px 0">
+      <mj-column vertical-align="middle">
+        <mj-text align="right" mj-class="caption" padding="0">
+          <span>Video by Videographer&rsquo;s Name, AGENCY</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Block (inset) -->
 
     <!-- START: Category — Image & Text Layouts -->
     <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Text and Images"></mj-raw>
