@@ -1,610 +1,900 @@
-# Project Retrospective: TPL Email Templates and Email → EN Marketing Tools
+# Project retrospective — the TPL email system
 
-**Client:** Trust for Public Land (TPL)  
-**Period:** May 25 to August 20, 2026  
-**Prepared:** August 20, 2026, by 4Site Studios, from the project's own documentation, commit history, and audit ledgers  
-**Audience:** the whole team
+**A snapshot of the project as of 2026-08-20, prepared by 4Site Studios. This
+document is not maintained and it is not a contract.** For the rules as they
+stand today, read [CONVENTIONS.md](CONVENTIONS.md) and
+[MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md) — the mirrors at this
+repo's root, whose canonical copies live in the private converter repo and are
+enforced before every commit. What follows is a record of how we got there —
+written down while the reasoning was still recoverable.
 
-This is a point-in-time snapshot, not a governing document. The counts below
-were true on August 20, 2026 and will drift as the catalog evolves; the live
-numbers come from the build, not from this file.
-
-The work spans two repositories: this one, which holds the TPL templates,
-and a private one holding the converter app and the canonical
-documentation. Everything through "How the SOPs got codified" is written
-for everyone. "What we measured about Engaging Networks" onward is
-technical, and the appendix is for whoever runs the next project like this
-one.
-
-### Terms used here
-
-| Term | Meaning |
-| :--- | :--- |
-| MJML | Mailjet Markup Language, the source format our emails are written in; it compiles to the tangled HTML email clients need |
-| Engaging Networks (EN) | the platform TPL uses to send email; Marketing Tools is its drag-and-drop email builder |
-| Block | one reusable piece of an email (a hero, a button row, a footer) that editors stack to build a message |
-| Replacement | EN's term for an editable field on a block (a headline, a color choice, a spacing menu) |
-| Autoresponder | an email EN sends automatically in response to an action (here, donation thank-yous) |
-| Probe | a temporary test email built to measure one specific platform behavior on a real send |
-| Email on Acid | a service that renders one email across dozens of real email apps and returns screenshots |
-| Linter | an automated check that scans files for known mistakes |
-| Build | the automated process that turns MJML source into finished email files, running every check along the way |
-| Mirror | an auto-generated copy of a document kept in a second repository, never edited directly |
+Findings carry the date they were measured wherever the record has one. Where a
+finding was later corrected, the correction is shown alongside it rather than in
+place of it.
 
 ---
 
-## The short version
+## How to read this
 
-Email design is fragile. The same message renders differently in Outlook,
-Gmail, and Apple Mail, in light mode and dark mode, on desktop and phone,
-and the platform that sends it rewrites the code in transit. Our answer was
-a system where the hard problems are solved once, in the template, and
-editors work inside guardrails that make the safe choice the only choice.
+| If you are… | Read |
+| :-- | :-- |
+| Anyone on the team | **Part 1** — plain language, no code, ~10 minutes |
+| A developer or template author | **Part 1 + Part 2** |
+| Picking up the work, or curious how we got things wrong | **Appendix A**, the post-mortems |
+| Looking for where a specific rule lives now | **Appendix B**, the pointer map |
 
-Over three months we built two products and, along the way, a third thing
-nobody scoped.
-
-**A complete email design system for TPL.** 134 authored block variations,
-delivered as 67 building blocks in Engaging Networks across 9 categories
-(heroes, text, buttons, images, engagement, signatures, footers, and
-more). Related variations of the same block fold into a single block's
-dropdown choices, so editors see fewer, more capable blocks. Alongside the
-catalog: a 56-block master template and two donation thank-you
-autoresponders. Where this project started, the previous export held 18
-blocks in a single folder.
-
-**A converter app: Email → EN Marketing Tools.** A browser-based tool that
-reads our email source code and generates everything Engaging Networks
-needs automatically, including every editable field an editor sees (a
-"Replacement," in EN's vocabulary). Colors become brand-palette dropdowns
-for text, backgrounds, and borders, so off-brand colors cannot creep in
-through everyday edits. Spacing comes from a named menu (None, Half,
-Single, Double, Triple, Quadruple), so editors adjust breathing room but
-cannot break the typography, because no free-type field exists that could.
-The template itself declares its expectations (brand palette, spacing
-scale, width presets) in one comment at the top of its source, so pointing
-the converter at the next client's templates needs no converter changes.
-What used to be hand-built and error-prone is now generated, verified
-control by control, and repeatable.
-
-**A measured knowledge base of how Engaging Networks actually behaves.**
-This is the thing nobody scoped. The platform transforms email code
-between "save" and "send" in ways its documentation does not describe. We
-measured that behavior with purpose-built test files sent through a real
-account, recorded every verdict, and turned the findings into rules the
-tools now enforce. One finding is written up as a formal bug report for
-Engaging Networks, with a reproducible proof of concept attached.
-
-The lasting value is not just the templates. It is that the standard
-operating procedures for moving MJML email into EN Marketing Tools now live
-in documents, tests, and automated checks rather than in anyone's head.
-
-The system went live in TPL's Engaging Networks account on August 18, and
-editors are building emails with it now. A short list of known gaps
-remains. None of them blocks daily use, but two are worth knowing before
-client conversations: the footer's social icons can vanish in Outlook's
-dark mode, and the Steps Block colors fall short of accessibility contrast
-guidelines. Both are tracked under "What's still open."
+A glossary sits at the end. For what the system *is* today rather than how it
+was built, the companion tour is `docs/overview-for-colleagues-detailed.md` in
+the converter repo.
 
 ---
 
-## How it unfolded
+# Part 1 — For everyone
 
-The two repositories carry 495 commits between May 25 and August 20, 2026.
-Five phases stand out.
+## The problem we set out to solve
 
-**Late May to mid June: bootstrap.** The catalog began as a re-skin of
-Engaging Networks' stock template and was rebranded for TPL on June 11.
-The early commits are terse and hand-built ("create more blocks", "dark
-mode improvements").
+Trust for Public Land sends email through Engaging Networks. EN's Marketing
+Tools lets an editor assemble an email from reusable **blocks** — a hero, a
+story card, a footer — and customize each one through fields shown beside it.
 
-**July: from mockup to system.** The catalog gained its naming grammar,
-its categories, and the in-page debug toolbar that lets anyone QA the
-library in a browser. The converter app's first commit landed July 15.
+Two things make that harder than it sounds.
 
-**Late July to early August: the contract era.** The template began
-declaring its own expectations (spacing scale, width options, brand
-palette) in a machine-readable comment, and the converter learned to read
-them. The conventions document was written and mirrored publicly. This is
-the point where the two projects stopped being two projects.
+**Email is genuinely fragile.** Every mail client renders the same HTML
+differently, and the differences are not cosmetic. Outlook on Windows uses
+Microsoft Word as its rendering engine and ignores whole categories of modern
+CSS. The Gmail app rewrites colors on its own. Apple Mail, Outlook.com, and
+Gmail's web client each honor a different subset of dark-mode techniques. A
+design that looks correct in a browser can be unreadable in an inbox.
 
-**August 6 to 15: measurement.** The tone of the work changed here.
-Instead of asserting how Engaging Networks behaves, we started measuring
-it, with probe emails sent through the real account and read across 15
-email apps. Most of the durable knowledge in this document was produced in
-these ten days, and several confident beliefs did not survive them.
+**Free-text fields break layouts.** The moment an editor can type any number
+into any field, typography drifts, spacing goes off-grid, and colors leave the
+brand palette. Not through carelessness — through the ordinary act of filling
+in a box that accepts anything.
 
-**August 17 to 20: industrialization.** Everything learned became
-something automatic: linters, pixel audits, content versioning, byte
-budgets. Nearly half the converter's commits (111 of 228) landed in these
-four days, and the system went live on August 18.
+Before this project, getting a block library into EN meant configuring each
+block by hand in the EN interface: naming it, filing it, defining every
+editable field one at a time, uploading a thumbnail. Slow, and impossible to
+keep consistent across a hundred-odd blocks.
 
----
+## What got built
+
+Three things, in two repositories.
+
+**A template library.** Emails are authored in MJML, a shorthand that compiles
+into the nested tables email actually requires. Rather than one-off emails, we
+maintain a catalog of blocks — each one a complete, tested design with mobile
+stacking, dark-mode behavior, and Outlook workarounds already built in.
+Alongside the catalog: a 56-block master template, and two donation thank-you
+autoresponders assembled from the same blocks.
+
+**A converter app.** A private, browser-only tool. Point it at the template on
+GitHub and it compiles the MJML, splits it into blocks, reads the design intent
+the template declares about itself, and writes the exact JSON that EN imports —
+named, filed into folders, with real rendered thumbnails, and with every
+editable property already turned into a typed field. The manual per-block
+configuration became a single import of the whole library.
+
+**Two written contracts.** A conventions document that defines exactly how the
+converter behaves, and a portable authoring guide that carries everything we
+measured about EN and email clients. Both are mirrored publicly so that anyone —
+or any AI agent — working in a template repo can read them without access to the
+private code.
+
+## The timeline, in five phases
+
+The two repositories together carry **495 commits between 2026-05-25 and
+2026-08-20**.
+
+**Phase 1 — Bootstrap and rebrand (late May → mid June).** The template started
+life as another client's design and was re-skinned for TPL on 2026-06-11. Early
+commits are terse and hand-built: *"create more blocks"*, *"dark mode
+improvements"*. The fossils of the original are still in the repo.
+
+**Phase 2 — From a mockup to a library (July).** The catalog becomes a system:
+a naming grammar, categories, and a built-in debug overlay that lets anyone QA
+the whole library in a browser without reading code. The converter app itself
+starts on 2026-07-15.
+
+**Phase 3 — The contract arrives (late July → early August).** The template
+begins declaring its own expectations — its spacing scale, its width options,
+its brand palette — in a machine-readable comment, and the converter reads them.
+The conventions document is written and mirrored publicly. This is the point
+where the two projects stop being two projects.
+
+**Phase 4 — The measured-behavior era (2026-08-06 → 08-15).** The tone changes
+completely. Commits stop asserting things about Engaging Networks and start
+measuring them. We build **probes** — small emails whose only job is to test one
+claim through a real send — and read the results across 15 email clients. Most
+of the durable knowledge in this project was produced in these ten days, and
+several confident beliefs were disproved.
+
+**Phase 5 — Industrialization (2026-08-17 → 08-20).** Everything learned gets
+turned into something automatic: build-time lints, pixel-level audits, content
+versioning, byte budgets. Nearly half the converter's commits — 111 of 228 —
+land in these four days, and the system goes live in TPL's account on
+2026-08-18.
+
+## The five things we'd tell another team
+
+1. **Measure the delivered email, never the build.** What your compiler produces
+   is a hypothesis. The platform rewrites it on the way out, and clients rewrite
+   it again on the way in. More than one "obvious" root cause in this project
+   died the moment we looked at what actually arrived in an inbox.
+
+2. **Give editors bounded choices, not blank boxes.** Nearly every field the
+   converter generates is a dropdown of vetted options. There is deliberately no
+   free-text spacing field anywhere in the system. Editors can adjust breathing
+   room; they cannot break the typography, because no field exists that could.
+
+3. **The element above owns the gap below it.** All vertical space lives on
+   bottom margins, on a closed named scale. If A owns the gap below it, then
+   A+B and A+C both look right. If B owns the gap above it, every new pairing
+   is a new bug.
+
+4. **Never ship a control that does nothing.** A dropdown whose options change
+   nothing teaches an editor that the controls are decorative. We built a system
+   that renders every option of every dropdown and compares the pixels, so
+   "this control does nothing" is a measurement rather than an opinion.
+
+5. **Write the rule down where a machine can check it.** A convention that lives
+   only in someone's head — or in a chat log — is already lost. Three separate
+   times, the same stale flag was found, removed, and found again, because the
+   rule against it was prose. It stopped recurring the day it became a build
+   check.
 
 ## By the numbers
 
-| Measure | Where it stands |
-| :--- | :--- |
-| Project span | May 25 to August 20, 2026 (88 days), with the converter built in the final five weeks |
-| Commits | 495 across the two repos during the project (267 template, 228 converter) |
-| Authored blocks | 134 variations, delivered as 67 importable EN blocks in 9 categories |
-| Master template | 56 blocks, plus 2 autoresponders of 7 blocks each |
-| Converter app | version 59 (59 shipped iterations in about a month); roughly 22,700 lines of application code |
-| Automated tests | 772 tests across 35 files, roughly one line of test code for every line of core converter code |
-| Iteration ledger | 152 versioned artifacts; the template shell at version 32, the shared stylesheet at version 16 |
-| Written contracts | a 2,562-line converter contract and a 1,490-line portable authoring guide, mirrored into this repo |
-| Probe instruments | 22 archived across the two repos, every claim measured on real EN sends |
-| Heaviest QA day | 8 Email on Acid rounds and 120 screenshots across email apps (Outlook, Gmail, Apple Mail, and more), all read on August 11 |
-| Go-live control audit | 1,027 dropdowns verified across 11,108 rendered screenshot comparisons |
-| Automated guardrails | doc linters that verify every cited fact still matches the code, a catalog scan for known defect patterns, three in-app audit systems, and automatic version syncing |
+| | |
+| :-- | :-- |
+| Project span | 2026-05-25 → 2026-08-20 (88 days) |
+| Commits, both repos | 495 (267 template · 228 converter) |
+| Blocks in the source catalog | 144 named block entities (134 content blocks, plus the page wrapper and 9 category dividers) |
+| Blocks shipped into EN | 67 canonical blocks in 9 folders (variants collapse into dropdowns) |
+| Master template | 56 blocks; plus 2 autoresponders of 7 blocks each |
+| Converter app | ~22,700 lines of production code, 772 automated tests, **zero backend** |
+| Published contracts | 2 documents, 4,052 lines, mirrored byte-for-byte to a public repo |
+| Version ledger | 152 versioned artifacts; the template shell at v32, the shared stylesheet at v16 |
+| Probe instruments built and archived | 22 (12 platform probes, 10 rendering probes) |
+| Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders |
+| Editor controls proven live or dead by pixel comparison | 1,027 dropdowns, 11,108 renders (2026-08-18) |
+| Stale markup annotations removed after proving they changed nothing | 8,376 |
+| Automated guards now standing | 4 audit engines, 3 linters, 1 byte budget |
 
 ---
 
-## What we built
+# Part 2 — For the technical reader
 
-### The TPL template system (this repo)
+## What we learned about Engaging Networks
 
-The source of truth is MJML in this repository, not the code stored inside
-Engaging Networks. Every block is fenced by START and END comment markers
-that survive compilation. Each block's name follows a fixed grammar,
-family first and qualifiers after, so tools can read every variant's
-relationship to its family. The debug toolbar (described below), duplicate
-detection, and the mapping between source and compiled output all run off
-those names.
+EN's Marketing Tools is not documented at the level this work required, so the
+findings below were produced by controlled sends: a probe email carrying labeled
+variants, sent through a real EN account, with the delivered HTML fetched and
+compared byte-for-byte against what we shipped.
 
-The catalog's highest-leverage authoring convention is bottom-only pacing:
-all vertical space between elements belongs to the element above it, drawn
-from the closed spacing scale. Any two blocks stacked in any order keep
-the right rhythm, which is what makes a block library safe to hand to
-editors in the first place.
+### The CSS inliner always runs, and it cannot be turned off
 
-The build compiles each source page twice: a local debug copy with the
-inspection toolbar kept in, and a paste-ready live copy with absolute asset
-URLs and every script stripped. Neither is what the converter reads; it
-consumes the raw MJML, and rejects compiled HTML with a plain-English error
-so nobody can feed it the wrong artifact.
+Confirmed with Bryan 2026-08-05. *An earlier version of the conventions document
+wrongly told agents to disable it* — that correction is preserved in the doc
+because the wrong version had already been read.
 
-The in-page debug toolbar deserves a mention because it changed how QA
-worked: designers, reviewers, and the client can outline every block, view
-all variants of a family side by side, hide everything that won't import,
-and even draft copy edits that export as a structured change request.
-Nobody reads code to check the work.
+A 14-construct probe (2026-08-07, two rounds) produced the verdict table now in
+the conventions document. The headlines:
 
-Dark mode got a three-part treatment, one technique per family of email
-apps. Every transparent logo or lettering asset that renders as a regular
-image also carries a contrast outline traced from the artwork's own
-silhouette; the treatment is scripted and covers 14 assets. The rim is
-invisible on the intended background and becomes the contrast border when
-an email app inverts the surface without touching the image. That one technique is why the artwork survives dark mode in
-apps we cannot reach with code at all. (The four footer social icons
-render through a different component and missed the outline pass; they are
-the known exception, tracked under "What's still open.")
+| Construct | What EN does |
+| :-- | :-- |
+| A plain rule | Inlined onto the element, rule removed |
+| `@media (prefers-color-scheme: dark)` | **Kept verbatim** — dark mode survives |
+| `@media only screen and (max-width: 480px)` | Kept — mobile rules survive |
+| `[data-ogsc] .x` at top level | **Dropped** — the Outlook.com dark branch is lost |
+| `[data-ogsc]` nested inside a conditional media query | **Kept** — this is the rescue |
+| `div[class="x"] { … !important }` | Inlined, and **`!important` is stripped** |
+| A rule matching nothing | Pruned |
+| An MSO conditional comment | Kept intact |
+| Any rule nested in a media query | Kept, not inlined |
 
-### The converter app (private repo: email-to-en-marketing-tools)
+The operative consequence: **a conditional media query is EN's "do not touch"
+wrapper.** Anything that must survive as a rule rather than an inline style goes
+inside one. Two corollaries bit us later — a media-query rule that must beat a
+base rule needs `!important` of its own, and any `!important` you wrote on an
+inlinable rule is gone by the time it lands.
 
-A client-side web app with no backend: point it at the MJML on GitHub and
-it fetches the source, detects the blocks, and generates the import files
-Engaging Networks needs, with every editable field typed, named, grouped,
-and ordered by convention. It also produces the thumbnails and image
-archives EN wants, generates a RAW HTML utility block as a sanctioned
-escape hatch for one-off embeds, and validates everything before export
-(orphaned tags, off-scale spacing, editor-unsafe styles, oversized
-stylesheets).
+Timing matters as much as behavior: the inliner is a **send-time transform**. The
+stored template keeps your source verbatim, so exports round-trip your source —
+and every verdict describes what reaches the client, not what EN stores. An
+export proves nothing about what a recipient gets.
 
-Its defining decision: everything is editable by default, with deliberate
-exceptions. The email's title and preview text belong to each send, not
-the template, so the converter strips them rather than minting fields that
-would go stale. Accessibility is part of the defaults too: every image
-exposes an editable alt-text field (empty is allowed for decorative art),
-and the converter removes a compiler artifact that would otherwise make
-screen readers announce the entire email as one long string.
+### The block editor HTML-escapes `>` inside an HTML-type Replacement
 
-The other half of that decision: every control must be real. A generated
-field that does nothing when changed is treated as a defect. Three audit
-systems enforce this empirically:
+The flagship finding, and the most damaging.
 
-- an inert-dropdown audit that renders every block, every dropdown, every
-  option at two viewport widths and compares the pixels; the go-live sweep
-  covered 1,027 dropdowns across 11,108 renders, and the audit now also
-  tests three copy lengths, because short placeholder text can make a live
-  control look dead
-- a dark-mode image audit that classifies every light/dark image pair from
-  its actual pixels
-- a dead-switch audit that removes each authoring marker from the source
-  one at a time and regenerates the output, proving every marker still
-  does something; any that do nothing get deleted instead of lingering as
-  folklore (a retired annotation vocabulary went out this way, all 8,376
-  instances stripped after the audit proved removal changed zero generated
-  fields)
+An HTML-type Replacement was holding a block's `<style>` element. Import was
+clean. Send was clean. But a block that had been through EN's editor shipped with
+`>` rewritten as `&gt;`. Because `<style>` is a raw-text element in the HTML
+standard, `&gt;` is never decoded back — it stays five literal characters, the
+selector becomes invalid CSS, and the client's parser discards the rule silently.
 
-The conventions the generator follows are not folklore either: 772
-automated tests encode them, and the contract document records the "why"
-behind every one, dated, with the decision that produced it.
+The damage pattern is what made it hard to see. Dark-mode rules come in pairs:
+`.block p` sets the text color and uses a descendant selector, so it survived;
+`.block > table` repaints the background and uses a child combinator, so it died.
+Half of each pair lived. The result was **white text on a white panel** — and on
+iOS Mail, entire content blocks rendering blank.
 
-TPL also received a client-facing manual, roughly 1,850 lines, covering
-the template, every block and its editable fields, and how the system is
-maintained and extended.
+Pinned by four controlled sends (2026-08-13): the trigger is an **edit**. Import,
+send, and an untouched open-and-save round trip are all clean and byte-identical.
+The escape persists only for a field that was actually modified and resubmitted.
+Scope is narrow — in the same sends, six child combinators living in ordinary
+block markup came through raw every time. EN's separate CSS Editor surface was
+cleared on 2026-08-18.
+
+Two measurement traps cost a full send round each, and are worth knowing about
+for any similar investigation: **EN prunes rules that match nothing**, so a canary
+selector aimed at a non-existent class vanishes and reads as a pass; and **a plain
+rule is inlined**, which dissolves the very selector you were trying to inspect.
+
+Two fixes shipped. Ours: `styles.css` was rewritten to contain **zero child
+combinators**, with measured attribute-selector stand-ins documented in the guide.
+Theirs: a bug report with an importable proof-of-concept block, written and ready
+to submit.
+
+### EN's Content editor is ProseMirror, and the first keystroke rewrites your markup
+
+Measured 2026-08-19 with paired blocks from a single import — one copy given a
+null edit in every field (click in, type a character, delete it, save) and its
+never-opened twin left alone. Any difference could only have been introduced by
+the editor.
+
+| What you author | What the editor leaves |
+| :-- | :-- |
+| Bare copy, or a lone `<span>` | Wrapped in one `<p>`; spans and classes survive |
+| `<span style="font-weight:700; color:#362229">` | Re-expressed as marks — `<strong>`, color as `rgb()` |
+| An inline element with a property that has no mark (`font-family`, `background-color`, `display`, `border-radius`) | **That property is dropped** |
+| A `<p>` that is already there | **Unchanged — the transform is idempotent** |
+| `<a href target rel style>` | **`rel` and `style` stripped**; `href` and `target` kept |
+| An MSO conditional comment | **Destroyed** |
+
+Three things follow.
+
+The injected paragraph carries no inline style, so the stylesheet's `p` rule wins
+and a 10px caption ships at 16px. EN's inliner then bakes that winning rule onto
+the element as an inline style — `inherit` included — and inline `inherit` is
+exactly the construct Outlook's Word engine cannot be relied on for.
+
+Because the transform is **idempotent**, the fix is to pre-apply it. The converter
+now wraps values at generation time so the editor's first edit changes nothing.
+Verified end to end (23 values wrapped, 132 already block-level, 2 failed open) and
+proven pixel-identical to the unwrapped rendering.
+
+**Node versus mark** turned out to be the predictive model. ProseMirror treats a
+link as a mark, rebuilt from a fixed attribute set, while `span` and `p` are nodes
+that keep their attributes. So an RTE-embedded link can only be styled from an
+ancestor class — which is now the sanctioned pattern, verified to survive both
+storage and delivery. The catalog's rich-text values now hold zero styled
+anchors; link color moved to ancestor classes (2026-08-19).
+
+### Template edits do not reach emails that already exist
+
+An EN template change — including its fields — does not propagate into drafts
+built from it. Any email using that template must be rebuilt from scratch.
+
+This one platform limitation is the entire reason the **Template Styles block**
+exists. CSS is the part of a template that most often needs a post-hoc fix, so we
+ship the head stylesheet as a *block* instead. A CSS fix becomes a block swap
+rather than an email rebuild.
+
+### Smaller platform behaviors, each measured
+
+- **One value, several carriers.** A single `mj-section background-url` compiles
+  into four places: an inline `background:`, a table `background=` attribute, a
+  second `url()` inside that table's style, and `v:fill src` in the MSO
+  conditional. Miss the CSS ones and Outlook shows the new photo while everything
+  else shows the old one. This cost a full QA round.
+- **EN rebuilds a table's `background` shorthand** and drops the `url()`. The
+  leftover shorthand then *resets* the background in CSS clients, overriding both
+  the `bgcolor` and legacy `background=` attributes. A full-width section has no
+  div carrier at all, so after EN it renders blank in Gmail, Apple Mail, and iOS.
+  **Never author a full-width section with a background image for EN.**
+- **Same-condition `@media` blocks merge into the first occurrence's position**
+  (2026-08-19). Any cascade depending on source order is silently inverted.
+  Matching is textual, so `(max-width:599px)` and `(max-width: 599px)` are
+  different conditions — which is now used deliberately to keep two blocks apart.
+- **EN splits comma-separated selector groups into individual rules**, so one
+  authored group can end up half-alive.
+- **EN re-prints head CSS at send: 1.30× the authored bytes.**
+- **EN ingests a stylesheet once per `<style>` wrapper.** A doubled wrapper
+  delivered two full copies — 24,952 bytes, over the Gmail cliff. Removing it took
+  the same send to 13,325.
+- **EN injects its own preheader** from each email's Preview Text setting, so a
+  template-baked one doubles up in inbox snippets. An earlier `preview_text` field
+  was shipped and reverted the same day once a send test disproved the assumption.
+- **EN strips `<title>` and the `aria-label` MJML mirrors onto the body wrapper.**
+  Removing it is an accessibility gain, not a loss — a screen reader was otherwise
+  announcing the entire body as one string that only repeated the title.
+- **Sends read block content live**, not from a build-time snapshot (2026-08-19).
+  Methodologically important: a storage-versus-delivery comparison needs no
+  rebuild to be valid.
+- **Replacement nesting resolves recursively**, measured to three levels in a
+  real send (2026-08-09) with zero literal tags leaking through, and the same
+  block added twice keeps independent field selections per instance.
+
+## What we learned about email clients
+
+### Gmail drops head CSS by size, and it drops it whole
+
+Measured 2026-08-18 as a controlled pair. A real send delivering **28,331 bytes**
+of head CSS had its entire `<style>` ignored — the mobile rules sitting at byte
+offset 12.4K did not apply, well before any truncation point, because the drop is
+all-or-nothing. A 715-byte probe kept everything.
+
+The cliff sits at **16,384 bytes**. It is not mobile-only: Gmail desktop webmail
+in Chrome showed the identical pair. Every Gmail surface shares the sanitizer.
+
+Two consequences are now permanent. We **budget the delivered CSS, not the
+authored CSS** — with EN's 1.30× re-print factor, a working target of 14,000
+delivered bytes, and a build-time lint that flags the catalog when the estimate
+crosses it (the linters warn rather than fail by contract; the working rule is
+that a clean build prints zero warnings). And the deeper armor is an
+inline-first doctrine: the no-CSS rendering of every element should already be
+the correct *mobile* rendering, so a dropped stylesheet degrades rather than
+breaks.
+
+The budget is a real ceiling with a ledger. The stylesheet sat roughly 50 bytes
+clear until 2026-08-20, when deleting a retired width ladder returned about
+1,325 delivered bytes — the estimate now stands at 14,997 against the 16,384
+cliff, about 1,387 bytes of headroom for whatever comes next.
+
+### Dark mode reaches most clients, and two important ones not at all
+
+Only two hooks survive EN: `@media (prefers-color-scheme: dark)`, and
+`[data-ogsc]` nested inside a conditional media query.
+
+**The Gmail app on Android and Outlook 2021 on Windows expose neither** — and they
+transform in opposite directions. Gmail darkens light designs; Outlook desktop
+also *inverts* dark ones, flipping a `#000000` footer to a white background while
+leaving its light-green logo and white icons untouched. `bgcolor` attributes buy
+no protection; a panel colored with the attribute inverts identically to one
+colored with CSS.
+
+**Images are never recolored by either client. That is both the failure mode and
+the defense.** The accepted end state for Outlook desktop dark mode is to let it
+invert and make the artwork survive the inversion — which produced a scripted
+contrast-outline treatment that adds an opposite-polarity rim to every transparent
+PNG whose ink depends on its background, applied across 14 assets.
+
+Two measured surprises are worth recording together. First, **a mercy**: an
+authored light ground with no dark hook at all rendered dark and legible in all
+five dark-capable clients of the test matrix. The white-on-white failure predicted
+from the local build never reached an inbox — dark-mode claims must be measured on
+delivered HTML, never on the compiled build. (One email, one round: strong
+evidence, not a license to delete hooks.) Second, **the mercy's hard limit**: our
+own dark rule painted an opaque black lid over every background-photo hero in
+Apple Mail dark and Outlook.com dark. Clients rescue what EN delivers, but they
+honor *your* dark CSS as intent. Fixed with an equal-specificity exemption for
+image blocks, confirmed across all five hero shapes.
+
+### Outlook's Word engine, and things we chose to accept
+
+- **A section carrying both a background color and a background image renders as a
+  flat slab** in Outlook 2021 and Microsoft 365 on Windows. MJML copies the color
+  onto the Outlook `v:fill` as `color=`, and Word paints that instead of the photo.
+  It renders correctly on Outlook for *Mac* and everywhere else — which is why the
+  failure looked inconsistent for so long. Fixed by moving the fallback color onto
+  a wrapper behind the section, across 25 sections, and now guarded by a build
+  lint.
+- **Outlook renders every button square.** It ignores `border-radius` on table
+  cells. Accepted as graceful degradation; VML roundrect wrappers were explicitly
+  rejected because they break the converter's label and color bindings and bloat
+  every block.
+- **Word ignores CSS box geometry on spans** — `display:inline-block`, `width`, and
+  `height` all die.
+- **`line-height: 0` is a trap.** Correct in every browser and byte-identical
+  across desktop and mobile — and Word honors it, rendering every hand-rolled pill
+  as a thin bar with invisible label text. Reported and reverted the same day.
+
+### The gutter finding
+
+A QA round read Gmail on Android as shrinking two-column story cards. Four probe
+rounds disproved it: **there is no column-shrink bug.** A Pixel 10 reports 1080
+device pixels at a 3× ratio, so Gmail lays out at roughly 333 CSS pixels; a card
+loses 80 of them — a quarter of the width — to section and column gutters. The
+model predicted 252.7px against a measured 251.0px, while the competing
+"shrink" model was off by 17.7px.
+
+The shipped fix took mobile imagery flush to the edge, moving an image from 262.7
+to 326.0 CSS pixels with the desktop rendering byte-identical. The lesson
+generalized into the guide: **diagnose gutters before restructuring columns.**
+
+## What we learned about designing editor controls
+
+The converter is opinionated, and every opinion below was an explicit decision
+rather than an implementation accident.
+
+- **Free numbers are the exception, not the rule** (dev call, 2026-07-20). Editors
+  pick named options. The sanctioned free-number fields are a short list — image
+  width, font size, line height, letter spacing, border radius. Spacing, padding,
+  and height never appear as free text.
+- **A closed spacing scale.** None / Half / Single / Double / Triple = 0 / 8 / 16 /
+  32 / 48px, with the pixel value in the label — and TPL's template extends it
+  with Quadruple (64px) through the contract comment. Off-grid authored values
+  snap to the nearest step, ties rounding up, with the original preserved so
+  deleting the field restores the source byte-exact. There is no per-field
+  "Original" escape hatch, because an escape hatch is how a scale stops being a
+  scale.
+- **Bottom-only pacing**, for the reason in Part 1. Columns never carry bottom
+  padding. A later exception proves the rule: a caption owns the gap *above*
+  itself, so hiding the caption removes the gap with it instead of stranding white
+  space under the photo.
+- **A geometry guard.** Padding above a declared reach (64px by default) is design
+  geometry, not pacing, and gets no field at all — never a free-text fallback. The
+  350px reserve behind a hero photo stays locked.
+- **Inert controls are suppressed, and the suppression explains itself.** Where a
+  field would do nothing — padding a fixed layout ignores, or a value whose only
+  occurrences sit inside an Outlook conditional and would silently desync every
+  other client — no field is generated, and an informational note records why.
+  These are *info*, not warnings, because the source is correct as written.
+- **Labels lead; merge tags follow.** This was a reversal. The original contract
+  kept machine names byte-stable while labels moved, and the two vocabularies
+  drifted apart. The 2026-08-19 rework made names follow labels through a single
+  shared resolver, at the cost of a catalog-wide rename and one version bump per
+  block, so the panel and the tags can no longer disagree.
+- **Display is always first** in its group — it decides whether the rest of the
+  group even matters. Field order within a section runs Visibility → Primary
+  content → Appearance → Dimensions → Position → Spacing.
+- **Colors are always dropdowns.** Every color in the template is collected into a
+  brand palette, grouped by role, ordered perceptually, and vanity-named. Editors
+  do not type hex codes and off-brand colors cannot creep in through everyday
+  edits (the one documented exception: compound border values stay plain text,
+  because a compound value cannot be a dropdown).
+- **Alt text is universal.** Every image mints an editable alt-text field — real
+  copy for meaningful images, empty allowed for decorative art, never a label
+  that narrates chrome to a screen reader. The per-image opt-in annotation this
+  replaced was retired across 262 instances.
+
+## What we learned about how to work
+
+This is the part that generalizes beyond email.
+
+**Documents as contracts, checked by a machine.** Two documents are treated as
+published contracts rather than internal notes, re-read against the full diff
+before every commit, and mirrored byte-for-byte into a public repo so agents
+working elsewhere can fetch them. A linter checks them for drift — dead file
+citations, a documented default that no longer matches the code, stale "pending"
+language, and whether each mirror still matches its source. Its docblock says it
+plainly: *every assertion encodes drift this repo actually shipped.*
+
+**Probes as instruments, with a lifecycle.** A probe is a small email built to
+test one set of claims against a real send. The rule: a probe whose every claim is
+measured and recorded is archived **in the same session that records its last
+verdict**; a probe still carrying any unverified claim stays put. Archive, never
+delete — an annotated probe is the reusable instrument for re-measuring EN when
+its behavior is suspected to have changed. Twenty-two are on the shelf.
+
+Two habits made the probes trustworthy. **Paired never-opened twins**: send the
+same block twice, edit one, leave the other alone, so any difference can only have
+been introduced by the thing you are testing. And **generate the probe's import
+file through the app's own exporter** — hand-writing that JSON is how an earlier
+probe imported silently and produced nothing.
+
+**Empirical oracles instead of reasoning.** Where a claim could be measured, we
+built something to measure it rather than argue about it:
+
+- the **Inert Dropdown Audit** renders every block × dropdown × option at two
+  viewports and compares canvas pixel hashes; a control is inert only if every
+  option rasters byte-identical to the baseline. The engine now also tests three
+  copy lengths per cell, because the go-live sweep proved short placeholder copy
+  makes live controls look dead
+- the **dead-flag check** strips a markup annotation, regenerates with identical
+  inputs, and byte-compares — if removing it changes nothing, the source should
+  not have it
+- the **dark-mode image audit** classifies each asset's ink from its actual pixels
+- the **`data-*` audit** cross-references every annotation against both repos'
+  code *and* an empirical strip-and-regenerate test
+
+The determinism rules around these matter more than the engines. Caching keys on
+the exact input and never on a digest, because a weaker key could collide. A
+baseline re-verify bypasses every cache, because a cached witness is not a
+witness. The audit self-tests at startup and **refuses to run** if raster
+determinism fails — a lying matrix is worse than no matrix. Parallelism is a
+timing knob and never a verdict knob.
+
+**Findings err in both directions.** Six controls the sweep called inert were live
+in a browser; a row reporting a control as live was wrong the other way. The rule
+became: confirm every claim, whichever way it points, *then* declare. And a
+finding can be a real defect wearing an inert control's clothes — one "dead"
+dropdown was a leftover oversized column.
+
+**The moment a rule recurs, it becomes a lint.** The same stale annotation was
+found and removed on three separate occasions before the rule moved out of prose
+and into a build check. The commit note is the lesson: *the rule now lives where
+prose cannot lose it.* Each assertion in the template repo's linters is annotated
+in the source with the specific incident that caused it — so nobody deletes a
+check without seeing what it cost.
+
+**Land a new check after the cleanup, not before.** The rich-text validator was
+deliberately built last, after the catalog was migrated. Landing it first would
+have put 45 warnings in the export panel on day one — which is how a check gets
+ignored rather than acted on. Severity was chosen by whether a workaround exists,
+not by how alarming the construct looks.
+
+**Versioning anchored to content, with git as the ledger.** Every block, partial,
+template and the app itself carry an integer version derived from a content hash,
+where the baseline is the manifest *as last committed*. Rebuilding never
+double-bumps and local iteration cannot inflate a number. Versions track what was
+edited, not what was affected downstream — a stylesheet change that alters how
+every block renders bumps only the template. The ledger now holds 152 entities;
+the template shell is at version 32, the shared stylesheet at 16, and the busiest
+single block at 12 — the churn concentrated in the shared layer, which is exactly
+where you want iteration to concentrate.
+
+**Git discipline written down after it bit us.** Parallel sessions land commits in
+both repos many times a day, so: fetch and fast-forward both before starting, never
+run a `git checkout` variant inside a scripted command, and verify the remote
+matches local `HEAD` after every push. Each of those clauses exists because of a
+specific incident (see Appendix A).
+
+**Conventions written for AI agents, not only for people.** The authoring guide
+ends with a copy-paste prompt that points an agent in any MJML repo at both raw
+mirror URLs. That is why the mirror ritual is a hard gate — a half-pushed mirror
+silently gives every downstream agent a stale contract.
+
+## Where it stands today
+
+Shipped and in use since 2026-08-18: the block catalog, the converter, the two
+contracts, four audit engines, three linters, content-hash versioning, and a
+client-facing manual (~1,850 lines) covering the template, every block and its
+fields, and how the system is maintained.
+
+Open threads, recorded rather than resolved:
+
+- The Gmail head-CSS budget has roughly 1,387 bytes of headroom against the
+  16,384-byte cliff. It constrains any future stylesheet work.
+- The EN bug report on `>`-escaping is written, with an importable proof of
+  concept, and not yet submitted.
+- The four footer social icons render through a different component and missed
+  the contrast-outline pass; Outlook desktop dark inverts the black footer and
+  they can vanish into it.
+- The go-live control audit's 64-finding backlog is deliberately unapplied
+  (none affect a sent email): roughly 30 label fixes and roughly 30
+  apparently-dead controls — with the recorded instruction to re-derive the
+  dead-control list rather than trust its count.
+- Detection of dark-mode-fragile assets shipped; automatic generation of the
+  outlined variant is designed — the rim recipe is proven — but not built.
+- One delivered email lost styling that its stored version still had. Logged as
+  **unexplained** rather than closed.
+- A palette contrast issue in the Steps Block family falls below the AA
+  threshold (white on green at 2.66:1 against a 4.5:1 floor); by user decision
+  it is held as a client-facing accessibility recommendation rather than a
+  silent change, with the exact remedy documented.
+- This repo's `README` is the one stale document in an otherwise meticulous
+  set — three months old, with live TODO placeholders, describing files that
+  have since been renamed. It is the front door for anyone arriving cold.
 
 ---
 
-## How the SOPs got codified
+# Appendix A — What went wrong
 
-The templates are one client's deliverable. The procedures are the asset
-that transfers. Four habits did most of the work.
+Technical, and deliberately unflattering. Each entry follows the same shape:
+what we saw, what we believed, what was actually true, and what now stops it
+happening again. These are the entries that taught the most.
 
-### One rule, one owner
+## Wrong root causes
 
-Four documents govern the system, each with a defined owner: the portable
-authoring guide (rules true for any MJML-to-EN project), the converter
-contract (how every field is generated), the playbook (this repo's build
-and block system), and the repo instructions (whatever the others get
-wrong locally). Both governing documents are written in the private
-converter repo and mirrored here with a "do not edit" header, re-mirrored
-on every change, because AI coding assistants and human teammates working
-here cannot see the private repo. Restating a portable rule locally is how
-it drifts; four of the defects a documentation review turned up on
-August 7 were exactly that kind of restatement.
+### 1. The dark-mode failure that had four wrong explanations
 
-The standing rule: a convention that only lives in chat history is
-considered lost. Decisions get written down the day they are made, with
-the date and the reasoning attached.
+**Symptom.** Eight Email on Acid rounds (2026-08-11, 120 renders read) showed
+iOS Mail rendering entire content blocks as white text on white panels.
 
-### Prefer a check over a sentence
+**What we believed, in order.** *Gmail strips body `<style>`* — disproven by
+probe. *The dark-mode failures are authoring bugs* — wrong as stated; the
+authored pairs were correct. *EN escapes `>` at send time* — wrong; only on an
+editor edit. *Outlook 365 for Mac is broken as a client* — wrong; clean HTML
+renders there perfectly.
 
-A count written in prose rots; a command that produces the count cannot.
-Every recurring defect class ended up as an automated assertion rather
-than a reminder:
+**What was actually true.** EN's block editor escaped `>` in CSS held in an
+HTML-type Replacement, killing the background half of every paired dark-mode
+rule while the text half survived.
 
-- `check-docs` (both repos) verifies that every file, symbol, block name,
-  and section reference a document cites still exists, that stated
-  defaults match the code, that dark-mode rules carry their required
-  override marker, and that each mirror byte-matches its source
-- `check-catalog` scans the blocks for the exact patterns that shipped
-  past defects: background color and image on the same tag, fixed-width
-  columns overflowing their frame, lowercase button labels, and a
-  stylesheet creeping toward the size at which Gmail discards all styling
-- every assertion carries a comment naming the defect it exists to catch
+**Fix.** Zero child combinators in the shipped stylesheet, with measured
+attribute-selector stand-ins.
 
-Both linters warn rather than fail the build, by design, but the working
-rule is that a clean build prints zero warnings.
+**Guard.** `validateEditorSafeCss` warns at import on any child combinator in a
+block's shipped CSS; the template repo's linter bans them at build time.
 
-### Probes are instruments, not scratch files
+**The transferable part.** Four confident diagnoses in a row, each plausible,
+each wrong, and each cheap to hold because none had been tested against a real
+send. The written "corrections to carry forward" list exists so the next session
+does not re-derive them.
 
-Every claim about platform behavior was tested with a purpose-built probe
-sent through the real account, and every probe follows a lifecycle: it
-stays with the active project files while any claim is unverified, gets
-its verdicts recorded in the docs, and is archived (never deleted) in the
-same session that records the last verdict. 22 annotated instruments now
-sit in the two archives, ready to re-run the day EN's behavior is
-suspected to have changed.
+### 2. "Gmail shrinks our columns"
 
-### Versions anchored to content
+**Symptom.** Two-column story cards looked stacked and undersized in the Gmail
+Android app.
 
-Every artifact (each block, the template shell, the shared stylesheet, each
-autoresponder) carries a version number that increases automatically
-whenever its content actually changes. Nobody edits version numbers by
-hand; the project's saved change history is the ledger. The numbers double
-as an iteration record: the template shell reached version 32, the shared
-stylesheet version 16, and the busiest single block version 12.
+**What we believed.** A column-layout bug requiring the two-column technique to
+be restructured.
 
-### The QA checklist graduated from experience
+**What was actually true.** Gutters. At Gmail Android's ~333 CSS pixel layout
+width, section and column padding consumes 80px — a quarter of the card. Four
+probe rounds were needed to disprove the restructuring theory; the gutter model
+predicted the measured width to within 1.7px, the competing model to within
+17.7px.
 
-The authoring guide closes with a 19-point pre-flight checklist. Its most
-distinctive feature is that several checks cite their own history, in the
-style of "third recurrence of this error class; it graduates to a rule."
-The checklist is the distilled form of every QA round we paid for.
+**Fix.** A two-rule flush-mobile treatment. Desktop output byte-identical.
+
+**The transferable part.** The expensive fix was the wrong one, and only
+measurement separated them. *Diagnose gutters before restructuring columns* is
+now in the guide.
+
+### 3. The QA tool that reported the same catastrophe for every test
+
+**Symptom.** Email on Acid's "view source" page showed roughly 71 bytes of CSS
+and no dark-mode rules — for a test that had shipped a full stylesheet
+(2026-08-12).
+
+**What we believed.** Total stylesheet loss in transit: a catastrophic,
+send-blocking finding.
+
+**What was actually true.** That URL returns EoA's own application shell, not
+the email. Every test reports the identical bytes; the tell was that a
+known-good test had "lost" exactly the same stylesheet.
+
+**Guard.** The delivered-HTML URL is documented as the only diagnostic source,
+and a checklist rule now says a payload without EN's inliner fingerprints
+proves nothing — the test bypassed EN entirely.
+
+### 4. A retraction: a finding that was an artifact of our own build
+
+**Symptom.** A background-image behavior appeared broken in the delivered HTML.
+
+**What was actually true.** The evidence had been read from the `_live.html`
+build variant, not from a delivered send. The finding was retracted in its own
+commit rather than quietly edited away.
+
+**The transferable part.** The build has two variants for good reasons, and
+either can be mistaken for evidence. Retraction commits are cheap; a wrong
+finding sitting in a contract is not.
+
+### 5. A concurrency speedup that was a throttled browser tab
+
+**Symptom.** Running the pixel audit with eight parallel iframes measured 6.37×
+faster than one. The default was changed to eight.
+
+**What was actually true.** The measurement had been taken in a **background
+tab**, which the browser throttles. Re-measured on a real foreground tab:
+1-wide 20.73s, 2-wide 19.21s, 4-wide 20.62s, 8-wide 21.31s — eight is *slower*
+than one. All four passes returned the same verdict digest.
+
+**Fix.** Default reverted to one, in a commit titled *"Default back to 1: on a
+real tab, concurrency buys nothing."*
+
+### 6. Audit findings that were wrong in both directions
+
+**Symptom.** Six controls the sweep reported as inert at the phone viewport were
+demonstrably live in a browser, and cleared on a re-run hours later. Separately,
+a row reporting a flagged control as live was wrong the other way.
+
+**Fix.** The report rule was corrected to say findings err in both directions:
+confirm every claim, whichever way it points, then declare.
+
+**The transferable part.** An oracle you trust asymmetrically is an oracle you
+have stopped testing.
+
+## Bugs that were invisible by construction
+
+### 7. A prose comment killed every import
+
+**Symptom.** Every TPL import failed with MJML's misleading *"Malformed MJML"*.
+
+**What was actually true.** A comment in `styles.css` contained the literal token
+`<style>` — inside the sentence "Gmail app drops `<style>`". The importer inlines
+that stylesheet into an `<mj-style>` before parsing, and MJML's HTML-mode
+tokenizer treats the opener as the start of a raw-text element. The rest of the
+document, `mj-body` included, was swallowed as text.
+
+**Why it reached production.** The command-line build never sees that path.
+
+**Guard.** A build assertion bans any tag-like sequence anywhere in CSS,
+comments included.
+
+### 8. The same trap, one level up
+
+**Symptom.** Light/dark image pairs rendered *both* halves; a block preview
+carried zero CSS rules where dozens should have been.
+
+**What was actually true.** A comment documenting EN's container rule spelled the
+container merge tag out literally. The importer splits the template shell on the
+first occurrence of that tag, so the split landed inside the comment. The head was
+truncated mid-comment, the comment lost its terminator, and it swallowed the
+entire stylesheet.
+
+**Guard.** A dedicated importer guard on the container placeholder. Two outages
+from the same class of bug — documentation text being read as markup — in three
+days.
+
+### 9. The debug toolbar ate the version band
+
+**Symptom.** A version stamp that should appear inside Marketing Tools was
+missing, and only from the documented import path. The `_live` build variant
+always looked correct.
+
+**What was actually true.** The segmenter has no special knowledge of which block
+is the container; it takes the offset of the *first* `START` marker of any name.
+The debug toolbar partial carries its own marker pair, so it segmented as block
+number one and the content ahead of it — 714 bytes that reached none of the 77
+exported blocks — was dropped wholesale.
+
+**Guard.** The band now leads the body, and a build tripwire asserts it stays
+there.
+
+**The transferable part.** The failure was quiet and asymmetric — the artifacts
+that were easiest to check were the ones that looked fine, and the path that
+actually mattered was the broken one.
+
+### 10. A markup flag that was silently ignored for weeks
+
+**Symptom.** A `data-no-display-toggle` annotation had no effect.
+
+**What was actually true.** The flags are valueless, and the attribute reader
+returns undefined for a bare flag — so detection had to use a presence check
+rather than a value read. Until it did (2026-07-31), the flag was ignored
+entirely.
+
+**Guard.** The reading rule is spelled out in the contract, and the dead-flag
+audit now proves per annotation that the converter actually honors it.
+
+### 11. Labels that lied about the viewport
+
+**Symptom.** Generated field labels made claims about desktop-versus-mobile
+behavior that were not true.
+
+**What was actually true.** Two separate parsing bugs in how the template's own
+mobile rules were read. A rule sitting immediately after a CSS comment failed to
+register as a mobile pin at all (caught 2026-08-18, now pinned by a regression
+test). And a rule whose scope covers descendants was read as if it pinned the
+element itself, stamping a false "Desktop Padding Right" onto the Video Blocks —
+the self-form and scope-form reading rules are not interchangeable.
+
+**The transferable part.** Some bugs are only findable once the reporting is good
+enough to make them stand out — both surfaced once a failures-only report put
+every label claim in one place.
+
+### 12. A fix that was correct everywhere except where it mattered
+
+**Symptom.** Hand-rolled button pills rendered as thin bars with invisible label
+text in Outlook's Word engine (2026-08-11).
+
+**What was actually true.** A `line-height: 0` declaration — correct in every
+browser, byte-identical across desktop and mobile output, and honored literally
+by Word. Reported and reverted the same day.
+
+**Guard.** Line-height is banned on the button-group classes, and any future
+attempt at that spacing must be invisible to Word and proven in Outlook before
+it ships.
+
+## Process failures
+
+### 13. A push that reported success and did not happen
+
+**Symptom.** A commit that had been "pushed" returned a 404 on GitHub.
+
+**What was actually true.** A stray `git checkout HEAD~0` inside a scripted
+command detached `HEAD`. The next commit landed off-branch, and `git push origin
+main` exited 0 as a no-op — it pushed the stale local `main` ref.
+
+**Guard, now written into both repos' working instructions.** Never run a
+`git checkout` variant inside a compound or scripted command; confirm the branch
+before committing; and after every push, verify the remote ref equals local
+`HEAD`. **A push that prints nothing and exits 0 is not proof.**
+
+### 14. Two rounds, one build
+
+**Symptom.** A before-and-after pair of Email on Acid rounds appeared to verify
+a fix (2026-08-11).
+
+**What was actually true.** The two rounds were the same build sent 34 minutes
+apart. The "fix" was in neither.
+
+**Guard.** Never read an A-to-B diff as fix verification without a source
+commit between the sends. Recorded in the QA handoff's corrections list.
+
+### 15. A type check that checked nothing
+
+**Symptom.** A real type error reached `main` (caught 2026-08-19).
+
+**What was actually true.** The root TypeScript config is a references-only shell
+with an empty file list, so `tsc --noEmit` type-checked *zero* files while
+appearing to pass. The correct invocation builds the referenced projects.
+
+**Guard.** The canonical check command is documented, with the reason attached so
+nobody "simplifies" it back.
+
+### 16. The same finding, three times
+
+**Symptom.** A dead-annotation audit found five stale flags on 2026-08-10. It
+found them again on 08-16. And again on 08-17.
+
+**What was actually true.** The underlying rule — that the second half of a
+merged light/dark image pair never gets its own toggle — existed only as prose,
+so each cleanup pass re-derived it and each subsequent authoring pass re-broke it.
+
+**Fix.** The rule became a build-time lint. *The rule now lives where prose
+cannot lose it.*
+
+### 17. A near-duplicate catalog that charged rent
+
+**Symptom.** Two catalog files, one a strict subset of the other — 135 of 143
+blocks, differing by exactly one line.
+
+**What was actually true.** It required a matching edit on 14 of the 15 catalog
+commits in its final 90 days. *That sync tax was its whole cost and its whole
+risk.* Deleted 2026-08-17, with the instruction that any future short
+demonstration page gets derived at build time from the full catalog.
+
+### 18. Shipping ahead of the evidence
+
+**Symptom.** A `preview_text` field was designed, built, and shipped — then
+reverted the same day (2026-08-10) when a send test showed EN injects its own
+preheader.
+
+**The transferable part.** The reversal was fast and cheap because a send test
+was already routine by then. Earlier in the project the same mistake would have
+lived for weeks. Several other reversals share the shape — a stylesheet `inherit`
+rule tried and reverted once the inliner settled the question, and a naming
+change appended and then prepended within hours.
 
 ---
 
-## What we measured about Engaging Networks
+# Appendix B — Where the knowledge lives now
 
-This is the technical heart of the knowledge base. Everything below was
-measured on real sends, not theorized, and each finding now has a rule or
-an automated check attached.
-
-### The CSS inliner
-
-EN rewrites every email's styles at send time, and it cannot be turned
-off. Fourteen probe constructs pinned its core behavior: plain rules are
-inlined onto elements (losing `!important` in the process), dark-mode and
-mobile media queries pass through verbatim, rules that match nothing are
-deleted, and media blocks sharing a condition string are merged into the
-first one's position, so each condition is authored in exactly one place.
-A later probe round added that a stray anchor wrapping a table gets
-auto-closed, silently making the row unclickable. The inliner runs at send
-time, not at import, so an export proves nothing about what a recipient
-gets. Two working rules fell out: a conditional media query is the
-sanctioned "do not touch" wrapper for anything EN must not rewrite, and
-any dark-mode declaration that must beat an inlined base rule needs
-`!important`, even though its absence looks correct in source, in preview,
-and in EN's own editor.
-
-MJML adds a transit hazard of its own: a single authored background image
-compiles into four separate HTML carriers, so every editable field binds
-all four and the build rewrites all four. Missing any one shows the old
-photo in some apps and the new one in others.
-
-### The block editor's silent escape
-
-The finding that explained the worst of a failed QA round: editing CSS
-held in an HTML-type editable field makes EN escape `>` characters, which
-silently kills child-combinator selectors. The visible symptom was
-white-on-white dark-mode text on iOS, which looked like an authoring bug
-and was not. Other symptoms from the same round (a black slab in Outlook
-on Mac, collapsed columns in Gmail) were never formally traced to the
-escape; the Gmail collapse fits the size cliff measured a week later,
-since that day's payload was 28,408 bytes. The shipped stylesheet now
-contains zero child combinators, the converter warns on every one it
-finds, and the bug is written up as a formal report for Engaging Networks
-with an importable proof of concept. A related measurement: EN ingests a
-stylesheet once per `<style>` wrapper, so an accidental double wrapper
-shipped two full copies of the stylesheet, 24,952 delivered bytes against
-13,325 once the extra wrapper was removed.
-
-### The rich-text editor is ProseMirror
-
-A five-probe series established what EN's content editor does to copy on
-the first keystroke: bare text gets wrapped in a paragraph (harmlessly, if
-it is already wrapped), Outlook-only conditional comments are destroyed,
-links keep only their destination and target, and styling applied from the
-template's stylesheet survives where inline styling does not. The
-predictive model behind all of it: the editor rebuilds links from a fixed
-attribute set, while paragraphs and spans keep their attributes, so
-anything on a link that isn't in the set is gone. The fix was to pre-apply
-the editor's own wrap at import time, so the first human edit changes
-nothing.
-
-### Gmail's size cliff
-
-The Gmail app does not merely truncate oversized styles; it drops the
-entire stylesheet, whole, past exactly 16,384 bytes, on every Gmail
-surface including desktop webmail. EN re-prints head CSS at about 1.3
-times its authored size on the way out, so the build budgets the delivered
-size, a 14,000-byte working target against the 16,384-byte hard cliff, and
-meters it automatically. The budget is a real ceiling with a ledger: the
-stylesheet sat roughly 50 bytes clear until August 20, when deleting a
-retired width ladder returned about 1,325 delivered bytes, leaving the
-estimate at 14,997. Part of the defense is an inline-first image pattern,
-measured so that images still render correctly even when Gmail drops the
-stylesheet. Also measured: the famous "columns shrink on Android" bug does
-not exist; it was gutter arithmetic (predicted 252.7 px, measured
-251.0 px), and the fix cost two CSS rules instead of a restructure.
-
-### Outlook's Word engine
-
-Outlook on Windows renders email with Word, and Word has opinions: a tag
-carrying both a background color and a background image paints the color
-and discards the photo; buttons render square (we accept that rather than
-ship the workaround that breaks editable fields); and CSS box geometry on
-spans is ignored entirely, so inline chips are sized with text-level
-tricks. Each of these is now either a build assertion or a documented
-pattern.
-
-### Dark mode's reach
-
-Only two dark-mode hooks exist (`prefers-color-scheme` and Outlook.com's
-`[data-ogsc]`), and the two apps that honor neither (Gmail's app and
-Outlook desktop) transform colors in opposite directions. The strategy
-that survived contact: let those apps invert, and make the artwork survive
-the inversion, because the apps that transform colors leave images
-untouched (measured on both). Hence the contrast outlines. We also
-measured a mercy: a light background with no dark hook at all still
-rendered legibly in all five dark-capable renders of the test matrix. That
-is one email and one round, strong evidence but not a license to delete
-hooks. An overreaching authored dark rule, by contrast, once painted a
-black lid over every photo hero. Dark-mode claims are now only ever judged
-on the delivered HTML.
-
-### Template edits never reach existing drafts
-
-EN cannot push a changed template into emails already built from it. The
-part of a template that actually needs fixes after the fact is the
-stylesheet, so it ships as a synthetic "Template Styles" block placed
-first in every email: a CSS fix becomes a one-block swap instead of
-rebuilding every draft from scratch. This one workaround shapes every
-email built with the system.
-
-### What EN preserves
-
-Good news, also measured: editable fields nest three levels deep without
-corruption, the same block added twice keeps independent selections, and
-sends read block content live rather than from a stale snapshot. These
-findings are what make the whole editable-template design trustworthy.
+| Where | What it holds | Enforced by |
+| :-- | :-- | :-- |
+| [CONVENTIONS.md](CONVENTIONS.md) (mirror; canonical copy in the converter repo) | The importer's full contract — how every field is generated, named, ordered, suppressed, versioned | Pre-commit review gate; `npm run check-docs` in the converter repo |
+| [MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md) (mirror; canonical copy in the converter repo) | Portable MJML + EN authoring rules, the measured inliner table, the QA checklist, and the copy-paste prompt for AI agents (§9) | Same, plus byte-comparison of each mirror against its source |
+| [PLAYBOOK.md](PLAYBOOK.md) | This repo's build pipeline, block system and naming grammar, debug overlay; §10 is the porting checklist for the next client | `npm run check-docs` here |
+| [archive/probes/](archive/probes/) here, `docs/archive/` in the converter repo | 22 annotated probe instruments, each with its verdict recorded | Probe lifecycle rule |
+| `docs/future-enhancements.md` (converter repo) | Deferred work, rejected approaches with the reason for rejection, and unexplained anomalies | Cited by the doc linter |
+| `docs/qa-handoff-2026-08-11.md` (converter repo) | One QA session in full, including its "corrections to carry forward" list | — |
+| `docs/en-bug-html-replacement-escapes-css.md` (converter repo) | The vendor bug report, with an importable proof of concept | — |
+| The converter's audit engines | Inert dropdowns, dead flags, dark-mode image ink, `data-*` usage | Startup self-tests; `npm run audit-data-attrs -- --self-test` |
+| This repo's check scripts | Catalog-defect and documentation-drift assertions, each annotated with the incident that caused it, plus the Gmail byte budget | Every build |
+| [versions.json](versions.json) here, `app-version.json` in the converter repo | The integer version of every block, partial, template and the app | Build-time sync; git history is the ledger |
 
 ---
 
-## Principles that carried the project
+# Glossary
 
-1. **Measure the delivered email, never the build.** EN's inliner, its
-   editor, and Gmail's sanitizer all transform the payload in transit.
-   This error class recurred three times before graduating to a
-   checklist rule; the delivered HTML is the only honest witness.
-2. **Never ship a control that does nothing.** A dead dropdown teaches
-   editors to distrust every dropdown. The audits also proved the
-   opposite trap: short placeholder copy makes live controls look dead,
-   so verdicts are only trusted at three copy lengths.
-3. **A rule in chat is lost; a rule in prose rots; a rule in a check
-   survives.** The project's own dead-flag rule was re-broken twice while
-   it lived in prose and has not been broken since it became a build
-   assertion.
-4. **Record retractions next to findings.** The documentation says
-   "WRONG" about its own earlier conclusions in five places, and one
-   anomaly is filed as "closed as unexplained, not as solved." That
-   candor is why the docs can be trusted at face value.
-5. **Spend measurement once, reuse it forever.** Probes are archived with
-   their verdicts precisely so the next behavior question starts from an
-   instrument, not from scratch.
+**MJML** — a shorthand language for writing emails that compiles into markup which
+renders correctly across mail clients.
 
----
+**Engaging Networks (EN)** — the platform TPL uses for email, fundraising, and
+advocacy.
 
-## What's still open
+**Marketing Tools** — EN's email builder, where editors assemble emails from
+blocks.
 
-- The four footer social icons render through a different component and
-  missed the contrast-outline pass; Outlook dark mode can make them vanish
-- The Steps Block palette fails WCAG AA contrast; the remedy changes brand
-  colors, so it is documented as a client design decision with the exact
-  fix attached
-- The go-live control audit left its 64-finding backlog deliberately
-  unapplied (none affect a sent email): about 30 label wording fixes and
-  about 30 apparently dead controls, and the backlog itself says to
-  re-derive the dead-control list rather than trust its count
-- Automatic generation of contrast-outlined assets is designed (the rim
-  recipe is proven) but not built; detection shipped
-- The repo's README is the one document that rotted, precisely because no
-  linter reads it; it still carries its original TO DO placeholders and
-  describes files that have since been renamed, and it is the front door
-  for anyone arriving cold
+**Block** — one reusable email section: a hero, a story card, a footer.
 
----
+**Replacement** — an editable field attached to a block in the EN editor. What
+this project calls a "field" or a "control".
 
-## Where everything lives
+**Autoresponder** — an email EN sends automatically in response to an action;
+here, the two donation thank-yous.
 
-| Artifact | Location |
-| :--- | :--- |
-| Block catalog, master template, autoresponders | `src/` in this repo |
-| Portable authoring guide (mirror) | `MJML-AUTHORING-GUIDE.md`, §9 carries the copy-paste prompt for AI agents |
-| Converter contract (mirror) | `CONVENTIONS.md` |
-| Build and block-system playbook | `PLAYBOOK.md`, §10 is the porting checklist for the next client |
-| Archived probes and verdicts | `archive/probes/` here; `docs/archive/` in the converter repo |
-| Converter app and canonical docs | the private `email-to-en-marketing-tools` repo |
-| Client-facing documentation | `docs/TPL EN Marketing Tools Documentation.md` in the converter repo |
-| EN bug report and proof of concept | `docs/en-bug-html-replacement-escapes-css.md` in the converter repo |
-| Version ledgers | `versions.json` here; `app-version.json` in the converter repo |
+**Probe** — a small email built to test one specific claim through a real send.
 
----
+**Inliner** — the transform EN applies at send time, moving stylesheet rules onto
+individual elements.
 
-## Appendix A: incidents, and the guardrail each one left behind
+**RTE / WYSIWYG** — EN's rich-text editing surface, built on ProseMirror.
 
-The body of this document is the wins. This appendix is the tuition we
-paid for them. Each entry names what happened, what it nearly cost, and
-what now prevents a repeat.
+**Email on Acid (EoA)** — the service used to render one sent email across dozens
+of real email clients for comparison.
 
-**The dark-mode crisis that wasn't (August 11-12).** Eight Email on Acid
-rounds and 120 screenshots pointed at catastrophic dark-mode failures
-across iOS, Outlook, and Gmail. The worst family of symptoms traced to one
-cause nobody suspected: EN's editor escaping `>` inside edited CSS. Most
-of the remaining findings turned out to be independent authoring fixes,
-and a few were kept on a still-unexplained list rather than force-fit to
-the theory. Five working conclusions were reversed in a single day, each
-retraction recorded so no future session re-derives the wrong ones.
-Guardrails: a stylesheet with zero child combinators, a converter
-validation that warns on every one, and the formal bug report written for
-Engaging Networks.
+**Child combinator** — the `>` in a CSS selector like `.block > table`, meaning
+"a direct child of". The character EN's editor escapes.
 
-**The false root cause we almost shipped (August 12).** Email on Acid's
-"view source" URL returns its own application shell, not the email, so
-every test reports the same 71 or so bytes of CSS and no dark-mode rules,
-which reads exactly like a total stylesheet loss. The tell: a known-good
-test reported identical bytes. Guardrails: the delivered-HTML URL is
-documented as the only diagnostic source, and a checklist rule says a
-payload without EN's inliner fingerprints proves nothing.
+**Asset root** — the content-delivery folder where the account's images and
+thumbnails live.
 
-**Two rounds, one build (August 11).** Two QA rounds compared as
-before-and-after were the same build sent 34 minutes apart, so the "fix"
-they appeared to verify was never tested. Guardrail: never read an A-to-B
-diff as verification without a source commit between the sends.
-
-**The vanished push (August 11).** A stray `git checkout HEAD~0` inside a
-scripted command detached HEAD; the next commit landed off-branch, and
-`git push` exited 0 while pushing nothing. The "pushed" commit did not
-exist on GitHub. Guardrails, now in both repos' instructions: never run
-checkout variants inside compound commands, confirm the branch before
-committing, and verify the remote ref equals local HEAD after every push.
-
-**The type check that checked nothing (August 19).** The repo's
-`tsc --noEmit` ran against a references-only shell config with an empty
-file list, so it type-checked zero files, and a real type error reached
-main. Guardrail: the checks command is now `tsc -b`, with the reason
-written next to it so nobody "simplifies" it back.
-
-**The comments that ate the stylesheet (August 18 and 20).** Two separate
-incidents, one lesson. On August 18, a literal `<style>` example written
-inside a CSS comment flipped the HTML parser into raw-text mode and
-silently swallowed the rest of the document; every import failed with a
-misleading "malformed MJML" error. On August 20, EN's container merge tag
-written literally in a source comment made the converter split the
-template shell at that comment; the comment lost its closing marker, the
-unterminated remainder swallowed the head stylesheet, and delivered emails
-showed the light and dark version of every paired image at once.
-Guardrails: validator checks for both cases in the converter, a catalog
-assertion banning the literal merge tag, and a documented rule never to
-write tag-like text inside CSS comments.
-
-**The toolbar that ate the version band (August 20).** A version stamp
-meant to show inside Marketing Tools vanished, but only on the documented
-import path; the paste-in build looked fine. The block splitter takes the
-first START marker it finds, the debug toolbar's own marker pair sat above
-the band, and everything ahead of it was silently dropped: 714 bytes that
-reached none of the 77 exported blocks. Guardrails: the band now leads the
-body, and a build tripwire asserts it stays there. The transferable
-lesson: the artifacts easiest to check were exactly the ones that looked
-fine.
-
-**The dead flag that came back twice (August 10, 16, 17).** An authoring
-flag proven dead was removed, then re-added six days later by a session
-that read its absence as a gap, despite prose explaining the removal. The
-audit re-found it the next day. Guardrail: the rule moved out of prose
-into the catalog linter, and the episode coined the project's motto,
-"prefer a check over a sentence."
-
-**The flag that was ignored for weeks (fixed July 31).** The authoring
-markers are deliberately valueless, and the converter's attribute reader
-returns nothing for a bare flag, so a plain do-not-hide marker was
-silently ignored until detection switched to a presence check. Guardrail:
-the reading rule is spelled out in the contract, and the dead-switch audit
-now proves per marker that the converter actually honors it.
-
-**The audit that called live controls dead.** An early inert-control sweep
-flagged five fields as dead; four were live the moment the test copy was
-longer than the catalog's own placeholder text. Short copy hides any
-control whose job is to move an edge the text never reaches, and the
-failure is silent. Guardrail: every control is now tested at three copy
-lengths before any verdict is trusted.
-
-**The speedup that wasn't (August 19).** An early benchmark showed a 6.37x
-gain from running the audit eight iframes wide. The real ladder, measured
-in a foreground tab, showed eight-wide slightly slower than one-wide; the
-original reading came from a throttled background tab. Guardrails: the
-default returned to one, the measured ladder is recorded, and the audit
-enforces "parallelism is a timing knob, never a verdict knob" with
-self-tests that refuse to run if determinism tripwires fail.
-
-**The fix that was correct everywhere except Word (August 11).** A
-line-height fix for button groups reasoned correctly in every browser and
-still shipped a severe regression: Outlook's Word engine honors
-`line-height: 0`, rendering pill buttons as thin bars with invisible
-labels. Reverted the same day. Guardrail: line-height is banned on the
-button-group classes, and any future attempt at that spacing must be
-invisible to Word and proven in Outlook before it ships.
-
-**The near-duplicate catalog that charged rent (deleted August 17).** A
-second catalog file held a strict subset of the first: 135 of its 143
-blocks, differing by exactly one line. It was never once edited
-independently in its lifetime, and it demanded a matching edit on 14 of
-the 15 catalog commits in its last 90 days. That sync tax was its whole
-cost and its whole risk. Guardrail: the repo instructions say any future
-short demonstration page gets derived at build time from the full catalog,
-never maintained as a second copy.
-
-**Shipping ahead of the evidence (August 10).** A preview-text field was
-designed, built, and shipped, then reverted the same day when a send test
-showed EN injects its own preview text, so the field would have doubled
-every inbox snippet. The reversal was cheap because real send tests were
-routine by then; earlier in the project the same mistake would have lived
-for weeks. Guardrail: per-send strings (title, preview text) are stripped
-from the template on principle, and the checklist bans authored preview
-text in broadcast sources.
-
-**The mirror that could truncate itself.** The doc-mirroring recipe once
-risked piping a file into its own redirect, which truncates the target
-before reading it. Guardrails: the mirror commands use literal banners
-written to be safe, and the doc linter verifies every mirror byte-matches
-its canonical source, which also catches a half-pushed mirror before a
-downstream agent reads a stale contract.
-
-**The one that stayed unexplained.** One delivered email lost styling its
-stored blocks still had. Three hypotheses were formed and each was
-measured dead, so the entry is filed as "closed as unexplained, not as
-solved," with a diagnostic shortcut recorded in case it recurs. It never
-did across four subsequent sends, and it gates nothing. Keeping an honest
-"we don't know" in the ledger was judged more useful than a tidy story.
+**Repository / commit** — a repository is the versioned home of a project's
+files; a commit is one saved, described, reversible change to it. Commit counts
+are used here as a rough measure of activity over time.
