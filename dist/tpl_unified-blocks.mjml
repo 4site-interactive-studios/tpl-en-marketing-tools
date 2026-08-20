@@ -460,7 +460,7 @@
       css-class="quote-block block"
       background-color="#FFFFFF" padding="32px 16px 0"
     >
-      <mj-column width="480px" padding="0">
+      <mj-column data-no-width-toggle width="480px" padding="0">
         <mj-image
           data-group-label="Quote Mark"
           src="assets/icon-quotes_black.png"
@@ -502,7 +502,7 @@
       css-class="text-block block"
       background-color="#ffffff" padding="16px"
     >
-      <mj-column css-class="highlighted-text-column" width="480px" border-left="4px solid #006837" background-color="#CEE4C5" padding="16px 16px 0">
+      <mj-column data-no-width-toggle css-class="highlighted-text-column" width="480px" border-left="4px solid #006837" background-color="#CEE4C5" padding="16px 16px 0">
         <mj-text padding="0 0 16px">
           <p style="font-family: Arial, sans-serif;">
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
@@ -519,7 +519,7 @@
       css-class="block"
       background-color="#CEE4C5" padding="16px"
     >
-      <mj-column width="480px" padding="0">
+      <mj-column data-no-width-toggle width="480px" padding="0">
         <!-- Heading and body are separate mj-texts so each mints its own
              Content field and Display toggle (one idea per mj-text,
              user decision 2026-08-19). -->

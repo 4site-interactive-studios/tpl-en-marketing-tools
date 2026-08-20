@@ -457,10 +457,9 @@ guard('mobile-only MSO-guard check', () => {
 // would land within a canary-block + builder-chrome hoist (~700 delivered
 // bytes) of the cliff. The full mjml_all-blocks catalog deliberately rides
 // ~100 bytes inside that last check — any styles.css growth should trip it.
-// The guard also protects the two silent app couplings nothing else
-// connects across the repos: the Column Width dropdown needs every 50px
-// ladder rung to keep a live `.mj-column-px-N` class, and the inert
-// audit's Desktop labels need the td.button mobile pins to keep parsing.
+// The guard also protects a silent app coupling nothing else connects
+// across the repos: the inert audit's Desktop labels need the td.button
+// mobile pins to keep parsing.
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
@@ -508,8 +507,82 @@ guard('ALL-CAPS button label check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// §N Column Width opt-out. The 50px width ladder in styles.css was deleted
+// on 2026-08-20 once every block stopped offering a Column Width dropdown
+// (user decision: Highlighted Text, Quote Block, CTA Text Block and Footer
+// go back to left/right padding). That freed ~1,325 delivered bytes under
+// Gmail's cliff, but it leaves a trap: MJML still emits an incidental
+// `.mj-column-px-N` class for each real column width, and the importer's
+// columnWidthOptions() accepts ANY head width divisible by 50. So a new
+// px-width column that forgets `data-no-width-toggle` would mint a Column
+// Width dropdown offering whatever arbitrary widths the catalog happens to
+// use (200/300/550 today) — a menu that looks authored but is an accident.
+// Percentage widths never mint the field, so only px widths are checked.
+// ---------------------------------------------------------------------------
+// §N Column Width opt-out. The 50px width ladder in styles.css was deleted
+// on 2026-08-20, once every block stopped offering a Column Width dropdown
+// (user decision: Highlighted Text, Quote Block, CTA Text Block and Footer
+// go back to left/right padding). That freed ~1,325 delivered bytes under
+// Gmail's cliff, but it leaves a trap: MJML still emits an incidental
+// `.mj-column-px-N` class for every real column width, and the importer's
+// columnWidthOptions() accepts ANY head width divisible by 50. A new
+// eligible column that forgets `data-no-width-toggle` would therefore mint
+// a Column Width dropdown offering whatever widths the catalog happens to
+// use (200/300/550 today) — a menu that looks authored but is an accident.
+//
+// Eligibility mirrors mjmlProps.ts fixedPxColumns() + its `eligible` filter
+// EXACTLY, and that narrowness is the point: an over-broad version of this
+// guard fired on 93 px columns that can never mint a field. A field needs a
+// LONE mj-column in its parent (an mj-group child never qualifies) with an
+// integer px width >= 50. Keep the two in step if that filter ever moves.
+// ---------------------------------------------------------------------------
+guard('Column Width opt-out on eligible columns', () => {
+  for (const f of sources) {
+    const text = read(`src/${f}`);
+    if (text === null) continue;
+    // Walk containers, collecting each one's DIRECT column/group children.
+    const eligible = [];
+    const frames = [];
+    const open = [];
+    for (const m of text.matchAll(/<(\/?)(mj-wrapper|mj-section|mj-group|mj-column)((?:(?!>)[\s\S])*?)(\/?)>/g)) {
+      const [, closing, tag, attrs, selfClose] = m;
+      if (closing) {
+        if (tag !== 'mj-column') {
+          const done = open.pop();
+          if (done) frames.push(done);
+        }
+        continue;
+      }
+      const top = open[open.length - 1];
+      if ((tag === 'mj-column' || tag === 'mj-group') && top) {
+        top.kids.push({ tag, attrs, index: m.index ?? 0, parentTag: top.tag });
+      }
+      if (tag !== 'mj-column' && !selfClose) open.push({ tag, kids: [] });
+    }
+    while (open.length) frames.push(open.pop());
+    for (const fr of frames) {
+      if (fr.kids.length !== 1) continue; // not lone in its parent
+      const kid = fr.kids[0];
+      if (kid.tag !== 'mj-column') continue; // groups never mint the field
+      if (kid.parentTag === 'mj-group') continue; // group members are excluded
+      const w = /\bwidth\s*=\s*"(\d+)px"/i.exec(kid.attrs); // integer px only
+      if (!w || Number(w[1]) < 50) continue;
+      if (/\bdata-no-width-toggle\b/.test(kid.attrs)) continue;
+      eligible.push({ px: w[1], line: text.slice(0, kid.index).split('\n').length });
+    }
+    for (const e of eligible) {
+      warn(
+        `src/${f}:${e.line} — lone <mj-column width="${e.px}px"> has no` +
+          ` data-no-width-toggle, so it mints a Column Width dropdown; the 50px` +
+          ` ladder was deleted (2026-08-20), so that menu would offer whatever` +
+          ` incidental .mj-column-px-N widths the catalog emits`,
+      );
+    }
+  }
+});
+
 guard('Gmail CSS budget + head coupling check', () => {
-  const RUNGS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
   const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts
   // Reserves space for CSS that is hoisted at send and therefore invisible to
   // the measurement below. It was 700 (canary + builder chrome) until
@@ -550,15 +623,6 @@ guard('Gmail CSS budget + head coupling check', () => {
     if (estimated + HOIST_ALLOWANCE > 16384) {
       warn(
         `dist/${page}: estimated delivered head CSS ${estimated} bytes + ${HOIST_ALLOWANCE} hoisted (canary + builder chrome) crosses Gmail's 16,384 cliff — trim styles.css before anything else lands`,
-      );
-    }
-    const live = new Set(
-      [...css.matchAll(/\.mj-column-px-(\d+)\s*[,{]/g)].map((m) => parseInt(m[1], 10)),
-    );
-    const missing = RUNGS.filter((n) => !live.has(n));
-    if (missing.length) {
-      warn(
-        `dist/${page}: Column Width ladder rung(s) ${missing.join(', ')} have no live .mj-column-px-N head class — the importer silently drops those dropdown options (styles.css authors the ladder; keep every rung)`,
       );
     }
     const mobileBlocks = [...css.matchAll(/@media[^{]*max-width\s*:\s*(\d+)px[^{]*\{/g)];

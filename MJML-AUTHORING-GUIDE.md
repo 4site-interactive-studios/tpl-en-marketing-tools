@@ -1150,6 +1150,14 @@ can prop each other up, and the report says so when they do.
   stylesheet's min-width media query; seed the class for each width you
   curate, or the importer drops that option (it would render in Outlook
   alone) and says so in an info note.
+- **Removing the control is two steps, not one.** Deleting the
+  `.mj-column-px-*` rules from your stylesheet does NOT remove the dropdown.
+  MJML mints a `.mj-column-px-N` class for every real column width, so the
+  importer still finds a small accidental option pool — the widths your
+  catalog happens to use — and offers those. To retire the control, put
+  `data-no-width-toggle` on every eligible column AND delete the ladder:
+  the flag removes the field, deleting the CSS reclaims the head-CSS bytes
+  (worth ~1,325 delivered bytes in TPL, under Gmail's 16,384 cliff).
 - **Horizontal gutters belong to the frame**, expressed as width presets
   (full bleed / indented / double indent), not as ad-hoc padding.
 - **A lone fixed-px column centers in its section's slack**, so that

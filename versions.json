@@ -120,8 +120,8 @@
     "hash": "248b53cf6f2a"
   },
   "block:CTA Text Block": {
-    "version": 3,
-    "hash": "518621bf2255"
+    "version": 4,
+    "hash": "61512ed02b6d"
   },
   "block:Category — Buttons": {
     "version": 3,
@@ -188,8 +188,8 @@
     "hash": "34063d94ce6a"
   },
   "block:Footer": {
-    "version": 4,
-    "hash": "f8bede44f783"
+    "version": 5,
+    "hash": "4c489cc4b9d5"
   },
   "block:Footer (dark)": {
     "version": 4,
@@ -280,8 +280,8 @@
     "hash": "ff1062d202ff"
   },
   "block:Highlighted Text": {
-    "version": 2,
-    "hash": "9a7bd723f6aa"
+    "version": 3,
+    "hash": "94c502efcbdf"
   },
   "block:Icon Row": {
     "version": 3,
@@ -432,8 +432,8 @@
     "hash": "56b069194d2f"
   },
   "block:Quote Block": {
-    "version": 4,
-    "hash": "e0f6a044c809"
+    "version": 5,
+    "hash": "b56961e9ebec"
   },
   "block:Signature Card (no photo)": {
     "version": 5,
@@ -584,12 +584,12 @@
     "hash": "2d2f6986cced"
   },
   "email-template": {
-    "version": 26,
-    "hash": "1c8a51b65309"
+    "version": 27,
+    "hash": "6a7aef42bcbe"
   },
   "head-css": {
-    "version": 11,
-    "hash": "57f6b1b34de4"
+    "version": 12,
+    "hash": "b52d4c9109fb"
   },
   "partial:debug-toolbar": {
     "version": 1,

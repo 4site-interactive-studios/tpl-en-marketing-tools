@@ -1238,6 +1238,22 @@ sort — it is purely the panel/export display order.
   strict and fails closed with an infoNote on any compiled-shape
   mismatch: ungrouped, integer, ≥50px, lone in its section, no
   `data-no-width-toggle`.
+
+  **Deleting an authored ladder (2026-08-20).** The option pool is derived
+  from live `.mj-column-px-N` head classes, and MJML emits one of those for
+  EVERY real column width whether or not a ladder was ever authored. So a
+  template that deletes its ladder does not thereby delete the dropdown: an
+  eligible column instead offers whatever incidental widths the catalog
+  happens to compile (200/300/550 in TPL) — a menu that looks authored but
+  is an accident. Retiring the control therefore takes BOTH steps: flag
+  every eligible column `data-no-width-toggle` (that is what removes the
+  field) and delete the CSS (that is what reclaims the head-CSS bytes).
+  TPL did both when it removed the control from Highlighted Text, Quote
+  Block, CTA Text Block and Footer (user decision 2026-08-20, reverting
+  those to left/right padding), and added a check-catalog guard mirroring
+  the eligibility filter above so an unflagged eligible column trips the
+  build. The guard is deliberately as narrow as the filter — an earlier
+  over-broad version fired on 93 px columns that can never mint a field.
   Everything else stays NEVER exposed: side-by-side siblings (PERMANENT
   product decision 2026-08-09 — user-defined widths on siblings have too
   many failure modes; not a v2 candidate), mj-groups and group MEMBERS
@@ -1673,13 +1689,13 @@ missing manifest yields a clean "Email Template" rather than a dangling "v".
 
 **Budget note.** `HOIST_ALLOWANCE` in TPL's `check-catalog` dropped 700 → 250
 when the band sheet moved into the head: the sheet is now measured directly
-(454 delivered bytes), so reserving it again double-counted it. Headroom under
-Gmail's cliff is now roughly 50 bytes — **`styles.css` needs a real trim before
-anything else lands.** A mechanical trim is NOT available: the obvious
-candidates are client-injected hooks (`.moz-text-html`), the `.mj-column-px-*`
-width ladder the importer offers as Select options an editor can still choose,
-and the dormant-but-sanctioned `.mobile-only`. Deleting any of them breaks
-something.
+(454 delivered bytes), so reserving it again double-counted it. That left
+roughly 50 bytes of headroom until 2026-08-20, when TPL deleted its authored
+`.mj-column-px-*` width ladder (see "Deleting an authored ladder" above),
+returning ~1,325 delivered bytes: the all-blocks estimate is now 14,997 against
+the 16,384 cliff, about 1,387 bytes clear. The remaining trim candidates are
+still NOT mechanical — client-injected hooks (`.moz-text-html`) and the
+dormant-but-sanctioned `.mobile-only` both look dead and are not.
 
 - `data-*` contract warnings are whitelisted, never "fixed".
 
