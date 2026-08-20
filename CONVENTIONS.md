@@ -1639,7 +1639,30 @@ CSS alone in its own wrapper is what the 2026-08-18 measurement bought
 (24,952 delivered bytes doubled, 13,325 single).
 
 Bands in use: the Template Styles block (`#head-styles`, label carries the
-head-css version) and the RAW HTML utility block (`#raw-html`).
+head-css version), the RAW HTML utility block (`#raw-html`), and the TEMPLATE
+itself (`#template-version`, label carries the `email-template` version so a
+stale template is visible at a glance).
+
+**The template band needs a different gate**, and that is the interesting part.
+A block band keys off `.en__emailbuilder__block`, but the template's chrome
+sits OUTSIDE every block, so no descendant selector reaches it. The gate is
+instead `:is(body):has(.en__emailbuilder__block)` (user design, 2026-08-19),
+which asks a different question — is a block wrapper present ANYWHERE in this
+document? True in EN's builder, false in a delivered email. Both halves are
+load-bearing: `:has()` supplies the test, and `:is()` is belt to its braces,
+since a selector carrying a pseudo-class the engine cannot parse is discarded
+WHOLE, so a client understanding neither drops the rule rather than
+half-applying it. Verified in a browser both ways before shipping — with no
+block wrapper the span computes `display:none` at 0px; with one present it
+computes `display:block` at 50px and paints its label.
+
+The span is authored in the TEMPLATE's MJML (an `mj-raw` above the
+`<!-- START: Main Content -->` marker, so it lands in the shell rather than a
+block), not injected at export. Injecting it app-side broke the byte-exact
+import→export round-trip and would have double-injected on re-import, since the
+span becomes part of `beforeBlocks` the moment it round-trips. Its CSS stays
+app-side in the Template Styles block, so the version label comes from
+`versions.json` with no TPL build step.
 
 - `data-*` contract warnings are whitelisted, never "fixed".
 

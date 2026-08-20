@@ -65,6 +65,11 @@
 
     <mj-include path="./partials/debug-toolbar.mjml" />
 
+    <!-- Marketing Tools band (see CONVENTIONS.md, Builder bands) -->
+    <mj-raw>
+      <span id="template-version" class="marketing-tools-banner" style="display: none;"></span>
+    </mj-raw>
+
     <!-- START: Main Content -->
 
     <!-- START: Category — Headers and Heroes -->
