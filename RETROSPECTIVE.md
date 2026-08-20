@@ -492,6 +492,83 @@ rather than an implementation accident.
   screen reader. The authoring rule is that every image carries one. The
   per-image opt-in annotation this replaced was retired across 262 instances.
 
+## The data-* vocabulary: every annotation, what it does, and why
+
+The MJML source carries a small vocabulary of `data-*` attributes: HTML
+annotations that browsers and email clients ignore, and that our tooling
+reads as instructions. They are how an author tells the converter "this
+block is a duplicate," "this width is design geometry, leave it alone," or
+"these three links are really one link." MJML itself rejects `data-*` on
+its own tags, so the TPL build smuggles them through compilation (annotate,
+compile, restore) and the converter whitelists the validator noise they
+cause.
+
+Three rules govern the whole vocabulary. Most flags are **valueless**
+(`data-no-display-toggle`, never `="true"`), and detection is by presence;
+reading them the other way is how one flag got silently ignored for weeks
+(Appendix A, entry 10). Every flag must **earn its place**: the dead-flag
+audit strips each one and regenerates the output, and a flag that changes
+nothing gets deleted rather than left as folklore. And this table is the
+**2026-08-20 census**, not the contract. The living rules are the guide's
+§5 table, the conventions document's "data-* contract" reference, and
+PLAYBOOK §6.
+
+### Block lifecycle and routing
+
+| Attribute | Where it goes | What it does | Why |
+| :-- | :-- | :-- | :-- |
+| `data-fully-exclude` | a whole block | Drops the block at import as a redundant variant | Variants that differ only in editable values fold into one importable block's dropdowns. A family keeps one un-flagged canonical, because default content is a block's value |
+| `data-import-exclude` | dev-only blocks (the category header bars) | Renders in previews but starts unchecked in exports, with a warning on direct export | Catalog chrome should never land in EN as a block |
+| `data-probe` | probe instrument blocks | Imports and sends like any block, but the brand-color census and the color-usage audit skip it | A probe's colors are measurement signals, and a probe-only hex must never surface as a palette dropdown option (2026-08-18) |
+| `data-visible-duplicate` | a block that duplicates its group's anchor on purpose | Exempts it from the "duplicates X but is not flagged" build warning while keeping it importable | Some duplicates are product decisions. Image 1x1 is the full-bleed shape under the name an editor actually looks for. The flag always carries a dated comment naming the anchor and the decision (2026-08-18) |
+| `data-folder="<id>"` | category dividers and blocks | Routes the block into an EN folder. A block's own value beats the import form, which beats the divider, which beats the account default | The library files itself; nobody assigns folders by hand at import time |
+| `data-category-short="<name>"` | category dividers | Replaces the full category name in block-name prefixes ("Text" instead of "Text Blocks") | Block names carry their category so EN's library sorts by group, without the prefix eating the visible name |
+
+### Creating and shaping fields
+
+| Attribute | Where it goes | What it does | Why |
+| :-- | :-- | :-- | :-- |
+| `data-style-dark-mode` | the dark twin of a light/dark image pair | Marks which image is the dark variant so the build pairs it with its light twin | The lone survivor of the retired `data-style-*` vocabulary (below); the TPL build consumes it, not the converter |
+| `data-width-options="150,250,350"` | a column or a divider | Curates the width dropdown's ladder, overriding the config defaults. On a divider it ships Width as a Select, with an Original escape for an off-ladder authored value | A width menu should offer authored choices, not whatever ladder the compiled CSS happens to contain (dividers added 2026-08-19) |
+| `data-image-shape-toggle` | an image that authors a border-radius | Ships the radius as a two-option Square/Circle Select instead of a free number | Opt-in because a radius is not always a shape choice; the Quiz photos' 18px soft corner is neither. Flag both twins of a pair or the shared dark-image field disappears (measured 2026-08-20) |
+| `data-inset-toggle` | a spacing component | Mints Inset Selects even when a side is 0, and unlocks Spacing Above | The caption pacing exception, my call on 2026-08-18: a caption owns its gap above itself, so hiding the caption removes the gap with it instead of stranding white space under the photo |
+| `data-force-rte` | an mj-text carrying bare copy | Keeps the Content field on the rich-text editor when it would otherwise ship as a plain Text field | For copy expected to grow a link or emphasis later (2026-08-19) |
+| `data-group-label="<words>"` | any content element, or a raw anchor | Names the field group verbatim: the panel group, the label prefix, and the merge-tag base | Wins over every inferred role, so the panel says what the author meant (2026-08-19). On a light/dark pair, label both twins identically |
+| `data-link-group="<name>"` | sibling raw anchors sharing one destination | One URL field drives every anchor in the group; the value splices into all carriers | EN auto-closes an anchor wrapping a table, so the Question Block row is per-cell anchors that must never desync (2026-08-18). Differing hrefs fall back to separate fields; a member that cannot be resolved drops the whole field rather than half-binding |
+| `data-text-anchor` | a raw anchor that is prose, not a button | Groups its fields under the Text family instead of "Button N" | A linked sentence is copy, and its panel home should say so (2026-08-19) |
+
+### Opt-outs and viewport declarations
+
+| Attribute | Where it goes | What it does | Why |
+| :-- | :-- | :-- | :-- |
+| `data-no-display-toggle` | content components | No Include/Exclude Display toggle | Some content must never be hideable: sender identification, unsubscribe text, required logos, the thermometer's interdependent figures |
+| `data-no-width-toggle` | a lone fixed-px column, or a frame | No Column Width Select on the column; on a frame, pins the gutter out of the Block Width preset | Some widths are load-bearing design geometry, like an inset box |
+| `data-no-link-toggle` | an image | No Include/Exclude Link toggle | For links that must never be removable, like a legally required logo link |
+| `data-no-direction-toggle` | the section (or group) that owns a column flip | No Image Position / Column Order control | Since 2026-08-11 the control mirrors alignment itself, so this is a taste judgment: some mirrored layouts should ship as their own block, not as a toggle |
+| `data-no-background-color` | any element with an authored background color | Keeps the color in the output but creates no field | For a background that provably cannot show (the tri-color divider's section, audited 2026-08-10); the value stays as a client fallback. A background merely covered by an image stays editable, because Outlook desktop does not load background images and the color is what shows there |
+| `data-desktop-only-<token>` / `data-mobile-only-<token>` | the element that owns the control | Prefixes the control's label with the viewport where it actually works ("Desktop Block Padding Left/Right"); the merge-tag name never changes | The channel for truths no static rule can reach: a centered pill whose width only matters at desktop, or trailing spacing a taller sibling absorbs until the columns stack. Labels only, names never, so the panel tells the truth without breaking the tag vocabulary |
+
+### Retired, and why
+
+- **`data-style-*`** (the property-exposure family): valueless flags
+  declaring which of an element's properties should become editable fields.
+  The converter never read them; it scans the MJML itself. The
+  strip-and-regenerate audit proved removal changed zero generated fields,
+  so all 8,376 instances came out of the TPL sources on 2026-08-18.
+  `data-style-dark-mode` is the one survivor, because the build (not the
+  converter) consumes it. The contract still defines the vocabulary for
+  templates that want declared intent.
+- **`data-style-alt`**: superseded the same day by universal alt text.
+  Every image whose `alt` attribute is present mints an editable field,
+  `alt=""` included, so a per-image opt-in claimed nothing the behavior did
+  not already deliver. Removed across 262 instances.
+- **`data-heading-level-toggle`**: minted an H1-H4 "Heading Level" Select
+  (2026-08-19), superseded 2026-08-20 with zero live uses. EN's rich-text
+  editor already offers H1-H4, so the heading rides inside the Content
+  value and the editor changes the level in place; two fields collapsed
+  into one. The generator support is retained, unused, for templates that
+  still want the level as a separate control.
+
 ## What we learned about how to work
 
 This is the part that generalizes beyond email.
@@ -960,6 +1037,10 @@ meaning "a direct child of". The character EN's editor escapes.
 
 **Merge tag**: a placeholder token EN substitutes when it assembles an email;
 the container merge tag marks where block content lands in the template shell.
+
+**data-* attribute**: an HTML annotation authors write in the MJML source.
+Browsers and email clients ignore it; our build and converter read it as an
+instruction. The full vocabulary is in Part 2.
 
 **Repository / commit**: a repository is the versioned home of a project's
 files; a commit is one saved, described, reversible change to it. Commit
