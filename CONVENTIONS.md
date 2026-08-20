@@ -1836,7 +1836,7 @@ element back in.
 
 The bar is "no markup" rather than "no FORMATTING markup", and the reason is
 measured (EN template 546, 2026-08-19,
-`docs/en-rte-normalization-probe.html`). A `Text` field does **not** escape or
+`docs/archive/en-rte-normalization-probe.html`). A `Text` field does **not** escape or
 rewrite markup — the probe's F1 row carried the same `<span>` as A2 and came
 back byte-identical. But the typed character landed OUTSIDE the closing tag,
 which is what a Text field is: a literal string input that shows the editor
@@ -1895,23 +1895,22 @@ stylesheet support at all.
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
 
 **Ancestor-class styling survives an edit — measured 2026-08-19**
-(`docs/en-headsheet-probe.html`, EN template 548, send after the edits). A
+(`docs/archive/en-headsheet-probe.html`, EN template 548, send after the edits). A
 rule in the TEMPLATE HEAD targeting a class on an ancestor
 (`.cta-link a { … }`, with `css-class` on the `mj-text`) keeps its styling
 through an edit in both storage and the delivered email, because the hook
 lives in block markup outside the replacement where the editor cannot reach.
 That is the sanctioned way to style an RTE-embedded link.
 
-The probe's own pre-registered criterion is not yet satisfied, though, and the
-distinction is worth keeping: it named "both mechanisms survive" as a reason
-NOT to assume the earlier storage-versus-delivery anomaly was a probe artifact,
-and both did survive. The evidence for the styling pattern itself is direct and
-end-to-end; the open question is about EN's build-versus-send semantics. Relax
-the criterion deliberately if the migration proceeds — do not treat it as
-already met.
+One anomaly from the same series is closed as **unexplained** rather than
+solved — a delivered email that lacked styling its storage still had. Three
+explanations were formed and measured dead, it has never reproduced, and it
+gates nothing: see future-enhancements, "Unexplained: one delivered email lost
+styling its storage still had". The evidence for the styling pattern above is
+direct and end-to-end and never rested on that anomaly being benign.
 
 **EN sends read block content LIVE, not from a build-time snapshot**
-(measured 2026-08-19, `docs/en-build-vs-send-probe.html`): a block edited
+(measured 2026-08-19, `docs/archive/en-build-vs-send-probe.html`): a block edited
 AFTER an email was built delivered its post-edit value from that already-built
 email. The practical consequence is methodological — a storage-versus-delivery
 comparison needs no rebuild to be valid, so every such comparison in this
