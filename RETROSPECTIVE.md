@@ -144,21 +144,26 @@ land in these four days, and the system goes live in TPL's account on
 
 ## By the numbers
 
-| | |
-| :-- | :-- |
-| Project span | 2026-05-25 → 2026-08-20 (88 days) |
-| Commits, both repos | 495 (267 template · 228 converter) |
-| Blocks in the source catalog | 144 named block entities (134 content blocks, plus the page wrapper and 9 category dividers) |
-| Blocks shipped into EN | 67 canonical blocks in 9 folders (variants collapse into dropdowns) |
-| Master template | 56 blocks; plus 2 autoresponders of 7 blocks each |
-| Converter app | ~22,700 lines of production code, 772 automated tests, **zero backend** |
-| Published contracts | 2 documents, 4,052 lines, mirrored byte-for-byte to a public repo |
-| Version ledger | 152 versioned artifacts; the template shell at v32, the shared stylesheet at v16 |
-| Probe instruments built and archived | 22 (12 platform probes, 10 rendering probes) |
-| Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders |
-| Editor controls proven live or dead by pixel comparison | 1,027 dropdowns, 11,108 renders (2026-08-18) |
-| Stale markup annotations removed after proving they changed nothing | 8,376 |
-| Automated guards now standing | 4 audit engines, 3 linters, 1 byte budget |
+Each figure is attributed to the project that owns it: **TPL** (the template
+library, this repo), the **Marketing Tools app** (the private Email → EN
+Marketing Tools converter), or **both** where one project's work ran on the
+other's material.
+
+| | | Project |
+| :-- | :-- | :-- |
+| Project span | 2026-05-25 → 2026-08-20 (88 days) | Both |
+| Commits | 495 (267 TPL · 228 Marketing Tools app) | Both |
+| Blocks in the source catalog | 144 named block entities (134 content blocks, plus the page wrapper and 9 category dividers) | TPL |
+| Blocks shipped into EN | 67 canonical blocks in 9 folders — TPL's blocks, imported through the app, with variants collapsing into dropdowns | Both |
+| Master template | 56 blocks; plus 2 autoresponders of 7 blocks each | TPL |
+| The converter itself | ~22,700 lines of production code, 772 automated tests, **zero backend**, at version 59 | Marketing Tools app |
+| Published contracts | 2 documents, 4,052 lines, written beside the converter and mirrored byte-for-byte into this repo | Both |
+| Version ledger | 152 versioned template artifacts (the template shell at v32, the shared stylesheet at v16) plus the app itself at v59 | Both |
+| Probe instruments built and archived | 22 — 12 platform probes archived with the app, 10 rendering probes archived here | Both |
+| Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders of the TPL catalog | TPL |
+| Editor controls proven live or dead by pixel comparison | 1,027 dropdowns, 11,108 renders (2026-08-18) — the app's audit engine run over TPL's generated controls | Both |
+| Stale markup annotations removed after proving they changed nothing | 8,376 — TPL's markup, proven inert by the app's strip-and-regenerate audit | Both |
+| Automated guards now standing | 4 audit engines (app), 3 linters (2 here, 1 with the app), 1 byte budget (here) | Both |
 
 ---
 
