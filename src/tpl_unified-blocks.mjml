@@ -1471,8 +1471,8 @@
       background-color="#362229" padding="0 32px 16px"
     >
       <mj-column>
-        <mj-text align="right" mj-class="caption" color="#ffffff" padding="0">
-          <span>Photos <a href="https://www.example.com" style="color:#ffffff;">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
+        <mj-text css-class="wysiwyg link-inverse" align="right" mj-class="caption" color="#ffffff" padding="0">
+          <span>Photos <a href="https://www.example.com">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1574,8 +1574,8 @@
         <mj-button width="auto"
           href="https://www.example.com"
           align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
-        <mj-text padding="0">
-          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#39B54A;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+        <mj-text css-class="wysiwyg link-accent" padding="0">
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1679,8 +1679,8 @@
     </mj-section>
     <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px">
       <mj-column>
-        <mj-text color="#ffffff" padding="0 0 8px">
-          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
+          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com"><strong>Skip to the answer.</strong></a></p>
         </mj-text>
         <mj-text data-inset-toggle data-mobile-only-inset-left align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
@@ -1914,8 +1914,8 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0">
+          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>

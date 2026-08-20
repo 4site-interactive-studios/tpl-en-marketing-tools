@@ -146,6 +146,32 @@ p {
   mso-line-height-rule: exactly;
 }
 
+/* Link colour hooks. These exist because an anchor inside an RTE Content
+   value keeps its href and NOTHING else — EN's editor discards class, style,
+   id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook therefore has to sit on an
+   ANCESTOR, in block markup outside the replacement. Link-only on purpose:
+   .overlay already whitens headings, spans and paragraphs too, and these
+   blocks need the anchor recoloured without disturbing approved copy. */
+.link-inverse a {
+  color: #fff;
+}
+
+.link-earth a {
+  color: #362229;
+}
+
+.link-accent a {
+  color: #39b54a;
+}
+
+/* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
+   the ordinary footer links keep their own treatment. */
+.footer-cta a {
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
 /* Quiz answer pills. The styling lives here rather than inline on the anchor
    because an anchor inside an RTE Content value keeps its href and NOTHING
    else — EN's editor rebuilds links as ProseMirror marks and discards class,
@@ -157,17 +183,13 @@ p {
    combinator. */
 .quiz-cta a {
   display: inline-block;
-  background-color: #ffffff;
-  color: #006837;
+  background-color: #fff;
   border-radius: 100px;
   width: 200px;
   padding: 10px 0;
   text-align: center;
-  font-family: Tahoma, sans-serif;
-  font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
-  line-height: 24px;
   text-decoration: none;
   mso-padding-alt: 0;
   white-space: nowrap;

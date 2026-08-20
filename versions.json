@@ -188,24 +188,24 @@
     "hash": "34063d94ce6a"
   },
   "block:Footer": {
-    "version": 3,
-    "hash": "d570f3d8bc16"
+    "version": 4,
+    "hash": "f8bede44f783"
   },
   "block:Footer (dark)": {
-    "version": 3,
-    "hash": "a6161592a829"
+    "version": 4,
+    "hash": "e36202b4d85a"
   },
   "block:Footer (light green)": {
-    "version": 3,
-    "hash": "a5617412fe94"
+    "version": 4,
+    "hash": "8a56432e0f60"
   },
   "block:Footer (off-white)": {
-    "version": 3,
-    "hash": "581c14ba4efb"
+    "version": 4,
+    "hash": "004a390cb20f"
   },
   "block:Footer (w/ image)": {
-    "version": 3,
-    "hash": "d1b787e8b017"
+    "version": 4,
+    "hash": "bc853f7b86a4"
   },
   "block:Footer (w/ image, snow)": {
     "version": 5,
@@ -232,8 +232,8 @@
     "hash": "3f0391687689"
   },
   "block:Heading (linked)": {
-    "version": 2,
-    "hash": "bedb2862b50e"
+    "version": 3,
+    "hash": "0e87a2342876"
   },
   "block:Heading (linked), Text, and CTA": {
     "version": 5,
@@ -396,8 +396,8 @@
     "hash": "2b7be1087ea8"
   },
   "block:Photo and Text Grid (2x2)": {
-    "version": 7,
-    "hash": "1cabaaf68588"
+    "version": 8,
+    "hash": "6ac222681b95"
   },
   "block:Podcast Episode Block": {
     "version": 5,
@@ -420,8 +420,8 @@
     "hash": "64ebc33c1728"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 11,
-    "hash": "45f1b209ac4f"
+    "version": 12,
+    "hash": "ea83afa65ea4"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 3,
@@ -452,24 +452,24 @@
     "hash": "4d590f5d0aac"
   },
   "block:Stat Row (green)": {
-    "version": 6,
-    "hash": "b3ee3769d7a2"
+    "version": 7,
+    "hash": "510aa75f8731"
   },
   "block:Stat Row (off-white)": {
-    "version": 5,
-    "hash": "2c0e7ca39136"
+    "version": 6,
+    "hash": "40c3a740a080"
   },
   "block:Steps Block": {
-    "version": 6,
-    "hash": "67691875e1c1"
+    "version": 7,
+    "hash": "b9a873e6c753"
   },
   "block:Steps Block (photo)": {
     "version": 2,
     "hash": "3daf5b113e2e"
   },
   "block:Steps Block (w/ arrow heading)": {
-    "version": 5,
-    "hash": "43a5055fcf18"
+    "version": 6,
+    "hash": "8b51e705b686"
   },
   "block:Story Card (full width)": {
     "version": 5,
@@ -584,12 +584,12 @@
     "hash": "0e1a668900ba"
   },
   "email-template": {
-    "version": 22,
-    "hash": "e3de5be96ca9"
+    "version": 23,
+    "hash": "884740a4139a"
   },
   "head-css": {
-    "version": 9,
-    "hash": "20130b3d388c"
+    "version": 10,
+    "hash": "2d0437eb0205"
   },
   "partial:debug-toolbar": {
     "version": 1,

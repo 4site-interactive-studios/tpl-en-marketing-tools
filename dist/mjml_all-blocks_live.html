@@ -552,6 +552,32 @@ li {
       mso-line-height-rule: exactly;
     }
 
+    /* Link colour hooks. These exist because an anchor inside an RTE Content
+   value keeps its href and NOTHING else — EN's editor discards class, style,
+   id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook therefore has to sit on an
+   ANCESTOR, in block markup outside the replacement. Link-only on purpose:
+   .overlay already whitens headings, spans and paragraphs too, and these
+   blocks need the anchor recoloured without disturbing approved copy. */
+    .link-inverse a {
+      color: #fff;
+    }
+
+    .link-earth a {
+      color: #362229;
+    }
+
+    .link-accent a {
+      color: #39b54a;
+    }
+
+    /* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
+   the ordinary footer links keep their own treatment. */
+    .footer-cta a {
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
     /* Quiz answer pills. The styling lives here rather than inline on the anchor
    because an anchor inside an RTE Content value keeps its href and NOTHING
    else — EN's editor rebuilds links as ProseMirror marks and discards class,
@@ -563,17 +589,13 @@ li {
    combinator. */
     .quiz-cta a {
       display: inline-block;
-      background-color: #ffffff;
-      color: #006837;
+      background-color: #fff;
       border-radius: 100px;
       width: 200px;
       padding: 10px 0;
       text-align: center;
-      font-family: Tahoma, sans-serif;
-      font-size: 18px;
       font-weight: 700;
       letter-spacing: 1px;
-      line-height: 24px;
       text-decoration: none;
       mso-padding-alt: 0;
       white-space: nowrap;
@@ -3088,9 +3110,9 @@ li {
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="center" class="wysiwyg link-earth" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <h1><a href="https://www.example.com" style="color:#362229;">Lorem Ipsum</a></h1>
+                          <h1><a href="https://www.example.com">Lorem Ipsum</a></h1>
                         </div>
                       </td>
                     </tr>
@@ -4396,13 +4418,13 @@ li {
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tbody>
                             <tr>
-                              <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                              <td align="center" class="wysiwyg link-earth" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
                                   <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
                                   <p style="font-size:16px;"><b>Supporter ID:</b></p>
                                   <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
                                   <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-                                  <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
+                                  <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com">Still able to make an impact!</a></p>
                                   <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
                                   <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
                                 </div>
@@ -4453,13 +4475,13 @@ li {
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                             <tbody>
                               <tr>
-                                <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                <td align="center" class="wysiwyg link-earth" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                                   <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
                                     <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
                                     <p style="font-size:16px;"><b>Supporter ID:</b></p>
                                     <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
                                     <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-                                    <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com" style="color:#362229;">Still able to make an impact!</a></p>
+                                    <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com">Still able to make an impact!</a></p>
                                     <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
                                     <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
                                   </div>
@@ -8204,9 +8226,9 @@ li {
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                      <td align="left" class="wysiwyg link-inverse" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
-                          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com" style="color:#ffffff;font-weight:bold;">Skip to the answer.</a></p>
+                          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com"><strong>Skip to the answer.</strong></a></p>
                         </div>
                       </td>
                     </tr>
@@ -8597,9 +8619,9 @@ li {
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="left" class="wysiwyg link-accent" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#39B54A;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+                          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
                         </div>
                       </td>
                     </tr>
@@ -8740,9 +8762,9 @@ li {
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="left" class="wysiwyg link-accent" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com" style="color:#39B54A;">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+                          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
                         </div>
                       </td>
                     </tr>
@@ -9299,8 +9321,8 @@ li {
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="right" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
-                        <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#ffffff;"><span>Photos <a href="https://www.example.com" style="color:#ffffff;">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span></div>
+                      <td align="right" class="wysiwyg link-inverse" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:10px;font-weight:400;line-height:16px;text-align:right;color:#ffffff;"><span>Photos <a href="https://www.example.com">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span></div>
                       </td>
                     </tr>
                   </tbody>
@@ -9918,9 +9940,9 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="center" class="wysiwyg link-inverse" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">
-                          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
+                          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
                         </div>
                       </td>
                     </tr>
@@ -10079,9 +10101,9 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="center" class="wysiwyg link-inverse" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">
-                          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#ffffff;">Contact Us</a> | <a href="https://www.example.com" style="color:#ffffff;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#ffffff;">Unsubscribe</a></p>
+                          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
                         </div>
                       </td>
                     </tr>
@@ -10380,9 +10402,9 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="center" class="wysiwyg link-earth" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
+                          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
                         </div>
                       </td>
                     </tr>
@@ -10514,9 +10536,9 @@ li {
                       </td>
                     </tr><!--<![endif]-->
                     <tr>
-                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                      <td align="center" class="wysiwyg link-earth" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                          <p style="font-size:14px;"><a href="https://www.example.com" style="color:#362229;">Contact Us</a> | <a href="https://www.example.com" style="color:#362229;">Privacy Policy</a> | <a href="https://www.example.com" style="color:#362229;">Unsubscribe</a></p>
+                          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
                         </div>
                       </td>
                     </tr>
@@ -10603,10 +10625,10 @@ li {
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                             <tbody>
                               <tr>
-                                <td align="left" class="footer-text" style="font-size:0px;padding:0;word-break:break-word;">
+                                <td align="left" class="footer-text link-inverse footer-cta" style="font-size:0px;padding:0;word-break:break-word;">
                                   <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                     <p style="text-align: center;">
-                                      <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com">DONATE</a>
+                                      <a href="https://www.example.com"><strong>DONATE</strong></a>
                                     </p>
                                   </div>
                                 </td>
@@ -10619,10 +10641,10 @@ li {
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-left:2px solid #4d4d4d;vertical-align:middle;" width="100%">
                             <tbody>
                               <tr>
-                                <td align="left" class="footer-text" style="font-size:0px;padding:0;word-break:break-word;">
+                                <td align="left" class="footer-text link-inverse footer-cta" style="font-size:0px;padding:0;word-break:break-word;">
                                   <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
                                     <p style="text-align: center;">
-                                      <a style="letter-spacing:2px;color:#ffffff;font-weight:bold;text-decoration: none" href="https://www.example.com">MANAGE SUBSCRIPTION</a>
+                                      <a href="https://www.example.com"><strong>MANAGE SUBSCRIPTION</strong></a>
                                     </p>
                                   </div>
                                 </td>
