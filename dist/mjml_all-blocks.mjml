@@ -2984,7 +2984,7 @@
               align="left"
               css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle data-mobile-only-inset-right font-size="16px" padding="8px 0 0">
+          <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
             <p style="font-family: Arial, sans-serif;">
               Carrie Besnette-Hauser
               <br />

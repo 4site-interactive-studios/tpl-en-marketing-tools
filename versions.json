@@ -440,16 +440,16 @@
     "hash": "c417c6aeb2fb"
   },
   "block:Signature Card (photo)": {
-    "version": 1,
-    "hash": "cdc417aa85ee"
+    "version": 2,
+    "hash": "fb1b1bcee3b8"
   },
   "block:Signature Card (round photo)": {
     "version": 5,
     "hash": "472531340d9b"
   },
   "block:Signature Card (square photo)": {
-    "version": 8,
-    "hash": "bc5da8b76a1c"
+    "version": 9,
+    "hash": "ec23b3ef4af6"
   },
   "block:Spacer": {
     "version": 2,

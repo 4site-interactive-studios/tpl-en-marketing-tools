@@ -2174,6 +2174,28 @@ whole span, so a miss silently drops the field
   a true circle. In use on the unified catalog's Signature Card (square
   photo), authored `border-radius="0"` so the default look is unchanged.
 
+  **A radius candidate must never claim a `border`** (fixed 2026-08-20).
+  `contextMatches` accepts a loose substring match between the candidate's
+  property and the occurrence's context, which reads `border` as a shorthand
+  of `border-radius` — `'border-radius'.includes('border')`. It is not one.
+  The radius field therefore claimed THREE carriers instead of one: the
+  presentation table's `border="0"` attribute and the image's `border:0`
+  declaration alongside the real `border-radius:0`. Choosing Circle wrote
+  `border="50%"` and `border:50%` as well — invalid as an HTML attribute and
+  as a CSS shorthand, and visibly wrong. The two are unrelated properties
+  (unlike `padding`/`padding-top`, where the loose match is wanted), so they
+  now match only each other exactly. Regression-tested against the compiled
+  shape, and the test is verified to fail without the guard.
+
+  **A Font Size field over `<p>` copy is inert** (2026-08-20). The size MJML
+  stamps on an mj-text lands on the wrapper `<div>`, and the stylesheet's bare
+  `p` rule beats inheritance — measured in a browser: forcing that div to 30px
+  left the paragraph at 16px. A Font Size field there edits nothing an editor
+  can see, so the attribute is dropped upstream rather than shipped as a dead
+  control. It stays live wherever the paragraph pins its OWN size, which is
+  immune to the sheet's rule (the same property that makes `preWrapRteValue`
+  work). One instance in each catalog, on the Signature Card.
+
 - **`data-heading-level-toggle`** (valueless, on mj-text, 2026-08-19;
   **superseded 2026-08-20, zero live uses**): mints the "Heading Level"
   H1–H4 Select and narrows the Content field to the heading's inner text
