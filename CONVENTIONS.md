@@ -354,6 +354,38 @@ way — only the words change, so delete-restore is still byte-exact.
 **Column Order** (Normal/Reversed) is unaffected: those words describe the
 swap itself, not a side, and are direction-agnostic by construction.
 
+## The reversed row's splices and mirrors must be disjoint
+
+Building the reversed arrangement applies two kinds of edit to the same
+slice: the row's own `{replacement~…}` splices, and `mirrorEdits` — pinned
+regions whose physical `align` is flipped so the mirrored layout does not
+collapse inward.
+
+Those two sets MUST NOT overlap, because `mirrorPins` changes LENGTH
+(`align="left"` → `align="right"` is one character longer). Apply both and
+the later splice's end offset lands short, leaking the tail of the region
+into the output.
+
+Containment runs BOTH ways, and only one direction was originally checked:
+
+- a splice inside a mirror region — already baked into the mirrored text,
+  so it must not be applied again (this was handled);
+- **a mirror region inside a splice** — a Display toggle replaces a member's
+  entire `<tr>` with one tag, and the pinned element it mirrors lives within
+  that `<tr>`. Mirroring is moot there (the tag overwrites it) but applying
+  both is not.
+
+Story Card (image on the side) shipped the second case to EN as a literal
+stray `>` in its reversed option — splice `[6178, 7374]` around region
+`[6213, 7340]`, measured 2026-08-20. Any overlap now drops the mirror,
+leaving `applyToSlice` a strictly disjoint set.
+
+**Coverage note**: this is verified end to end (a unified import shows no
+`}>` in any option of any block) but has NO unit test. Several synthetic
+fixtures reproduced the Display toggles and the swap control without ever
+firing a mirrorEdit, so a passing test would have proved nothing. A
+fixture built from the real compiled row would be the way to close it.
+
 ## Message size is advisory, never enforced
 
 `validateMessageSizeBudget` (`src/core/validate.ts`) projects the delivered
