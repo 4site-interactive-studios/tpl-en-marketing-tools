@@ -188,7 +188,7 @@ Names must match exactly (case-sensitive) between START and END.
 
     Family (qualifier, qualifier, w/ feature)
 
-- **Family** — the structural identity (`Logo Hero`, `Heading`,
+- **Family** — the structural identity (`Logo Hero`, `Quiz Block`,
   `CTA Buttons 2x1`). Stripping every parenthetical yields the *group key*:
   blocks sharing a key are variants of one family and group/stack together
   in the debugger.
@@ -199,10 +199,11 @@ Names must match exactly (case-sensitive) between START and END.
   3. features, prefixed `w/`: `(w/ badge image)`, `(w/ arrow heading)`,
      `(w/ dark-mode swap)`
 - An **unqualified name** is the family baseline and may coexist with
-  qualified variants (`Steps Block` + `Steps Block (w/ arrow heading)`).
+  qualified variants (`Video Block` + `Video Block (inset)`).
 - `NxN` denotes repetition and layout — columns × rows: `CTA Buttons 2x1`,
   `Images 3x1`, `Story Card 2x1`, and inside a parenthetical when it
-  qualifies a variant: `Photo Grid (2x2)`, `Quiz Block (3x1 buttons)`. It
+  qualifies a variant: `Photo and Text Grid Block (2x2)`,
+  `Quiz Block (3x1 buttons)`. It
   superseded the older `Dual`/`Triple` words, which no longer appear
   anywhere in the catalog — do not reintroduce them. The `x` pairing
   combinator (`Logo Header x CTA`) is likewise retired with no surviving
@@ -346,7 +347,7 @@ import-folder ID for every block that FOLLOWS that header (until the next
 category header). The converter reads it from the raw MJML to route each
 block's import; the header block itself still never imports. Each wrapper
 also carries `data-category-short="<label>"` — the short name the importer
-prefixes onto block names (e.g. `Headers/Heroes`, `Images and Text`).
+prefixes onto block names (e.g. `Headers/Heroes`, `Text and Images`).
 
 **The live map is printed by every build** — `npm run build` emits a
 `categories (n): <folder> <label> [<short>]` line per catalog page. Read it

@@ -58,7 +58,10 @@ const demoBlocks = blockNames(demo);
 const NOT_BLOCKS = new Set([
   'Signature card', // PLAYBOOK §4's case-sensitivity counter-example
   'Logo Header x CTA', // documented as a retired combinator
-  'Logo Header x State',
+  // 'Logo Header x State' was here until 2026-08-21 and is cited by nothing.
+  // Both survivors are BACKTICKED in PLAYBOOK, so until the harvester learned
+  // backticks none of these three was ever reached — an allowlist that made
+  // the guard look like it was working. Verify a new entry actually fires.
 ]);
 /** Families the checker recognises as block-shaped when quoted in prose. */
 const BLOCK_PREFIX =
@@ -70,12 +73,29 @@ const families = new Set([...demoBlocks].map((n) => n.replace(/\s*\(.*$/, '').tr
 const categories = new Set(
   [...demoBlocks].filter((n) => n.startsWith('Category — ')).map((n) => n.slice('Category — '.length)),
 );
+/**
+ * The EN-facing SHORT label too — `data-category-short`, which is what gets
+ * prepended to a block name in the picker. Docs cite the short form as often
+ * as the long one ("Text and Images"), and without these the checker calls a
+ * perfectly live category a dead block name.
+ */
+for (const file of CATALOG_FILES) {
+  for (const m of (read(file) ?? '').matchAll(/data-category-short="([^"]+)"/g)) {
+    categories.add(m[1]);
+  }
+}
 
 for (const f of LOCAL_DOCS) {
   const text = read(f);
   const cited = new Set([
     ...[...text.matchAll(/<!-- (?:START|END): (.+?) -->/g)].map((m) => m[1]),
     ...[...text.matchAll(/"([A-Z][^"\n]{2,60})"/g)].map((m) => m[1]),
+    // Backticked names too. PLAYBOOK §4 — the naming grammar this assertion
+    // was written for — writes EVERY name in backticks, so until 2026-08-21
+    // the check reached none of them and two of the NOT_BLOCKS entries added
+    // to silence it were backticked as well: dead allowlist entries that made
+    // the guard look like it was working.
+    ...[...text.matchAll(/`([A-Z][^`\n]{2,60})`/g)].map((m) => m[1]),
   ]);
   for (const name of cited) {
     if (NOT_BLOCKS.has(name) || !BLOCK_PREFIX.test(name)) continue;
