@@ -39,10 +39,6 @@
     "version": 8,
     "hash": "1017ee92a53a"
   },
-  "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 7,
-    "hash": "739b8e86a9b4"
-  },
   "block:CTA Buttons 2x1 (right)": {
     "version": 8,
     "hash": "d345141e16a4"
@@ -51,13 +47,17 @@
     "version": 7,
     "hash": "45784d38b354"
   },
+  "block:CTA Buttons 2x1 Fixed Width": {
+    "version": 1,
+    "hash": "0ddcc00547db"
+  },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 6,
     "hash": "f19422fc0bcb"
   },
-  "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 6,
-    "hash": "288ff813c83d"
+  "block:CTA Buttons 3x1 Fixed Width": {
+    "version": 1,
+    "hash": "b2dbf61634c8"
   },
   "block:CTA Hero": {
     "version": 1,
@@ -324,8 +324,8 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 40,
-    "hash": "cef1e1e8b3ae"
+    "version": 41,
+    "hash": "c584b0d5d7c1"
   },
   "head-css": {
     "version": 23,

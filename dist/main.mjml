@@ -840,7 +840,7 @@
     </mj-section>
     <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
-    <!-- START: CTA Buttons 3x1 (fixed width) -->
+    <!-- START: CTA Buttons 3x1 Fixed Width -->
     <!-- data-visible-duplicate: normalize() masks pill widths and strips the
          fixed-width class, so this block groups with the dynamic-width row —
          the fixed-width variant is a deliberate, separately-shipped layout
@@ -866,9 +866,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Buttons 3x1 (fixed width) -->
+    <!-- END: CTA Buttons 3x1 Fixed Width -->
 
-  <!-- START: CTA Buttons 2x1 (fixed width) -->
+  <!-- START: CTA Buttons 2x1 Fixed Width -->
     <!-- data-visible-duplicate: normalize() masks pill widths and strips the
          fixed-width class, so this block groups with the dynamic-width row —
          the fixed-width variant is a deliberate, separately-shipped layout
@@ -894,7 +894,7 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: CTA Buttons 2x1 (fixed width) -->
+  <!-- END: CTA Buttons 2x1 Fixed Width -->
 
   <!-- START: CTA Buttons 2x1 (two-line) -->
   <!--
