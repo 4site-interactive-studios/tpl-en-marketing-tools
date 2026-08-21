@@ -396,6 +396,25 @@ p {
     width: calc(100% - 56px) !important;
   }
 
+  /* Podcast Streaming Block: the two "listen on" badges are a MATCHED PAIR,
+     and only the Apple one carries an inset (padding="0 0 0 16px") to space
+     it off Spotify. Both 78px columns are pinned above the breakpoint, so at
+     600px that inset sits in the column's slack and both badges render 62px.
+     Below it the columns go percentage — 45px at 375 — and the same 16px
+     inset eats a third of one badge but not the other: measured 45px vs 29px
+     at 375, 37 vs 21 at 320 (2026-08-21). Pinning both columns holds each
+     badge at its authored 62px AND keeps the 16px gap.
+
+     Deleting the inset instead was measured and rejected: it fixes the sizes
+     but drops the gap to 0 and the two circles touch. */
+  .stream-icon {
+    width: 78px !important;
+  }
+
+  .stream-text {
+    width: calc(100% - 156px) !important;
+  }
+
   /* Inset sections: collapse the wide desktop gutters to the standard 32px.
      The section's main td is the only one carrying direction inline. */
   .inset-gutter td[style*=direction] {

@@ -1430,14 +1430,14 @@
       background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right
     >
       <mj-group>
-        <mj-column width="380px" vertical-align="middle">
+        <mj-column width="380px" vertical-align="middle" css-class="stream-text">
           <mj-text padding="0">
             <p style="font-size:19px;font-weight:700;">
               Listen where you stream<br />your favorite podcasts!
             </p>
           </mj-text>
         </mj-column>
-        <mj-column width="78px" vertical-align="middle">
+        <mj-column width="78px" vertical-align="middle" css-class="stream-icon">
           <mj-image
             src="assets/icon-spotify.png"
             alt="Listen on Spotify"
@@ -1455,7 +1455,7 @@
             padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="78px" vertical-align="middle">
+        <mj-column width="78px" vertical-align="middle" css-class="stream-icon">
           <mj-image
             src="assets/icon-apple-podcast.png"
             alt="Listen on Apple Podcasts"
