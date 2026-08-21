@@ -75,10 +75,6 @@
     "version": 1,
     "hash": "1e217daf1ed8"
   },
-  "block:CTA Hero (w/ Large Background Image)": {
-    "version": 1,
-    "hash": "b6d7bf5990c9"
-  },
   "block:CTA Text Block": {
     "version": 6,
     "hash": "7c324c0bae37"
@@ -324,8 +320,8 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 42,
-    "hash": "dd485043c1d9"
+    "version": 43,
+    "hash": "da7cd3430f57"
   },
   "head-css": {
     "version": 24,

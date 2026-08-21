@@ -1,0 +1,195 @@
+<mjml lang="en">
+  <mj-head>
+    <!-- en-tools-config {
+      "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": {
+        "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 }
+      },
+      "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "geometryReachPx": 64,
+      "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
+    } -->
+    <!--
+      BLOCKS UNDER REPAIR — not a catalog page, not shipped.
+
+      A holding pen for blocks pulled out of main.mjml while something about
+      them is unresolved. It carries main's head verbatim (the en-tools-config,
+      the builder-band sheet, styles.css) so a block behaves here exactly as it
+      did there — the point is to look at it in isolation, not in a different
+      environment.
+
+      Moving a block here has three consequences worth knowing:
+        * it stops exporting, so EN never sees it;
+        * its versions.json entity disappears — version-sync hashes blocks from
+          main.mjml alone — so returning it later restarts its version at v1;
+        * it is still a compiled page, so every check-catalog guard still
+          applies to it. That is deliberate: a block under repair is exactly
+          the one you want linted.
+
+      Put a block back by moving its START/END region into main.mjml under the
+      right Category band. When this file is empty, delete it.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>TPL — Blocks under repair</mj-title>
+    <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
+
+    <!-- Baseline everything inherits -->
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-button width="auto"
+        css-class="button"
+        font-size="18px"
+        font-weight="700"
+        font-family="Tahoma, sans-serif"
+        line-height="25px"
+        border-radius="100px"
+        inner-padding="12px 16px"
+        letter-spacing="1px"
+        color="#ffffff"
+        background-color="#006837"
+      />
+      <mj-image
+        padding="0" />
+
+      <!-- Reusable variants — apply with mj-class="*" -->
+      <mj-class
+        name="caption"
+        font-size="10px"
+        line-height="16px"
+        padding="4px 0 0 0"
+      />
+    </mj-attributes>
+
+    <!-- No mj-style @media blocks here: EN merges same-condition @media
+         blocks into the FIRST occurrence's position (measured 2026-08-19,
+         EoA delivered heads), so a 599px block in this head would drag
+         styles.css's 599px rules ahead of the order-dependent hides that
+         precede them there. All mobile rules live in styles.css. -->
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
+         this sheet in the template HEAD: the importer splices every other
+         style element out into the Template Styles block, and this layout has
+         to survive an email built without that block. __TEMPLATE_VERSION__ is
+         filled in at import from versions.json; keeping the literal here is
+         what stops the version from feeding its own hash.
+
+         TWO SEPARATE RULES, DELIBERATELY NOT MERGED INTO ONE SELECTOR LIST.
+
+         BLOCK bands hang off a span the app injects into the block's own
+         content, gated on whether a block wrapper exists anywhere in the
+         document — true while editing in EN, false in a delivered email.
+
+         The TEMPLATE band hangs off EN's container element instead. A span
+         authored in the template shell does NOT work (measured 2026-08-20):
+         EN's builder renders blocks inside the container and does not render
+         the template's own surrounding markup, so such a span never enters
+         the builder DOM at all. [data-container="main"] IS that container,
+         and it is self-gating — the stored template carries EN's container
+         placeholder there and a delivered email carries the blocks
+         themselves, so nothing bears the attribute outside the editor.
+
+         Do NOT write EN's container merge tag literally anywhere in this
+         file. autoEnableTemplateReplacements splits the shell on the FIRST
+         occurrence of that tag, so a literal in a comment splits the head at
+         the comment instead of at the real container: the comment loses its
+         terminator, swallows the whole stylesheet, and every light/dark image
+         pair renders both halves. Measured 2026-08-20; check-catalog guards it.
+
+         Merging the two selectors would be a live hazard: one unsupported
+         selector in a group invalidates the WHOLE rule, so a client that
+         cannot parse :has() would take the template band down with it. -->
+    <mj-raw>
+      <style type="text/css" data-en-tools-band>
+        /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in styles.css, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+        :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
+          display: flex !important;
+          font-weight: 700 !important;
+          font-family: sans-serif !important;
+          color: #4e535c !important;
+          line-height: 2rem !important;
+          position: absolute !important;
+          top: 1.75rem !important;
+          width: 100% !important;
+          max-width: 600px !important;
+          justify-content: center !important;
+          background-color: #d0d5dd !important;
+        }
+        [data-container="main"]:before{
+          content: "Email Template v__TEMPLATE_VERSION__";
+          display: block !important;
+          font-weight: 700 !important;
+          font-family: sans-serif !important;
+          color: #4e535c !important;
+          line-height: 1.75rem !important;
+          text-align: center !important;
+          margin-bottom: 2rem !important;
+          background-color: #d0d5dd !important;
+        }
+      </style>
+    </mj-raw>
+
+    <mj-include path="./styles.css" type="css" />
+  </mj-head>
+  <mj-body css-class="email-body" background-color="#ffffff">
+    <!-- Pulled from main.mjml on 2026-08-21 (user decision). Its photo spans
+         TWO sections, so it has to sit on the wrapper — and a wrapper cannot
+         carry both a background-url and a background-color, because MJML
+         copies the colour onto the v:fill as color= and the Word engine paints
+         that slab instead of the photo (measured 2026-08-13, EoA aBPD6k1l).
+         The fallback therefore lives in styles.css as .hero-photo-fallback,
+         which renders correctly in every CSS client but is UNVERIFIED in
+         Outlook with images blocked: a class-based colour is not the bgcolor
+         attribute Word reads most reliably, so the white heading may end up on
+         nothing. That is what still needs settling — a send, read on
+         outlook2021_win11_* with images blocked. -->
+    <!-- START: CTA Hero (w/ Large Background Image) -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
+    <mj-wrapper css-class="hero-photo-fallback" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
+      <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
+      <mj-section
+        css-class="image-block block"
+        padding="48px 32px 8px"
+      >
+        <mj-column>
+          <mj-text data-display-toggle align="center" padding="0">
+            <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section
+        css-class="image-block"
+        padding="48px 32px 32px"
+      >
+        <mj-group>
+          <mj-column vertical-align="middle" width="50%">
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="middle" width="50%">
+            <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: CTA Hero (w/ Large Background Image) -->
+  </mj-body>
+</mjml>

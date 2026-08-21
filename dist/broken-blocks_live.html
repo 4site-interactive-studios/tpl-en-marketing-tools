@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>TPL — Blocks under repair</title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:600px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
+      }
+    }
+  </style>
+  <style media="screen and (min-width:600px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .moz-text-html .mj-column-per-50 {
+      width: 50% !important;
+      max-width: 50%;
+    }
+  </style>
+  <style type="text/css">
+    @media only screen and (max-width:599px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside a
+   CSS-type Replacement (EN's CSS Editor — the Template Styles block's
+   head_styles), and in EN's editing surfaces `>` gets HTML-escaped to
+   `&gt;` — the escaped selector is invalid CSS and the rule silently dies
+   (guide §2d). Reproduced 2026-08-13 for the HTML Editor field, where an
+   EDIT persists the escape; whether the CSS Editor does the same is still
+   UNVERIFIED. Where the old `>` chains targeted MJML's unclassable
+   structural elements, two measured idioms stand in:
+   - section/column OUTER table:  table[align=center]  (only outer tables
+     carry align=center in the non-MSO DOM)
+   - column wrapper td (exists only when a column authors padding/border/
+     background): pair td[style*=vertical-align] WITH td[valign] — EN's
+     inliner moves vertical-align out of the style attribute into a valign
+     attribute at send (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered
+     tds kept it inline), so the style form only matches previews and the
+     valign form only matches the inbox. The section's own main td:
+     td[style*=direction] — direction survives inline (20 of 20 delivered).
+   Attribute selectors are inert in Gmail; acceptable here because the dark
+   branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
+   the two mobile rules using them are cosmetic insets. */
+    div[data-container] {
+      /* Email builder compatability styles */
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* body {
+  color: #000000;
+  font-family: Tahoma, sans-serif;
+  font-size: 18px;
+} */
+    a {
+      color: #006837;
+    }
+
+    /* p,
+span,
+a,
+li {
+  font-family: Tahoma, sans-serif;
+} */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #000000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 42px;
+      /* 32 * 1.3 */
+      mso-line-height-rule: exactly;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 36px;
+      /* 28 * 1.3 */
+      mso-line-height-rule: exactly;
+    }
+
+    h3 {
+      font-size: 22px;
+      line-height: 29px;
+      /* 22 * 1.3 */
+      mso-line-height-rule: exactly;
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: 18px;
+      line-height: 29px;
+      /* 18 * 1.6 */
+      mso-line-height-rule: exactly;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 27px;
+      /* 16 * 1.7 */
+      mso-line-height-rule: exactly;
+    }
+
+    .wysiwyg div *:first-child {
+      margin-top: 0;
+    }
+
+    .wysiwyg div *:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Viewport-forked content, the sanctioned pair (completed 2026-08-18 —
+   the reveal was missing since the sheet's beginning, so the class hid
+   content everywhere). The hide is authored TWICE, on the .dark-only
+   precedent, because the two copies serve different clients:
+
+   1. The PLAIN copy below: EN inlines it onto the element at send
+      (!important stripped), which is what covers the style-stripping
+      audience — Gmail app on non-Google/IMAP accounts drops style blocks
+      entirely, and forwarding drops head styles in most clients. There
+      the inline hide is the only rule standing: one fork shows (desktop),
+      not two.
+   2. The WRAPPED copy: an always-true media query EN keeps verbatim
+      (guide §2a), so the hide also survives as a stylesheet rule wherever
+      styles are respected but the inline was lost (edited block HTML).
+      Its condition is deliberately DISTINCT (9998px, not the OWA block's
+      9999px) so EN's same-condition merge cannot move it after the 599px
+      reveal. The merge's direction is MEASURED (2026-08-19, EoA delivered
+      heads): EN folds every same-condition block into the FIRST
+      occurrence's position. That is why the 599px reveal below must be
+      the ONLY (max-width: 599px) block in the whole compiled head — a
+      second copy earlier in the document (the catalogs' old mj-style
+      block) dragged this sheet's reveal in front of the 9998px hide and
+      inverted the order this pair depends on.
+
+   The reveal (599px block, later in the sheet) beats BOTH copies: the
+   inline hide is plain after EN's !important-strip, and the wrapped hide
+   loses the equal-specificity tie on source order. Word ignores @media
+   AND display:none, so every element classed mobile-only MUST also sit
+   inside the revealed [if !mso] conditional wrapper (check-catalog asserts
+   this). Use sparingly: each fork mints its own Replacement fields. */
+    .mobile-only {
+      display: none;
+    }
+
+    @media only screen and (max-width: 9998px) {
+      .mobile-only {
+        display: none !important;
+      }
+    }
+
+    .two-col-column h3 {
+      margin-bottom: 0;
+    }
+
+    .footer-text p,
+    .footer-text span,
+    .footer-text a,
+    .footer-text li {
+      font-size: 12px;
+      line-height: 20px;
+      /* font-family: Arial, sans-serif; */
+      mso-line-height-rule: exactly;
+    }
+
+    /* Link colour hooks. These exist because an anchor inside an RTE Content
+   value keeps its href and NOTHING else — EN's editor discards class, style,
+   id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook therefore has to sit on an
+   ANCESTOR, in block markup outside the replacement. Link-only on purpose:
+   .overlay already whitens headings, spans and paragraphs too, and these
+   blocks need the anchor recoloured without disturbing approved copy. */
+    .link-inverse a {
+      color: #fff;
+    }
+
+    .link-earth a {
+      color: #362229;
+    }
+
+    .link-accent a {
+      color: #39b54a;
+    }
+
+    /* ProseMirror rebuilds an em element as a MARK from a fixed attribute set,
+   so an inline font-family on it is dropped the first time an editor touches
+   the copy — the "Section 2 Paragraph Copy" report, 2026-08-20. Ancestor-class
+   styling survives (measured, docs/archive/en-headsheet-probe.html) because
+   the hook lives in block markup outside the replacement. */
+    .signature-text em {
+      font-family: Georgia, serif;
+    }
+
+    /* The Steps Block's numbered badge. A span's CLASS survives an edit while an
+   inline style is re-expressed as MARKS (measured: font-weight becomes a
+   strong element, a hex becomes rgb()) — and display, background-color,
+   height and border-radius have no mark to become, so the badge would lose
+   its shape entirely. A class keeps the span editable as plain text. */
+    .step-num {
+      display: inline-block;
+      background-color: #39B54A;
+      color: #ffffff;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: Menlo, Consolas, 'Courier New', monospace;
+      border-radius: 3px;
+    }
+
+    /* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
+   the ordinary footer links keep their own treatment. */
+    .footer-cta a {
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    /* Quiz answer pills. The styling lives here rather than inline on the anchor
+   because an anchor inside an RTE Content value keeps its href and NOTHING
+   else — EN's editor rebuilds links as ProseMirror marks and discards class,
+   style, id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook is on the mj-text, which
+   is block markup outside the replacement, so the editor cannot reach it;
+   that pattern survives an edit in storage and in the delivered email
+   (docs/archive/en-headsheet-probe.html). Descendant selector, never a child
+   combinator. */
+    .quiz-cta a {
+      display: inline-block;
+      background-color: #fff;
+      border-radius: 100px;
+      width: 200px;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      mso-padding-alt: 0;
+      white-space: nowrap;
+    }
+
+    .question-response {
+      border: 1px solid #ffffff;
+    }
+
+    .question-response:hover {
+      background-color: #ffffff !important;
+      cursor: pointer;
+    }
+
+    .overlay h1,
+    .overlay h2,
+    .overlay h3,
+    .overlay h4,
+    .overlay h5,
+    .overlay h6,
+    .overlay span,
+    .overlay p,
+    .overlay a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 599px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      /* The reveal half of .mobile-only (see the 9998px block above). Source
+     order after the hide is load-bearing: equal specificity, equal
+     importance — later wins. This must stay the ONLY (max-width: 599px)
+     block EN sees: EN folds same-condition blocks into the first
+     occurrence's position (measured 2026-08-19), so a second 599px block
+     earlier in the compiled head would drag this reveal ahead of the
+     hide. The .caption/.cta-item rules below moved here from the
+     catalogs' mj-style block for exactly that reason. */
+      .mobile-only {
+        display: block !important;
+      }
+
+      /* Indents the caption (!important beats the inline td padding) */
+      .caption {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Side by Side CTA Buttons */
+      .cta-item {
+        display: block !important;
+        margin: 0 0 16px 0 !important;
+      }
+
+      .cta-item:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      /* Buttons center on mobile regardless of desktop alignment — a
+     left-hugging button on a 375px screen reads as a layout accident.
+     text-align + inline-table beats the legacy td[align] attribute. */
+      td.button {
+        text-align: center !important;
+      }
+
+      td.button table {
+        float: none !important;
+        display: inline-table !important;
+        margin: 0 auto !important;
+      }
+
+      /* MJML writes the button's align onto TWO cells: the outer td.button
+     (pinned above) and the inner cell holding the anchor. Without this the
+     pill centers but a label that WRAPS keeps its desktop alignment
+     inside it — ragged text in a centered button, and an "inert on
+     mobile" control that silently comes back to life the moment the copy
+     gets longer. Pin the inner cell so mobile centering is complete. */
+      td.button table td {
+        text-align: center !important;
+      }
+
+      .cta-group {
+        text-align: center !important;
+      }
+
+      /* Fixed-width dividers and buttons span their container on narrow
+     screens — a px width would force table min-width and overflow the
+     viewport. Buttons opt in via css-class="button fixed-width". */
+      .divider p {
+        width: 100% !important;
+      }
+
+      .fixed-width table {
+        width: 100% !important;
+      }
+
+      .fixed-width table a {
+        width: auto !important;
+      }
+
+      .signature-img {
+        width: 110px !important;
+      }
+
+      .signature-text {
+        width: calc(100% - 110px) !important;
+      }
+
+      /* The column's own gutter padding lands on MJML's wrapper td. EN moves
+     inline vertical-align to a valign ATTRIBUTE at send (measured
+     2026-08-18, EoA aafUJU: 0 of 107 delivered tds kept it inline), so
+     td[valign] is the only selector form that survives delivery. */
+      .two-col-column td[valign] {
+        padding: 0 !important;
+      }
+
+      /* Flush-to-edge imagery on mobile (2026-08-13, EoA dnYN8bje).
+     A 240/296px card on a ~333 CSS px screen loses 80px — a quarter of the
+     width — to section + column gutters, which is what the QA round read as
+     "images not full bleed". The columns were never the problem: the image
+     always filled its column exactly.
+
+     `.class td` is the only selector form that survives the whole chain: EN
+     escapes child combinators (2d) and Gmail ignores attribute selectors, and
+     both of those failed here. The second rule puts the inset back on copy
+     only, and wins because two classes outrank `.flush-mobile-capflush td`.
+
+     SCOPE, corrected 2026-08-18: the restore rule reaches EVERY mj-text in a
+     flush block, captions included — MJML stamps the template-wide wysiwyg
+     css-class default onto every one, so a caption cell compiles to a table
+     cell carrying class wysiwyg, and `.flush-mobile-capflush .wysiwyg`
+     (0,2,0) outranks `.flush-mobile-capflush td` (0,1,1). The IMAGE goes flush; the
+     copy AND its caption keep the 16px inset, which reads as a caption
+     aligned to the copy rather than to the photo. An earlier note here
+     claimed captions stayed flush with the photo; that was never what
+     shipped. Both rules pin horizontal padding with !important either way,
+     so the importer labels a caption's Inset controls desktop-only in both
+     readings (conventions "Where the labels come from"). To make captions
+     genuinely flush, exclude them from the restore rule — do NOT rely on the
+     bare `td` rule winning, it cannot.
+     Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
+      .flush-mobile-capflush td {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .flush-mobile-capflush .wysiwyg {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Add space below first column on mobile when it is collapsed to single column */
+      .first-column,
+      .second-column {
+        margin-bottom: 20px !important;
+      }
+
+      /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
+     decision, round two): every image caption authors padding 4px 0 8px —
+     Quarter above, Half below, both viewports — and the image sections
+     carry no bottom padding. The mobile-only image-stack-gap classes this
+     replaced are retired. */
+      /* Feedback Poll option rows: pin the icon column so the mj-group
+     percentage math cannot squeeze it (56px compiles to 10.4478%, which
+     is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
+     left 0.5px of icon; measured 2026-08-19, EoA B4uCpmh6). Same calc
+     pattern as .signature-img/.signature-text above. */
+      .poll-icon {
+        width: 56px !important;
+      }
+
+      .poll-text {
+        width: calc(100% - 56px) !important;
+      }
+
+      /* Inset sections: collapse the wide desktop gutters to the standard 32px.
+     The section's main td is the only one carrying direction inline. */
+      .inset-gutter td[style*=direction] {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+      }
+    }
+
+    /* dark mode styles */
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+
+    .dark-only {
+      display: none;
+    }
+
+    /* Outlook.com dark mode. EN's CSS inliner DELETES [data-ogsc] rules that sit
+   at top level (measured — see MJML-AUTHORING-GUIDE.md §2), so the whole
+   branch lives inside a conditional media query: EN returns anything nested
+   in one verbatim. The condition must be un-evaluable — a bare @media screen
+   is flattened and inlined instead. Every declaration keeps !important
+   because the base rules ARE inlined onto the elements (§2b).
+   OWA mirrors the media query below; backgrounds must come along with the
+   forced white text or light footers render white-on-light. */
+    @media only screen and (max-width: 9999px) {
+      [data-ogsc] .dark-only {
+        display: block !important;
+      }
+
+      [data-ogsc] .light-only {
+        display: none !important;
+      }
+
+      [data-ogsc] .block,
+      [data-ogsc] .block table[align=center],
+      [data-ogsc] .spacer-block td {
+        background-color: #000000 !important;
+      }
+
+      [data-ogsc] .image-block table[align=center],
+      [data-ogsc] .overlay-image-block table[align=center] {
+        background-color: transparent !important;
+      }
+
+      [data-ogsc] .caption-panel,
+      [data-ogsc] .highlighted-text-column td[valign],
+      [data-ogsc] .stat-row-column td[valign] {
+        background-color: #000000 !important;
+      }
+
+      [data-ogsc] .social-link table {
+        background-color: #000000 !important;
+      }
+
+      [data-ogsc] a {
+        color: #8CC63F !important;
+      }
+
+      [data-ogsc] .wysiwyg h1,
+      [data-ogsc] .wysiwyg h2,
+      [data-ogsc] .wysiwyg h3,
+      [data-ogsc] .wysiwyg h4,
+      [data-ogsc] .wysiwyg h5,
+      [data-ogsc] .wysiwyg h6,
+      [data-ogsc] .block h1,
+      [data-ogsc] .block h2,
+      [data-ogsc] .block h3,
+      [data-ogsc] .block h4,
+      [data-ogsc] .block h5,
+      [data-ogsc] .block h6,
+      [data-ogsc] .block p,
+      [data-ogsc] .block span,
+      [data-ogsc] .block li,
+      [data-ogsc] .block div,
+      [data-ogsc] .quote-block p,
+      [data-ogsc] .footer-block p {
+        color: #ffffff !important;
+      }
+
+      [data-ogsc] .email-body {
+        color: #ffffff !important;
+        background-color: #000000 !important;
+      }
+
+      [data-ogsc] .button td,
+      [data-ogsc] .button a {
+        background-color: #006837 !important;
+        border-color: #006837 !important;
+        color: #ffffff !important;
+      }
+
+      [data-ogsc] .two-line-cta a,
+      [data-ogsc] .two-line-cta a span {
+        color: #000000 !important;
+      }
+
+      [data-ogsc] .divider p {
+        border-color: #ffffff !important;
+      }
+
+      [data-ogsc] .question-response {
+        background-color: #000000 !important;
+        border-color: #000000 !important;
+        color: #ffffff !important;
+      }
+
+      [data-ogsc] .question-response p a {
+        color: #ffffff !important;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .light-only {
+        display: none !important;
+      }
+
+      .dark-only {
+        display: block !important;
+      }
+
+      body,
+      .email-body {
+        color: #ffffff !important;
+        background-color: #000000 !important;
+      }
+
+      a {
+        color: #8CC63F !important;
+      }
+
+      .wysiwyg h1,
+      .wysiwyg h2,
+      .wysiwyg h3,
+      .wysiwyg h4,
+      .wysiwyg h5,
+      .wysiwyg h6 {
+        color: #ffffff !important;
+      }
+
+      .quote-block p,
+      .footer-block p {
+        color: #ffffff !important;
+      }
+
+      /* table[align=center] = the section's outer table only (it carries the
+     authored background inline). Bonus over the old `>` form: it also
+     reaches background-image sections, whose outer table sits under an
+     extra positioning div the child combinator never crossed. */
+      .block,
+      .block table[align=center],
+      .spacer-block td {
+        background-color: #000000 !important;
+      }
+
+      /* Background-photo heroes: the .block repaint above would paint an opaque
+     black lid over the photo. EN's send-time shorthand rebuild strips the
+     url() from the hero section's outer table (measured, delivered payload
+     0Mgmjr…), so the photo lives on the DIV behind it — the table must stay
+     see-through. Convicted by controlled A/B 2026-08-18: P1 as-shipped =
+     black slab, P2 identical-minus-`block` = photo, Apple Mail dark AND
+     Outlook.com dark. Equal specificity, later in the sheet, so it wins.
+     Confirmed 2026-08-18 (probe MeKGcu…): all five hero shapes photo in
+     Apple Mail dark and Outlook.com dark with this exemption live. */
+      .image-block table[align=center],
+      .overlay-image-block table[align=center] {
+        background-color: transparent !important;
+      }
+
+      /* Two shapes, and the difference is load-bearing. A column's
+     background-color lands on a td whose class sits on the PARENT div, so it
+     needs the descendant form; a container-background-color lands on the
+     element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
+     has a table[align=center] descendant form, never td, which is why a
+     column ground is never covered by it (audit 2026-08-15). */
+      .caption-panel,
+      .highlighted-text-column td[valign],
+      .stat-row-column td[valign] {
+        background-color: #000000 !important;
+      }
+
+      /* Blocks force a black background above, but much of the catalog authors
+     its text color inline (dark ink on light section colors) — that ink is
+     invisible on black unless overridden here. Exceptions re-assert below. */
+      .block h1,
+      .block h2,
+      .block h3,
+      .block h4,
+      .block h5,
+      .block h6,
+      .block p,
+      .block span,
+      .block li,
+      /* mj-text compiles to a div carrying inline color — text authored without
+     a paragraph/span wrapper is only reachable here */
+      .block div {
+        color: #ffffff !important;
+      }
+
+      .button td,
+      .button a {
+        background-color: #006837 !important;
+        border-color: #006837 !important;
+        color: #ffffff !important;
+      }
+
+      /* Two-line pills keep their authored colored chips; black text stays
+     readable on both chip colors where forced-white would fail on orange */
+      .two-line-cta a,
+      .two-line-cta a span {
+        color: #000000 !important;
+      }
+
+      .social-link table {
+        background-color: #000000 !important;
+      }
+
+      .divider p {
+        border-color: #ffffff !important;
+      }
+
+      /* Tri-color divider: intentionally NOT adapted — its three brand-color
+     bars (orange/green/teal, authored as spacer td backgrounds) read fine
+     on black. Only the single-color divider above inverts. */
+      /* Border matches the repainted ground so dark mirrors light's
+     invisible-border behavior — the old #eee drew a visible outline around
+     the Question Block on black (user decision 2026-08-19, EoA 8ryXNAL). */
+      .question-response {
+        background-color: #000000 !important;
+        border-color: #000000 !important;
+        color: #ffffff !important;
+      }
+
+      .question-response p a {
+        color: #ffffff !important;
+      }
+
+      .question-response:hover {
+        background-color: #000000 !important;
+        cursor: pointer;
+      }
+    }
+
+    /* table/td.mj-full-width-mobile width rules are MJML-emitted wherever a
+   fluid image exists — only the img height reset is authored here */
+    @media only screen and (max-width:599px) {
+      td.mj-full-width-mobile img {
+        height: auto !important;
+      }
+    }
+
+    /* The hero photo spans TWO sections, so it has to sit on the wrapper — and a
+   wrapper cannot carry both a background-url and a background-color: MJML
+   copies the colour onto the v:fill as color= and the Word engine paints that
+   slab INSTEAD of the photo (measured 2026-08-13, EoA aBPD6k1l). So the
+   fallback colour comes from here instead, with !important because MJML writes
+   `background: url(...)` inline as a SHORTHAND, which resets background-color
+   to transparent. Behind the photo in every CSS client; Outlook's
+   blocked-image behaviour is unverified (2026-08-21). */
+    .hero-photo-fallback {
+      background-color: #362229 !important;
+    }
+  </style>
+  <!-- en-tools-config {
+      "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": {
+        "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 }
+      },
+      "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "geometryReachPx": 64,
+      "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
+    } -->
+  <!--
+      BLOCKS UNDER REPAIR — not a catalog page, not shipped.
+
+      A holding pen for blocks pulled out of main.mjml while something about
+      them is unresolved. It carries main's head verbatim (the en-tools-config,
+      the builder-band sheet, styles.css) so a block behaves here exactly as it
+      did there — the point is to look at it in isolation, not in a different
+      environment.
+
+      Moving a block here has three consequences worth knowing:
+        * it stops exporting, so EN never sees it;
+        * its versions.json entity disappears — version-sync hashes blocks from
+          main.mjml alone — so returning it later restarts its version at v1;
+        * it is still a compiled page, so every check-catalog guard still
+          applies to it. That is deliberate: a block under repair is exactly
+          the one you want linted.
+
+      Put a block back by moving its START/END region into main.mjml under the
+      right Category band. When this file is empty, delete it.
+    -->
+  <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
+  <!-- Baseline everything inherits -->
+  <!-- No mj-style @media blocks here: EN merges same-condition @media
+         blocks into the FIRST occurrence's position (measured 2026-08-19,
+         EoA delivered heads), so a 599px block in this head would drag
+         styles.css's 599px rules ahead of the order-dependent hides that
+         precede them there. All mobile rules live in styles.css. -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="supported-color-schemes" content="light dark" />
+  <meta name="format-detection" content="telephone=no" />
+  <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
+         this sheet in the template HEAD: the importer splices every other
+         style element out into the Template Styles block, and this layout has
+         to survive an email built without that block. __TEMPLATE_VERSION__ is
+         filled in at import from versions.json; keeping the literal here is
+         what stops the version from feeding its own hash.
+
+         TWO SEPARATE RULES, DELIBERATELY NOT MERGED INTO ONE SELECTOR LIST.
+
+         BLOCK bands hang off a span the app injects into the block's own
+         content, gated on whether a block wrapper exists anywhere in the
+         document — true while editing in EN, false in a delivered email.
+
+         The TEMPLATE band hangs off EN's container element instead. A span
+         authored in the template shell does NOT work (measured 2026-08-20):
+         EN's builder renders blocks inside the container and does not render
+         the template's own surrounding markup, so such a span never enters
+         the builder DOM at all. [data-container="main"] IS that container,
+         and it is self-gating — the stored template carries EN's container
+         placeholder there and a delivered email carries the blocks
+         themselves, so nothing bears the attribute outside the editor.
+
+         Do NOT write EN's container merge tag literally anywhere in this
+         file. autoEnableTemplateReplacements splits the shell on the FIRST
+         occurrence of that tag, so a literal in a comment splits the head at
+         the comment instead of at the real container: the comment loses its
+         terminator, swallows the whole stylesheet, and every light/dark image
+         pair renders both halves. Measured 2026-08-20; check-catalog guards it.
+
+         Merging the two selectors would be a live hazard: one unsupported
+         selector in a group invalidates the WHOLE rule, so a client that
+         cannot parse :has() would take the template band down with it. -->
+  <style type="text/css" data-en-tools-band>
+    /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in styles.css, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+    :is(body):has(.en__emailbuilder__block) .marketing-tools-banner {
+      display: flex !important;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #4e535c !important;
+      line-height: 2rem !important;
+      position: absolute !important;
+      top: 1.75rem !important;
+      width: 100% !important;
+      max-width: 600px !important;
+      justify-content: center !important;
+      background-color: #d0d5dd !important;
+    }
+
+    [data-container="main"]:before {
+      content: "Email Template v__TEMPLATE_VERSION__";
+      display: block !important;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #4e535c !important;
+      line-height: 1.75rem !important;
+      text-align: center !important;
+      margin-bottom: 2rem !important;
+      background-color: #d0d5dd !important;
+    }
+  </style>
+</head>
+
+<body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
+  <div aria-label="TPL — Blocks under repair" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
+    <!-- Pulled from main.mjml on 2026-08-21 (user decision). Its photo spans
+         TWO sections, so it has to sit on the wrapper — and a wrapper cannot
+         carry both a background-url and a background-color, because MJML
+         copies the colour onto the v:fill as color= and the Word engine paints
+         that slab instead of the photo (measured 2026-08-13, EoA aBPD6k1l).
+         The fallback therefore lives in styles.css as .hero-photo-fallback,
+         which renders correctly in every CSS client but is UNVERIFIED in
+         Outlook with images blocked: a class-based colour is not the bgcolor
+         attribute Word reads most reliably, so the white heading may end up on
+         nothing. That is what still needs settling — a send, read on
+         outlook2021_win11_* with images blocked. --><!-- START: CTA Hero (w/ Large Background Image) --><!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. --><!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="hero-photo-fallback-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-river.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+    <div class="hero-photo-fallback" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-river.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+      <div style="line-height:0;font-size:0;">
+        <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-river.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-river.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+                <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
+                <!--[if mso | IE]><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                <div class="image-block block" style="margin:0px auto;max-width:600px;">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                    <tbody>
+                      <tr>
+                        <td style="direction:ltr;font-size:0px;padding:48px 32px 8px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                              <tbody>
+                                <tr>
+                                  <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                                    <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
+                                      <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!--[if mso | IE]></td></tr></table><![endif]-->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--[if mso | IE]></td></tr></table></td></tr><tr><td class="image-block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                <div class="image-block" style="margin:0px auto;max-width:600px;">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                    <tbody>
+                      <tr>
+                        <td style="direction:ltr;font-size:0px;padding:48px 32px 32px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:268px;" ><![endif]-->
+                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td align="left" class="light-only" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:154px;">
+                                              <a href="https://www.example.com" target="_blank">
+                                                <img alt="Trust for Public Land" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/logo-tpl_color-light-green-text.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="154" height="auto" />
+                                              </a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <!--[if !mso]><!-->
+                                  <tr>
+                                    <td align="left" class="dark-only" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:154px;"><a href="https://www.example.com" target="_blank"><img alt="Trust for Public Land" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/logo-tpl_color-light-green-text.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="154" height="auto" /></a></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr><!--<![endif]-->
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:middle;width:268px;" ><![endif]-->
+                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td align="right" class="button" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:160px;line-height:100%;">
+                                        <tbody>
+                                          <tr>
+                                            <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
+                                              <a href="https://www.example.com" style="display:inline-block;width:128px;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td></tr></table><![endif]-->
+                          </div>
+                          <!--[if mso | IE]></td></tr></table><![endif]-->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--[if mso | IE]></td></tr></table></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><![endif]-->
+    <!-- END: CTA Hero (w/ Large Background Image) -->
+  </div>
+</body>
+
+</html>

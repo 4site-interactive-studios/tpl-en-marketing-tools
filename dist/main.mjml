@@ -369,39 +369,6 @@
     <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
 
-    <!-- START: CTA Hero (w/ Large Background Image) -->
-    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
-    <mj-wrapper css-class="hero-photo-fallback" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
-      <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
-      <mj-section
-        css-class="image-block block"
-        padding="48px 32px 8px"
-      >
-        <mj-column>
-          <mj-text data-display-toggle align="center" padding="0">
-            <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section
-        css-class="image-block"
-        padding="48px 32px 32px"
-      >
-        <mj-group>
-          <mj-column vertical-align="middle" width="50%">
-            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
-            <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
-            <mj-raw><!--<![endif]--></mj-raw>
-          </mj-column>
-          <mj-column vertical-align="middle" width="50%">
-            <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
-          </mj-column>
-        </mj-group>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: CTA Hero (w/ Large Background Image) -->
 
     <!-- START: CTA Hero (w/ Image Badge) -->
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
