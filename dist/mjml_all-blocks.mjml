@@ -1641,15 +1641,15 @@
 
     <!-- START: Video Block (inset) -->
     <!-- data-visible-duplicate: the inset twin of Video Block (full-bleed) —
-         same structure, framed on an Earth ground (user decision 2026-08-20).
+         same structure, framed on a white ground (user decision 2026-08-20).
          Deliberately visible alongside its anchor; never re-flag into the
          excluded family. It CANNOT collapse into one block with a padding
          Select: the centre column's fixed width is derived from the wrapper
          inset (600 - 2*48 - 50 = 454 vs 600 - 50 = 550) and MJML bakes that
          into the MSO conditional at compile time, so a padding change in EN
          would leave the column at the old width. -->
-    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. It used to be a second, nested wrapper so the frame could stay #ffffff, but mj-wrapper inside mj-wrapper is invalid MJML; the frame is now the fallback colour instead (2026-08-19). -->
-    <mj-wrapper css-class="block" background-color="#362229" padding="16px 48px 0">
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 48px 0">
         <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="100px 0 100px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -1660,7 +1660,7 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 48px 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 48px 16px">
       <mj-column vertical-align="middle">
         <mj-text align="right" mj-class="caption" padding="0">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
@@ -2261,16 +2261,16 @@
     <!-- END: Progress Meter Block -->
 
     <!-- START: Countdown Card -->
-    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. It used to be a second, nested wrapper so the frame could stay #ffffff, but mj-wrapper inside mj-wrapper is invalid MJML; the frame is now the fallback colour instead (2026-08-19). -->
-    <mj-wrapper css-class="block" background-color="#362229" padding="16px 48px">
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 48px 16px">
         <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="452px">
-            <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
+            <mj-text container-background-color="#362229" align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:15px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
           </mj-text>
-          <mj-text align="center" padding="0 0 16px">
+          <mj-text container-background-color="#362229" align="center" padding="0 0 16px">
             <h3 style="color:#ffffff;margin:0;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
           </mj-text>
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
@@ -2279,7 +2279,7 @@
              photo. It reads redundant only because the two <p>s below used to hard-code the same white
              inline — which is exactly what defeated the Text 3 Text Color control until 2026-08-18.
              The container now owns the colour; leave it owning it. -->
-        <mj-text align="center" color="#ffffff" padding="0">
+        <mj-text container-background-color="#362229" align="center" color="#ffffff" padding="0">
               <p style="font-size:32px;line-height:36px;font-weight:400;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
               <p style="font-size:10px;line-height:14px;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
             </mj-text>

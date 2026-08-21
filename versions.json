@@ -116,8 +116,8 @@
     "hash": "1cdfc65c05e7"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 7,
-    "hash": "248b53cf6f2a"
+    "version": 8,
+    "hash": "c8be97c78cde"
   },
   "block:CTA Text Block": {
     "version": 4,
@@ -160,12 +160,12 @@
     "hash": "6de0b8a8c6b5"
   },
   "block:Countdown Card": {
-    "version": 9,
-    "hash": "2a7bf2ec2512"
+    "version": 10,
+    "hash": "744467db3d8b"
   },
   "block:Deadline Panel": {
-    "version": 4,
-    "hash": "3aaf24f05ba6"
+    "version": 5,
+    "hash": "fee663fa062a"
   },
   "block:Divider (Single-color)": {
     "version": 3,
@@ -252,8 +252,8 @@
     "hash": "94c502efcbdf"
   },
   "block:Icon Row": {
-    "version": 3,
-    "hash": "470205fddf32"
+    "version": 4,
+    "hash": "54a3e8de4b5d"
   },
   "block:Image": {
     "version": 4,
@@ -356,8 +356,8 @@
     "hash": "604dc6a7bd6a"
   },
   "block:Progress Meter Block": {
-    "version": 6,
-    "hash": "c87b54913030"
+    "version": 7,
+    "hash": "7469999f7db0"
   },
   "block:Question Block": {
     "version": 5,
@@ -400,8 +400,8 @@
     "hash": "510aa75f8731"
   },
   "block:Stat Row (off-white)": {
-    "version": 6,
-    "hash": "40c3a740a080"
+    "version": 7,
+    "hash": "9a7b805ad433"
   },
   "block:Steps Block": {
     "version": 8,
@@ -456,8 +456,8 @@
     "hash": "9cae55133f2e"
   },
   "block:Subscription Panel": {
-    "version": 2,
-    "hash": "7ce4817b2b4e"
+    "version": 3,
+    "hash": "69725cfce576"
   },
   "block:Text + Image Row (image right)": {
     "version": 3,
@@ -500,8 +500,8 @@
     "hash": "f03371beee99"
   },
   "block:Video Block (inset)": {
-    "version": 7,
-    "hash": "55dfdd22aa94"
+    "version": 8,
+    "hash": "68f9a17a0c08"
   },
   "block:WYSIWYG Text": {
     "version": 1,
@@ -516,12 +516,12 @@
     "hash": "be58c6a82ed5"
   },
   "email-template": {
-    "version": 37,
-    "hash": "d5c863ed3464"
+    "version": 38,
+    "hash": "8ee313c2c003"
   },
   "head-css": {
-    "version": 20,
-    "hash": "66821fba6847"
+    "version": 21,
+    "hash": "9d5a1c88d565"
   },
   "partial:debug-toolbar": {
     "version": 1,
