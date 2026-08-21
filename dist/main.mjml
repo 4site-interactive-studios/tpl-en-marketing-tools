@@ -666,8 +666,18 @@
     <!-- END: Stat Row -->
 
     <!-- START: Two-Line Banner -->
-    <!-- data-mobile-only-width: the two centered caps lines clear every preset at 600px, so the gutter is invisible at desktop; at 375px the wider steps force a wrap. Measured INERT desktop / live mobile 2026-08-18. Drop the flag if the banner copy ever wraps at desktop. -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px" data-mobile-only-width>
+    <!-- data-mobile-only-width was here until 2026-08-21, on a 2026-08-18
+         measurement of the AUTHORED copy: two short centred caps lines clear
+         every preset at 600px, so the gutter moved nothing at desktop. That
+         note said to drop the flag if the banner copy ever wrapped at
+         desktop, and the audit's `wrapped` copy profile makes it wrap — the
+         Content field is an RTE an editor owns, so inertness that depends on
+         the placeholder staying short is not inertness. Measured 2026-08-21
+         at 600px with the probe copy: block height 105 / 131 / 157px across
+         the presets. Same call as the Feedback Poll question section below.
+         The remaining data-mobile-only-* flags are STRUCTURAL — a fixed-px
+         group column pins the desktop layout whatever the copy does. -->
+    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
@@ -1866,7 +1876,13 @@
          at their authored widths; making the row collapse needs a Display
          option that rewrites the whole arrangement, which the generator does
          not do today. -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+    <!-- data-mobile-only-padding-right: the 120px arrow column pins the
+         desktop layout, so the right gutter has nothing to move at 600px
+         (measured 2026-08-21 — glyphs identical across 0/8/16/32; the LEFT
+         gutter DOES move the row, so it keeps its bare label). Structural,
+         not copy-dependent. Matches Icon Row and Podcast Episode Block,
+         the two rows of identical shape. -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column width="120px" vertical-align="top">
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />

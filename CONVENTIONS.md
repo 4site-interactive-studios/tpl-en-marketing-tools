@@ -2603,13 +2603,29 @@ button and the heading can each be hidden (user decision 2026-08-20).
     once the columns stack (`data-mobile-only-spacing-below`);
   - **column order that the mobile stack flattens**
     (`data-desktop-only-direction`);
-  - **per-side padding whose inertness is content-geometry** — the poll
-    question's right padding moves nothing at 600px while its one-line
-    copy fits (`data-mobile-only-padding-right`, honored in the per-side
-    Select path since 2026-08-18). This is the borderline case: if the
-    copy ever grows to wrap at desktop the control comes alive there, so
-    the source carries a comment saying when to drop the flag — and the
-    audit's re-measure catches a stale claim either way.
+  - **per-side padding pinned by a fixed-px column** — a row whose group
+    columns are authored in px keeps them at those widths above the
+    breakpoint, so the frame's RIGHT gutter has nothing to move at 600px
+    while the left one still shifts the whole left-packed block
+    (`data-mobile-only-padding-right`, honored in the per-side Select
+    path since 2026-08-18). Every row of that shape carries it: Icon Row,
+    Podcast Episode Block, Podcast Streaming Block, the three Feedback
+    Poll answers, Signature Card (photo), Steps Block.
+
+    **Structural inertness only — copy-dependent inertness does not earn
+    the flag** (user-visible decision, 2026-08-21). A control that moves
+    nothing merely because the AUTHORED copy is short is not inert: the
+    copy is an RTE/Text field the editor owns, and the first long headline
+    brings the control alive at desktop under a label that says "Mobile".
+    The inert audit encodes this directly — it renders every block under
+    three copy profiles (`as-authored`, `single-line`, `wrapped`; see
+    `AUDIT_COPY_PROFILES` in `src/core/inertAudit.ts`) and calls a control
+    live if ANY profile moves pixels, so a copy-dependent flag is reported
+    as a stale label on every future sweep. Two flags were removed under
+    this rule: the Feedback Poll question section, and Two-Line Banner
+    (measured 2026-08-21 at 600px with the `wrapped` probe — block height
+    105 / 131 / 157px across the presets). The distinguishing question is
+    "does the LAYOUT pin this, or does the placeholder?"
   - **an inset that only bites once the box shrinks** — a right-aligned
     line or a fixed-width image that clears its container at 600px and
     only meets it at 375px (`data-mobile-only-inset-right` on the

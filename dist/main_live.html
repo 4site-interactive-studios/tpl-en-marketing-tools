@@ -2187,7 +2187,17 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Stat Row --><!-- START: Two-Line Banner --><!-- data-mobile-only-width: the two centered caps lines clear every preset at 600px, so the gutter is invisible at desktop; at 375px the wider steps force a wrap. Measured INERT desktop / live mobile 2026-08-18. Drop the flag if the banner copy ever wraps at desktop. -->
+    <!-- END: Stat Row --><!-- START: Two-Line Banner --><!-- data-mobile-only-width was here until 2026-08-21, on a 2026-08-18
+         measurement of the AUTHORED copy: two short centred caps lines clear
+         every preset at 600px, so the gutter moved nothing at desktop. That
+         note said to drop the flag if the banner copy ever wrapped at
+         desktop, and the audit's `wrapped` copy profile makes it wrap — the
+         Content field is an RTE an editor owns, so inertness that depends on
+         the placeholder staying short is not inertness. Measured 2026-08-21
+         at 600px with the probe copy: block height 105 / 131 / 157px across
+         the presets. Same call as the Feedback Poll question section below.
+         The remaining data-mobile-only-* flags are STRUCTURAL — a fixed-px
+         group column pins the desktop layout whatever the copy does. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook two-line-banner-block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block two-line-banner-block" style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
@@ -4904,7 +4914,12 @@ li {
          stays, per the 2026-08-20 decision that hidden content leaves columns
          at their authored widths; making the row collapse needs a Display
          option that rewrites the whole arrangement, which the generator does
-         not do today. -->
+         not do today. --><!-- data-mobile-only-padding-right: the 120px arrow column pins the
+         desktop layout, so the right gutter has nothing to move at 600px
+         (measured 2026-08-21 — glyphs identical across 0/8/16/32; the LEFT
+         gutter DOES move the row, so it keeps its bare label). Structural,
+         not copy-dependent. Matches Icon Row and Podcast Episode Block,
+         the two rows of identical shape. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
