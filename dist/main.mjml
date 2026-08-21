@@ -1438,7 +1438,16 @@
           </mj-text>
         </mj-column>
         <mj-column width="78px" vertical-align="middle" css-class="stream-icon">
-          <mj-image
+          <!-- data-display-toggle on the FIRST badge only (user decision
+               2026-08-21): a client on one service should be able to drop
+               Spotify and keep Apple, which sits last and hard against the
+               right edge, so the row still reads as intended. Hiding it
+               leaves its 78px column standing - hidden content does not
+               reflow its siblings - which here is the wanted behaviour: the
+               remaining badge stays put instead of sliding into the text.
+               The flag goes on the light twin; mergeSwapPairs folds the dark
+               one in before flags are read. -->
+          <mj-image data-display-toggle
             src="assets/icon-spotify.png"
             alt="Listen on Spotify"
             href="https://www.example.com"

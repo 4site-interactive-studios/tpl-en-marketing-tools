@@ -92,6 +92,10 @@
     }
   </style>
   <style type="text/css">
+    .hero-photo-fallback {
+      background-color: #362229 !important;
+    }
+
     /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside a
    CSS-type Replacement (EN's CSS Editor — the Template Styles block's
    head_styles), and in EN's editing surfaces `>` gets HTML-escaped to
@@ -759,18 +763,6 @@ li {
         height: auto !important;
       }
     }
-
-    /* The hero photo spans TWO sections, so it has to sit on the wrapper — and a
-   wrapper cannot carry both a background-url and a background-color: MJML
-   copies the colour onto the v:fill as color= and the Word engine paints that
-   slab INSTEAD of the photo (measured 2026-08-13, EoA aBPD6k1l). So the
-   fallback colour comes from here instead, with !important because MJML writes
-   `background: url(...)` inline as a SHORTHAND, which resets background-color
-   to transparent. Behind the photo in every CSS client; Outlook's
-   blocked-image behaviour is unverified (2026-08-21). */
-    .hero-photo-fallback {
-      background-color: #362229 !important;
-    }
   </style>
   <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
@@ -875,6 +867,21 @@ li {
       background-color: #d0d5dd !important;
     }
   </style>
+  <!-- Lives HERE, not in styles.css: the only block that uses it is the one
+         parked below, so a rule in the shared sheet shipped ~100 delivered
+         bytes of the catalog's head CSS for a block the catalog does not
+         contain — against a 14,000-byte target with about 400 to spare
+         (moved 2026-08-21). If this block ever returns to main.mjml, the rule
+         goes back to styles.css with it.
+
+         Why the fallback cannot be an attribute: the hero photo spans TWO
+         sections, so it has to sit on the wrapper, and a wrapper cannot carry
+         both a background-url and a background-color — MJML copies the colour
+         onto the v:fill as color= and the Word engine paints that slab INSTEAD
+         of the photo (measured 2026-08-13, EoA aBPD6k1l). !important because
+         MJML writes `background: url(...)` inline as a SHORTHAND, which resets
+         background-color to transparent. Behind the photo in every CSS client;
+         Outlook's blocked-image behaviour is unverified (2026-08-21). -->
 </head>
 
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">

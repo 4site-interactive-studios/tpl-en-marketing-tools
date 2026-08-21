@@ -949,18 +949,6 @@ li {
         height: auto !important;
       }
     }
-
-    /* The hero photo spans TWO sections, so it has to sit on the wrapper — and a
-   wrapper cannot carry both a background-url and a background-color: MJML
-   copies the colour onto the v:fill as color= and the Word engine paints that
-   slab INSTEAD of the photo (measured 2026-08-13, EoA aBPD6k1l). So the
-   fallback colour comes from here instead, with !important because MJML writes
-   `background: url(...)` inline as a SHORTHAND, which resets background-color
-   to transparent. Behind the photo in every CSS client; Outlook's
-   blocked-image behaviour is unverified (2026-08-21). */
-    .hero-photo-fallback {
-      background-color: #362229 !important;
-    }
   </style>
   <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
@@ -3958,6 +3946,15 @@ li {
                 <div class="mj-column-px-78 mj-outlook-group-fix stream-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:14.55223880597015%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
+                      <!-- data-display-toggle on the FIRST badge only (user decision
+               2026-08-21): a client on one service should be able to drop
+               Spotify and keep Apple, which sits last and hard against the
+               right edge, so the row still reads as intended. Hiding it
+               leaves its 78px column standing - hidden content does not
+               reflow its siblings - which here is the wanted behaviour: the
+               remaining badge stays put instead of sliding into the text.
+               The flag goes on the light twin; mergeSwapPairs folds the dark
+               one in before flags are read. -->
                       <tr>
                         <td align="right" class="light-only" style="font-size:0px;padding:0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">

@@ -192,8 +192,8 @@
     "hash": "f45bea5d1500"
   },
   "block:Podcast Streaming Block": {
-    "version": 6,
-    "hash": "c76696c8e522"
+    "version": 7,
+    "hash": "a2d19787aa9b"
   },
   "block:Progress Meter Block": {
     "version": 10,
@@ -280,12 +280,12 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 46,
-    "hash": "425e73c9bb9c"
+    "version": 47,
+    "hash": "670ae6c68deb"
   },
   "head-css": {
-    "version": 26,
-    "hash": "01672dda6e1c"
+    "version": 27,
+    "hash": "ccf9c5315018"
   },
   "partial:debug-toolbar": {
     "version": 1,

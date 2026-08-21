@@ -145,6 +145,27 @@
     </mj-raw>
 
     <mj-include path="./styles.css" type="css" />
+
+    <!-- Lives HERE, not in styles.css: the only block that uses it is the one
+         parked below, so a rule in the shared sheet shipped ~100 delivered
+         bytes of the catalog's head CSS for a block the catalog does not
+         contain — against a 14,000-byte target with about 400 to spare
+         (moved 2026-08-21). If this block ever returns to main.mjml, the rule
+         goes back to styles.css with it.
+
+         Why the fallback cannot be an attribute: the hero photo spans TWO
+         sections, so it has to sit on the wrapper, and a wrapper cannot carry
+         both a background-url and a background-color — MJML copies the colour
+         onto the v:fill as color= and the Word engine paints that slab INSTEAD
+         of the photo (measured 2026-08-13, EoA aBPD6k1l). !important because
+         MJML writes `background: url(...)` inline as a SHORTHAND, which resets
+         background-color to transparent. Behind the photo in every CSS client;
+         Outlook's blocked-image behaviour is unverified (2026-08-21). -->
+    <mj-style>
+      .hero-photo-fallback {
+        background-color: #362229 !important;
+      }
+    </mj-style>
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
     <!-- Pulled from main.mjml on 2026-08-21 (user decision). Its photo spans
