@@ -589,7 +589,7 @@ direction-flip skips.
   created (the gutter stays literal; top/bottom Selects remain; the inner
   section's own Width is the working control). Zero gutters never pin —
   600px is the natural cap and stays responsive. On the current template
-  this suppresses: Video Block (inset) + Countdown Card wrappers (48→504),
+  this suppresses: Video Block (inset) + Countdown Block wrappers (48→504),
   Image (inset) w/ Caption (48→504 image). These pins are INHERENT to MJML
   compilation (verified 2026-08-03): a wrapper always bakes its inner
   section's max-width, and mj-image always bakes a computed px td width —
@@ -1241,7 +1241,7 @@ sort — it is purely the panel/export display order.
   to "Text" in EN's block lists.) (2026-08-03, user-decided:
   the empty Fundraising & Campaign category was removed and Content
   Features merged into Engagement & Interactive — Progress Meter,
-  Countdown Card, and the Content blocks all live under Engagement now;
+  Countdown Block, and the Content blocks all live under Engagement now;
   the Campaign and Content short names are retired.)
 
 ## Replacement typing (what becomes a dropdown)
@@ -1374,7 +1374,7 @@ sort — it is purely the panel/export display order.
   (`deepMemberSignature`, src/core/mjmlProps.ts). Two plain images side
   by side still count as identical (swap = swap the URLs), but mirrored
   insets, alignments, differing member widths, or per-column colors — a
-  logo beside a photo (Logo Hero w/ Image), the Tri-color
+  logo beside a photo (Logo Hero (w/ Image)), the Tri-color
   divider's three stripes — make the swap a real layout change and keep
   the control. Also excluded are SYMMETRIC layouts — (width, deep
   signature) pairs reading the same forwards and backwards, e.g. the
@@ -1390,7 +1390,7 @@ sort — it is purely the panel/export display order.
   - `align` is PHYSICAL and a direction flip is not. A logo pinned left
     beside a button pinned right points outward as authored; after the flip
     both point INWARD and the content collapses into the middle (CTA Hero
-    (green button) lost 238px of span, CTA Hero w/ Background Image
+    (green button) lost 238px of span, CTA Hero (w/ Background Image)
     252px). EN has no expressions, so one Select cannot drive mirrored values
     in two places — but it CAN carry two finished arrangements.
   - Outlook never flipped at all. Its column order lives in the MSO
@@ -2640,7 +2640,7 @@ button and the heading can each be hidden (user decision 2026-08-20).
   false-inert bug cannot invent liveness, so a stale flag found that way
   could just be removed — and its `data-mobile-only-spacing-below` was
   deleted. The next run immediately asked for the flag back, and direct
-  measurement sided with the flag: on Photo and Text Grid (2x2) Row 3
+  measurement sided with the flag: on Photo and Text Grid Block (2x2) Row 3
   Text 1, sweeping the field's own cell through every option (0 → 64px)
   grows its column 452 → 516px while its sibling holds at 522px, so the
   block height never moves. The control is genuinely desktop-inert and

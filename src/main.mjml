@@ -192,7 +192,7 @@
     </mj-section>
     <!-- END: Logo Hero (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Hero w/ Image -->
+    <!-- START: Logo Hero (w/ Image) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837" padding="16px 32px"
@@ -243,7 +243,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Hero w/ Image -->
+    <!-- END: Logo Hero (w/ Image) -->
 
     <!-- START: CTA Hero -->
     <mj-section
@@ -282,7 +282,7 @@
     </mj-section>
     <!-- END: CTA Hero -->
 
-    <!-- START: CTA Hero w/ Background Image -->
+    <!-- START: CTA Hero (w/ Background Image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
       <mj-section
@@ -323,7 +323,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero w/ Background Image -->
+    <!-- END: CTA Hero (w/ Background Image) -->
 
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
@@ -369,17 +369,14 @@
     <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
 
-    <!-- START: CTA Hero w/ Large Background Image -->
+    <!-- START: CTA Hero (w/ Large Background Image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
-    <mj-wrapper background-color="#362229" padding="0">
+    <mj-wrapper css-class="hero-photo-fallback" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
       <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
       <mj-section
         css-class="image-block block"
-        background-url="assets/photo-river.jpg"
-        background-size="cover"
-        background-repeat="no-repeat"
-        background-position="center top" padding="48px 32px 8px"
+        padding="48px 32px 8px"
       >
         <mj-column>
           <mj-text data-display-toggle align="center" padding="0">
@@ -389,10 +386,7 @@
       </mj-section>
       <mj-section
         css-class="image-block"
-        background-url="assets/photo-river.jpg"
-        background-size="cover"
-        background-repeat="no-repeat"
-        background-position="center bottom" padding="48px 32px 32px"
+        padding="48px 32px 32px"
       >
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
@@ -407,9 +401,9 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero w/ Large Background Image -->
+    <!-- END: CTA Hero (w/ Large Background Image) -->
 
-    <!-- START: CTA Hero w/ Image Badge -->
+    <!-- START: CTA Hero (w/ Image Badge) -->
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
@@ -427,7 +421,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero w/ Image Badge -->
+    <!-- END: CTA Hero (w/ Image Badge) -->
 
 
     <!-- START: Category — Text Blocks -->
@@ -840,7 +834,7 @@
     </mj-section>
     <!-- END: CTA Buttons 3x1 (dynamic width) -->
 
-    <!-- START: CTA Buttons 3x1 Fixed Width -->
+    <!-- START: CTA Buttons 3x1 (fixed width) -->
     <!-- data-visible-duplicate: normalize() masks pill widths and strips the
          fixed-width class, so this block groups with the dynamic-width row —
          the fixed-width variant is a deliberate, separately-shipped layout
@@ -866,9 +860,9 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: CTA Buttons 3x1 Fixed Width -->
+    <!-- END: CTA Buttons 3x1 (fixed width) -->
 
-  <!-- START: CTA Buttons 2x1 Fixed Width -->
+  <!-- START: CTA Buttons 2x1 (fixed width) -->
     <!-- data-visible-duplicate: normalize() masks pill widths and strips the
          fixed-width class, so this block groups with the dynamic-width row —
          the fixed-width variant is a deliberate, separately-shipped layout
@@ -894,7 +888,7 @@
       </mj-text>
     </mj-column>
   </mj-section>
-  <!-- END: CTA Buttons 2x1 Fixed Width -->
+  <!-- END: CTA Buttons 2x1 (fixed width) -->
 
   <!-- START: CTA Buttons 2x1 (two-line) -->
   <!--
@@ -1121,7 +1115,7 @@
          inset (600 - 2*32 - 50 = 486 vs 600 - 50 = 550) and MJML bakes that
          into the MSO conditional at compile time, so a padding change in EN
          would leave the column at the old width. The gutter moved 48 -> 32 on
-         2026-08-21 to line up with its twin, Countdown Card; the centre column
+         2026-08-21 to line up with its twin, Countdown Block; the centre column
          reuses Countdown's existing 484px class rather than minting 486px,
          which costs 2px of invisible slack and saves ~174 delivered bytes of
          head CSS against a budget with ~434 to spare. -->
@@ -1708,7 +1702,7 @@
     </mj-section>
     <!-- END: Podcast Streaming Block -->
 
-    <!-- START: Photo and Text Grid (2x2) -->
+    <!-- START: Photo and Text Grid Block (2x2) -->
     <mj-section
       css-class="text-block block"
       background-color="#362229" padding="16px 32px 0"
@@ -1815,7 +1809,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Photo and Text Grid (2x2) -->
+    <!-- END: Photo and Text Grid Block (2x2) -->
 
     <!-- START: Join Links Block -->
     <mj-section
@@ -2183,7 +2177,7 @@
     </mj-wrapper>
     <!-- END: Progress Meter Block -->
 
-    <!-- START: Countdown Card -->
+    <!-- START: Countdown Block -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
     <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px">
         <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px">
@@ -2211,7 +2205,7 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <!-- END: Countdown Card -->
+    <!-- END: Countdown Block -->
 
     <!-- START: Event Invite Block -->
     <mj-include path="./partials/green-rule-divider.mjml" />
@@ -2260,7 +2254,7 @@
     </mj-section>
     <!-- END: Spacer -->
 
-    <!-- START: Divider (Single-color) -->
+    <!-- START: Divider (single-color) -->
     <mj-section css-class="divider-block block" background-color="#ffffff" padding="16px 0" data-mobile-only-width>
       <mj-column>
         <mj-divider
@@ -2273,11 +2267,11 @@
         />
       </mj-column>
     </mj-section>
-    <!-- END: Divider (Single-color) -->
+    <!-- END: Divider (single-color) -->
 
-    <!-- START: Divider (Tri-color) -->
+    <!-- START: Divider (tri-color) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <!-- END: Divider (Tri-color) -->
+    <!-- END: Divider (tri-color) -->
 
     <!-- START: Category — Signatures -->
     <mj-raw><div data-import-exclude="true" data-folder="6404" data-category-short="Signature"></mj-raw>

@@ -175,9 +175,9 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
 Every content block is wrapped in comments that **survive MJML compilation**:
 
 ```html
-<!-- START: Logo Hero w/ Image -->
+<!-- START: Logo Hero (w/ Image) -->
 <mj-section ...> ... </mj-section>
-<!-- END: Logo Hero w/ Image -->
+<!-- END: Logo Hero (w/ Image) -->
 ```
 
 These are the backbone of everything else — the debug overlay, duplicate

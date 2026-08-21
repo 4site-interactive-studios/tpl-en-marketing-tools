@@ -649,3 +649,15 @@ p {
     height: auto !important;
   }
 }
+
+/* The hero photo spans TWO sections, so it has to sit on the wrapper — and a
+   wrapper cannot carry both a background-url and a background-color: MJML
+   copies the colour onto the v:fill as color= and the Word engine paints that
+   slab INSTEAD of the photo (measured 2026-08-13, EoA aBPD6k1l). So the
+   fallback colour comes from here instead, with !important because MJML writes
+   `background: url(...)` inline as a SHORTHAND, which resets background-color
+   to transparent. Behind the photo in every CSS client; Outlook's
+   blocked-image behaviour is unverified (2026-08-21). */
+.hero-photo-fallback {
+  background-color: #362229 !important;
+}
