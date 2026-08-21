@@ -41,9 +41,24 @@ that produces the count cannot.
 
 | File | Role |
 | :--- | :--- |
-| `src/mjml_all-blocks.mjml` | full block catalog with `Category — X` dividers (formerly demo.mjml) |
-| `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) |
+| `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) — **the primary catalog** |
+| `src/mjml_extra-blocks.mjml` | blocks that exist in NO other catalog, with `Category — X` dividers |
 | `src/donation-thank-you.mjml`, `src/recurring-donation-thank-you.mjml` | standalone autoresponders |
+
+**`mjml_all-blocks.mjml` became `mjml_extra-blocks.mjml` on 2026-08-20**
+(user decision). It had become a near-superset of the master template: of its
+124 leaf blocks, 72 were byte-duplicates of blocks in
+`tpl_unified-blocks.mjml`, so every catalog edit had to be made twice — the
+same sync tax that retired `tpl_all-blocks.mjml`. The file now holds ONLY what
+lives nowhere else: **22 blocks**, plus the six `Category — X` dividers whose
+folders still have content. The 30 `data-fully-exclude` colour/alignment demos
+that were unique to it were dropped in the same pass (they never exported; git
+history has them).
+
+Read it as the leftovers, not a catalog: anything wanted for real work belongs
+in the master template. Both files are equal citizens to the tooling —
+version-sync hashes a block name across BOTH, and check-docs resolves doc
+citations against BOTH.
 
 **`tpl_all-blocks.mjml` was removed on 2026-08-17** (commit 17f036a, following the 2026-08-15 catalog audit). It was a strict subset of
 `mjml_all-blocks.mjml` — 135 of its 143 blocks, differing by exactly one line

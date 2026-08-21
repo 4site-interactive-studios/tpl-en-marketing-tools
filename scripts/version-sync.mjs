@@ -16,7 +16,7 @@
  *                              <!-- START/END --> block region replaced by
  *                              a name sentinel) + styles.css. Block edits
  *                              inside the file bump the BLOCK, not this.
- *  - catalog-shell             mjml_all-blocks.mjml shell, same treatment
+ *  - catalog-shell             mjml_extra-blocks.mjml shell, same treatment
  *                              (mj-attributes defaults, category dividers).
  *  - autoresponder:<file>     each thank-you file, whole.
  *  - partial:<file>           each src/partials/*.mjml, whole.
@@ -49,7 +49,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'utf8') : '');
 const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 12);
 
-const CATALOGS = ['mjml_all-blocks.mjml', 'tpl_unified-blocks.mjml'];
+const CATALOGS = ['mjml_extra-blocks.mjml', 'tpl_unified-blocks.mjml'];
 
 /**
  * START/END markers NEST (a "Main Content" region wraps a whole catalog),
@@ -96,7 +96,7 @@ export function headCssContent() {
 export function computeEntities() {
   const entities = {};
   const unified = read('src/tpl_unified-blocks.mjml');
-  const all = read('src/mjml_all-blocks.mjml');
+  const all = read('src/mjml_extra-blocks.mjml');
 
   entities['email-template'] = sha(shellOf(unified) + '\n@@styles@@\n' + read('src/styles.css'));
   entities['catalog-shell'] = sha(shellOf(all));
@@ -114,7 +114,7 @@ export function computeEntities() {
 
   const blocks = new Map();
   for (const file of CATALOGS) {
-    const text = file === 'mjml_all-blocks.mjml' ? all : unified;
+    const text = file === 'mjml_extra-blocks.mjml' ? all : unified;
     for (const l of leafRegions(text)) {
       blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n@@${file}@@\n` + text.slice(l.start, l.end));
     }

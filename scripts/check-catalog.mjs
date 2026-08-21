@@ -455,7 +455,7 @@ guard('mobile-only MSO-guard check', () => {
 // compiled page, estimates the DELIVERED size (×1.30), and warns when a
 // shipping master passes the 14,000-byte working target or when ANY page
 // would land within a canary-block + builder-chrome hoist (~700 delivered
-// bytes) of the cliff. The full mjml_all-blocks catalog deliberately rides
+// bytes) of the cliff. The mjml_extra-blocks catalog deliberately rides
 // ~100 bytes inside that last check — any styles.css growth should trip it.
 // The guard also protects a silent app coupling nothing else connects
 // across the repos: the inert audit's Desktop labels need the td.button
@@ -723,7 +723,7 @@ guard('Gmail CSS budget + head coupling check', () => {
     const ruleLines = (tight.match(/}/g) || []).length;
     const compactBytes = tight.length + 3 * ruleLines;
     const estimated = Math.round(EN_CSS_REPRINT_FACTOR * compactBytes);
-    const isShippingMaster = !page.startsWith('mjml_all-blocks');
+    const isShippingMaster = !page.startsWith('mjml_extra-blocks');
     if (isShippingMaster && estimated > 14000) {
       warn(
         `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,

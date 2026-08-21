@@ -11,8 +11,8 @@ short version.
 
 ```
 src/
-  mjml_all-blocks.mjml     ← full block catalog (the 9 "Category — X" dividers)
-  tpl_unified-blocks.mjml  ← master template
+  tpl_unified-blocks.mjml  ← master template — the primary catalog
+  mjml_extra-blocks.mjml   ← blocks that live nowhere else (see CLAUDE.md)
   donation-thank-you.mjml
   recurring-donation-thank-you.mjml    ← standalone autoresponders
   styles.css           ← shared CSS, pulled in via mj-include
@@ -175,9 +175,9 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
 Every content block is wrapped in comments that **survive MJML compilation**:
 
 ```html
-<!-- START: Logo Hero (light green, centered) -->
+<!-- START: Logo Hero (w/ image, green) -->
 <mj-section ...> ... </mj-section>
-<!-- END: Logo Hero (light green, centered) -->
+<!-- END: Logo Hero (w/ image, green) -->
 ```
 
 These are the backbone of everything else — the debug overlay, duplicate
@@ -228,7 +228,8 @@ Names must match exactly (case-sensitive) between START and END.
   (also skipped by the overlay).
 
 `scripts/check-docs.mjs` asserts that every block name cited anywhere in the
-docs still resolves to a block, family, or category in `src/mjml_all-blocks.mjml`.
+docs still resolves to a block, family, or category in EITHER catalog —
+`src/tpl_unified-blocks.mjml` or `src/mjml_extra-blocks.mjml`.
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 
@@ -325,7 +326,7 @@ Shorthand was always expanded — a tag with any padding got all four
 
 ### 6b. `data-import-exclude` — "skip this block entirely"
 
-For catalog chrome (the 9 `Category — …` header bars) that must never import.
+For catalog chrome (the `Category — …` header bars) that must never import.
 MJML rejects unknown attributes on `mj-section` at default validation *and*
 this flag must survive into compiled HTML (the converter's exclusion happens
 there, and the debugger's hide toggle uses it), so it's applied as an

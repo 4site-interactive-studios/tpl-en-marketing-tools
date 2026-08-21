@@ -29,7 +29,20 @@ const warn = (msg) => {
 const LOCAL_DOCS = ['PLAYBOOK.md', 'CLAUDE.md', 'README.MD'].filter((f) => read(f));
 const MIRRORS = ['MJML-AUTHORING-GUIDE.md', 'CONVENTIONS.md'];
 
-const demo = read('src/mjml_all-blocks.mjml') || '';
+/**
+ * The catalogs a doc may cite a block from. Since 2026-08-20 that is BOTH:
+ * tpl_unified-blocks.mjml is the master template, and mjml_extra-blocks.mjml
+ * holds the blocks that live nowhere else (the old full catalog was pruned to
+ * its non-duplicates and renamed). Reading only one would let citations of the
+ * other pass unchecked. A missing file makes `read` return '', which would
+ * degrade this assertion to vacuously true rather than failing loudly — the
+ * emptiness guard below is what keeps that from going unnoticed.
+ */
+const CATALOG_FILES = ['src/tpl_unified-blocks.mjml', 'src/mjml_extra-blocks.mjml'];
+const demo = CATALOG_FILES.map((f) => read(f) || '').join('\n');
+if (!demo.trim()) {
+  warn('no catalog source found — block-name citations were NOT checked');
+}
 const blockNames = (src) => new Set([...src.matchAll(/<!-- START: (.+?) -->/g)].map((m) => m[1]));
 const demoBlocks = blockNames(demo);
 
@@ -69,7 +82,7 @@ for (const f of LOCAL_DOCS) {
     // docs legitimately cite all three.
     if (demoBlocks.has(name) || families.has(name) || categories.has(name)) continue;
     if (name.startsWith('Category — ') && categories.has(name.slice('Category — '.length))) continue;
-    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in src/mjml_all-blocks.mjml`);
+    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in either catalog`);
   }
 }
 

@@ -45,11 +45,13 @@ system, whose compiled output is imported into Engaging Networks (EN)
 Marketing Tools as blocks and a template.
 
 Repo: https://github.com/4site-interactive-studios/tpl-en-marketing-tools
-- src/mjml_all-blocks.mjml (formerly demo.mjml) is the full block
-  catalog. src/tpl_all-blocks.mjml (formerly example.mjml) is a
-  deliberately curated SUBSET of it — same "Category — X" dividers (9 in
-  each), fewer blocks. A change to a block they SHARE belongs in both;
-  never add blocks to tpl_all-blocks.mjml to "restore parity." The
+- src/tpl_unified-blocks.mjml is the master template and the PRIMARY
+  catalog. src/mjml_extra-blocks.mjml holds only blocks that exist in no
+  other catalog — 22 of them, plus the "Category — X" dividers whose
+  folders still have content. It was the full catalog (mjml_all-blocks.mjml)
+  until 2026-08-20, when 72 duplicates of unified blocks and 30 never-exported
+  colour/alignment demos were pruned out and it was renamed. A change to a
+  block they SHARE belongs in both, but after the prune they share none. The
   repo's
   CLAUDE.md records the exact delta.
 - src/tpl_unified-blocks.mjml (formerly main.mjml) is the master
@@ -94,9 +96,9 @@ Non-negotiables while you work:
   inside the [if mso | IE] conditional.
 
 Verify when done, and report what each check returned:
-- confirm every block tpl_all-blocks.mjml shares with
-  mjml_all-blocks.mjml is still
-  identical (the block LISTS are intentionally different)
+- confirm every block the two catalogs share is still identical (after the
+  2026-08-20 prune they share none, so this should find nothing to compare —
+  a shared name reappearing means a duplicate crept back in)
 - run the full QA checklist in section 8 of the authoring guide — it is
   the single copy of those checks, do not restate them here
 
@@ -1627,8 +1629,8 @@ trade-off was accepted deliberately.)
   `headStyles.ts`). The two deliberately differ on HOISTED extras: the
   app meter prices the canary/chrome at raw × factor (worst case — EN
   strips their comments, so the true delivered size is smaller), while
-  the TPL guard uses the measured ~700 delivered bytes; the full
-  mjml_all-blocks catalog is therefore EXPECTED to show red in-app while
+  the TPL guard uses the measured ~700 delivered bytes; the largest catalog
+  page is therefore EXPECTED to show red in-app while
   the build guard still passes it — the shipping masters must be green
   under both. The exported block name never carries byte counts.
 - No theme Selects exist on the block: the extracted CSS keeps its
@@ -1788,7 +1790,7 @@ preheader (mj-preview output) would sit right after EN's injected one, so
 Gmail-style snippets would show BOTH lines. Consequences:
 
 - `<mj-preview>` was removed from the TPL broadcast sources
-  (tpl_unified-blocks / mjml_all-blocks / tpl_all-blocks) the same day;
+  (tpl_unified-blocks / the full catalog, now mjml_extra-blocks) the same day;
   the autoresponder sources (donation-thank-you, recurring) KEEP theirs —
   they don't go out through Marketing Tools broadcasts.
 - The validator warns when a shell still bakes in a hidden
