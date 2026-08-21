@@ -30,8 +30,11 @@ still resolve, no top-level `[data-ogsc]`, every dark-mode declaration carries `
 absolute CDN URL in source, every `§N` cross-reference resolves, and the
 mirrors still carry their header. Run it alone with `npm run check-docs`.
 `scripts/check-catalog.mjs` is its sibling for the blocks: both-attribute
-backgrounds, unhooked dark-mode grounds, and fixed-width columns overflowing
-their frame (that one needs a built `dist/`). Run it with
+backgrounds, unhooked dark-mode grounds, fixed-width columns overflowing
+their frame (that one needs a built `dist/`), and every narrow fixed-px
+column inside an `mj-group` carrying a mobile pin (guide §6e — mj-group
+never stacks, so an unpinned rail shrinks with the viewport while the fixed
+padding inside it does not). Run it with
 `npm run check-catalog`. Both are WARN-only; the build must print zero.
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.

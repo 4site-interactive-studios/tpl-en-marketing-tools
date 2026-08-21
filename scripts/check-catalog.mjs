@@ -644,6 +644,86 @@ guard('mobile-only MSO-guard check', () => {
 // letters.
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Every fixed-px column inside an mj-group must be pinned below the
+// breakpoint. mj-group NEVER stacks: it converts each child column to a
+// percentage, so an authored px width survives only above 600px and any
+// fixed inline padding inside the column eats the shrunken width first
+// (guide §6e). The catalog reached full coverage on 2026-08-21 — .poll-icon,
+// .signature-img, .stream-icon, .icon-row-icon, .step-icon, .episode-icon —
+// and this guard is what keeps it there, since the failure is invisible on
+// desktop and only obvious when a row happens to hold a MATCHED PAIR (the
+// Podcast Streaming badges rendered 45px and 29px for months).
+// ---------------------------------------------------------------------------
+
+guard('grouped fixed-px columns are pinned for mobile', () => {
+  const css = read('src/styles.css') || '';
+  const pinned = new Set();
+  const mobile = /@media[^{]*max-width:\s*599px[^{]*\{([\s\S]*)\n\}/.exec(css);
+  if (mobile) {
+    for (const m of mobile[1].matchAll(/([^{}]+)\{[^{}]*width:\s*(?:\d+px|calc\()[^{}]*!important[^{}]*\}/g)) {
+      for (const sel of m[1].split(',')) {
+        const t = /\.([\w-]+)\s*$/.exec(sel.trim());
+        if (t) pinned.add(t[1]);
+      }
+    }
+  }
+  // Largest fixed left/right padding on any element inside this column.
+  const insetOf = (body) => {
+    let max = 0;
+    for (const m of body.matchAll(/padding="([^"]+)"/g)) {
+      const p = m[1].trim().split(/\s+/).map((v) => parseInt(v, 10) || 0);
+      const [t, r = t, , l = r] = p;
+      max = Math.max(max, l + r);
+    }
+    return max;
+  };
+  const MOBILE_VW = 375;
+  const THRESHOLD = 0.15;
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    for (const g of text.matchAll(/<mj-group[^>]*>([\s\S]*?)<\/mj-group>/g)) {
+      // The gutter of the enclosing section decides how much width is left.
+      const before = text.slice(0, g.index);
+      const sec = /<mj-section\b[^>]*?padding="([^"]+)"[^>]*>(?![\s\S]*<mj-section\b)/.exec(before);
+      const gutter = sec ? parseInt(sec[1].trim().split(/\s+/)[1] ?? '0', 10) || 0 : 0;
+      const avail = MOBILE_VW - 2 * gutter;
+      const cols = [...g[1].matchAll(/<mj-column\b([^>]*?)width="(\d+)px"([^>]*?)>([\s\S]*?)<\/mj-column>/g)];
+      const total = cols.reduce((n, c) => n + Number(c[2]), 0);
+      if (!total) continue;
+      for (const col of cols) {
+        const px = Number(col[2]);
+        const body = col[4];
+        if (/^\s*&nbsp;\s*$/.test(body)) continue; // spacer rail: nothing to shrink
+        const inset = insetOf(body);
+        if (!inset) continue;
+        // Rails only. A column that IS the row (a text column spanning the
+        // frame) carries its padding as a deliberate gutter and is supposed
+        // to shrink with the viewport — Photo Banner's 550-of-600 column at
+        // 32px a side is the shape this would otherwise misreport. The
+        // failure lives in the narrow rail beside it.
+        if (px / total > 0.35) continue;
+        // What this column renders at on a phone, and what the fixed inset
+        // costs it there. Wide content columns are SUPPOSED to shrink; the
+        // failure is a narrow rail whose fixed padding survives the shrink.
+        const rendered = (px / total) * avail;
+        if (inset / rendered <= THRESHOLD) continue;
+        const cls = /css-class="([^"]*)"/.exec(col[1] + col[3]);
+        const tokens = cls ? cls[1].split(/\s+/) : [];
+        if (tokens.some((t) => pinned.has(t))) continue;
+        warn(
+          `src/${f}: a ${px}px mj-column inside an mj-group carries ${inset}px of fixed ` +
+            `inline padding but no mobile pin (css-class ${cls ? `"${cls[1]}"` : 'absent'}) — ` +
+            `mj-group converts it to a percentage below 600px, so it renders about ` +
+            `${Math.round(rendered)}px at ${MOBILE_VW} and the inset eats ` +
+            `${Math.round((inset / rendered) * 100)}% of it (guide §6e). ` +
+            `Pin it: .<token> { width: ${px}px !important }`,
+        );
+      }
+    }
+  }
+});
+
 guard('ALL-CAPS button label check', () => {
   const stripNonText = (s) =>
     s.replace(/<[^>]+>|&[#a-zA-Z0-9]+;|\{[^}]*\}/g, '');
@@ -1032,5 +1112,5 @@ guard('Gmail CSS budget + head coupling check', () => {
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, twin flags, anchors, link groups, mobile-only guards, CSS budget clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget clean`,
 );

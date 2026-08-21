@@ -698,6 +698,36 @@ li {
         width: calc(100% - 156px) !important;
       }
 
+      /* Icon-beside-text rows: the icon column is authored in px, so below the
+     breakpoint it goes percentage and the icon shrinks harder than the row
+     does — 100px to 54px on Icon Row, 92px to 49px on Podcast Episode
+     (measured 2026-08-21). Nothing looks broken, because each row has ONE
+     icon with no sibling to be measured against, which is why these three
+     were left until last. Pinned to their AUTHORED widths, as .poll-icon,
+     .signature-img and .stream-icon already are.
+
+     The cost is text width: Icon Row and Podcast Episode lose ~50px of
+     column and grow 25% / 50% taller. Steps Block pays nothing — its arrow
+     is 70px in a 104px content box, so it had slack and the text reflows
+     identically. Icon Row and Steps Block share the 120px selector. */
+      .icon-row-icon,
+      .step-icon {
+        width: 120px !important;
+      }
+
+      .icon-row-text,
+      .step-text {
+        width: calc(100% - 120px) !important;
+      }
+
+      .episode-icon {
+        width: 112px !important;
+      }
+
+      .episode-text {
+        width: calc(100% - 112px) !important;
+      }
+
       /* Inset sections: collapse the wide desktop gutters to the standard 32px.
      The section's main td is the only one carrying direction inline. */
       .inset-gutter td[style*=direction] {
@@ -3482,7 +3512,7 @@ li {
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
                 <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:120px;" ><![endif]-->
-                <div class="mj-column-px-120 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:22.388059701492537%;">
+                <div class="mj-column-px-120 mj-outlook-group-fix icon-row-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:22.388059701492537%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -3514,7 +3544,7 @@ li {
                   </table>
                 </div>
                 <!--[if mso | IE]></td><td style="vertical-align:middle;width:416px;" ><![endif]-->
-                <div class="mj-column-px-416 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:77.61194029850746%;">
+                <div class="mj-column-px-416 mj-outlook-group-fix icon-row-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:77.61194029850746%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -3792,7 +3822,7 @@ li {
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
                 <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:112px;" ><![endif]-->
-                <div class="mj-column-px-112 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:20.8955223880597%;">
+                <div class="mj-column-px-112 mj-outlook-group-fix episode-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:20.8955223880597%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -3824,7 +3854,7 @@ li {
                   </table>
                 </div>
                 <!--[if mso | IE]></td><td style="vertical-align:middle;width:424px;" ><![endif]-->
-                <div class="mj-column-px-424 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:79.1044776119403%;">
+                <div class="mj-column-px-424 mj-outlook-group-fix episode-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:79.1044776119403%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -4475,7 +4505,7 @@ li {
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
                 <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:120px;" ><![endif]-->
-                <div class="mj-column-px-120 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:22.388059701492537%;">
+                <div class="mj-column-px-120 mj-outlook-group-fix step-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:22.388059701492537%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tbody>
                       <tr>
@@ -4507,7 +4537,7 @@ li {
                   </table>
                 </div>
                 <!--[if mso | IE]></td><td style="vertical-align:middle;width:416px;" ><![endif]-->
-                <div class="mj-column-px-416 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:77.61194029850746%;">
+                <div class="mj-column-px-416 mj-outlook-group-fix step-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:77.61194029850746%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>

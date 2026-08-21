@@ -1232,13 +1232,13 @@
     <!-- START: Icon Row -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right>
       <mj-group>
-        <mj-column width="120px" vertical-align="middle">
+        <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="416px" vertical-align="middle">
+        <mj-column width="416px" vertical-align="middle" css-class="icon-row-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
           </mj-text>
@@ -1365,7 +1365,7 @@
       background-color="#006837" padding="16px 32px" data-mobile-only-padding-right
     >
       <mj-group>
-        <mj-column width="112px" vertical-align="middle">
+        <mj-column width="112px" vertical-align="middle" css-class="episode-icon">
           <mj-image
             src="assets/icon-podcast.png"
             alt="People. Nature. Big Ideas podcast"
@@ -1381,7 +1381,7 @@
             padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="424px" vertical-align="middle">
+        <mj-column width="424px" vertical-align="middle" css-class="episode-text">
           <mj-text padding="0">
             <h2 style="color:#CEE4C5;">People. Nature. Big Ideas</h2>
           </mj-text>
@@ -1690,13 +1690,13 @@
          the two rows of identical shape. -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-mobile-only-padding-right>
       <mj-group>
-        <mj-column width="120px" vertical-align="top">
+        <mj-column width="120px" vertical-align="top" css-class="step-icon">
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="416px" vertical-align="middle">
+        <mj-column width="416px" vertical-align="middle" css-class="step-text">
           <mj-text padding="0">
             <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           </mj-text>

@@ -140,8 +140,8 @@
     "hash": "e7818bc8eb32"
   },
   "block:Icon Row": {
-    "version": 7,
-    "hash": "0848b7b4e8e2"
+    "version": 8,
+    "hash": "90f7c55a27b4"
   },
   "block:Image 1x1": {
     "version": 8,
@@ -188,8 +188,8 @@
     "hash": "cf937085e0ae"
   },
   "block:Podcast Episode Block": {
-    "version": 8,
-    "hash": "f45bea5d1500"
+    "version": 9,
+    "hash": "342369a345a5"
   },
   "block:Podcast Streaming Block": {
     "version": 7,
@@ -240,8 +240,8 @@
     "hash": "09dbb1d28d71"
   },
   "block:Steps Block": {
-    "version": 12,
-    "hash": "77bd3903eb59"
+    "version": 13,
+    "hash": "4f73eff05765"
   },
   "block:Story Card (image left, middle-aligned)": {
     "version": 9,
@@ -280,12 +280,12 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 47,
-    "hash": "670ae6c68deb"
+    "version": 48,
+    "hash": "9c990970c59f"
   },
   "head-css": {
-    "version": 27,
-    "hash": "ccf9c5315018"
+    "version": 28,
+    "hash": "8b9492d03ced"
   },
   "partial:debug-toolbar": {
     "version": 1,
