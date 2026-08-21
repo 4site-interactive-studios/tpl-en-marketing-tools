@@ -662,14 +662,17 @@ Two caveats that belong with the number:
   That catalog no longer exists; the ratio is what generalises, not the
   size.)
 
-The importer flags this for you: it projects shell + every block and reports
+The importer flags this for you: it sums shell + every block — the authored
+text with merge tags still in it, a rough ceiling rather than a projection
+of what EN counts — and reports
 `info` past 285,000, `warning` past 299,760, and never an error — a catalog
 library is expected to exceed a budget no single email spends (conventions.md,
 "Message size is advisory, never enforced").
 
-**Working ceiling: 285,000 bytes.** About 5% of headroom, or roughly two
+**Working ceiling: 285,000 bytes.** About 5% of headroom, or roughly three
 average blocks (the TPL catalog averages ~4,800 bytes per block across its
-53, measured 2026-08-21) — enough
+53, measured 2026-08-21; this line said "two" until 2026-08-21, against the
+same arithmetic) — enough
 that a couple of edits cannot walk a passing template into a failing one,
 and enough to absorb the unexplained 240.
 

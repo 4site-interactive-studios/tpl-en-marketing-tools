@@ -80,8 +80,8 @@ complete, tested design with mobile stacking, dark-mode behavior, and Outlook
 workarounds already built in. Since 2026-08-21 the catalog IS the master
 template: one file, 59 blocks, 53 of them shipping into EN. Beside it sit
 two donation thank-you autoresponders (automatic emails EN sends after a
-donation) assembled from the same blocks, and a one-block holding pen for
-anything carrying an unresolved defect.
+donation) built on the same stylesheet and components, and a one-block
+holding pen for anything carrying an unresolved defect.
 
 **A converter app.** A private, browser-only tool. Point it at the template on
 GitHub and it compiles the MJML, splits it into blocks, reads the design
@@ -130,20 +130,25 @@ survive them.
 **Phase 5: industrialization (2026-08-17 → 08-20).** Everything learned gets
 turned into something automatic: build-time lints (automated checks that scan
 the files for known mistakes), pixel-level audits, content versioning, byte
-budgets. 111 converter commits land in these four days, and the system goes
+budgets. 127 converter commits land in these four days, and the system goes
 live in TPL's account on 2026-08-18.
 
 **Phase 6: one catalog, and the names editors read (2026-08-20 → 08-21).**
-A 62-commit push, most of it inside one twenty-one-hour stretch. Three
-catalog files become one master template. Thirty demo variants get pruned
-once real dropdowns replace what they demonstrated, thirteen blocks get
-renamed to the names a content editor actually reads, and every panel label
-that said "Section" now says "Row", the word an EN editor is looking at
-(438 merge tags across 15 blocks). The client manual, which had drifted a
-whole catalog generation, is regenerated from the import pipeline itself so
-it cannot drift again. The push ends the way the project taught us to end:
-a fresh audit sweep, two label-truth fixes, and a probe that killed its own
-premise the same day it was built.
+The 61 project commits since this document's last snapshot, most of them
+inside one twenty-one-hour stretch. The two
+remaining catalog files become one master template: the duplicate catalog is
+pruned to its unique leftovers and then deleted outright, and the master
+absorbs the blocks worth keeping while shedding the demos its own dropdowns
+already reproduce. Renames sweep the catalog (thirteen blocks in a single
+commit, more before and after it) toward the names a content editor actually
+reads, and every panel label that said "Section" now says "Row", the word an
+EN editor is looking at (438 merge tags across 15 blocks). The client
+manual, which had drifted a whole catalog generation, is regenerated from
+the import pipeline itself so it cannot drift again. Along the way: a fresh
+audit sweep, two label-truth fixes, and a probe that killed its own premise
+the same day it was built. The push ends the way the project taught us to
+end, with a final commit that adds no block: it pins three icon rails and
+adds the guard that keeps them pinned.
 
 ## The five things we'd tell another team
 
@@ -188,14 +193,14 @@ is measured at this document's snapshot commits (TPL `a317307` · converter
 | Project span | 2026-05-25 → 2026-08-21 (89 days, counting both ends) | Both |
 | Commits | 567 (309 TPL · 258 Marketing Tools app), merges and this document's own 11 commits counted | Both |
 | The catalog | One master template since 2026-08-21: 59 content blocks in 9 category folders, plus a one-block holding pen for a block under repair | TPL |
-| Blocks shipped into EN | 53 canonical blocks in 9 folders, down from 67 at the last snapshot: variants keep collapsing into dropdowns, and 30 demo blocks were pruned once real controls replaced what they demonstrated | Both |
-| Autoresponders | 2 donation thank-yous of 7 blocks each, built from the same catalog blocks | TPL |
+| Blocks shipped into EN | 53 canonical blocks in 9 folders. Not comparable to the last snapshot's 67, which counted the since-deleted full catalog: measured on the surviving master template, shipping blocks went from 38 to 53 as it absorbed everything worth keeping | Both |
+| Autoresponders | 2 donation thank-yous of 7 blocks each | TPL |
 | The converter itself | ~23,800 lines of production code, 825 automated tests, **zero backend**, at version 77 | Marketing Tools app |
 | Published contracts | 2 documents, 4,555 lines in the canonical copies, written beside the converter and mirrored into this repo, byte-identical beneath a two-line banner | Both |
 | Version ledger | 75 versioned template artifacts, down from 152 as the catalog consolidated (the master template, shell plus stylesheet, at v48; the compiled Template Styles block at v28) plus the app itself at v77 | Both |
 | Probe instruments built and archived | 23: 12 platform probes archived with the app, 11 rendering probes archived here | Both |
 | Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders of the TPL catalog | TPL |
-| Editor controls proven live or dead by pixel comparison | 1,027 dropdowns, 11,108 renders (2026-08-18), the app's audit engine run over TPL's generated controls; the consolidated catalog's 338 padding fields re-proven live 2026-08-21 | Both |
+| Editor controls proven live or dead by pixel comparison | 1,027 dropdowns, 11,108 renders (2026-08-18), the app's audit engine run over the since-retired full catalog; separately, the consolidated master's padding fields re-proven live (338 of 338, 2026-08-21) | Both |
 | Stale markup annotations removed after proving they changed nothing | 8,376. TPL's markup, proven inert by the app's strip-and-regenerate audit | Both |
 | Automated guards now standing | 4 audit engines plus a padding oracle and a growth cap (app), 3 linters (2 here, 1 with the app), and byte budgets at both ends: two delivered-CSS budgets asserted by the build here, and EN's message ceiling advised in the app | Both |
 
@@ -367,17 +372,22 @@ block swap rather than an email rebuild.
 - **EN rejects a save whose rendered message exceeds 299,760 bytes**, and
   the builder paints "Invalid or missing authentication token" over it while
   the real response says "Message contentHtml too long" (bisected
-  2026-08-20). We budget to a 285,000-byte working ceiling, roughly two
-  average blocks of headroom, and the app projects every template against
-  it as an advisory, never an error (my call: a catalog template is
-  expected to exceed a sending budget). The consolidated catalog fits one
-  message at 252,607 bytes, 84% of the cap; the guide claimed the opposite
-  until 2026-08-21, measured against a catalog that no longer exists, and
-  the correction is preserved there rather than edited away.
+  2026-08-20). We budget to a 285,000-byte working ceiling, roughly three
+  average blocks of headroom, and the app meters every template against it
+  as an advisory, never an error (my call: a catalog template is expected
+  to exceed a sending budget). The meter is a rough ceiling, not a
+  projection: it counts the authored text with merge tags still in it, so
+  it under-reports what EN counts. Measured directly, the consolidated
+  catalog fits one message at 252,607 bytes, 84% of the cap; the guide
+  claimed the opposite until 2026-08-21, measured against a catalog that
+  no longer exists, and the correction is preserved there rather than
+  edited away.
 - **Authoring comments in the template head never ship.** The importer
-  strips them at import (2026-08-20), keeping conditional comments and
-  anything inside a style or script tag, so head documentation is free:
-  3,590 bytes of prose left the delivered head with the body byte-identical.
+  strips them at import (2026-08-20), keeping conditional comments and,
+  with one narrow exception for the builder band's own sheet, anything
+  inside a style or script tag. Head documentation is therefore free: the
+  strips removed 3,590 bytes from the delivered head of the catalog as it
+  then stood, body byte-identical.
 - **EN injects its own preheader** (the preview snippet an inbox shows under
   the subject line) from each email's Preview Text setting, so a
   template-baked one doubles up in inbox snippets. An earlier `preview_text`
@@ -414,24 +424,27 @@ Two consequences are now permanent. We **budget the delivered CSS, not the
 authored CSS**, with EN's 1.30× re-print factor, a working target of 14,000
 delivered bytes, and a build-time lint that holds every page under both the
 target and the cliff. The one page that ran over target by design, the full
-block catalog, was deleted in the 2026-08-21 consolidation, and its
-exemption went with it. (The linters warn rather than fail by contract; the
+block catalog, went away in the consolidation (pruned to its leftovers on
+2026-08-20, the leftover file deleted the next day), and its exemption went
+with it. (The linters warn rather than fail by contract; the
 working rule is that a clean build prints zero warnings.) And the deeper
 armor is an inline-first doctrine: the no-CSS
 rendering of every element should already be the correct *mobile* rendering,
 so a dropped stylesheet degrades rather than breaks.
 
-The budget is a real ceiling with a ledger. The stylesheet sat roughly 50
-bytes clear until 2026-08-20, when deleting a retired width ladder returned
-about 1,325 delivered bytes, and the 2026-08-21 consolidation returned
-another 1,440 to the master. The number moves with every stylesheet commit,
-so since 2026-08-21 the build states two budgets outright rather than one
-prose figure that kept rotting: the whole delivered head against the
-14,000-byte working target, and the shared stylesheet against its own
-8,700-byte slice of that. At this snapshot the master's estimated delivered
-head is 13,780 (220 bytes under target, 2,604 under the cliff) and the
-stylesheet is at 8,497 of its 8,700. The last commit before this snapshot
-says it plainly: the next rule of any size trips one of them.
+The budget is a real ceiling with a ledger. The page the cliff actually
+gated, the full catalog, sat roughly 50 bytes clear until 2026-08-20, when
+deleting a retired width ladder returned about 1,325 delivered bytes; that
+page then stopped existing, which removed the alarm without replacing it.
+So since 2026-08-21 the build states its budgets outright rather than as
+one prose figure that kept rotting: every page's delivered head against the
+14,000-byte working target, the shared stylesheet against its own
+8,700-byte slice of that, and a cap of 20 distinct fixed column widths,
+each of which costs about 174 delivered bytes of head CSS. At this snapshot
+the master's estimated delivered head is 13,780 (220 bytes under target,
+and 2,604 under the cliff before the guard's 250-byte hoist allowance) and
+the stylesheet is at 8,497 of its 8,700. The last commit before this
+snapshot says it plainly: the next rule of any size trips one of them.
 
 ### Dark mode reaches most clients, and two important ones not at all
 
@@ -513,7 +526,8 @@ groups its columns (MJML's `mj-group`) never stacks them on mobile: every
 column becomes a percentage, so a narrow fixed-pixel icon column (a rail)
 shrinks with the screen while the fixed padding inside it does not. The
 Podcast Streaming Block's two identically authored 62px badges had rendered
-45 and 29 pixels wide on phones for months, and the rows with a single icon
+45 and 29 pixels wide on phones for seven weeks, and the rows with a single
+icon
 never looked broken because there was no sibling to compare against. The
 fix is a mobile width pin on every such rail, and the rule is now a build
 guard rather than a guideline, with two carve-outs measured in so it stays
@@ -547,14 +561,16 @@ rather than an implementation accident.
   can raise its own reach, which is how the 350px hero-photo reserve went from
   locked to a curated dropdown on its own 15-step ladder (my call,
   2026-08-19). Still never free text.
-- **Growing a gutter can never break the layout.** MJML freezes column
-  widths derived from a section's authored padding, so widening a gutter
-  past the point where the columns still fit wraps the row in every CSS
-  client. Since 2026-08-21 the app re-checks the whole geometry once per
-  candidate padding value and never offers an option the frozen layout
-  cannot take; where only the authored value survives, no field is created
-  at all. The build counts the cost by command rather than prose: 36 of 105
-  frames cannot take the full declared scale at this snapshot.
+- **Growing a gutter can never break the layout.** MJML freezes a block's
+  geometry at compile time: authored fixed-pixel columns, images sized to
+  their columns, and widths derived from a section's padding. Widening a
+  gutter past the point where that frozen geometry still fits wraps the row
+  in every CSS client. Since 2026-08-21 the app re-checks the whole
+  geometry once per candidate padding value and never offers an option the
+  layout cannot take; where only the authored value survives, no field is
+  created at all. The build counts the cost by command rather than prose:
+  36 of 105 frames (the padding-owning sections, wrappers and columns)
+  cannot take the full declared spacing scale at this snapshot.
 - **Inert controls are suppressed, and the suppression explains itself.**
   Where a field would do nothing (padding a fixed layout ignores, or a value
   whose only occurrences sit inside an Outlook conditional and would silently
@@ -613,11 +629,13 @@ reads as instructions. They are how an author tells the converter "this
 block is a duplicate," "this width is design geometry, leave it alone," or
 "these three links are really one link." MJML itself rejects `data-*` on
 its own tags, so the converter reads them from the raw MJML source; only the
-exclusion flags round-trip into compiled HTML (annotate, compile, restore),
-and the converter whitelists the validator noise the rest cause. (EN's
-editor also stamps platform `data-*` of its own onto raw anchors, like the
-campaign id on a Manage Subscription link; those are EN's markup, not ours,
-and this census leaves them alone.)
+exclusion flags are carried through the build's annotate-compile-restore
+round trip, flags on raw HTML elements ship as authored, and the converter
+whitelists the validator noise they cause. (EN's editor also stamps platform
+`data-*` of its own onto raw anchors, like the campaign id on a Manage
+Subscription link, and other platform hooks ride the stylesheet, like
+Outlook.com's dark-mode attribute; none of those are ours, and this census
+leaves them alone.)
 
 Three rules govern the whole vocabulary. Most flags are **valueless**
 (`data-no-display-toggle`, never `="true"`), and detection is by presence;
@@ -625,23 +643,24 @@ reading them the other way is how one flag got silently ignored for about a
 week, until 2026-07-31 (Appendix A, entry 10). Every flag must **earn its
 place**: the dead-flag audit strips each flag the converter reads and
 regenerates the output, and one that changes nothing gets deleted rather
-than left as folklore (annotation and routing flags sit outside that strip
-test, so the data-* audit's consumer classification covers them instead).
-And this table is the
-**2026-08-21 census**, not the contract. The living rules are the guide's
-§5 table, the conventions document's "data-* contract" reference, and
-PLAYBOOK §6.
+than left as folklore (that audit's scope is the flags the generator reads;
+routing flags are covered by the data-* audit's consumer registry instead).
+And these tables are the **2026-08-21 census** of the vocabulary, not the
+contract and not the catalog: a few flags have no live instance today (the
+probe flag, with every probe archived) and stay because the contract
+defines them. The living rules are the guide's §5 table, the conventions
+document's "data-* contract" reference, and PLAYBOOK §6.
 
 ### Block lifecycle and routing
 
 | Attribute | Where it goes | What it does | Why |
 | :-- | :-- | :-- | :-- |
-| `data-fully-exclude` | a whole block | Drops the block at import as a redundant variant | Variants that differ only in editable values fold into one importable block's dropdowns. A family normally keeps one un-flagged canonical (default content is a block's value); four families are deliberately excluded with no canonical, and the contract says not to re-flag them |
+| `data-fully-exclude` | a whole block | Drops the block at import as a redundant variant | Variants that differ only in editable values fold into one importable block's dropdowns. A family normally keeps one un-flagged canonical (default content is a block's value). Two families remain deliberately excluded with no canonical after a 2026-08-21 reversal shipped the other two, and neither remaining family is in today's catalog |
 | `data-import-exclude` | dev-only blocks (the category header bars) | Renders in previews but starts unchecked in exports, with a warning on direct export | Catalog chrome should never land in EN as a block |
 | `data-probe` | probe instrument blocks | Imports and sends like any block, but the brand-color census and the color-usage audit skip it | A probe's colors are measurement signals, and a probe-only hex must never surface as a palette dropdown option (2026-08-18) |
 | `data-visible-duplicate` | a block that duplicates its group's anchor on purpose | Exempts it from the "duplicates X but is not flagged" build warning while keeping it importable | Some duplicates are product decisions. Image 1x1 is the full-bleed shape under the name an editor actually looks for. The flag always carries a dated comment naming the anchor and the decision, and it warns as misuse on a group anchor or next to `data-fully-exclude` (2026-08-18) |
 | `data-folder="<id>"` | category dividers and blocks | Routes the block into an EN folder. A block's own value beats the import form, which beats the divider, which beats the account default | The library files itself; nobody assigns folders by hand at import time. Divider values prefill the import form, and a block whose only content is an include can carry the attribute on a comment |
-| `data-en-tools-band` | one `<style>` in the template head | Tells the converter to leave that stylesheet in the template shell instead of moving it into the swappable Template Styles block, and keeps the band's colors out of the brand-palette census | The builder's version band must paint from the shell EN always renders, not from a block an editor could remove. Its greys are the Marketing Tools app's own UI colors (2026-08-20), chrome rather than palette, and censusing them had been putting two grey options into every content color dropdown |
+| `data-en-tools-band` | one `<style>` in the template head | Tells the converter to leave that stylesheet in the template shell instead of moving it into the swappable Template Styles block, and keeps the band's colors out of the brand-palette census | The builder's version band must paint from the shell EN always renders, not from a block an editor could remove. Its greys are the Marketing Tools app's own interface colors (2026-08-20), chrome rather than palette, and censusing them had been putting one grey into every text dropdown and another into every background dropdown |
 | `data-category-short="<name>"` | category dividers | Replaces the full category name in block-name prefixes ("Text" instead of "Text Blocks") | Block names carry their category so EN's library sorts by group, without the prefix eating the visible name |
 
 ### Creating and shaping fields
@@ -650,10 +669,10 @@ PLAYBOOK §6.
 | :-- | :-- | :-- | :-- |
 | `data-style-dark-mode` | the dark twin of a light/dark image pair | Marks which image is the dark variant so the build pairs it with its light twin | The lone survivor of the retired `data-style-*` vocabulary (below); the TPL build consumes it, not the converter |
 | `data-width-options="150,250,350"` | a column or a divider | Curates the width dropdown's ladder, overriding the config defaults. On a divider it ships Width as a Select, with an Original escape for an off-ladder authored value | A width menu should offer authored choices, not whatever ladder the compiled CSS happens to contain (dividers added 2026-08-19) |
-| `data-image-shape-toggle` | an image that authors a border-radius | Ships the radius as a two-option Square/Circle Select instead of a free number | Opt-in because a radius is not always a shape choice; the Quiz photos' 18px soft corner is neither. Flag both twins of a pair or the shared dark-image field disappears (measured 2026-08-20) |
+| `data-image-shape-toggle` | an image that authors a border-radius | Ships the radius as a two-option Square/Circle Select instead of a free-text field | Opt-in because a radius is not always a shape choice; the Quiz photos' 18px soft corner is neither. Flag both twins of a pair or the shared dark-image field disappears (measured 2026-08-20) |
 | `data-inset-toggle` | a spacing component | Mints Inset Selects even when a side is 0, and unlocks Spacing Above | The caption pacing exception, my call on 2026-08-18: a caption owns its gap above itself, so hiding the caption removes the gap with it instead of stranding white space under the photo |
-| `data-display-toggle` | a column's sole member | Opts the member into the Include/Exclude Display Select it would otherwise never get | The one opt-in of the display family (2026-08-20). A Display Select is normally minted only for a component sharing its column, and header logos and lone CTA buttons are sole members, so eight of them could not be hidden until this existed. On a light/dark pair the flag sits on the first twin |
-| `data-alt-arrangement="<Option Label>"` | an mj-section that is an alternate layout of the section before it | Folds that section into the preceding row's arrangement Select as an extra option instead of rendering it | How a two-column row offers "no image, text full width": a Display toggle cannot do it, because hiding a member leaves its column and Outlook ghost cell behind (2026-08-21). Structural rather than annotation, so it is the one importer flag the TPL build never strips |
+| `data-display-toggle` | a column's sole member | Opts the member into the Include/Exclude Display Select it would otherwise never get | The one opt-in of the display family (2026-08-20). A Display Select is normally minted only for a component sharing its column, and header logos, headings and lone CTA (call to action) buttons are sole members, so eight of them could not be hidden until this existed; a streaming badge took the flag a day later. On a light/dark pair the flag sits on the first twin |
+| `data-alt-arrangement="<Option Label>"` | an mj-section that is an alternate layout of the section before it | Folds that section into the preceding row's arrangement Select as an extra option instead of rendering it | How a two-column row offers "no image, text full width": a Display toggle cannot do it, because hiding a member leaves its column and Outlook ghost cell behind (2026-08-21). Structural rather than annotation, so it is deliberately absent from the build's annotation-strip list |
 | `data-arrangement-label="<Option Label>"` | the primary section of such a pair | Names the primary arrangement's option in the Select | For a row whose alternate exists but whose reversed order does not, so the Select reads Layout rather than Image Position (2026-08-21) |
 | `data-force-rte` | an mj-text carrying bare copy | Keeps the Content field on the rich-text editor when it would otherwise ship as a plain Text field | For copy expected to grow a link or emphasis later (2026-08-19) |
 | `data-group-label="<words>"` | any content element, or a raw anchor | Names the field group verbatim: the panel group, the label prefix, and the merge-tag base | Wins over every inferred role, so the panel says what the author meant (2026-08-19). On a light/dark pair, label both twins identically |
@@ -668,7 +687,7 @@ PLAYBOOK §6.
 | `data-no-width-toggle` | a lone fixed-px column, or a frame | No Column Width Select on the column; on a frame, pins the gutter out of the Block Padding Left/Right preset | Some widths are load-bearing design geometry, like an inset box; a frame flag also covers a gutter control proven dead at both viewports |
 | `data-no-link-toggle` | an image | No Include/Exclude Link toggle | For links that must never be removable, like a legally required logo link |
 | `data-no-direction-toggle` | the section (or group) that owns a column flip | No Image Position / Column Order control | Since 2026-08-11 the control mirrors alignment itself, so this is a taste judgment: some mirrored layouts should ship as their own block, not as a toggle |
-| `data-no-alignment-toggle` | a hand-authored button row | No Alignment Select for that row | For pills whose fixed widths already sum to the content width: left, center and right then render identically, measured dead on four rows (2026-08-21). The scanner sees only the pill markup, never the frame it sits in, so the author has to say it |
+| `data-no-alignment-toggle` | a hand-authored button row | No Alignment Select for that row | For pills whose fixed widths already sum to the content width: left, center and right then render identically, measured dead on four rows, with a fifth flagged by judgment for its single pixel of travel (2026-08-21). The scanner sees only the pill markup, never the frame it sits in, so the author has to say it |
 | `data-no-background-color` | any element with an authored background color | Keeps the color in the output but creates no field | For a background that provably cannot show (the tri-color divider's section, audited 2026-08-10; the green rule divider joined it after the 2026-08-18 sweep); the value stays as a client fallback. A background merely covered by an image stays editable, because Outlook desktop does not load background images and the color is what shows there |
 | `data-desktop-only-<token>` / `data-mobile-only-<token>` | the element that owns the control | Prefixes the control's label with the viewport (the screen width the email is viewed at) where it actually works ("Desktop Block Padding Left/Right"); the merge-tag name never changes | The channel for truths no static rule can reach: a centered pill whose width only matters at desktop, or trailing spacing a taller sibling absorbs until the columns stack. Tokens reuse the property vocabulary (align, direction, width, the four paddings, spacing-above/below, the insets); width, direction and padding flags ride the frame, while spacing, inset and align flags ride the content component. Structural inertness only: the layout has to pin the control, not the placeholder copy, because the first long headline an editor types brings a copy-pinned control alive (narrowed 2026-08-21; two flags came out under the new rule). Labels only, names never |
 
@@ -703,8 +722,8 @@ before every commit, and mirrored into a public repo (byte-identical beneath a
 two-line banner) so agents working elsewhere can fetch them. A linter checks
 them for drift: dead file citations, a documented default that no longer
 matches the code, stale "pending" language, and whether each mirror still
-matches its source. Its docblock says it plainly: *every assertion encodes
-drift this repo actually shipped.*
+matches its source. Its docblock says it plainly: *each assertion below
+encodes a defect this repo actually shipped.*
 
 **Probes as instruments, with a lifecycle.** A probe is a small email built to
 test one set of claims against a real send. The rule: a probe whose every
@@ -762,8 +781,9 @@ overflowing its section.
 removed, came back through a file rename and a later fix, and was found again
 before the rule moved out of prose and into a build check. The documentation
 states the lesson: *the rule now lives where prose cannot lose it.* The
-linters' own docblocks make the policy explicit (every assertion encodes drift
-that actually shipped), so nobody deletes a check without seeing what it cost.
+linters' own docblocks make the policy explicit (each assertion encodes a
+defect or pattern that actually shipped), so nobody deletes a check without
+seeing what it cost.
 
 The failure has a mirror image, found on 2026-08-21: a check can outlive its
 subject. One assertion's body died when the second catalog was deleted while
@@ -779,11 +799,12 @@ client manual is the one document a TPL content editor actually reads, and
 nothing checked it: by 2026-08-21 it claimed 64 blocks in 11 folders
 against a real 51 in 9, kept sections for 23 blocks that no longer existed,
 and still walked the editor through configuring a block that renders
-broken. It is now regenerated from the app's real import pipeline, with the
-hand-written field descriptions harvested so the editor's vocabulary
-survives, a hard stop when a description is missing (a blank cell is how a
-document starts lying quietly), and a lint that compares its claims against
-the catalog's own markers.
+broken. Its block reference, most of the document by volume, is now
+generated from the app's real import pipeline, with the hand-written field
+descriptions harvested so the editor's vocabulary survives, a hard stop
+when a description is missing (a blank cell is how a document starts lying
+quietly), and a lint that compares its claims against the catalog's own
+markers.
 
 **Land a new check after the cleanup, not before.** The rich-text validator
 was deliberately built last, after the catalog was migrated. Landing it first
@@ -805,7 +826,8 @@ Template Styles block at 28, and the busiest single block, the Quiz Block
 exactly where you want iteration to concentrate. Renames carry a stated
 cost in this scheme: a renamed block is a new block in EN, whose name
 carries the version, so it restarts at version 1 and its thumbnail needs
-re-uploading. The 2026-08-21 rename wave restarted thirteen.
+re-uploading. The 2026-08-21 rename wave restarted thirteen in a single
+commit, with more before and after it.
 
 **Git discipline written down after it bit us.** Parallel sessions land
 commits in both repos many times a day, so: fetch and fast-forward both
@@ -823,16 +845,16 @@ half-pushed mirror silently gives every downstream agent a stale contract.
 
 Shipped and in use since 2026-08-18: the block catalog, the converter, the two
 contracts, four audit engines, three linters, content-hash versioning, and a
-client-facing manual (1,676 lines, regenerated from the import pipeline since
-2026-08-21) covering the template, every block and its fields, and how the
-system is maintained.
+client-facing manual (1,676 lines, its block reference generated from the
+import pipeline since 2026-08-21) covering the template, every block and its
+fields, and how the system is maintained.
 
 Closed since the last snapshot:
 
 - The client manual's stale counts (it said 64 blocks in 11 folders):
-  resolved 2026-08-21 by regenerating the whole manual from the import
-  pipeline (53 in 9 today) and linting its claims against the catalog, so
-  it cannot drift silently again.
+  resolved 2026-08-21 by regenerating its block reference, most of the
+  document, from the import pipeline (53 in 9 today) and linting its claims
+  against the catalog, so it cannot drift silently again.
 - The go-live audit's 64-finding backlog: re-derived on the consolidated
   catalog on 2026-08-21, exactly as the recorded instruction demanded,
   rather than trusted. Ten stale viewport labels came out, seven went in,
@@ -845,12 +867,13 @@ Open threads, recorded rather than resolved:
   under its 14,000-byte working target and the shared stylesheet 203 bytes
   under its own. The next rule of any size trips one of them; the Gmail
   cliff itself is 2,604 bytes away.
-- The EN account is a catalog generation behind this repo. Thirteen renamed
-  blocks and the Section-to-Row merge-tag rename mean the library needs a
-  re-import, thirteen thumbnails need re-uploading, and one renamed block's
-  thumbnail now collides with an image the old name still owns, so EN would
-  show the wrong artwork until it is replaced. Drafts bound to the old tags
-  lose those bindings, an accepted cost while the imports are finalized.
+- The EN account is a catalog generation behind this repo. The rename wave
+  and the Section-to-Row merge-tag rename mean the library needs a
+  re-import, every renamed block's thumbnail needs re-uploading, and one
+  renamed block's thumbnail now collides with an image the old name still
+  owns, so EN would show the wrong artwork until it is replaced. Drafts
+  bound to the old tags lose those bindings, an accepted cost while the
+  imports are finalized.
 - `CTA Hero (w/ Large Background Image)` sits in the holding pen with its
   Outlook fallback unverified: the photo spans two sections, so its fallback
   color lives in a stylesheet class that every CSS client honors and Word
@@ -1171,8 +1194,10 @@ naming change appended and then prepended 26 minutes later.
 
 ## The consolidation push (2026-08-20 → 08-21)
 
-Nine entries from the day before this snapshot, added when the document moved
-its snapshot forward. The numbering continues so earlier citations stay valid.
+Nine entries from the push this snapshot closes on (2026-08-20 → 08-21),
+added when the document moved its snapshot forward. The numbering continues
+so earlier citations stay valid, which is also why these sit in their own
+section rather than being filed into the three above.
 
 ### 19. The theory that was wrong in both halves
 
@@ -1273,10 +1298,10 @@ premise that alignment was already a dropdown.
 hand-authored markup the app never read, which is exactly why the demo
 variants existed in the first place.
 
-**Fix.** Restored 25 minutes later. Then the premise was made true (the app
-grew an Alignment dropdown bound to both of the row's carriers, the CSS one
-and the Outlook one), and the demos were re-pruned deliberately the next
-morning.
+**Fix.** Restored 25 minutes later, once the app had grown an Alignment
+dropdown bound to both of the row's carriers, the CSS one and the Outlook
+one. With the premise now actually true, the demos were re-pruned
+deliberately the next day.
 
 **The transferable part.** Prune to a control that exists, not to one that
 ought to.
@@ -1302,8 +1327,8 @@ assumption. A belief travels further than the code it was written in.
 
 ### 25. Tests that proved nothing
 
-**Symptom.** Twice in one day. A literal `>` shipped to EN inside one
-dropdown option, and the unit test written for the fix passed with and
+**Symptom.** Twice inside the same push. A literal `>` shipped to EN inside
+one dropdown option, and the unit test written for the fix passed with and
 without it. Separately, a regression test for a field-generation bug passed
 against the unfixed code.
 
@@ -1317,7 +1342,7 @@ a convenient tight-region fixture cannot reproduce it at all.
 **Fix and guard.** The leak's fix keeps edit regions strictly disjoint, and
 the test that proved nothing was deleted rather than banked: the conventions
 document records the coverage gap outright. The other test was rebuilt from
-the real block's shape and confirmed red on the broken code first.
+the real block's shape, the only fixture that reproduces the bug at all.
 
 **The transferable part.** A green test only counts if it was red on the
 broken code.
@@ -1365,7 +1390,7 @@ markers (a documented block that does not exist, a shipping block with no
 section, and the claimed count), self-tested by breaching all three.
 
 **The transferable part.** The generator's first run also caught a blind
-rename substitution sitting in the hand-edited half of the doc. Nothing
+rename substitution sitting in the hand-edited part of the doc. Nothing
 hand-maintained stays true on its own; see entry 16 for the same lesson
 wearing different clothes.
 
@@ -1404,8 +1429,9 @@ blocks.
 
 **Row / band**: one horizontal section of a block, numbered top to bottom.
 Row is the editor-facing word; band survives as the authoring term, and the
-*builder band* is the label strip the EN builder paints over the email,
-which is app chrome rather than email content.
+*builder band* (the version band, in Appendix A entry 9) is the label strip
+the EN builder paints over the email, which is app chrome rather than email
+content.
 
 **Rail**: a narrow fixed-width column beside the content, holding an icon or
 a badge. In a grouped row, an unpinned rail shrinks on phones while the
@@ -1442,6 +1468,9 @@ meaning "a direct child of". The character EN's editor escapes.
 
 **Gutter**: the built-in side padding between content and the edge of its
 container.
+
+**Frame**: the element that owns a block's outer geometry and carries its
+padding: a section, a wrapper, or a column.
 
 **Linter / lint**: an automated check that scans files for known mistakes and
 reports them; ours run with every build, and a clean build prints zero

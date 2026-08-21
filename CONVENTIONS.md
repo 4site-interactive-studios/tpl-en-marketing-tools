@@ -2608,7 +2608,7 @@ button and the heading can each be hidden (user decision 2026-08-20).
   than in an `mj-group` is rejected — there is no single contiguous region to
   substitute. An element the alternate drops loses its Display toggle, which
   would only leave an empty column behind. **`data-alt-arrangement` is
-  STRUCTURAL**, so unlike every other importer flag it is NOT stripped by
+  STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
   its unflagged twin. `data-arrangement-label` IS annotation and is stripped.
@@ -2620,9 +2620,10 @@ button and the heading can each be hidden (user decision 2026-08-20).
   the pill markup, not the frame it sits in, so the available width it would
   need to compare against is not in scope there. Found by the 2026-08-21
   inert-dropdown audit on four rows (CTA Buttons 2x1 fixed-width and
-  two-line, both Quiz Block 2x2 button rows); the 3x1 fixed-width row keeps
-  its control on 1px of slack, which is live by measurement and worth
-  revisiting.
+  two-line, both Quiz Block 2x2 button rows); the 3x1 fixed-width row kept
+  its control on 1px of slack, live by measurement — until later that
+  morning, when it took the flag by judgment (TPL 5cc378b, 2026-08-21):
+  one pixel of travel is not worth a field.
 - **`data-no-background-color`** (valueless, on any element with an
   authored `background-color`): keeps the color in the compiled output but
   creates NO editable field. For a background that provably cannot show —
