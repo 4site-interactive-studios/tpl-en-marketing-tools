@@ -166,28 +166,6 @@
     </mj-section>
     <!-- END: Logo Hero (light green, centered) -->
 
-    <!-- START: Logo Hero (dark, left) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Logo Hero (dark, left) -->
-
-    <!-- START: Logo Hero (dark, centered) -->
-    <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Logo Hero (dark, centered) -->
-
     <!-- START: Logo Hero (off-white bordered, left) -->
     <mj-section css-class="image-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
@@ -209,28 +187,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Logo Hero (off-white bordered, centered) -->
-
-    <!-- START: Logo Hero (dark red, left) -->
-    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="left" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Logo Hero (dark red, left) -->
-
-    <!-- START: Logo Hero (dark red, centered) -->
-    <mj-section css-class="image-block block" background-color="#700310" padding="16px 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_all-light-green.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" align="center" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Logo Hero (dark red, centered) -->
 
     <!-- START: Logo Hero (white, w/ dark-mode swap) -->
     <mj-section
@@ -700,18 +656,6 @@
     </mj-section>
     <!-- END: Heading (linked) -->
 
-    <!-- START: Heading (off-white) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (off-white) -->
-
-    <!-- START: Heading (off-white, green text) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (off-white, green text) -->
-
     <!-- START: Heading (off-white bordered) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-fully-exclude>
       <mj-column><mj-text align="center" padding="0"><h1 style="color:#362229;">Lorem Ipsum</h1></mj-text></mj-column>
@@ -729,30 +673,6 @@
       <mj-column><mj-text align="center" padding="0"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
     </mj-section>
     <!-- END: Heading (off-white bordered, green text) -->
-
-    <!-- START: Heading (light green) -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#006837;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (light green) -->
-
-    <!-- START: Heading (dark) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (dark) -->
-
-    <!-- START: Heading (green) -->
-    <mj-section css-class="text-block block" background-color="#006837" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (green) -->
-
-    <!-- START: Heading (dark red) -->
-    <mj-section css-class="text-block block" background-color="#700310" padding="16px 32px" data-fully-exclude>
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#ffffff;">Lorem Ipsum</h1></mj-text></mj-column>
-    </mj-section>
-    <!-- END: Heading (dark red) -->
 
     <!-- START: Heading (two-line, mixed weight) -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="32px" data-fully-exclude>
@@ -1215,36 +1135,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Two-Line Banner (light green) -->
-    <!-- START: Two-Line Banner (dark) -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#362229" padding="16px 32px" data-fully-exclude>
-      <mj-column>
-        <mj-text align="center" padding="0">
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark) -->
-    <!-- START: Two-Line Banner (dark red) -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#700310" padding="16px 32px" data-fully-exclude>
-      <mj-column>
-        <mj-text align="center" padding="0">
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (dark red) -->
-    <!-- START: Two-Line Banner (green) -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#006837" padding="16px 32px" data-fully-exclude>
-      <mj-column>
-        <mj-text align="center" padding="0">
-          <p style="font-size:22px;line-height:26px;font-weight:700;color:#F5FAF1;margin:0;">LOREM IPSUM DOLOR SIT</p>
-          <p style="font-size:34px;line-height:38px;font-weight:700;color:#ffffff;margin:0;">NOW ACTIVE</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Two-Line Banner (green) -->
     <!-- START: Two-Line Banner (off-white bordered) -->
     <mj-section css-class="text-block block two-line-banner-block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="16px 32px" data-fully-exclude>
       <mj-column>
@@ -1327,36 +1217,6 @@
     </mj-section>
     <!-- END: CTA Button -->
 
-    <!-- START: CTA Button (centered) -->
-    <mj-section
-      css-class="block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-          <mj-button width="auto"
-            href="https://www.example.com"
-            align="center" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            CENTER BUTTON
-          </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Button (centered) -->
-
-    <!-- START: CTA Button (right) -->
-    <mj-section
-      css-class="block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-          <mj-button width="auto"
-            href="https://www.example.com"
-            align="right" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            RIGHT BUTTON
-          </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Button (right) -->
-
     <!-- START: CTA Button (centered, fixed width) -->
     <mj-section
       css-class="block"
@@ -1418,30 +1278,6 @@
       </mj-column>
     </mj-section>
     <!-- END: CTA Buttons 2x1 -->
-
-    <!-- START: CTA Buttons 2x1 (centered) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-text css-class="button" padding="0 0 16px">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
-          <!--[if mso]></td></tr></table><![endif]-->
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Buttons 2x1 (centered) -->
-
-    <!-- START: CTA Buttons 2x1 (right) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-text css-class="button" padding="0 0 16px">
-          <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:right;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
-          <!--[if mso]></td></tr></table><![endif]-->
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Buttons 2x1 (right) -->
 
   <!-- START: CTA Buttons 2x1 (fixed width) -->
     <!-- data-visible-duplicate: normalize() masks pill widths and strips the
@@ -2940,7 +2776,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Signatures -->
 
-    <!-- START: Signature Card (square photo) -->
+    <!-- START: Signature Card (photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px 0">
       <mj-column>
         <mj-text padding="0">
@@ -2958,12 +2794,12 @@
           css-class="signature-img" padding="0 8px 0 0">
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser"
+              alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
               padding="0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
-              alt="Carrie Besnette Hauser"
+              alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
               padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
@@ -2974,7 +2810,7 @@
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_black.png"
               alt="Signature"
-              width="234px"
+              width="137px"
              padding="0"
               align="left"
               css-class="light-only" />
@@ -2982,7 +2818,7 @@
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_white.png"
               alt="Signature"
-              width="234px"
+              width="137px"
              padding="0"
               align="left"
               css-class="dark-only" data-style-dark-mode />
@@ -2999,32 +2835,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature Card (square photo) -->
-
-    <!-- START: Signature Card (round photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
-      <mj-group>
-        <mj-column vertical-align="middle" width="130px" css-class="signature-img">
-          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="light-only" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
-          <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column vertical-align="middle" width="406px" css-class="signature-text">
-          <mj-text padding="0">
-            <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
-          </mj-text>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0" align="left" css-class="light-only" />
-          <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
-          <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
-            <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
-          </mj-text>
-        </mj-column>
-      </mj-group>
-    </mj-section>
-    <!-- END: Signature Card (round photo) -->
+    <!-- END: Signature Card (photo) -->
 
     <!-- START: Signature Card (no photo) -->
     <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
@@ -3054,28 +2865,6 @@
     </mj-section>
     <mj-raw></div></mj-raw>
     <!-- END: Category — Footers -->
-
-    <!-- START: Footer (dark) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#362229" padding="32px" data-fully-exclude>
-      <mj-column>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
-        </mj-text>
-        <mj-text color="#ffffff" align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
-        </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Footer (dark) -->
 
     <!-- START: Footer (w/ image) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
@@ -3135,50 +2924,6 @@
       </mj-column>
     </mj-section>
     <!-- END: Footer (w/ image, snow) -->
-
-    <!-- START: Footer (off-white) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px" data-fully-exclude>
-      <mj-column>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
-        <mj-text align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
-        </mj-text>
-        <mj-text align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
-        </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text css-class="wysiwyg link-earth" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Footer (off-white) -->
-
-    <!-- START: Footer (light green) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#CEE4C5" padding="32px" data-fully-exclude>
-      <mj-column>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
-        <mj-text align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
-        </mj-text>
-        <mj-text align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
-        </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text css-class="wysiwyg link-earth" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Footer (light green) -->
 
     <!-- START: Footer -->
     <mj-section

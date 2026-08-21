@@ -65,6 +65,32 @@ image block's trailing caption section (`css-class="block caption"`,
 `padding="8px 0 0"`) if a detached caption is ever wanted again; the
 already-uploaded EN block must be deleted in EN by hand.
 
+**Twenty colour/alignment variants were removed from
+`mjml_all-blocks.mjml` on 2026-08-20** (user decision), along with the
+`Signature Card (square photo)`/`(round photo)` pair. All twenty were
+`data-fully-exclude` demo blocks — four `Logo Hero`s, six `Heading`s,
+three `Two-Line Banner`s, four `CTA Button`/`CTA Buttons 2x1`s and three
+`Footer`s — differing from a surviving family baseline only by background
+colour or alignment. Both are now editable Selects, so the variants
+demonstrated states an editor can already produce, and each cost a sync
+on every catalog edit. 122 leaf blocks remain (was 143); the catalog is
+17 KB lighter.
+
+The signature pair was replaced by unified's single
+`Signature Card (photo)`, whose `data-image-shape-toggle` makes the photo
+shape a Circle/Square Select — one block and a control instead of two
+fixed blocks. It retires the pre-rounded `_round.png` asset FROM THE
+CATALOG only: both autoresponders still reference that file.
+
+**Deliberately KEPT**, though also `data-fully-exclude`: anything whose
+family would otherwise vanish (`Text w/ Bullet Lists`,
+`Text + Link Paragraph CTA`, `Linked List Block`, `Join Links Block`,
+`Header Row`), anything a scanned doc cites, and every STRUCTURAL variant
+— `(outline)`, `(text only)`, `(w/ dark-mode swap)`, `(inset)`,
+`(dynamic width)`, `(arrow graphic)`, `(two-line, mixed weight)`. Those
+demonstrate layouts a Select cannot reproduce. Recover any of them from
+git history.
+
 ## Two HTML outputs per page
 
 Every `src/*.mjml` compiles to **two** files in `dist/`:

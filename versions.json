@@ -16,8 +16,8 @@
     "hash": "9ed5651e1f03"
   },
   "block:CTA Button (centered)": {
-    "version": 4,
-    "hash": "2b3118a2e6d5"
+    "version": 5,
+    "hash": "36da04981156"
   },
   "block:CTA Button (centered, fixed width)": {
     "version": 4,
@@ -36,24 +36,24 @@
     "hash": "f971942d7acf"
   },
   "block:CTA Button (right)": {
-    "version": 4,
-    "hash": "569f7b49d92d"
+    "version": 5,
+    "hash": "346e43addb60"
   },
   "block:CTA Buttons 2x1": {
     "version": 4,
     "hash": "e2a8f3f2e3d9"
   },
   "block:CTA Buttons 2x1 (centered)": {
-    "version": 4,
-    "hash": "e987793819a7"
+    "version": 5,
+    "hash": "72c7e32748dc"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
     "version": 4,
     "hash": "c6de31bfa3f9"
   },
   "block:CTA Buttons 2x1 (right)": {
-    "version": 4,
-    "hash": "e140ace119e3"
+    "version": 5,
+    "hash": "f1851c88799c"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 4,
@@ -191,18 +191,6 @@
     "version": 5,
     "hash": "4c489cc4b9d5"
   },
-  "block:Footer (dark)": {
-    "version": 4,
-    "hash": "e36202b4d85a"
-  },
-  "block:Footer (light green)": {
-    "version": 4,
-    "hash": "8a56432e0f60"
-  },
-  "block:Footer (off-white)": {
-    "version": 4,
-    "hash": "004a390cb20f"
-  },
   "block:Footer (w/ image)": {
     "version": 4,
     "hash": "bc853f7b86a4"
@@ -218,22 +206,6 @@
   "block:Heading": {
     "version": 2,
     "hash": "6c167793e204"
-  },
-  "block:Heading (dark red)": {
-    "version": 2,
-    "hash": "491bb8143012"
-  },
-  "block:Heading (dark)": {
-    "version": 2,
-    "hash": "9e096cda80ec"
-  },
-  "block:Heading (green)": {
-    "version": 2,
-    "hash": "872e2011b211"
-  },
-  "block:Heading (light green)": {
-    "version": 2,
-    "hash": "3f0391687689"
   },
   "block:Heading (linked)": {
     "version": 3,
@@ -254,14 +226,6 @@
   "block:Heading (off-white bordered, green text)": {
     "version": 2,
     "hash": "fb35f16c0bdc"
-  },
-  "block:Heading (off-white)": {
-    "version": 2,
-    "hash": "26bf61062e18"
-  },
-  "block:Heading (off-white, green text)": {
-    "version": 2,
-    "hash": "371c262ff4fb"
   },
   "block:Heading (two-line, mixed weight)": {
     "version": 2,
@@ -330,22 +294,6 @@
   "block:Linked List Block": {
     "version": 3,
     "hash": "1646f23599f4"
-  },
-  "block:Logo Hero (dark red, centered)": {
-    "version": 2,
-    "hash": "84f07ead6928"
-  },
-  "block:Logo Hero (dark red, left)": {
-    "version": 2,
-    "hash": "5a971f21bbcf"
-  },
-  "block:Logo Hero (dark, centered)": {
-    "version": 2,
-    "hash": "c4d5c8b693a5"
-  },
-  "block:Logo Hero (dark, left)": {
-    "version": 2,
-    "hash": "6259cdb9f839"
   },
   "block:Logo Hero (light green, centered)": {
     "version": 2,
@@ -440,16 +388,8 @@
     "hash": "0e490bda766d"
   },
   "block:Signature Card (photo)": {
-    "version": 4,
-    "hash": "fbc85cb2fe49"
-  },
-  "block:Signature Card (round photo)": {
     "version": 5,
-    "hash": "472531340d9b"
-  },
-  "block:Signature Card (square photo)": {
-    "version": 9,
-    "hash": "ec23b3ef4af6"
+    "hash": "478743f36820"
   },
   "block:Spacer": {
     "version": 2,
@@ -543,18 +483,6 @@
     "version": 4,
     "hash": "4cb0e89bbcd6"
   },
-  "block:Two-Line Banner (dark red)": {
-    "version": 2,
-    "hash": "22624271037a"
-  },
-  "block:Two-Line Banner (dark)": {
-    "version": 2,
-    "hash": "a1fc28d92094"
-  },
-  "block:Two-Line Banner (green)": {
-    "version": 2,
-    "hash": "ee2985f2923c"
-  },
   "block:Two-Line Banner (light green)": {
     "version": 3,
     "hash": "eac19b08a759"
@@ -584,8 +512,8 @@
     "hash": "af9ce892e350"
   },
   "catalog-shell": {
-    "version": 24,
-    "hash": "c14a52c382cc"
+    "version": 25,
+    "hash": "64e219432cc4"
   },
   "email-template": {
     "version": 37,
