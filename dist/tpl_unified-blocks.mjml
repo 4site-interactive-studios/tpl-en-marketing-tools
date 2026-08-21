@@ -580,7 +580,7 @@
     </mj-section>
     <!-- END: CTA Text Block -->
 
-    <!-- START: Linked Header Row (w/ icon) -->
+    <!-- START: Header Row -->
     <mj-section
       css-class="text-block block header-row-block"
       background-color="#CEE4C5" padding="16px 32px"
@@ -591,7 +591,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Linked Header Row (w/ icon) -->
+    <!-- END: Header Row -->
 
     <!-- START: Linked Header Row -->
     <mj-section

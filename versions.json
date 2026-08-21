@@ -211,6 +211,10 @@
     "version": 5,
     "hash": "44a808af8db5"
   },
+  "block:Header Row": {
+    "version": 1,
+    "hash": "49a138809084"
+  },
   "block:Heading": {
     "version": 2,
     "hash": "6c167793e204"
@@ -322,10 +326,6 @@
   "block:Linked Header Row": {
     "version": 5,
     "hash": "21557cd55044"
-  },
-  "block:Linked Header Row (w/ icon)": {
-    "version": 5,
-    "hash": "1849394c87eb"
   },
   "block:Linked List Block": {
     "version": 3,
@@ -584,12 +584,12 @@
     "hash": "af9ce892e350"
   },
   "catalog-shell": {
-    "version": 23,
-    "hash": "879596044adf"
+    "version": 24,
+    "hash": "c14a52c382cc"
   },
   "email-template": {
-    "version": 36,
-    "hash": "b1ad0b029810"
+    "version": 37,
+    "hash": "d5c863ed3464"
   },
   "head-css": {
     "version": 20,

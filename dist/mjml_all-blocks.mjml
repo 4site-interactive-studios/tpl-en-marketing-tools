@@ -777,7 +777,7 @@
     </mj-section>
     <!-- END: Linked Header Row -->
 
-    <!-- START: Linked Header Row (w/ icon) -->
+    <!-- START: Header Row -->
     <mj-section css-class="text-block block header-row-block" background-color="#CEE4C5" padding="16px 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
         <mj-text padding="0">
@@ -785,7 +785,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Linked Header Row (w/ icon) -->
+    <!-- END: Header Row -->
 
     <!-- START: WYSIWYG Text -->
     <!-- Un-flagged 2026-08-19: the heading/body split + Heading Level
