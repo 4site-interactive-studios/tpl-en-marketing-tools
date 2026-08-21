@@ -26,8 +26,7 @@ and edits here are overwritten on the next mirror. When one is wrong:
 
 **Automated drift checking.** `scripts/check-docs.mjs` runs with every build
 and asserts the things that actually rotted before: block names cited in docs
-still resolve, the demo/example delta is exactly the documented subset, no
-top-level `[data-ogsc]`, every dark-mode declaration carries `!important`, no
+still resolve, no top-level `[data-ogsc]`, every dark-mode declaration carries `!important`, no
 absolute CDN URL in source, every `§N` cross-reference resolves, and the
 mirrors still carry their header. Run it alone with `npm run check-docs`.
 `scripts/check-catalog.mjs` is its sibling for the blocks: both-attribute

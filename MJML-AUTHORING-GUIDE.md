@@ -657,8 +657,10 @@ Two caveats that belong with the number:
 - **The instrument was pure ASCII**, so characters and bytes were identical
   and the test CANNOT tell us which unit EN counts. Budget in UTF-8 BYTES,
   which is the conservative reading since bytes ≥ characters. (In practice
-  the gap is tiny: the TPL all-blocks catalog is 365,219 characters and
-  365,254 bytes — 35 bytes, from 13 em-dashes and 3 emoji.)
+  the gap is tiny: the pre-2026-08-21 all-blocks catalog was 365,219
+  characters and 365,254 bytes — 35 bytes, from 13 em-dashes and 3 emoji.
+  That catalog no longer exists; the ratio is what generalises, not the
+  size.)
 
 The importer flags this for you: it projects shell + every block and reports
 `info` past 285,000, `warning` past 299,760, and never an error — a catalog
@@ -666,15 +668,20 @@ library is expected to exceed a budget no single email spends (conventions.md,
 "Message size is advisory, never enforced").
 
 **Working ceiling: 285,000 bytes.** About 5% of headroom, or roughly two
-average blocks (the TPL catalog averages 7,394 bytes per block) — enough
+average blocks (the TPL catalog averages ~4,800 bytes per block across its
+53, measured 2026-08-21) — enough
 that a couple of edits cannot walk a passing template into a failing one,
 and enough to absorb the unexplained 240.
 
-**A single message cannot hold a full block catalog.** One of every TPL
-block, with no duplicates at all, is 289,999 bytes — 97% of the hard cap,
-and already over the working ceiling. Catalog and permutation templates
-ship SPLIT across messages; there is no trimming strategy that makes one
-message hold everything.
+**A full block catalog fits, but not by much.** One of every TPL block,
+with no duplicates, measured 252,607 bytes on 2026-08-21 — 84% of the hard
+cap, and inside the 285,000 working ceiling with about 32,000 to spare.
+This paragraph said the opposite until then, and said it in the present
+tense: the 289,999-byte figure was the pre-2026-08-21 catalog, which carried
+a second file and eighteen demo variants since deleted or promoted. A
+catalog that outgrows the ceiling again ships SPLIT across messages — there
+is no trimming strategy that makes one message hold everything — but check
+the current number before assuming it has.
 
 **What actually costs bytes**, measured on that catalog:
 
@@ -742,12 +749,19 @@ declared class (signature name texts) stay on the main scale at
 Half - 8px.
 
 `brandColors` (optional, name → hex) declares the brand palette by its
-real names. Declared colors lead every color dropdown in all three
-groups — text, background, and border — in declaration order, labeled
+real names. Declared colors appear in every color dropdown in all three
+groups — text, background, and border — labeled
 "Snow - #f5faf1",
 and they are offered **even before any block uses them**, so editors
 always pick from the full brand sheet. Colors found in the source but
-not declared still appear after them, auto-named by nearest CSS color.
+not declared are included too, auto-named by nearest CSS color.
+
+**Every group is then sorted perceptually, dark to light** — declared and
+censused colors interleaved, not declared-first (`orderColorsPerceptually`
+in `src/core/colors.ts`). Declaration order buys you the NAMES and the
+guaranteed presence, never a position in the list, so ordering
+`brandColors` to control the dropdown does nothing. This paragraph claimed
+declaration order until 2026-08-21.
 Without the key, the palette is derived purely from the colors the
 template actually uses.
 
@@ -1562,7 +1576,7 @@ Non-negotiables while you work:
   (upper.bottom + lower.top must not change).
 - Never remove, rename, or "fix" any data-* attribute. They are valueless
   flags, and they are the only channel design intent has into the importer.
-  Keep data-style-* accurate for every property you touch.
+  Keep data-style-dark-mode accurate for every property you touch.
 - If a design needs values outside the declared defaults, do not silently
   ignore the grid. Change the en-tools-config declaration deliberately, in
   every src/*.mjml that declares one, in the same commit.

@@ -75,7 +75,8 @@ Non-negotiables while you work:
   padding.
 - Never remove, rename, or "fix" any data-* attribute. They are VALUELESS
   flags (data-no-display-toggle, not ="true"), and they are the only
-  channel design intent has into the importer. Keep data-style-* accurate
+  channel design intent has into the importer. Keep data-style-dark-mode
+  accurate
   for every property you touch.
 - If a design needs values outside the declared defaults, do not silently
   ignore the grid. Change the en-tools-config head declaration
@@ -357,9 +358,15 @@ lookup working on it.
 
 The value belongs to the ROW, not to a button, so it never rides
 "Button 1"'s ordinal space: it takes an authored `data-group-label`, or
-**"Button Row"** by default. Verified on a full all-blocks import — all four
-CTA Buttons blocks mint a Text Alignment Select under a "Button Row"
-section, one tag resolving to two carriers, zero orphaned tags.
+**"Button Row"** by default. Re-measured 2026-08-21: **one** of the four
+CTA Buttons blocks mints it (`CTA Buttons 2x1`), labeled **Desktop
+Alignment** — the mobile CSS centres `.cta-group`, so the viewport-scope
+machinery says so in the label. The other three are fixed-width or two-line
+rows whose pills already fill the frame, so alignment has nothing to move:
+`CTA Buttons 3x1 (fixed width)` says so with `data-no-alignment-toggle`, the
+other two are suppressed by measurement. The earlier claim of "all four",
+and of a "Text Alignment" label, were both wrong — that label is forbidden
+by the rule above.
 
 ## Image Position option labels follow the rendered side
 
@@ -420,9 +427,19 @@ fixture built from the real compiled row would be the way to close it.
 
 ## Message size is advisory, never enforced
 
-`validateMessageSizeBudget` (`src/core/validate.ts`) projects the delivered
-message — shell plus EVERY block — and flags it against EN's measured
-`contentHtml` ceiling. **It never raises an error** (2026-08-20, user
+`validateMessageSizeBudget` (`src/core/validate.ts`) sums the shell plus
+EVERY block and flags the total against EN's measured `contentHtml` ceiling.
+
+It sums the AUTHORED html, with `{replacement~…}` tags still in it — not the
+substituted string EN actually counts. Most block markup lives inside Select
+option defaults, so the two differ, and by an amount that varies per block
+(Story Card (image on the side) is 543 bytes of html carrying a 2,967-byte
+default). The figure therefore under-reports by a structural margin, which
+is tolerable only because the check is advisory: it is a rough ceiling, not
+a projection, and the doc called it a projection until 2026-08-21.
+Substituting first (`substituteReplacements` before `bytes()`) would make it
+one — worth doing if the number ever needs to be trusted rather than
+glanced at. **It never raises an error** (2026-08-20, user
 decision): a real email draws on a SUBSET of the library, so the projection
 is a ceiling rather than a prediction, and a catalog template is expected to
 exceed it.
@@ -589,8 +606,14 @@ direction-flip skips.
   created (the gutter stays literal; top/bottom Selects remain; the inner
   section's own Width is the working control). Zero gutters never pin —
   600px is the natural cap and stays responsive. On the current template
-  this suppresses: Video Block (inset) + Countdown Block wrappers (48→504),
-  Image (inset) w/ Caption (48→504 image). These pins are INHERENT to MJML
+  this suppresses the side gutter on eleven blocks — Logo Hero, CTA Hero
+  (w/ heading), Quote Block, CTA Text Block, Image 1x1, Images 2x1, Images
+  3x1, Photo Banner, Progress Meter Block, Spacer, Divider (tri-color)
+  (measured 2026-08-21). Video Block (inset) and Countdown Block were on
+  this list until their gutter moved 48→32 the same day; both now ship a
+  live Wrapper Padding Left/Right, so the old entry read exactly backwards.
+  "Image (inset) w/ Caption" was never a block name. These pins are
+  INHERENT to MJML
   compilation (verified 2026-08-03): a wrapper always bakes its inner
   section's max-width, and mj-image always bakes a computed px td width —
   they cannot be authored away without giving up the structure. Stat Row
@@ -1167,7 +1190,7 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   template-wide `text_color`) fall back to the un-deduped property words
   (`text_text_color`), never a phantom instance number (was `text_2_color`
   with no "Text 2" anywhere).
-- **"Block N" is retired as a panel label** — bands are `Section N`;
+- **"Block N" is retired as a panel label** — bands are `Row N`;
   component repeats are `<Role> N` scoped to their band and column.
 - **Column/group frame settings**: `Column N Settings` / `Group N Settings`
   (headers, no glyph) only when several coexist; a lone column's frame folds
@@ -1179,7 +1202,7 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   background-color/border) still surface their controls. (`keepsPadding` →
   `isAllZeroPadding`.)
 - Image Position / Column Order controls land in their band's frame section
-  (block name for band 1, `└─ Section N` beyond).
+  (block name for band 1, `└─ Row N` beyond).
 
 ### Field order WITHIN a section
 
@@ -2888,11 +2911,14 @@ Every EN artifact and the app itself carry an integer version, anchored to
 content hashes so increments are mechanical and can never be lost:
 
 - **TPL `versions.json`** — one entry per entity: `email-template` (the
-  tpl_unified SHELL — every leaf `<!-- START/END -->` block region replaced
-  by a name sentinel — plus styles.css), `catalog-shell` (mjml_all's shell),
-  `autoresponder:<file>`, `partial:<file>`, and `block:<name>` (the block's
-  leaf marker regions concatenated across BOTH catalogs, so a divergent copy
-  in either bumps the one entity). Markers nest ("Main Content" wraps a
+  `main.mjml` SHELL — every leaf `<!-- START/END -->` block region replaced
+  by a name sentinel — plus styles.css), `autoresponder:<file>`,
+  `partial:<file>`, and `block:<name>` (the block's leaf marker regions).
+  `catalog-shell` was the SECOND catalog's shell and is deliberately gone
+  since 2026-08-21, when `mjml_extra-blocks.mjml` was deleted and
+  `tpl_unified-blocks.mjml` became `main.mjml` — there is one catalog now,
+  so a block's regions come from one file rather than being concatenated
+  across two. Markers nest ("Main Content" wraps a
   catalog), so blocks are the LEAF pairs.
 - **App `app-version.json`** — one entity covering index.html plus
   everything under src/.

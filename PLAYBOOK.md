@@ -11,10 +11,11 @@ short version.
 
 ```
 src/
-  main.mjml  ← master template — the primary catalog
-  main.mjml   ← blocks that live nowhere else (see CLAUDE.md)
-  donation-thank-you.mjml
-  recurring-donation-thank-you.mjml    ← standalone autoresponders
+  main.mjml            ← the master template, and the ONLY catalog
+  broken-blocks.mjml   ← holding pen for blocks under repair; not shipped
+  autoresponders/
+    donation-thank-you.mjml
+    recurring-donation-thank-you.mjml  ← standalone autoresponders
   styles.css           ← shared CSS, pulled in via mj-include
   partials/            ← reusable mj-include fragments
     debug-toolbar.mjml
@@ -104,8 +105,8 @@ Each step exists for a reason:
   absolute form is a build artifact, never something you author.
 
 - `scripts/check-docs.mjs` — **documentation lint.** Asserts the things that
-  actually rotted before: every block name cited in a doc still resolves, the
-  demo/example delta is exactly the documented subset, no top-level
+  actually rotted before: every block name cited in a doc still resolves
+  (including backticked ones — §4 writes them that way), no top-level
   `[data-ogsc]`, every dark-mode declaration carries `!important`, no absolute
   asset root in source, every `§N` cross-reference resolves, and both mirrors
   still carry their DO-NOT-EDIT header. WARN-only, like the annotate pass —
@@ -229,8 +230,8 @@ Names must match exactly (case-sensitive) between START and END.
   (also skipped by the overlay).
 
 `scripts/check-docs.mjs` asserts that every block name cited anywhere in the
-docs still resolves to a block, family, or category in EITHER catalog —
-`src/main.mjml` or `src/main.mjml`.
+docs still resolves to a block, family, or category in the catalog,
+`src/main.mjml`.
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 

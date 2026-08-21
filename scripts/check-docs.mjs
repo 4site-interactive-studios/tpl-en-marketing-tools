@@ -103,14 +103,18 @@ for (const f of LOCAL_DOCS) {
     // docs legitimately cite all three.
     if (demoBlocks.has(name) || families.has(name) || categories.has(name)) continue;
     if (name.startsWith('Category — ') && categories.has(name.slice('Category — '.length))) continue;
-    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in either catalog`);
+    warn(`${f} cites "${name}", which is neither a block, a family, nor a category in the catalog`);
   }
 }
 
 // ---------------------------------------------------------------------------
-// 2. demo/example delta must be exactly the documented subset.
-//    Caused by: CONVENTIONS' lead-in says "keep them in sync", which reads as
-//    "make the lists identical". CLAUDE.md records the real, intentional delta.
+// 2. RETIRED 2026-08-21 — demo/example delta between the two catalogs.
+//    It had no body left: the delta it measured was between main.mjml and
+//    mjml_extra-blocks.mjml, and the second catalog was deleted, so there is
+//    nothing to compare. The banner survived the deletion and CLAUDE.md and
+//    PLAYBOOK both went on listing it as enforced, which is worse than not
+//    having it — a check nobody runs still reads as coverage. Numbering below
+//    is left alone so existing references keep resolving.
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // 3. No [data-ogsc] rule at top level in styles.css.

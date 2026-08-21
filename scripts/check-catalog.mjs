@@ -623,9 +623,11 @@ guard('mobile-only MSO-guard check', () => {
 // keep the two in step). This guard simulates the compact field per
 // compiled page, estimates the DELIVERED size (×1.30), and warns when a
 // shipping master passes the 14,000-byte working target or when ANY page
-// would land within a canary-block + builder-chrome hoist (~700 delivered
-// bytes) of the cliff. The mjml_extra-blocks catalog deliberately rides
-// ~100 bytes inside that last check — any styles.css growth should trip it.
+// would land within a builder-chrome hoist (HOIST_ALLOWANCE, 250 delivered
+// bytes) of the cliff. The comment said ~700 until 2026-08-21, contradicting
+// its own constant thirty lines down; the canary it also reserved for was
+// archived the same day. The mjml_extra-blocks catalog it names was deleted
+// then too — there is one catalog now, and it sits ~2,800 bytes clear.
 // The guard also protects a silent app coupling nothing else connects
 // across the repos: the inert audit's Desktop labels need the td.button
 // mobile pins to keep parsing.
