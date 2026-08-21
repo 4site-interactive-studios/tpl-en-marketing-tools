@@ -1235,8 +1235,17 @@ sort — it is purely the panel/export display order.
   get a "Display" Select — "Include Block" (the full HTML fragment,
   MSO conditionals included, as the option value — EN supports raw HTML
   with nested {replacement~…} tags inside Select option values) /
-  "Exclude Block" (comment placeholder). Never on a column's only member.
-  `data-no-display-toggle` opts out upstream; complex hand-authored texts
+  "Exclude Block" (comment placeholder). Never on a column's only member —
+  UNLESS that member asks, with `data-display-toggle` (2026-08-20). That flag is
+  the single opt-IN in a vocabulary of opt-outs, and it exists because the
+  header/hero blocks put a logo in one column and a lone CTA button in the
+  other: both are sole members, so neither could be hidden, and the guide
+  forbids adding filler to reach the threshold. The >=2 rule is otherwise
+  unchanged. `data-no-display-toggle` BEATS it on the same element (the exempt
+  check runs first), and on a light/dark pair the flag must sit on the FIRST
+  twin — `mergeSwapPairs` folds the second in before its own flags are read.
+  `data-no-display-toggle` opts out upstream, `data-display-toggle` opts a sole
+  member in; complex hand-authored texts
   are skipped with a code comment. Applies template-wide.
 - **Dark-mode images**: light/dark swap pairs merge (src EXCLUDED from the
   equality check so differing artwork still pairs); the dark twin's src
@@ -2443,7 +2452,15 @@ whole span, so a miss silently drops the field
   `data-style-*` vocabulary is authoring annotation, with zero generation
   consumers — and alt editability is now unconditional, so the token
   claims nothing the behavior doesn't already deliver.
-- **`data-no-display-toggle`** (valueless, on content components): opts
+- **`data-display-toggle`** (valueless, on content components): opts a SOLE
+column member INTO the Include/Exclude Block Display Select it would otherwise
+never get (`columnMembers` + the emit gate, `src/core/mjmlProps.ts`). The only
+opt-in of the display family. Authored on the component's own tag — and on the
+FIRST twin of a light/dark pair, never the second. `data-no-display-toggle` on
+the same element wins. Used by the Headers/Heroes blocks so the logo, the CTA
+button and the heading can each be hidden (user decision 2026-08-20).
+
+**`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
   never-hideable content (sender identification, unsubscribe text,

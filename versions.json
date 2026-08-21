@@ -88,12 +88,12 @@
     "hash": "8bbe3c0fc875"
   },
   "block:CTA Hero (green button)": {
-    "version": 5,
-    "hash": "f313e6591aba"
+    "version": 6,
+    "hash": "c9cf711db90c"
   },
   "block:CTA Hero (logo and background image)": {
-    "version": 5,
-    "hash": "1407b261fbaf"
+    "version": 6,
+    "hash": "46362e8a1a31"
   },
   "block:CTA Hero (orange button)": {
     "version": 5,
@@ -116,8 +116,8 @@
     "hash": "1cdfc65c05e7"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 8,
-    "hash": "c8be97c78cde"
+    "version": 9,
+    "hash": "09f5fd74433a"
   },
   "block:CTA Text Block": {
     "version": 4,
@@ -316,8 +316,8 @@
     "hash": "03a7d27029cf"
   },
   "block:Logo Hero (w/ image, green)": {
-    "version": 4,
-    "hash": "6d6acea94f88"
+    "version": 5,
+    "hash": "235d0ea93481"
   },
   "block:Logo Hero (w/ text and image)": {
     "version": 3,

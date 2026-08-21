@@ -1011,7 +1011,12 @@ gets an Include/Exclude toggle automatically. Mark the exceptions:
 
 - `data-no-display-toggle` on content that must never be hidden (sender
   identification, unsubscribe text, required logos, interdependent figures)
-- A column's only member never gets one, so do not add filler to force it
+- A column's only member never gets one, so do not add filler to force it —
+  add `data-display-toggle` to that member instead (2026-08-20). It is the one
+  opt-IN in the display family, and it exists for exactly this shape: a header
+  whose logo sits alone in one column and whose CTA button sits alone in the
+  other. Put it on the FIRST of a light/dark pair; a flag on the second twin is
+  inert. `data-no-display-toggle` on the same element still wins.
 
 Selections are per instance: the same block added to a broadcast several
 times keeps independent Replacement choices for each copy (measured
@@ -1163,6 +1168,7 @@ the one field (§4: one value, every carrier).
 | `data-folder="1234"` | EN folder routing (on a category divider or a block) |
 | `data-category-short="Text"` | short category name prefixed onto block names |
 | `data-no-display-toggle` | opt out of the show/hide Select |
+| `data-display-toggle` | opt a column's SOLE member IN to the show/hide Select |
 | `data-no-link-toggle` | opt out of the image link Select |
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |

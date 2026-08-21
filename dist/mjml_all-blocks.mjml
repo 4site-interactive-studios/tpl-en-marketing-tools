@@ -287,7 +287,7 @@
     >
       <mj-group>
       <mj-column vertical-align="middle" width="50%">
-        <mj-image
+        <mj-image data-display-toggle
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
           href="https://www.example.com"
@@ -353,13 +353,13 @@
     <mj-section css-class="image-block block" background-color="#362229" padding="16px 32px" data-fully-exclude>
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+          <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-button width="160px" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -430,13 +430,13 @@
       <mj-section css-class="image-block block" background-url="assets/photo-canoe.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="16px 32px 16px">
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
             <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
-            <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
+            <mj-button data-display-toggle css-class="button fixed-width" width="auto" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
           </mj-column>
         </mj-group>
       </mj-section>
@@ -489,7 +489,7 @@
       <!-- data-mobile-only-width: the centered heading carries its own line break and never reaches the gutter at 600px, so symmetric presets move nothing there; at 375px the wider presets force a wrap. Measured INERT desktop / live mobile by the inert audit 2026-08-18. Drop the flag if the heading copy ever wraps at desktop. -->
       <mj-section padding="48px 32px 8px" data-mobile-only-width>
         <mj-column>
-          <mj-text align="center" padding="0">
+          <mj-text data-display-toggle align="center" padding="0">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
           </mj-text>
         </mj-column>
@@ -497,13 +497,13 @@
       <mj-section padding="48px 32px 32px">
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
             <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
-            <mj-button width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+            <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
           </mj-column>
         </mj-group>
         </mj-section>
