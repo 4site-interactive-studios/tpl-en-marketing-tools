@@ -1394,7 +1394,7 @@ sort — it is purely the panel/export display order.
   (`deepMemberSignature`, src/core/mjmlProps.ts). Two plain images side
   by side still count as identical (swap = swap the URLs), but mirrored
   insets, alignments, differing member widths, or per-column colors — a
-  logo beside a photo (Logo Hero (w/ Image)), the Tri-color
+  logo beside a photo (Logo Hero (w/ image)), the Tri-color
   divider's three stripes — make the swap a real layout change and keep
   the control. Also excluded are SYMMETRIC layouts — (width, deep
   signature) pairs reading the same forwards and backwards, e.g. the
@@ -1410,7 +1410,7 @@ sort — it is purely the panel/export display order.
   - `align` is PHYSICAL and a direction flip is not. A logo pinned left
     beside a button pinned right points outward as authored; after the flip
     both point INWARD and the content collapses into the middle (CTA Hero
-    (green button) lost 238px of span, CTA Hero (w/ Background Image)
+    (green button) lost 238px of span, CTA Hero (w/ background image)
     252px). EN has no expressions, so one Select cannot drive mirrored values
     in two places — but it CAN carry two finished arrangements.
   - Outlook never flipped at all. Its column order lives in the MSO
@@ -2186,6 +2186,14 @@ the importer whitelists all data-*-only MJML validator warnings
   Subscription Panel; DELIBERATELY fully excluded with no canonical
   (do not re-flag as errors): Text w/ Bullet Lists,
   Text + Link Paragraph CTA, Linked List Block, Join Links Block.
+  **Reversed 2026-08-21 (user decision):** Linked List Block and Join
+  Links Block now SHIP. They are structurally WYSIWYG Text, which is why
+  they were excluded, but that is exactly the erasure this rule warns
+  about — an editor who picks "Linked List" should get a linked list, not
+  an empty text block to rebuild one in. Linked List Block carries
+  `data-visible-duplicate` so the dedupe check stops reporting the pair.
+  Linked Header Row was DELETED the same day: unlike these two it added
+  no default content, only a link an editor puts in the RTE.
   WYSIWYG Text left that list 2026-08-19 (user-driven block rework):
   the heading/body split + Heading Level Select made the full-width
   variant the family's canonical, so it is importable again; the inset

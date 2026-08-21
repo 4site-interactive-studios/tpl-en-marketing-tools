@@ -11,14 +11,6 @@
     "version": 7,
     "hash": "a007c5580dca"
   },
-  "block:CTA Button (centered)": {
-    "version": 6,
-    "hash": "31a5ce2ba7ad"
-  },
-  "block:CTA Button (centered, fixed width)": {
-    "version": 6,
-    "hash": "dd7a52a72e13"
-  },
   "block:CTA Button (centered, outline)": {
     "version": 5,
     "hash": "16b97a388148"
@@ -27,25 +19,13 @@
     "version": 5,
     "hash": "9865b87cba1c"
   },
-  "block:CTA Button (right)": {
-    "version": 6,
-    "hash": "159fa01074a2"
-  },
   "block:CTA Buttons 2x1": {
     "version": 7,
     "hash": "ed1f01b25314"
   },
-  "block:CTA Buttons 2x1 (centered)": {
-    "version": 8,
-    "hash": "1017ee92a53a"
-  },
   "block:CTA Buttons 2x1 (fixed width)": {
     "version": 1,
     "hash": "739b8e86a9b4"
-  },
-  "block:CTA Buttons 2x1 (right)": {
-    "version": 8,
-    "hash": "d345141e16a4"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 7,
@@ -67,17 +47,17 @@
     "version": 7,
     "hash": "d782ab903b89"
   },
-  "block:CTA Hero (w/ Background Image)": {
+  "block:CTA Hero (w/ background image)": {
     "version": 1,
-    "hash": "9eed6e69d535"
+    "hash": "ebbad4c5e586"
   },
-  "block:CTA Hero (w/ Heading)": {
-    "version": 2,
-    "hash": "369b1e7fdef5"
+  "block:CTA Hero (w/ heading)": {
+    "version": 1,
+    "hash": "7288e205d74e"
   },
-  "block:CTA Hero (w/ Image Badge)": {
-    "version": 2,
-    "hash": "e966a795c95b"
+  "block:CTA Hero (w/ image badge)": {
+    "version": 1,
+    "hash": "3af266b872f2"
   },
   "block:CTA Text Block": {
     "version": 6,
@@ -155,10 +135,6 @@
     "version": 3,
     "hash": "c34a4e4c5ed5"
   },
-  "block:Header Row w/ CTA": {
-    "version": 1,
-    "hash": "c87355cbe47c"
-  },
   "block:Highlighted Text": {
     "version": 5,
     "hash": "e7818bc8eb32"
@@ -166,10 +142,6 @@
   "block:Icon Row": {
     "version": 7,
     "hash": "0848b7b4e8e2"
-  },
-  "block:Image": {
-    "version": 6,
-    "hash": "fc1645b0c9b3"
   },
   "block:Image 1x1": {
     "version": 8,
@@ -184,28 +156,32 @@
     "hash": "cbd30aa1dfda"
   },
   "block:Join Links Block": {
-    "version": 5,
-    "hash": "df253e0ce47d"
-  },
-  "block:Linked Header Row": {
-    "version": 7,
-    "hash": "17585c9f6fd2"
+    "version": 6,
+    "hash": "8435e9f36441"
   },
   "block:Linked List Block": {
-    "version": 5,
-    "hash": "e603565d4619"
+    "version": 6,
+    "hash": "92e4eaaa8bb2"
   },
   "block:Logo Hero": {
     "version": 1,
     "hash": "0668d51f7ace"
   },
-  "block:Logo Hero (light green, w/ dark-mode swap)": {
-    "version": 4,
-    "hash": "d816c0df5e41"
-  },
-  "block:Logo Hero (w/ Image)": {
+  "block:Logo Hero (w/ image)": {
     "version": 1,
-    "hash": "d9f11d596221"
+    "hash": "0f384ecffa89"
+  },
+  "block:Photo Banner": {
+    "version": 1,
+    "hash": "20033fbacfcc"
+  },
+  "block:Photo Banner (overlay panel, w/ CTA)": {
+    "version": 1,
+    "hash": "2128ec567b29"
+  },
+  "block:Photo Banner (w/ CTA)": {
+    "version": 1,
+    "hash": "2558f2ebec1a"
   },
   "block:Photo and Text Grid Block (2x2)": {
     "version": 1,
@@ -271,17 +247,9 @@
     "version": 9,
     "hash": "4ea0207c1c21"
   },
-  "block:Story Card (image left, no button)": {
-    "version": 8,
-    "hash": "22a49a98e19a"
-  },
   "block:Story Card (image on the side)": {
     "version": 4,
     "hash": "b8105aeda9a6"
-  },
-  "block:Story Card (image right, middle-aligned)": {
-    "version": 9,
-    "hash": "159dc2cad459"
   },
   "block:Story Card 2x1": {
     "version": 10,
@@ -290,14 +258,6 @@
   "block:Subscription Panel": {
     "version": 5,
     "hash": "c72fe5471a93"
-  },
-  "block:Text w/ Background Image": {
-    "version": 4,
-    "hash": "3e4744be1527"
-  },
-  "block:Text w/ Background Image and CTA": {
-    "version": 1,
-    "hash": "cd41090a164b"
   },
   "block:Two-Line Banner": {
     "version": 2,
@@ -320,8 +280,8 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 44,
-    "hash": "5fd8c50c097b"
+    "version": 45,
+    "hash": "e54ca9bdddeb"
   },
   "head-css": {
     "version": 25,

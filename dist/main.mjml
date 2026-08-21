@@ -168,31 +168,8 @@
     </mj-section>
     <!-- END: Logo Hero -->
 
-    <!-- START: Logo Hero (light green, w/ dark-mode swap) -->
-    <mj-section
-      css-class="image-block block"
-      background-color="#F5FAF1" padding="16px 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-        <mj-image
-          src="assets/logo-tpl_color-black-text.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="154px"
-          css-class="light-only" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/logo-tpl_all-light-green.png"
-          alt="Logo"
-          href="https://www.example.com"
-          width="154px"
-          css-class="dark-only" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Logo Hero (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Hero (w/ Image) -->
+    <!-- START: Logo Hero (w/ image) -->
     <mj-section
       css-class="image-block block"
       background-color="#006837" padding="16px 32px"
@@ -243,7 +220,7 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Hero (w/ Image) -->
+    <!-- END: Logo Hero (w/ image) -->
 
     <!-- START: CTA Hero -->
     <mj-section
@@ -282,7 +259,7 @@
     </mj-section>
     <!-- END: CTA Hero -->
 
-    <!-- START: CTA Hero (w/ Background Image) -->
+    <!-- START: CTA Hero (w/ background image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
       <mj-section
@@ -323,7 +300,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero (w/ Background Image) -->
+    <!-- END: CTA Hero (w/ background image) -->
 
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
@@ -370,7 +347,7 @@
 
 
 
-    <!-- START: CTA Hero (w/ Image Badge) -->
+    <!-- START: CTA Hero (w/ image badge) -->
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
@@ -388,10 +365,10 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (w/ Image Badge) -->
+    <!-- END: CTA Hero (w/ image badge) -->
 
 
-    <!-- START: CTA Hero (w/ Heading) -->
+    <!-- START: CTA Hero (w/ heading) -->
     <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
          removed (user decision). Its colour went white in the same edit: the
          panel was what made Earth text legible, and photo-kayak.jpg is a DARK
@@ -420,7 +397,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero (w/ Heading) -->
+    <!-- END: CTA Hero (w/ heading) -->
 
     <!-- START: Category — Text Blocks -->
     <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
@@ -611,18 +588,6 @@
     </mj-section>
     <!-- END: Header Row -->
 
-    <!-- START: Linked Header Row -->
-    <mj-section
-      css-class="text-block block header-row-block"
-      background-color="#ffffff" padding="16px 32px 0" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-        <mj-text padding="0">
-          <h2><a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Linked Header Row -->
 
     <!-- START: Deadline Panel -->
     <mj-section css-class="text-block block deadline-panel-block" background-color="#CEE4C5" padding="16px 32px">
@@ -714,50 +679,8 @@
     </mj-section>
     <!-- END: CTA Button -->
 
-    <!-- START: CTA Button (centered) -->
-    <mj-section
-      css-class="block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-          <mj-button width="auto"
-            href="https://www.example.com"
-            align="center" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            CENTER BUTTON
-          </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Button (centered) -->
 
-    <!-- START: CTA Button (right) -->
-    <mj-section
-      css-class="block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-          <mj-button width="auto"
-            href="https://www.example.com"
-            align="right" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            RIGHT BUTTON
-          </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Button (right) -->
 
-    <!-- START: CTA Button (centered, fixed width) -->
-    <mj-section
-      css-class="block"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-          <mj-button css-class="button fixed-width"
-            href="https://www.example.com"
-            align="center" width="300px" padding="0 0 16px" color="#ffffff" background-color="#006837">
-            FIXED WIDTH FIXED WIDTH FIXED WIDTH FIXED WIDTH 
-          </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Button (centered, fixed width) -->
 
     <!-- START: CTA Button (centered, outline) -->
     <mj-section
@@ -806,29 +729,7 @@
     </mj-section>
     <!-- END: CTA Buttons 2x1 -->
 
-    <!-- START: CTA Buttons 2x1 (centered) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-text css-class="button" padding="0 0 16px">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
-          <!--[if mso]></td></tr></table><![endif]-->
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Buttons 2x1 (centered) -->
 
-    <!-- START: CTA Buttons 2x1 (right) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
-      <mj-column vertical-align="middle">
-        <mj-text css-class="button" padding="0 0 16px">
-          <!--[if mso]><table role="presentation" align="right" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:right;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
-          <!--[if mso]></td></tr></table><![endif]-->
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Buttons 2x1 (right) -->
 
     <!-- START: CTA Buttons 3x1 (dynamic width) -->
     <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
@@ -928,29 +829,6 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Images & Media -->
 
-    <!-- START: Image -->
-    <mj-section
-      css-class="image-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0" data-fully-exclude
-    >
-      <mj-column vertical-align="middle">
-        <mj-image
-          src="assets/photo-family.jpg"
-          alt="Image Alt Text"
-          href="https://www.example.com"
-          width="600px"
-          padding="0" css-class="light-only" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/photo-family.jpg"
-          alt="Image Alt Text"
-          href="https://www.example.com"
-          width="600px"
-          padding="0" css-class="dark-only" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-      </mj-column>
-    </mj-section>
-    <!-- END: Image -->
 
     <!-- START: Image 1x1 -->
     <!-- Same block as the all-blocks catalog's Image 1x1, minus its
@@ -1160,7 +1038,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Image & Text Layouts -->
 
-    <!-- START: Text w/ Background Image -->
+    <!-- START: Photo Banner -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
       <mj-section
@@ -1179,7 +1057,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: Text w/ Background Image -->
+    <!-- END: Photo Banner -->
 
     <!-- START: Story Card 2x1 -->
     <mj-section
@@ -1349,88 +1227,7 @@
     </mj-section>
     <!-- END: Story Card (image left, middle-aligned) -->
 
-    <!-- START: Story Card (image right, middle-aligned) -->
-    <mj-section
-        css-class="two-col-image-text-block block flush-mobile-capflush"
-        background-color="#FFFFFF"
-        direction="rtl" padding="16px 32px" data-fully-exclude
-    >
-      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" padding="0 8px">
-        <mj-image
-            src="assets/photo-hiking-duo.jpg" width="220px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            align="center"
-            fluid-on-mobile="true"
-            padding="0"
-            css-class="light-only" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-            src="assets/photo-hiking-duo.jpg" width="220px"
-            alt="Custom alt text"
-            href="https://www.example.com"
-            align="center"
-            fluid-on-mobile="true"
-            padding="0"
-            css-class="dark-only" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
-          <span>Photograph by Photographer</span>
-        </mj-text>
-      </mj-column>
-      <mj-column css-class="two-col-column" width="296px" vertical-align="middle" padding="0 8px">
-        <mj-text padding="0 0 16px">
-          <h3>Lorem ipsum dolor</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
-            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
-            Ac vel ut nam augue. Volutpat tincidunt ut amet phasellus. Pulvinar at dapibus
-            praesent euismod pulvinar ut.
-          </p>
-        </mj-text>
-        <mj-button width="auto"
-          href="https://www.example.com"
-          align="left" padding="0" color="#ffffff" background-color="#006837">
-          PLACEHOLDER
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <!-- END: Story Card (image right, middle-aligned) -->
 
-    <!-- START: Story Card (image left, no button) -->
-    <mj-section
-      css-class="two-col-image-text-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="16px 32px" data-fully-exclude
-    >
-      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 16px 0 0">
-        <mj-image
-          src="assets/image-ranking.png"
-          alt="Placeholder ranking graphic"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          width="224px" css-class="light-only" fluid-on-mobile="true" />
-        <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image
-          src="assets/image-ranking.png"
-          alt="Placeholder ranking graphic"
-          href="https://www.example.com"
-          padding="0"
-          align="center"
-          width="224px" css-class="dark-only" fluid-on-mobile="true" data-style-dark-mode />
-        <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
-          <span>Photograph by Photographer</span>
-        </mj-text>
-      </mj-column>
-      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0">
-        <mj-text padding="0">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: Story Card (image left, no button) -->
 
     <!-- START: Icon Row -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right>
@@ -1467,7 +1264,7 @@
 <!-- END: Icon Row -->
 
 
-    <!-- START: Header Row w/ CTA -->
+    <!-- START: Photo Banner (w/ CTA) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#006837" padding="0">
       <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
@@ -1481,9 +1278,9 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: Header Row w/ CTA -->
+    <!-- END: Photo Banner (w/ CTA) -->
 
-    <!-- START: Text w/ Background Image and CTA -->
+    <!-- START: Photo Banner (overlay panel, w/ CTA) -->
     <!--
       Inside a section using a background all elements must have 0 left
       and right padding or they will be misaligned on outlook.
@@ -1513,7 +1310,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: Text w/ Background Image and CTA -->
+    <!-- END: Photo Banner (overlay panel, w/ CTA) -->
 
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
@@ -1792,7 +1589,7 @@
     <!-- START: Join Links Block -->
     <mj-section
       css-class="text-block block"
-      background-color="#CEE4C5" padding="16px 32px" data-fully-exclude
+      background-color="#CEE4C5" padding="16px 32px"
     >
       <mj-column>
         <mj-text padding="0">
@@ -1938,7 +1735,14 @@
     <!-- END: Steps Block -->
 
     <!-- START: Linked List Block -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-fully-exclude>
+    <!-- data-visible-duplicate: structurally this IS Join Links Block (and
+         both are WYSIWYG Text with a list in them), so the dedupe check
+         flags it. Both ship anyway (user decision 2026-08-21): default
+         content is a block’s value, and an editor who picks "Linked List"
+         gets a linked list rather than an empty text block to rebuild one
+         in. This is the case CONVENTIONS warns about — structural dedupe
+         alone must not erase a whole family. -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px" data-visible-duplicate>
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
