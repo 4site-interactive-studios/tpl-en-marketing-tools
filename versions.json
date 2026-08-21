@@ -496,12 +496,12 @@
     "hash": "ace703979037"
   },
   "block:Video Block (full-bleed)": {
-    "version": 5,
-    "hash": "e6faf81246f1"
+    "version": 6,
+    "hash": "f03371beee99"
   },
   "block:Video Block (inset)": {
-    "version": 6,
-    "hash": "9276d4a9afeb"
+    "version": 7,
+    "hash": "55dfdd22aa94"
   },
   "block:WYSIWYG Text": {
     "version": 1,

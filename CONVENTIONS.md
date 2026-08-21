@@ -317,11 +317,42 @@ Pairing discipline is the pill-bgcolor rule directly above it, verbatim:
 - **any other** mismatch — mint nothing and leave a note. A partial bind is
   exactly the desync the twin carrier exists to prevent.
 
+It labels **"Alignment"**, not the property-derived "Text Alignment" — the
+control moves the whole row, not glyphs inside a box (`labelOverride`,
+`src/core/properties.ts`). The property stays `text-align` rather than
+inventing one to dodge the label map, which is what keeps the mobile-pin
+lookup working on it.
+
 The value belongs to the ROW, not to a button, so it never rides
 "Button 1"'s ordinal space: it takes an authored `data-group-label`, or
 **"Button Row"** by default. Verified on a full all-blocks import — all four
 CTA Buttons blocks mint a Text Alignment Select under a "Button Row"
 section, one tag resolving to two carriers, zero orphaned tags.
+
+## Image Position option labels follow the rendered side
+
+The Image Position / Column Order Select carries two whole compiled
+arrangements, and its option labels used to assume "first column = left".
+That is only true left-to-right. `direction:rtl` lays the columns out from
+the RIGHT, so the first column is the rightmost one.
+
+Story Card (image on the side) authors the image column first under
+`direction="rtl"` — measured at desktop width, the image renders on the
+**right** — while the field offered "Left" (the authored order) and
+"Right" (the reversed one). Exactly inverted, and shipped that way
+(reported 2026-08-20).
+
+The labels are now derived from where the image actually lands:
+
+```
+normal renders image LEFT  ⇔  (image column is first) XOR (row is rtl)
+```
+
+so a left-to-right row with the image first still reads Left/Right, and the
+rtl row reads Right/Left. The authored arrangement stays the DEFAULT either
+way — only the words change, so delete-restore is still byte-exact.
+**Column Order** (Normal/Reversed) is unaffected: those words describe the
+swap itself, not a side, and are direction-agnostic by construction.
 
 ## Message size is advisory, never enforced
 
