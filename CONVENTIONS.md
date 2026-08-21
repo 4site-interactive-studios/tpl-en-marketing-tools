@@ -1132,13 +1132,29 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   document into per-frame territories (own element plus its preceding
   MSO ghost copies), fixed 2026-08-19 — before that the first section
   claimed every copy and its identical sibling minted no frame fields
-  at all (the Photo and Text Grid's field-less Row 3).
+  at all (the Photo and Text Grid's field-less Row 3). A territory is
+  bounded at the frame's OWN element end, never the document end: the
+  copies it exists to reach are emitted BEFORE the element, so only the
+  backward extension is load-bearing. Territories partition per KIND, so
+  a lone `mj-wrapper` extended to the document end still outran every
+  later `mj-section` — Video Block's wrapper swallowed its sibling
+  caption section (both authored `padding="0"`) and that row minted no
+  padding fields at all, while its inset twin, whose caption is authored
+  differently, minted all four (fixed 2026-08-21).
 - **Content groups**: in a **single-band block they carry NO glyph** —
   `Heading`, `Text`, `Column 1 Button` sit directly under the block header
   (the glyph implied a hierarchy that wasn't there). In a **multi-band
   block they nest under their band with the glyph**: `└─ Row 2 Text`.
   An AUTHORED group word stands alone even there (`└─ Episode Title` — the
-  author chose a globally meaningful name, no Row tag).
+  author chose a globally meaningful name, no Row tag). A **defaulted**
+  role word does NOT get that exemption — it is only the component's
+  display word, so it stays band-scoped. The button row's `Button Row`
+  is defaulted unless `data-group-label` names it, and while it was
+  exempt one row of pills split across two panel groups reading alike:
+  `└─ Row 2 Button Row` (Spacing Below) and a separate unscoped
+  `└─ Button Row` (Desktop Alignment, sorting dead last). Fixed
+  2026-08-21; the merge-tag name is deliberately unchanged, since the
+  sibling pill tags it belongs with are unscoped too.
 - **Column attribution is uniform**: whenever a role family spans 2+
   columns of its band, EVERY member of that family carries its column —
   `Column 1 Heading` / `Column 2 Heading` — whatever the per-column count
@@ -1175,7 +1191,11 @@ the bottom and split the dark URL from its light twin). The canonical rank
 1. **Visibility** — **Display is always first** in its group — it decides
    whether the rest of the group even matters, so it leads.
 2. **Primary content** — Content (RTE) · Image URL · **Dark Mode Image URL
-   (immediately after its light twin)** · Label · Link URL · Alt Text
+   (immediately after its light twin)** · Label (and a two-line pill's
+   `Label Line 1` / `Label Line 2`, which rank WITH `Label` — they are the
+   same copy, and until 2026-08-21 they took the catch-all rank and sorted
+   below both colour pickers in all six two-line groups) · Link URL · Alt
+   Text
 3. **Appearance** — Text Color · Background Image · Background Color · other
    colors · Border Radius · Font Size · Letter Spacing · Line Height
 4. **Dimensions** — Width in Pixels / button Width · Height

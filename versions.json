@@ -72,12 +72,12 @@
     "hash": "9eed6e69d535"
   },
   "block:CTA Hero (w/ Heading)": {
-    "version": 1,
-    "hash": "35a6f124f4a3"
+    "version": 2,
+    "hash": "369b1e7fdef5"
   },
   "block:CTA Hero (w/ Image Badge)": {
-    "version": 1,
-    "hash": "1e217daf1ed8"
+    "version": 2,
+    "hash": "e966a795c95b"
   },
   "block:CTA Text Block": {
     "version": 6,
@@ -304,12 +304,12 @@
     "hash": "5d67ce8f9dc2"
   },
   "block:Video Block": {
-    "version": 1,
-    "hash": "2f9325c4cec5"
+    "version": 2,
+    "hash": "24ea2929351f"
   },
   "block:Video Block (inset)": {
-    "version": 13,
-    "hash": "fbc742fa4820"
+    "version": 14,
+    "hash": "8a562699c22a"
   },
   "block:WYSIWYG Text": {
     "version": 4,
