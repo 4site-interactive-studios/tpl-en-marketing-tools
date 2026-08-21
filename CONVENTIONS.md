@@ -296,6 +296,33 @@ replacement, or `brandColors`.
 because band CSS is exempt. Everything else in the template still answers
 to the brand palette.
 
+## Button-row alignment binds two carriers
+
+A stacked pill row (`.cta-group` inside an `mj-text`) authors its alignment
+TWICE: the group div's inline `text-align`, which every CSS client reads,
+and `align` on the MSO conditional `<table>`, which is the only one the Word
+engine reads. Editing either alone leaves Outlook where it was.
+
+The raw-content scanner mints ONE `text-align` candidate per `.cta-group`
+and folds the MSO table in as one of its `extraFragments`, so a single tag splices
+into both carriers (`autoEnableReplacements`, `src/core/mjmlProps.ts`;
+2026-08-20). `text-align` is already an enumerable property, so the field
+ships as a Left/Center/Right **Select** with no extra wiring.
+
+Pairing discipline is the pill-bgcolor rule directly above it, verbatim:
+
+- **zero** MSO carriers — a div-only row has no Outlook copy to desync, so
+  the single claim stands;
+- **matched** count AND value — bind both;
+- **any other** mismatch — mint nothing and leave a note. A partial bind is
+  exactly the desync the twin carrier exists to prevent.
+
+The value belongs to the ROW, not to a button, so it never rides
+"Button 1"'s ordinal space: it takes an authored `data-group-label`, or
+**"Button Row"** by default. Verified on a full all-blocks import — all four
+CTA Buttons blocks mint a Text Alignment Select under a "Button Row"
+section, one tag resolving to two carriers, zero orphaned tags.
+
 ## Message size is advisory, never enforced
 
 `validateMessageSizeBudget` (`src/core/validate.ts`) projects the delivered

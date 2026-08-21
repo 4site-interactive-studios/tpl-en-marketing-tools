@@ -44,16 +44,16 @@
     "hash": "e2a8f3f2e3d9"
   },
   "block:CTA Buttons 2x1 (centered)": {
-    "version": 5,
-    "hash": "72c7e32748dc"
+    "version": 6,
+    "hash": "e987793819a7"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
     "version": 4,
     "hash": "c6de31bfa3f9"
   },
   "block:CTA Buttons 2x1 (right)": {
-    "version": 5,
-    "hash": "f1851c88799c"
+    "version": 6,
+    "hash": "e140ace119e3"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 4,
@@ -512,8 +512,8 @@
     "hash": "af9ce892e350"
   },
   "catalog-shell": {
-    "version": 25,
-    "hash": "64e219432cc4"
+    "version": 26,
+    "hash": "be58c6a82ed5"
   },
   "email-template": {
     "version": 37,
