@@ -144,7 +144,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Headers and Heroes -->
 
-    <!-- START: Logo Hero (white, w/ dark-mode swap) -->
+    <!-- START: Logo Hero -->
     <mj-section
       css-class="image-block block"
       background-color="#ffffff" padding="16px 32px" data-no-width-toggle
@@ -166,7 +166,7 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Hero (white, w/ dark-mode swap) -->
+    <!-- END: Logo Hero -->
 
     <!-- START: Logo Hero (light green, w/ dark-mode swap) -->
     <mj-section
@@ -192,7 +192,7 @@
     </mj-section>
     <!-- END: Logo Hero (light green, w/ dark-mode swap) -->
 
-    <!-- START: Logo Hero (w/ image, green) -->
+    <!-- START: Logo Hero w/ Image -->
     <mj-section
       css-class="image-block block"
       background-color="#006837" padding="16px 32px"
@@ -243,9 +243,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Logo Hero (w/ image, green) -->
+    <!-- END: Logo Hero w/ Image -->
 
-    <!-- START: CTA Hero (green button) -->
+    <!-- START: CTA Hero -->
     <mj-section
       css-class="image-block block"
       background-color="#362229" padding="16px 32px"
@@ -280,9 +280,9 @@
       </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (green button) -->
+    <!-- END: CTA Hero -->
 
-    <!-- START: CTA Hero (logo and background image) -->
+    <!-- START: CTA Hero w/ Background Image -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
       <mj-section
@@ -323,7 +323,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero (logo and background image) -->
+    <!-- END: CTA Hero w/ Background Image -->
 
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
@@ -368,39 +368,8 @@
     </mj-wrapper>
     <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
-    <!-- START: CTA Hero (w/ large background image) -->
-    <!--
-      Inside a section using a background all elements must have 0 left
-      and right padding or they will be misaligned on outlook.
-      This is why we use spacer columns with a fixed width on the sides
-      of the overlay image column to create the necessary padding while
-      maintaining alignment across email clients.
-     -->
-    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <mj-wrapper background-color="#000000" padding="0">
-      <mj-section
-          css-class="overlay-image-block block hero-reveal" background-url="assets/photo-person_overlay.jpg"
-          background-size="cover"
-          background-repeat="no-repeat"
-          background-position="center bottom" padding="350px 32px 48px"
-      >
-        <mj-group>
 
-          <mj-column>
-            <mj-text css-class="overlay" padding="0 32px 8px">
-              <h1 style="text-align: center">Placeholder message for special occasion </h1>
-            </mj-text>
-            <mj-button css-class="button fixed-width" width="auto"
-              href="https://www.example.com" padding="0 32px 8px" color="#ffffff" background-color="#006837">
-              BUTTON
-            </mj-button>
-          </mj-column>
-        </mj-group>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: CTA Hero (w/ large background image) -->
-
-    <!-- START: CTA Hero with Heading (logo and background image) -->
+    <!-- START: CTA Hero w/ Large Background Image -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
     <mj-wrapper background-color="#362229" padding="0">
@@ -438,9 +407,9 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: CTA Hero with Heading (logo and background image) -->
+    <!-- END: CTA Hero w/ Large Background Image -->
 
-    <!-- START: CTA Hero (w/ badge image) -->
+    <!-- START: CTA Hero w/ Image Badge -->
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
@@ -458,23 +427,8 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: CTA Hero (w/ badge image) -->
+    <!-- END: CTA Hero w/ Image Badge -->
 
-    <!-- START: CTA Hero (centered w/ background image) -->
-    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <mj-wrapper background-color="#006837" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
-        <mj-group>
-        <mj-column>
-          <mj-text align="center" padding="0 0 16px">
-            <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
-          </mj-text>
-          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
-        </mj-column>
-        </mj-group>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: CTA Hero (centered w/ background image) -->
 
     <!-- START: Category — Text Blocks -->
     <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
@@ -702,7 +656,7 @@
     </mj-section>
     <!-- END: Subscription Panel -->
 
-    <!-- START: Stat Row (off-white) -->
+    <!-- START: Stat Row -->
     <mj-section css-class="block" background-color="#ffffff" padding="16px 32px">
       <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0">
         <mj-text css-class="wysiwyg link-earth" align="center" padding="0 0 8px">
@@ -717,9 +671,9 @@
         <mj-button width="auto" href="https://www.example.com" align="center" padding="0 0 32px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
-    <!-- END: Stat Row (off-white) -->
+    <!-- END: Stat Row -->
 
-    <!-- START: Two-Line Banner (light green) -->
+    <!-- START: Two-Line Banner -->
     <!-- data-mobile-only-width: the two centered caps lines clear every preset at 600px, so the gutter is invisible at desktop; at 375px the wider steps force a wrap. Measured INERT desktop / live mobile 2026-08-18. Drop the flag if the banner copy ever wraps at desktop. -->
     <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px" data-mobile-only-width>
       <mj-column>
@@ -729,7 +683,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Two-Line Banner (light green) -->
+    <!-- END: Two-Line Banner -->
 
     <!-- START: Category — Buttons -->
     <mj-raw><div data-import-exclude="true" data-folder="6406" data-category-short="Buttons"></mj-raw>
@@ -1136,7 +1090,7 @@
     </mj-section>
     <!-- END: Images 3x1 -->
 
-    <!-- START: Video Block (full-bleed) -->
+    <!-- START: Video Block -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#4A7A68" padding="0">
       <mj-section css-class="image-block block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="100px 0 100px">
@@ -1156,10 +1110,10 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Video Block (full-bleed) -->
+    <!-- END: Video Block -->
 
     <!-- START: Video Block (inset) -->
-    <!-- data-visible-duplicate: the inset twin of Video Block (full-bleed) —
+    <!-- data-visible-duplicate: the inset twin of Video Block —
          same structure, framed on a white ground (user decision 2026-08-20).
          Deliberately visible alongside its anchor; never re-flag into the
          excluded family. It CANNOT collapse into one block with a padding
@@ -1510,7 +1464,7 @@
     </mj-section>
 <!-- END: Icon Row -->
 
-    <!-- START: Photo Card (green CTA) -->
+    <!-- START: Photo Card -->
     <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
          removed (user decision). Its colour went white in the same edit: the
          panel was what made Earth text legible, and photo-kayak.jpg is a DARK
@@ -1539,7 +1493,55 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <!-- END: Photo Card (green CTA) -->
+    <!-- END: Photo Card -->
+
+    <!-- START: Header Row w/ CTA -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#006837" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
+        <mj-group>
+        <mj-column>
+          <mj-text align="center" padding="0 0 16px">
+            <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
+          </mj-text>
+          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+        </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Header Row w/ CTA -->
+
+    <!-- START: Text w/ Background Image and CTA -->
+    <!--
+      Inside a section using a background all elements must have 0 left
+      and right padding or they will be misaligned on outlook.
+      This is why we use spacer columns with a fixed width on the sides
+      of the overlay image column to create the necessary padding while
+      maintaining alignment across email clients.
+     -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#000000" padding="0">
+      <mj-section
+          css-class="overlay-image-block block hero-reveal" background-url="assets/photo-person_overlay.jpg"
+          background-size="cover"
+          background-repeat="no-repeat"
+          background-position="center bottom" padding="350px 32px 48px"
+      >
+        <mj-group>
+
+          <mj-column>
+            <mj-text css-class="overlay" padding="0 32px 8px">
+              <h1 style="text-align: center">Placeholder message for special occasion </h1>
+            </mj-text>
+            <mj-button css-class="button fixed-width" width="auto"
+              href="https://www.example.com" padding="0 32px 8px" color="#ffffff" background-color="#006837">
+              BUTTON
+            </mj-button>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Text w/ Background Image and CTA -->
 
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
@@ -2379,7 +2381,7 @@
     <mj-raw></div></mj-raw>
     <!-- END: Category — Footers -->
 
-    <!-- START: Footer (w/ image) -->
+    <!-- START: Footer (w/ image, brown) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
       <mj-column>
@@ -2403,7 +2405,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Footer (w/ image) -->
+    <!-- END: Footer (w/ image, brown) -->
 
     <!-- START: Footer (w/ image, snow) -->
     <!-- data-visible-duplicate: the Snow-ground twin of Footer (w/ image) —

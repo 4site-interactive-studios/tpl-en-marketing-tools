@@ -1374,7 +1374,7 @@ sort — it is purely the panel/export display order.
   (`deepMemberSignature`, src/core/mjmlProps.ts). Two plain images side
   by side still count as identical (swap = swap the URLs), but mirrored
   insets, alignments, differing member widths, or per-column colors — a
-  logo beside a photo (Logo Hero (w/ image, green)), the Tri-color
+  logo beside a photo (Logo Hero w/ Image), the Tri-color
   divider's three stripes — make the swap a real layout change and keep
   the control. Also excluded are SYMMETRIC layouts — (width, deep
   signature) pairs reading the same forwards and backwards, e.g. the
@@ -1390,7 +1390,7 @@ sort — it is purely the panel/export display order.
   - `align` is PHYSICAL and a direction flip is not. A logo pinned left
     beside a button pinned right points outward as authored; after the flip
     both point INWARD and the content collapses into the middle (CTA Hero
-    (green button) lost 238px of span, CTA Hero (logo and background image)
+    (green button) lost 238px of span, CTA Hero w/ Background Image
     252px). EN has no expressions, so one Select cannot drive mirrored values
     in two places — but it CAN carry two finished arrangements.
   - Outlook never flipped at all. Its column order lives in the MSO
