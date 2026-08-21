@@ -261,6 +261,34 @@ elsewhere: EN rejects a message whose `contentHtml` exceeds a measured
 **299,760 bytes** with `{"message":"Message contentHtml too long"}`
 (2026-08-20 — see the authoring guide for the full measurement).
 
+## Builder-band colors never enter the palette
+
+The builder bands borrow **EN Marketing Tools' own UI colors** — text
+`#4e535c` on `#d0d5dd` — so the labels read as an extension of the app
+rather than as part of the email (2026-08-20, user decision). That makes
+them chrome, and chrome must not reach the email's palette.
+
+`stripNonPaletteRegions` (`src/core/colors.ts`) therefore drops the
+`data-en-tools-band` `<style>` before the color census, matched on the
+attribute exactly like the head-extraction exemption it mirrors
+(`BAND_STYLE_ATTR`, `src/core/headStyles.ts`).
+
+This only became visible when the bands moved OFF `#000000`/`#ffffff`.
+Both were already palette members, so censusing them changed nothing;
+the greys are not, and without the exemption they surfaced as a text
+option and a background option in every color dropdown across the
+catalog (measured 2026-08-20 on the unified catalog: text 12 → 11,
+background 13 → 12 once exempted).
+
+Verified end to end by importing the unified catalog: each grey appears
+exactly twice in `shell.beforeBlocks` — the band stylesheet itself, where
+it belongs — and **zero** times in any block HTML, any shell or block
+replacement, or `brandColors`.
+
+**Rule for agents**: a band may use any color the EN builder UI uses,
+because band CSS is exempt. Everything else in the template still answers
+to the brand palette.
+
 ## Message size is advisory, never enforced
 
 `validateMessageSizeBudget` (`src/core/validate.ts`) projects the delivered
