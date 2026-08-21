@@ -237,6 +237,33 @@ offsets from `shell.beforeBlocks`. On the TPL all-blocks template the two
 strips together remove **3,590 bytes** from the head of every delivered
 email.
 
+**MSO ghost widths are neutralized at IMPORT** (2026-08-21), by
+`neutralizeGhostWidths` (`src/core/ghostWidths.ts`), applied to the whole
+document in `createProject` before segmentation — and to the instrumented
+twin in lockstep, since `computeInstanceRegions` diffs the two and they must
+stay byte-comparable.
+
+MJML derives the width of the Outlook ghost cell around a column group from
+the section's authored gutter (`600 − 2·32 = 536`) and freezes it at compile
+time. The importer rewrites the padding value in every carrier, `mso-padding-alt`
+copies included, but never a width DERIVED from it — so an editor who grows
+the gutter leaves Word laying out the old, too-wide table inside a narrower
+cell, and the mail renders past 600px in Outlook while every CSS client is
+fine. Where the ghost stands for a LONE 100% column that number carries
+nothing Word cannot recompute, so it becomes `width:100%` and the gutter is
+free to grow. Proportional ghosts (two 268px halves) and fixed-px columns
+keep their numbers — there the split IS the information — and those frames
+are capped instead ("Unsafe growth", below).
+
+On tpl_unified-blocks this rewrites **80 of 155** ghost cells and 35 of 66
+in mjml_extra-blocks, and it makes the document slightly SMALLER. Coupling
+the derived width to the padding option instead — one Select writing both
+numbers — was measured and rejected: EN replacements are plain value
+substitution with no arithmetic, so a single field can only carry both by
+widening its splice to swallow the span between them (median 186 bytes,
+about +93KB across tpl_unified-blocks alone), which does not fit under the
+299,760-byte contentHtml ceiling.
+
 KEPT, because they are function rather than prose:
 
 - **Conditional comments**, both downlevel-hidden
@@ -538,9 +565,10 @@ spacing, and stay.
 
 ## Inert paddings — never ship a field that does nothing
 
-A padding field is worthless if changing it doesn't change the rendering.
-Two mechanisms are detected statically at import and the field is
-suppressed. The reason lands in `Block.infoNotes` and the validator
+A padding field is worthless if changing it doesn't change the rendering,
+and it is WORSE than worthless if changing it breaks the layout. Both are
+detected statically at import and the field is suppressed or its option
+list is trimmed. The reason lands in `Block.infoNotes` and the validator
 surfaces it at **'info' level, not as a warning** (2026-08-03,
 user-decided): the source is correct as written and nothing can be
 burned down — the note only explains WHY the field is missing and what
@@ -578,6 +606,24 @@ direction-flip skips.
   nothing. Those two sides stay literal; Block Top/Bottom and the column's
   own four paddings (the real box inset) keep their Selects: 8 padding
   fields → 6.
+- **Unsafe growth** (2026-08-21, `maxSafeGutter` in `src/core/paddingCap.ts`):
+  the mirror image of the structural pin, and the one with teeth. The pin
+  asks whether SHRINKING the gutter moves anything; this asks whether
+  GROWING it breaks anything. A frozen `mj-column width="240px"`, or an
+  image sized to fill its column, cannot follow the padding — so past a
+  point the inline-block columns no longer fit and the row wraps, turning a
+  two-column card into one column in every CSS client while Word refuses to
+  shrink its ghost cells. Every option above that point is dropped from the
+  Select; when only the authored value survives, no field is created at all
+  and the gutter stays literal. The measurement is check-catalog's own
+  `column geometry check` ported into the importer and re-run once per
+  candidate value, plus an image rule that guard did not have (mirrored back
+  into it, so the two cannot disagree). **Every live copy of the padding
+  moves together**: one tag can fill two frames' composites — a hero's outer
+  wrapper and its inner image wrapper — and substituting only the first
+  understates the shrink by a whole gutter per extra frame (found by the
+  rendered oracle on 2026-08-21, after the static scan had passed a 154px
+  logo overflowing at Quadruple).
 
 Related readability rule: all four padding sides share ONE field-order
 rank, so two frames' paddings list contiguously (Block Top/Bottom, then
@@ -589,18 +635,26 @@ Known but NOT suppressed (documented trade-offs):
   rules override some paddings with `!important` below 600px. The fields
   work at desktop width — where email is judged — so they stay; just know
   the mobile rendering is fixed by the template's own CSS.
-- **Grow-direction asymmetry**: a pinned gutter's WIDEN direction would
-  have an effect (it compresses the child); the dropdown is suppressed
-  anyway because most of its options would be dead — one working option
-  out of five is a trap, not a control.
+- **Grow-direction asymmetry**: a pinned gutter's WIDEN direction does have
+  an effect — it compresses the child — but the dropdown is suppressed
+  anyway because most of its options would be dead, and one working option
+  out of five is a trap, not a control. Since 2026-08-21 the widen direction
+  is also the DANGEROUS one, and is bounded independently by the unsafe-growth
+  cap above: compressing a child that cannot compress is what wraps a row.
 
 **Empirical oracle** (`window.__auditPadding()` in dev builds,
 src/components/paddingAudit.ts): renders every padding-family Select
 option at 600px and geometry-diffs against the default render — the ground
-truth the static guards are checked against. Current template: 416/416
-fields live after suppression (2026-08-03: the Stat Row flatten added a
-live width preset and moved the card's bottom inset onto the button's
-Spacing Below). Run it after template-structure changes;
+truth the static guards are checked against. It returns a fourth verdict
+besides inert/partial/live: **overflow**, meaning an option BREAKS the
+layout rather than merely failing to change it. That is stated as a FIT
+test — do a row's columns sum wider than the row? — because counting
+distinct column tops cannot tell a wrap from a taller neighbour, and moves
+on every vertical Spacing Below when the columns are stacked (10 false
+positives, 2026-08-21). An `overflow` row means `paddingCap.ts` let through
+a value it should have withheld. Current template (tpl_unified-blocks,
+2026-08-21): **338/338 fields live, zero inert, zero overflow** after
+suppression and capping. Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
 prune. The Inert Dropdown Audit below generalizes this oracle to every
 Select, both viewports, and pixel comparison; `__auditPadding()` remains

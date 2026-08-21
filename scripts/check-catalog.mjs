@@ -138,6 +138,145 @@ guard('both-attribute background check', () => {
 //    so percentage-summing both misses real overflows and flags clean blocks.
 // ---------------------------------------------------------------------------
 
+/**
+ * Column + image geometry for one compiled page.
+ *
+ * Shared by the overflow guard and the padding-growth census, so the two
+ * can never disagree about what fits. Mirrors src/core/paddingCap.ts in
+ * email-to-en-marketing-tools, which is what the importer uses to decide
+ * which padding options an editor may be offered.
+ */
+function scanGeometry(html) {
+  // `direction` matches ltr OR rtl: a reversed row (Story Card image-right)
+  // is a normal section whose content td reads `direction:rtl`, and matching
+  // only ltr skipped those sections entirely — their columns were never
+  // measured. The importer's Column Order toggle can also flip an authored
+  // ltr section to rtl, so the blind spot was reachable at edit time too.
+  const events = [
+    ...html.matchAll(
+      /<!--\[if mso \| IE\]>([\s\S]*?)<!\[endif\]-->|<div class="mj-column-(px|per)-([\d-]+) mj-outlook-group-fix[^"]*"|<div [^>]*style="[^"]*max-width:(\d+)px|<td[^>]*style="([^"]*direction:\s*(?:ltr|rtl)[^"]*)"|<td[^>]*style="([^"]*word-break:break-word[^"]*)"|<img[^>]*\swidth="(\d+)"|<td[^>]*style="([^"]*vertical-align:[^"]*padding:[^"]*)"/g,
+    ),
+  ];
+
+  // `cell` is the width of the innermost open cell. A conditional <table>
+  // opens a frame whose width is that cell — the tds INSIDE it are the
+  // sibling columns, not the frame. That distinction is the whole check:
+  // MJML nests an mj-group's columns one conditional deeper, so a group's
+  // children are measured against the cell the GROUP occupies.
+  let carrier = 600; // mj-body default; no catalog page overrides it
+  let cell = 600;
+  // A second, plain-CSS model for the image rule. `cell` cannot serve: a
+  // conditional's own td already set it to the COLUMN's px width, so
+  // `cell * 50 / 100` halves an already-halved number, and that number is
+  // the FROZEN ghost besides. Column sums tolerate both (they only ever
+  // compare against a wider frame); an image needs the width CSS clients
+  // will really give it. Mirrors src/core/paddingCap.ts in the importer —
+  // the build guard and the generator must agree about what fits.
+  let frameBox = 600;
+  let box = 600;
+  let leafInset = 0;
+  let columnPadTaken = false;
+  const frames = [];
+  const hits = [];
+  const imgHits = [];
+
+  const closeFrame = (at) => {
+    const f = frames.pop();
+    if (!f) return;
+    cell = f.savedCell; // sibling cells are scoped to their frame
+    // A LONE column still overflows if it is wider than its frame — the
+    // 2026-08-18 hero defect (a 550px column left in a 32px-padded
+    // section) hid here, because summing siblings skipped single-column
+    // frames entirely. Only the sibling-sum case needs two columns.
+    const sum = f.cols.reduce((a, b) => a + b, 0);
+    if (sum > f.frame + 1) hits.push({ ...f, sum, at });
+  };
+
+  /** Horizontal insets a content td takes out of its carrier. */
+  const inset = (style) => {
+    let pad = 0;
+    const p = /(?:^|;)\s*padding:\s*([^;]+)/.exec(style);
+    if (p) {
+      const v = p[1].trim().split(/\s+/).map((x) => parseFloat(x) || 0);
+      pad += v.length === 1 ? 2 * v[0] : v.length <= 3 ? 2 * v[1] : v[1] + v[3];
+    }
+    for (const side of ['left', 'right']) {
+      const s = new RegExp(`padding-${side}:\\s*(\\d+)`).exec(style);
+      if (s) pad += Number(s[1]);
+      const b = new RegExp(`border-${side}:\\s*(\\d+)`).exec(style);
+      if (b) pad += Number(b[1]);
+    }
+    const b = /(?:^|;)\s*border:\s*(\d+)/.exec(style);
+    if (b) pad += 2 * Number(b[1]);
+    return pad;
+  };
+
+  for (const e of events) {
+    if (e[5] !== undefined) {
+      // A section's own content td is the innermost content box from here
+      // on, so it always resets `cell` — outer frames stay open across a
+      // whole block, so gating this on frame depth would silently skip
+      // every plain section nested inside a wrapper.
+      cell = carrier - inset(e[5]);
+      frameBox = cell;
+      box = cell;
+      leafInset = 0;
+      columnPadTaken = false;
+      continue;
+    }
+    if (e[4]) {
+      // A max-width can only NARROW. Taking the baked number at face value
+      // let a wrapper whose gutter grew measure its children against the
+      // width the OLD gutter produced.
+      carrier = Math.min(Number(e[4]), cell);
+      continue;
+    }
+    if (e[6] !== undefined) {
+      leafInset = inset(e[6]);
+      continue;
+    }
+    if (e[7]) {
+      if (Number(e[7]) > box - leafInset + 1) {
+        imgHits.push({ img: Number(e[7]), box: box - leafInset, at: e.index });
+      }
+      continue;
+    }
+    if (e[8] !== undefined) {
+      // A column's OWN padding is the inter-column gutter and lands on a
+      // vertical-align cell, not on a word-break content cell.
+      if (!columnPadTaken) {
+        box -= inset(e[8]);
+        columnPadTaken = true;
+      }
+      continue;
+    }
+    if (e[2]) {
+      const raw = e[3].replace('-', '.');
+      const px = e[2] === 'px' ? Number(raw) : (cell * Number(raw)) / 100;
+      if (frames.length) frames[frames.length - 1].cols.push(px);
+      box = e[2] === 'px' ? Number(raw) : Number(raw) === 100 ? frameBox : (frameBox * Number(raw)) / 100;
+      leafInset = 0;
+      columnPadTaken = false;
+      continue;
+    }
+    for (const t of (e[1] || '').matchAll(/<table[^>]*>|<\/table>|<td[^>]*style="([^"]*)"/g)) {
+      if (t[0].startsWith('</table')) {
+        closeFrame(e.index);
+        continue;
+      }
+      if (t[0].startsWith('<table')) {
+        frames.push({ frame: cell, cols: [], savedCell: cell });
+        continue;
+      }
+      const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
+      if (w) cell = Number(w[1]);
+    }
+  }
+  while (frames.length) closeFrame(html.length);
+
+  return { hits, imgHits };
+}
+
 guard('column geometry check', () => {
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   // _live.html only: _local-debug.html embeds the whole source MJML as JSON,
@@ -161,86 +300,17 @@ guard('column geometry check', () => {
     // The section content td carrying `direction:ltr` is REAL markup, not part
     // of an MSO conditional, so it needs its own branch — a plain section's
     // frame comes from nowhere else.
-    const events = [
-      ...html.matchAll(
-        /<!--\[if mso \| IE\]>([\s\S]*?)<!\[endif\]-->|<div class="mj-column-(px|per)-([\d-]+) mj-outlook-group-fix[^"]*"|<div [^>]*style="[^"]*max-width:(\d+)px|<td[^>]*style="([^"]*direction:\s*ltr[^"]*)"/g,
-      ),
-    ];
+    const { hits, imgHits } = scanGeometry(html);
 
-    // `cell` is the width of the innermost open cell. A conditional <table>
-    // opens a frame whose width is that cell — the tds INSIDE it are the
-    // sibling columns, not the frame. That distinction is the whole check:
-    // MJML nests an mj-group's columns one conditional deeper, so a group's
-    // children are measured against the cell the GROUP occupies.
-    let carrier = 600; // mj-body default; no catalog page overrides it
-    let cell = 600;
-    const frames = [];
-    const hits = [];
-
-    const closeFrame = (at) => {
-      const f = frames.pop();
-      if (!f) return;
-      cell = f.savedCell; // sibling cells are scoped to their frame
-      // A LONE column still overflows if it is wider than its frame — the
-      // 2026-08-18 hero defect (a 550px column left in a 32px-padded
-      // section) hid here, because summing siblings skipped single-column
-      // frames entirely. Only the sibling-sum case needs two columns.
-      const sum = f.cols.reduce((a, b) => a + b, 0);
-      if (sum > f.frame + 1) hits.push({ ...f, sum, at });
-    };
-
-    /** Horizontal insets a content td takes out of its carrier. */
-    const inset = (style) => {
-      let pad = 0;
-      const p = /(?:^|;)\s*padding:\s*([^;]+)/.exec(style);
-      if (p) {
-        const v = p[1].trim().split(/\s+/).map((x) => parseFloat(x) || 0);
-        pad += v.length === 1 ? 2 * v[0] : v.length <= 3 ? 2 * v[1] : v[1] + v[3];
-      }
-      for (const side of ['left', 'right']) {
-        const s = new RegExp(`padding-${side}:\\s*(\\d+)`).exec(style);
-        if (s) pad += Number(s[1]);
-        const b = new RegExp(`border-${side}:\\s*(\\d+)`).exec(style);
-        if (b) pad += Number(b[1]);
-      }
-      const b = /(?:^|;)\s*border:\s*(\d+)/.exec(style);
-      if (b) pad += 2 * Number(b[1]);
-      return pad;
-    };
-
-    for (const e of events) {
-      if (e[5] !== undefined) {
-        // A section's own content td is the innermost content box from here
-        // on, so it always resets `cell` — outer frames stay open across a
-        // whole block, so gating this on frame depth would silently skip
-        // every plain section nested inside a wrapper.
-        cell = carrier - inset(e[5]);
-        continue;
-      }
-      if (e[4]) {
-        carrier = Number(e[4]); // most recent constrained wrapper, not the max
-        continue;
-      }
-      if (e[2]) {
-        const raw = e[3].replace('-', '.');
-        const px = e[2] === 'px' ? Number(raw) : (cell * Number(raw)) / 100;
-        if (frames.length) frames[frames.length - 1].cols.push(px);
-        continue;
-      }
-      for (const t of (e[1] || '').matchAll(/<table[^>]*>|<\/table>|<td[^>]*style="([^"]*)"/g)) {
-        if (t[0].startsWith('</table')) {
-          closeFrame(e.index);
-          continue;
-        }
-        if (t[0].startsWith('<table')) {
-          frames.push({ frame: cell, cols: [], savedCell: cell });
-          continue;
-        }
-        const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
-        if (w) cell = Number(w[1]);
-      }
+    for (const hit of imgHits) {
+      const marker = html.lastIndexOf('<!-- START: ', hit.at);
+      const name = marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
+      const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
+      const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
+      warn(
+        `src/${base}.mjml${at} "${name}" — a ${hit.img}px image in a ${Math.round(hit.box)}px content box (${Math.round(hit.img - hit.box)}px over); it cannot shrink with the frame, so it overflows its column`,
+      );
     }
-    while (frames.length) closeFrame(html.length);
 
     for (const hit of hits) {
       const marker = html.lastIndexOf('<!-- START: ', hit.at);
@@ -280,6 +350,115 @@ const OPT_OUT_FLAGS = [
   'data-no-background-color',
   'data-no-direction-toggle',
 ];
+
+// ---------------------------------------------------------------------------
+// 3b. Padding-growth census: which frames cannot take the whole scale.
+//
+//    A section's gutter is editable in EN, but the widths MJML DERIVED from
+//    it are frozen at compile time — a fixed-px column, an image sized to
+//    fill its column, a proportional MSO ghost. Growing the gutter past the
+//    point where that geometry stops fitting wraps the columns.
+//
+//    The importer caps those option lists at import (src/core/paddingCap.ts),
+//    so this is not a warning — it is the COUNT, produced by a command
+//    instead of written down in prose where it would rot. Run
+//    `npm run check-catalog -- --padding-census` for the per-frame list
+//    before deciding a block should be re-authored to reflow instead.
+// ---------------------------------------------------------------------------
+
+/**
+ * The importer's ghost-width neutralization (src/core/ghostWidths.ts), so the
+ * census measures the markup EN actually edits. A ghost cell standing for a
+ * lone 100% column carries nothing Word cannot recompute, so it becomes
+ * `width:100%` at import and stops freezing the gutter. Guard 3 above keeps
+ * reading the RAW dist on purpose: `_live.html` is also pasted into sends
+ * verbatim, where no importer has run.
+ */
+function neutralizeGhosts(html) {
+  let out = '';
+  let last = 0;
+  for (const m of html.matchAll(/<!--\[if mso \| IE\]>([\s\S]*?)<!\[endif\]-->/g)) {
+    const td = /<td\b[^>]*\sstyle="([^"]*?)"/.exec(m[1]);
+    if (!td || !/width:\s*\d+(?:\.\d+)?px/.test(td[1])) continue;
+    const next = /^\s*<div class="mj-column-(px|per)-([\d-]+) /.exec(html.slice(m.index + m[0].length));
+    if (!next || next[1] !== 'per' || next[2] !== '100') continue;
+    const styleStart = m.index + m[0].indexOf(td[1], td.index);
+    const w = /width:\s*\d+(?:\.\d+)?px/.exec(td[1]);
+    out += html.slice(last, styleStart + w.index) + 'width:100%';
+    last = styleStart + w.index + w[0].length;
+  }
+  return out + html.slice(last);
+}
+
+guard('padding growth census', () => {
+  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
+  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  if (!pages.length) return;
+  const detail = process.argv.includes('--padding-census');
+
+  let capped = 0;
+  let total = 0;
+  const rows = [];
+
+  for (const page of pages) {
+    const html = neutralizeGhosts(read(`dist/${page}`) || '');
+    const base = page.replace(/_live\.html$/, '');
+    if (read(`src/${base}.mjml`) === null) continue;
+
+    // The scale the template itself declares — the same values the importer
+    // turns into options. No declaration means no editable padding at all.
+    const cfg = /<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(read(`src/${base}.mjml`) || '');
+    let scale = [];
+    try {
+      const parsed = JSON.parse(cfg?.[1] ?? '{}');
+      scale = [...new Set(Object.values(parsed.spacingScale ?? {}).concat(
+        Object.values(parsed.widthPresets ?? {}),
+      ))].filter((n) => typeof n === 'number').sort((a, b) => a - b);
+    } catch {
+      scale = [];
+    }
+    if (!scale.length) continue;
+
+    const baseline = scanGeometry(html);
+    const over = baseline.hits.length + baseline.imgHits.length;
+
+    for (const m of html.matchAll(/<td[^>]*style="([^"]*direction:\s*(?:ltr|rtl)[^"]*)"/g)) {
+      const style = m[1];
+      const pad = /(?:^|;)\s*padding:\s*([^;]+)/.exec(style);
+      if (!pad) continue;
+      total++;
+      const at = m.index + m[0].indexOf(style);
+      const head = html.slice(0, at);
+      const tail = html.slice(at + style.length);
+      const v = pad[1].trim().split(/\s+/);
+      const top = v[0] ?? '0';
+      const bottom = v.length >= 3 ? v[2] : top;
+      let max = null;
+      for (const px of scale) {
+        const swapped = style.replace(
+          /((?:^|;)\s*padding:\s*)([^;]+)/,
+          `$1${top} ${px}px ${bottom} ${px}px`,
+        );
+        const r = scanGeometry(head + swapped + tail);
+        if (r.hits.length + r.imgHits.length > over) continue;
+        if (max === null || px > max) max = px;
+      }
+      if (max !== null && max < scale[scale.length - 1]) {
+        capped++;
+        const marker = html.lastIndexOf('<!-- START: ', m.index);
+        const name =
+          marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
+        rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)`);
+      }
+    }
+  }
+
+  console.log(
+    `  check-catalog: padding growth — ${capped} of ${total} frames cannot take the full declared scale` +
+      (detail ? '' : ' (--padding-census to list them)'),
+  );
+  if (detail) for (const r of rows.sort()) console.log(`    ${r}`);
+});
 
 guard('inert twin flag check', () => {
   /** Attributes as a comparable map, dropping what the merge ignores:

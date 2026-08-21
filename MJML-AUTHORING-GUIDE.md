@@ -1301,7 +1301,22 @@ can prop each other up, and the report says so when they do.
   this: it was summing SIBLING widths and skipping single-column frames
   outright, so a lone over-wide column was structurally invisible to it.
   Opened 2026-08-18 and self-tested both ways — silent on the corrected
-  catalogs, and it names the block when the 550px column is put back.
+  catalogs, and it names the block when the 550px column is put back. As of
+  2026-08-21 it also sees `direction: rtl` sections, which it had been
+  skipping entirely — its content-td pattern matched only `ltr`, so both
+  reversed Story Cards were structurally invisible, and the Column Order
+  control can flip an authored `ltr` section to `rtl` at edit time — and it
+  measures fixed-width IMAGES against their column, not just columns
+  against their frame.
+
+  **The same arithmetic now runs at import, per offered value.** An
+  editor cannot choose a gutter this block's frozen children cannot take,
+  because that option is not in the Select. The practical consequence for
+  authoring: a fixed-px child does not merely risk a later defect, it
+  SHORTENS the editor's option list. Authoring children that fill is what
+  buys a block the whole scale. Run `npm run check-catalog --
+  --padding-census` to see which frames are currently bounded and by how
+  much.
 - **Outlook-only values are invisible everywhere else.** A padding that
   exists only inside an MSO conditional or an `mso-*` property would edit
   Outlook alone; it should not become a field.
@@ -1313,7 +1328,12 @@ can prop each other up, and the report says so when they do.
   32px section padding renders 464px wide and overflows a 375px phone into
   horizontal scroll. Element width and block width are independent
   Replacements in EN, so an editor can combine two legal values into an
-  overflow; there is no build-time guard for choices made in EN.
+  overflow. Since 2026-08-21 the BLOCK-width half of that pair is bounded
+  at import: a frame's Padding Left/Right Select no longer offers a value
+  its own frozen geometry cannot survive (conventions "Unsafe growth"), and
+  where only the authored value survives the field is not created at all.
+  Element widths are still free, so the combination is still worth
+  checking.
 - **Column-order swaps need text shielding.** Reversing a section with
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
@@ -1445,6 +1465,12 @@ aloud). The Alt Text field survives either way (§5).
    cheapest way to run this — 54 of the blocks here sit at exactly 32/32,
    so any block off that number is either deliberate or a bug, and the
    outliers name themselves (measured 2026-08-18: five did).
+6d-i. Then check what the change did to the block's OPTION LIST, not just
+   to its rendering: `npm run check-catalog -- --padding-census` reports
+   every frame that can no longer take the whole declared scale, and by
+   how much. A fixed-px child costs the editor real range — the block
+   still renders correctly today and quietly offers fewer choices
+   tomorrow. Silence there means every frame reaches Quadruple.
 6e. Confirm no fixed-px column inside an `mj-group` relies on its px width
    surviving on mobile — `mj-group` never stacks and converts every child
    column to a PERCENTAGE, so a 56px icon column becomes ~10% and shrinks
