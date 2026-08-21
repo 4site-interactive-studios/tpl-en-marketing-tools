@@ -2532,6 +2532,31 @@ button and the heading can each be hidden (user decision 2026-08-20).
   fragments and mirrors box-level alignment itself, so this is a taste
   judgement, not a workaround — the automatic suppression it used to
   accompany is gone (see the content-swap control above).
+- **`data-alt-arrangement="<Option Label>"`** (on an `mj-section`): folds the
+  section into the PRECEDING sibling section's arrangement Select as an extra
+  option instead of rendering it, so one control offers Left / Right / the
+  alternate. It exists because a Display toggle cannot collapse a row — its
+  splice range is the member's `<tr>` (`memberSpan`), which leaves the column
+  div, its MSO ghost `<td>` and the sibling's inline percent untouched, so
+  hiding an image yields a hole rather than a full-width partner. The alternate
+  is AUTHORED rather than generated: the collapsed column needs
+  `mj-column-per-100` AND its head rules, and column widths are deliberately
+  never generated. Pairing is by adjacency and by VALUE equality on every
+  element plus the frame — which makes it self-policing, since a later
+  divergent edit breaks the match, warns, and drops the option instead of
+  shipping two copies of drifted copy. The matched fields are folded like a
+  light/dark twin's, so ONE field tags its copy in every arrangement and the
+  copies cannot drift; the alternate's regions are unioned only at the
+  occurrence search, never into `regionMap` (`memberSpan` takes min/max across
+  an instance's regions, which across two sections would swallow everything
+  between them). A primary whose columns sit directly in the section rather
+  than in an `mj-group` is rejected — there is no single contiguous region to
+  substitute. An element the alternate drops loses its Display toggle, which
+  would only leave an empty column behind. **`data-alt-arrangement` is
+  STRUCTURAL**, so unlike every other importer flag it is NOT stripped by
+  TPL's `normalize()`: a block carrying it renders one section where a block
+  without it renders two, and stripping it would let a flagged block subsume
+  its unflagged twin. `data-arrangement-label` IS annotation and is stripped.
 - **`data-no-alignment-toggle`** (valueless, on the `.cta-group` div inside
   hand-authored pill markup): creates no Button Row Alignment control. A row
   whose pills carry fixed widths summing to the content width cannot be

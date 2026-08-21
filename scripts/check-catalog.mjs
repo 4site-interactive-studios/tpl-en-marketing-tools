@@ -860,14 +860,116 @@ guard('Column Width opt-out on eligible columns', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// §8b Source-side CSS budgets (2026-08-21).
+//
+//    The per-page guard below prices the COMPILED head, which is the number
+//    Gmail actually drops — but it names the page, not the file that grew.
+//    Until now nothing measured src/styles.css at all, so growth was caught
+//    late and attributed to whichever page happened to be largest. That was
+//    the open "Gmail CSS-cliff canary" item: the old full catalog used to
+//    ride ~100 bytes inside the cliff and trip on any styles.css growth, and
+//    deleting it removed the alarm without replacing it.
+//
+//    Both budgets below are DERIVED, not invented, and the derivation is the
+//    point — if the page target moves, recompute rather than nudge.
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// §7b Alternate arrangements must be pairable (2026-08-21).
+//
+//    data-alt-arrangement folds a sibling section into its predecessor's
+//    arrangement Select as a third option instead of rendering it. If the
+//    pairing fails at import the section renders on its own — the block ships
+//    the same content twice — and the only signal is an infoNote nobody reads
+//    at build time. These are the preconditions the importer checks, checked
+//    here in the repo where the author is editing.
+// ---------------------------------------------------------------------------
+
+guard('alternate arrangement check', () => {
+  for (const name of sources) {
+    const src = read(`src/${name}`) ?? '';
+    for (const m of src.matchAll(/<mj-section\b[^>]*\bdata-alt-arrangement\s*=\s*"([^"]*)"[^>]*>/g)) {
+      const at = `src/${name}:${lineAt(src, m.index)}`;
+      if (!m[1].trim()) {
+        warn(`${at} data-alt-arrangement needs a non-empty label — it becomes the option's name`);
+      }
+      if (/data-(fully|import)-exclude/.test(m[0])) {
+        warn(`${at} an alternate arrangement cannot also be excluded — exclusion runs first and would strand the pairing`);
+      }
+      // Its partner is the immediately preceding sibling section.
+      const before = src.slice(0, m.index);
+      const prev = before.lastIndexOf('<mj-section');
+      if (prev < 0) {
+        warn(`${at} data-alt-arrangement="${m[1]}" has no preceding mj-section to pair with`);
+        continue;
+      }
+      // Nothing but whitespace and comments may sit between them, or they are
+      // not siblings in the sense the importer's adjacency rule means.
+      const between = src.slice(src.indexOf('</mj-section>', prev) + '</mj-section>'.length, m.index);
+      if (between.replace(/<!--[\s\S]*?-->/g, '').trim()) {
+        warn(`${at} data-alt-arrangement="${m[1]}" is not immediately after its partner — markup sits between them`);
+      }
+    }
+  }
+});
+
+guard('source CSS budgets', () => {
+  const EN_CSS_REPRINT_FACTOR = 1.3; // same measured factor as §8
+
+  const compact = (css) => {
+    const tight = css
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/\s*([{};:,])\s*/g, '$1')
+      .replace(/;}/g, '}');
+    return tight.length + 3 * (tight.match(/}/g) || []).length;
+  };
+
+  // styles.css is ~60% of the delivered head. The rest of the head (MJML's
+  // resets, the column ladder, the builder band) costs ~5,283 delivered, so
+  // against the 14,000 page target styles.css may reach ~8,717 before the
+  // page itself trips. 8,700 is that number, rounded down.
+  const STYLES_CSS_BUDGET = 8700;
+  const css = read('src/styles.css');
+  if (css !== null) {
+    const delivered = Math.round(EN_CSS_REPRINT_FACTOR * compact(css));
+    if (delivered > STYLES_CSS_BUDGET) {
+      warn(
+        `src/styles.css is ~${delivered} delivered bytes (${compact(css)} compact × ${EN_CSS_REPRINT_FACTOR}) — past its ${STYLES_CSS_BUDGET}-byte share of the 14,000 page target. It is the largest single contributor to the head, so trim it here rather than hunting the page total`,
+      );
+    }
+  }
+
+  // Every distinct mj-column width="Npx" mints a head class, and MJML emits
+  // each TWICE — once under @media (min-width:600px) and once as a
+  // .moz-text-html twin — for ~174 delivered bytes a width. With the page
+  // target ~610 bytes away that is about three widths of headroom, so the
+  // ceiling sits one above today's count to give an early signal rather than
+  // a post-mortem. Reuse an existing width before minting a new one.
+  const MAX_COLUMN_WIDTHS = 20;
+  const live = read('dist/main_live.html');
+  if (live !== null) {
+    const widths = [...new Set([...live.matchAll(/\.mj-column-px-(\d+)\s*\{/g)].map((m) => m[1]))];
+    if (widths.length > MAX_COLUMN_WIDTHS) {
+      warn(
+        `dist/main_live.html carries ${widths.length} distinct fixed column widths (${widths.sort((a, b) => a - b).join(', ')}) — past the ${MAX_COLUMN_WIDTHS} ceiling, ~174 delivered bytes each. Reuse an existing width instead of minting one`,
+      );
+    }
+  }
+});
+
 guard('Gmail CSS budget + head coupling check', () => {
   const EN_CSS_REPRINT_FACTOR = 1.3; // measured; mirrors headStyles.ts
   // Reserves space for CSS that is hoisted at send and therefore invisible to
   // the measurement below. It was 700 (canary + builder chrome) until
   // 2026-08-20, when the builder-band sheet moved INTO the template head to
   // survive an email built without the Template Styles block. That sheet is
-  // now measured directly — 454 delivered bytes — so reserving it again would
-  // double-count it. What remains is the diagnostic canary.
+  // measured directly now, so reserving it again would double-count it — the
+  // comment used to price it at 454 delivered bytes, which was wrong (it is
+  // ~902), though the double-count argument holds at any size. The diagnostic
+  // canary this still reserves for was archived on 2026-08-21, so the 250 is
+  // now pure conservatism; keep it until something measurable replaces it.
   const HOIST_ALLOWANCE = 250;
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   // probe_* pages are deliberate experiments — they carry markup a catalog
@@ -897,8 +999,10 @@ guard('Gmail CSS budget + head coupling check', () => {
     const ruleLines = (tight.match(/}/g) || []).length;
     const compactBytes = tight.length + 3 * ruleLines;
     const estimated = Math.round(EN_CSS_REPRINT_FACTOR * compactBytes);
-    const isShippingMaster = !page.startsWith('mjml_extra-blocks');
-    if (isShippingMaster && estimated > 14000) {
+    // Every page is a shipping master now. This used to exempt
+    // mjml_extra-blocks, which was deleted on 2026-08-21 — the test could
+    // never be false again, so it went with it.
+    if (estimated > 14000) {
       warn(
         `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
       );

@@ -57,9 +57,15 @@ function normalize(body) {
   // above a section is annotation for the same reason — and worse, a comment
   // NAMING a flag would otherwise read as the flag itself downstream.
   let s = stripAnnotationComments(body).replace(
-    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
+    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|arrangement-label(?:="[^"]*")?|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
     '',
   );
+  // data-alt-arrangement is deliberately ABSENT from that list. Every other
+  // flag there is annotation — it changes fields, never what renders. This one
+  // is STRUCTURAL: a section carrying it is folded into its neighbour's Select
+  // instead of rendering, so a block with it renders one section where a block
+  // without it renders two. Stripping it would let a flagged block subsume its
+  // unflagged twin. data-arrangement-label IS pure annotation and is stripped.
   // data-folder routes a block to an EN folder — importer annotation too
   s = s.replace(/\s*data-folder="\d+"/g, '');
   // inset-gutter is the responsive companion of a padding value (collapses

@@ -8,328 +8,328 @@
     "hash": "ba4d81e60a1e"
   },
   "block:CTA Button": {
-    "version": 6,
-    "hash": "929956795c01"
+    "version": 7,
+    "hash": "a007c5580dca"
   },
   "block:CTA Button (centered)": {
-    "version": 5,
-    "hash": "36da04981156"
+    "version": 6,
+    "hash": "31a5ce2ba7ad"
   },
   "block:CTA Button (centered, fixed width)": {
-    "version": 5,
-    "hash": "1adf56513f27"
+    "version": 6,
+    "hash": "dd7a52a72e13"
   },
   "block:CTA Button (centered, outline)": {
-    "version": 4,
-    "hash": "b2c59da3452e"
+    "version": 5,
+    "hash": "16b97a388148"
   },
   "block:CTA Button (centered, text only)": {
-    "version": 4,
-    "hash": "14927ca13998"
+    "version": 5,
+    "hash": "9865b87cba1c"
   },
   "block:CTA Button (right)": {
-    "version": 5,
-    "hash": "346e43addb60"
+    "version": 6,
+    "hash": "159fa01074a2"
   },
   "block:CTA Buttons 2x1": {
-    "version": 6,
-    "hash": "45147c636c56"
+    "version": 7,
+    "hash": "ed1f01b25314"
   },
   "block:CTA Buttons 2x1 (centered)": {
-    "version": 7,
-    "hash": "72c7e32748dc"
+    "version": 8,
+    "hash": "1017ee92a53a"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 6,
-    "hash": "0e336a7df792"
+    "version": 7,
+    "hash": "739b8e86a9b4"
   },
   "block:CTA Buttons 2x1 (right)": {
-    "version": 7,
-    "hash": "f1851c88799c"
+    "version": 8,
+    "hash": "d345141e16a4"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 6,
-    "hash": "6793546f5fe9"
+    "version": 7,
+    "hash": "45784d38b354"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 5,
-    "hash": "0b535f8d33ca"
+    "version": 6,
+    "hash": "f19422fc0bcb"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 5,
-    "hash": "0228a70d78d0"
+    "version": 6,
+    "hash": "288ff813c83d"
   },
   "block:CTA Hero (centered w/ background image)": {
-    "version": 9,
-    "hash": "56844a451db7"
+    "version": 10,
+    "hash": "46dcec4335ba"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
-    "version": 6,
-    "hash": "f188665976bf"
+    "version": 7,
+    "hash": "d782ab903b89"
   },
   "block:CTA Hero (green button)": {
-    "version": 7,
-    "hash": "11e28c5d4e5c"
+    "version": 8,
+    "hash": "0f91f1b3adf8"
   },
   "block:CTA Hero (logo and background image)": {
-    "version": 7,
-    "hash": "4af779d436d4"
+    "version": 8,
+    "hash": "0a1fea966414"
   },
   "block:CTA Hero (w/ badge image)": {
-    "version": 6,
-    "hash": "842641a7fcbd"
+    "version": 7,
+    "hash": "8858c7d06f80"
   },
   "block:CTA Hero (w/ large background image)": {
-    "version": 8,
-    "hash": "ddce4c0593ff"
+    "version": 9,
+    "hash": "8687834e3164"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 12,
-    "hash": "be12ec291be5"
+    "version": 13,
+    "hash": "96b1307638ca"
   },
   "block:CTA Text Block": {
-    "version": 5,
-    "hash": "16ed22a37360"
+    "version": 6,
+    "hash": "7c324c0bae37"
   },
   "block:Category — Buttons": {
-    "version": 4,
-    "hash": "ccdbadc7c908"
+    "version": 5,
+    "hash": "c1c63b41d9e9"
   },
   "block:Category — Engagement & Interactive": {
-    "version": 5,
-    "hash": "2d2394b601a9"
+    "version": 6,
+    "hash": "12cdea7dbdcf"
   },
   "block:Category — Footers": {
-    "version": 5,
-    "hash": "6376b598e925"
+    "version": 6,
+    "hash": "3f31cf2a1a1c"
   },
   "block:Category — Headers and Heroes": {
-    "version": 5,
-    "hash": "b3bb9bd8cd74"
+    "version": 6,
+    "hash": "11acbbc1d978"
   },
   "block:Category — Image & Text Layouts": {
-    "version": 5,
-    "hash": "6ec02b805534"
+    "version": 6,
+    "hash": "1c52739c4f04"
   },
   "block:Category — Images & Media": {
-    "version": 5,
-    "hash": "0838c0a4d3fe"
+    "version": 6,
+    "hash": "cc2b9eb9e4f1"
   },
   "block:Category — Signatures": {
-    "version": 4,
-    "hash": "b6050c26710c"
+    "version": 5,
+    "hash": "0f43a501b507"
   },
   "block:Category — Text Blocks": {
-    "version": 5,
-    "hash": "8e31e841e80f"
+    "version": 6,
+    "hash": "8237041b38da"
   },
   "block:Category — Utilities": {
-    "version": 4,
-    "hash": "3871668af616"
+    "version": 5,
+    "hash": "8ca9238e811e"
   },
   "block:Countdown Card": {
-    "version": 12,
-    "hash": "5fea501d0c19"
+    "version": 13,
+    "hash": "20fccf55b939"
   },
   "block:Deadline Panel": {
-    "version": 6,
-    "hash": "afb6d79a22e2"
+    "version": 7,
+    "hash": "4785af5b283e"
   },
   "block:Divider (Single-color)": {
-    "version": 4,
-    "hash": "ae24ed187d94"
+    "version": 5,
+    "hash": "b63498123a62"
   },
   "block:Divider (Tri-color)": {
-    "version": 2,
-    "hash": "641d5b2d31bf"
+    "version": 3,
+    "hash": "e1bb5f30a2de"
   },
   "block:Event Invite Block": {
-    "version": 5,
-    "hash": "c79ced7c57de"
+    "version": 6,
+    "hash": "28bbda72a2b5"
   },
   "block:Feedback Poll Block": {
-    "version": 8,
-    "hash": "089d14202119"
+    "version": 9,
+    "hash": "70a7f619fb7b"
   },
   "block:Footer (w/ image)": {
-    "version": 5,
-    "hash": "b7c11bbfe03b"
+    "version": 6,
+    "hash": "a713153cce7a"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 7,
-    "hash": "91acb7456347"
+    "version": 8,
+    "hash": "f5a31831d310"
   },
   "block:Header Row": {
-    "version": 2,
-    "hash": "2c068e1f7d2a"
+    "version": 3,
+    "hash": "c34a4e4c5ed5"
   },
   "block:Highlighted Text": {
-    "version": 4,
-    "hash": "f718a8e92a99"
+    "version": 5,
+    "hash": "e7818bc8eb32"
   },
   "block:Icon Row": {
-    "version": 6,
-    "hash": "b68cd8c37698"
+    "version": 7,
+    "hash": "0848b7b4e8e2"
   },
   "block:Image": {
-    "version": 5,
-    "hash": "d1acf484d428"
+    "version": 6,
+    "hash": "fc1645b0c9b3"
   },
   "block:Image 1x1": {
-    "version": 7,
-    "hash": "d7d7ba89455e"
+    "version": 8,
+    "hash": "2ac8324e84cc"
   },
   "block:Images 2x1": {
-    "version": 8,
-    "hash": "7cd89f93da0b"
+    "version": 9,
+    "hash": "51558512b43f"
   },
   "block:Images 3x1": {
-    "version": 9,
-    "hash": "ff9bbf9ad555"
+    "version": 10,
+    "hash": "cbd30aa1dfda"
   },
   "block:Join Links Block": {
-    "version": 4,
-    "hash": "11680f8d0d2f"
+    "version": 5,
+    "hash": "df253e0ce47d"
   },
   "block:Linked Header Row": {
-    "version": 6,
-    "hash": "b090c42ab89a"
+    "version": 7,
+    "hash": "17585c9f6fd2"
   },
   "block:Linked List Block": {
-    "version": 4,
-    "hash": "9aed729e5849"
+    "version": 5,
+    "hash": "e603565d4619"
   },
   "block:Logo Hero (light green, w/ dark-mode swap)": {
-    "version": 3,
-    "hash": "f3dc741bb6d1"
+    "version": 4,
+    "hash": "d816c0df5e41"
   },
   "block:Logo Hero (w/ image, green)": {
-    "version": 7,
-    "hash": "f6bbd07ca789"
+    "version": 8,
+    "hash": "36ff4367c072"
   },
   "block:Logo Hero (white, w/ dark-mode swap)": {
-    "version": 3,
-    "hash": "0ec36ef407de"
+    "version": 4,
+    "hash": "f09b418fd341"
   },
   "block:Photo Card (green CTA)": {
-    "version": 6,
-    "hash": "b4c5f8b0f055"
+    "version": 7,
+    "hash": "4f3680dcd67f"
   },
   "block:Photo and Text Grid (2x2)": {
-    "version": 10,
-    "hash": "a92cf1bb55c0"
+    "version": 11,
+    "hash": "95272180ad92"
   },
   "block:Podcast Episode Block": {
-    "version": 7,
-    "hash": "452dfd9ab85c"
+    "version": 8,
+    "hash": "f45bea5d1500"
   },
   "block:Podcast Streaming Block": {
-    "version": 4,
-    "hash": "88defa83a64a"
+    "version": 5,
+    "hash": "a6ad72168c7b"
   },
   "block:Progress Meter Block": {
-    "version": 9,
-    "hash": "99008f5248bc"
+    "version": 10,
+    "hash": "ef6a12451334"
   },
   "block:Question Block": {
-    "version": 7,
-    "hash": "8618aab68948"
+    "version": 8,
+    "hash": "15f75fecc6d3"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 9,
-    "hash": "16240e9b725b"
+    "version": 10,
+    "hash": "1676d997933e"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 14,
-    "hash": "7666a3d27976"
+    "version": 15,
+    "hash": "a76e1309b2e0"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 4,
-    "hash": "304a724a34cb"
+    "version": 5,
+    "hash": "dc2495b7cf5a"
   },
   "block:Quiz Block (multiple choice)": {
-    "version": 4,
-    "hash": "d4e38799a337"
+    "version": 5,
+    "hash": "93f9a275bc53"
   },
   "block:Quote Block": {
-    "version": 8,
-    "hash": "7e81399c2b13"
+    "version": 9,
+    "hash": "ed5ab0f41870"
   },
   "block:Signature Card (no photo)": {
-    "version": 8,
-    "hash": "8cb5093572d0"
+    "version": 9,
+    "hash": "bb2a167eabc6"
   },
   "block:Signature Card (photo)": {
-    "version": 7,
-    "hash": "b0b8b3d636d3"
+    "version": 8,
+    "hash": "ee313681b0bf"
   },
   "block:Spacer": {
-    "version": 3,
-    "hash": "b6ee84f540d5"
+    "version": 4,
+    "hash": "11b98fa8e8d5"
   },
   "block:Stat Row (off-white)": {
-    "version": 8,
-    "hash": "f506261b4848"
+    "version": 9,
+    "hash": "5e48e9eb1999"
   },
   "block:Steps Block": {
-    "version": 10,
-    "hash": "5b4c569e1281"
+    "version": 11,
+    "hash": "a848854f8fd4"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 8,
-    "hash": "2cfbdf2c707c"
+    "version": 9,
+    "hash": "4ea0207c1c21"
   },
   "block:Story Card (image left, no button)": {
-    "version": 7,
-    "hash": "6657c6628503"
+    "version": 8,
+    "hash": "22a49a98e19a"
   },
   "block:Story Card (image on the side)": {
-    "version": 3,
-    "hash": "8cf0139832cc"
+    "version": 4,
+    "hash": "b8105aeda9a6"
   },
   "block:Story Card (image right, middle-aligned)": {
-    "version": 8,
-    "hash": "920702207e0d"
+    "version": 9,
+    "hash": "159dc2cad459"
   },
   "block:Story Card 2x1": {
-    "version": 9,
-    "hash": "113bb376f40c"
+    "version": 10,
+    "hash": "de4f8b01b798"
   },
   "block:Subscription Panel": {
-    "version": 4,
-    "hash": "ddea333ce99d"
+    "version": 5,
+    "hash": "c72fe5471a93"
   },
   "block:Text w/ Background Image": {
-    "version": 3,
-    "hash": "a56b43fa22e7"
+    "version": 4,
+    "hash": "3e4744be1527"
   },
   "block:Two-Line Banner (light green)": {
-    "version": 5,
-    "hash": "68c88b872c97"
+    "version": 6,
+    "hash": "0e8a6d129ba3"
   },
   "block:Video Block (full-bleed)": {
-    "version": 8,
-    "hash": "c358906af1a9"
+    "version": 9,
+    "hash": "b94c8f550fc4"
   },
   "block:Video Block (inset)": {
-    "version": 10,
-    "hash": "4504868faace"
+    "version": 11,
+    "hash": "7a2217145e23"
   },
   "block:WYSIWYG Text": {
-    "version": 3,
-    "hash": "3fa1e950bcb4"
+    "version": 4,
+    "hash": "48a6255b5247"
   },
   "block:WYSIWYG Text (inset)": {
-    "version": 5,
-    "hash": "6b076db51f0d"
+    "version": 6,
+    "hash": "41fd9c95b26b"
   },
   "email-template": {
     "version": 39,
     "hash": "9ed15c252ef9"
   },
   "head-css": {
-    "version": 22,
-    "hash": "2bc9a6f43704"
+    "version": 23,
+    "hash": "06ed637c95b7"
   },
   "partial:debug-toolbar": {
     "version": 1,

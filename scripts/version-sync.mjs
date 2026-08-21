@@ -51,14 +51,15 @@ const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'ut
 const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 12);
 
 /**
- * The block-region separator is FROZEN at the pre-rename filename on purpose.
- * It existed only to keep a block's regions distinguishable while the same
- * name could live in two catalogs. With one catalog it carries no
- * information — but changing these bytes would re-hash all 62 blocks and bump
- * every EN block name for a rename that altered no block's content, and the
- * version rides in the EN block name. Ledger continuity beats tidiness.
+ * Separates a block's regions inside its hash. It was FROZEN at the
+ * pre-rename filename through 2026-08-21 to spare ~62 blocks a version bump
+ * for a rename that changed no content — the version rides in the EN block
+ * name, so a mass bump means re-uploading everything. Unfrozen once the user
+ * confirmed the imports are still being finalised and a one-time bump costs
+ * nothing. With a single catalog it carries no information; it survives only
+ * so the hash keeps a stable shape if a second catalog ever returns.
  */
-const BLOCK_REGION_SEP = '@@tpl_unified-blocks.mjml@@';
+const BLOCK_REGION_SEP = '@@block@@';
 
 /**
  * START/END markers NEST (a "Main Content" region wraps a whole catalog),

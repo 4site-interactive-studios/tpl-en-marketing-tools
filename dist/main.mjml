@@ -907,7 +907,7 @@
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1164,22 +1164,26 @@
          Deliberately visible alongside its anchor; never re-flag into the
          excluded family. It CANNOT collapse into one block with a padding
          Select: the centre column's fixed width is derived from the wrapper
-         inset (600 - 2*48 - 50 = 454 vs 600 - 50 = 550) and MJML bakes that
+         inset (600 - 2*32 - 50 = 486 vs 600 - 50 = 550) and MJML bakes that
          into the MSO conditional at compile time, so a padding change in EN
-         would leave the column at the old width. -->
+         would leave the column at the old width. The gutter moved 48 -> 32 on
+         2026-08-21 to line up with its twin, Countdown Card; the centre column
+         reuses Countdown's existing 484px class rather than minting 486px,
+         which costs 2px of invisible slack and saves ~174 delivered bytes of
+         head CSS against a budget with ~434 to spare. -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 48px 0">
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 0">
         <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="100px 0 100px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="454px">
+          <mj-column width="484px">
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="0 48px">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text align="right" mj-class="caption" padding="4px 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
@@ -1488,7 +1492,23 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Icon Row -->
+    <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, so a drifted edit fails loudly and the option
+         disappears rather than shipping stale text. -->
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+<!-- END: Icon Row -->
 
     <!-- START: Photo Card (green CTA) -->
     <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
@@ -1596,6 +1616,22 @@
           </mj-text>
         </mj-column>
       </mj-group>
+    </mj-section>
+    <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, so a drifted edit fails loudly and the option
+         disappears rather than shipping stale text. -->
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#006837" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h2 style="color:#CEE4C5;">People. Nature. Big Ideas</h2>
+        </mj-text>
+      </mj-column>
     </mj-section>
     <mj-section
       css-class="text-block block"
@@ -1869,7 +1905,7 @@
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
       <mj-group>
         <mj-column width="120px" vertical-align="top">
-          <mj-image data-display-toggle src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
@@ -1880,6 +1916,22 @@
           </mj-text>
         </mj-column>
       </mj-group>
+    </mj-section>
+    <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Arrow from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, so a drifted edit fails loudly and the option
+         disappears rather than shipping stale text. -->
+    <mj-section data-alt-arrangement="No Arrow" css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text padding="0">
+          <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+        </mj-text>
+      </mj-column>
     </mj-section>
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="0 32px 16px">
       <mj-column>
