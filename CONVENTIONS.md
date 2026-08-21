@@ -244,6 +244,13 @@ KEPT, because they are function rather than prose:
 - **Anything inside `<style>` or `<script>`**, where a legacy `<!--` is
   part of the sheet, not a note about it.
 
+The band sheet's own CSS comments are stripped too — a narrow pass over the
+`data-en-tools-band` `<style>` only. That sheet documents itself (which
+literal tracks the email width, which guard enforces it) and the note is for
+whoever edits the MJML, not for the delivered email. Every OTHER stylesheet
+keeps its comments exactly as authored: `styles.css` ships its "NO CHILD
+COMBINATORS" warning inside the Template Styles block on purpose.
+
 Blank-line runs in the head collapse to a single newline — both the gaps a
 strip leaves behind and the ones MJML's own compile leaves between
 `mj-head` children (the gap after the `lte mso 11` conditional). Safe only

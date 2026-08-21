@@ -584,16 +584,16 @@
     "hash": "af9ce892e350"
   },
   "catalog-shell": {
-    "version": 22,
-    "hash": "8f673e36bed3"
+    "version": 23,
+    "hash": "879596044adf"
   },
   "email-template": {
-    "version": 35,
-    "hash": "c35b45d31cb0"
+    "version": 36,
+    "hash": "b1ad0b029810"
   },
   "head-css": {
-    "version": 19,
-    "hash": "914101e51a27"
+    "version": 20,
+    "hash": "66821fba6847"
   },
   "partial:debug-toolbar": {
     "version": 1,

@@ -1108,17 +1108,6 @@ li {
            div[data-container]{max-width} in styles.css, or the block band
            stops centring over the column it labels. check-catalog's
            "Builder band width tracks the email width" guard enforces it. */
-    /* The band is absolutely positioned, so its `top` needs a positioned
-           ancestor or it resolves against the PAGE — measured 2026-08-20:
-           without this rule every block's band stacked at top:2rem of the
-           document, overprinting one another, instead of sitting over the
-           block it names. .en__block is EN's per-block content wrapper, so
-           positioning it scopes each band to its own block. Builder-gated,
-           like everything else here. */
-    :is(body):has(.en__emailbuilder__block) .en__block {
-      position: relative !important;
-    }
-
     :is(body):has(.en__emailbuilder__block) .marketing-tools-banner {
       display: flex !important;
       font-weight: 700 !important;
