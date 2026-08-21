@@ -1119,22 +1119,26 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   multi-band blocks (no glyph). It carries block-level frame settings
   (band 1's padding/width/background). Never "Block 1" at the top.
 - **Bands** (each mj-section, numbered in document order): band 1 lives
-  under the block-name header; **band N>1 heads a `Section N` group (no
+  under the block-name header; **band N>1 heads a `Row N` group (no
   glyph — it is a parent)**, carrying that band's frame settings, whose
-  merge tags read `section_2_padding_top` (…was `block_2_…`). (An
+  merge tags read `row_2_padding_top` (was `section_2_…` until 2026-08-21,
+  and `block_2_…` before that). The band word is **Row**, not Section: an
+  mj-section is MJML vocabulary, and what an EN content editor is actually
+  looking at is a row of the block (user decision 2026-08-21). The rename
+  moved 438 merge tags across 15 blocks. (An
   mj-section whose frame fields are all suppressed still anchors its
   content's grouping.) Twin frames with IDENTICAL authored values each
   claim their own copies: frame occurrence-matching partitions the
   document into per-frame territories (own element plus its preceding
   MSO ghost copies), fixed 2026-08-19 — before that the first section
   claimed every copy and its identical sibling minted no frame fields
-  at all (the Photo and Text Grid's field-less Section 3).
+  at all (the Photo and Text Grid's field-less Row 3).
 - **Content groups**: in a **single-band block they carry NO glyph** —
   `Heading`, `Text`, `Column 1 Button` sit directly under the block header
   (the glyph implied a hierarchy that wasn't there). In a **multi-band
-  block they nest under their band with the glyph**: `└─ Section 2 Text`.
+  block they nest under their band with the glyph**: `└─ Row 2 Text`.
   An AUTHORED group word stands alone even there (`└─ Episode Title` — the
-  author chose a globally meaningful name, no Section tag).
+  author chose a globally meaningful name, no Row tag).
 - **Column attribution is uniform**: whenever a role family spans 2+
   columns of its band, EVERY member of that family carries its column —
   `Column 1 Heading` / `Column 2 Heading` — whatever the per-column count
@@ -1142,7 +1146,7 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   "Text 3"/"Text 4"). Ordinals count within (band, column, role):
   `Column 1 Text 1` / `Column 1 Text 2`.
 - **Names mirror the group + property**: `column_2_heading_content`,
-  `section_2_text_content`, `quote_content`, `quote_mark_image_url`
+  `row_2_text_content`, `quote_content`, `quote_mark_image_url`
   — always derivable by reading the panel. Reserved-name collisions (the
   template-wide `text_color`) fall back to the un-deduped property words
   (`text_text_color`), never a phantom instance number (was `text_2_color`
@@ -2344,7 +2348,7 @@ stylesheet support at all.
 | MSO conditional comment | **DESTROYED — the whole conditional is removed** |
 
 **Worked example (2026-08-20, user-reported).** The Signature Card's
-"Section 2 Paragraph Copy" changed appearance on its first edit. The value's
+"Row 2 Paragraph Copy" changed appearance on its first edit. The value's
 `<p>` was NOT the problem — a paragraph is idempotent, per the table above.
 The damage was one `<em>` carrying `font-family: Georgia, serif`: an `em` is
 a mark, and `font-family` has no mark to become, so it vanished. Sweeping
@@ -2622,7 +2626,7 @@ button and the heading can each be hidden (user decision 2026-08-20).
 
   **Never write a scope flag straight off an audit report.** Measured
   2026-08-18: a sweep reported six controls inert at 375px that a browser
-  proves live at 375px — the Quiz Block (2x2 photos) Section 4 caption's
+  proves live at 375px — the Quiz Block (2x2 photos) Row 4 caption's
   Text Color (renders red when changed), its Alignment (left edge 45→32)
   and Inset Right (right edge 343→279), and the Images 3x1 Column 3
   caption's Alignment (170→0). A second run hours later cleared all six
@@ -2636,7 +2640,7 @@ button and the heading can each be hidden (user decision 2026-08-20).
   false-inert bug cannot invent liveness, so a stale flag found that way
   could just be removed — and its `data-mobile-only-spacing-below` was
   deleted. The next run immediately asked for the flag back, and direct
-  measurement sided with the flag: on Photo and Text Grid (2x2) Section 3
+  measurement sided with the flag: on Photo and Text Grid (2x2) Row 3
   Text 1, sweeping the field's own cell through every option (0 → 64px)
   grows its column 452 → 516px while its sibling holds at 522px, so the
   block height never moves. The control is genuinely desktop-inert and
