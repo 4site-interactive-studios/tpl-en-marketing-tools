@@ -71,6 +71,10 @@
     "version": 1,
     "hash": "9eed6e69d535"
   },
+  "block:CTA Hero (w/ Heading)": {
+    "version": 1,
+    "hash": "35a6f124f4a3"
+  },
   "block:CTA Hero (w/ Image Badge)": {
     "version": 1,
     "hash": "1e217daf1ed8"
@@ -203,10 +207,6 @@
     "version": 1,
     "hash": "d9f11d596221"
   },
-  "block:Photo Card": {
-    "version": 1,
-    "hash": "653059445f1f"
-  },
   "block:Photo and Text Grid Block (2x2)": {
     "version": 1,
     "hash": "cf937085e0ae"
@@ -320,12 +320,12 @@
     "hash": "41fd9c95b26b"
   },
   "email-template": {
-    "version": 43,
-    "hash": "da7cd3430f57"
+    "version": 44,
+    "hash": "5fd8c50c097b"
   },
   "head-css": {
-    "version": 24,
-    "hash": "d5ada76d2619"
+    "version": 25,
+    "hash": "e26f410e5660"
   },
   "partial:debug-toolbar": {
     "version": 1,

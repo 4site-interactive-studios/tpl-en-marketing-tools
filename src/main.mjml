@@ -391,6 +391,37 @@
     <!-- END: CTA Hero (w/ Image Badge) -->
 
 
+    <!-- START: CTA Hero (w/ Heading) -->
+    <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
+         removed (user decision). Its colour went white in the same edit: the
+         panel was what made Earth text legible, and photo-kayak.jpg is a DARK
+         ground everywhere else in this catalog — the CTA Hero over the same
+         photo uses the light-green logo for exactly that reason. -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+        <!-- data-no-direction-toggle: this row pins its outer content to the block edge (align is physical), so reversing the columns would drag it inward — ship the mirrored arrangement as its own block (measured 2026-08-10). -->
+        <mj-group data-no-direction-toggle>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg caption-panel advocacy-box" padding="0">
+              <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+            </mj-text>
+            <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: CTA Hero (w/ Heading) -->
+
     <!-- START: Category — Text Blocks -->
     <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
@@ -1425,36 +1456,6 @@
     </mj-section>
 <!-- END: Icon Row -->
 
-    <!-- START: Photo Card -->
-    <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
-         removed (user decision). Its colour went white in the same edit: the
-         panel was what made Earth text legible, and photo-kayak.jpg is a DARK
-         ground everywhere else in this catalog — the CTA Hero over the same
-         photo uses the light-green logo for exactly that reason. -->
-    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <mj-wrapper background-color="#362229" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
-        <!-- data-no-direction-toggle: this row pins its outer content to the block edge (align is physical), so reversing the columns would drag it inward — ship the mirrored arrangement as its own block (measured 2026-08-10). -->
-        <mj-group data-no-direction-toggle>
-          <mj-column width="32px">&nbsp;</mj-column>
-          <mj-column vertical-align="top" width="240px">
-            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" />
-            <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
-            <mj-raw><!--<![endif]--></mj-raw>
-          </mj-column>
-          <mj-column vertical-align="top" width="296px">
-            <mj-text align="center" css-class="wysiwyg caption-panel advocacy-box" padding="0">
-              <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
-              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
-            </mj-text>
-            <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
-          </mj-column>
-          <mj-column width="32px">&nbsp;</mj-column>
-        </mj-group>
-      </mj-section>
-    </mj-wrapper>
-    <!-- END: Photo Card -->
 
     <!-- START: Header Row w/ CTA -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
