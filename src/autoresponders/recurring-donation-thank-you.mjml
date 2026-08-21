@@ -57,10 +57,10 @@
       <meta name="supported-color-schemes" content="light dark" />
       <meta name="format-detection" content="telephone=no" />
     </mj-raw>
-    <mj-include path="./styles.css" type="css" />
+    <mj-include path="../styles.css" type="css" />
   </mj-head>
   <mj-body background-color="#ffffff" css-class="email-body">
-    <mj-include path="./partials/debug-toolbar.mjml" />
+    <mj-include path="../partials/debug-toolbar.mjml" />
     <!-- START: Main Content -->
 
     <!-- START: Logo Hero (no CTA) -->
@@ -176,7 +176,7 @@
     <!-- END: Body Text (inset) -->
 
     <!-- START: Footer (w/ image) -->
-    <mj-include path="./partials/tri-color-divider.mjml" />
+    <mj-include path="../partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />

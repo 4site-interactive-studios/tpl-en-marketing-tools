@@ -45,17 +45,16 @@ system, whose compiled output is imported into Engaging Networks (EN)
 Marketing Tools as blocks and a template.
 
 Repo: https://github.com/4site-interactive-studios/tpl-en-marketing-tools
-- src/tpl_unified-blocks.mjml is the master template and the PRIMARY
-  catalog. src/mjml_extra-blocks.mjml holds only blocks that exist in no
-  other catalog — 22 of them, plus the "Category — X" dividers whose
-  folders still have content. It was the full catalog (mjml_all-blocks.mjml)
-  until 2026-08-20, when 72 duplicates of unified blocks and 30 never-exported
-  colour/alignment demos were pruned out and it was renamed. A change to a
-  block they SHARE belongs in both, but after the prune they share none. The
-  repo's
-  CLAUDE.md records the exact delta.
-- src/tpl_unified-blocks.mjml (formerly main.mjml) is the master
-  template.
+- src/main.mjml is the master template and the ONLY catalog. Autoresponders
+  live in src/autoresponders/, live QA probes in src/probes/ (a directory
+  that exists only while a probe does), includes in src/partials/. Pages
+  compile FLAT into dist/ whatever subfolder they came from, so every
+  downstream consumer keys on the bare filename.
+- There is no second catalog. src/mjml_extra-blocks.mjml — the pruned
+  remains of the old full catalog — was DELETED on 2026-08-21 once the
+  blocks worth keeping had moved into the master, and the file was renamed
+  back to main.mjml at the same time. The repo's CLAUDE.md records the exact
+  delta and the two versions.json consequences.
 - src/styles.css is the shared stylesheet, compiled into the head.
 
 Two documents govern this work. Fetch and read BOTH in full before making
@@ -237,32 +236,36 @@ offsets from `shell.beforeBlocks`. On the TPL all-blocks template the two
 strips together remove **3,590 bytes** from the head of every delivered
 email.
 
-**MSO ghost widths are neutralized at IMPORT** (2026-08-21), by
-`neutralizeGhostWidths` (`src/core/ghostWidths.ts`), applied to the whole
-document in `createProject` before segmentation — and to the instrumented
-twin in lockstep, since `computeInstanceRegions` diffs the two and they must
-stay byte-comparable.
+**MSO ghost widths are left exactly as MJML emits them** — and the reason is
+worth keeping, because the opposite was shipped for a day.
 
 MJML derives the width of the Outlook ghost cell around a column group from
 the section's authored gutter (`600 − 2·32 = 536`) and freezes it at compile
-time. The importer rewrites the padding value in every carrier, `mso-padding-alt`
-copies included, but never a width DERIVED from it — so an editor who grows
-the gutter leaves Word laying out the old, too-wide table inside a narrower
-cell, and the mail renders past 600px in Outlook while every CSS client is
-fine. Where the ghost stands for a LONE 100% column that number carries
-nothing Word cannot recompute, so it becomes `width:100%` and the gutter is
-free to grow. Proportional ghosts (two 268px halves) and fixed-px columns
-keep their numbers — there the split IS the information — and those frames
-are capped instead ("Unsafe growth", below).
+time. The importer rewrites the padding value in every carrier,
+`mso-padding-alt` copies included, but never a width DERIVED from it — so a
+grown gutter leaves a 536px ghost inside a 472px cell. That looked like an
+Outlook defect, and on 2026-08-21 an import-time pass (neutralizeGhostWidths,
+since deleted — deliberately not cited as a live symbol) rewrote such a ghost
+to `width:100%` wherever it stood for a lone 100% column.
 
-On tpl_unified-blocks this rewrites **80 of 155** ghost cells and 35 of 66
-in mjml_extra-blocks, and it makes the document slightly SMALLER. Coupling
-the derived width to the padding option instead — one Select writing both
-numbers — was measured and rejected: EN replacements are plain value
-substitution with no arithmetic, so a single field can only carry both by
-widening its splice to swallow the span between them (median 186 bytes,
-about +93KB across tpl_unified-blocks alone), which does not fit under the
-299,760-byte contentHtml ceiling.
+**A probe refuted both halves of that** (EoA `VNLmGlXZ…`, archived at
+`archive/probes/probe_ghost-width.mjml` in the TPL repo; Outlook 2021 Win11
+and M365 Win11 agreed to the pixel):
+
+- **The Word engine CLAMPS a stale ghost to the cell it sits in.** A 536px
+  ghost in a 64px-padded cell rendered **472px**, not 536px. Growing a gutter
+  was never the defect it looked like.
+- **`width:100%` on a nested ghost table makes Word shrink-wrap it.** The
+  same 536px band rendered **244px** — just the width of its text. The
+  rewrite was a regression, and it was reverted the day it was measured.
+
+Two things follow. The `Unsafe growth` cap below stands, because it exists
+for a different failure — fixed-px columns and images that cannot reflow,
+which break in CSS clients, not in Word. And both geometry scanners
+(`src/core/paddingCap.ts`, TPL `check-catalog.mjs`) now **clamp** a ghost
+width to the enclosing cell rather than taking it at face value, which is
+what Word does: without that they report an overflow Outlook never has and
+would strip padding options from 57 frames for no reason.
 
 KEPT, because they are function rather than prose:
 
@@ -652,7 +655,7 @@ test — do a row's columns sum wider than the row? — because counting
 distinct column tops cannot tell a wrap from a taller neighbour, and moves
 on every vertical Spacing Below when the columns are stacked (10 false
 positives, 2026-08-21). An `overflow` row means `paddingCap.ts` let through
-a value it should have withheld. Current template (tpl_unified-blocks,
+a value it should have withheld. Current template (main.mjml,
 2026-08-21): **338/338 fields live, zero inert, zero overflow** after
 suppression and capping. Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
@@ -2043,7 +2046,7 @@ dormant-but-sanctioned `.mobile-only` both look dead and are not.
 ## Import pipeline decisions
 
 - The import form's MJML SOURCE prefills with the TPL master template —
-  `https://github.com/4site-interactive-studios/tpl-en-marketing-tools/blob/main/src/tpl_unified-blocks.mjml`
+  `https://github.com/4site-interactive-studios/tpl-en-marketing-tools/blob/main/src/main.mjml`
   (`DEFAULT_MJML_URL`, src/core/mjml.ts; 2026-08-10, user-decided) — since
   importing exactly that file is this tool's day-to-day use.
 - Compiled HTML is formatted with **js-beautify** before segmentation

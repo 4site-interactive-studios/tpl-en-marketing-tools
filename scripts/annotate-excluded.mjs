@@ -20,6 +20,7 @@
  *    every follow-on block must be flagged. Mismatches print as warnings.
  */
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { sourcePages, PARTIAL_DIRS } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -342,9 +343,20 @@ function annotate(text) {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'partials'), { recursive: true });
 
-for (const rel of ['', 'partials']) {
-  for (const f of readdirSync(join(SRC, rel))) {
-    if (!f.endsWith('.mjml')) continue;
+// Pages come from the shared enumerator; partials keep their own subtree in
+// .build/. Pages are written FLAT into .build/ whatever subfolder they came
+// from, because `mjml ./.build/*.mjml` compiles that one level and dist/ is
+// keyed on the bare filename everywhere downstream.
+const walk = [
+  ...sourcePages(root).map((pg) => ({ rel: pg.dir, f: pg.file, out: '' })),
+  ...PARTIAL_DIRS.flatMap((d) =>
+    readdirSync(join(SRC, d))
+      .filter((n) => n.endsWith('.mjml'))
+      .map((f) => ({ rel: d, f, out: d })),
+  ),
+];
+for (const { rel, f, out: outDir } of walk) {
+  {
     const source = readFileSync(join(SRC, rel, f), 'utf8');
     let { text, fully, imports } = annotate(source);
     let groupNote = '';
@@ -376,7 +388,11 @@ for (const rel of ['', 'partials']) {
       groupNote = `, ${groups} structure groups` + (subsumed ? ` (${subsumed} subsumed -> ${groups - subsumed} importable)` : '') + (flagIssues ? `, ${flagIssues} FLAG ISSUES` : '');
     }
 
-    writeFileSync(join(OUT, rel, f), text);
+    // Flattening moves the file one level up, so an include authored
+    // relative to a subfolder ('../partials/x') has to become './partials/x'
+    // to still resolve from .build/.
+    if (rel && !outDir) text = text.replace(/(<mj-include\s+path=")\.\.\//g, '$1./');
+    writeFileSync(join(OUT, outDir, f), text);
     console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}`);
 
     // Print the live category → EN folder routing. Documenting this by hand

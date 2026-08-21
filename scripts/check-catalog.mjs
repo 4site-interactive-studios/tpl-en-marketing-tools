@@ -19,10 +19,12 @@
  * output. Every assertion is wrapped so one throwing cannot lose the others.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
+import { sourcePages } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+
 const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'utf8') : null);
 
 let warnings = 0;
@@ -34,10 +36,11 @@ const warn = (msg) => {
 /** 1-based line of an offset, the check-docs.mjs idiom. */
 const lineAt = (text, index) => text.slice(0, index).split('\n').length;
 
-/** Catalog sources. probe_* files are deliberate experiments, not catalog pages. */
-const sources = readdirSync(join(ROOT, 'src'))
-  .filter((n) => n.endsWith('.mjml') && !n.startsWith('probe_'))
-  .sort();
+/** Catalog sources. Probes are deliberate experiments, not catalog pages —
+ *  they live in src/probes/ and are excluded by directory now, not by prefix. */
+const sources = sourcePages(ROOT)
+  .filter((p) => p.dir !== 'probes')
+  .map((p) => p.rel);
 
 /** Run an assertion without letting a throw take the rest of the pass down. */
 const guard = (label, fn) => {
@@ -269,7 +272,8 @@ function scanGeometry(html) {
         continue;
       }
       const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
-      if (w) cell = Number(w[1]);
+      // Clamp, never widen — the Word engine does (2026-08-21, EoA VNLmGlXZ…).
+        if (w) cell = Math.min(Number(w[1]), cell);
     }
   }
   while (frames.length) closeFrame(html.length);
@@ -283,7 +287,12 @@ guard('column geometry check', () => {
   // including its own START: markers, which mis-attributes every later hit.
   // These regexes are tuned to MJML's own output shape — never point this
   // check at DELIVERED html, whose attributes EN rewrites (valign, bgcolor).
-  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  // probe_* pages are deliberate experiments — they carry markup a catalog
+  // page must never carry (a frozen ghost overflowing on purpose, say), so
+  // they are excluded here exactly as they are from `sources` above.
+  const pages = dist
+    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
+    .sort();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — run npm run build; skipping column geometry');
     return;
@@ -366,33 +375,14 @@ const OPT_OUT_FLAGS = [
 //    before deciding a block should be re-authored to reflow instead.
 // ---------------------------------------------------------------------------
 
-/**
- * The importer's ghost-width neutralization (src/core/ghostWidths.ts), so the
- * census measures the markup EN actually edits. A ghost cell standing for a
- * lone 100% column carries nothing Word cannot recompute, so it becomes
- * `width:100%` at import and stops freezing the gutter. Guard 3 above keeps
- * reading the RAW dist on purpose: `_live.html` is also pasted into sends
- * verbatim, where no importer has run.
- */
-function neutralizeGhosts(html) {
-  let out = '';
-  let last = 0;
-  for (const m of html.matchAll(/<!--\[if mso \| IE\]>([\s\S]*?)<!\[endif\]-->/g)) {
-    const td = /<td\b[^>]*\sstyle="([^"]*?)"/.exec(m[1]);
-    if (!td || !/width:\s*\d+(?:\.\d+)?px/.test(td[1])) continue;
-    const next = /^\s*<div class="mj-column-(px|per)-([\d-]+) /.exec(html.slice(m.index + m[0].length));
-    if (!next || next[1] !== 'per' || next[2] !== '100') continue;
-    const styleStart = m.index + m[0].indexOf(td[1], td.index);
-    const w = /width:\s*\d+(?:\.\d+)?px/.exec(td[1]);
-    out += html.slice(last, styleStart + w.index) + 'width:100%';
-    last = styleStart + w.index + w[0].length;
-  }
-  return out + html.slice(last);
-}
-
 guard('padding growth census', () => {
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  // probe_* pages are deliberate experiments — they carry markup a catalog
+  // page must never carry (a frozen ghost overflowing on purpose, say), so
+  // they are excluded here exactly as they are from `sources` above.
+  const pages = dist
+    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
+    .sort();
   if (!pages.length) return;
   const detail = process.argv.includes('--padding-census');
 
@@ -401,7 +391,7 @@ guard('padding growth census', () => {
   const rows = [];
 
   for (const page of pages) {
-    const html = neutralizeGhosts(read(`dist/${page}`) || '');
+    const html = read(`dist/${page}`) || '';
     const base = page.replace(/_live\.html$/, '');
     if (read(`src/${base}.mjml`) === null) continue;
 
@@ -880,7 +870,12 @@ guard('Gmail CSS budget + head coupling check', () => {
   // double-count it. What remains is the diagnostic canary.
   const HOIST_ALLOWANCE = 250;
   const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  const pages = dist.filter((n) => n.endsWith('_live.html')).sort();
+  // probe_* pages are deliberate experiments — they carry markup a catalog
+  // page must never carry (a frozen ghost overflowing on purpose, say), so
+  // they are excluded here exactly as they are from `sources` above.
+  const pages = dist
+    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
+    .sort();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — skipping the CSS budget check');
     return;

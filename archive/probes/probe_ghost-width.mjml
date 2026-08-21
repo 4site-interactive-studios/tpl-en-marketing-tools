@@ -1,0 +1,322 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — MSO ghost width neutralization (2026-08-21).
+      Not a catalog page. Send dist/probe_ghost-width_live.html through EN to
+      EoA and read outlook2021_win11_* and m365_w11_* FIRST — every other
+      client is expected to render all variants identically, and a difference
+      outside the Word engine is itself a finding.
+
+      THE FINDING THIS TESTS
+      MJML derives `600 - 2*gutter` from a section's authored left/right
+      padding and freezes it into the Outlook-only ghost cell it wraps around
+      the column group:
+
+        <td style="...padding:16px 32px;">            <- editable, spliced
+          <!--[if mso | IE]><table><tr><td style="width:536px;">   <- FROZEN
+
+      The importer rewrites the padding value in every carrier, mso-padding-alt
+      copies included, but never a width DERIVED from it. So shrinking a gutter
+      is safe (the frozen box re-centres) and GROWING one is not: Word lays out
+      a 536px table inside a cell that now has 64px of padding each side.
+
+      Since 2026-08-21 the importer rewrites that number to `width:100%` at
+      import, but ONLY where the ghost stands for a lone 100% column, where the
+      px value carries nothing Word cannot recompute. Proportional ghosts (two
+      268px halves) keep their numbers and the generator caps those frames'
+      padding options instead. That rewrite is unverified in the Word engine:
+      both audits that pass it run in a browser, so neither can settle it.
+
+      VARIANTS — identical content, only the gutter and the ghost width differ.
+      Each variant paints its section Moss and its content Evergreen, so the
+      MOSS BAND EITHER SIDE IS THE GUTTER, directly measurable against the
+      full-bleed Earth reference bar above it.
+
+        REF  Earth bar, edge to edge. Any variant wider than this has pushed
+             the email past 600px.
+
+        Series 1 — lone 100% column (what the rewrite touches)
+        A  ghost 536px · gutter 32   CONTROL, today's shipped state.
+                                     Expected: 32px Moss each side.
+        B  ghost 536px · gutter 64   THE DEFECT. Expected: 64px Moss in every
+                                     CSS client; in Word the 536px ghost does
+                                     not fit the 472px cell, so the Evergreen
+                                     bar overhangs and/or the email exceeds
+                                     the REF bar.
+        C  ghost 100%  · gutter 32   THE FIX, no-regression case. Must be
+                                     pixel-identical to A everywhere.
+        D  ghost 100%  · gutter 64   THE FIX, the claim. Expected: 64px Moss
+                                     each side in EVERY client, Word included.
+        E  ghost 100%  · gutter 0    THE FIX at Full Bleed. Expected: no Moss
+                                     band; Evergreen spans the full 600px.
+
+        Series 2 — a two-column hero (a group inside a section)
+        F  outer ghost 100% · inner 268px · gutter 32
+             The authored state after the rewrite. Must match H exactly.
+        G  outer ghost 100% · inner 268px · gutter 48
+             The case the importer's cap now REFUSES to offer. The inner 268px
+             halves are frozen and 268+268 = 536 does not fit a 504px cell.
+             Expected to break in Word; that break is why the cap exists.
+        H  real MJML two-column section · gutter 32
+             Untouched control, compiled normally by this build.
+
+      VERDICT RULE
+      Adopt the rewrite only if C is identical to A AND D holds its 64px
+      gutter in the Word engine. If D shows the same overhang as B, the ghost
+      width is load-bearing in Word and the rewrite must be reverted in favour
+      of capping every frame (src/core/ghostWidths.ts, and the "Unsafe growth"
+      section of CONVENTIONS.md).
+
+      If B renders correctly, the diagnosis is wrong: Word is not honouring
+      that ghost width at all, nothing needs neutralizing, and the cap alone
+      is the whole fix.
+
+      G is diagnostic, not a gate. It should fail; if it does not, the cap is
+      stricter than Word requires and the proportional case can be revisited.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE — MSO ghost width neutralization</mj-title>
+    <mj-attributes>
+      <mj-all font-family="Tahoma, sans-serif" />
+      <mj-text font-size="14px" line-height="20px" color="#362229" padding="0" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      .bar { font-size:14px; font-weight:700; line-height:20px; text-align:center;
+             color:#F5FAF1; background-color:#006837; padding:10px 0; }
+      .halfbar { font-size:12px; font-weight:700; line-height:16px; text-align:center;
+                 color:#F5FAF1; background-color:#362229; padding:10px 0; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#FAFAFA">
+
+    <!-- Real MJML section: also what makes MJML emit the .mj-column-per-100
+         and .mj-column-per-50 rules the raw variants below rely on. -->
+    <mj-section background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text>
+          <strong>PROBE — MSO ghost width</strong><br />
+          The Moss band either side of each Evergreen bar is that variant's
+          gutter. Compare every bar against the Earth reference bar below.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- REF: full-bleed 600px reference bar -->
+    <mj-section background-color="#362229" padding="0">
+      <mj-column>
+        <mj-text color="#F5FAF1" align="center" padding="8px 0">
+          <strong>REF — 600px, edge to edge</strong>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ===================================================================
+         SERIES 1 — lone 100% column. Only the gutter and the ghost width
+         differ between A-E; everything else is byte-identical.
+         =================================================================== -->
+
+    <mj-raw>
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody><tr><td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                    <div class="bar">A &nbsp;ghost 536px &nbsp;·&nbsp; gutter 32 &nbsp;·&nbsp; CONTROL</div>
+                  </td></tr></tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody><tr><td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                    <div class="bar">B &nbsp;ghost 536px &nbsp;·&nbsp; gutter 64 &nbsp;·&nbsp; THE DEFECT</div>
+                  </td></tr></tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:100%;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody><tr><td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                    <div class="bar">C &nbsp;ghost 100% &nbsp;·&nbsp; gutter 32 &nbsp;·&nbsp; must equal A</div>
+                  </td></tr></tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:100%;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody><tr><td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                    <div class="bar">D &nbsp;ghost 100% &nbsp;·&nbsp; gutter 64 &nbsp;·&nbsp; THE CLAIM</div>
+                  </td></tr></tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:100%;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody><tr><td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                    <div class="bar">E &nbsp;ghost 100% &nbsp;·&nbsp; gutter 0 &nbsp;·&nbsp; Full Bleed</div>
+                  </td></tr></tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+    </mj-raw>
+
+    <!-- ===================================================================
+         SERIES 2 — a two-column hero: an mj-group inside a section. The
+         OUTER ghost is the lone 100% group wrapper (rewritten); the INNER
+         268px halves are proportional and are NOT.
+         =================================================================== -->
+
+    <mj-raw>
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 32px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:100%;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:268px;" ><![endif]-->
+                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:50%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"><tbody><tr>
+                    <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                      <div class="halfbar">F &nbsp;left half</div>
+                    </td>
+                  </tr></tbody></table>
+                </div>
+                <!--[if mso | IE]></td><td style="vertical-align:top;width:268px;" ><![endif]-->
+                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:50%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"><tbody><tr>
+                    <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                      <div class="halfbar">F &nbsp;right half &nbsp;·&nbsp; gutter 32 &nbsp;·&nbsp; must equal H</div>
+                    </td>
+                  </tr></tbody></table>
+                </div>
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
+          <tbody><tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 48px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:100%;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:268px;" ><![endif]-->
+                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:50%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"><tbody><tr>
+                    <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                      <div class="halfbar">G &nbsp;left half</div>
+                    </td>
+                  </tr></tbody></table>
+                </div>
+                <!--[if mso | IE]></td><td style="vertical-align:top;width:268px;" ><![endif]-->
+                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:50%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"><tbody><tr>
+                    <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                      <div class="halfbar">G &nbsp;right half &nbsp;·&nbsp; gutter 48 &nbsp;·&nbsp; SHOULD BREAK</div>
+                    </td>
+                  </tr></tbody></table>
+                </div>
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]></td></tr></table><![endif]-->
+    </mj-raw>
+
+    <!-- H — real MJML two-column section, compiled by this build. The
+         untouched control: F must match it exactly. -->
+    <mj-section background-color="#CEE4C5" padding="16px 32px">
+      <mj-group>
+        <mj-column width="50%">
+          <mj-text align="center" color="#F5FAF1" container-background-color="#362229" padding="10px 0">
+            <strong>H&nbsp; left half</strong>
+          </mj-text>
+        </mj-column>
+        <mj-column width="50%">
+          <mj-text align="center" color="#F5FAF1" container-background-color="#362229" padding="10px 0">
+            <strong>H&nbsp; right half · real MJML · gutter 32</strong>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+
+    <mj-section background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text>
+          Read Outlook first. A and C must be identical; C and D are the fix;
+          B should overhang. F must equal H. G is expected to break — that
+          break is why the importer caps proportional frames.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

@@ -13,6 +13,7 @@
  * parser — it must never be the reason a build fails to produce output.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
+import { sourcePages, CATALOG } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -38,7 +39,7 @@ const MIRRORS = ['MJML-AUTHORING-GUIDE.md', 'CONVENTIONS.md'];
  * degrade this assertion to vacuously true rather than failing loudly — the
  * emptiness guard below is what keeps that from going unnoticed.
  */
-const CATALOG_FILES = ['src/tpl_unified-blocks.mjml', 'src/mjml_extra-blocks.mjml'];
+const CATALOG_FILES = [`src/${CATALOG}`];
 const demo = CATALOG_FILES.map((f) => read(f) || '').join('\n');
 if (!demo.trim()) {
   warn('no catalog source found — block-name citations were NOT checked');
@@ -158,7 +159,7 @@ for (const marker of ['@media (prefers-color-scheme: dark)', '@media only screen
 //     sections have no div carrier and render BLANK in Gmail/Apple Mail/iOS
 //     (measured 2026-08-09, 15-client EoA matrix on the tile probe).
 // ---------------------------------------------------------------------------
-for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+for (const { rel: f } of sourcePages(ROOT)) {
   const text = read(`src/${f}`) || '';
   for (const m of text.matchAll(/<mj-section\b[^>]*>/g)) {
     if (m[0].includes('full-width') && m[0].includes('background-url')) {
@@ -168,7 +169,7 @@ for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml')
 }
 
 const ASSET_ROOT_ID = 'bd6ca9cefa6fb6e0adf1';
-for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+for (const { rel: f } of sourcePages(ROOT)) {
   const text = read(`src/${f}`) || '';
   if (text.includes(ASSET_ROOT_ID)) {
     warn(`src/${f} contains the absolute EN asset root — source must stay relative (guide §7); the absolute form is emitted into <name>_live.html`);
@@ -250,9 +251,15 @@ for (const f of LOCAL_DOCS) {
     const text = read(f);
 
     // 9a. Repo-relative paths. Trailing-slash tokens are directories.
+    //
+    // src/probes/ is CONDITIONAL by design: a probe is archived in the session
+    // its last claim is measured and the empty directory goes with it, so the
+    // docs that describe that rule necessarily cite a path that is usually
+    // absent. Flagging it would make the convention unwritable.
+    const CONDITIONAL = new Set(['src/probes']);
     for (const m of text.matchAll(/`((?:scripts|src|dist)\/[\w./-]*)`/g)) {
       const rel = m[1].replace(/\/$/, '');
-      if (!rel || PLACEHOLDER.test(rel)) continue;
+      if (!rel || PLACEHOLDER.test(rel) || CONDITIONAL.has(rel)) continue;
       if (!existsSync(join(ROOT, rel))) warn(`${f} cites \`${m[1]}\`, which does not exist`);
     }
 
@@ -333,7 +340,7 @@ for (const f of LOCAL_DOCS) {
 //     Exception: an <a> styled display:block is a deliberate block link
 //     (Question Block) whose inner elements carry explicit inline margins.
 // ---------------------------------------------------------------------------
-for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
+for (const { rel: f } of sourcePages(ROOT)) {
   const text = read(`src/${f}`) || '';
   for (const m of text.matchAll(/<a\b[^>]*>\s*<(h[1-6]|p|ul|ol|div)\b/g)) {
     if (/display\s*:\s*block/.test(m[0])) continue;

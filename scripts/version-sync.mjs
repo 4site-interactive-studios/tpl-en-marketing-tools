@@ -40,6 +40,7 @@
  * manifest (history preserves their final version).
  */
 import { createHash } from 'node:crypto';
+import { sourcePages, CATALOG } from './lib/source-pages.mjs';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -49,7 +50,15 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => (existsSync(join(ROOT, p)) ? readFileSync(join(ROOT, p), 'utf8') : '');
 const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 12);
 
-const CATALOGS = ['mjml_extra-blocks.mjml', 'tpl_unified-blocks.mjml'];
+/**
+ * The block-region separator is FROZEN at the pre-rename filename on purpose.
+ * It existed only to keep a block's regions distinguishable while the same
+ * name could live in two catalogs. With one catalog it carries no
+ * information — but changing these bytes would re-hash all 62 blocks and bump
+ * every EN block name for a rename that altered no block's content, and the
+ * version rides in the EN block name. Ledger continuity beats tidiness.
+ */
+const BLOCK_REGION_SEP = '@@tpl_unified-blocks.mjml@@';
 
 /**
  * START/END markers NEST (a "Main Content" region wraps a whole catalog),
@@ -87,7 +96,7 @@ function shellOf(text) {
 
 /** Compiled head <style> contents of the unified master's live artifact */
 export function headCssContent() {
-  const html = read('dist/tpl_unified-blocks_live.html');
+  const html = read(`dist/${CATALOG.replace('.mjml', '')}_live.html`);
   return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
     .map((m) => m[1])
     .join('\n');
@@ -95,15 +104,18 @@ export function headCssContent() {
 
 export function computeEntities() {
   const entities = {};
-  const unified = read('src/tpl_unified-blocks.mjml');
-  const all = read('src/mjml_extra-blocks.mjml');
+  const unified = read(`src/${CATALOG}`);
 
   entities['email-template'] = sha(shellOf(unified) + '\n@@styles@@\n' + read('src/styles.css'));
-  entities['catalog-shell'] = sha(shellOf(all));
+  // 'catalog-shell' was the second catalog's shell. mjml_extra-blocks.mjml
+  // was deleted on 2026-08-21 once its keepers had moved into the master, so
+  // the entity is deliberately GONE rather than left to pin forever to the
+  // hash of an empty string. syncedManifest rebuilds from computed entities,
+  // so it drops out of versions.json on the next run with no hand-editing.
   entities['head-css'] = sha(headCssContent());
 
-  for (const f of ['donation-thank-you.mjml', 'recurring-donation-thank-you.mjml']) {
-    if (read(`src/${f}`)) entities[`autoresponder:${f.replace('.mjml', '')}`] = sha(read(`src/${f}`));
+  for (const pg of sourcePages(ROOT).filter((x) => x.dir === 'autoresponders')) {
+    entities[`autoresponder:${pg.base}`] = sha(read(`src/${pg.rel}`));
   }
   const partialsDir = join(ROOT, 'src/partials');
   if (existsSync(partialsDir)) {
@@ -113,11 +125,8 @@ export function computeEntities() {
   }
 
   const blocks = new Map();
-  for (const file of CATALOGS) {
-    const text = file === 'mjml_extra-blocks.mjml' ? all : unified;
-    for (const l of leafRegions(text)) {
-      blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n@@${file}@@\n` + text.slice(l.start, l.end));
-    }
+  for (const l of leafRegions(unified)) {
+    blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n${BLOCK_REGION_SEP}\n` + unified.slice(l.start, l.end));
   }
   for (const [name, content] of blocks) entities[`block:${name}`] = sha(content);
   return entities;

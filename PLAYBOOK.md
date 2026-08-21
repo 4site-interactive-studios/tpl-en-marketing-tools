@@ -11,8 +11,8 @@ short version.
 
 ```
 src/
-  tpl_unified-blocks.mjml  ← master template — the primary catalog
-  mjml_extra-blocks.mjml   ← blocks that live nowhere else (see CLAUDE.md)
+  main.mjml  ← master template — the primary catalog
+  main.mjml   ← blocks that live nowhere else (see CLAUDE.md)
   donation-thank-you.mjml
   recurring-donation-thank-you.mjml    ← standalone autoresponders
   styles.css           ← shared CSS, pulled in via mj-include
@@ -229,7 +229,7 @@ Names must match exactly (case-sensitive) between START and END.
 
 `scripts/check-docs.mjs` asserts that every block name cited anywhere in the
 docs still resolves to a block, family, or category in EITHER catalog —
-`src/tpl_unified-blocks.mjml` or `src/mjml_extra-blocks.mjml`.
+`src/main.mjml` or `src/main.mjml`.
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 

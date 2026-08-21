@@ -37,74 +37,46 @@ their frame (that one needs a built `dist/`). Run it with
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.
 
-## Catalogs
+## Source layout
 
-| File | Role |
+| Path | Role |
 | :--- | :--- |
-| `src/tpl_unified-blocks.mjml` | master template (formerly main.mjml) — **the primary catalog** |
-| `src/mjml_extra-blocks.mjml` | blocks that exist in NO other catalog, with `Category — X` dividers |
-| `src/donation-thank-you.mjml`, `src/recurring-donation-thank-you.mjml` | standalone autoresponders |
+| `src/main.mjml` | the master template — the ONLY catalog |
+| `src/autoresponders/*.mjml` | standalone autoresponders |
+| `src/probes/*.mjml` | live QA instruments, when any exist (see Probe lifecycle) |
+| `src/partials/*.mjml` | includes; never compiled on their own |
 
-**`mjml_all-blocks.mjml` became `mjml_extra-blocks.mjml` on 2026-08-20**
-(user decision). It had become a near-superset of the master template: of its
-124 leaf blocks, 72 were byte-duplicates of blocks in
-`tpl_unified-blocks.mjml`, so every catalog edit had to be made twice — the
-same sync tax that retired `tpl_all-blocks.mjml`. The file now holds ONLY what
-lives nowhere else: **22 blocks**, plus the six `Category — X` dividers whose
-folders still have content. The 30 `data-fully-exclude` colour/alignment demos
-that were unique to it were dropped in the same pass (they never exported; git
-history has them).
+`scripts/lib/source-pages.mjs` is the single owner of that list. Four scripts
+used to enumerate `src/` independently, which is exactly the shape that
+survives a flat directory and breaks the moment one grows — enumerate through
+the helper, never with a bare `readdirSync('src')`.
 
-Read it as the leftovers, not a catalog: anything wanted for real work belongs
-in the master template. Both files are equal citizens to the tooling —
-version-sync hashes a block name across BOTH, and check-docs resolves doc
-citations against BOTH.
+**Pages compile FLAT into `dist/`** whatever subfolder they came from:
+`mjml ./.build/*.mjml` reads one level, and every downstream consumer keys on
+the bare filename. `annotate-excluded.mjs` rewrites a subfolder page's
+`../partials/…` includes to `./partials/…` on the way into `.build/` so they
+still resolve; author them relative to the file's real location.
 
-**`tpl_all-blocks.mjml` was removed on 2026-08-17** (commit 17f036a, following the 2026-08-15 catalog audit). It was a strict subset of
-`mjml_all-blocks.mjml` — 135 of its 143 blocks, differing by exactly one line
-(the `mj-title`) — created to give a shorter demonstration page. It carried
-nothing unique, was never once edited independently in its lifetime, and
-required a matching edit on 14 of the 15 catalog commits in its last 90 days.
-That sync tax was its whole cost and its whole risk. If a shorter showcase is
-wanted again, derive it at build time from the full catalog rather than
-maintaining a second copy: `scripts/annotate-excluded.mjs` already reads
-`src/*.mjml` and writes transformed copies to `.build/`, which is the hook.
+**`src/probes/` exists only while a probe does.** When the last probe is
+archived the directory goes with it, and a new probe re-creates it. The
+helper skips a missing directory, so nothing else needs to know.
 
-**The standalone `Caption` block was removed on 2026-08-18** (user
-decision): every image block already carries its caption inline (the
-`mj-class="caption"` text under the photo), so a detached caption
-section had no remaining use and one more block to scroll past. The
-`caption` mj-class, the mobile 16px caption indent, and all inline
-captions are untouched. Recover the markup from git history or from any
-image block's trailing caption section (`css-class="block caption"`,
-`padding="8px 0 0"`) if a detached caption is ever wanted again; the
-already-uploaded EN block must be deleted in EN by hand.
+**The layout changed on 2026-08-21** (user decision): `tpl_unified-blocks.mjml`
+became `main.mjml` — the name it carried before the 2026-08-17 consolidation —
+and `mjml_extra-blocks.mjml` was DELETED once the blocks worth keeping had
+moved into the master. Recover any of its 16 leftovers from git history.
 
-**Twenty colour/alignment variants were removed from
-`mjml_all-blocks.mjml` on 2026-08-20** (user decision), along with the
-`Signature Card (square photo)`/`(round photo)` pair. All twenty were
-`data-fully-exclude` demo blocks — four `Logo Hero`s, six `Heading`s,
-three `Two-Line Banner`s, four `CTA Button`/`CTA Buttons 2x1`s and three
-`Footer`s — differing from a surviving family baseline only by background
-colour or alignment. Both are now editable Selects, so the variants
-demonstrated states an editor can already produce, and each cost a sync
-on every catalog edit. 122 leaf blocks remain (was 143); the catalog is
-17 KB lighter.
+Two ledger consequences, both handled in `version-sync.mjs` rather than by
+hand-editing `versions.json`:
 
-The signature pair was replaced by unified's single
-`Signature Card (photo)`, whose `data-image-shape-toggle` makes the photo
-shape a Circle/Square Select — one block and a control instead of two
-fixed blocks. It retires the pre-rounded `_round.png` asset FROM THE
-CATALOG only: both autoresponders still reference that file.
-
-**Deliberately KEPT**, though also `data-fully-exclude`: anything whose
-family would otherwise vanish (`Text w/ Bullet Lists`,
-`Text + Link Paragraph CTA`, `Linked List Block`, `Join Links Block`,
-`Header Row`), anything a scanned doc cites, and every STRUCTURAL variant
-— `(outline)`, `(text only)`, `(w/ dark-mode swap)`, `(inset)`,
-`(dynamic width)`, `(arrow graphic)`, `(two-line, mixed weight)`. Those
-demonstrate layouts a Select cannot reproduce. Recover any of them from
-git history.
+- The `catalog-shell` entity was the second catalog's shell. It is deliberately
+  gone, not left to pin forever to the hash of an empty string.
+- The block-region separator is FROZEN at the old filename. It only ever
+  existed to keep a block's regions distinguishable while a name could live in
+  two catalogs; changing those bytes would re-hash all 62 blocks and bump every
+  EN block name for a rename that changed no block's content. The six
+  `Category — …` dividers DID bump, correctly: they existed in both catalogs,
+  so their entity genuinely lost half its content.
 
 ## Two HTML outputs per page
 
@@ -171,19 +143,20 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
   check-docs warns when the manifest is stale. Never hand-edit or reset
   it — the committed history is the ledger. Full contract:
   CONVENTIONS.md "Versioning".
-- **Probe lifecycle.** `src/probe_*.mjml` files are temporary instruments
-  (check-catalog already skips the `probe_` prefix; nothing else in the
+- **Probe lifecycle.** `src/probes/*.mjml` files are temporary instruments
+  (check-catalog already skips the `src/probes/` directory; nothing else in the
   pipeline names them). When every claim a probe was built to test is
   measured and recorded, archive it in the SAME session that records the
   last verdict: `git mv` the source into `archive/probes/`, `git rm` its
   three dist artifacts (the raw `.mjml` copy plus the `_live.html` and
   `_local-debug.html` variants — the build never cleans dist, so they
   linger otherwise), and add a row to `archive/probes/README.md`. A probe
-  still
-  carrying any unverified claim stays in `src/`. `archive/` is invisible
-  to the build (annotate-excluded reads `src/` non-recursively). Archive,
-  never delete — annotated probes are the instruments for re-measuring EN
-  later.
+  still carrying any unverified claim stays in `src/probes/`. When the LAST
+  probe leaves, delete the now-empty `src/probes/` too; a new probe
+  re-creates it, and `source-pages.mjs` skips a directory that is not there.
+  `archive/` is invisible to the build (the source enumerator only walks the
+  directories it names). Archive, never delete — annotated probes are the
+  instruments for re-measuring EN later.
 - **Probe colors.** Probe instruments (canary bars, test swatches) use
   colors the template already carries — the brand palette or the extended
   background-Select entries (Crimson, Royal Blue, Purple, Sage, …) —

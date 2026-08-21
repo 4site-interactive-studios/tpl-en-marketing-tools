@@ -410,7 +410,7 @@
         background-url="assets/photo-river.jpg"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center center" padding="48px 32px 8px"
+        background-position="center top" padding="48px 32px 8px"
       >
         <mj-column>
           <mj-text data-display-toggle align="center" padding="0">
@@ -418,7 +418,13 @@
           </mj-text>
         </mj-column>
       </mj-section>
-      <mj-section padding="48px 32px 32px">
+      <mj-section
+        css-class="image-block"
+        background-url="assets/photo-river.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center bottom" padding="48px 32px 32px"
+      >
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
             <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
@@ -433,6 +439,42 @@
       </mj-section>
     </mj-wrapper>
     <!-- END: CTA Hero with Heading (logo and background image) -->
+
+    <!-- START: CTA Hero (w/ badge image) -->
+    <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
+      <mj-group>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%">
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-dark-mode />
+          <mj-raw><!--<![endif]--></mj-raw>
+          <mj-button width="auto" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <!-- END: CTA Hero (w/ badge image) -->
+
+    <!-- START: CTA Hero (centered w/ background image) -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#006837" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
+        <mj-group>
+        <mj-column>
+          <mj-text align="center" padding="0 0 16px">
+            <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
+          </mj-text>
+          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+        </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: CTA Hero (centered w/ background image) -->
 
     <!-- START: Category — Text Blocks -->
     <mj-raw><div data-import-exclude="true" data-folder="6400" data-category-short="Text"></mj-raw>
@@ -465,23 +507,20 @@
         <mj-text padding="0 0 16px">
           <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
         </mj-text>
-        <mj-text padding="0">
+        <mj-text padding="0 0 16px">
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
             Fermentum sit id pharetra tortor. In viverra semper et lorem consequat
-            pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean.
-            Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
-            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
-            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
-            senectus aenean. <a href="https://www.example.com">Non sit volutpat quam pretium risus ullamcorper pretium
-            nisi porttitor.</a>
+            pellentesque. Proin urna urna massa ut quis augue pulvinar senectus
+            aenean. <a href="https://www.example.com">Non sit volutpat quam pretium</a>
+            risus ullamcorper <a href="https://www.example.com">pretium nisi porttitor</a>.
           </p>
         </mj-text>
+        <!-- Third member of the column, so the Display toggle that makes this
+             button optional is minted automatically — no data-display-toggle
+             needed, which is only for a column's SOLE member. -->
+        <mj-button width="auto" href="https://www.example.com" align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: WYSIWYG Text -->
@@ -679,6 +718,18 @@
       </mj-column>
     </mj-section>
     <!-- END: Stat Row (off-white) -->
+
+    <!-- START: Two-Line Banner (light green) -->
+    <!-- data-mobile-only-width: the two centered caps lines clear every preset at 600px, so the gutter is invisible at desktop; at 375px the wider steps force a wrap. Measured INERT desktop / live mobile 2026-08-18. Drop the flag if the banner copy ever wraps at desktop. -->
+    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 32px" data-mobile-only-width>
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
+          <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END: Two-Line Banner (light green) -->
 
     <!-- START: Category — Buttons -->
     <mj-raw><div data-import-exclude="true" data-folder="6406" data-category-short="Buttons"></mj-raw>
@@ -1098,9 +1149,9 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0">
       <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text align="right" mj-class="caption" padding="4px 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1128,9 +1179,9 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 48px 16px">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="0 48px">
       <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption" padding="0">
+        <mj-text align="right" mj-class="caption" padding="4px 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1438,6 +1489,37 @@
       </mj-group>
     </mj-section>
     <!-- END: Icon Row -->
+
+    <!-- START: Photo Card (green CTA) -->
+    <!-- The heading sat on an #F5FAF1 panel until 2026-08-21, when the panel was
+         removed (user decision). Its colour went white in the same edit: the
+         panel was what made Earth text legible, and photo-kayak.jpg is a DARK
+         ground everywhere else in this catalog — the CTA Hero over the same
+         photo uses the light-green logo for exactly that reason. -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+        <!-- data-no-direction-toggle: this row pins its outer content to the block edge (align is physical), so reversing the columns would drag it inward — ship the mirrored arrangement as its own block (measured 2026-08-10). -->
+        <mj-group data-no-direction-toggle>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">
+            <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg caption-panel advocacy-box" padding="0">
+              <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+            </mj-text>
+            <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- END: Photo Card (green CTA) -->
 
     <!-- START: Category — Engagement & Interactive -->
     <mj-raw><div data-import-exclude="true" data-folder="6408" data-category-short="Engagement"></mj-raw>
@@ -1773,11 +1855,34 @@
     <!-- END: Quiz Block (3x1 buttons) -->
 
     <!-- START: Steps Block -->
+    <!-- The arrow came from the retired "Steps Block (w/ arrow heading)" when
+         the two merged (user decision 2026-08-21). data-display-toggle makes
+         it optional: it is the SOLE member of its column once the light/dark
+         twins fold into one, and a sole member earns no Display Select
+         otherwise. The flag goes on the FIRST twin — mergeSwapPairs folds the
+         second in before flags are read, so a flag on the dark image is inert.
+         NOTE: hiding the arrow does NOT widen the heading. The 90px column
+         stays, per the 2026-08-20 decision that hidden content leaves columns
+         at their authored widths; making the row collapse needs a Display
+         option that rewrites the whole arrangement, which the generator does
+         not do today. -->
     <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-group>
+        <mj-column width="120px" vertical-align="top">
+          <mj-image data-display-toggle src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
+          <mj-raw><!--[if !mso]><!--></mj-raw>
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-raw><!--<![endif]--></mj-raw>
+        </mj-column>
+        <mj-column width="416px" vertical-align="middle">
+          <mj-text padding="0">
+            <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="0 32px 16px">
       <mj-column>
-        <mj-text padding="0 0 16px">
-          <h3 style="text-align:center;color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
-        </mj-text>
         <mj-text padding="0 0 16px">
           <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
           <p style="font-size:16px;margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -1981,8 +2086,8 @@
     <mj-wrapper background-color="#006837" padding="0">
       <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-        <mj-column width="550px">
+          <mj-column width="32px">&nbsp;</mj-column>
+        <mj-column width="536px">
           <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
           </mj-text>
@@ -2018,7 +2123,7 @@
           </mj-text>
           <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -2026,15 +2131,15 @@
 
     <!-- START: Countdown Card -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 48px 16px">
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px">
         <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="452px">
-            <mj-text container-background-color="#362229" align="center" color="#CEE4C5" padding="0 0 8px">
+          <mj-column width="484px">
+            <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:15px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
           </mj-text>
-          <mj-text container-background-color="#362229" align="center" padding="0 0 16px">
+          <mj-text align="center" padding="0 0 16px">
             <h3 style="color:#ffffff;margin:0;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
           </mj-text>
             <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
@@ -2043,7 +2148,7 @@
              photo. It reads redundant only because the two <p>s below used to hard-code the same white
              inline — which is exactly what defeated the Text 3 Text Color control until 2026-08-18.
              The container now owns the colour; leave it owning it. -->
-        <mj-text container-background-color="#362229" align="center" color="#ffffff" padding="0">
+        <mj-text align="center" color="#ffffff" padding="0">
               <p style="font-size:32px;line-height:36px;font-weight:400;margin:0;">01&nbsp;:&nbsp;10&nbsp;:&nbsp;55&nbsp;:&nbsp;01</p>
               <p style="font-size:10px;line-height:14px;margin:0;letter-spacing:1px;">Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seconds</p>
             </mj-text>
@@ -2053,6 +2158,33 @@
     </mj-section>
     </mj-wrapper>
     <!-- END: Countdown Card -->
+
+    <!-- START: Event Invite Block -->
+    <mj-include path="./partials/green-rule-divider.mjml" />
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 32px">
+      <mj-column>
+        <mj-text align="center" padding="0">
+          <p style="font-size:17px;">{user_data~First Name}, you're invited!</p>
+          <h2><a href="https://www.example.com">The Great Northern Festival</a></h2>
+          <p style="font-size:17px;">
+            The Main Cinema<br />
+            115 SE Main Street<br />
+            Minneapolis, MN 55414
+          </p>
+        </mj-text>
+        <mj-text padding="0">
+          <p style="font-size:16px;">
+            ❄️ Minnesota winters are long, but they also offer rare moments to
+            pause, reflect, and reconnect. The Great Northern Festival embraces
+            that spirit, using winter as a backdrop for meaningful gatherings
+            that invite people to think differently about how we build
+            community and inspire outdoor joy.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-include path="./partials/green-rule-divider.mjml" />
+    <!-- END: Event Invite Block -->
 
     <!-- START: Category — Utilities -->
     <mj-raw><div data-import-exclude="true" data-folder="6409" data-category-short="Utility"></mj-raw>
