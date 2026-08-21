@@ -229,7 +229,7 @@
           width="104px"
           padding="0 0 0 16px"
           css-class="light-only"
-          align="right" data-mobile-only-inset-left />
+          align="right" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/state-north-carolina.png"
@@ -401,11 +401,17 @@
     <!-- END: CTA Hero (w/ large background image) -->
 
     <!-- START: CTA Hero with Heading (logo and background image) -->
-    <!-- Fallback colour lives on the OUTER wrapper, NOT the tag carrying the image: MJML copies a background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the image it still covers a blocked photo. The image sits on an inner wrapper rather than a section because it spans BOTH sections below. -->
+    <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
+    <!-- The photo covers the HEADING section only; the logo/button row below sits on the wrapper's flat fallback colour. It used to span both, via an inner mj-wrapper — which MJML rejects, since mj-wrapper may only appear in mj-body (user decision 2026-08-21). There is no legal way to stack two painted layers across two sections: the colour cannot share a tag with the image (above), and a raw <div> outer layer would cost this block its Background Color, Padding Top/Bottom and Padding Left/Right fields, which exist only because that layer is a real mj-wrapper. Splitting the photo across both sections was the other candidate and gives each its own `cover` crop — a visible seam mid-block. -->
     <mj-wrapper background-color="#362229" padding="0">
-      <mj-wrapper css-class="image-block block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="0">
-      <!-- data-mobile-only-width: the centered heading carries its own line break and never reaches the gutter at 600px, so symmetric presets move nothing there; at 375px the wider presets force a wrap. Measured INERT desktop / live mobile by the inert audit 2026-08-18. Drop the flag if the heading copy ever wraps at desktop. -->
-      <mj-section padding="48px 32px 8px" data-mobile-only-width>
+      <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
+      <mj-section
+        css-class="image-block block"
+        background-url="assets/photo-river.jpg"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="center center" padding="48px 32px 8px"
+      >
         <mj-column>
           <mj-text data-display-toggle align="center" padding="0">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor<br />Sit Amet</h1>
@@ -424,8 +430,7 @@
             <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
           </mj-column>
         </mj-group>
-        </mj-section>
-      </mj-wrapper>
+      </mj-section>
     </mj-wrapper>
     <!-- END: CTA Hero with Heading (logo and background image) -->
 
@@ -536,7 +541,6 @@
           css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          data-group-label="Quote Mark"
           src="assets/icon-quotes_white.png"
           alt=""
           width="47px"
@@ -691,7 +695,7 @@
     <!-- START: CTA Button -->
     <mj-section
       css-class="block"
-      background-color="#ffffff" padding="0 32px" data-desktop-only-width
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button width="auto"
@@ -784,7 +788,7 @@
     <!-- END: CTA Button (centered, text only) -->
 
     <!-- START: CTA Buttons 2x1 -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-desktop-only-width>
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -880,7 +884,7 @@
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -898,7 +902,7 @@
     <mj-column vertical-align="middle">
       <mj-text css-class="two-line-cta" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1282,7 +1286,7 @@
         </mj-text>
         <mj-button width="auto"
           href="https://www.example.com"
-          align="left" padding="0" data-mobile-only-spacing-below color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image on the side) -->
@@ -1418,7 +1422,7 @@
     <!-- END: Story Card (image left, no button) -->
 
     <!-- START: Icon Row -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column width="120px" vertical-align="middle">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
@@ -1459,17 +1463,21 @@
                clickable), so the row link is per-cell anchors sharing ONE URL
                field via data-link-group: same group + byte-identical hrefs =
                one replacement spliced into every member, nothing to desync.
-               The copy anchor carries data-text-anchor so its Label/Text
-               Color group as Text, not "Button 2", and authors a concrete
-               #000000 (renders identically to the old inherit) so the color
-               mints a palette Select (user decisions 2026-08-19). -->
+               The copy anchor authors a concrete #000000 (renders
+               identically to the old inherit) so the color mints a palette
+               Select (user decision 2026-08-19). It also carried
+               data-text-anchor to group its Label/Text Color as Text rather
+               than "Button 2"; removed 2026-08-21 after the import-time flag
+               audit measured it inert here and an A/B through the generator
+               confirmed an identical field set — data-group-label="Row Copy"
+               already does that job. -->
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
               <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
                 <a href="https://www.example.com" data-link-group="row" data-group-label="Row Link" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
               <td valign="top" style="padding:8px 0px 12px 0px;">
-                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-text-anchor data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
+                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
           </table>
@@ -1481,7 +1489,7 @@
     <!-- START: Podcast Episode Block -->
     <mj-section
       css-class="image-block block"
-      background-color="#006837" padding="16px 32px"
+      background-color="#006837" padding="16px 32px" data-mobile-only-padding-right
     >
       <mj-group>
         <mj-column width="112px" vertical-align="middle">
@@ -1530,7 +1538,7 @@
     <!-- START: Podcast Streaming Block -->
     <mj-section
       css-class="image-block block"
-      background-color="#ffffff" padding="16px 32px"
+      background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right
     >
       <mj-group>
         <mj-column width="380px" vertical-align="middle">
@@ -1629,7 +1637,7 @@
           align="center"
          padding="0 0 16px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" padding="0 0 16px" data-mobile-only-spacing-below>
+        <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;"><b>Ronda Lee Chapman:</b> &ldquo;My favorite bird is the northern flicker (shown above). They are abundant in Denver and visit me often throughout my days. I love their call and how beautiful they are.&rdquo;</p>
         </mj-text>
       </mj-column>
@@ -1814,12 +1822,12 @@
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1893,7 +1901,7 @@
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com"><strong>Skip to the answer.</strong></a></p>
         </mj-text>
-        <mj-text data-inset-toggle data-mobile-only-inset-left align="right" mj-class="caption" color="#ffffff" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>
@@ -1907,18 +1915,21 @@
          This template block ships the three-answer default as ONE block;
          to vary the answer count in a send, stack the library's Feedback
          Poll Option block instead. -->
-    <!-- data-mobile-only-padding-right: the one-line question leaves the right
-         padding nothing to move at 600px (left-aligned copy, white ground) —
-         the audit measures it live at 375 only. If real question copy ever
-         wraps at desktop, the control comes alive there: drop the flag then. -->
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px 8px" data-mobile-only-padding-right>
+    <!-- data-mobile-only-padding-right was on THIS section until 2026-08-21:
+         the one-line question left the right padding nothing to move at
+         600px, and the note said to drop the flag if real copy ever wrapped
+         at desktop. The 2026-08-21 audit sweeps realistic copy and measures
+         it live at both viewports, so it did. The flag now sits on the three
+         ANSWER sections below, where the padding is still mobile-only —
+         their fixed 56px icon column pins the desktop layout. -->
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 32px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px">
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -1933,7 +1944,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px">
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 8px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -1948,7 +1959,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 16px">
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 32px 16px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -2104,7 +2115,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px" data-mobile-only-padding-right>
       <mj-group>
         <mj-column
           vertical-align="top"
@@ -2141,7 +2152,7 @@
               align="left"
               css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
+          <mj-text data-inset-toggle padding="8px 0 0">
             <p style="font-family: Arial, sans-serif;">
               Carrie Besnette-Hauser
               <br />
@@ -2165,7 +2176,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="137px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
+        <mj-text data-inset-toggle padding="8px 0 0">
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
         </mj-text>
       </mj-column>
@@ -2219,7 +2230,7 @@
          artwork; the dark-mode twin keeps the white _2 art for the black
          repaint. -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px" data-visible-duplicate>
+    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_3.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>

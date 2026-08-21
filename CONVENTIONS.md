@@ -2529,6 +2529,17 @@ button and the heading can each be hidden (user decision 2026-08-20).
   fragments and mirrors box-level alignment itself, so this is a taste
   judgement, not a workaround — the automatic suppression it used to
   accompany is gone (see the content-swap control above).
+- **`data-no-alignment-toggle`** (valueless, on the `.cta-group` div inside
+  hand-authored pill markup): creates no Button Row Alignment control. A row
+  whose pills carry fixed widths summing to the content width cannot be
+  aligned — left, center and right render identically — so the Select is a
+  dead control. Declared rather than inferred: the anchor scanner sees only
+  the pill markup, not the frame it sits in, so the available width it would
+  need to compare against is not in scope there. Found by the 2026-08-21
+  inert-dropdown audit on four rows (CTA Buttons 2x1 fixed-width and
+  two-line, both Quiz Block 2x2 button rows); the 3x1 fixed-width row keeps
+  its control on 1px of slack, which is live by measurement and worth
+  revisiting.
 - **`data-no-background-color`** (valueless, on any element with an
   authored `background-color`): keeps the color in the compiled output but
   creates NO editable field. For a background that provably cannot show —

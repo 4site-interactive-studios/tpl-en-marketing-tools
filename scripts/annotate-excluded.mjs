@@ -279,7 +279,14 @@ function structureManifest(text, file) {
       // the duplicate WARN. The flag is stripped in normalize() (annotation,
       // not structure), so it can never change the block's group key.
       const visibleDup = tagBody.includes('data-visible-duplicate');
-      if (i === 0 && flagged && !parentOf.has(key)) {
+      // Only a group with OTHER members can be stranded by an excluded
+      // anchor — that is the whole point of the rule. A solo group has
+      // nobody to strand, and a solo data-fully-exclude block is the
+      // sanctioned state for a structural variant the catalog keeps as a
+      // demo but deliberately does not export (CLAUDE.md, "Deliberately
+      // KEPT"). Firing there asked authors to un-flag a block the
+      // convention says to leave flagged (2026-08-21).
+      if (i === 0 && flagged && members.length > 1 && !parentOf.has(key)) {
         console.warn(`  WARN ${file}: "${b.name}" is the group anchor but is flagged data-fully-exclude (and no other block subsumes it)`);
         flagIssues++;
       }

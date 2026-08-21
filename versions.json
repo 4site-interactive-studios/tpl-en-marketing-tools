@@ -12,8 +12,8 @@
     "hash": "d362d221a899"
   },
   "block:CTA Button": {
-    "version": 5,
-    "hash": "8fc611600d06"
+    "version": 6,
+    "hash": "929956795c01"
   },
   "block:CTA Button (centered)": {
     "version": 5,
@@ -36,24 +36,24 @@
     "hash": "346e43addb60"
   },
   "block:CTA Buttons 2x1": {
-    "version": 5,
-    "hash": "cfb823913ae0"
+    "version": 6,
+    "hash": "45147c636c56"
   },
   "block:CTA Buttons 2x1 (centered)": {
     "version": 7,
     "hash": "72c7e32748dc"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 5,
-    "hash": "33fe7bfb7f5f"
+    "version": 6,
+    "hash": "0e336a7df792"
   },
   "block:CTA Buttons 2x1 (right)": {
     "version": 7,
     "hash": "f1851c88799c"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 5,
-    "hash": "a97eac2332e7"
+    "version": 6,
+    "hash": "6793546f5fe9"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 5,
@@ -92,8 +92,8 @@
     "hash": "ddce4c0593ff"
   },
   "block:CTA Hero with Heading (logo and background image)": {
-    "version": 10,
-    "hash": "24bffececcb7"
+    "version": 11,
+    "hash": "84c528fde130"
   },
   "block:CTA Text Block": {
     "version": 5,
@@ -156,8 +156,8 @@
     "hash": "f370561f4ac1"
   },
   "block:Feedback Poll Block": {
-    "version": 7,
-    "hash": "d0412e4a37bb"
+    "version": 8,
+    "hash": "089d14202119"
   },
   "block:Feedback Poll Option": {
     "version": 5,
@@ -172,8 +172,8 @@
     "hash": "b7c11bbfe03b"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 6,
-    "hash": "c57b9581bf06"
+    "version": 7,
+    "hash": "91acb7456347"
   },
   "block:Header Row": {
     "version": 2,
@@ -196,8 +196,8 @@
     "hash": "f718a8e92a99"
   },
   "block:Icon Row": {
-    "version": 5,
-    "hash": "1ea9e46c463a"
+    "version": 6,
+    "hash": "b68cd8c37698"
   },
   "block:Image": {
     "version": 5,
@@ -240,8 +240,8 @@
     "hash": "76d785f03a80"
   },
   "block:Logo Hero (w/ image, green)": {
-    "version": 6,
-    "hash": "9dbc2869ed20"
+    "version": 7,
+    "hash": "f6bbd07ca789"
   },
   "block:Logo Hero (w/ text and image)": {
     "version": 4,
@@ -264,32 +264,32 @@
     "hash": "0dd93d5b17fc"
   },
   "block:Photo and Text Grid (2x2)": {
-    "version": 9,
-    "hash": "4086fe9b88d4"
+    "version": 10,
+    "hash": "a92cf1bb55c0"
   },
   "block:Podcast Episode Block": {
-    "version": 6,
-    "hash": "753fae5ff901"
+    "version": 7,
+    "hash": "452dfd9ab85c"
   },
   "block:Podcast Streaming Block": {
-    "version": 3,
-    "hash": "80abcf3bd163"
+    "version": 4,
+    "hash": "88defa83a64a"
   },
   "block:Progress Meter Block": {
     "version": 8,
     "hash": "86ee911ff185"
   },
   "block:Question Block": {
-    "version": 6,
-    "hash": "8c1224502ac4"
+    "version": 7,
+    "hash": "8618aab68948"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 8,
-    "hash": "b37a0b1d0dc5"
+    "version": 9,
+    "hash": "16240e9b725b"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 13,
-    "hash": "e4dc9838b641"
+    "version": 14,
+    "hash": "7666a3d27976"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 4,
@@ -300,16 +300,16 @@
     "hash": "d4e38799a337"
   },
   "block:Quote Block": {
-    "version": 7,
-    "hash": "2f65050f16ac"
+    "version": 8,
+    "hash": "7e81399c2b13"
   },
   "block:Signature Card (no photo)": {
-    "version": 7,
-    "hash": "c61dc1706974"
+    "version": 8,
+    "hash": "8cb5093572d0"
   },
   "block:Signature Card (photo)": {
-    "version": 6,
-    "hash": "fbc85cb2fe49"
+    "version": 7,
+    "hash": "b0b8b3d636d3"
   },
   "block:Spacer": {
     "version": 3,
@@ -344,8 +344,8 @@
     "hash": "6657c6628503"
   },
   "block:Story Card (image on the side)": {
-    "version": 2,
-    "hash": "d083e69e5bb7"
+    "version": 3,
+    "hash": "8cf0139832cc"
   },
   "block:Story Card (image right, middle-aligned)": {
     "version": 8,
