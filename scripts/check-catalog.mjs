@@ -556,6 +556,38 @@ guard('No literal EN container tag in sources', () => {
 // is ever authored into a body again, it has to precede BOTH the first
 // include and the first START marker.
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// §N Builder band width tracks the EMAIL width (2026-08-20, user-raised).
+// The block band is absolutely positioned and centres itself over the email
+// column via max-width. That literal has no way to learn the email width, so
+// widening the email (div[data-container]{max-width} in styles.css) would
+// silently leave the band centred on the OLD width. This ties them together.
+// ---------------------------------------------------------------------------
+guard('Builder band width tracks the email width', () => {
+  const css = read('src/styles.css');
+  if (!css) return;
+  const emailWidth = /div\[data-container\]\s*\{[^}]*?max-width:\s*(\d+)px/.exec(css);
+  if (!emailWidth) {
+    warn('src/styles.css — could not find div[data-container]{max-width} to compare the builder band against');
+    return;
+  }
+  for (const f of sources) {
+    const text = read(`src/${f}`);
+    if (!text || !text.includes('marketing-tools-banner')) continue;
+    const band = /\.marketing-tools-banner\s*\{[^}]*?max-width:\s*(\d+)px/.exec(text);
+    if (!band) {
+      warn(`src/${f} — the builder band sets no max-width; it will not centre over the email column`);
+      continue;
+    }
+    if (band[1] !== emailWidth[1]) {
+      warn(
+        `src/${f} — builder band max-width is ${band[1]}px but the email is ${emailWidth[1]}px ` +
+          `(div[data-container] in styles.css). The band will centre on the wrong width`,
+      );
+    }
+  }
+});
+
 guard('Builder band span leads the body', () => {
   for (const f of sources) {
     const text = read(`src/${f}`);

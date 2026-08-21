@@ -944,31 +944,43 @@ li {
          selector in a group invalidates the WHOLE rule, so a client that
          cannot parse :has() would take the template band down with it. -->
   <style type="text/css" data-en-tools-band>
+    /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in styles.css, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+    /* The band is absolutely positioned, so its `top` needs a positioned
+           ancestor or it resolves against the PAGE — measured 2026-08-20:
+           without this rule every block's band stacked at top:2rem of the
+           document, overprinting one another, instead of sitting over the
+           block it names. .en__block is EN's per-block content wrapper, so
+           positioning it scopes each band to its own block. Builder-gated,
+           like everything else here. */
+    :is(body):has(.en__emailbuilder__block) .en__block {
+      position: relative !important;
+    }
+
     :is(body):has(.en__emailbuilder__block) .marketing-tools-banner {
       display: flex !important;
-      height: 50px;
-      width: 100%;
-      background-color: #000000;
-      justify-content: center;
-      align-items: center;
-      font-weight: 700;
-      font-family: sans-serif;
-      color: #ffffff;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #000000 !important;
+      line-height: 2rem !important;
+      position: absolute !important;
+      top: 2rem !important;
+      width: 100% !important;
+      max-width: 600px !important;
+      justify-content: center !important;
     }
 
     [data-container="main"]:before {
       content: "Email Template v__TEMPLATE_VERSION__";
-      display: flex !important;
-      height: 100px;
-      width: 100%;
-      background-color: #000000;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      max-height: 50px;
-      font-weight: 700;
-      font-family: sans-serif;
-      color: #ffffff;
+      display: block !important;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #000000 !important;
+      line-height: 2rem !important;
+      text-align: center !important;
+      margin-bottom: 2.25rem !important;
     }
   </style>
 </head>
