@@ -992,6 +992,39 @@ guard('alternate arrangement check', () => {
       if (between.replace(/<!--[\s\S]*?-->/g, '').trim()) {
         warn(`${at} data-alt-arrangement="${m[1]}" is not immediately after its partner — markup sits between them`);
       }
+      // The partner must not itself be an alternate. Two consecutive alternates
+      // pair against each other, which the importer accepts silently and which
+      // ships the second one's markup with nothing tagging it.
+      const prevOpen = src.slice(prev, src.indexOf('>', prev) + 1);
+      if (/\bdata-alt-arrangement\b/.test(prevOpen)) {
+        warn(`${at} data-alt-arrangement="${m[1]}" follows another alternate — an alternate's partner must be a primary section`);
+      }
+      // COPY EQUALITY. Pairing matches on VALUE, so a one-byte drift in the
+      // alternate silently unpairs it: the option disappears, the alternate
+      // renders as its own section (the same content twice), and every band
+      // after it renumbers — which renames fields in EN emails already built
+      // on this block. The importer says so only at info level, so the check
+      // has to live here, next to the author. Compare mj-text bodies: they are
+      // what the pairing's value equality actually turns on.
+      const bodyOf = (open) => {
+        const end = src.indexOf('</mj-section>', open);
+        return end < 0 ? '' : src.slice(src.indexOf('>', open) + 1, end);
+      };
+      const textsOf = (body) =>
+        [...body.matchAll(/<mj-text\b[^>]*>([\s\S]*?)<\/mj-text>/g)]
+          .map((t) => t[1].replace(/\s+/g, ' ').trim())
+          .filter(Boolean);
+      const altTexts = textsOf(bodyOf(m.index));
+      const primaryTexts = textsOf(bodyOf(prev));
+      for (const t of altTexts) {
+        if (primaryTexts.includes(t)) continue;
+        const near = primaryTexts.find((x) => x.slice(0, 24) === t.slice(0, 24));
+        warn(
+          `${at} data-alt-arrangement="${m[1]}" has copy its partner does not: ${JSON.stringify(t.slice(0, 70))}` +
+            (near ? ` — closest partner copy is ${JSON.stringify(near.slice(0, 70))}` : '') +
+            '. Pairing matches on value, so this drops the option, renders the alternate as its own section, and renumbers every band after it',
+        );
+      }
     }
   }
 });

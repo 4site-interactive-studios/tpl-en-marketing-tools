@@ -2718,9 +2718,19 @@ button and the heading can each be hidden (user decision 2026-08-20).
   is AUTHORED rather than generated: the collapsed column needs
   `mj-column-per-100` AND its head rules, and column widths are deliberately
   never generated. Pairing is by adjacency and by VALUE equality on every
-  element plus the frame — which makes it self-policing, since a later
-  divergent edit breaks the match, warns, and drops the option instead of
-  shipping two copies of drifted copy. The matched fields are folded like a
+  element plus the frame. That was once described here as "self-policing" —
+  it is not, and the correction matters (measured 2026-08-22 by drifting one
+  letter of one Feedback Poll answer). A divergent edit does NOT merely drop
+  the option: the alternate stops being folded and renders as its OWN band, so
+  the block ships the content twice, every band after it renumbers, and the
+  fields go 1220 → 1226 with `row_3_image_*` becoming `row_5_*` — which
+  silently rebinds any EN email already built on that block. The importer's
+  only signal is an INFO note. The real guard is in the authoring repo:
+  check-catalog's alternate-arrangement check compares each alternate's
+  `mj-text` bodies against its partner's and warns on any that does not match,
+  and separately rejects an alternate whose partner is itself an alternate
+  (two in a row pair against each other and the importer accepts it silently).
+  Both breach-tested 2026-08-22. The matched fields are folded like a
   light/dark twin's, so ONE field tags its copy in every arrangement and the
   copies cannot drift; the alternate's regions are unioned only at the
   occurrence search, never into `regionMap` (`memberSpan` takes min/max across
@@ -2728,7 +2738,13 @@ button and the heading can each be hidden (user decision 2026-08-20).
   between them). A primary whose columns sit directly in the section rather
   than in an `mj-group` is rejected — there is no single contiguous region to
   substitute. An element the alternate drops loses its Display toggle, which
-  would only leave an empty column behind. **`data-alt-arrangement` is
+  would only leave an empty column behind — but its OTHER fields stay: an
+  image's URL, Dark URL, Alt Text and Width remain editable and simply have
+  nothing to act on while the alternate is selected. That is deliberate (the
+  editor can switch back), and it is why an alternate is not a way to delete
+  content. Adding one also costs the row its viewport-scoped padding flag:
+  the collapsed per-100 column follows the frame's side gutter at desktop, so
+  `data-mobile-only-padding-right` stops being true (see that flag's entry). **`data-alt-arrangement` is
   STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
@@ -2781,9 +2797,9 @@ button and the heading can each be hidden (user decision 2026-08-20).
     breakpoint, so the frame's RIGHT gutter has nothing to move at 600px
     while the left one still shifts the whole left-packed block
     (`data-mobile-only-padding-right`, honored in the per-side Select
-    path since 2026-08-18). Every row of that shape carries it: Icon Row,
-    Podcast Episode Block, Podcast Streaming Block, the three Feedback
-    Poll answers, Signature Card (photo), Steps Block.
+    path since 2026-08-18). Two rows carry it: Podcast Streaming Block and
+    Signature Card (photo). Six more did until 2026-08-22 — see the
+    arrangement rule below.
 
     **Structural inertness only — copy-dependent inertness does not earn
     the flag** (user-visible decision, 2026-08-21). A control that moves
@@ -2799,6 +2815,23 @@ button and the heading can each be hidden (user decision 2026-08-20).
     (measured 2026-08-21 at 600px with the `wrapped` probe — block height
     105 / 131 / 157px across the presets). The distinguishing question is
     "does the LAYOUT pin this, or does the placeholder?"
+
+    **An alternate arrangement unpins the layout, so a row that offers one
+    cannot carry the flag either** (2026-08-22, extending the same rule).
+    `data-alt-arrangement` collapses the row to a single `mj-column-per-100`,
+    and a per-100 column DOES follow the frame's right gutter at desktop —
+    measured on Icon Row at 600px with wrapping copy: box 64..600 at 0px
+    versus 64..536 at 64px in "No Icon", against an unmoved 184..536 at both
+    values in "Left". An arrangement Select is editor-owned exactly as copy
+    is, so the first editor who picks "No Icon" brings the control alive
+    under a label that says "Mobile". The six rows that offer an alternate
+    lost the flag together — Icon Row, Podcast Episode Block, Steps Block and
+    the three Feedback Poll answers — and their labels are now a plain
+    "Padding Right". The two that keep it have no alternate, so nothing can
+    unpin them. Note the audit will NOT catch a regression here: it renders
+    each Select against the DEFAULT of every other field, so the arrangement
+    is always "Left" while the padding is under test. The check is authorial —
+    when you add an alternate, drop the row's viewport-scoped padding flag.
   - **an inset that only bites once the box shrinks** — a right-aligned
     line or a fixed-width image that clears its container at 600px and
     only meets it at 375px (`data-mobile-only-inset-right` on the

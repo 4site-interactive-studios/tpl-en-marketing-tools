@@ -4518,12 +4518,21 @@ li {
          stays, per the 2026-08-20 decision that hidden content leaves columns
          at their authored widths; making the row collapse needs a Display
          option that rewrites the whole arrangement, which the generator does
-         not do today. --><!-- data-mobile-only-padding-right: the 120px arrow column pins the
-         desktop layout, so the right gutter has nothing to move at 600px
-         (measured 2026-08-21 — glyphs identical across 0/8/16/32; the LEFT
-         gutter DOES move the row, so it keeps its bare label). Structural,
-         not copy-dependent. Matches Icon Row and Podcast Episode Block,
-         the two rows of identical shape. -->
+         not do today. --><!-- data-mobile-only-padding-right was here until 2026-08-22. The 120px
+         arrow column does pin the desktop layout, so with the arrow SHOWN the
+         right gutter moves nothing at 600px (measured 2026-08-21 — glyphs
+         identical across 0/8/16/32). But the "No Arrow" arrangement below
+         collapses the row to one full-width column, and there the gutter is
+         live at desktop: copy box 64..600 at 0px versus 64..536 at 64px
+         (measured 2026-08-22 on the identical Icon Row shape). An arrangement
+         Select is editor-owned exactly as copy is, so this is the same call
+         the 2026-08-21 decision made about copy-dependent inertness — the
+         first editor who picks "No Arrow" brings the control alive under a
+         label that says "Mobile". Every row that offers an alternate lost the
+         flag together: Icon Row, Podcast Episode Block, the three Feedback
+         Poll answers and this one. Podcast Streaming Block and Signature Card
+         (photo) keep theirs — they have no alternate, so nothing can unpin
+         them. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
@@ -5093,8 +5102,12 @@ li {
          600px, and the note said to drop the flag if real copy ever wrapped
          at desktop. The 2026-08-21 audit sweeps realistic copy and measures
          it live at both viewports, so it did. The flag now sits on the three
-         ANSWER sections below, where the padding is still mobile-only —
-         their fixed 56px icon column pins the desktop layout. -->
+         ANSWER sections below. They lost it again on 2026-08-22, when each
+         gained a "No Icon" alternate arrangement: the fixed 56px icon column
+         pins the desktop layout only while the icon is SHOWN, and the
+         collapsed arrangement makes the right gutter live at 600px (copy box
+         64..600 at 0px versus 64..536 at 64px, measured). Same rule, one step
+         further out — see the note on Steps Block. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -5183,6 +5196,47 @@ li {
         </tbody>
       </table>
     </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no icon, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, so a drifted edit fails loudly and the option
+         disappears rather than shipping stale text.
+         All three answer rows carry one. They stay INDEPENDENT controls, so
+         hiding is per-answer — which is what lets a poll keep one emphasis
+         icon if that is the intent, at the cost of letting an editor build a
+         ragged list. Matches Icon Row, Steps Block and Podcast Episode Block,
+         the three rows of identical shape. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0 64px 8px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Very important</strong></a></p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -5245,6 +5299,35 @@ li {
         </tbody>
       </table>
     </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
+         answer row above. Copy must stay byte-identical to its primary. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0 64px 8px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -5300,6 +5383,35 @@ li {
                   </table>
                 </div>
                 <!--[if mso | IE]></td></tr></table><![endif]-->
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
+         answer row above. Copy must stay byte-identical to its primary. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="poll-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="poll-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0 64px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Not important</strong></a></p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>

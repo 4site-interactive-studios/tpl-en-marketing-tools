@@ -1267,7 +1267,7 @@
 
 
     <!-- START: Icon Row -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 64px" data-mobile-only-padding-right>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 64px">
       <mj-group>
         <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
@@ -1399,7 +1399,7 @@
     <!-- START: Podcast Episode Block -->
     <mj-section
       css-class="image-block block"
-      background-color="#006837" padding="16px 64px" data-mobile-only-padding-right
+      background-color="#006837" padding="16px 64px"
     >
       <mj-group>
         <mj-column width="112px" vertical-align="middle" css-class="episode-icon">
@@ -1719,13 +1719,22 @@
          at their authored widths; making the row collapse needs a Display
          option that rewrites the whole arrangement, which the generator does
          not do today. -->
-    <!-- data-mobile-only-padding-right: the 120px arrow column pins the
-         desktop layout, so the right gutter has nothing to move at 600px
-         (measured 2026-08-21 — glyphs identical across 0/8/16/32; the LEFT
-         gutter DOES move the row, so it keeps its bare label). Structural,
-         not copy-dependent. Matches Icon Row and Podcast Episode Block,
-         the two rows of identical shape. -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px" data-mobile-only-padding-right>
+    <!-- data-mobile-only-padding-right was here until 2026-08-22. The 120px
+         arrow column does pin the desktop layout, so with the arrow SHOWN the
+         right gutter moves nothing at 600px (measured 2026-08-21 — glyphs
+         identical across 0/8/16/32). But the "No Arrow" arrangement below
+         collapses the row to one full-width column, and there the gutter is
+         live at desktop: copy box 64..600 at 0px versus 64..536 at 64px
+         (measured 2026-08-22 on the identical Icon Row shape). An arrangement
+         Select is editor-owned exactly as copy is, so this is the same call
+         the 2026-08-21 decision made about copy-dependent inertness — the
+         first editor who picks "No Arrow" brings the control alive under a
+         label that says "Mobile". Every row that offers an alternate lost the
+         flag together: Icon Row, Podcast Episode Block, the three Feedback
+         Poll answers and this one. Podcast Streaming Block and Signature Card
+         (photo) keep theirs — they have no alternate, so nothing can unpin
+         them. -->
+    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
       <mj-group>
         <mj-column width="120px" vertical-align="top" css-class="step-icon">
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
@@ -1907,8 +1916,12 @@
          600px, and the note said to drop the flag if real copy ever wrapped
          at desktop. The 2026-08-21 audit sweeps realistic copy and measures
          it live at both viewports, so it did. The flag now sits on the three
-         ANSWER sections below, where the padding is still mobile-only —
-         their fixed 56px icon column pins the desktop layout. -->
+         ANSWER sections below. They lost it again on 2026-08-22, when each
+         gained a "No Icon" alternate arrangement: the fixed 56px icon column
+         pins the desktop layout only while the icon is SHOWN, and the
+         collapsed arrangement makes the right gutter live at 600px (copy box
+         64..600 at 0px versus 64..536 at 64px, measured). Same rule, one step
+         further out — see the note on Steps Block. -->
     <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 64px 8px">
       <mj-column>
         <mj-text padding="0">
@@ -1916,7 +1929,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px" data-mobile-only-padding-right>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -1931,7 +1944,28 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px" data-mobile-only-padding-right>
+    <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no icon, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, so a drifted edit fails loudly and the option
+         disappears rather than shipping stale text.
+         All three answer rows carry one. They stay INDEPENDENT controls, so
+         hiding is per-answer — which is what lets a poll keep one emphasis
+         icon if that is the intent, at the cost of letting an editor build a
+         ragged list. Matches Icon Row, Steps Block and Podcast Episode Block,
+         the three rows of identical shape. -->
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Very important</strong></a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -1946,7 +1980,16 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 16px" data-mobile-only-padding-right>
+    <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
+         answer row above. Copy must stay byte-identical to its primary. -->
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 16px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -1960,6 +2003,15 @@
           </mj-text>
         </mj-column>
       </mj-group>
+    </mj-section>
+    <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
+         answer row above. Copy must stay byte-identical to its primary. -->
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px 16px">
+      <mj-column>
+        <mj-text padding="0">
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Not important</strong></a></p>
+        </mj-text>
+      </mj-column>
     </mj-section>
     <!-- END: Feedback Poll Block -->
 
