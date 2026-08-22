@@ -2751,13 +2751,25 @@ li {
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                   <tbody>
+                    <!-- inner-padding is 0 vertically, against the template's 12px 16px
+               default, because this button has no pill to pad. Its ground is
+               white on white and it carries no border, so the inherited 12px
+               is invisible space above and below the words — it stacked on
+               the block's 16px gap and read as 28px where every other block
+               reads 16 (reported 2026-08-22). With the padding gone the text's
+               own box is the ink boundary, which is what the gap measures
+               from.
+               The trade: colouring this button's Background Color makes a
+               pill with no vertical padding, so its label would sit tight
+               against the edge. That is the wrong block for a coloured pill —
+               CTA Button is the one with the pill geometry. -->
                     <tr>
                       <td align="center" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
                           <tbody>
                             <tr>
-                              <td align="center" bgcolor="#FFFFFF" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#FFFFFF;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER TEXT BUTTON </a>
+                              <td align="center" bgcolor="#FFFFFF" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:0 16px;background:#FFFFFF;" valign="middle">
+                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:0 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER TEXT BUTTON </a>
                               </td>
                             </tr>
                           </tbody>

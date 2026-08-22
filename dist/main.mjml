@@ -829,10 +829,23 @@
       background-color="#ffffff" padding="0 64px" data-fully-exclude
     >
       <mj-column vertical-align="middle">
+          <!-- inner-padding is 0 vertically, against the template's 12px 16px
+               default, because this button has no pill to pad. Its ground is
+               white on white and it carries no border, so the inherited 12px
+               is invisible space above and below the words — it stacked on
+               the block's 16px gap and read as 28px where every other block
+               reads 16 (reported 2026-08-22). With the padding gone the text's
+               own box is the ink boundary, which is what the gap measures
+               from.
+               The trade: colouring this button's Background Color makes a
+               pill with no vertical padding, so its label would sit tight
+               against the edge. That is the wrong block for a coloured pill —
+               CTA Button is the one with the pill geometry. -->
           <mj-button width="auto"
                       color="#006837"
           background-color="#FFFFFF"
           href="https://tpl.org"
+          inner-padding="0 16px"
           align="center" padding="0">
             CENTER TEXT BUTTON
           </mj-button>
