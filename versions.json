@@ -120,8 +120,8 @@
     "hash": "8790c5bd9a39"
   },
   "block:Feedback Poll Block": {
-    "version": 12,
-    "hash": "08d62d85bcb3"
+    "version": 13,
+    "hash": "8634597631fd"
   },
   "block:Footer (w/ image, brown)": {
     "version": 2,
@@ -140,8 +140,8 @@
     "hash": "ff91507e9b11"
   },
   "block:Icon Row": {
-    "version": 11,
-    "hash": "067af75e20ba"
+    "version": 12,
+    "hash": "3ffd16d37bd5"
   },
   "block:Image 1x1": {
     "version": 9,
@@ -188,8 +188,8 @@
     "hash": "b4df44dfb5fa"
   },
   "block:Podcast Episode Block": {
-    "version": 12,
-    "hash": "a0440618e553"
+    "version": 13,
+    "hash": "a5c80d53f13f"
   },
   "block:Podcast Streaming Block": {
     "version": 9,
@@ -240,8 +240,8 @@
     "hash": "40fc02f12f8c"
   },
   "block:Steps Block": {
-    "version": 16,
-    "hash": "5ff25ecf9f1b"
+    "version": 17,
+    "hash": "a44a4121eaa6"
   },
   "block:Story Card (image left, middle-aligned)": {
     "version": 10,

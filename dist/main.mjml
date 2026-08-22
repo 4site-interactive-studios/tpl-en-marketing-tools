@@ -1289,8 +1289,11 @@
          AUTHORED rather than generated: the collapsed column needs
          mj-column-per-100 AND its head rules, and column widths are never
          generated. Keep its copy byte-identical to the primary's — the pairing
-         matches on value, so a drifted edit fails loudly and the option
-         disappears rather than shipping stale text. -->
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
     <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
@@ -1432,8 +1435,11 @@
          AUTHORED rather than generated: the collapsed column needs
          mj-column-per-100 AND its head rules, and column widths are never
          generated. Keep its copy byte-identical to the primary's — the pairing
-         matches on value, so a drifted edit fails loudly and the option
-         disappears rather than shipping stale text. -->
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
     <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#006837" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
@@ -1756,8 +1762,11 @@
          AUTHORED rather than generated: the collapsed column needs
          mj-column-per-100 AND its head rules, and column widths are never
          generated. Keep its copy byte-identical to the primary's — the pairing
-         matches on value, so a drifted edit fails loudly and the option
-         disappears rather than shipping stale text. -->
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
     <mj-section data-alt-arrangement="No Arrow" css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
@@ -1951,8 +1960,11 @@
          AUTHORED rather than generated: the collapsed column needs
          mj-column-per-100 AND its head rules, and column widths are never
          generated. Keep its copy byte-identical to the primary's — the pairing
-         matches on value, so a drifted edit fails loudly and the option
-         disappears rather than shipping stale text.
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here.
          All three answer rows carry one. They stay INDEPENDENT controls, so
          hiding is per-answer — which is what lets a poll keep one emphasis
          icon if that is the intent, at the cost of letting an editor build a
