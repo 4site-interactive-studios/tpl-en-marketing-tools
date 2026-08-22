@@ -35,6 +35,13 @@
   var SKIP = /^(Main Content|Debug Toolbar)/;
   var CELL_W = 600, CELL_GAP = 16; // stacked cell = email width; gap between cells
   var HATCH = 'repeating-linear-gradient(45deg,#ececec 0 10px,#f8f8f8 10px 20px)';
+  /* Spacer hatch: same 45deg/10px geometry as HATCH so the two read as one
+     tool, in Sky (#5DD8D8, the brand palette) rather than an invented blue.
+     Semi-transparent on purpose — it paints OVER whatever ground the spacer
+     sits on, including the standalone Spacer block's white
+     container-background-color, instead of replacing it. */
+  var SPACER_HATCH =
+    'repeating-linear-gradient(45deg,rgba(93,216,216,.45) 0 10px,rgba(93,216,216,.14) 10px 20px)';
   var PALETTE = [
     '#e6194b', '#3cb44b', '#4363d8', '#f58231', '#911eb4', '#0a9396',
     '#f032e6', '#9a6324', '#469990', '#800000', '#808000', '#000075'
@@ -601,6 +608,22 @@
      shorthand collapse, stray style=""). Hiding is a data attribute matched
      by an injected stylesheet; unhiding removes the attribute — a perfect
      round-trip by construction. */
+  /* Reveals every spacer while debug is on: the trailing gap each block
+     carries AND the standalone Spacer block, which are the same
+     css-class="spacer-block" section, so one selector covers both. Painted
+     via an injected stylesheet rather than element styles, for the
+     round-trip reason in the comment above ensureHideCss.
+     A spacer set to 0px has no area and so shows nothing — that is faithful
+     rather than a gap in the tool: debug draws what the email renders. */
+  function ensureSpacerCss() {
+    if (document.getElementById('tpl-debug-spacer-css')) return;
+    var st = document.createElement('style');
+    st.id = 'tpl-debug-spacer-css';
+    st.textContent =
+      '.spacer-block,.spacer-block td{background-image:' + SPACER_HATCH + ' !important;}';
+    document.head.appendChild(st);
+  }
+
   function ensureHideCss() {
     if (document.getElementById('tpl-debug-css')) return;
     var st = document.createElement('style');
@@ -1090,6 +1113,7 @@
       state.colorMap = {}; state.colorNext = 0;
       if (!state.blocks) state.blocks = parseBlocks();
       if (state.fullyExcluded === null && !state.exclusionsFailed) loadExclusions();
+      ensureSpacerCss();
       buildPanel();
       render();
     },
@@ -1105,6 +1129,8 @@
       clearLayer();
       var css = document.getElementById('tpl-debug-css');
       if (css) css.remove();
+      var sp = document.getElementById('tpl-debug-spacer-css');
+      if (sp) sp.remove();
       if (state.panel) { state.panel.remove(); state.panel = null; }
       syncButton();
     },

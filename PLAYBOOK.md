@@ -240,6 +240,16 @@ debug-toolbar partial) lazy-loads `assets/debug.js` on first click. The script
 is a self-contained IIFE exposing `window.__tplDebug` — no dependencies, works
 on any page that has the START/END comments.
 
+Turning it on also hatches **every spacer** in light-blue diagonal stripes —
+the trailing gap each block carries and the standalone Spacer block, which are
+the same `css-class="spacer-block"` section, so one selector covers both. It
+uses the same 45°/10px geometry as the stacked-view hatch, in Sky (`#5DD8D8`)
+and semi-transparent, so it paints OVER whatever ground the spacer sits on
+rather than replacing it. A spacer set to 0px has no area and shows nothing,
+which is faithful: the overlay draws what the email renders. Like the
+hide/unhide control it is an injected stylesheet, not an element style write,
+so toggling debug off leaves the markup byte-identical.
+
 Panel options:
 
 Options are grouped into four sections; BLOCKS (total parsed), STRUCTURE
