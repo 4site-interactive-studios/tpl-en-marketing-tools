@@ -400,9 +400,9 @@
         <mj-group data-no-direction-toggle>
           <mj-column width="32px">&nbsp;</mj-column>
           <mj-column vertical-align="top" width="240px">
-            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px" align="left" />
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="296px">
@@ -470,7 +470,7 @@
     <!-- START: WYSIWYG Text (inset) -->
     <mj-section
       css-class="text-block block inset-gutter"
-      background-color="#ffffff" padding="0 64px" data-fully-exclude
+      background-color="#ffffff" padding="0 64px 16px" data-fully-exclude
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
@@ -633,7 +633,7 @@
     <!-- END: Subscription Panel -->
 
     <!-- START: Stat Row -->
-    <mj-section css-class="block" background-color="#ffffff" padding="16px 64px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 64px 16px">
       <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0">
         <mj-text css-class="wysiwyg link-earth" align="center" padding="0 0 8px">
           <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
@@ -1099,11 +1099,11 @@
     <!-- START: Story Card 2x1 -->
     <mj-section
         css-class="two-col-image-text-button-block block flush-mobile-capflush"
-        background-color="#ffffff" padding="16px 32px"
+        background-color="#ffffff" padding="0 32px 16px"
     >
-      <mj-column css-class="two-col-column first-column" width="50%" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column first-column" width="50%" vertical-align="top" padding="0 8px 0 0">
         <mj-image
-            src="assets/photo-kayak.jpg" width="252px"
+            src="assets/photo-kayak.jpg" width="260px"
             alt="Custom alt text"
             href="https://tpl.org"
             padding="0"
@@ -1111,7 +1111,7 @@
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-kayak.jpg" width="252px"
+            src="assets/photo-kayak.jpg" width="260px"
             alt="Custom alt text"
             href="https://tpl.org"
             padding="0"
@@ -1136,9 +1136,9 @@
           PLACEHOLDER
         </mj-button>
       </mj-column>
-      <mj-column css-class="two-col-column" width="50%" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column" width="50%" vertical-align="top" padding="0 0 0 8px">
         <mj-image
-            src="assets/photo-garden.jpg" width="252px"
+            src="assets/photo-garden.jpg" width="260px"
             alt="Custom alt text"
             href="https://tpl.org"
             padding="0"
@@ -1146,7 +1146,7 @@
             fluid-on-mobile="true" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-garden.jpg" width="252px"
+            src="assets/photo-garden.jpg" width="260px"
             alt="Custom alt text"
             href="https://tpl.org"
             padding="0"
@@ -1177,11 +1177,11 @@
     <!-- START: Story Card (image on the side) -->
     <mj-section
       css-class="two-col-image-text-block block flush-mobile-capflush"
-      background-color="#ffffff" direction="rtl" padding="16px 32px"
+      background-color="#ffffff" direction="rtl" padding="0 32px 16px"
     >
-      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="top" padding="0 0 0 8px">
         <mj-image
-          src="assets/photo-butterfly.jpg" width="224px"
+          src="assets/photo-butterfly.jpg" width="232px"
           alt="Placeholder photo"
           href="https://tpl.org"
           padding="0"
@@ -1190,7 +1190,7 @@
           css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-          src="assets/photo-butterfly.jpg" width="224px"
+          src="assets/photo-butterfly.jpg" width="232px"
           alt="Placeholder photo"
           href="https://tpl.org"
           padding="0"
@@ -1202,7 +1202,7 @@
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px">
+      <mj-column css-class="two-col-column" width="296px" vertical-align="top" padding="0 8px 0 0">
         <mj-text padding="0 0 8px">
           <h3>Lorem ipsum dolor consectur</h3>
         </mj-text>
@@ -1220,11 +1220,11 @@
     <!-- START: Story Card (image left, middle-aligned) -->
     <mj-section
       css-class="two-col-image-text-block block flush-mobile-capflush"
-      background-color="#FFFFFF" padding="16px 32px" data-fully-exclude
+      background-color="#FFFFFF" padding="0 32px 16px" data-fully-exclude
     >
-      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column first-column" width="240px" vertical-align="middle" padding="0 8px 0 0">
         <mj-image
-            src="assets/photo-forest.jpg" width="220px"
+            src="assets/photo-forest.jpg" width="232px"
             alt="Custom alt text"
             href="https://tpl.org"
             align="center"
@@ -1233,7 +1233,7 @@
             css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
-            src="assets/photo-forest.jpg" width="220px"
+            src="assets/photo-forest.jpg" width="232px"
             alt="Custom alt text"
             href="https://tpl.org"
             align="center"
@@ -1245,7 +1245,7 @@
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
-      <mj-column css-class="two-col-column" width="296px" vertical-align="middle" padding="0 8px">
+      <mj-column css-class="two-col-column" width="296px" vertical-align="middle" padding="0 0 0 8px">
         <mj-text padding="0 0 16px">
           <h3>Lorem ipsum dolor</h3>
           <p>
@@ -1267,7 +1267,7 @@
 
 
     <!-- START: Icon Row -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="16px 64px">
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 64px 16px">
       <mj-group>
         <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
@@ -1294,7 +1294,7 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="16px 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="0 64px 16px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
@@ -1386,10 +1386,10 @@
                already does that job. -->
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
-              <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
+              <td valign="top" style="width:33px;padding:0px 0px 0px 0px;">
                 <a href="https://tpl.org" data-link-group="row" data-group-label="Row Link" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
-              <td valign="top" style="padding:8px 0px 12px 0px;">
+              <td valign="top" style="padding:0px 0px 12px 0px;">
                 <p style="margin:0;"><a href="https://tpl.org" data-link-group="row" data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
@@ -1470,7 +1470,7 @@
     <!-- START: Podcast Streaming Block -->
     <mj-section
       css-class="image-block block"
-      background-color="#ffffff" padding="16px 64px" data-mobile-only-padding-right
+      background-color="#ffffff" padding="0 64px 16px" data-mobile-only-padding-right
     >
       <mj-group>
         <mj-column width="316px" vertical-align="middle" css-class="stream-text">
@@ -1931,7 +1931,7 @@
          collapsed arrangement makes the right gutter live at 600px (copy box
          64..600 at 0px versus 64..536 at 64px, measured). Same rule, one step
          further out — see the note on Steps Block. -->
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="16px 64px 8px">
+    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
@@ -2197,7 +2197,7 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 64px 0">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="0 64px 0">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style: italic;">
@@ -2258,7 +2258,7 @@
     <!-- END: Signature Card (photo) -->
 
     <!-- START: Signature Card (no photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 64px">
+    <mj-section css-class="signature-block block" background-color="#ffffff" padding="0 64px 16px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>

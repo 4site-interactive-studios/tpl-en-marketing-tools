@@ -419,11 +419,35 @@ stray `>` in its reversed option — splice `[6178, 7374]` around region
 `[6213, 7340]`, measured 2026-08-20. Any overlap now drops the mirror,
 leaving `applyToSlice` a strictly disjoint set.
 
-**Coverage note**: this is verified end to end (a unified import shows no
-`}>` in any option of any block) but has NO unit test. Several synthetic
-fixtures reproduced the Display toggles and the swap control without ever
-firing a mirrorEdit, so a passing test would have proved nothing. A
-fixture built from the real compiled row would be the way to close it.
+**Coverage note — CLOSED 2026-08-22.** This had no unit test for a long
+time: several synthetic fixtures reproduced the Display toggles and the
+swap control without ever firing a mirrorEdit, so a passing test proved
+nothing. It is now covered the way this note always said it had to be — a
+fixture built from the REAL compiled row
+(`src/core/__fixtures__/compiled-icon-row.json`, the Icon Row block exactly
+as the pipeline hands it to the generator, instance regions included).
+
+The test asserts the invariant that matters rather than a byte string:
+**reversal is a PERMUTATION**, so the reversed option must carry the same
+multiset of tags as the default. That is what caught the second bug in this
+splice — see "Duplicate pinned regions" below — and it fails on the
+pre-fix code with `/td: 5 → 6, /table: 4 → 5`.
+
+**Duplicate pinned regions** (2026-08-22, the second bug here). A light/dark
+image twin is pinned TWICE: `mergeSwapPairs` folds the pair, so the light
+twin's key already carries BOTH regions, while the dark twin still resolves
+to its own — and the dark region arrives from both keys. Two identical
+mirrorEdits over one range are not idempotent: `applyToSlice` applies them
+in turn and the second re-slices a fragment the first already grew,
+re-inserting the region's tail. Seven arrangement values shipped an
+over-closed table (Icon Row, Podcast Episode, Steps, Feedback Poll ×3,
+Signature Card (photo)); in two of them the duplicated tail resumed
+mid-`</tbody>` and leaked `</td>body>` / `</td>tbody>` as VISIBLE text in
+every non-Outlook client. `pinnedRegions` now dedupes by range, and
+`applyToSlice` DROPS an edit overlapping one already applied rather than
+corrupting: a dropped splice orphans its tag, which qc-dump and the
+validator already report, where malformed markup reaches the inbox
+silently.
 
 ## Message size is advisory, never enforced
 
