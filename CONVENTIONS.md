@@ -1965,7 +1965,7 @@ that is `display:none` in the send, plus rules that only bite while the
 template is being edited.
 
 **One gate, one class, one layout rule; each band adds only its own
-`content`.** The gate is `:is(body):has(.en__emailbuilder__block)` (user
+`content`** — with one exception, below. The gate is `:is(body):has(.en__emailbuilder__block)` (user
 design), which asks whether a block wrapper exists ANYWHERE in the document —
 true in the builder, false in a delivered email. That single question serves
 bands inside a block AND the template's own chrome, which sits outside every
@@ -2003,6 +2003,31 @@ Bands in use: the Template Styles block (`#head-styles`, head-css version) and
 the RAW HTML utility block (`#raw-html`) — both spans the app injects into the
 block's own content at export — plus the TEMPLATE itself, which works
 differently.
+
+**`position: absolute` is the CSS Styles Block band's alone** (user decision
+2026-08-21). It sat in the shared `.marketing-tools-banner` rule until then,
+which put every band out of flow. That is right for `#head-styles` — the
+block's real content is a `<style>`, so it has no height of its own to sit
+above — and wrong for every other band, which labels a block with visible
+content that an absolutely-positioned label overlaps. The property moved to
+its own rule, `:is(body):has(.en__emailbuilder__block) #head-styles`.
+
+Two things about that rule are deliberate. It targets the **id**, not a new
+class: every band span already carries a unique id, and those ids are baked
+into the stored content of blocks already living in EN, so minting new ones
+would desync every uploaded copy. And it is its **own rule**, never merged
+into the shared selector list — one unparseable selector discards the whole
+rule, and this gate is exactly the kind an older engine may fail to parse.
+
+Cost: ~73 delivered bytes net (a 110-byte rule, less the ~37 the property's
+removal saved in the shared one). A cheaper gate exists — `.en__emailbuilder__block`
+alone is ~19 bytes lighter — but swapping it is a separate, unverified change;
+see the head-CSS reduction work.
+
+The template's own band, `[data-container="main"]:before`, is authored FIRST
+in the sheet (2026-08-21). Order is presentational: it labels the whole email
+rather than a block inside one, so it reads first. Nothing in the cascade
+depends on it — the two selectors match different elements.
 
 **The template band hangs off EN's container, not off a span** (user decision
 2026-08-20, replacing the span approach the same day it shipped). A span

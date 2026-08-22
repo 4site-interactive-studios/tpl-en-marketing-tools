@@ -113,23 +113,10 @@
          cannot parse :has() would take the template band down with it. -->
     <mj-raw>
       <style type="text/css" data-en-tools-band>
-        /* max-width tracks the EMAIL width — keep it equal to
-           div[data-container]{max-width} in styles.css, or the block band
-           stops centring over the column it labels. check-catalog's
-           "Builder band width tracks the email width" guard enforces it. */
-        :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
-          display: flex !important;
-          font-weight: 700 !important;
-          font-family: sans-serif !important;
-          color: #4e535c !important;
-          line-height: 2rem !important;
-          position: absolute !important;
-          top: 1.75rem !important;
-          width: 100% !important;
-          max-width: 600px !important;
-          justify-content: center !important;
-          background-color: #d0d5dd !important;
-        }
+        /* The TEMPLATE's own band leads, because it labels the whole email
+           rather than a block inside it. Order is presentational only — the
+           two selectors match different elements, so nothing in the cascade
+           depends on it. */
         [data-container="main"]:before{
           content: "Email Template v__TEMPLATE_VERSION__";
           display: block !important;
@@ -140,6 +127,38 @@
           text-align: center !important;
           margin-bottom: 2rem !important;
           background-color: #d0d5dd !important;
+        }
+        /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in styles.css, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+        :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
+          display: flex !important;
+          font-weight: 700 !important;
+          font-family: sans-serif !important;
+          color: #4e535c !important;
+          line-height: 2rem !important;
+          top: 1.75rem !important;
+          width: 100% !important;
+          max-width: 600px !important;
+          justify-content: center !important;
+          background-color: #d0d5dd !important;
+        }
+        /* position:absolute belongs to the CSS Styles Block band ALONE (user
+           decision 2026-08-21). That block's real content is a <style>, so it
+           has no height of its own to sit above and the band has to be lifted
+           out of flow; every other band labels a block with visible content,
+           where taking the label out of flow makes it overlap what it labels.
+           Targeted by id rather than a new class: each band span already
+           carries a unique one — #head-styles and #raw-html, from
+           STYLES_BAND_ID and RAW_HTML_BAND_ID — and those ids are baked into
+           the stored content of blocks already living in EN, so minting new
+           ones would desync every uploaded copy. Its own rule, never merged
+           into the selector list above: one unparseable selector discards the
+           WHOLE rule, and this gate is exactly the kind an older engine may
+           not parse (conventions.md, "Builder bands"). */
+        :is(body):has(.en__emailbuilder__block) #head-styles{
+          position: absolute !important;
         }
       </style>
     </mj-raw>
