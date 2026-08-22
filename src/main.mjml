@@ -446,7 +446,7 @@
 
 
     <!-- START: CTA Hero (w/ image badge) -->
-    <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="0 32px">
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
           <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://tpl.org" width="154px" padding="0 16px 0 0" align="left" />
