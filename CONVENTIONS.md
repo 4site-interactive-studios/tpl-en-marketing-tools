@@ -583,12 +583,21 @@ precedents.
 2026-07-23 rule that non-spacer blocks never bake in whitespace spacers).
 Each block's last element is a `css-class="spacer-block"` section holding a
 lone `mj-spacer`, which mints ONE field — a Height Select on the pacing
-scale. It defaults to **Single/16px on the 29 blocks that carry a colour or
-photo ground** and **None/0px on the other 29**, so the gap is invisible
-until an editor wants it. The reason the old rule existed — an editor should
-not pay for whitespace they did not ask for — is satisfied by the 0px
-default; the reason it was reversed is that two coloured blocks stacked in EN
-ran their grounds together with nothing between them.
+scale — and it defaults to **None/0px on every block** (user decision
+2026-08-22, settled after one round at 16px). The control exists everywhere
+and is off everywhere: an editor turns it on for the stack that needs air.
+The reason the old rule existed — an editor should not pay for whitespace
+they did not ask for — is met exactly by that default; the reason a gap is
+baked in at all is that two coloured blocks stacked in EN ran their grounds
+together with nothing between them and no control to separate them.
+
+It was briefly authored at 16px on the 28 blocks carrying a colour or photo
+ground. That was reversed the same day: those 28 are structurally
+indistinguishable from each other (Deadline Panel and Two-Line Banner are the
+same frame, the same full-width band), so any "colour blocks get a gap" rule
+either covers all of them or needs a hand-kept list. Uniform 0 is the rule
+that survives an editor adding a block. The standalone **Spacer** block is the
+exception and keeps its 16px — that block IS the gap.
 
 That gap is authored, not generated. Two carve-outs in the generator make it
 free:

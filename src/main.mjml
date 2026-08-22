@@ -246,7 +246,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Logo Hero (w/ image) -->
@@ -288,7 +288,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Hero -->
@@ -336,7 +336,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Hero (w/ background image) -->
@@ -384,7 +384,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Hero (centered w/ background image, fixed height) -->
@@ -448,7 +448,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Hero (w/ heading) -->
@@ -594,7 +594,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Text Block -->
@@ -630,7 +630,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Deadline Panel -->
@@ -647,7 +647,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Subscription Panel -->
@@ -696,7 +696,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Two-Line Banner -->
@@ -1105,7 +1105,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Video Block -->
@@ -1153,7 +1153,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Video Block (inset) -->
@@ -1191,7 +1191,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Photo Banner -->
@@ -1440,7 +1440,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Photo Banner (w/ CTA) -->
@@ -1477,7 +1477,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Photo Banner (overlay panel, w/ CTA) -->
@@ -1602,7 +1602,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Podcast Episode Block -->
@@ -1783,7 +1783,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Photo and Text Grid Block (2x2) -->
@@ -1821,7 +1821,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Join Links Block -->
@@ -1853,7 +1853,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (multiple choice) -->
@@ -1880,7 +1880,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (3x1 buttons) -->
@@ -1970,7 +1970,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Steps Block -->
@@ -1996,7 +1996,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Linked List Block -->
@@ -2032,7 +2032,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (2x2 buttons) -->
@@ -2100,7 +2100,7 @@
     </mj-section>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (2x2 photos) -->
@@ -2272,7 +2272,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Progress Meter Block -->
@@ -2320,7 +2320,7 @@
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Countdown Block -->
@@ -2352,7 +2352,7 @@
     <mj-include path="./partials/green-rule-divider.mjml" />
     <mj-section css-class="spacer-block block" padding="0">
       <mj-column>
-        <mj-spacer height="16px" />
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Event Invite Block -->
@@ -2542,11 +2542,6 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="spacer-block block" padding="0">
-      <mj-column>
-        <mj-spacer height="16px" />
-      </mj-column>
-    </mj-section>
     <!-- END: Footer (w/ image, brown) -->
 
     <!-- START: Footer (w/ image, snow) -->
@@ -2578,11 +2573,6 @@
         <mj-text align="center" data-no-display-toggle padding="0">
           <p style="font-size:14px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
         </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="spacer-block block" padding="0">
-      <mj-column>
-        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Footer (w/ image, snow) -->

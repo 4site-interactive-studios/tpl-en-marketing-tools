@@ -1129,8 +1129,13 @@ verify the selector form survives before relying on it.
 If two blocks with coloured grounds can be stacked next to each other, give
 every block a trailing gap rather than relying on an editor to drop a spacer
 between them: a `css-class="spacer-block"` section holding one `mj-spacer`,
-defaulting to your spacing step where the block has a ground and to 0 where it
-does not. One Height control, invisible until wanted.
+defaulting to **0 on every block**. One Height control, present everywhere and
+off everywhere, so an editor turns it on for the stack that needs air.
+
+Resist defaulting it to a real value on "the blocks with a background" — those
+blocks are usually structurally identical to ones you did not mean to include,
+so the rule needs a hand-kept list and rots the first time someone adds a
+block. Uniform 0 does not.
 
 The trap is that adding a section is not free. Section count drives band
 numbering, so a block that had exactly one section suddenly has two, and every
