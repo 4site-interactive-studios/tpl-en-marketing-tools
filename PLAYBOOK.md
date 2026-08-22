@@ -646,7 +646,14 @@ Copy verbatim, then adapt:
 - [ ] `package.json` build/watch/preview scripts (§2) + `mjml` dependency
 - [ ] `scripts/` (annotate-excluded, restore-excluded, emit-variants,
       watch) + add `.build` to .gitignore
-- [ ] `src/assets/debug.js` — fully generic, no project-specific code
+- [ ] `src/assets/debug.js` — generic except ONE line: `SPACER_HATCH`
+      (`debug.js:43`) carries TPL's Sky, so re-point it at the new brand's
+      palette on port. Nothing else needs adapting — the selector it feeds
+      (`.spacer-block`) is a class the published contract owns
+      (MJML-AUTHORING-GUIDE.md §5, CONVENTIONS.md), not a TPL-local name,
+      so the affordance itself travels. Said "fully generic, no
+      project-specific code" until 2026-08-22, when the spacer hatch made
+      that false by exactly that one line.
 - [ ] `src/partials/debug-toolbar.mjml` — the 🐞 launcher
 - [ ] `MJML-AUTHORING-GUIDE.md` + `CONVENTIONS.md` — mirrors of the private
       canonical docs; copy, never edit locally
