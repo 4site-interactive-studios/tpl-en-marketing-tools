@@ -12,10 +12,11 @@
  * hand-edit the file and never reset a number.
  *
  * Entities and what "directly changed" means for each:
- *  - email-template            tpl_unified-blocks.mjml SHELL (every
- *                              <!-- START/END --> block region replaced by
- *                              a name sentinel) + styles.css. Block edits
- *                              inside the file bump the BLOCK, not this.
+ *  - email-template            main.mjml SHELL (every <!-- START/END -->
+ *                              block region replaced by a name sentinel).
+ *                              Block edits inside the file bump the BLOCK,
+ *                              and styles.css bumps head-css — this moves
+ *                              only when the shell itself does.
  *  - catalog-shell             mjml_extra-blocks.mjml shell, same treatment
  *                              (mj-attributes defaults, category dividers).
  *  - autoresponder:<file>     each thank-you file, whole.
@@ -24,7 +25,9 @@
  *                              across mjml_all + tpl_unified (a divergent
  *                              copy in either catalog bumps the one entity).
  *  - head-css                 the COMPILED head <style> contents of
- *                              dist/tpl_unified-blocks_live.html — the exact
+ *                              dist/main_live.html, EXCEPT the
+ *                              data-en-tools-band chrome, which stays in the
+ *                              template — the exact
  *                              CSS the importer bakes into the Template
  *                              Styles block, whose EN name carries this
  *                              version ("Utility — Template Styles vN").
@@ -98,16 +101,30 @@ function shellOf(text) {
 /** Compiled head <style> contents of the unified master's live artifact */
 export function headCssContent() {
   const html = read(`dist/${CATALOG.replace('.mjml', '')}_live.html`);
-  return [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
-    .map((m) => m[1])
-    .join('\n');
+  return (
+    [...html.matchAll(/<style([^>]*)>([\s\S]*?)<\/style>/gi)]
+      // The builder band is CHROME: data-en-tools-band marks it exempt from
+      // extraction, so it stays in the TEMPLATE and never enters the Template
+      // Styles block this version labels. Hashing it here made a band edit
+      // bump "CSS Styles Block vN" for CSS that block does not carry — the
+      // mirror of the styles.css double-count fixed in computeEntities.
+      .filter((m) => !/\bdata-en-tools-band\b/i.test(m[1]))
+      .map((m) => m[2])
+      .join('\n')
+  );
 }
 
 export function computeEntities() {
   const entities = {};
   const unified = read(`src/${CATALOG}`);
 
-  entities['email-template'] = sha(shellOf(unified) + '\n@@styles@@\n' + read('src/styles.css'));
+  // SHELL ONLY. styles.css used to be concatenated here, which meant every
+  // stylesheet edit bumped BOTH this and head-css — the two labels an editor
+  // reads to tell WHICH thing changed moved in lockstep, so neither said
+  // anything (v46->v49 and v26->v29 across four consecutive commits, 2026-08-21).
+  // The CSS is extracted into the Template Styles block at import and ships
+  // under head-css's version; it is not part of the template EN stores.
+  entities['email-template'] = sha(shellOf(unified));
   // 'catalog-shell' was the second catalog's shell. mjml_extra-blocks.mjml
   // was deleted on 2026-08-21 once its keepers had moved into the master, so
   // the entity is deliberately GONE rather than left to pin forever to the

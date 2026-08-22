@@ -2938,7 +2938,7 @@ content hashes so increments are mechanical and can never be lost:
 
 - **TPL `versions.json`** — one entry per entity: `email-template` (the
   `main.mjml` SHELL — every leaf `<!-- START/END -->` block region replaced
-  by a name sentinel — plus styles.css), `autoresponder:<file>`,
+  by a name sentinel; **shell only**, see below), `autoresponder:<file>`,
   `partial:<file>`, and `block:<name>` (the block's leaf marker regions).
   `catalog-shell` was the SECOND catalog's shell and is deliberately gone
   since 2026-08-21, when `mjml_extra-blocks.mjml` was deleted and
@@ -2950,11 +2950,24 @@ content hashes so increments are mechanical and can never be lost:
   everything under src/.
 
 **"Directly changed" is the bump rule, made precise by the entity
-definitions**: editing a block's markup bumps that block alone; editing
-styles.css or the template shell bumps `email-template` alone; editing app
-code bumps the app. A stylesheet change that alters how every block RENDERS
-still bumps only the template — versions track what was edited, not what
-was affected downstream.
+definitions**: editing a block's markup bumps that block alone; editing the
+template shell bumps `email-template` alone; editing `styles.css` bumps
+`head-css` alone; editing app code bumps the app. A stylesheet change that
+alters how every block RENDERS still bumps only `head-css` — versions track
+what was edited, not what was affected downstream.
+
+**The two head entities were mis-scoped until 2026-08-21 (user-raised), and
+each contained the other's content.** `email-template` concatenated
+`styles.css`, and `head-css` hashed every compiled `<style>` including the
+`data-en-tools-band` chrome. So a stylesheet edit bumped both, and so did a
+band edit: "Email Template vN" and "CSS Styles Block vN" moved in lockstep
+for four consecutive commits (v46→v49 alongside v26→v29), which is the same
+as neither label saying anything. They now hash disjoint content —
+`email-template` the shell, `head-css` the compiled head MINUS the band —
+so each number moves only when the thing it names does. Verified both ways:
+a `styles.css` edit moves `head-css` and not `email-template`; a band edit
+moves `email-template` and not `head-css`. Correcting the definitions
+changed both hashes once, which is a real bump and recorded as one.
 
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show
