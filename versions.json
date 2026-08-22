@@ -8,60 +8,60 @@
     "hash": "ba4d81e60a1e"
   },
   "block:CTA Button": {
-    "version": 9,
-    "hash": "1e724e1c602f"
+    "version": 10,
+    "hash": "a96e7246d364"
   },
   "block:CTA Button (centered, outline)": {
-    "version": 7,
-    "hash": "06f4a2514858"
+    "version": 8,
+    "hash": "468bbc077c20"
   },
   "block:CTA Button (centered, text only)": {
-    "version": 7,
-    "hash": "5237c49ecedb"
+    "version": 8,
+    "hash": "1d136aec7a4c"
   },
   "block:CTA Buttons 2x1": {
-    "version": 9,
-    "hash": "619cd2c3cffd"
+    "version": 10,
+    "hash": "d075c1bc0e2f"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 3,
-    "hash": "6cd799c5b5d9"
+    "version": 4,
+    "hash": "872ce482e881"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 9,
-    "hash": "ea80804c3a54"
+    "version": 10,
+    "hash": "0682ebad2424"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 8,
-    "hash": "1acebac11621"
+    "version": 9,
+    "hash": "cabec710c505"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 3,
-    "hash": "747e49e2b2bb"
+    "version": 4,
+    "hash": "907cb565c8ad"
   },
   "block:CTA Hero": {
-    "version": 2,
-    "hash": "3e22d7b94e73"
+    "version": 3,
+    "hash": "9eb3aaa980f5"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
-    "version": 8,
-    "hash": "a82fdb691ea5"
+    "version": 9,
+    "hash": "11f1ac83c39e"
   },
   "block:CTA Hero (w/ background image)": {
-    "version": 2,
-    "hash": "b68346255c45"
+    "version": 3,
+    "hash": "1334247fa1c2"
   },
   "block:CTA Hero (w/ heading)": {
-    "version": 3,
-    "hash": "3a6b5c28539a"
+    "version": 4,
+    "hash": "687f77752ff7"
   },
   "block:CTA Hero (w/ image badge)": {
-    "version": 2,
-    "hash": "91f8b2761f4d"
+    "version": 3,
+    "hash": "3cbaf9b2e558"
   },
   "block:CTA Text Block": {
-    "version": 8,
-    "hash": "0a8a85778c6d"
+    "version": 9,
+    "hash": "f4dc7221628b"
   },
   "block:Category — Buttons": {
     "version": 5,
@@ -100,188 +100,184 @@
     "hash": "8ca9238e811e"
   },
   "block:Countdown Block": {
-    "version": 3,
-    "hash": "ad34010206f3"
+    "version": 4,
+    "hash": "dd525f5bb79a"
   },
   "block:Deadline Panel": {
-    "version": 9,
-    "hash": "961e5364fcb0"
+    "version": 10,
+    "hash": "812901096cc4"
   },
   "block:Divider (single-color)": {
-    "version": 1,
-    "hash": "b8934944445c"
+    "version": 2,
+    "hash": "5e11de8a6fb7"
   },
   "block:Divider (tri-color)": {
-    "version": 1,
-    "hash": "3f108d71c661"
+    "version": 2,
+    "hash": "4ebc6551720f"
   },
   "block:Event Invite Block": {
-    "version": 8,
-    "hash": "8790c5bd9a39"
+    "version": 9,
+    "hash": "48a0851ec684"
   },
   "block:Feedback Poll Block": {
-    "version": 14,
-    "hash": "9bc5cbcfe3f8"
+    "version": 15,
+    "hash": "d5b3d7b6c587"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 2,
-    "hash": "46bf5c198459"
+    "version": 3,
+    "hash": "550e94dcf6b1"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 9,
-    "hash": "2e959061622a"
+    "version": 10,
+    "hash": "10711e46beb1"
   },
   "block:Header Row": {
-    "version": 5,
-    "hash": "8dfa376db28b"
+    "version": 6,
+    "hash": "3f00639fdb6b"
   },
   "block:Highlighted Text": {
-    "version": 6,
-    "hash": "ff91507e9b11"
+    "version": 7,
+    "hash": "f7db384d0995"
   },
   "block:Icon Row": {
-    "version": 13,
-    "hash": "604b03cde09f"
+    "version": 14,
+    "hash": "557ca50acc77"
   },
   "block:Image 1x1": {
-    "version": 9,
-    "hash": "9634ecf93e6e"
+    "version": 10,
+    "hash": "5ad13d487acf"
   },
   "block:Images 2x1": {
-    "version": 10,
-    "hash": "4d9d0b382f3f"
+    "version": 11,
+    "hash": "95ec4ce96021"
   },
   "block:Images 3x1": {
-    "version": 11,
-    "hash": "0dfa09196f1e"
+    "version": 12,
+    "hash": "b1ead44dbaff"
   },
   "block:Join Links Block": {
-    "version": 8,
-    "hash": "e1a7315a68fa"
+    "version": 9,
+    "hash": "6d882b511381"
   },
   "block:Linked List Block": {
-    "version": 8,
-    "hash": "c80eee0ea45a"
+    "version": 9,
+    "hash": "7b5b7d1b416f"
   },
   "block:Logo Hero": {
-    "version": 2,
-    "hash": "945acc98d776"
+    "version": 3,
+    "hash": "cfcc01061e17"
   },
   "block:Logo Hero (w/ image)": {
-    "version": 2,
-    "hash": "f99315ba2e95"
+    "version": 3,
+    "hash": "cd2fa5a6309e"
   },
   "block:Photo Banner": {
-    "version": 1,
-    "hash": "20033fbacfcc"
+    "version": 2,
+    "hash": "5bf3889a8c54"
   },
   "block:Photo Banner (overlay panel, w/ CTA)": {
-    "version": 2,
-    "hash": "6fb18c781f76"
+    "version": 3,
+    "hash": "30ed8deaa221"
   },
   "block:Photo Banner (w/ CTA)": {
-    "version": 2,
-    "hash": "c73225b3f406"
+    "version": 3,
+    "hash": "bfa294e236ba"
   },
   "block:Photo and Text Grid Block (2x2)": {
-    "version": 3,
-    "hash": "b4df44dfb5fa"
+    "version": 4,
+    "hash": "474742101fed"
   },
   "block:Podcast Episode Block": {
-    "version": 13,
-    "hash": "a5c80d53f13f"
+    "version": 14,
+    "hash": "d2ae5d892b97"
   },
   "block:Podcast Streaming Block": {
-    "version": 10,
-    "hash": "30c89e695893"
+    "version": 11,
+    "hash": "f20184ad5c44"
   },
   "block:Progress Meter Block": {
-    "version": 12,
-    "hash": "ac7ea22a95d2"
+    "version": 13,
+    "hash": "7e41174f44ca"
   },
   "block:Question Block": {
-    "version": 11,
-    "hash": "42dd3223ae3a"
+    "version": 12,
+    "hash": "856e3bb981a8"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 12,
-    "hash": "c3931b89b307"
+    "version": 13,
+    "hash": "6514e8c42569"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 17,
-    "hash": "abc064ccf3cc"
+    "version": 18,
+    "hash": "4266f5c3891b"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 7,
-    "hash": "b3c663249525"
+    "version": 8,
+    "hash": "bb20e317a013"
   },
   "block:Quiz Block (multiple choice)": {
-    "version": 7,
-    "hash": "da87117162d9"
+    "version": 8,
+    "hash": "3d38ae0b4ed7"
   },
   "block:Quote Block": {
-    "version": 10,
-    "hash": "2df78c30342c"
+    "version": 11,
+    "hash": "fc53c3b45dca"
   },
   "block:Signature Card (no photo)": {
-    "version": 11,
-    "hash": "56cdde7b2948"
+    "version": 12,
+    "hash": "e77c9e36a54e"
   },
   "block:Signature Card (photo)": {
-    "version": 10,
-    "hash": "2b26373eddd2"
+    "version": 11,
+    "hash": "c7f541fe91f9"
   },
   "block:Spacer": {
     "version": 4,
     "hash": "11b98fa8e8d5"
   },
   "block:Stat Row": {
-    "version": 4,
-    "hash": "cfd7b4136ba8"
+    "version": 5,
+    "hash": "dac9fbd5fec7"
   },
   "block:Steps Block": {
-    "version": 17,
-    "hash": "a44a4121eaa6"
+    "version": 18,
+    "hash": "da9d32c54424"
   },
   "block:Story Card (image left, middle-aligned)": {
-    "version": 11,
-    "hash": "e0d7299a7a1a"
+    "version": 12,
+    "hash": "24ba410021ce"
   },
   "block:Story Card (image on the side)": {
-    "version": 6,
-    "hash": "566c607e356e"
+    "version": 7,
+    "hash": "8c2430edf3b2"
   },
   "block:Story Card 2x1": {
-    "version": 12,
-    "hash": "5eb7eda66a94"
+    "version": 13,
+    "hash": "298ee3f766f3"
   },
   "block:Subscription Panel": {
-    "version": 6,
-    "hash": "73f6c88f18d7"
+    "version": 7,
+    "hash": "e64c0c59ed4c"
   },
   "block:Two-Line Banner": {
-    "version": 3,
-    "hash": "e47d2f0d6714"
+    "version": 4,
+    "hash": "14b7e0077e93"
   },
   "block:Video Block": {
-    "version": 3,
-    "hash": "3c5a437df1fb"
+    "version": 4,
+    "hash": "9acdbebcdf6d"
   },
   "block:Video Block (inset)": {
-    "version": 16,
-    "hash": "30c413047301"
+    "version": 17,
+    "hash": "d8180ec4a90d"
   },
   "block:WYSIWYG Text": {
-    "version": 6,
-    "hash": "4382c844cd36"
-  },
-  "block:WYSIWYG Text (inset)": {
-    "version": 9,
-    "hash": "675a705c389b"
+    "version": 7,
+    "hash": "5823862397d4"
   },
   "email-template": {
-    "version": 50,
-    "hash": "faa315e40ba0"
+    "version": 51,
+    "hash": "9f0f489979f2"
   },
   "head-css": {
     "version": 31,

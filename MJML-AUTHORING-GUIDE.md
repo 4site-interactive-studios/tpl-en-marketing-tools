@@ -1124,6 +1124,24 @@ it costs a third of the screen. `.inset-gutter`-style collapse rules can
 claw that back, but see §2d — an attribute selector is inert in Gmail, so
 verify the selector form survives before relying on it.
 
+### A trailing gap belongs in the block, and must not cost it its tags
+
+If two blocks with coloured grounds can be stacked next to each other, give
+every block a trailing gap rather than relying on an editor to drop a spacer
+between them: a `css-class="spacer-block"` section holding one `mj-spacer`,
+defaulting to your spacing step where the block has a ground and to 0 where it
+does not. One Height control, invisible until wanted.
+
+The trap is that adding a section is not free. Section count drives band
+numbering, so a block that had exactly one section suddenly has two, and every
+merge tag it owns is renamed — `block_padding_top` becomes
+`row_1_padding_top`, rebinding every field in emails already built on that
+block. Merge-tag names are a contract; labels are not. If your importer
+numbers frames by section, teach it that a gap section is not a band and not a
+frame, gated on the AUTHORED class rather than on "contains only a spacer" —
+decorative colour bars (a 3–4px rule, a tri-colour divider) are spacer-only
+sections too, and they ARE bands.
+
 ### Sole-member consolidation
 
 When a column holds a single element, that element gets no spacing field of

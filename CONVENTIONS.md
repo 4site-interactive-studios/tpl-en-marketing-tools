@@ -579,11 +579,41 @@ authored padding stays hard-coded. Light/dark image twins count as one
 member. Mirrors the spacer-only-section and single-member-display-toggle
 precedents.
 
-Non-spacer blocks never bake in whitespace spacers (the Quote/CTA blocks'
-20px top/bottom spacer sections were removed upstream 2026-07-23) — editors
-add the standalone Spacer block manually when they want that gap. Decorative
-color-bar spacers (3–4px, colored backgrounds) are visual elements, not
-spacing, and stay.
+**Every block ends in a gap** (user decision 2026-08-22, REVERSING the
+2026-07-23 rule that non-spacer blocks never bake in whitespace spacers).
+Each block's last element is a `css-class="spacer-block"` section holding a
+lone `mj-spacer`, which mints ONE field — a Height Select on the pacing
+scale. It defaults to **Single/16px on the 29 blocks that carry a colour or
+photo ground** and **None/0px on the other 29**, so the gap is invisible
+until an editor wants it. The reason the old rule existed — an editor should
+not pay for whitespace they did not ask for — is satisfied by the 0px
+default; the reason it was reversed is that two coloured blocks stacked in EN
+ran their grounds together with nothing between them.
+
+That gap is authored, not generated. Two carve-outs in the generator make it
+free:
+
+- **A gap section is not a band.** `bandSet` skips it, so a one-section block
+  stays one-band. Without that, appending a gap flips the block to multi-band
+  and renames every tag it owns from `block_*` to `row_1_*` — measured, and
+  merge-tag names are byte-stable by contract, so it would rebind every field
+  in emails already built on that block.
+- **A gap section is not counted for frame numbering** either (`distinct`),
+  which is the second path to the same rename: `block_background_color`
+  picked up a numeric infix until it was filtered too.
+
+Both gate on the authored **`spacer-block` class**, NOT on "this section
+contains only `mj-spacer`". The tri-colour and green-rule divider partials are
+also spacer-only sections, but they are decorative BARS, not gaps — the rule
+below — and the broader test renamed Event Invite's and both Footers' fields.
+A member sitting in a gap section reports band ordinal 0, which the label
+paths now read as "no band" rather than printing "Row 0".
+
+Verified across the catalog: 52 fields added (all of them the new Height),
+zero removed, zero relabelled, zero renamed.
+
+Decorative color-bar spacers (3–4px, colored backgrounds) are visual elements,
+not spacing, and stay.
 
 ## Width presets (horizontal gutters)
 

@@ -185,6 +185,11 @@
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Logo Hero -->
 
 
@@ -239,6 +244,11 @@
       </mj-column>
       </mj-group>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Logo Hero (w/ image) -->
 
     <!-- START: CTA Hero -->
@@ -275,6 +285,11 @@
           </mj-button>
       </mj-column>
       </mj-group>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
     </mj-section>
     <!-- END: CTA Hero -->
 
@@ -319,6 +334,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Hero (w/ background image) -->
 
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
@@ -362,6 +382,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Hero (centered w/ background image, fixed height) -->
 
 
@@ -383,6 +408,11 @@
           <mj-button width="auto" href="https://tpl.org" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
         </mj-column>
       </mj-group>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
     </mj-section>
     <!-- END: CTA Hero (w/ image badge) -->
 
@@ -416,6 +446,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Hero (w/ heading) -->
 
     <!-- START: Category — Text Blocks -->
@@ -431,25 +466,19 @@
     <!-- END: Category — Text Blocks -->
 
     <!-- START: WYSIWYG Text -->
+    <!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
     <mj-section
       css-class="text-block block"
       background-color="#ffffff" padding="0 64px 16px"
     >
       <mj-column>
-        <!-- Heading and body are separate mj-texts so each mints its own
-             Content field and Display toggle (user decision 2026-08-19).
-             The heading's Content is a FULL WYSIWYG carrying its own <h2>
-             tag: EN's rich-text editor already offers H1-H4, so the level
-             is changed there rather than through a second field. That
-             replaced data-heading-level-toggle, which narrowed Content to
-             the heading's inner text and minted a separate Heading Level
-             Select beside it (user decision 2026-08-20). The old second,
-             LINKED heading demo is gone; the body's second paragraph still
-             demos an inline link. -->
-        <mj-text padding="0 0 16px">
-          <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
-        </mj-text>
-        <mj-text padding="0 0 16px">
+        <mj-text padding="0">
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
@@ -459,53 +488,14 @@
             risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>.
           </p>
         </mj-text>
-        <!-- Third member of the column, so the Display toggle that makes this
-             button optional is minted automatically — no data-display-toggle
-             needed, which is only for a column's SOLE member. -->
-        <mj-button width="auto" href="https://tpl.org" align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: WYSIWYG Text -->
-
-    <!-- START: WYSIWYG Text (inset) -->
-    <mj-section
-      css-class="text-block block inset-gutter"
-      background-color="#ffffff" padding="0 64px 16px" data-fully-exclude
-    >
-      <mj-column>
-        <!-- Heading and body are separate mj-texts so each mints its own
-             Content field and Display toggle (user decision 2026-08-19).
-             The heading's Content is a FULL WYSIWYG carrying its own <h2>
-             tag: EN's rich-text editor already offers H1-H4, so the level
-             is changed there rather than through a second field. That
-             replaced data-heading-level-toggle, which narrowed Content to
-             the heading's inner text and minted a separate Heading Level
-             Select beside it (user decision 2026-08-20). The old second,
-             LINKED heading demo is gone; the body's second paragraph still
-             demos an inline link. -->
-        <mj-text padding="0 0 16px">
-          <h2>Lorem ipsum quis malesuada sed quam faucibus.</h2>
-        </mj-text>
-        <mj-text padding="0">
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
-            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
-            Fermentum sit id pharetra tortor. In viverra semper et lorem consequat
-            pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean.
-            Non sit volutpat quam pretium risus ullamcorper pretium nisi porttitor.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis
-            vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
-            metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
-            consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
-            senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium risus ullamcorper pretium
-            nisi porttitor.</a>
-          </p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <!-- END: WYSIWYG Text (inset) -->
 
     <!-- START: Quote Block -->
     <mj-section
@@ -546,12 +536,17 @@
         <mj-divider css-class="divider" border-width="4px" border-color="#006837" padding="0" width="280px" />
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Quote Block -->
 
     <!-- START: Highlighted Text -->
     <mj-section
       css-class="text-block block"
-      background-color="#ffffff" padding="16px"
+      background-color="#ffffff" padding="0 16px 16px"
     >
       <mj-column data-no-width-toggle css-class="highlighted-text-column" width="472px" border-left="4px solid #006837" background-color="#CEE4C5" padding="16px 16px 0">
         <mj-text padding="0 0 16px">
@@ -561,6 +556,11 @@
             Fermentum sit id pharetra tortor.
           </p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Highlighted Text -->
@@ -592,17 +592,27 @@
         </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Text Block -->
 
     <!-- START: Header Row -->
     <mj-section
       css-class="text-block block header-row-block"
-      background-color="#CEE4C5" padding="16px 64px"
+      background-color="#ffffff" padding="0 64px 16px"
     >
       <mj-column vertical-align="middle">
         <mj-text padding="0">
           <h2>🦋&nbsp; <a href="https://tpl.org">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Header Row -->
@@ -618,6 +628,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Deadline Panel -->
 
     <!-- START: Subscription Panel -->
@@ -628,6 +643,11 @@
           <p style="font-size:16px;margin:0 0 4px;"><b>Monthly Supporter:</b> <span style="color:#006837;font-weight:bold;">Yes&ndash;thank you!</span></p>
           <p style="font-size:16px;margin:0;"><b>Monthly Gift Amount:</b></p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Subscription Panel -->
@@ -645,6 +665,11 @@
           <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
         </mj-text>
         <mj-button width="auto" href="https://tpl.org" align="center" padding="0 0 32px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Stat Row -->
@@ -667,6 +692,11 @@
           <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
           <p style="font-size:34px;line-height:38px;font-weight:700;color:#700310;margin:0;">NOW ACTIVE</p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Two-Line Banner -->
@@ -696,6 +726,11 @@
           </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Button -->
 
 
@@ -717,6 +752,11 @@
           </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Button (centered, outline) -->
 
     <!-- START: CTA Button (centered, text only) -->
@@ -734,6 +774,11 @@
           </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Button (centered, text only) -->
 
     <!-- START: CTA Buttons 2x1 -->
@@ -744,6 +789,11 @@
           <div class="cta-group" style="text-align:left;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Buttons 2x1 -->
@@ -758,6 +808,11 @@
           <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">CENTER ALIGNED</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: CTA Buttons 3x1 (dynamic width) -->
@@ -788,6 +843,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: CTA Buttons 3x1 (fixed width) -->
 
   <!-- START: CTA Buttons 2x1 (fixed width) -->
@@ -816,6 +876,11 @@
       </mj-text>
     </mj-column>
   </mj-section>
+  <mj-section css-class="spacer-block block" padding="0">
+    <mj-column>
+      <mj-spacer height="0px" />
+    </mj-column>
+  </mj-section>
   <!-- END: CTA Buttons 2x1 (fixed width) -->
 
   <!-- START: CTA Buttons 2x1 (two-line) -->
@@ -832,6 +897,11 @@
         <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section css-class="spacer-block block" padding="0">
+    <mj-column>
+      <mj-spacer height="0px" />
     </mj-column>
   </mj-section>
   <!-- END: CTA Buttons 2x1 (two-line) -->
@@ -864,6 +934,11 @@
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Image 1x1 -->
@@ -914,6 +989,11 @@
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Images 2x1 -->
@@ -987,6 +1067,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Images 3x1 -->
 
     <!-- START: Video Block -->
@@ -1016,6 +1101,11 @@
         <mj-text data-display-toggle align="right" mj-class="caption" padding="0 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Video Block -->
@@ -1061,6 +1151,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Video Block (inset) -->
 
     <!-- START: Category — Image & Text Layouts -->
@@ -1094,6 +1189,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Photo Banner -->
 
     <!-- START: Story Card 2x1 -->
@@ -1172,6 +1272,11 @@
         </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Story Card 2x1 -->
 
     <!-- START: Story Card (image on the side) -->
@@ -1213,6 +1318,11 @@
         <mj-button width="auto"
           href="https://tpl.org"
           align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Story Card (image on the side) -->
@@ -1262,6 +1372,11 @@
         </mj-button>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Story Card (image left, middle-aligned) -->
 
 
@@ -1301,6 +1416,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+<mj-section css-class="spacer-block block" padding="0">
+  <mj-column>
+    <mj-spacer height="0px" />
+  </mj-column>
+</mj-section>
 <!-- END: Icon Row -->
 
 
@@ -1318,6 +1438,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Photo Banner (w/ CTA) -->
 
     <!-- START: Photo Banner (overlay panel, w/ CTA) -->
@@ -1350,6 +1475,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Photo Banner (overlay panel, w/ CTA) -->
 
     <!-- START: Category — Engagement & Interactive -->
@@ -1395,6 +1525,11 @@
             </tr>
           </table>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Question Block -->
@@ -1465,6 +1600,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Podcast Episode Block -->
 
     <!-- START: Podcast Streaming Block -->
@@ -1526,6 +1666,11 @@
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
     </mj-section>
     <!-- END: Podcast Streaming Block -->
 
@@ -1636,13 +1781,25 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Photo and Text Grid Block (2x2) -->
 
     <!-- START: Join Links Block -->
+    <!-- data-visible-duplicate: WYSIWYG Text was reduced to its body paragraph
+         alone on 2026-08-22, which made THIS block its structural twin — both
+         are one mj-text in a section — so the dedupe check flags it. Both ship
+         anyway, on the same reasoning that keeps Linked List Block below:
+         default content is a block's value, and an editor who picks "Join
+         Links" gets the join copy rather than an empty text block to retype it
+         into. Structural dedupe alone must not erase a family (CONVENTIONS). -->
     <mj-section
       css-class="text-block block"
       background-color="#CEE4C5" padding="16px 64px"
-    >
+     data-visible-duplicate>
       <mj-column>
         <mj-text padding="0">
           <h2><a href="https://tpl.org">Join Our Advisory Board</a></h2>
@@ -1660,6 +1817,11 @@
             Was this email forwarded to you? <a href="https://tpl.org"><strong>Sign up here.</strong></a>
           </p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Join Links Block -->
@@ -1689,6 +1851,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Quiz Block (multiple choice) -->
 
     <!-- START: Quiz Block (3x1 buttons) -->
@@ -1709,6 +1876,11 @@
           <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (3x1 buttons) -->
@@ -1796,6 +1968,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Steps Block -->
 
     <!-- START: Linked List Block -->
@@ -1815,6 +1992,11 @@
           <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Linked List Block -->
@@ -1846,6 +2028,11 @@
         <mj-text align="center" padding="0 0 8px">
           <p style="font-size:16px;">Don't feel like guessing? <a href="https://tpl.org"><strong>Reveal the answer.</strong></a></p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (2x2 buttons) -->
@@ -1909,6 +2096,11 @@
         <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Quiz Block (2x2 photos) -->
@@ -2025,6 +2217,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Feedback Poll Block -->
 
     <!-- START: Progress Meter Block -->
@@ -2073,6 +2270,11 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Progress Meter Block -->
 
     <!-- START: Countdown Block -->
@@ -2116,6 +2318,11 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Countdown Block -->
 
     <!-- START: Event Invite Block -->
@@ -2143,6 +2350,11 @@
       </mj-column>
     </mj-section>
     <mj-include path="./partials/green-rule-divider.mjml" />
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Event Invite Block -->
 
     <!-- START: Category — Utilities -->
@@ -2178,10 +2390,20 @@
         />
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Divider (single-color) -->
 
     <!-- START: Divider (tri-color) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Divider (tri-color) -->
 
     <!-- START: Category — Signatures -->
@@ -2255,6 +2477,11 @@
         </mj-column>
       </mj-group>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Signature Card (photo) -->
 
     <!-- START: Signature Card (no photo) -->
@@ -2270,6 +2497,11 @@
         <mj-text data-inset-toggle padding="8px 0 0">
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
       </mj-column>
     </mj-section>
     <!-- END: Signature Card (no photo) -->
@@ -2310,6 +2542,11 @@
         </mj-text>
       </mj-column>
     </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
     <!-- END: Footer (w/ image, brown) -->
 
     <!-- START: Footer (w/ image, snow) -->
@@ -2341,6 +2578,11 @@
         <mj-text align="center" data-no-display-toggle padding="0">
           <p style="font-size:14px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <!-- END: Footer (w/ image, snow) -->
