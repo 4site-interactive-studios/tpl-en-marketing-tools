@@ -8,36 +8,36 @@
     "hash": "ba4d81e60a1e"
   },
   "block:CTA Button": {
-    "version": 11,
-    "hash": "9265d1f35327"
+    "version": 12,
+    "hash": "1c5d98ff3f1b"
   },
   "block:CTA Button (centered, outline)": {
-    "version": 9,
-    "hash": "c3038ae59e29"
+    "version": 10,
+    "hash": "410786bab4c7"
   },
   "block:CTA Button (centered, text only)": {
-    "version": 9,
-    "hash": "1c7a81b87035"
+    "version": 10,
+    "hash": "6b3a7dd555da"
   },
   "block:CTA Buttons 2x1": {
-    "version": 11,
-    "hash": "7c1e62470028"
+    "version": 12,
+    "hash": "1ae1fd7576a5"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 5,
-    "hash": "0c11276633a6"
+    "version": 6,
+    "hash": "34ab0ddde67f"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 11,
-    "hash": "710cfd0a56a6"
+    "version": 12,
+    "hash": "7dc5ae0a5bb4"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 10,
-    "hash": "586e87915a34"
+    "version": 11,
+    "hash": "9909850eb5be"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 5,
-    "hash": "ceabb661ed07"
+    "version": 6,
+    "hash": "3a6f76884c5d"
   },
   "block:CTA Hero": {
     "version": 5,
@@ -140,16 +140,16 @@
     "hash": "1cf56bfa3f7f"
   },
   "block:Image 1x1": {
-    "version": 11,
-    "hash": "b8bcc0199338"
+    "version": 12,
+    "hash": "20a6e219e492"
   },
   "block:Images 2x1": {
-    "version": 12,
-    "hash": "e8c1737dfa3f"
+    "version": 13,
+    "hash": "26dcec33588f"
   },
   "block:Images 3x1": {
-    "version": 13,
-    "hash": "31f3e91b0fc8"
+    "version": 14,
+    "hash": "36eabb935d85"
   },
   "block:Join Links Block": {
     "version": 11,
@@ -264,12 +264,12 @@
     "hash": "14b7e0077e93"
   },
   "block:Video Block": {
-    "version": 6,
-    "hash": "9acdbebcdf6d"
+    "version": 7,
+    "hash": "663e87edfaa2"
   },
   "block:Video Block (inset)": {
-    "version": 19,
-    "hash": "d8180ec4a90d"
+    "version": 20,
+    "hash": "981debd154af"
   },
   "block:WYSIWYG Header": {
     "version": 1,
@@ -284,8 +284,8 @@
     "hash": "735df361dfac"
   },
   "head-css": {
-    "version": 32,
-    "hash": "f3ff3186cb1d"
+    "version": 33,
+    "hash": "c62cbc202f9d"
   },
   "partial:debug-toolbar": {
     "version": 1,

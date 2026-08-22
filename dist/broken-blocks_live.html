@@ -427,10 +427,17 @@ li {
       }
 
       /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
-     decision, round two): every image caption authors padding 4px 0 8px —
-     Quarter above, Half below, both viewports — and the image sections
-     carry no bottom padding. The mobile-only image-stack-gap classes this
-     replaced are retired. */
+     decision, round two): every image caption authors Quarter above and
+     nothing below, both viewports, and the image sections carry no bottom
+     padding. The mobile-only image-stack-gap classes this replaced are
+     retired.
+
+     The "Half below" half was dropped on 2026-08-22, when every block gained
+     a 16px trailing gap: 8px under the caption PLUS that gap read as one
+     doubled space, which is exactly what it was. The gap owns the distance
+     to the next block now; the caption only owns its distance from the photo
+     above it. Same rule wherever a block's last element carried a bottom
+     padding on a white ground — the eight button blocks lost theirs too. */
       /* Feedback Poll option rows: pin the icon column so the mj-group
      percentage math cannot squeeze it (56px compiles to 10.4478%, which
      is 32.5px at 375px — minus the icon cell's fixed 32px gap padding

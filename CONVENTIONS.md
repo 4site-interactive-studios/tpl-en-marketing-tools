@@ -2283,6 +2283,24 @@ exemption exists because the layout has to work for an email built WITHOUT that
 block, and it follows the precedent already in that function, where styles
 inside a revealed MSO conditional are left alone.
 
+**Pay the trailing rhythm ONCE.** With a 16px gap on every block, any bottom
+padding on a block's LAST element became a second helping of the same space —
+32px under every button block, 24px under every image caption (reported and
+measured 2026-08-22). Thirteen blocks were zeroed: the eight button blocks and
+the five caption blocks, all of them cases where that padding sat on WHITE and
+so was indistinguishable from the gap itself.
+
+Six blocks kept theirs, and the distinction is the same one the frame model
+runs on: **is the padding inside a visible band?** Highlighted Text, Stat Row
+and Quiz Block (2x2 buttons) end inside a coloured box; CTA Text Block, Photo
+Banner and Photo Banner (overlay panel, w/ CTA) end inside a coloured or photo
+section. There the padding is the band's breathing room — zeroing it puts copy
+against the band edge — and the gap separates the band from what follows.
+
+Check every COLUMN, not just the block's last element: Images 2x1 and 3x1 hold
+one caption per column, the block's height is set by the tallest, and a first
+pass that only fixed the final column left the double in place.
+
 **The second head-resident sheet** (2026-08-22): `<style
 data-en-tools-template-css>` carries the VIEWPORT FORK — the `.mobile-only`
 plain hide, its 9998px twin, and the 599px `.desktop-only` / `.mobile-only`
