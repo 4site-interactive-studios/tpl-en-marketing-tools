@@ -1370,6 +1370,18 @@ sort — it is purely the panel/export display order.
   proved the same block added multiple times keeps INDEPENDENT
   Replacement selections per instance. `data-no-link-toggle` opts out
   upstream. Label is bare "Link", sorted directly under Display.
+
+  **It DEFAULTS to "Exclude Link"** (user decision 2026-08-21, a
+  safeguard). A block pulled from the library arriving pre-linked sends
+  whatever URL the template author happened to type — a placeholder, or a
+  URL right for the catalog and wrong for this send — and an editor who
+  does not think to check the image never finds out. Opting IN is a
+  deliberate act; opting out is one nobody remembers to make. Note this is
+  a `defaultValue`-only change: `originalValue` stays the AUTHORED linked
+  fragment, so deleting the field still restores the block byte-exact,
+  and an author who wants the link on says so by selecting it. The
+  `default != original` shape is the same one 61 other fields already
+  use.
 - **Heading Level toggles** (2026-08-19, user-decided): an `mj-text`
   flagged `data-heading-level-toggle` whose ENTIRE content is one lone
   `<h1>`–`<h6>` gets a "Heading Level" Select of H1–H4 (plus the

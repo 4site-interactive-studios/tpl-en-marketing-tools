@@ -172,14 +172,14 @@
         <mj-image
           src="assets/logo-tpl_color-black-text.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
@@ -198,7 +198,7 @@
         <mj-image data-display-toggle
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -207,7 +207,7 @@
         <mj-image
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -221,7 +221,7 @@
         <mj-image
           src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="104px"
           padding="0 0 0 16px"
           css-class="light-only"
@@ -230,7 +230,7 @@
         <mj-image
           src="assets/state-north-carolina.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="104px"
           padding="0 0 0 16px"
           css-class="dark-only"
@@ -251,7 +251,7 @@
         <mj-image data-display-toggle
           src="assets/logo-tpl_all-light-green.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           padding="0 16px 0 0"
           css-class="light-only"
@@ -260,7 +260,7 @@
         <mj-image
           src="assets/logo-tpl_color-light-green-text.png"
           alt="Logo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           width="154px"
           padding="0 16px 0 0"
           css-class="dark-only"
@@ -269,7 +269,7 @@
       </mj-column>
       <mj-column vertical-align="middle" width="50%">
           <mj-button data-display-toggle width="auto"
-            href="https://www.example.com"
+            href="https://tpl.org"
             align="right" padding="0" color="#ffffff" background-color="#006837">
             READ MORE
           </mj-button>
@@ -293,7 +293,7 @@
           <mj-image data-display-toggle
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="154px"
             padding="0 16px 0 0"
             css-class="light-only"
@@ -302,7 +302,7 @@
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="154px"
             padding="0 16px 0 0"
             css-class="dark-only"
@@ -311,7 +311,7 @@
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
             <mj-button data-display-toggle css-class="button fixed-width" width="auto"
-              href="https://www.example.com"
+              href="https://tpl.org"
               align="right" padding="0" color="#ffffff" background-color="#006837">
               READ MORE
             </mj-button>
@@ -336,7 +336,7 @@
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="154px"
             padding="0 16px 0 0"
             css-class="light-only"
@@ -345,7 +345,7 @@
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="154px"
             padding="0 16px 0 0"
             css-class="dark-only"
@@ -354,7 +354,7 @@
         </mj-column>
         <mj-column vertical-align="bottom" width="50%">
             <mj-button css-class="button fixed-width" width="auto"
-              href="https://www.example.com"
+              href="https://tpl.org"
               align="right" padding="0" color="#ffffff" background-color="#006837">
               READ MORE
             </mj-button>
@@ -370,17 +370,17 @@
     <mj-section css-class="image-block block" background-color="#ffffff" border="1px solid #D9E3D9" padding="16px 32px">
       <mj-group>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+          <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://tpl.org" width="154px" padding="0 16px 0 0" align="left" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
+          <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column vertical-align="middle" width="50%">
-          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" />
+          <mj-image css-class="light-only" src="assets/cta-giving-tuesday_color.png" alt="Placeholder graphic" href="https://tpl.org" width="163px" padding="0 0 8px" align="right" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://www.example.com" width="163px" padding="0 0 8px" align="right" data-style-dark-mode />
+          <mj-image css-class="dark-only" src="assets/cta-giving-tuesday_white.png" alt="Placeholder graphic" href="https://tpl.org" width="163px" padding="0 0 8px" align="right" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-button width="auto" href="https://www.example.com" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
+          <mj-button width="auto" href="https://tpl.org" align="right" padding="0" color="#ffffff" background-color="#006837">READ MORE</mj-button>
         </mj-column>
       </mj-group>
     </mj-section>
@@ -400,9 +400,9 @@
         <mj-group data-no-direction-toggle>
           <mj-column width="32px">&nbsp;</mj-column>
           <mj-column vertical-align="top" width="240px">
-            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" />
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="296px">
@@ -410,7 +410,7 @@
               <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
               <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
             </mj-text>
-            <mj-button width="auto" href="https://www.example.com" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
           </mj-column>
           <mj-column width="32px">&nbsp;</mj-column>
         </mj-group>
@@ -455,14 +455,14 @@
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
             Fermentum sit id pharetra tortor. In viverra semper et lorem consequat
             pellentesque. Proin urna urna massa ut quis augue pulvinar senectus
-            aenean. <a href="https://www.example.com">Non sit volutpat quam pretium</a>
-            risus ullamcorper <a href="https://www.example.com">pretium nisi porttitor</a>.
+            aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a>
+            risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>.
           </p>
         </mj-text>
         <!-- Third member of the column, so the Display toggle that makes this
              button optional is minted automatically — no data-display-toggle
              needed, which is only for a column's SOLE member. -->
-        <mj-button width="auto" href="https://www.example.com" align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+        <mj-button width="auto" href="https://tpl.org" align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: WYSIWYG Text -->
@@ -499,7 +499,7 @@
             vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis
             metus. Fermentum sit id pharetra tortor. In viverra semper et lorem
             consequat pellentesque. Proin urna urna massa ut quis augue pulvinar
-            senectus aenean. <a href="https://www.example.com">Non sit volutpat quam pretium risus ullamcorper pretium
+            senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium risus ullamcorper pretium
             nisi porttitor.</a>
           </p>
         </mj-text>
@@ -586,7 +586,7 @@
         <mj-button width="auto"
             color="#ffffff"
             background-color="#006837"
-            href="https://www.example.com"
+            href="https://tpl.org"
             align="center" padding="0 32px 8px">
           LOREM IPSUM SEMPER MI
         </mj-button>
@@ -601,7 +601,7 @@
     >
       <mj-column vertical-align="middle">
         <mj-text padding="0">
-          <h2>🦋&nbsp; <a href="https://www.example.com">Lorem Ipsum Dolor Sit Amet</a></h2>
+          <h2>🦋&nbsp; <a href="https://tpl.org">Lorem Ipsum Dolor Sit Amet</a></h2>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -613,7 +613,7 @@
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
-          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://www.example.com"><strong>LOREM IPSUM DOLOR SIT</strong></a></p>
+          <p style="font-size:16px;margin:0 0 4px;"><b>Lorem:</b> <a href="https://tpl.org"><strong>LOREM IPSUM DOLOR SIT</strong></a></p>
           <p style="font-size:16px;margin:0;"><b>Deadline:</b> <span style="color:#F7931E;font-weight:bold;">FRIDAY</span></p>
         </mj-text>
       </mj-column>
@@ -640,11 +640,11 @@
           <p style="font-size:16px;"><b>Supporter ID:</b></p>
           <p style="font-size:15px;"><b>Year-to-Date Donation Total: Contact us for more information</b></p>
           <p style="font-size:18px;margin-bottom:2px;"><b>LOREM IPSUM DOLOR SIT</b></p>
-          <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://www.example.com">Still able to make an impact!</a></p>
+          <p style="font-size:15px;margin-top:0;"><b>Opportunity Status:</b> <a href="https://tpl.org">Still able to make an impact!</a></p>
           <p style="font-size:15px;margin-bottom:2px;"><b>Suggested Donation:</b> $1,000 (makes $5,000 of impact!)</p>
           <p style="font-size:15px;margin-top:0;color:#F7931E;"><b>Deadline: Midnight, December 31, 2025</b></p>
         </mj-text>
-        <mj-button width="auto" href="https://www.example.com" align="center" padding="0 0 32px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+        <mj-button width="auto" href="https://tpl.org" align="center" padding="0 0 32px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
     <!-- END: Stat Row -->
@@ -690,7 +690,7 @@
     >
       <mj-column vertical-align="middle">
           <mj-button width="auto"
-            href="https://www.example.com"
+            href="https://tpl.org"
             align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">
             LEFT BUTTON
           </mj-button>
@@ -711,7 +711,7 @@
                       color="#006837"
           background-color="#FFFFFF"
           border="2px solid #006837"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="center" padding="0 0 16px">
             CENTER OUTLINE BUTTON
           </mj-button>
@@ -728,7 +728,7 @@
           <mj-button width="auto"
                       color="#006837"
           background-color="#FFFFFF"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="center" padding="0 0 16px">
             CENTER TEXT BUTTON
           </mj-button>
@@ -741,7 +741,7 @@
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:left;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
+          <div class="cta-group" style="text-align:left;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -755,7 +755,7 @@
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">CENTER ALIGNED</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">CENTER ALIGNED</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -783,7 +783,7 @@
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -811,7 +811,7 @@
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -829,7 +829,7 @@
     <mj-column vertical-align="middle">
       <mj-text css-class="two-line-cta" padding="0 0 16px">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -857,9 +857,9 @@
          2026-08-18). -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="light-only" />
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://tpl.org" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://www.example.com" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
@@ -877,7 +877,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid light-only" />
@@ -885,7 +885,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
@@ -898,7 +898,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid light-only" />
@@ -906,7 +906,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="292px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
@@ -927,7 +927,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid light-only" />
@@ -935,7 +935,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
@@ -948,7 +948,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid light-only" />
@@ -956,7 +956,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
@@ -969,7 +969,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid light-only" />
@@ -977,7 +977,7 @@
         <mj-image
           src="assets/photo-family.jpg" width="184px"
           alt="Custom alt text"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
@@ -996,15 +996,24 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
         <mj-column width="550px">
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 0 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
       <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption" padding="0 0 8px">
+        <!-- data-display-toggle: the caption is the SOLE member of its column,
+             and a sole member earns no Display Select otherwise. The gap above
+             it is the SECTION's top padding, not the text's — the video sits in
+             a different section, so the caption is its column's first element
+             and the pacing rule sends the gap to the frame. 4px above / 8px
+             below matches the image blocks (Image 1x1, Images 2x1/3x1), where
+             the image carries no bottom padding of its own. 4 is on the caption
+             class's own scale ("Quarter"), which is why this reads Quarter above
+             and Half below rather than an off-scale pair. -->
+        <mj-text data-display-toggle align="right" mj-class="caption" padding="0 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1030,15 +1039,24 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="484px">
-            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="8px 32px 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 32px 0">
       <mj-column vertical-align="middle">
-        <mj-text align="right" mj-class="caption" padding="0 0 8px">
+        <!-- data-display-toggle: the caption is the SOLE member of its column,
+             and a sole member earns no Display Select otherwise. The gap above
+             it is the SECTION's top padding, not the text's — the video sits in
+             a different section, so the caption is its column's first element
+             and the pacing rule sends the gap to the frame. 4px above / 8px
+             below matches the image blocks (Image 1x1, Images 2x1/3x1), where
+             the image carries no bottom padding of its own. 4 is on the caption
+             class's own scale ("Quarter"), which is why this reads Quarter above
+             and Half below rather than an off-scale pair. -->
+        <mj-text data-display-toggle align="right" mj-class="caption" padding="0 0 8px">
           <span>Video by Videographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1087,7 +1105,7 @@
         <mj-image
             src="assets/photo-kayak.jpg" width="252px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             padding="0"
             align="center"
             fluid-on-mobile="true" css-class="light-only" />
@@ -1095,7 +1113,7 @@
         <mj-image
             src="assets/photo-kayak.jpg" width="252px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             padding="0"
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
@@ -1113,7 +1131,7 @@
           </p>
         </mj-text>
         <mj-button width="auto"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
@@ -1122,7 +1140,7 @@
         <mj-image
             src="assets/photo-garden.jpg" width="252px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             padding="0"
             align="center"
             fluid-on-mobile="true" css-class="light-only" />
@@ -1130,7 +1148,7 @@
         <mj-image
             src="assets/photo-garden.jpg" width="252px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             padding="0"
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
@@ -1148,7 +1166,7 @@
           </p>
         </mj-text>
         <mj-button width="auto"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
@@ -1165,7 +1183,7 @@
         <mj-image
           src="assets/photo-butterfly.jpg" width="224px"
           alt="Placeholder photo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true"
@@ -1174,7 +1192,7 @@
         <mj-image
           src="assets/photo-butterfly.jpg" width="224px"
           alt="Placeholder photo"
-          href="https://www.example.com"
+          href="https://tpl.org"
           padding="0"
           align="center"
           fluid-on-mobile="true"
@@ -1193,7 +1211,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
         <mj-button width="auto"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="left" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
       </mj-column>
     </mj-section>
@@ -1208,7 +1226,7 @@
         <mj-image
             src="assets/photo-forest.jpg" width="220px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             align="center"
             fluid-on-mobile="true"
             padding="0"
@@ -1217,7 +1235,7 @@
         <mj-image
             src="assets/photo-forest.jpg" width="220px"
             alt="Custom alt text"
-            href="https://www.example.com"
+            href="https://tpl.org"
             align="center"
             fluid-on-mobile="true"
             padding="0"
@@ -1238,7 +1256,7 @@
           </p>
         </mj-text>
         <mj-button width="auto"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="left" padding="0" color="#ffffff" background-color="#006837">
           PLACEHOLDER
         </mj-button>
@@ -1259,7 +1277,7 @@
         </mj-column>
         <mj-column width="416px" vertical-align="middle" css-class="icon-row-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+            <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1276,7 +1294,7 @@
     <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
-          <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://www.example.com"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+          <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1292,7 +1310,7 @@
           <mj-text align="center" padding="0 0 16px">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
           </mj-text>
-          <mj-button css-class="button fixed-width" width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+          <mj-button css-class="button fixed-width" width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
         </mj-group>
       </mj-section>
@@ -1322,7 +1340,7 @@
               <h1 style="text-align: center">Placeholder message for special occasion </h1>
             </mj-text>
             <mj-button css-class="button fixed-width" width="auto"
-              href="https://www.example.com" padding="0 32px 8px" color="#ffffff" background-color="#006837">
+              href="https://tpl.org" padding="0 32px 8px" color="#ffffff" background-color="#006837">
               BUTTON
             </mj-button>
           </mj-column>
@@ -1366,10 +1384,10 @@
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
             <tr>
               <td valign="top" style="width:33px;padding:16px 0px 0px 0px;">
-                <a href="https://www.example.com" data-link-group="row" data-group-label="Row Link" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
+                <a href="https://tpl.org" data-link-group="row" data-group-label="Row Link" style="display:block;"><img src="assets/icon-circle.png" alt="" width="18" height="18" style="display:block;width:18px;height:18px;border:0;" /></a>
               </td>
               <td valign="top" style="padding:8px 0px 12px 0px;">
-                <p style="margin:0;"><a href="https://www.example.com" data-link-group="row" data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
+                <p style="margin:0;"><a href="https://tpl.org" data-link-group="row" data-group-label="Row Copy" style="display:block;text-decoration:none;color:#000000;">Each list item will function as a link in the email directing users to a dedicated page on your site.</a></p>
               </td>
             </tr>
           </table>
@@ -1433,7 +1451,7 @@
              The heading keeps its link INSIDE the RTE — a plain-markup
              linked heading stays RTE-editable by convention. -->
         <mj-text data-group-label="Episode Title" padding="0 0 8px">
-          <h2><a href="https://www.example.com">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
+          <h2><a href="https://tpl.org">Episode 24: Sweet Auburn's Enduring Legacy</a></h2>
         </mj-text>
         <mj-text data-group-label="Episode Description" padding="0">
           <p>
@@ -1469,7 +1487,7 @@
           <mj-image data-display-toggle
             src="assets/icon-spotify.png"
             alt="Listen on Spotify"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="62px"
             align="right"
             padding="0" css-class="light-only" />
@@ -1477,7 +1495,7 @@
           <mj-image
             src="assets/icon-spotify.png"
             alt="Listen on Spotify"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="62px"
             align="right"
             padding="0" css-class="dark-only" data-style-dark-mode />
@@ -1487,7 +1505,7 @@
           <mj-image
             src="assets/icon-apple-podcast.png"
             alt="Listen on Apple Podcasts"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="62px"
             align="right"
             padding="0 0 0 16px" css-class="light-only" />
@@ -1495,7 +1513,7 @@
           <mj-image
             src="assets/icon-apple-podcast.png"
             alt="Listen on Apple Podcasts"
-            href="https://www.example.com"
+            href="https://tpl.org"
             width="62px"
             align="right"
             padding="0 0 0 16px" css-class="dark-only" data-style-dark-mode />
@@ -1608,7 +1626,7 @@
     >
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" align="right" mj-class="caption" color="#ffffff" padding="0">
-          <span>Photos <a href="https://www.example.com">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
+          <span>Photos <a href="https://tpl.org">Flickr</a>: Oregon Department of Fish &amp; Wildlife, USFWS Mountain-Prairie, Mary Shattock, Shawn Taylor</span>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1621,19 +1639,19 @@
     >
       <mj-column>
         <mj-text padding="0">
-          <h2><a href="https://www.example.com">Join Our Advisory Board</a></h2>
+          <h2><a href="https://tpl.org">Join Our Advisory Board</a></h2>
           <p style="font-size:16px;">
             Advisory board members are TPL advocates, ambassadors, and donors
             who help increase our impact through philanthropy, advocacy,
             connections, and strategic guidance.
           </p>
-          <h2><a href="https://www.example.com">Join Our Team</a></h2>
+          <h2><a href="https://tpl.org">Join Our Team</a></h2>
           <p style="font-size:16px;">
             Come join a passionate team working toward a mission you believe
-            in. <a href="https://www.example.com"><strong>View all open positions.</strong></a>
+            in. <a href="https://tpl.org"><strong>View all open positions.</strong></a>
           </p>
           <p style="font-size:14px;">
-            Was this email forwarded to you? <a href="https://www.example.com"><strong>Sign up here.</strong></a>
+            Was this email forwarded to you? <a href="https://tpl.org"><strong>Sign up here.</strong></a>
           </p>
         </mj-text>
       </mj-column>
@@ -1657,11 +1675,11 @@
     >
       <mj-column>
         <mj-text padding="0">
-          <h3 style="text-align:center;">🐟 <a href="https://www.example.com">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
+          <h3 style="text-align:center;">🐟 <a href="https://tpl.org">Lorem ipsum dolor sit amet consectetur adipiscing elit?</a></h3>
           <p style="font-size:16px;"><b>A.</b> Lorem</p>
           <p style="font-size:16px;"><b>B.</b> Ipsum</p>
           <p style="font-size:16px;"><b>C.</b> Dolor</p>
-          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem ipsum dolor sit amet consectetur.</strong></a></p>
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem ipsum dolor sit amet consectetur.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1682,7 +1700,7 @@
         </mj-text>
         <mj-text css-class="button" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
+          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:25px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1753,10 +1771,10 @@
           <p style="font-size:16px;margin-top:0;">Call on the NPS to research, preserve, and share all aspects of our history&mdash;and to fund this work so these stories can be told.</p>
         </mj-text>
         <mj-button width="auto"
-          href="https://www.example.com"
+          href="https://tpl.org"
           align="left" padding="0 0 16px" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
         <mj-text css-class="wysiwyg link-accent" padding="0">
-          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://www.example.com">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
+          <p style="font-size:13px;line-height:19px;font-style:italic;">This button will take you to <a href="https://tpl.org">[the public comment portal]</a>, the official site where you can send your comment straight to [Agency Name].</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1774,10 +1792,10 @@
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
-          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p style="font-size:16px;"><a href="https://www.example.com"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p style="font-size:16px;"><a href="https://tpl.org"><strong>Lorem Ipsum Dolor Sit Amet</strong></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1791,12 +1809,12 @@
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://www.example.com" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://www.example.com" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:25px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1808,7 +1826,7 @@
            white — white-on-white (EoA 8ryXNAL, iPhone dark, 2026-08-19). -->
       <mj-column css-class="highlighted-text-column" border="1px solid #39B54A" background-color="#ffffff" padding="8px 0 0">
         <mj-text align="center" padding="0 0 8px">
-          <p style="font-size:16px;">Don't feel like guessing? <a href="https://www.example.com"><strong>Reveal the answer.</strong></a></p>
+          <p style="font-size:16px;">Don't feel like guessing? <a href="https://tpl.org"><strong>Reveal the answer.</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1827,48 +1845,48 @@
     </mj-section>
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="8px 32px 0">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid light-only" />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
-          <a href="https://www.example.com">AGES 13-17</a>
+          <a href="https://tpl.org">AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid light-only" />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
-          <a href="https://www.example.com">AGES 25-34</a>
+          <a href="https://tpl.org">AGES 25-34</a>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="0 32px">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid light-only" />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
-          <a href="https://www.example.com">AGES 45-54</a>
+          <a href="https://tpl.org">AGES 45-54</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid light-only" />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://www.example.com" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="248px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
-          <a href="https://www.example.com">AGES 65+</a>
+          <a href="https://tpl.org">AGES 65+</a>
         </mj-text>
       </mj-column>
     </mj-section>
     <mj-section css-class="text-block block" background-color="#362229" padding="0 32px 16px">
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
-          <p style="font-size:16px;">Not in a guessing mood? <a href="https://www.example.com"><strong>Skip to the answer.</strong></a></p>
+          <p style="font-size:16px;">Not in a guessing mood? <a href="https://tpl.org"><strong>Skip to the answer.</strong></a></p>
         </mj-text>
         <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
@@ -1908,7 +1926,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Very important</strong></a></p>
+            <p style="font-size:16px;"><a href="https://tpl.org"><strong>Very important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1923,7 +1941,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Somewhat important</strong></a></p>
+            <p style="font-size:16px;"><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1938,7 +1956,7 @@
         </mj-column>
         <mj-column width="480px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
-            <p style="font-size:16px;"><a href="https://www.example.com"><strong>Not important</strong></a></p>
+            <p style="font-size:16px;"><a href="https://tpl.org"><strong>Not important</strong></a></p>
           </mj-text>
         </mj-column>
       </mj-group>
@@ -1985,7 +2003,7 @@
               </tr>
             </table>
           </mj-text>
-          <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+          <mj-button width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
           <mj-column width="32px">&nbsp;</mj-column>
         </mj-group>
@@ -2006,7 +2024,7 @@
           <mj-text align="center" padding="0 0 16px">
             <h3 style="color:#ffffff;margin:0;">Lorem ipsum dolor sit<br />amet consectetur elit!</h3>
           </mj-text>
-            <mj-button width="auto" href="https://www.example.com" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
+            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0 0 16px" color="#ffffff">LEARN MORE</mj-button>
             <!-- color="#ffffff" here is LOAD-BEARING, not decoration: mj-attributes defaults mj-text to
              color="#000000" (top of this file), so deleting it paints the countdown BLACK on the dark
              photo. It reads redundant only because the two <p>s below used to hard-code the same white
@@ -2029,7 +2047,7 @@
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:17px;">{user_data~First Name}, you're invited!</p>
-          <h2><a href="https://www.example.com">The Great Northern Festival</a></h2>
+          <h2><a href="https://tpl.org">The Great Northern Festival</a></h2>
           <p style="font-size:17px;">
             The Main Cinema<br />
             115 SE Main Street<br />
@@ -2195,23 +2213,23 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
       <mj-column>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
+        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://tpl.org/donate" align="center" padding="0 0 32px">DONATE</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
+          <p style="font-size:14px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2228,23 +2246,23 @@
     <mj-include path="./partials/tri-color-divider.mjml" />
     <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
       <mj-column>
-        <mj-image src="assets/text-and-arrow_3.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
+        <mj-image src="assets/text-and-arrow_3.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/text-and-arrow_2.png" href="https://www.example.com" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://www.example.com" align="center" padding="0 0 32px">DONATE</mj-button>
+        <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://tpl.org/donate" align="center" padding="0 0 32px">DONATE</mj-button>
         <mj-text align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:21px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
+        <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://www.example.com">Contact Us</a> | <a href="https://www.example.com">Privacy Policy</a> | <a href="https://www.example.com">Unsubscribe</a></p>
+          <p style="font-size:14px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>

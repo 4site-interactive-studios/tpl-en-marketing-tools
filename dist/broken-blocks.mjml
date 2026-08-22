@@ -219,13 +219,13 @@
       >
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
-            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" />
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="154px" padding="0 16px 0 0" align="left" />
             <mj-raw><!--[if !mso]><!--></mj-raw>
-            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.example.com" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="154px" padding="0 16px 0 0" align="left" data-style-dark-mode />
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="middle" width="50%">
-            <mj-button data-display-toggle width="160px" href="https://www.example.com" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
+            <mj-button data-display-toggle width="160px" href="https://tpl.org" align="right" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
           </mj-column>
         </mj-group>
       </mj-section>

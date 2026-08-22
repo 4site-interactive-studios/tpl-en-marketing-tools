@@ -1186,7 +1186,7 @@ the one field (§4: one value, every carrier).
 | `data-category-short="Text"` | short category name prefixed onto block names |
 | `data-no-display-toggle` | opt out of the show/hide Select |
 | `data-display-toggle` | opt a column's SOLE member IN to the show/hide Select |
-| `data-no-link-toggle` | opt out of the image link Select |
+| `data-no-link-toggle` | opt out of the image link Select. The Select itself **defaults to "Exclude Link"** (2026-08-21): an `href` you author is what the editor can turn ON, not what ships. Authoring one is still worth doing — it is the link an editor gets when they opt in, and the value a deleted field restores. |
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
