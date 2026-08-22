@@ -159,9 +159,32 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
   `archive/` is invisible to the build (the source enumerator only walks the
   directories it names). Archive, never delete — annotated probes are the
   instruments for re-measuring EN later.
-- **Probe colors.** Probe instruments (canary bars, test swatches) use
-  colors the template already carries — the brand palette or the extended
-  background-Select entries (Crimson, Royal Blue, Purple, Sage, …) —
-  never a newly invented hex (user decision 2026-08-18: canary bar text
-  is Earth `#362229`, not an ad-hoc `#111111`). Signal semantics pick the
-  nearest existing color, not a new one.
+- **Instrument colors.** Every dev instrument — probe canary bars and test
+  swatches, and anything the debug overlay paints — uses colors the
+  template already carries: the brand palette or the extended
+  background-Select entries (Crimson, Royal Blue, Purple, Sage, …), never
+  a newly invented hex (user decision 2026-08-18: canary bar text is Earth
+  `#362229`, not an ad-hoc `#111111`). Signal semantics pick the nearest
+  existing color, not a new one. The debug spacer hatch is Sky `#5DD8D8`
+  for that reason, not a generic blue.
+- **Debug affordances leave no trace.** Anything the overlay draws goes in
+  an injected stylesheet keyed to enable/disable — never a write to an
+  element's `style` attribute. debug.js explains why above `ensureHideCss`:
+  any `el.style` write re-serializes the whole attribute (hex becomes
+  `rgb()`, shorthands collapse, a stray `style=""` is left behind), so an
+  overlay that paints that way corrupts the markup an editor then copies
+  out. A stylesheet added on enable and removed on disable round-trips by
+  construction, and that is testable — toggle on/off/on and assert the
+  painted count and that every touched element still carries only its
+  authored inline style.
+- **An instrument draws what the email renders**, never a flattering
+  version of it. The spacer hatch shows nothing on a 0px spacer because
+  there is no area to show; giving it a minimum height would make the
+  overlay lie about the layout it exists to explain. If a zero-size thing
+  needs finding, that is a separate opt-in control, not a silent floor.
+- **Reuse the idiom before inventing one.** The spacer hatch is the same
+  45°/10px geometry as the stacked-view `HATCH` constant, so the two read
+  as one tool rather than two. Check what the file already has — and if a
+  sibling repo is named as the source of a pattern, confirm it actually
+  carries it before copying: mjml-studio was believed to hold this CSS and
+  a clone-and-grep found only a loading shimmer (2026-08-22).

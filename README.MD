@@ -9,7 +9,11 @@ Client Documentation can be found here: **TO DO: ADD LINK TO DOCUMENTATION**
 - **`src/`**: Contains the source MJML templates and assets.
   - `main.mjml`: The master email template file.
   - `style.css`: The CSS file for styling the email templates.
-  - `assets/`: Contains images and other assets used in the templates.
+  - `assets/`: Contains images and other assets used in the templates,
+    plus `debug.js` — the dev-only overlay (never shipped in a send).
+    Toggling it on outlines every block and hatches every spacer in
+    light-blue diagonal stripes, so the gaps between blocks are visible
+    rather than inferred. See PLAYBOOK.md §5.
 - **`dist/`**: Contains the compiled HTML files generated from the MJML templates
 - **`exports/`**: Contains the JSON definitions for the email blocks and the master template, ready for import into Engaging Networks.
 - **`documentation/`**: Contains detailed documentation for the templates and blocks **TO DO: ADD LINK TO DOCUMENTATION**
