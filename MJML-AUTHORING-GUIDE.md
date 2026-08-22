@@ -1085,6 +1085,45 @@ scale when you want editors to adjust them; author them off-scale to pin
 them. Remember the offsets add: total left offset = the block's gutter
 plus the content inset.
 
+### Author the default gutter at the TOP of the ladder (2026-08-21)
+
+Pick one **content baseline** — the x-position where copy starts — and
+author every body block to it, so a reader's eye follows one line down the
+email. Then author that gutter as the LARGEST preset your template
+declares, not a middle one.
+
+The reason is mechanical. The importer withholds any gutter option that
+would break the frozen geometry inside the frame — a fixed-px column, or an
+image sized to fill its column, cannot shrink to follow a growing gutter, so
+past a point the row wraps. Authoring at the top of the ladder means every
+remaining option leaves MORE room than the authored one, so **nothing can be
+withheld**: the editor gets the full scale on both sides instead of a
+dropdown that silently stops halfway. Author in the middle and you ship a
+control whose upper half either disappears or, where the importer's static
+scan cannot see the frozen thing (fixed-px pills inside an `mj-text`, say),
+breaks the layout.
+
+Three kinds of measurement do NOT follow a gutter change, and have to be
+re-cut whenever the baseline moves:
+
+- **Fixed-px rails inside an `mj-group`** — rail + text must equal the new
+  frame (120+416 in a 536 frame becomes 120+352 in a 472 one). Re-target
+  onto a width another block already uses where you can: each distinct
+  `.mj-column-px-N` costs ~174 delivered bytes against the Gmail budget
+  (§2b-bis), and it is emitted twice.
+- **Fixed-px buttons or pills**, from the formula
+  `(frameWidth − 2·gutter − (n−1)·gap) / n`, rounded DOWN. Keep that formula
+  in a comment beside them; it is the only thing that makes the next move
+  cheap.
+- **Images with an explicit px width inside a percentage column** — a 50%
+  column of a 472px frame is 236px, not 268.
+
+And know the mobile cost before you commit: a section gutter is inline px
+and does not scale, so a 64px desktop gutter is still 64px at 375px, where
+it costs a third of the screen. `.inset-gutter`-style collapse rules can
+claw that back, but see §2d — an attribute selector is inert in Gmail, so
+verify the selector form survives before relying on it.
+
 ### Sole-member consolidation
 
 When a column holds a single element, that element gets no spacing field of
@@ -1491,6 +1530,12 @@ aloud). The Alt Text field survives either way (§5).
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
    tomorrow. Silence there means every frame reaches Quadruple.
+6d-bis. Confirm every body block sits on the same content baseline, and
+   that the baseline gutter is the LARGEST declared preset (see "Author the
+   default gutter at the TOP of the ladder", §5). Then re-check the three
+   things that do not follow it: group rails sum to the frame, fixed-px
+   pill widths match their formula, and px image widths still fit their
+   percentage columns.
 6e. Confirm no fixed-px column inside an `mj-group` relies on its px width
    surviving on mobile — `mj-group` never stacks and converts every child
    column to a PERCENTAGE, so a 56px icon column becomes ~10% and shrinks

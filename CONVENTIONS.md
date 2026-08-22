@@ -583,6 +583,85 @@ spacing, and stay.
   so the single tag filling both side slots of the composite (mso-padding-alt
   copies included) drives the whole effect.
 
+## The content baseline — 64px in, 472px wide
+
+User decision 2026-08-21. Every block's internal content starts at **64px
+from the left edge and ends at 536px**, giving a 472px content column —
+the WYSIWYG Text block with its Block Padding Left/Right set to
+**Quadruple**. That is the default an editor sees; the whole ladder stays
+selectable underneath it. 36 blocks moved (32 → 64), and the audit oracle
+reads 365/365 live after the move.
+
+Four groups are OUT, and the reasons differ:
+
+- **Headers and Heroes, Footers, Story Cards** (user-named exceptions).
+  They keep the 32px gutter. Heroes and footers are chrome, not body copy;
+  Story Cards' 240/296 two-column cards cannot take a 64px gutter at all
+  (`maxSafeGutter` caps them at 32, and always did).
+- **Full-bleed photo blocks** — Image 1x1, Images 2x1/3x1, Photo Banner,
+  Photo Banner (w/ CTA), Photo Banner (overlay panel, w/ CTA), Video Block,
+  Countdown Block. Their copy is CENTRED over a photo, so a left edge is
+  not an alignment anchor there, and the photo is meant to touch both
+  edges. **Progress Meter Block is the exception among them**: its
+  GOAL / RAISED / REMAINING row is genuinely left-aligned, so it moved —
+  by re-cutting its rails (32+536+32 → 64+472+64), not by adding a gutter
+  the photo would have to give up.
+- **Spacer and the two Dividers.** Nothing to align; a rule that spans the
+  full 600 under 64px-inset copy is deliberate.
+- **Centred fixed-px boxes** — Quote Block, Highlighted Text, CTA Text
+  Block. They reach the baseline by WIDTH, not padding: 480 → 472 centres
+  exactly on 64/536. Their side padding stays literal (inset-box
+  suppression, below) because a symmetric change to it still moves
+  nothing. Highlighted Text's copy sits at 80 — the box's own 16px inset
+  is the panel's design, not a baseline miss. Stat Row's card behaves the
+  same way, and its card edge now lands on 64.
+
+**Why the default belongs at the TOP of the ladder.** `maxSafeGutter` asks
+whether GROWING a gutter breaks the frozen geometry inside it. Authoring at
+64 — the largest declared preset — means every remaining option leaves MORE
+room than the authored one, so nothing can be withheld. That is what
+un-capped ten controls that used to stop at 32 (Icon Row, Steps Block,
+Podcast Episode, Podcast Streaming, Feedback Poll, Signature Card (photo),
+Video Block (inset), and the two-column rows in Photo and Text Grid and
+Quiz Block (2x2 photos)) — each now offers the full scale on BOTH sides,
+and every "capped at 32px — 2 option(s) withheld" info note is gone. The
+same move retired a latent trap in the other direction: the fixed-width
+pill rows offered 48 and 64 while their pills were sized for 32, so those
+two options wrapped the row.
+
+**What has to move with the frame.** Three things do not follow a gutter
+change and must be re-cut by hand:
+
+1. **Grouped fixed-px rails.** rail + text must equal the frame: Icon Row
+   and Steps 120+416 → 120+352, Podcast Episode 112+424 → 112+360, Podcast
+   Streaming 380+78+78 → 316+78+78, Feedback Poll 56+480 → 56+416,
+   Signature Card (photo) 110+426 → 112+360 (retargeted onto Podcast
+   Episode's pair rather than minting two new classes). Any mobile pin in
+   `styles.css` naming a changed rail moves with it — `.signature-img`
+   110 → 112.
+2. **Fixed-px pill rows**, from the formula already carried in their source
+   comments: `(600 − 2·gutter − (n−1)·gap) / n`. 3×157 → 3×136, 2×252 →
+   2×220, in CTA Buttons 3x1/2x1 (fixed width), CTA Buttons 2x1 (two-line)
+   and Quiz Block (3x1 / 2x2 buttons). Each row lands on exactly 472.
+3. **Images sized to fill a percentage column**: Photo and Text Grid and
+   Quiz Block (2x2 photos) 248 → 228.
+
+**The column ladder got cheaper, not dearer** — 19 distinct widths → 18
+(110, 380, 424, 426, 480, 484, 536 out; 64, 316, 352, 360, 422, 472 in),
+because the re-cut widths were deliberately shared between blocks. Head CSS
+13,853 → **13,670** delivered, headroom against the 14,000 target 147 →
+330.
+
+**Mobile is the cost.** A section gutter is inline px and does not scale, so
+64px holds below 600px too: measured at a 375px viewport, a rebased block
+gives **247px of content** where it used to give 311, and the grouped rows
+are tighter still (Icon Row / Steps text column 127px, Podcast Episode 135,
+Podcast Streaming 91). `.inset-gutter` — the mobile collapse-to-32 rule that
+WYSIWYG Text (inset) demonstrates — is the obvious remedy, but its
+`td[style*=direction]` selector is an attribute selector, which is inert in
+Gmail (styles.css header note), so applying it catalog-wide would fix every
+client except the largest. Left as a stated cost rather than half-fixed.
+
 ## Inert paddings — never ship a field that does nothing
 
 A padding field is worthless if changing it doesn't change the rendering,
@@ -610,8 +689,12 @@ direction-flip skips.
   (w/ heading), Quote Block, CTA Text Block, Image 1x1, Images 2x1, Images
   3x1, Photo Banner, Progress Meter Block, Spacer, Divider (tri-color)
   (measured 2026-08-21). Video Block (inset) and Countdown Block were on
-  this list until their gutter moved 48→32 the same day; both now ship a
-  live Wrapper Padding Left/Right, so the old entry read exactly backwards.
+  this list until their gutter moved 48→32 the same day, and the old entry
+  read exactly backwards. Video Block (inset) ships a live Wrapper Padding
+  Left/Right (now defaulting to 64 and reaching the whole ladder);
+  Countdown Block went full bleed later the same day and has no side
+  control again — suppressed by the unsafe-growth cap below, not by this
+  pin.
   "Image (inset) w/ Caption" was never a block name. These pins are
   INHERENT to MJML
   compilation (verified 2026-08-03): a wrapper always bakes its inner
@@ -679,7 +762,8 @@ distinct column tops cannot tell a wrap from a taller neighbour, and moves
 on every vertical Spacing Below when the columns are stacked (10 false
 positives, 2026-08-21). An `overflow` row means `paddingCap.ts` let through
 a value it should have withheld. Current template (main.mjml,
-2026-08-21): **338/338 fields live, zero inert, zero overflow** after
+2026-08-21, after the 64px content baseline): **365/365 fields live, zero
+inert, zero overflow** after
 suppression and capping. Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
 prune. The Inert Dropdown Audit below generalizes this oracle to every
