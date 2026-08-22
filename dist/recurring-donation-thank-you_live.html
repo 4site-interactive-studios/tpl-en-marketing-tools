@@ -208,46 +208,6 @@ li {
       margin-bottom: 0;
     }
 
-    /* Viewport-forked content, the sanctioned pair (completed 2026-08-18 —
-   the reveal was missing since the sheet's beginning, so the class hid
-   content everywhere). The hide is authored TWICE, on the .dark-only
-   precedent, because the two copies serve different clients:
-
-   1. The PLAIN copy below: EN inlines it onto the element at send
-      (!important stripped), which is what covers the style-stripping
-      audience — Gmail app on non-Google/IMAP accounts drops style blocks
-      entirely, and forwarding drops head styles in most clients. There
-      the inline hide is the only rule standing: one fork shows (desktop),
-      not two.
-   2. The WRAPPED copy: an always-true media query EN keeps verbatim
-      (guide §2a), so the hide also survives as a stylesheet rule wherever
-      styles are respected but the inline was lost (edited block HTML).
-      Its condition is deliberately DISTINCT (9998px, not the OWA block's
-      9999px) so EN's same-condition merge cannot move it after the 599px
-      reveal. The merge's direction is MEASURED (2026-08-19, EoA delivered
-      heads): EN folds every same-condition block into the FIRST
-      occurrence's position. That is why the 599px reveal below must be
-      the ONLY (max-width: 599px) block in the whole compiled head — a
-      second copy earlier in the document (the catalogs' old mj-style
-      block) dragged this sheet's reveal in front of the 9998px hide and
-      inverted the order this pair depends on.
-
-   The reveal (599px block, later in the sheet) beats BOTH copies: the
-   inline hide is plain after EN's !important-strip, and the wrapped hide
-   loses the equal-specificity tie on source order. Word ignores @media
-   AND display:none, so every element classed mobile-only MUST also sit
-   inside the revealed [if !mso] conditional wrapper (check-catalog asserts
-   this). Use sparingly: each fork mints its own Replacement fields. */
-    .mobile-only {
-      display: none;
-    }
-
-    @media only screen and (max-width: 9998px) {
-      .mobile-only {
-        display: none !important;
-      }
-    }
-
     .two-col-column h3 {
       margin-bottom: 0;
     }
@@ -360,22 +320,13 @@ li {
     }
 
     @media (max-width: 599px) {
-      .desktop-only {
-        display: none !important;
-      }
 
-      /* The reveal half of .mobile-only (see the 9998px block above). Source
-     order after the hide is load-bearing: equal specificity, equal
-     importance — later wins. This must stay the ONLY (max-width: 599px)
-     block EN sees: EN folds same-condition blocks into the first
-     occurrence's position (measured 2026-08-19), so a second 599px block
-     earlier in the compiled head would drag this reveal ahead of the
-     hide. The .caption/.cta-item rules below moved here from the
-     catalogs' mj-style block for exactly that reason. */
-      .mobile-only {
-        display: block !important;
-      }
-
+      /* .desktop-only / .mobile-only are NOT here any more. The whole
+     hide/reveal pair moved to the page template head on 2026-08-22 so a
+     viewport fork still works in an email built without the Template Styles
+     block — with this sheet absent neither half applied and BOTH copies
+     rendered. The pair has to travel together and stay in order, so it is
+     atomic in one style block there rather than split across two sheets. */
       /* Indents the caption (!important beats the inline td padding) */
       .caption {
         padding-left: 16px !important;

@@ -375,7 +375,7 @@ arrangements, and its option labels used to assume "first column = left".
 That is only true left-to-right. `direction:rtl` lays the columns out from
 the RIGHT, so the first column is the rightmost one.
 
-Story Card (image on the side) authors the image column first under
+Story Card (image right, left aligned) authors the image column first under
 `direction="rtl"` — measured at desktop width, the image renders on the
 **right** — while the field offered "Left" (the authored order) and
 "Right" (the reversed one). Exactly inverted, and shipped that way
@@ -414,7 +414,7 @@ Containment runs BOTH ways, and only one direction was originally checked:
   that `<tr>`. Mirroring is moot there (the tag overwrites it) but applying
   both is not.
 
-Story Card (image on the side) shipped the second case to EN as a literal
+Story Card (image right, left aligned) shipped the second case to EN as a literal
 stray `>` in its reversed option — splice `[6178, 7374]` around region
 `[6213, 7340]`, measured 2026-08-20. Any overlap now drops the mirror,
 leaving `applyToSlice` a strictly disjoint set.
@@ -457,7 +457,7 @@ EVERY block and flags the total against EN's measured `contentHtml` ceiling.
 It sums the AUTHORED html, with `{replacement~…}` tags still in it — not the
 substituted string EN actually counts. Most block markup lives inside Select
 option defaults, so the two differ, and by an amount that varies per block
-(Story Card (image on the side) is 543 bytes of html carrying a 2,967-byte
+(Story Card (image right, left aligned) is 543 bytes of html carrying a 2,967-byte
 default). The figure therefore under-reports by a structural margin, which
 is tolerable only because the check is advisory: it is a rough ceiling, not
 a projection, and the doc called it a projection until 2026-08-21.
@@ -581,23 +581,52 @@ precedents.
 
 **Every block ends in a gap** (user decision 2026-08-22, REVERSING the
 2026-07-23 rule that non-spacer blocks never bake in whitespace spacers).
-Each block's last element is a `css-class="spacer-block"` section holding a
-lone `mj-spacer`, which mints ONE field — a Height Select on the pacing
-scale — and it defaults to **None/0px on every block** (user decision
-2026-08-22, settled after one round at 16px). The control exists everywhere
-and is off everywhere: an editor turns it on for the stack that needs air.
-The reason the old rule existed — an editor should not pay for whitespace
-they did not ask for — is met exactly by that default; the reason a gap is
-baked in at all is that two coloured blocks stacked in EN ran their grounds
-together with nothing between them and no control to separate them.
+### The unified frame model (user decision 2026-08-22)
 
-It was briefly authored at 16px on the 28 blocks carrying a colour or photo
-ground. That was reversed the same day: those 28 are structurally
-indistinguishable from each other (Deadline Panel and Two-Line Banner are the
-same frame, the same full-width band), so any "colour blocks get a gap" rule
-either covers all of them or needs a hand-kept list. Uniform 0 is the rule
-that survives an editor adding a block. The standalone **Spacer** block is the
-exception and keeps its 16px — that block IS the gap.
+Every block exposes the same three frame controls — **Background Color,
+Padding Top, Padding Bottom** — and carries a **trailing gap section**
+(`css-class="spacer-block"`, a lone `mj-spacer`) minting one Height Select on
+the pacing scale. Uniform CONTROLS; the VALUES are each block's design. Those
+two ideas got conflated for a day and cost three reversals, so state them
+apart.
+
+Where the defaults come from, and the distinction that drives all of it:
+**padding is the band's internal breathing room; the gap is the separation
+between blocks.** On a block with no ground the two are visually identical, so
+the rhythm belongs outside; on a coloured or photo band they are not
+interchangeable at all.
+
+- **Padding Top defaults to 0 where the ground is invisible** — 4 blocks
+  (Logo Hero, CTA Hero (w/ image badge), Quote Block, Divider
+  (single-color)). The 18 blocks on a colour or photo ground KEEP theirs:
+  zeroing it puts the copy hard against the top edge of the band.
+- **Padding Bottom moves OUT to the gap where the ground is invisible** —
+  16 blocks, bottom padding to 0 and the 16px reappearing as the gap. Same
+  rendering, but the space is now an inter-block control instead of an inset.
+  Blocks WITH a ground keep their bottom padding inside the band, and gain the
+  gap on top of it: the band still ends clear of its own copy, and no longer
+  runs into the next block's ground.
+- **The gap defaults to Single/16px on every block except the two Footers**,
+  which author `height="0px"` — they are the bottom of the email, and space
+  below the unsubscribe line is dead. The default IS the authored height, so
+  this needs no flag; a `data-*` marker would be a second way to say what the
+  markup already says, which is what `findDeadFlags` exists to catch.
+- The standalone **Spacer** block's own section is its gap, so it does not get
+  a second one.
+
+Two blocks still have no Padding Top/Bottom: **Spacer** and **Divider
+(tri-color)**. Both are spacer-only sections, where a padding control would be
+a second knob for one gap (the sole-member precedent). For Divider
+(tri-color) that is arguably a misfire — its three `mj-spacer`s are decorative
+colour BARS, not spacing — but Divider (single-color) beside it does have the
+controls, so the pair is inconsistent. Left as measured, not papered over.
+
+Two earlier rounds are recorded because the reasoning matters more than the
+number: the gap was briefly 16px on the 28 blocks carrying a ground, then 0
+everywhere, before landing here. The 28 could not be separated by rule
+(Deadline Panel and Two-Line Banner are the same frame, the same full-width
+band), which is why the surviving rule keys on something structural — whether
+the ground is visible — rather than on a hand-kept list.
 
 That gap is authored, not generated. Two carve-outs in the generator make it
 free:
@@ -2252,7 +2281,37 @@ label sit in the template `<head>`, in a `<style data-en-tools-band>`.
 `<style>` in the head is still spliced out into the Template Styles block. The
 exemption exists because the layout has to work for an email built WITHOUT that
 block, and it follows the precedent already in that function, where styles
-inside a revealed MSO conditional are left alone. Each BLOCK then carries only
+inside a revealed MSO conditional are left alone.
+
+**The second head-resident sheet** (2026-08-22): `<style
+data-en-tools-template-css>` carries the VIEWPORT FORK — the `.mobile-only`
+plain hide, its 9998px twin, and the 599px `.desktop-only` / `.mobile-only`
+reveal. Same extraction exemption, different marker on purpose. styles.css
+ships as the Template Styles BLOCK, in the body, so an email assembled without
+that block has none of it; most rules just degrade, but a fork does not —
+neither half of the pair applies and BOTH copies render, so the reader sees
+the content twice. Rules whose absence REVEALS content meant to be hidden
+belong in the head.
+
+The marker is not `data-en-tools-band` because two instruments subtract band
+bytes before measuring — check-catalog's Gmail CSS budget and version-sync's
+`headCssContent()` — on the grounds that the band is builder chrome that never
+reaches an inbox. Fork CSS does reach the inbox, so reusing the band marker
+would have hidden real bytes from the 14,000-byte budget.
+
+The pair is ATOMIC in that one block, in order, which RETIRES the old warning
+that used to sit in the template head ("no mj-style @media blocks here"). That
+hazard was a second `(max-width: 599px)` block earlier in the head dragging
+the reveal ahead of its hide, since EN folds same-condition blocks into the
+first occurrence's position. Both hides and the reveal now sit together in the
+earliest block, so the fold cannot separate them; styles.css's remaining 599px
+rules fold up to that position and none of them touch either class.
+
+**Unverified, and worth a probe before a real send**: whether EN inlines a
+top-level rule from the TEMPLATE head as it does from the CSS Editor field.
+The plain hide exists to survive clients that drop style blocks entirely; if
+head rules are not inlined, that audience loses it, while everyone who keeps
+head styles is still covered by the wrapped copy. Each BLOCK then carries only
 its own span and `content` rule.
 
 The template head's label carries `__TEMPLATE_VERSION__`, not a number. The

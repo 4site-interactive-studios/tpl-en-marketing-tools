@@ -1129,13 +1129,25 @@ verify the selector form survives before relying on it.
 If two blocks with coloured grounds can be stacked next to each other, give
 every block a trailing gap rather than relying on an editor to drop a spacer
 between them: a `css-class="spacer-block"` section holding one `mj-spacer`,
-defaulting to **0 on every block**. One Height control, present everywhere and
-off everywhere, so an editor turns it on for the stack that needs air.
+minting one Height control.
 
-Resist defaulting it to a real value on "the blocks with a background" — those
-blocks are usually structurally identical to ones you did not mean to include,
-so the rule needs a hand-kept list and rots the first time someone adds a
-block. Uniform 0 does not.
+Give every block the SAME controls, and let the VALUES follow the block. The
+distinction that makes the defaults obvious is that **padding is the band's
+internal breathing room and the gap is the separation between blocks** — on a
+block with no ground those are visually identical, so put the rhythm in the
+gap and default the padding to 0; on a coloured or photo band they are not
+interchangeable, so keep the padding inside (zeroing it puts copy against the
+band edge) and let the gap separate it from what follows.
+
+Default the gap to one spacing step, and author 0 on the last block in the
+email — space below an unsubscribe line is dead. The authored height IS the
+generated default, so this needs no flag; a `data-*` marker here would be a
+second way to say what the markup already says.
+
+Resist keying any of this on "the blocks with a background COLOUR" as a set:
+those blocks are usually structurally identical to ones you did not mean to
+include, so the rule needs a hand-kept list and rots the first time someone
+adds a block. Key on whether the ground is visible instead.
 
 The trap is that adding a section is not free. Section count drives band
 numbering, so a block that had exactly one section suddenly has two, and every
