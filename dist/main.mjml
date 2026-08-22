@@ -2012,12 +2012,25 @@
     <!-- END: Progress Meter Block -->
 
     <!-- START: Countdown Block -->
+    <!-- FULL BLEED (user decision 2026-08-21): the wrapper carries no side
+         gutter, so the photo reaches both email edges and the group fills the
+         frame at 25+550+25 = 600 — the same shape Video Block and Photo Banner
+         use. It was 0/32px/16px around a 25+484+25 = 534 card until then.
+         The 1px #D9E3D9 border went with the inset: it framed a card, and at
+         full bleed it becomes a hairline hugging the email edge. No other
+         full-bleed block in the catalog carries one.
+         Consequence worth knowing: Wrapper Padding Left/Right STOP being
+         editable. The geometry is now frozen at the full 600, so any gutter
+         would overflow it and the generator suppresses the control rather than
+         offering one that breaks the layout — the same reason Video Block,
+         Photo Banner and Progress Meter have no side control. 484px survives
+         in the column ladder because Video Block (inset) still uses it. -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 32px 16px">
-        <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" border="1px solid #D9E3D9" padding="32px 0 32px">
+    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 0 16px">
+        <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="484px">
+          <mj-column width="550px">
             <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:15px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
           </mj-text>
