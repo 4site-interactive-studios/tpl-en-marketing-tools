@@ -152,6 +152,11 @@
         width: 416px !important;
         max-width: 416px;
       }
+
+      .mj-column-px-64 {
+        width: 64px !important;
+        max-width: 64px;
+      }
     }
   </style>
   <style media="screen and (min-width:600px)">
@@ -248,6 +253,11 @@
     .moz-text-html .mj-column-px-416 {
       width: 416px !important;
       max-width: 416px;
+    }
+
+    .moz-text-html .mj-column-px-64 {
+      width: 64px !important;
+      max-width: 64px;
     }
   </style>
   <style type="text/css">
@@ -670,6 +680,20 @@ li {
 
       .step-text {
         width: calc(100% - 120px) !important;
+      }
+
+      /* Progress Meter's gutter is spacer RAILS, because a background-url section
+     compiles inside a v:rect and Outlook cannot honor horizontal padding there
+     (guide §4). A rail is a width, not a padding, so no padding rule reaches
+     it — a group converts px widths to inline percentages below the
+     breakpoint, and the 64px rail renders 40px at 375. Pinning the width is
+     what reaches it, exactly as .poll-icon and .stream-icon do. */
+      .meter-rail {
+        width: 16px !important;
+      }
+
+      .meter-body {
+        width: calc(100% - 32px) !important;
       }
 
       .episode-icon {
@@ -6814,87 +6838,116 @@ li {
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
     <!-- END: Feedback Poll Block --><!-- START: Progress Meter Block --><!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#006837" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div class="flush-mobile-capflush" style="background:#006837;background-color:#006837;margin:0px auto;max-width:600px;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#006837" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#006837;background-color:#006837;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#006837;background-color:#006837;width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-block-outlook block-outlook flush-mobile-capflush-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
-              <div class="image-block block flush-mobile-capflush" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+              <!-- The 64px inset is SPACER RAILS, not section padding, and must stay that
+         way: this is a background-url section, so it compiles inside a v:rect,
+         and Outlook cannot honor horizontal padding there (guide §4). It was
+         briefly converted to padding="32px 64px" on 2026-08-22 to put the
+         gutter somewhere the mobile rule could reach; that traded an Outlook
+         defect for a mobile one, and is reverted. The rails carry a width pin
+         instead — the same idiom .poll-icon and .stream-icon use, and the only
+         thing that reaches a group child on a phone, because a group converts
+         px widths to inline percentages below the breakpoint (the 64px rail
+         renders 40px at 375). -->
+              <!--[if mso | IE]><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+              <div class="image-block block" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
                 <div style="line-height:0;font-size:0;">
                   <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:32px 64px;text-align:center;">
-                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
-                          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tbody>
-                                <tr>
-                                  <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                    <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#CEE4C5;">
-                                      <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-                                    <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                                      <h2 style="color:#ffffff;margin:0;">Lorem Ipsum Dolor Sit Amet</h2>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                    <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
-                                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-                                        <tr>
-                                          <td align="left" style="padding-right:12px;">
-                                            <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
-                                            <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$600,000</p>
-                                          </td>
-                                          <td align="left" style="padding-right:12px;">
-                                            <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
-                                            <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$400,500</p>
-                                          </td>
-                                          <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
-                                            <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
-                                            <p style="font-size:18px;font-weight:700;color:#F7931E;margin:0;">$200,000</p>
-                                          </td>
-                                          <td width="30%">&nbsp;</td>
-                                        </tr>
+                        <td style="direction:ltr;font-size:0px;padding:32px 0 32px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
+                          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:64px;" ><![endif]-->
+                            <div class="mj-column-px-64 mj-outlook-group-fix meter-rail" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10.666666666666668%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:472px;" ><![endif]-->
+                            <div class="mj-column-px-472 mj-outlook-group-fix meter-body" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:78.66666666666666%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#CEE4C5;">
+                                        <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
+                                        <h2 style="color:#ffffff;margin:0;">Lorem Ipsum Dolor Sit Amet</h2>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#ffffff;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                                          <tr>
+                                            <td align="left" style="padding-right:12px;">
+                                              <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">GOAL</p>
+                                              <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$600,000</p>
+                                            </td>
+                                            <td align="left" style="padding-right:12px;">
+                                              <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">RAISED</p>
+                                              <p style="font-size:18px;font-weight:700;color:#8CC63F;margin:0;">$400,500</p>
+                                            </td>
+                                            <td align="left" style="border-left:1px solid #ffffff;padding-left:12px;">
+                                              <p style="font-size:11px;font-weight:700;letter-spacing:1px;color:#ffffff;margin:0;">REMAINING</p>
+                                              <p style="font-size:18px;font-weight:700;color:#F7931E;margin:0;">$200,000</p>
+                                            </td>
+                                            <td width="30%">&nbsp;</td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 32px;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-radius:8px;border-collapse:separate;">
+                                          <tr>
+                                            <td width="66%" bgcolor="#39B54A" style="height:14px;font-size:0;line-height:0;border-radius:8px 0 0 8px;">&nbsp;</td>
+                                            <td width="34%" bgcolor="#ffffff" style="height:14px;font-size:0;line-height:0;border-radius:0 8px 8px 0;">&nbsp;</td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="center" class="button" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
+                                        <tbody>
+                                          <tr>
+                                            <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
+                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
                                       </table>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 32px;word-break:break-word;">
-                                    <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-radius:8px;border-collapse:separate;">
-                                        <tr>
-                                          <td width="66%" bgcolor="#39B54A" style="height:14px;font-size:0;line-height:0;border-radius:8px 0 0 8px;">&nbsp;</td>
-                                          <td width="34%" bgcolor="#ffffff" style="height:14px;font-size:0;line-height:0;border-radius:0 8px 8px 0;">&nbsp;</td>
-                                        </tr>
-                                      </table>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="center" class="button" style="font-size:0px;padding:0;word-break:break-word;">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:auto;line-height:100%;">
-                                      <tbody>
-                                        <tr>
-                                          <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
-                                            <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:25px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:64px;" ><![endif]-->
+                            <div class="mj-column-px-64 mj-outlook-group-fix meter-rail" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10.666666666666668%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td></tr></table><![endif]-->
                           </div>
                           <!--[if mso | IE]></td></tr></table><![endif]-->
                         </td>

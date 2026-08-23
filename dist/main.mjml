@@ -2388,9 +2388,21 @@
 
     <!-- START: Progress Meter Block -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <mj-wrapper css-class="flush-mobile-capflush" background-color="#006837" padding="0">
-      <mj-section css-class="image-block block flush-mobile-capflush" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 64px">
-        <mj-column>
+    <mj-wrapper background-color="#006837" padding="0">
+    <!-- The 64px inset is SPACER RAILS, not section padding, and must stay that
+         way: this is a background-url section, so it compiles inside a v:rect,
+         and Outlook cannot honor horizontal padding there (guide §4). It was
+         briefly converted to padding="32px 64px" on 2026-08-22 to put the
+         gutter somewhere the mobile rule could reach; that traded an Outlook
+         defect for a mobile one, and is reverted. The rails carry a width pin
+         instead — the same idiom .poll-icon and .stream-icon use, and the only
+         thing that reaches a group child on a phone, because a group converts
+         px widths to inline percentages below the breakpoint (the 64px rail
+         renders 40px at 375). -->
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+        <mj-group>
+          <mj-column width="64px" css-class="meter-rail">&nbsp;</mj-column>
+        <mj-column width="472px" css-class="meter-body">
           <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
           </mj-text>
@@ -2426,6 +2438,8 @@
           </mj-text>
           <mj-button width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
+          <mj-column width="64px" css-class="meter-rail">&nbsp;</mj-column>
+        </mj-group>
       </mj-section>
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">

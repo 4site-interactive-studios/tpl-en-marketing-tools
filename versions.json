@@ -192,8 +192,8 @@
     "hash": "d3b878ff4039"
   },
   "block:Progress Meter Block": {
-    "version": 16,
-    "hash": "02c4c8d779eb"
+    "version": 17,
+    "hash": "4c6ee9e90f11"
   },
   "block:Question Block": {
     "version": 14,
@@ -284,8 +284,8 @@
     "hash": "735df361dfac"
   },
   "head-css": {
-    "version": 35,
-    "hash": "6c081a4c642d"
+    "version": 36,
+    "hash": "6742941bdce7"
   },
   "partial:debug-toolbar": {
     "version": 1,

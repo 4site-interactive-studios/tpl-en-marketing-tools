@@ -409,6 +409,20 @@ p {
     width: calc(100% - 120px) !important;
   }
 
+  /* Progress Meter's gutter is spacer RAILS, because a background-url section
+     compiles inside a v:rect and Outlook cannot honor horizontal padding there
+     (guide §4). A rail is a width, not a padding, so no padding rule reaches
+     it — a group converts px widths to inline percentages below the
+     breakpoint, and the 64px rail renders 40px at 375. Pinning the width is
+     what reaches it, exactly as .poll-icon and .stream-icon do. */
+  .meter-rail {
+    width: 16px !important;
+  }
+
+  .meter-body {
+    width: calc(100% - 32px) !important;
+  }
+
   .episode-icon {
     width: 112px !important;
   }

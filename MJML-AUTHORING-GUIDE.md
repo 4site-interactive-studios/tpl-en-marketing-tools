@@ -562,9 +562,30 @@ Two classes outrank one class plus an element, so the second rule wins
 exactly where its class lands and the first governs everything else. This
 is how the catalog takes imagery flush to the screen edge on mobile while
 copy keeps a readable inset. Verified: image 262.7 -> 326.0 CSS px, copy
-held at 29, desktop byte-identical to the control. It also cleanly
-outranks an incumbent single-class rule, so an older `.caption
-{ padding-left: 16px }` does not have to be removed to be overridden.
+held at 29, desktop byte-identical to the control.
+
+**It outranks an incumbent rule only on the SAME box, and this is where the
+pattern bites.** A blanket zero is deliberately indiscriminate: MJML puts
+section, column AND content padding on `td`s, so a rule written to kill a
+64px section gutter also kills the 16px an icon held off its copy. Anything
+that must survive has to be opted back in by name, at the same two-class
+specificity — TPL needed `.no-bleed { padding-left: 16px }` after poll icons,
+a signature portrait and a step arrow all shipped hard against the screen
+edge (2026-08-22).
+
+The opposite failure is quieter, and it is why the sentence that used to sit
+here — that an older `.caption { padding-left: 16px }` need not be removed —
+was wrong. A `css-class` on an `mj-section`, `mj-wrapper` or `mj-column`
+lands on the outer `<div>`, which no `td` selector reaches, so an inset
+carried there is untouched by the zero AND then **adds** to the restore. TPL's
+Video Block (inset) caption carries both `caption` and the flush class: 16px
+from `.caption` on the div, 16px from the restore on the cell, and the caption
+lands 32px from the screen edge instead of 16.
+
+Before adding the class to a section, read its whole `css-class` list and ask
+what else fires at that breakpoint, and **on which box**: an inset on the same
+box loses on specificity and is safely overridden; an inset on an ancestor div
+stacks; an inset on a `td` you did not mean to touch is erased.
 
 And a descendant selector reaches
 INTO wrappers, so pacing rules like `.wysiwyg div *:first-child
@@ -1303,6 +1324,36 @@ can prop each other up, and the report says so when they do.
 ---
 
 ## 6. Structure, widths, and Outlook
+
+- **A multi-child `mj-group` is a mobile-layout decision, not a neutral
+  wrapper — and its width pins are part of the same decision.** MJML compiles
+  each child of a group to an INLINE percentage (a 120px column in a 472px
+  frame becomes `width:22.39%`), while the `.mj-column-px-120` rule that would
+  hold its px width is gated behind `min-width:600px`. Plain sibling columns
+  compile to `width:100%` and stack below `mj-breakpoint`. So grouping or not
+  grouping IS the choice of what a phone shows, and MJML gives you no way to
+  stack a group afterwards. Because the percentages are inline, that
+  side-by-side even survives a client that drops the `<style>` block (§2b-bis):
+  robust when you want the row held together, unreachable when you do not.
+
+  The pins go with it. A `px` + `calc(100% − px)` pair exists to stop the
+  group's percentage math crushing a narrow rail (a 56px poll icon rendered
+  0.5px at 375px). OUTSIDE a group that same pair is what FORCES a row to stay
+  side by side. So when you de-group a row to make it stack, delete its pins in
+  the same edit or you get the old layout back — and conversely, a rail whose
+  width must differ between viewports needs a pin, because a rail is a WIDTH
+  and no padding rule can reach it (TPL's Progress Meter: a 64px rail renders
+  40px at 375, pinned to 16px).
+
+  Three qualifiers, so it does not misfire: a ONE-CHILD group is a genuine
+  no-op, since its child compiles to `width:100%` either way; "never stacks"
+  means MJML offers no way to, not that CSS cannot — the inline percentage
+  carries no `!important`, so a mobile `!important` rule does override it; and
+  a group is sometimes forced for a non-mobile reason (the importer requires
+  one for an alternate arrangement), where side-by-side is a consequence to
+  design around rather than a choice. This is about fixed-px COLUMN pins only —
+  mobile `width:100%` rules that stop a fixed-width table or divider forcing
+  min-width overflow are unrelated and must survive any such cleanup.
 
 - **Column widths are editable only for a section's LONE fixed-px column**
   (the inset-box shape), via an enumerated dropdown over the 50px-step
