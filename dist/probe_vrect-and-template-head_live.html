@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>PROBE — v:rect padding + template-head fork</title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:600px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-px-64 {
+        width: 64px !important;
+        max-width: 64px;
+      }
+
+      .mj-column-px-472 {
+        width: 472px !important;
+        max-width: 472px;
+      }
+    }
+  </style>
+  <style media="screen and (min-width:600px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .moz-text-html .mj-column-px-64 {
+      width: 64px !important;
+      max-width: 64px;
+    }
+
+    .moz-text-html .mj-column-px-472 {
+      width: 472px !important;
+      max-width: 472px;
+    }
+  </style>
+  <!--
+      PROBE — two open questions, one send (2026-08-22).
+
+      Not a catalog page. Build, then send dist/probe_vrect-and-template-head_live.html
+      through EN to Email on Acid. Read outlook2021_win11_* FIRST for the V series
+      (that is the whole point of it), then applemail16_* / gmailcom-* for the T series,
+      then the delivered HTML at /app/acidtest/display/email_html/<TEST_ID> for T1.
+
+      ─── V SERIES — can Outlook honor horizontal padding inside a v:rect? ───
+
+      MJML compiles a background-url section into <v:rect><v:textbox inset="0,0,0,0">.
+      MJML-AUTHORING-GUIDE.md §4 says, as measured fact: "Outlook cannot honor
+      horizontal section padding inside a v:rect. Give background sections
+      vertical-only padding and fake the gutters with an mj-group of narrow spacer
+      columns around the content column."
+
+      The catalog does not agree with itself. Countdown Block and Video Block follow
+      the rule (spacer rails, no horizontal section padding). FOUR blocks do not, and
+      have not for some time: both background-image CTA Heroes (16px 32px 16px and
+      264px 32px 16px) and both Photo Banners w/ CTA (48px 32px 48px, 350px 32px 48px).
+      Progress Meter Block briefly joined them at 32px 64px on 2026-08-22 and was
+      reverted to rails the same day, which is what surfaced the contradiction.
+
+      So either the guide is stale and four blocks are fine, or four blocks carry an
+      Outlook defect nobody has looked for. Guessing costs geometry either way, so
+      this measures it.
+
+      HOW TO READ IT. Every variant puts a SKY (#5DD8D8) box at the start of its copy.
+      The box's LEFT EDGE IS the content edge — it is the instrument. Against the photo
+      you can see exactly where the content starts without measuring anything.
+
+        V1 CONTROL     rails, vertical-only padding — the shape §4 prescribes.
+                       Sky box starts 64px in. This is what "correct" looks like.
+        V2 UNDER TEST  no rails, padding="32px 64px" — the shape §4 forbids, at the
+                       magnitude Progress Meter briefly shipped.
+        V3 SHIPPED     no rails, padding="16px 32px 16px" — the exact shape and
+                       magnitude the four live blocks carry today.
+
+      VERDICT RULE. In Outlook 2021/Win:
+        V2 and V3 boxes start where V1's does  → §4 is STALE. Correct the guide, leave
+                                                 the four blocks alone, and Progress
+                                                 Meter may go back to padding.
+        V2 and V3 boxes start at the photo edge → §4 is RIGHT. The four blocks have a
+                                                 real defect and need rails.
+        V3 correct but V2 flush                → it is magnitude-dependent, which no
+                                                 one has claimed. Record the threshold.
+      Check every other client too: if V2/V3 look right everywhere EXCEPT Outlook, that
+      is the guide's claim reproduced exactly.
+
+      ─── T SERIES — does the page-template head carry the viewport fork? ───
+
+      styles.css ships as the Template Styles BLOCK, in the body. An email an editor
+      assembles WITHOUT that block has none of it, and a viewport fork fails open: with
+      neither half of the hide/reveal pair applied, BOTH copies render and the reader
+      sees the content twice. On 2026-08-22 the fork moved into the page-template head
+      behind data-en-tools-template-css, which the importer exempts from extraction.
+
+      This probe carries NO styles.css. The <style> below is the only fork CSS in it,
+      so the T series tests the fork exactly as an editor would meet it in an email
+      built without the styles block.
+
+        T1  Does EN INLINE a top-level rule from the TEMPLATE head, the way it inlines
+            the CSS Editor field? This is the one thing recorded as UNVERIFIED when the
+            fork moved. Read the DELIVERED HTML, not a screenshot: find the element
+            carrying class="mobile-only" and check whether EN put style="display:none"
+            on it. If it did NOT, the plain copy is doing nothing and the fork rests on
+            the wrapped 9998px copy alone — which still covers every client that keeps
+            head styles, but loses the style-stripping audience (Gmail app on
+            non-Google accounts, most clients after a forward).
+
+        T2  Does the fork actually fork? Exactly ONE of the two labelled bars should be
+            visible per client. Two bars = the pair failed open. Zero bars = the hide
+            won everywhere and the reveal never fired.
+
+      Colours are brand palette only (CLAUDE.md → Instrument colors): Sky #5DD8D8 marks
+      the content edge, Sun #F7931E labels a variant under test, Fern #39B54A a control,
+      Earth #362229 for label text.
+    -->
+  <!-- The fork under test. data-en-tools-template-css keeps it in the template
+         head instead of being extracted into the Template Styles block. Order is
+         load-bearing: plain hide, wrapped hide, then the reveal. -->
+  <style type="text/css" data-en-tools-template-css>
+    .mobile-only {
+      display: none;
+    }
+
+    @media only screen and (max-width: 9998px) {
+      .mobile-only {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 599px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+
+<body style="word-spacing:normal;background-color:#ffffff;">
+  <div aria-label="PROBE — v:rect padding + template-head fork" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:12px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:center;color:#8CC63F;">
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;font-family:Menlo,Consolas,monospace;margin:0;">V SERIES — v:rect HORIZONTAL PADDING</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- V1 CONTROL — rails, vertical-only padding. The shape guide §4 prescribes. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#39B54A" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#39B54A;background-color:#39B54A;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39B54A;background-color:#39B54A;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#ffffff;">
+                          <p style="font-weight:700;margin:0;">V1 CONTROL — spacer rails, padding="32px 0 32px". Sky box should start 64px in.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+    <div style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+      <div style="line-height:0;font-size:0;">
+        <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:32px 0 32px;text-align:center;">
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                  <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:64px;" ><![endif]-->
+                  <div class="mj-column-px-64 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10.666666666666668%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td style="vertical-align:top;width:472px;" ><![endif]-->
+                  <div class="mj-column-px-472 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:78.66666666666666%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="background:#5DD8D8;font-size:0px;padding:8px;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                              <p style="margin:0;font-weight:700;">V1 — this box's LEFT EDGE is the content edge.</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td style="vertical-align:top;width:64px;" ><![endif]-->
+                  <div class="mj-column-px-64 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10.666666666666668%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </div>
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><![endif]-->
+    <!-- V2 UNDER TEST — no rails, horizontal section padding at 64px. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F7931E" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F7931E;background-color:#F7931E;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F7931E;background-color:#F7931E;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                          <p style="font-weight:700;margin:0;">V2 UNDER TEST — no rails, padding="32px 64px". Flush against the photo edge in Outlook = §4 is right.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+    <div style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+      <div style="line-height:0;font-size:0;">
+        <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:32px 64px;text-align:center;">
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody>
+                      <tr>
+                        <td align="left" class="wysiwyg" style="background:#5DD8D8;font-size:0px;padding:8px;word-break:break-word;">
+                          <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                            <p style="margin:0;font-weight:700;">V2 — compare this box's left edge to V1's.</p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><![endif]-->
+    <!-- V3 SHIPPED — the exact shape the four live blocks carry today. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F7931E" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F7931E;background-color:#F7931E;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F7931E;background-color:#F7931E;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                          <p style="font-weight:700;margin:0;">V3 SHIPPED SHAPE — no rails, padding="16px 32px 16px", as the two CTA Heroes and two Photo Banners ship today. Box should start 32px in.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+    <div style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
+      <div style="line-height:0;font-size:0;">
+        <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:16px 32px 16px;text-align:center;">
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tbody>
+                      <tr>
+                        <td align="left" class="wysiwyg" style="background:#5DD8D8;font-size:0px;padding:8px;word-break:break-word;">
+                          <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                            <p style="margin:0;font-weight:700;">V3 — 32px in, or flush?</p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:12px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:center;color:#8CC63F;">
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;font-family:Menlo,Consolas,monospace;margin:0;">T SERIES — TEMPLATE-HEAD VIEWPORT FORK</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                          <p style="margin:0;">This page carries NO styles.css. The fork below is served only by the page-template head. Exactly ONE bar should be visible. Two bars = the pair failed open; zero bars = the reveal never fired.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- T2 — the fork itself. Word ignores @media AND display:none, so the
+         mobile-only half must sit inside the revealed conditional or Outlook
+         shows both (guide §2a). -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="desktop-only-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#006837" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="desktop-only" style="background:#006837;background-color:#006837;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#006837;background-color:#006837;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:center;color:#ffffff;">
+                          <p style="font-weight:700;margin:0;">T2 — DESKTOP BAR. Correct on desktop clients. If you also see the mobile bar, the fork failed open.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!--[if !mso]><!--><!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="mobile-only-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#5DD8D8" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="mobile-only" style="background:#5DD8D8;background-color:#5DD8D8;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#5DD8D8;background-color:#5DD8D8;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:center;color:#362229;">
+                          <p style="font-weight:700;margin:0;">T2 — MOBILE BAR. Correct under 600px. Seeing this on desktop means the hide did not apply.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!--<table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:16px;line-height:22px;text-align:left;color:#362229;">
+                          <p style="margin:0;">T1 is read from the DELIVERED HTML, not from this render: find the element with class="mobile-only" and check whether EN added style="display:none" to it. Inlined = EN treats template-head CSS like the CSS Editor field, and the style-stripping audience is covered. Not inlined = the fork rests on the wrapped 9998px copy alone.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+  </div>
+</body>
+
+</html>
