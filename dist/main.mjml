@@ -533,7 +533,7 @@
          own bottom padding is the one pacing control (conventions, "Sole-member
          consolidation"). Its second sentence still demos an inline link. -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 64px"
     >
       <mj-column>
@@ -660,7 +660,7 @@
 
     <!-- START: WYSIWYG Header -->
     <mj-section
-      css-class="text-block block wysiwyg-header-block"
+      css-class="text-block block wysiwyg-header-block flush-mobile-capflush"
       background-color="#ffffff" padding="0 64px"
     >
       <mj-column vertical-align="middle">
@@ -678,7 +678,7 @@
 
 
     <!-- START: Deadline Panel -->
-    <mj-section css-class="text-block block deadline-panel-block" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block deadline-panel-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
@@ -695,7 +695,7 @@
     <!-- END: Deadline Panel -->
 
     <!-- START: Subscription Panel -->
-    <mj-section css-class="text-block block subscription-panel-block" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block subscription-panel-block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;margin:0 0 4px;"><b>Supporter ID</b></p>
@@ -745,7 +745,7 @@
          the presets. Same call as the Feedback Poll question section below.
          The remaining data-mobile-only-* flags are STRUCTURAL — a fixed-px
          group column pins the desktop layout whatever the copy does. -->
-    <mj-section css-class="text-block block two-line-banner-block" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block two-line-banner-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:22px;line-height:26px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
@@ -1538,11 +1538,11 @@
          they existed to stop the group's percentage math squeezing the icon,
          and while stacked they would force both columns back to a side-by-side
          width. Steps Block keeps its pin; it is still grouped. -->
-    <mj-section css-class="image-block block" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
       <mj-column width="352px" vertical-align="middle" css-class="icon-row-text">
@@ -1563,7 +1563,7 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="0 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-column>
       <mj-text padding="0">
           <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
@@ -1705,14 +1705,14 @@
             alt="People. Nature. Big Ideas podcast"
             width="92px"
             align="left"
-            padding="0 16px 0 0" css-class="light-only" />
+            padding="0 16px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
             src="assets/icon-podcast.png"
             alt="People. Nature. Big Ideas podcast"
             width="92px"
             align="left"
-            padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
+            padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="360px" vertical-align="middle" css-class="episode-text">
@@ -1948,15 +1948,19 @@
     <!-- END: Photo and Text Grid Block (2x2) -->
 
     <!-- START: Join Links Block -->
-    <!-- The dedupe flag was here until 2026-08-22. It was added when WYSIWYG
-         Text was reduced to its body paragraph alone, making this block its
-         structural twin. The mobile-inset class then landed on this block and
-         not on WYSIWYG Text, so they are twins no longer: this block now
-         ANCHORS a group with Linked List Block, which carries the flag itself.
-         A flag on the anchor is meaningless, and check-catalog says so. -->
+    <!-- data-visible-duplicate: WYSIWYG Text is one mj-text in a section and so
+         is this, which makes them structural twins. Both ship anyway — default
+         content is a block's value, and an editor picking "Join Links" wants a
+         link list, not an empty text block to rebuild one in.
+         The flag tracks the CLASS LIST, which is worth knowing before editing
+         either block: it came off on 2026-08-22 when the mobile-inset class
+         landed here and not on WYSIWYG Text (that split the pair and made this
+         block its own group's anchor, where a flag is meaningless), and went
+         back on hours later when WYSIWYG Text was classed too and the pair
+         re-formed. check-catalog caught it in both directions. -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#CEE4C5" padding="16px 64px"
+      background-color="#CEE4C5" padding="16px 64px" data-visible-duplicate
     >
       <mj-column>
         <mj-text padding="0">
@@ -2073,9 +2077,9 @@
     <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-group>
         <mj-column width="120px" vertical-align="top" css-class="step-icon">
-          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="352px" vertical-align="middle" css-class="step-text">
@@ -2291,9 +2295,9 @@
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="416px" vertical-align="middle" css-class="poll-text">
@@ -2330,9 +2334,9 @@
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="416px" vertical-align="middle" css-class="poll-text">
@@ -2354,9 +2358,9 @@
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column width="416px" vertical-align="middle" css-class="poll-text">
@@ -2601,12 +2605,12 @@
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
               alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
-              padding="0" css-class="light-only" />
+              padding="0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser.png" width="100px" align="left"
               alt="Carrie Besnette Hauser" border-radius="50%" data-image-shape-toggle
-              padding="0" css-class="dark-only" data-style-dark-mode />
+              padding="0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
         <mj-column
@@ -2619,7 +2623,7 @@
               width="137px"
              padding="0"
               align="left"
-              css-class="light-only" />
+              css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_white.png"
@@ -2627,7 +2631,7 @@
               width="137px"
              padding="0"
               align="left"
-              css-class="dark-only" data-style-dark-mode />
+              css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text data-inset-toggle padding="8px 0 0">
             <p style="font-family: Arial, sans-serif;">
@@ -2654,9 +2658,9 @@
         <mj-text padding="0">
           <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
         </mj-text>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="137px" padding="0" align="left" css-class="light-only" />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="137px" padding="0" align="left" css-class="light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="137px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="137px" padding="0" align="left" css-class="dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle padding="8px 0 0">
           <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>

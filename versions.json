@@ -104,8 +104,8 @@
     "hash": "c1a2ea368256"
   },
   "block:Deadline Panel": {
-    "version": 12,
-    "hash": "812901096cc4"
+    "version": 13,
+    "hash": "85cd9d3d6b56"
   },
   "block:Divider (single-color)": {
     "version": 3,
@@ -120,8 +120,8 @@
     "hash": "571f80a13e2a"
   },
   "block:Feedback Poll Block": {
-    "version": 17,
-    "hash": "bb43e82124c3"
+    "version": 18,
+    "hash": "1271f77575c5"
   },
   "block:Footer (w/ image, brown)": {
     "version": 6,
@@ -136,8 +136,8 @@
     "hash": "c9602d04788d"
   },
   "block:Icon Row": {
-    "version": 16,
-    "hash": "2eb438c93cfb"
+    "version": 17,
+    "hash": "75773bf11bda"
   },
   "block:Image 1x1": {
     "version": 12,
@@ -152,8 +152,8 @@
     "hash": "36eabb935d85"
   },
   "block:Join Links Block": {
-    "version": 12,
-    "hash": "690dc9d7ae20"
+    "version": 13,
+    "hash": "0bd9d9921c71"
   },
   "block:Linked List Block": {
     "version": 12,
@@ -184,8 +184,8 @@
     "hash": "8c312e0787e0"
   },
   "block:Podcast Episode Block": {
-    "version": 17,
-    "hash": "2d5b4daafd9b"
+    "version": 18,
+    "hash": "6b3353698c04"
   },
   "block:Podcast Streaming Block": {
     "version": 13,
@@ -220,12 +220,12 @@
     "hash": "40a13894bb80"
   },
   "block:Signature Card (no photo)": {
-    "version": 14,
-    "hash": "35febe5ab574"
+    "version": 15,
+    "hash": "b93701f485f1"
   },
   "block:Signature Card (photo)": {
-    "version": 13,
-    "hash": "db0eda2eb151"
+    "version": 14,
+    "hash": "ed4abcab25d3"
   },
   "block:Spacer": {
     "version": 4,
@@ -236,8 +236,8 @@
     "hash": "a82e0829a680"
   },
   "block:Steps Block": {
-    "version": 21,
-    "hash": "ad8e5161ad8b"
+    "version": 22,
+    "hash": "950572596901"
   },
   "block:Story Card (image left, center-aligned)": {
     "version": 1,
@@ -256,12 +256,12 @@
     "hash": "07dc401912d2"
   },
   "block:Subscription Panel": {
-    "version": 9,
-    "hash": "e64c0c59ed4c"
+    "version": 10,
+    "hash": "ef3e86697354"
   },
   "block:Two-Line Banner": {
-    "version": 6,
-    "hash": "14b7e0077e93"
+    "version": 7,
+    "hash": "43d86b7565aa"
   },
   "block:Video Block": {
     "version": 7,
@@ -272,20 +272,20 @@
     "hash": "d75782e0accf"
   },
   "block:WYSIWYG Header": {
-    "version": 1,
-    "hash": "ca25f305e247"
+    "version": 2,
+    "hash": "5a3210d73431"
   },
   "block:WYSIWYG Text": {
-    "version": 8,
-    "hash": "339c91acde53"
+    "version": 9,
+    "hash": "351505531200"
   },
   "email-template": {
     "version": 52,
     "hash": "735df361dfac"
   },
   "head-css": {
-    "version": 34,
-    "hash": "ea345e5724c1"
+    "version": 35,
+    "hash": "6c081a4c642d"
   },
   "partial:debug-toolbar": {
     "version": 1,

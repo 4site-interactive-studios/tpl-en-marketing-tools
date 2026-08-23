@@ -322,6 +322,17 @@ p {
     padding-right: 16px !important;
   }
 
+  /* An ICON is not a photo. The rule above deliberately lets images bleed to
+     the screen edge, which is right for a story card's photo and wrong for a
+     24px poll icon or a signature portrait — those sat hard against the edge
+     while their own copy sat at 16 (reported 2026-08-22). Marking an image
+     no-bleed opts it back into the copy's inset. Same (0,2,0) specificity as
+     the .wysiwyg restore, so it beats the (0,1,1) zeroing rule the same way. */
+  .flush-mobile-capflush .no-bleed {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
   /* Add space below first column on mobile when it is collapsed to single column */
   .first-column,
   .second-column {
