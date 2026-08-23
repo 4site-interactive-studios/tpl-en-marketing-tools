@@ -100,8 +100,8 @@
     "hash": "cfebdd7440c0"
   },
   "block:Countdown Block": {
-    "version": 6,
-    "hash": "dd525f5bb79a"
+    "version": 7,
+    "hash": "c1a2ea368256"
   },
   "block:Deadline Panel": {
     "version": 12,
@@ -116,28 +116,28 @@
     "hash": "80f40f1aa90e"
   },
   "block:Event Invite Block": {
-    "version": 11,
-    "hash": "48a0851ec684"
+    "version": 12,
+    "hash": "571f80a13e2a"
   },
   "block:Feedback Poll Block": {
-    "version": 16,
-    "hash": "1210e4fe0d2a"
+    "version": 17,
+    "hash": "bb43e82124c3"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 5,
-    "hash": "98c9d4b1da3c"
+    "version": 6,
+    "hash": "0cb1750268b3"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 12,
-    "hash": "6a6f7328950c"
+    "version": 13,
+    "hash": "62e2be904ee2"
   },
   "block:Highlighted Text": {
     "version": 8,
     "hash": "c9602d04788d"
   },
   "block:Icon Row": {
-    "version": 15,
-    "hash": "1cf56bfa3f7f"
+    "version": 16,
+    "hash": "2eb438c93cfb"
   },
   "block:Image 1x1": {
     "version": 12,
@@ -152,12 +152,12 @@
     "hash": "36eabb935d85"
   },
   "block:Join Links Block": {
-    "version": 11,
-    "hash": "6d882b511381"
+    "version": 12,
+    "hash": "690dc9d7ae20"
   },
   "block:Linked List Block": {
-    "version": 11,
-    "hash": "7b5b7d1b416f"
+    "version": 12,
+    "hash": "837e5eb48897"
   },
   "block:Logo Hero": {
     "version": 4,
@@ -180,64 +180,64 @@
     "hash": "bfa294e236ba"
   },
   "block:Photo and Text Grid Block (2x2)": {
-    "version": 6,
-    "hash": "474742101fed"
+    "version": 7,
+    "hash": "8c312e0787e0"
   },
   "block:Podcast Episode Block": {
-    "version": 16,
-    "hash": "d2ae5d892b97"
+    "version": 17,
+    "hash": "2d5b4daafd9b"
   },
   "block:Podcast Streaming Block": {
-    "version": 12,
-    "hash": "73ed98dd533f"
+    "version": 13,
+    "hash": "d3b878ff4039"
   },
   "block:Progress Meter Block": {
-    "version": 15,
-    "hash": "7e41174f44ca"
+    "version": 16,
+    "hash": "02c4c8d779eb"
   },
   "block:Question Block": {
-    "version": 13,
-    "hash": "3976dfe3e745"
+    "version": 14,
+    "hash": "5e62cabf1c7b"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 15,
-    "hash": "6514e8c42569"
+    "version": 16,
+    "hash": "26f36640d97c"
   },
   "block:Quiz Block (2x2 photos)": {
-    "version": 20,
-    "hash": "4266f5c3891b"
+    "version": 21,
+    "hash": "2c4a14218cf8"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 10,
-    "hash": "bb20e317a013"
+    "version": 11,
+    "hash": "12e85a9d275a"
   },
   "block:Quiz Block (multiple choice)": {
-    "version": 10,
-    "hash": "3d38ae0b4ed7"
+    "version": 11,
+    "hash": "5eb5697b956d"
   },
   "block:Quote Block": {
     "version": 12,
     "hash": "40a13894bb80"
   },
   "block:Signature Card (no photo)": {
-    "version": 13,
-    "hash": "91999edaad79"
+    "version": 14,
+    "hash": "35febe5ab574"
   },
   "block:Signature Card (photo)": {
-    "version": 12,
-    "hash": "1e51c7f9db78"
+    "version": 13,
+    "hash": "db0eda2eb151"
   },
   "block:Spacer": {
     "version": 4,
     "hash": "11b98fa8e8d5"
   },
   "block:Stat Row": {
-    "version": 6,
-    "hash": "a804277016d7"
+    "version": 7,
+    "hash": "a82e0829a680"
   },
   "block:Steps Block": {
-    "version": 20,
-    "hash": "da9d32c54424"
+    "version": 21,
+    "hash": "ad8e5161ad8b"
   },
   "block:Story Card (image left, center-aligned)": {
     "version": 1,
@@ -268,8 +268,8 @@
     "hash": "663e87edfaa2"
   },
   "block:Video Block (inset)": {
-    "version": 20,
-    "hash": "981debd154af"
+    "version": 21,
+    "hash": "d75782e0accf"
   },
   "block:WYSIWYG Header": {
     "version": 1,
@@ -284,8 +284,8 @@
     "hash": "735df361dfac"
   },
   "head-css": {
-    "version": 33,
-    "hash": "c62cbc202f9d"
+    "version": 34,
+    "hash": "ea345e5724c1"
   },
   "partial:debug-toolbar": {
     "version": 1,

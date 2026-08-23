@@ -712,7 +712,7 @@
     <!-- END: Subscription Panel -->
 
     <!-- START: Stat Row -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0">
         <mj-text css-class="wysiwyg link-earth" align="center" padding="0 0 8px">
           <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
@@ -1206,7 +1206,7 @@
          which costs 2px of invisible slack and saves ~174 delivered bytes of
          head CSS against a budget with ~434 to spare. -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 64px 0">
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 0">
         <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="100px 0 100px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
@@ -1217,7 +1217,7 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 64px 0">
+    <mj-section css-class="block caption flush-mobile-capflush" background-color="#ffffff" padding="4px 64px 0">
       <mj-column vertical-align="middle">
         <!-- data-display-toggle: the caption is the SOLE member of its column,
              and a sole member earns no Display Select otherwise. The gap above
@@ -1528,20 +1528,28 @@
 
 
     <!-- START: Icon Row -->
+    <!-- NOT an mj-group, deliberately. A group never stacks — it converts its
+         children to percentages below the breakpoint and keeps them side by
+         side (guide §6e), which is what held a 120px icon next to the text on
+         a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
+         the copy, left-aligned by the image's own align="left" (user decision
+         2026-08-22). Desktop is unchanged: 120 + 352 = 472 fills the frame.
+         The .icon-row-icon / .icon-row-text mobile pins went with the group —
+         they existed to stop the group's percentage math squeezing the icon,
+         and while stacked they would force both columns back to a side-by-side
+         width. Steps Block keeps its pin; it is still grouped. -->
     <mj-section css-class="image-block block" background-color="#ffffff" padding="0 64px">
-      <mj-group>
-        <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
+      <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-        </mj-column>
-        <mj-column width="352px" vertical-align="middle" css-class="icon-row-text">
+      </mj-column>
+      <mj-column width="352px" vertical-align="middle" css-class="icon-row-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
           </mj-text>
-        </mj-column>
-      </mj-group>
+      </mj-column>
     </mj-section>
     <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
          no image, one full-width column. data-alt-arrangement folds it into
@@ -1557,9 +1565,9 @@
          alternate-arrangement guard, which compares the two copies here. -->
     <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#ffffff" padding="0 64px">
       <mj-column>
-        <mj-text padding="0">
+      <mj-text padding="0">
           <p style="font-size:16px;"><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
-        </mj-text>
+      </mj-text>
       </mj-column>
     </mj-section>
 <mj-section css-class="spacer-block block" padding="0">
@@ -1647,11 +1655,11 @@
 
     <!-- START: Question Block -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 64px"
     >
       <mj-column padding="0">
-        <mj-text css-class="question-response" padding="0">
+        <mj-text css-class="question-response wysiwyg" padding="0">
           <!-- EN auto-closes an <a> that wraps a <table> (measured 2026-08-18,
                probe 0Mgmjr - the row anchor arrived EMPTY and nothing was
                clickable), so the row link is per-cell anchors sharing ONE URL
@@ -1687,7 +1695,7 @@
 
     <!-- START: Podcast Episode Block -->
     <mj-section
-      css-class="image-block block"
+      css-class="image-block block flush-mobile-capflush"
       background-color="#006837" padding="16px 64px"
     >
       <mj-group>
@@ -1726,7 +1734,7 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="image-block block" background-color="#006837" padding="16px 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#006837" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
           <h2 style="color:#CEE4C5;">People. Nature. Big Ideas</h2>
@@ -1734,7 +1742,7 @@
       </mj-column>
     </mj-section>
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#CEE4C5" padding="16px 64px"
     >
       <mj-column>
@@ -1760,7 +1768,7 @@
 
     <!-- START: Podcast Streaming Block -->
     <mj-section
-      css-class="image-block block"
+      css-class="image-block block flush-mobile-capflush"
       background-color="#ffffff" padding="0 64px" data-mobile-only-padding-right
     >
       <mj-group>
@@ -1827,7 +1835,7 @@
 
     <!-- START: Photo and Text Grid Block (2x2) -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#362229" padding="16px 64px 0"
     >
       <mj-column>
@@ -1923,7 +1931,7 @@
       </mj-column>
     </mj-section>
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#362229" padding="0 64px 16px"
     >
       <mj-column>
@@ -1940,17 +1948,16 @@
     <!-- END: Photo and Text Grid Block (2x2) -->
 
     <!-- START: Join Links Block -->
-    <!-- data-visible-duplicate: WYSIWYG Text was reduced to its body paragraph
-         alone on 2026-08-22, which made THIS block its structural twin — both
-         are one mj-text in a section — so the dedupe check flags it. Both ship
-         anyway, on the same reasoning that keeps Linked List Block below:
-         default content is a block's value, and an editor who picks "Join
-         Links" gets the join copy rather than an empty text block to retype it
-         into. Structural dedupe alone must not erase a family (CONVENTIONS). -->
+    <!-- The dedupe flag was here until 2026-08-22. It was added when WYSIWYG
+         Text was reduced to its body paragraph alone, making this block its
+         structural twin. The mobile-inset class then landed on this block and
+         not on WYSIWYG Text, so they are twins no longer: this block now
+         ANCHORS a group with Linked List Block, which carries the flag itself.
+         A flag on the anchor is meaningless, and check-catalog says so. -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#CEE4C5" padding="16px 64px"
-     data-visible-duplicate>
+    >
       <mj-column>
         <mj-text padding="0">
           <h2><a href="https://tpl.org">Join Our Advisory Board</a></h2>
@@ -1979,7 +1986,7 @@
 
     <!-- START: Quiz Block (multiple choice) -->
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#362229" padding="16px 64px"
     >
       <mj-column vertical-align="middle">
@@ -1989,7 +1996,7 @@
       </mj-column>
     </mj-section>
     <mj-section
-      css-class="text-block block"
+      css-class="text-block block flush-mobile-capflush"
       background-color="#CEE4C5" padding="16px 64px"
     >
       <mj-column>
@@ -2010,14 +2017,14 @@
     <!-- END: Quiz Block (multiple choice) -->
 
     <!-- START: Quiz Block (3x1 buttons) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 64px">
       <mj-column vertical-align="middle">
         <mj-text align="center" color="#ffffff" padding="0">
           <p style="font-size:22px;font-weight:700;letter-spacing:2px;">POP QUIZ</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">How many miles of creeks and headwaters are protected in Tualatin Mountain Forest?</h3>
@@ -2063,7 +2070,7 @@
          Poll answers and this one. Podcast Streaming Block and Signature Card
          (photo) keep theirs — they have no alternate, so nothing can unpin
          them. -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-group>
         <mj-column width="120px" vertical-align="top" css-class="step-icon">
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only" />
@@ -2090,14 +2097,14 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Arrow" css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section data-alt-arrangement="No Arrow" css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
           <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="0 64px 16px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="0 64px 16px">
       <mj-column>
         <mj-text padding="0 0 16px">
           <p style="font-size:16px;margin-bottom:2px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
@@ -2134,7 +2141,7 @@
          gets a linked list rather than an empty text block to rebuild one
          in. This is the case CONVENTIONS warns about — structural dedupe
          alone must not erase a whole family. -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px" data-visible-duplicate>
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px" data-visible-duplicate>
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
@@ -2153,7 +2160,7 @@
     <!-- END: Linked List Block -->
 
     <!-- START: Quiz Block (2x2 buttons) -->
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px 0">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px 0">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">Can You Guess Which Midwest City Ranks in the Nation's Top 5 Park Systems?</h3>
@@ -2170,7 +2177,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <!-- highlighted-text-column: the dark-mode repaint for a column that
            authors its own background (td[valign] descendant form). Without it
            the white panel survives dark mode while .block p forces the copy
@@ -2189,7 +2196,7 @@
     <!-- END: Quiz Block (2x2 buttons) -->
 
     <!-- START: Quiz Block (2x2 photos) -->
-    <mj-section css-class="text-block block" background-color="#362229" padding="16px 64px 0">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 64px 0">
       <mj-column>
         <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-size:16px;font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
@@ -2239,7 +2246,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block" background-color="#362229" padding="0 64px 16px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="0 64px 16px">
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
           <p style="font-size:16px;">Not in a guessing mood? <a href="https://tpl.org"><strong>Skip to the answer.</strong></a></p>
@@ -2274,14 +2281,14 @@
          collapsed arrangement makes the right gutter live at 600px (copy box
          64..600 at 0px versus 64..536 at 64px, measured). Same rule, one step
          further out — see the note on Steps Block. -->
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -2313,14 +2320,14 @@
          icon if that is the intent, at the cost of letting an editor build a
          ragged list. Matches Icon Row, Steps Block and Podcast Episode Block,
          the three rows of identical shape. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;"><a href="https://tpl.org"><strong>Very important</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -2337,14 +2344,14 @@
     </mj-section>
     <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
          answer row above. Copy must stay byte-identical to its primary. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;"><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-group>
         <mj-column width="56px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 32px 0 0" css-class="light-only" />
@@ -2361,7 +2368,7 @@
     </mj-section>
     <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
          answer row above. Copy must stay byte-identical to its primary. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block" background-color="#ffffff" padding="0 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-size:16px;"><a href="https://tpl.org"><strong>Not important</strong></a></p>
@@ -2377,11 +2384,9 @@
 
     <!-- START: Progress Meter Block -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
-    <mj-wrapper background-color="#006837" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
-        <mj-group>
-          <mj-column width="64px">&nbsp;</mj-column>
-        <mj-column width="472px">
+    <mj-wrapper css-class="flush-mobile-capflush" background-color="#006837" padding="0">
+      <mj-section css-class="image-block block flush-mobile-capflush" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 64px">
+        <mj-column>
           <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-size:16px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
           </mj-text>
@@ -2417,8 +2422,6 @@
           </mj-text>
           <mj-button width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
-          <mj-column width="64px">&nbsp;</mj-column>
-        </mj-group>
       </mj-section>
     </mj-wrapper>
     <mj-section css-class="spacer-block block" padding="0">
@@ -2443,8 +2446,8 @@
          Photo Banner and Progress Meter have no side control. 484px survives
          in the column ladder because Video Block (inset) still uses it. -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
-    <mj-wrapper css-class="block" background-color="#ffffff" padding="0 0 16px">
-        <mj-section css-class="image-block" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 0 16px">
+        <mj-section css-class="image-block flush-mobile-capflush" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="550px">
@@ -2478,7 +2481,7 @@
 
     <!-- START: Event Invite Block -->
     <mj-include path="./partials/green-rule-divider.mjml" />
-    <mj-section css-class="text-block block" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:17px;">{user_data~First Name}, you're invited!</p>
@@ -2580,7 +2583,7 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="0 64px 0">
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 0">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style: italic;">
@@ -2589,7 +2592,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 64px 0" data-mobile-only-padding-right>
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 64px 0" data-mobile-only-padding-right>
       <mj-group>
         <mj-column
           vertical-align="top"
@@ -2646,7 +2649,7 @@
     <!-- END: Signature Card (photo) -->
 
     <!-- START: Signature Card (no photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style:italic;font-size:15px;margin:0 0 8px;">We really appreciate your support!</p>
@@ -2686,7 +2689,7 @@
 
     <!-- START: Footer (w/ image, brown) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2737,7 +2740,7 @@
          artwork; the dark-mode twin keeps the white _2 art for the black
          repaint. -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_3.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>

@@ -744,15 +744,48 @@ because the re-cut widths were deliberately shared between blocks. Head CSS
 13,853 → **13,670** delivered, headroom against the 14,000 target 147 →
 330.
 
-**Mobile is the cost.** A section gutter is inline px and does not scale, so
-64px holds below 600px too: measured at a 375px viewport, a rebased block
-gives **247px of content** where it used to give 311, and the grouped rows
-are tighter still (Icon Row / Steps text column 127px, Podcast Episode 135,
-Podcast Streaming 91). `.inset-gutter` — the mobile collapse-to-32 rule that
-WYSIWYG Text (inset) demonstrates — is the obvious remedy, but its
-`td[style*=direction]` selector is an attribute selector, which is inert in
-Gmail (styles.css header note), so applying it catalog-wide would fix every
-client except the largest. Left as a stated cost rather than half-fixed.
+**Mobile was the cost, and it is now paid** (user decision 2026-08-22). A
+section gutter is inline px and does not scale, so 64px held below 600px too:
+a rebased block gave **247px of content** at a 375px viewport where it used to
+give 311, and the grouped rows were tighter still (Icon Row / Steps text
+column 127px, Podcast Episode 135, Podcast Streaming 91).
+
+The remedy is NOT `.inset-gutter`, the collapse-to-32 rule WYSIWYG Text
+(inset) demonstrates: its `td[style*=direction]` selector is an attribute
+selector, inert in Gmail (styles.css header note), so it would fix every
+client except the largest. It is `.flush-mobile-capflush`, the class the image
+blocks already used — two class-only rules, which Gmail does honour:
+
+    .flush-mobile-capflush td       { padding-left: 0;    padding-right: 0    }
+    .flush-mobile-capflush .wysiwyg { padding-left: 16px; padding-right: 16px }
+
+Zero all side padding below the breakpoint, then restore 16px on copy only.
+Images go flush to the screen edge and copy sits 16px in — the behaviour
+Story Card 2x1 always had, now carried to 20 more blocks. It cost no new head
+CSS, because the rules already existed.
+
+Two things do not follow that class and had to be re-cut:
+
+- **A fixed-px rail is not padding.** Progress Meter held its 64px inset as
+  `mj-column width="64px"` spacer rails inside an `mj-group`, and a group's
+  children go percentage below the breakpoint rather than collapsing — the
+  rail rendered 40px at 375 and no padding rule could reach it. The rails are
+  now section padding (`32px 64px`, one full-width column), identical at
+  desktop and reachable by the rule. It also un-suppressed the block's own
+  Block Padding Left/Right, which the frozen 472px column had made inert.
+  Countdown Block keeps its 25px rails: they render ~16px at 375 already.
+- **An mj-text that authors `css-class` loses the template default.** MJML
+  REPLACES the `mj-attributes` css-class rather than merging, so Question
+  Block's `css-class="question-response"` had no `wysiwyg` token and the
+  restore rule never matched it — its copy went flush to 1px. It authors
+  `"question-response wysiwyg"` now. Check this whenever a block authors a
+  css-class on an mj-text.
+
+**The controls relabel themselves.** ~50 padding Selects across those 20
+blocks now read "Desktop Padding Left/Right" instead of "Padding
+Left/Right" — the viewport-scoped rule below, firing correctly: the class
+pins mobile with `!important`, so those controls genuinely only move
+anything at desktop and the label has to say so.
 
 ## Inert paddings — never ship a field that does nothing
 

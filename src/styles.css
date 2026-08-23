@@ -385,12 +385,15 @@ p {
      column and grow 25% / 50% taller. Steps Block pays nothing — its arrow
      is 70px in a 104px content box, so it had slack and the text reflows
      identically. Icon Row and Steps Block share the 120px selector. */
-  .icon-row-icon,
+  /* Icon Row left this pin on 2026-08-22 when it stopped being an mj-group:
+     plain columns stack below the breakpoint, so there is no percentage math
+     to defend against, and pinning a stacked column to 120px would put the
+     icon back beside the copy. Steps Block is still grouped and still needs
+     it. */
   .step-icon {
     width: 120px !important;
   }
 
-  .icon-row-text,
   .step-text {
     width: calc(100% - 120px) !important;
   }
