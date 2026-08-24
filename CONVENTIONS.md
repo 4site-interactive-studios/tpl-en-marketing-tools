@@ -2348,7 +2348,11 @@ rests on it); and `.overlay` white-forcing (user decision 2026-08-24:
 relocated rather than re-authored inline). The swap blocks are deliberately
 the FIRST occurrence of their conditions, so styles.css's same-condition
 repaint blocks fold up to them at send — swap first, repaints after, today's
-in-block order. styles.css ships as the Template Styles BLOCK, in the body,
+in-block order. MEASURED 2026-08-24 (probe_head-resident-swap, EN templateId
+632, EoA BCR1UGDY…): the delivered head carries both dark conditions as single
+merged blocks with the swap rules first, the head's plain `.dark-only` hide
+inlined at send, one twin per client/mode on all 17 clients with no styles
+block in the email, and the folded repaints still firing. styles.css ships as the Template Styles BLOCK, in the body,
 so an email assembled without that block has none of it; most rules just
 degrade, but a fork does not — neither half applies and BOTH copies render.
 Before the mode-fork moved, such an email showed every light/dark twin twice.

@@ -3,6 +3,32 @@
     <!--
       PROBE — the head-resident mode-fork swap (2026-08-24).
 
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-08-24 as EN templateId 632; EoA test BCR1UGDY… (17 clients).
+
+      S1  Every light-mode client shows the Sun bar alone. No doubles
+          anywhere — the pre-move failure mode did not occur once.
+      S2  True dark clients (Apple Mail dm, iPhone dm) show the Fern bar
+          alone AND the canary repaints to Earth with white copy — the
+          body-carried repaints survive the fold and still fire. OWA dark:
+          Fern bar alone via [data-ogsc] (recoloured by OWA's transform),
+          canary repainted. Gmail web/app dark show the LIGHT twin: Gmail
+          supports neither dark mechanism — the long-documented "dark
+          branches never reach Gmail", not a regression.
+      S3  Outlook 2021, both modes: light twin only; Word never renders the
+          dark twin. (Word dark also repaints the white overlay copy dark —
+          Word-dark's own text transform, the pre-existing behaviour the
+          contrast-outline asset pass addresses; unrelated to CSS home.)
+      S4  DELIVERED HTML: both same-condition pairs FOLDED into single
+          blocks, swap rules FIRST in both — the one hazard this probe
+          existed to measure. The .dark-only div carries inlined
+          display:none (the head's plain hide, inlined like the CSS Editor
+          field). The body <style> survived in place.
+      S5  Overlay heading white in every client except Word-dark (above).
+      S6  Viewport fork correct everywhere: desktop bar on desktop clients,
+          mobile bar on iPhone/Android only.
+      ════════════════════════════════════════════════════════════════════
+
       Not a catalog page. Build, send dist/probe_head-resident-swap_live.html
       through EN to EoA, and read the LIGHT/DARK PAIRS of each client — this
       probe is entirely about mode forking, so every verdict needs both halves.
