@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>PROBE — block colour overrides</title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:600px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+  </style>
+  <style media="screen and (min-width:600px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+  </style>
+  <!--
+      PROBE — block-wide Text Color / Link Color overrides (2026-08-24).
+
+      Not a catalog page. Build, send dist/probe_block-color-overrides_live.html
+      through EN to EoA. Reading order: the DELIVERED HTML first (C3's survival
+      is decided there), then light/dark pairs, then the one MANUAL builder
+      step at the bottom of this comment.
+
+      THE QUESTION. Can every block offer one "Text Color" and one "Link
+      Color" Select that recolors EVERY text site in the block? Three
+      mechanisms exist; two flags are already settled WITHOUT sending
+      anything, and are recorded here so the verdicts land in context:
+
+      FLAG A (structural, no send needed): a single block-wide TEXT COLOR
+      field cannot byte-exactly restore a block whose elements author
+      DIFFERENT colours — one field has one default value, and delete-restore
+      demands the exact original bytes per element. Block-wide Text Color is
+      only ever clean on single-colour blocks, or as a FORCED override that
+      admits it cannot restore per-element defaults.
+
+      FLAG B (structural, no send needed): a block-local <style> cannot be
+      per-instance. EN blocks carry no instance id, so two copies of the same
+      block with different colour picks would both define the same class —
+      the later definition wins for both. The manual step below demonstrates
+      it live.
+
+      VARIANTS. All four carry the same four text sites: Moss kicker, white
+      heading on Evergreen, body copy with an inline link, second paragraph
+      with a second link.
+
+        C1 CONTROL      today's authoring. Links render the default
+                        stylesheet colour (Evergreen) from the body-carried
+                        hook sheet below.
+        C2 LINK HOOK    every mj-text also carries class link-earth —
+                        simulating ONE Link Color Select whose value token is
+                        spliced byte-identically into every css-class slot
+                        (the data-link-group sharing precedent). VERDICT: both
+                        links Earth #362229 in every light client; dark
+                        clients FORCE #8CC63F over it (expected — the dark
+                        rules outrank hooks by design; a flag, not a defect);
+                        Outlook desktop honours it.
+        C3 BLOCK STYLE  the block brings its own <style> (combinator-free,
+                        !important) forcing text Sun #F7931E and links Sky
+                        #5DD8D8. VERDICTS: (a) the style tag present in the
+                        DELIVERED head or body at all; (b) all four sites
+                        recoloured in renders, including against inline
+                        colours; (c) the manual step below.
+        C4 CASCADE      colour on the ancestor, descendants author none.
+                        Expected NOT viable — mj-attributes stamps colour
+                        inline on real catalog text so inheritance never
+                        reaches it, and this variant only exists so the flag
+                        cites a render instead of an argument. VERDICT: reads
+                        Sun in modern clients; whatever Outlook does is the
+                        recorded cost.
+
+      MANUAL STEP (C3, FLAG B): in the EN builder, place this probe's C3
+      block TWICE and hand-edit the second copy's <style> to a different
+      colour. If both instances render the SECOND colour, the collision is
+      demonstrated; if each keeps its own, EN scopes block HTML in a way we
+      have not measured and FLAG B needs re-examination.
+
+      Colours: brand palette only (CLAUDE.md → Instrument colors). Sun
+      #F7931E = forced text, Sky #5DD8D8 = forced links, Earth #362229 =
+      the hook pick, Fern/Evergreen/Moss as authored.
+    -->
+  <script type="application/json" data-tpl-structure-groups>
+    {}
+  </script>
+  <script type="application/json" data-tpl-raw-source>
+    {
+      "source": "<mjml lang=\"en\">\n  <mj-head>\n    <!--\n      PROBE — block-wide Text Color / Link Color overrides (2026-08-24).\n\n      Not a catalog page. Build, send dist/probe_block-color-overrides_live.html\n      through EN to EoA. Reading order: the DELIVERED HTML first (C3's survival\n      is decided there), then light/dark pairs, then the one MANUAL builder\n      step at the bottom of this comment.\n\n      THE QUESTION. Can every block offer one \"Text Color\" and one \"Link\n      Color\" Select that recolors EVERY text site in the block? Three\n      mechanisms exist; two flags are already settled WITHOUT sending\n      anything, and are recorded here so the verdicts land in context:\n\n      FLAG A (structural, no send needed): a single block-wide TEXT COLOR\n      field cannot byte-exactly restore a block whose elements author\n      DIFFERENT colours — one field has one default value, and delete-restore\n      demands the exact original bytes per element. Block-wide Text Color is\n      only ever clean on single-colour blocks, or as a FORCED override that\n      admits it cannot restore per-element defaults.\n\n      FLAG B (structural, no send needed): a block-local <style> cannot be\n      per-instance. EN blocks carry no instance id, so two copies of the same\n      block with different colour picks would both define the same class —\n      the later definition wins for both. The manual step below demonstrates\n      it live.\n\n      VARIANTS. All four carry the same four text sites: Moss kicker, white\n      heading on Evergreen, body copy with an inline link, second paragraph\n      with a second link.\n\n        C1 CONTROL      today's authoring. Links render the default\n                        stylesheet colour (Evergreen) from the body-carried\n                        hook sheet below.\n        C2 LINK HOOK    every mj-text also carries class link-earth —\n                        simulating ONE Link Color Select whose value token is\n                        spliced byte-identically into every css-class slot\n                        (the data-link-group sharing precedent). VERDICT: both\n                        links Earth #362229 in every light client; dark\n                        clients FORCE #8CC63F over it (expected — the dark\n                        rules outrank hooks by design; a flag, not a defect);\n                        Outlook desktop honours it.\n        C3 BLOCK STYLE  the block brings its own <style> (combinator-free,\n                        !important) forcing text Sun #F7931E and links Sky\n                        #5DD8D8. VERDICTS: (a) the style tag present in the\n                        DELIVERED head or body at all; (b) all four sites\n                        recoloured in renders, including against inline\n                        colours; (c) the manual step below.\n        C4 CASCADE      colour on the ancestor, descendants author none.\n                        Expected NOT viable — mj-attributes stamps colour\n                        inline on real catalog text so inheritance never\n                        reaches it, and this variant only exists so the flag\n                        cites a render instead of an argument. VERDICT: reads\n                        Sun in modern clients; whatever Outlook does is the\n                        recorded cost.\n\n      MANUAL STEP (C3, FLAG B): in the EN builder, place this probe's C3\n      block TWICE and hand-edit the second copy's <style> to a different\n      colour. If both instances render the SECOND colour, the collision is\n      demonstrated; if each keeps its own, EN scopes block HTML in a way we\n      have not measured and FLAG B needs re-examination.\n\n      Colours: brand palette only (CLAUDE.md → Instrument colors). Sun\n      #F7931E = forced text, Sky #5DD8D8 = forced links, Earth #362229 =\n      the hook pick, Fern/Evergreen/Moss as authored.\n    -->\n    <mj-breakpoint width=\"600px\" />\n    <mj-title>PROBE — block colour overrides<\/mj-title>\n    <mj-attributes>\n      <mj-text color=\"#000000\" font-size=\"18px\" font-family=\"Tahoma, sans-serif\" line-height=\"28px\" css-class=\"wysiwyg\" />\n      <mj-image padding=\"0\" />\n    <\/mj-attributes>\n  <\/mj-head>\n\n  <mj-body background-color=\"#ffffff\">\n\n    <mj-section background-color=\"#362229\" padding=\"12px 16px\">\n      <mj-column>\n        <mj-text color=\"#8CC63F\" align=\"center\" padding=\"0\">\n          <p style=\"font-size:14px;font-weight:700;letter-spacing:3px;font-family:Menlo,Consolas,monospace;\">C — BLOCK-WIDE COLOUR OVERRIDES<\/p>\n        <\/mj-text>\n      <\/mj-column>\n    <\/mj-section>\n\n    <!-- The styles-block mimic: default link colour, the three hooks, and the\n         dark forcing — same condition strings as the real sheet. -->\n    <mj-raw>\n      <style type=\"text/css\">\n        a { color: #006837; }\n        .link-inverse a { color: #ffffff; }\n        .link-earth a { color: #362229; }\n        .link-accent a { color: #39b54a; }\n        @media only screen and (max-width: 9999px) {\n          [data-ogsc] a { color: #8CC63F !important; }\n        }\n        @media (prefers-color-scheme: dark) {\n          a { color: #8CC63F !important; }\n        }\n      <\/style>\n    <\/mj-raw>\n\n    <!-- ═══ C1 CONTROL ═══ -->\n    <mj-section background-color=\"#F5FAF1\" padding=\"8px 16px\">\n      <mj-column><mj-text padding=\"0\"><p><b>C1 CONTROL<\/b> — links should be Evergreen (the default hook).<\/p><\/mj-text><\/mj-column>\n    <\/mj-section>\n    <mj-section background-color=\"#ffffff\" padding=\"16px 64px\">\n      <mj-column>\n        <mj-text color=\"#006837\" padding=\"0 0 4px\"><p style=\"font-weight:700;letter-spacing:2px;\">MOSS KICKER SITE<\/p><\/mj-text>\n        <mj-text css-class=\"wysiwyg\" container-background-color=\"#006837\" padding=\"8px\"><h2 style=\"color:#ffffff;margin:0;\">White heading site<\/h2><\/mj-text>\n        <mj-text padding=\"8px 0 0\"><p>Body site with <a href=\"https://tpl.org\">an inline link<\/a> in it.<\/p><\/mj-text>\n        <mj-text padding=\"4px 0 0\"><p>Second site, <a href=\"https://tpl.org\">second link<\/a>.<\/p><\/mj-text>\n      <\/mj-column>\n    <\/mj-section>\n\n    <!-- ═══ C2 LINK HOOK — the Select-token simulation ═══ -->\n    <mj-section background-color=\"#F7931E\" padding=\"8px 16px\">\n      <mj-column><mj-text padding=\"0\"><p><b>C2 LINK HOOK<\/b> — every text element carries link-earth. BOTH links must be Earth #362229 in light clients; dark clients force #8CC63F (expected).<\/p><\/mj-text><\/mj-column>\n    <\/mj-section>\n    <mj-section background-color=\"#ffffff\" padding=\"16px 64px\">\n      <mj-column>\n        <mj-text css-class=\"wysiwyg link-earth\" color=\"#006837\" padding=\"0 0 4px\"><p style=\"font-weight:700;letter-spacing:2px;\">MOSS KICKER SITE<\/p><\/mj-text>\n        <mj-text css-class=\"wysiwyg link-earth\" container-background-color=\"#006837\" padding=\"8px\"><h2 style=\"color:#ffffff;margin:0;\">White heading site<\/h2><\/mj-text>\n        <mj-text css-class=\"wysiwyg link-earth\" padding=\"8px 0 0\"><p>Body site with <a href=\"https://tpl.org\">an inline link<\/a> in it.<\/p><\/mj-text>\n        <mj-text css-class=\"wysiwyg link-earth\" padding=\"4px 0 0\"><p>Second site, <a href=\"https://tpl.org\">second link<\/a>.<\/p><\/mj-text>\n      <\/mj-column>\n    <\/mj-section>\n\n    <!-- ═══ C3 BLOCK-LOCAL STYLE ═══ -->\n    <mj-section background-color=\"#5DD8D8\" padding=\"8px 16px\">\n      <mj-column><mj-text padding=\"0\"><p><b>C3 BLOCK STYLE<\/b> — this block carries its own style tag. ALL text below must be Sun #F7931E and links Sky #5DD8D8, or the tag did not survive. Check the delivered HTML for the tag itself.<\/p><\/mj-text><\/mj-column>\n    <\/mj-section>\n    <mj-raw>\n      <style type=\"text/css\">\n        .probe-c3 p, .probe-c3 h2, .probe-c3 span { color: #F7931E !important; }\n        .probe-c3 a { color: #5DD8D8 !important; }\n      <\/style>\n    <\/mj-raw>\n    <mj-section background-color=\"#362229\" padding=\"16px 64px\">\n      <mj-column>\n        <mj-text css-class=\"wysiwyg probe-c3\" color=\"#006837\" padding=\"0 0 4px\"><p style=\"font-weight:700;letter-spacing:2px;\">MOSS KICKER SITE<\/p><\/mj-text>\n        <mj-text css-class=\"wysiwyg probe-c3\" container-background-color=\"#006837\" padding=\"8px\"><h2 style=\"color:#ffffff;margin:0;\">White heading site<\/h2><\/mj-text>\n        <mj-text css-class=\"wysiwyg probe-c3\" color=\"#ffffff\" padding=\"8px 0 0\"><p>Body site with <a href=\"https://tpl.org\">an inline link<\/a> in it.<\/p><\/mj-text>\n        <mj-text css-class=\"wysiwyg probe-c3\" color=\"#ffffff\" padding=\"4px 0 0\"><p>Second site, <a href=\"https://tpl.org\">second link<\/a>.<\/p><\/mj-text>\n      <\/mj-column>\n    <\/mj-section>\n\n    <!-- ═══ C4 CASCADE ═══ -->\n    <mj-section background-color=\"#F5FAF1\" padding=\"8px 16px\">\n      <mj-column><mj-text padding=\"0\"><p><b>C4 CASCADE<\/b> — colour on the wrapper only; the copy authors NONE. Sun here proves inheritance reaches it in this client; the catalog cannot use this (mj-attributes stamps colour inline), so this variant exists to make the flag cite a render.<\/p><\/mj-text><\/mj-column>\n    <\/mj-section>\n    <mj-section background-color=\"#ffffff\" padding=\"16px 64px\">\n      <mj-column>\n        <mj-text css-class=\"wysiwyg\" padding=\"0\">\n          <div style=\"color:#F7931E;\">\n            <p style=\"margin:0;\">Cascade site one — no colour of its own.<\/p>\n            <p style=\"margin:0;\">Cascade site two, <a href=\"https://tpl.org\" style=\"color:inherit;\">an inherit link<\/a>.<\/p>\n          <\/div>\n        <\/mj-text>\n      <\/mj-column>\n    <\/mj-section>\n\n  <\/mj-body>\n<\/mjml>\n",
+      "includes": {}
+    }
+  </script>
+</head>
+
+<body style="word-spacing:normal;background-color:#ffffff;">
+  <div aria-label="PROBE — block colour overrides" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:12px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="center" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:center;color:#8CC63F;">
+                          <p style="font-size:14px;font-weight:700;letter-spacing:3px;font-family:Menlo,Consolas,monospace;">C — BLOCK-WIDE COLOUR OVERRIDES</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- The styles-block mimic: default link colour, the three hooks, and the
+         dark forcing — same condition strings as the real sheet. -->
+    <style type="text/css">
+      a {
+        color: #006837;
+      }
+
+      .link-inverse a {
+        color: #ffffff;
+      }
+
+      .link-earth a {
+        color: #362229;
+      }
+
+      .link-accent a {
+        color: #39b54a;
+      }
+
+      @media only screen and (max-width: 9999px) {
+        [data-ogsc] a {
+          color: #8CC63F !important;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        a {
+          color: #8CC63F !important;
+        }
+      }
+    </style><!-- ═══ C1 CONTROL ═══ -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p><b>C1 CONTROL</b> — links should be Evergreen (the default hook).</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 4px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#006837;">
+                          <p style="font-weight:700;letter-spacing:2px;">MOSS KICKER SITE</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="background:#006837;font-size:0px;padding:8px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <h2 style="color:#ffffff;margin:0;">White heading site</h2>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p>Body site with <a href="https://tpl.org">an inline link</a> in it.</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p>Second site, <a href="https://tpl.org">second link</a>.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- ═══ C2 LINK HOOK — the Select-token simulation ═══ -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F7931E" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F7931E;background-color:#F7931E;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F7931E;background-color:#F7931E;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p><b>C2 LINK HOOK</b> — every text element carries link-earth. BOTH links must be Earth #362229 in light clients; dark clients force #8CC63F (expected).</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg link-earth" style="font-size:0px;padding:0 0 4px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#006837;">
+                          <p style="font-weight:700;letter-spacing:2px;">MOSS KICKER SITE</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg link-earth" style="background:#006837;font-size:0px;padding:8px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <h2 style="color:#ffffff;margin:0;">White heading site</h2>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg link-earth" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p>Body site with <a href="https://tpl.org">an inline link</a> in it.</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg link-earth" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p>Second site, <a href="https://tpl.org">second link</a>.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- ═══ C3 BLOCK-LOCAL STYLE ═══ -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#5DD8D8" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#5DD8D8;background-color:#5DD8D8;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#5DD8D8;background-color:#5DD8D8;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p><b>C3 BLOCK STYLE</b> — this block carries its own style tag. ALL text below must be Sun #F7931E and links Sky #5DD8D8, or the tag did not survive. Check the delivered HTML for the tag itself.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <style type="text/css">
+      .probe-c3 p,
+      .probe-c3 h2,
+      .probe-c3 span {
+        color: #F7931E !important;
+      }
+
+      .probe-c3 a {
+        color: #5DD8D8 !important;
+      }
+    </style>
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#362229" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#362229;background-color:#362229;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg probe-c3" style="font-size:0px;padding:0 0 4px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#006837;">
+                          <p style="font-weight:700;letter-spacing:2px;">MOSS KICKER SITE</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg probe-c3" style="background:#006837;font-size:0px;padding:8px;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <h2 style="color:#ffffff;margin:0;">White heading site</h2>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg probe-c3" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#ffffff;">
+                          <p>Body site with <a href="https://tpl.org">an inline link</a> in it.</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="wysiwyg probe-c3" style="font-size:0px;padding:4px 0 0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#ffffff;">
+                          <p>Second site, <a href="https://tpl.org">second link</a>.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- ═══ C4 CASCADE ═══ -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:8px 16px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:568px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <p><b>C4 CASCADE</b> — colour on the wrapper only; the copy authors NONE. Sun here proves inheritance reaches it in this client; the catalog cannot use this (mj-attributes stamps colour inline), so this variant exists to make the flag cite a render.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:16px 64px;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:472px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:Tahoma, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#000000;">
+                          <div style="color:#F7931E;">
+                            <p style="margin:0;">Cascade site one — no colour of its own.</p>
+                            <p style="margin:0;">Cascade site two, <a href="https://tpl.org" style="color:inherit;">an inherit link</a>.</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+  </div>
+</body>
+
+</html>
