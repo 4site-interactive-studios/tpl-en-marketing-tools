@@ -120,8 +120,8 @@
     "hash": "571f80a13e2a"
   },
   "block:Feedback Poll Block": {
-    "version": 19,
-    "hash": "d83e19fccbbd"
+    "version": 20,
+    "hash": "c69ed35105a1"
   },
   "block:Footer (w/ image, brown)": {
     "version": 6,
@@ -284,8 +284,8 @@
     "hash": "a20b2f37b003"
   },
   "head-css": {
-    "version": 38,
-    "hash": "fc6742ee9816"
+    "version": 39,
+    "hash": "22735ff4fb53"
   },
   "partial:debug-toolbar": {
     "version": 1,

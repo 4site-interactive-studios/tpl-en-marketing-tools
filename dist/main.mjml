@@ -2384,13 +2384,13 @@
     </mj-section>
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
-        <mj-column width="40px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
+        <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
+          <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="432px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><a href="https://tpl.org"><strong>Very important</strong></a></p>
           </mj-text>
@@ -2423,13 +2423,13 @@
     </mj-section>
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-group>
-        <mj-column width="40px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
+        <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
+          <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="432px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
           </mj-text>
@@ -2447,13 +2447,13 @@
     </mj-section>
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
       <mj-group>
-        <mj-column width="40px" vertical-align="middle" css-class="poll-icon">
-          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
+        <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
+          <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="432px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p style="font-size:16px;"><a href="https://tpl.org"><strong>Not important</strong></a></p>
           </mj-text>

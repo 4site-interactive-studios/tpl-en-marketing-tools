@@ -143,14 +143,9 @@
         max-width: 78px;
       }
 
-      .mj-column-px-40 {
-        width: 40px !important;
-        max-width: 40px;
-      }
-
-      .mj-column-px-432 {
-        width: 432px !important;
-        max-width: 432px;
+      .mj-column-px-440 {
+        width: 440px !important;
+        max-width: 440px;
       }
 
       .mj-column-px-64 {
@@ -245,14 +240,9 @@
       max-width: 78px;
     }
 
-    .moz-text-html .mj-column-px-40 {
-      width: 40px !important;
-      max-width: 40px;
-    }
-
-    .moz-text-html .mj-column-px-432 {
-      width: 432px !important;
-      max-width: 432px;
+    .moz-text-html .mj-column-px-440 {
+      width: 440px !important;
+      max-width: 440px;
     }
 
     .moz-text-html .mj-column-px-64 {
@@ -611,16 +601,16 @@ li {
      a 56px column: it compiled to 10.4478%, which is 32.5px at 375px, and the
      icon cell's fixed gap padding left 0.5px of icon (2026-08-19, EoA
      B4uCpmh6). The column is 40px since 2026-08-22 — the icon-to-copy gap was
-     halved from 32 to 16 — so the arithmetic moved with it, but not the
-     reason: 40px compiles to 8.4746%, or 20.9px at 375, and a 16px gap still
-     eats most of that.
+     reduced from 32 to 16 and then to 8 (2026-08-24) — so the arithmetic
+     moved with it, but not the reason: 32px compiles to 6.7797%, ~17px at
+     375, and any fixed gap still eats most of that.
 
-     The pin stays at 56 while the AUTHORED column is 40, which is the point of
+     The pin stays at 56 while the AUTHORED column is 32, which is the point of
      having a pin at all — the two viewports want different widths. On mobile
      .no-bleed puts 16px on BOTH sides of the icon cell to hold it off the
      screen edge, so the icon needs 16 + 24 + 16 = 56 to render at its authored
-     size. Pinning 40 there instead squeezed the 24px icon to 8px (measured
-     2026-08-22, the first build after the gap was halved). Same calc pattern as
+     size. Pinning the authored width there instead squeezed the 24px icon to
+     8px (measured 2026-08-22, the first build after the gap was halved). Same calc pattern as
      .signature-img/.signature-text above. */
       .poll-icon {
         width: 56px !important;
@@ -6677,12 +6667,12 @@ li {
             <td style="direction:ltr;font-size:0px;padding:0 64px 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:472px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:40px;" ><![endif]-->
-                <div class="mj-column-px-40 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:8.47457627118644%;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:32px;" ><![endif]-->
+                <div class="mj-column-px-32 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:6.779661016949152%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
-                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6696,7 +6686,7 @@ li {
                       </tr>
                       <!--[if !mso]><!-->
                       <tr>
-                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6709,8 +6699,8 @@ li {
                     </tbody>
                   </table>
                 </div>
-                <!--[if mso | IE]></td><td style="vertical-align:middle;width:432px;" ><![endif]-->
-                <div class="mj-column-px-432 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:91.52542372881356%;">
+                <!--[if mso | IE]></td><td style="vertical-align:middle;width:440px;" ><![endif]-->
+                <div class="mj-column-px-440 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:93.22033898305084%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -6783,12 +6773,12 @@ li {
             <td style="direction:ltr;font-size:0px;padding:0 64px 8px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:472px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:40px;" ><![endif]-->
-                <div class="mj-column-px-40 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:8.47457627118644%;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:32px;" ><![endif]-->
+                <div class="mj-column-px-32 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:6.779661016949152%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
-                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6802,7 +6792,7 @@ li {
                       </tr>
                       <!--[if !mso]><!-->
                       <tr>
-                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6815,8 +6805,8 @@ li {
                     </tbody>
                   </table>
                 </div>
-                <!--[if mso | IE]></td><td style="vertical-align:middle;width:432px;" ><![endif]-->
-                <div class="mj-column-px-432 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:91.52542372881356%;">
+                <!--[if mso | IE]></td><td style="vertical-align:middle;width:440px;" ><![endif]-->
+                <div class="mj-column-px-440 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:93.22033898305084%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
@@ -6874,12 +6864,12 @@ li {
             <td style="direction:ltr;font-size:0px;padding:0 64px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:472px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:40px;" ><![endif]-->
-                <div class="mj-column-px-40 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:8.47457627118644%;">
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:32px;" ><![endif]-->
+                <div class="mj-column-px-32 mj-outlook-group-fix poll-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:6.779661016949152%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
-                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6893,7 +6883,7 @@ li {
                       </tr>
                       <!--[if !mso]><!-->
                       <tr>
-                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                        <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 8px 0 0;word-break:break-word;">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
@@ -6906,8 +6896,8 @@ li {
                     </tbody>
                   </table>
                 </div>
-                <!--[if mso | IE]></td><td style="vertical-align:middle;width:432px;" ><![endif]-->
-                <div class="mj-column-px-432 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:91.52542372881356%;">
+                <!--[if mso | IE]></td><td style="vertical-align:middle;width:440px;" ><![endif]-->
+                <div class="mj-column-px-440 mj-outlook-group-fix poll-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:93.22033898305084%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                     <tbody>
                       <tr>
