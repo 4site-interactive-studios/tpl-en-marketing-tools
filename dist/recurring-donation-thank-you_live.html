@@ -196,8 +196,10 @@ li {
 
     p {
       font-size: 18px;
-      line-height: 31px;
-      /* 18 * 1.7 */
+      /* 28px is a user-picked value (2026-08-24), not a ratio. The old
+     "x 1.7" annotation was inherited from the sheet's first authoring and
+     never appeared in any contract — do not restore it. */
+      line-height: 28px;
       mso-line-height-rule: exactly;
     }
 

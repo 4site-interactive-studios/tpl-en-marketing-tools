@@ -2378,7 +2378,7 @@
     <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
       <mj-column>
         <mj-text padding="0">
-          <p style="font-size:17px;font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
+          <p style="font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
         </mj-text>
       </mj-column>
     </mj-section>
