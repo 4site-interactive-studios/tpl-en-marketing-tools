@@ -557,7 +557,7 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="296px">
-            <mj-text align="center" css-class="wysiwyg caption-panel advocacy-box" padding="0">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" padding="0">
               <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
               <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
             </mj-text>
@@ -978,7 +978,11 @@
 
       If any value changes, update width:136px on every <a> AND width="136"/width:136px on every MSO <td>.
     -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-desktop-only-width data-visible-duplicate>
+    <!-- data-no-width-toggle: the pill run is centred and fixed-width (136·3 + 32·2 = 472px,
+         exactly the content box at the authored 64px gutter) — symmetric gutter changes cannot
+         move a centred run, so the Block Padding Left/Right control is dead at BOTH viewports
+         (inert-dropdown audit, 2026-08-24). -->
+    <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle data-visible-duplicate>
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1011,7 +1015,10 @@
 
     If any value changes, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-visible-duplicate>
+  <!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
+  <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle data-visible-duplicate>
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -1034,7 +1041,10 @@
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
     If padding/gap/count change, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
   -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 64px">
+  <!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
+  <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle>
     <mj-column vertical-align="middle">
       <mj-text css-class="two-line-cta" padding="0">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
@@ -2566,7 +2576,7 @@
          missed it because it read the last content SECTION's bottom padding —
          which here is the photo section, correctly left alone — and never
          looked at the wrapper. -->
-    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
+    <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carried container-background-color scrims for that reason (user decision 2026-08-20), but the scrims were later removed while this note survived them — caught stale in the 2026-08-24 final QC: with no scrim, a blocked image leaves white-on-white AND Outlook desktop dark flips the white copy dark over the photo (measured, EoA hb3nYGds…, M365 Win11 dm). Whether the scrims return is an open design decision recorded in the QC report. -->
     <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0">
         <mj-section css-class="image-block flush-mobile-capflush" background-url="assets/photo-river.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
         <mj-group>

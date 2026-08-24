@@ -759,7 +759,6 @@ li {
         background-color: transparent !important;
       }
 
-      [data-ogsc] .caption-panel,
       [data-ogsc] .highlighted-text-column td[valign],
       [data-ogsc] .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -882,7 +881,10 @@ li {
      element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
      has a table[align=center] descendant form, never td, which is why a
      column ground is never covered by it (audit 2026-08-15). */
-      .caption-panel,
+      /* .caption-panel left this list 2026-08-24: its one carrier was the CTA
+     Hero (w/ heading) heading, whose panel was removed 2026-08-21 — the
+     class survived the panel and this repaint resurrected it as a black
+     slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
       .highlighted-text-column td[valign],
       .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -1999,7 +2001,7 @@ li {
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="center" class="wysiwyg caption-panel advocacy-box" style="font-size:0px;padding:0;word-break:break-word;">
+                                    <td align="center" class="wysiwyg advocacy-box" style="font-size:0px;padding:0;word-break:break-word;">
                                       <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
                                         <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
                                         <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
@@ -3094,7 +3096,10 @@ li {
         => (600 - 64 - 64 - (3 - 1) * 32) / 3 = 408 / 3 = 136px
 
       If any value changes, update width:136px on every <a> AND width="136"/width:136px on every MSO <td>.
-    -->
+    --><!-- data-no-width-toggle: the pill run is centred and fixed-width (136·3 + 32·2 = 472px,
+         exactly the content box at the authored 64px gutter) — symmetric gutter changes cannot
+         move a centred run, so the Block Padding Left/Right control is dead at BOTH viewports
+         (inert-dropdown audit, 2026-08-24). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3165,7 +3170,9 @@ li {
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
 
     If any value changes, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
-  -->
+  --><!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3226,7 +3233,9 @@ li {
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
     If padding/gap/count change, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
-  -->
+  --><!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -6970,7 +6979,7 @@ li {
          (reported 2026-08-22). The rhythm belongs to the spacer. The unify pass
          missed it because it read the last content SECTION's bottom padding —
          which here is the photo section, correctly left alone — and never
-         looked at the wrapper. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
+         looked at the wrapper. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carried container-background-color scrims for that reason (user decision 2026-08-20), but the scrims were later removed while this note survived them — caught stale in the 2026-08-24 final QC: with no scrim, a blocked image leaves white-on-white AND Outlook desktop dark flips the white copy dark over the photo (measured, EoA hb3nYGds…, M365 Win11 dm). Whether the scrims return is an open design decision recorded in the QC report. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">

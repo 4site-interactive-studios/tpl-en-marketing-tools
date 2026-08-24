@@ -593,7 +593,6 @@ li {
         background-color: transparent !important;
       }
 
-      [data-ogsc] .caption-panel,
       [data-ogsc] .highlighted-text-column td[valign],
       [data-ogsc] .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -716,7 +715,10 @@ li {
      element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
      has a table[align=center] descendant form, never td, which is why a
      column ground is never covered by it (audit 2026-08-15). */
-      .caption-panel,
+      /* .caption-panel left this list 2026-08-24: its one carrier was the CTA
+     Hero (w/ heading) heading, whose panel was removed 2026-08-21 — the
+     class survived the panel and this repaint resurrected it as a black
+     slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
       .highlighted-text-column td[valign],
       .stat-row-column td[valign] {
         background-color: #000000 !important;

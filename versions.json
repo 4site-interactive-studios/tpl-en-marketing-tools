@@ -24,20 +24,20 @@
     "hash": "00ed172f535c"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 8,
-    "hash": "c6f8dfcd5e30"
+    "version": 9,
+    "hash": "1800482e20e3"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 14,
-    "hash": "079e674f05be"
+    "version": 15,
+    "hash": "1cc54028928c"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 13,
     "hash": "77844455d6b7"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 8,
-    "hash": "b51f16858763"
+    "version": 9,
+    "hash": "8d3fc24de1cf"
   },
   "block:CTA Hero": {
     "version": 5,
@@ -52,8 +52,8 @@
     "hash": "db72a7c95288"
   },
   "block:CTA Hero (w/ heading)": {
-    "version": 6,
-    "hash": "687f77752ff7"
+    "version": 7,
+    "hash": "2a64aeaac7bd"
   },
   "block:CTA Hero (w/ image badge)": {
     "version": 5,
@@ -100,8 +100,8 @@
     "hash": "cfebdd7440c0"
   },
   "block:Countdown Block": {
-    "version": 9,
-    "hash": "de2cd4dcc486"
+    "version": 10,
+    "hash": "2ae4876c21cb"
   },
   "block:Deadline Panel": {
     "version": 14,
@@ -284,8 +284,8 @@
     "hash": "33720227950d"
   },
   "head-css": {
-    "version": 45,
-    "hash": "dd10cc52a695"
+    "version": 46,
+    "hash": "c43acb478dd5"
   },
   "partial:debug-toolbar": {
     "version": 1,

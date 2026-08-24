@@ -759,7 +759,6 @@ li {
         background-color: transparent !important;
       }
 
-      [data-ogsc] .caption-panel,
       [data-ogsc] .highlighted-text-column td[valign],
       [data-ogsc] .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -882,7 +881,10 @@ li {
      element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
      has a table[align=center] descendant form, never td, which is why a
      column ground is never covered by it (audit 2026-08-15). */
-      .caption-panel,
+      /* .caption-panel left this list 2026-08-24: its one carrier was the CTA
+     Hero (w/ heading) heading, whose panel was removed 2026-08-21 — the
+     class survived the panel and this repaint resurrected it as a black
+     slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
       .highlighted-text-column td[valign],
       .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -1205,7 +1207,7 @@ li {
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
 <div aria-label="TPL Email Template — Block Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
 <!-- START: Main Content -->
-<!-- QC INSTRUMENT (temporary): main_live part 2 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Generated from dist/main_live.html; indentation before tags stripped (render-neutral). Remove after the round closes. -->
+<!-- QC INSTRUMENT (temporary): main_live part 2 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Generated from dist/main_live.html; indentation before tags stripped (render-neutral). Regenerated after the caption-panel fix (head-css v46). Remove after the round closes. -->
 <!-- START: Category — Engagement & Interactive -->
 <div data-import-exclude="true" data-folder="6408" data-category-short="Engagement">
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
@@ -3196,7 +3198,7 @@ li {
          (reported 2026-08-22). The rhythm belongs to the spacer. The unify pass
          missed it because it read the last content SECTION's bottom padding —
          which here is the photo section, correctly left alone — and never
-         looked at the wrapper. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carry container-background-color scrims for that reason: this card's copy is white and Moss for the photo, and without a dark band behind each line a blocked image would leave white-on-white (user decision 2026-08-20). -->
+         looked at the wrapper. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. The three mj-texts carried container-background-color scrims for that reason (user decision 2026-08-20), but the scrims were later removed while this note survived them — caught stale in the 2026-08-24 final QC: with no scrim, a blocked image leaves white-on-white AND Outlook desktop dark flips the white copy dark over the photo (measured, EoA hb3nYGds…, M365 Win11 dm). Whether the scrims return is an open design decision recorded in the QC report. -->
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 <div class="block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">

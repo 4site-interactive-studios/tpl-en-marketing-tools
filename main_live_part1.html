@@ -759,7 +759,6 @@ li {
         background-color: transparent !important;
       }
 
-      [data-ogsc] .caption-panel,
       [data-ogsc] .highlighted-text-column td[valign],
       [data-ogsc] .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -882,7 +881,10 @@ li {
      element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
      has a table[align=center] descendant form, never td, which is why a
      column ground is never covered by it (audit 2026-08-15). */
-      .caption-panel,
+      /* .caption-panel left this list 2026-08-24: its one carrier was the CTA
+     Hero (w/ heading) heading, whose panel was removed 2026-08-21 — the
+     class survived the panel and this repaint resurrected it as a black
+     slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
       .highlighted-text-column td[valign],
       .stat-row-column td[valign] {
         background-color: #000000 !important;
@@ -1205,7 +1207,7 @@ li {
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
 <div aria-label="TPL Email Template — Block Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
 <!-- START: Main Content -->
-<!-- QC INSTRUMENT (temporary): main_live part 1 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Generated from dist/main_live.html; indentation before tags stripped (render-neutral). Remove after the round closes. -->
+<!-- QC INSTRUMENT (temporary): main_live part 1 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Generated from dist/main_live.html; indentation before tags stripped (render-neutral). Regenerated after the caption-panel fix (head-css v46). Remove after the round closes. -->
 <!-- START: Category — Headers and Heroes -->
 <div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes">
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
@@ -2001,7 +2003,7 @@ li {
 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
 <tbody>
 <tr>
-<td align="center" class="wysiwyg caption-panel advocacy-box" style="font-size:0px;padding:0;word-break:break-word;">
+<td align="center" class="wysiwyg advocacy-box" style="font-size:0px;padding:0;word-break:break-word;">
 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
 <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
 <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
@@ -3096,7 +3098,10 @@ li {
         => (600 - 64 - 64 - (3 - 1) * 32) / 3 = 408 / 3 = 136px
 
       If any value changes, update width:136px on every <a> AND width="136"/width:136px on every MSO <td>.
-    -->
+    --><!-- data-no-width-toggle: the pill run is centred and fixed-width (136·3 + 32·2 = 472px,
+         exactly the content box at the authored 64px gutter) — symmetric gutter changes cannot
+         move a centred run, so the Block Padding Left/Right control is dead at BOTH viewports
+         (inert-dropdown audit, 2026-08-24). -->
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3167,7 +3172,9 @@ li {
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
 
     If any value changes, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
-  -->
+  --><!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3228,7 +3235,9 @@ li {
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
     If padding/gap/count change, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
-  -->
+  --><!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+       content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
+       control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 <div class="block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
