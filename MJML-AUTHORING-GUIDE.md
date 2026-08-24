@@ -1045,10 +1045,9 @@ INHERIT them, never repeat them. Three measured legs:
 
 Author a NON-default size inline only when it is a deliberate design size (a
 lede, a legal line, a display headline) — those are choices, not defaults, and
-they should survive a default change. TPL's line-height is a picked value
-(28px on 18px type, user decision 2026-08-24), not a ratio; an earlier
-"× 1.7" annotation was inherited from the sheet's first authoring and appears
-in no contract.
+they should survive a default change. And every such choice must still be a
+row in the brand type table (next rule): a size that is neither the default
+nor a table row is a drift candidate the next audit will flag.
 
 This rule binds AUTHORS, not the importer: the importer's own RTE pre-wrap
 (conventions, "RTE normalization") deliberately pins a size inline — but it
@@ -1058,9 +1057,59 @@ the way a hand-authored restatement does.
 
 Related alignment note: a text row carries line-box leading above its glyphs;
 a fixed-height icon does not. When an icon must top-align with copy, give the
-icon's cell a few px of top padding (TPL's Question Block uses 5px against
-18/28 type) — that is raw content markup, so the closed spacing scale does not
+icon's cell a few px of top padding — (line-height − font-size) / 2, so
+TPL's Question Block uses 3px against 18/24 type, and the value moves with the
+type scale — that is raw content markup, so the closed spacing scale does not
 govern it.
+
+### Type comes from one brand table — absolute line-heights, mapped by intent (2026-08-24, user-decided)
+
+Every font-size/line-height pair a template ships must be a row of the
+brand's type table. TPL's consolidated table (the ruling dropped the
+Bold/Italic/Underline variant rows, and the all-caps button metrics are THE
+button metrics — every TPL button label is caps, so the table does not say
+so per row):
+
+| Style | Element | Size | Line-height |
+|---|---|---|---|
+| Email Heading XLG | `h1` | 48px | 54px |
+| Email Heading LG | `h2` | 36px | 45px |
+| Email Heading | `h3` | 26px | 34px |
+| Email Button | `.button` | 22px | 28px |
+| Email Button small | — | 18px | 22px |
+| Email Paragraph large | `p` (the element default) | 18px | 24px |
+| Email Paragraph base | — | 16px | 24px |
+| Email Footer | `.footer-text` | 14px | 18px |
+| Email caption | `mj-class="caption"` | 10px | 16px |
+
+The portable rules, all measured or ruled on TPL:
+
+- **Line-heights are absolute per size, never a ratio.** The table pairs
+  48/54 (1.125) with 16/24 (1.5); no multiplier produces both. Do not
+  derive one, do not annotate one — a "× 1.7" comment inherited from an
+  early sheet survived two years here without ever being true.
+- **Body copy is one row, expressed as the element default** (`p` rule +
+  `mj-text` attributes), and RTE copy inherits it (previous rule). TPL's
+  body is the LARGE paragraph row (18/24, user-ruled 2026-08-24); the base
+  row (16/24) is the step-down for de-emphasized copy — receipts, source
+  lines, sign-offs.
+- **Map by intent, not proximity.** When a size falls between rows, ask what
+  the element IS, not which number is nearer. A pull-quote is heading-LG
+  display (36/45), a caps band title is a heading (26/34), a podcast lead-in
+  is emphasized body (18/24 bold) — each landed on a different row than
+  nearest-number would have picked.
+- **`h1` is a hero statement, nothing else.** A heading that titles a card
+  or banner inside the email body sits one tier below its old visual size
+  when a table adoption grows the tiers: TPL's photo banners went `h1`→`h2`
+  and its card titles (podcast episode, join links, event invite) went
+  `h2`→`h3` so their rendered size stayed near the authored intent
+  (user-directed 2026-08-24). The element name is a size class, not a
+  document outline — pick the tier that renders the intent.
+- **Purpose-built lockups sit outside the table, on purpose.** TPL's
+  countdown numerals (32/36 digits whose legend aligns by `&nbsp;` count)
+  and the Steps Block's 13/20 monospace badge are tuned instruments;
+  snapping them to a row breaks what they were tuned for. Keep the set
+  SMALL and commented — everything else conforms.
 
 ### One idea per mj-text (2026-08-19, user-decided)
 
@@ -1639,6 +1688,9 @@ aloud). The Alt Text field survives either way (§5).
    **top** padding. Only documented overlay/inset exemptions should remain.
 2. Grep for columns with bottom padding. There should be none.
 3. Grep for spacing values off the declared scale.
+3a. Census every `font-size`/`line-height` pair (stylesheet rules,
+   `mj-attributes`, and inline) and check each against the brand type
+   table (§5). Anything off-table is either a documented lockup or a bug.
 4. Confirm every editable background image binds **all four** carriers in
    the compiled HTML.
 5. Confirm every dark-mode rule that must override an inlined base rule

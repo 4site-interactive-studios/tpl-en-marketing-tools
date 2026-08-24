@@ -23,10 +23,10 @@
       />
       <mj-button width="auto"
         css-class="button"
-        font-size="18px"
+        font-size="22px"
         font-weight="700"
         font-family="Tahoma, sans-serif"
-        line-height="25px"
+        line-height="28px"
         border-radius="100px"
         inner-padding="12px 16px"
         letter-spacing="1px"
@@ -144,7 +144,7 @@
         </mj-column>
         <mj-column vertical-align="middle" width="406px" css-class="signature-text">
           <mj-text padding="0">
-            <p style="font-style:italic;font-size:15px;margin:0 0 8px;">Thank you for making this work possible.</p>
+            <p style="font-style:italic;font-size:16px;line-height:24px;margin:0 0 8px;">Thank you for making this work possible.</p>
           </mj-text>
           <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0" align="left" css-class="light-only" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -185,18 +185,18 @@
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-button width="auto" color="#ffffff" background-color="#006837" href="https://tpl.org/donate" align="center" padding="0 0 32px">DONATE</mj-button>
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
+          <p style="font-size:14px;line-height:18px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text color="#ffffff" align="center" padding="0 0 16px">
-          <p style="font-size:14px;line-height:21px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
-          <p style="font-size:14px;line-height:21px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
+          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;"><a href="https://fundraise.tpl.org/page/1000752/subscriptions/1?chain" style="color:#ffffff;" data-campaign-id="1000752" data-custom-urls="[]" data-custom-urls-enabled="false" data-name="Subscription_Management_Page" data-type="campaignpage_url_pb">Manage Subscription</a></p>
+          <p style="font-size:14px;line-height:18px;"><a href="https://fundraise.tpl.org/page/1000752/subscriptions/1?chain" style="color:#ffffff;" data-campaign-id="1000752" data-custom-urls="[]" data-custom-urls-enabled="false" data-name="Subscription_Management_Page" data-type="campaignpage_url_pb">Manage Subscription</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
