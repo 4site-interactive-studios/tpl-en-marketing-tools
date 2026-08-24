@@ -280,12 +280,12 @@
     "hash": "351505531200"
   },
   "email-template": {
-    "version": 56,
-    "hash": "33720227950d"
+    "version": 57,
+    "hash": "421a92082aa2"
   },
   "head-css": {
-    "version": 46,
-    "hash": "c43acb478dd5"
+    "version": 47,
+    "hash": "ff4026aba81b"
   },
   "partial:debug-toolbar": {
     "version": 1,

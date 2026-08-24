@@ -988,15 +988,25 @@ li {
          that never reaches an inbox. This CSS does reach the inbox and must
          keep counting.
 
-         The pair is ATOMIC in this one block, in this order, which is what
-         retires the old warning that used to sit here. The hazard was that a
-         second (max-width:599px) block earlier in the head would drag the
-         reveal ahead of its hide — EN folds same-condition blocks into the
-         FIRST occurrence's position (measured 2026-08-19, EoA delivered
-         heads). Both hides and the reveal now sit together in the earliest
-         block, so the order they depend on cannot be broken by the fold;
-         styles.css's remaining 599px rules get folded up to here, and none
-         of them touch .mobile-only or .desktop-only.
+         The pair is ATOMIC in this one block, and the reveal's @media
+         condition is deliberately UNIQUE across every CSS source in the
+         email — that uniqueness, not position, is what protects the order.
+         The 2026-08-22 design assumed this head came FIRST in EN's merge so
+         the reveal block would be the fold target; the 2026-08-24 final-QC
+         delivered heads (EoA hOB4q6MD…/hb3nYGds…) measured the opposite:
+         EN merges BODY style blocks (the Template Styles block carrying
+         styles.css) AHEAD of the template head, so a reveal sharing
+         styles.css's `(max-width: 599px)` string folded up past its own
+         hide and the hide won everywhere below 599px. Latent only — no
+         shipped block carries .mobile-only/.desktop-only today. The probe
+         that blessed the old design (templateId 631) tested an email
+         WITHOUT the styles block, which is exactly the case the fold cannot
+         reach. `only screen and (max-width: 599px)` (with the space) is
+         distinct from styles.css's `(max-width: 599px)`, from styles.css's
+         `only screen and (max-width:599px)` (no space), and from MJML's
+         emitted no-space block — nothing folds it, it stays after the 9998
+         hide. Verify on the next send's delivered head: the reveal must
+         appear AFTER the 9998 block.
 
          The hide is authored TWICE, on the .dark-only precedent, because the
          two copies serve different clients: the PLAIN copy is what EN inlines
@@ -1072,7 +1082,7 @@ li {
       }
     }
 
-    @media (max-width: 599px) {
+    @media only screen and (max-width: 599px) {
       .desktop-only {
         display: none !important;
       }
@@ -1207,7 +1217,7 @@ li {
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
 <div aria-label="TPL Email Template — Block Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
 <!-- START: Main Content -->
-<!-- QC INSTRUMENT (temporary): main_live part 1 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Generated from dist/main_live.html; indentation before tags stripped (render-neutral). Regenerated after the caption-panel fix (head-css v46). Remove after the round closes. -->
+<!-- QC INSTRUMENT (temporary): main_live part 1 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Indentation before tags stripped (render-neutral). Regenerated at head-css v47 (caption-panel fix + fold-proof reveal). Remove after the round closes. -->
 <!-- START: Category — Headers and Heroes -->
 <div data-import-exclude="true" data-folder="6399" data-category-short="Headers/Heroes">
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
