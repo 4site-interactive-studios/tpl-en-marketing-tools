@@ -3,6 +3,42 @@
     <!--
       PROBE — block-wide Text Color / Link Color overrides (2026-08-24).
 
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-08-24 as EN templateId 634; EoA test uC5wMRro… (17 clients).
+      Read from the delivered HTML and pixel-measured renders.
+
+      C2 LINK HOOK — PASS EVERYWHERE. EN inlined the hook colour onto every
+          anchor (delivered: color:#362229 inline, no !important); Word
+          renders Earth (pixel-measured 329 Earth / 0 blue in the link run),
+          Apple Mail and Gmail render Earth, dark clients force #8CC63F over
+          it exactly as pre-flagged. THE LINK COLOR SELECT IS IMPLEMENTABLE
+          CATALOG-WIDE.
+      C3 BLOCK STYLE — FAILS IN WORD, and the mechanism is now measured:
+          EN CONSUMED the block-local style tag (0 tags in delivery) and
+          inlined its rules onto every matching element KEEPING !important
+          (delivered: style="…color:#F7931E !important…"). CSS clients
+          honour that — Apple Mail shows the full override, beating authored
+          inline white, and in dark mode the inline !important even beats
+          the dark forcing. But Word DROPS an inline declaration that
+          carries !important: authored colours return, and the links —
+          whose only colour was the dropped declaration — crash to Word
+          default blue (pixel-measured 531 blue). A colour control that
+          reverts silently in Outlook desktop and breaks its links there is
+          not shippable. Block-wide Text Color via block-local style: DEAD.
+          (FLAGS A and B were already fatal on their own; the two-instance
+          manual step is moot and was not run.)
+      C4 CASCADE — text inheritance surprisingly WORKS in Word (Sun body
+          copy pixel-confirmed), but the anchor's color:inherit fell to Word
+          blue (595 blue), and the catalog stamps colour inline anyway.
+          Rejected, now with pixels.
+
+      NEW PORTABLE FACT (recorded in guide §2b): EN's inliner keeps
+      !important when inlining BODY-carried style rules — unlike the
+      CSS-editor head path, which strips it (2026-08-18) — and Word rejects
+      any inline declaration carrying !important. Inlined-!important is
+      therefore a Word-only outage switch.
+      ════════════════════════════════════════════════════════════════════
+
       Not a catalog page. Build, send dist/probe_block-color-overrides_live.html
       through EN to EoA. Reading order: the DELIVERED HTML first (C3's survival
       is decided there), then light/dark pairs, then the one MANUAL builder

@@ -226,6 +226,21 @@ dark-on-dark and no asset swap happens.
 
 ---
 
+**The other edge of the same keyword (measured 2026-08-24, EN templateId
+634, EoA uC5wMRro…): never let `!important` get INLINED.** EN's inliner has
+two paths and they treat the keyword differently. The CSS-editor/head path
+STRIPS `!important` while inlining (2026-08-18 — why the plain hide above
+works). But a `<style>` carried in the BODY is consumed whole and its rules
+are inlined KEEPING `!important` — and Word rejects any inline declaration
+that carries it. The measured failure: a body style forcing
+`color:#F7931E !important` arrived inline on every element, rendered
+perfectly in Apple Mail and Gmail (it even beats dark-mode forcing, since
+inline-`!important` outranks stylesheet-`!important`), and in Outlook desktop
+the dropped declarations reverted the text to its authored colours and
+crashed the links — whose only colour was the dropped declaration — to Word
+default blue. Inlined `!important` is a Word-only outage switch that looks
+correct in every preview you are likely to check.
+
 ### 2b-bis. Gmail's CSS size cliff — every Gmail surface (measured 2026-08-18)
 
 The Gmail app does not categorically drop head styles — it drops them by
