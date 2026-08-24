@@ -277,18 +277,28 @@ KEPT, because they are function rather than prose:
 - **Anything inside `<style>` or `<script>`**, where a legacy `<!--` is
   part of the sheet, not a note about it.
 
-The band sheet's own CSS comments are stripped too — a narrow pass over the
-`data-en-tools-band` `<style>` only. That sheet documents itself (which
-literal tracks the email width, which guard enforces it) and the note is for
-whoever edits the MJML, not for the delivered email. Every OTHER stylesheet
-keeps its comments exactly as authored: `styles.css` ships its "NO CHILD
-COMBINATORS" warning inside the Template Styles block on purpose.
+The head-resident sheets' own CSS comments are stripped too — a narrow pass
+over the `data-en-tools-band` and `data-en-tools-template-css` `<style>`s
+only. Those sheets document themselves (which literal tracks the email
+width, which rules pass the head-residency bar tests and why) and the notes
+are for whoever edits the MJML, not for the delivered email — and because
+both sheets stay in the head, their comments would ship in every exported
+template (band: 2026-08-20, user decision; template-CSS: 2026-08-24, user
+decision, after its catalog comments shipped in an exported template head).
+Every OTHER stylesheet keeps its comments exactly as authored: `styles.css`
+ships its "NO CHILD COMBINATORS" warning inside the Template Styles block on
+purpose.
 
 Blank-line runs in the head collapse to a single newline — both the gaps a
 strip leaves behind and the ones MJML's own compile leaves between
 `mj-head` children (the gap after the `lte mso 11` conditional). Safe only
 because `<style>` and `<script>` are masked out first: inside a sheet a
-blank line is formatting, not a gap.
+blank line is formatting, not a gap. `extractHeadStyles` runs AFTER this
+collapse (store.ts strips first, extracts second), so its splices eat each
+extracted sheet's whole line — leading indentation and, when the element had
+the line to itself, the trailing newline. Before that (2026-08-24) every
+extracted sheet left one blank line behind, stacked in front of whatever
+stayed in the head.
 
 Only the FIRST `<head>` is processed, and the body is left byte-identical
 — block comments (`<!-- START: … -->`, the `- Not Displayed` markers) are
@@ -2390,7 +2400,9 @@ so an email assembled without that block has none of it; most rules just
 degrade, but a fork does not — neither half applies and BOTH copies render.
 Before the mode-fork moved, such an email showed every light/dark twin twice.
 The full catalog of what moved, what stayed, and why each stays is in
-future-enhancements "Head-vs-block CSS".
+future-enhancements "Head-vs-block CSS". Document the sheet freely: its CSS
+comments are stripped at import, same narrow pass as the band sheet's
+(2026-08-24, user decision — see "Head comments are dropped at IMPORT").
 
 The marker is not `data-en-tools-band` because of CHANGE TRACKING, not bytes:
 version-sync's `headCssContent()` filters band styles out of the head-css hash
