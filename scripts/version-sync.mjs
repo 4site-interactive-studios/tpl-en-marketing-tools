@@ -158,6 +158,16 @@ export function baseline() {
   }
 }
 
+/**
+ * Each bump stamps the entity with the day it happened (`date`, YYYY-MM-DD)
+ * — "when did this last change", carried alongside the version. A steady
+ * entity keeps its committed date untouched; entities versioned before
+ * dates existed gain one on their next real bump. The importer fills the
+ * template head's __TEMPLATE_DATE__ placeholder from email-template's date
+ * the same way it fills v__TEMPLATE_VERSION__.
+ */
+const today = () => new Date().toISOString().slice(0, 10);
+
 export function syncedManifest() {
   const base = baseline();
   const entities = computeEntities();
@@ -167,12 +177,12 @@ export function syncedManifest() {
     const hash = entities[key];
     const prev = base[key];
     if (!prev) {
-      manifest[key] = { version: 1, hash };
+      manifest[key] = { version: 1, hash, date: today() };
       if (Object.keys(base).length) bumped.push(`${key} -> v1 (new)`);
     } else if (prev.hash === hash) {
       manifest[key] = prev;
     } else {
-      manifest[key] = { version: prev.version + 1, hash };
+      manifest[key] = { version: prev.version + 1, hash, date: today() };
       bumped.push(`${key} -> v${prev.version + 1}`);
     }
   }
@@ -187,10 +197,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv.includes(
   const manifest = JSON.parse(read('versions.json') || '{}');
   const prev = base['head-css'];
   const next = !prev
-    ? { version: 1, hash }
+    ? { version: 1, hash, date: today() }
     : prev.hash === hash
       ? prev
-      : { version: prev.version + 1, hash };
+      : { version: prev.version + 1, hash, date: today() };
   const changed = JSON.stringify(manifest['head-css']) !== JSON.stringify(next);
   manifest['head-css'] = next;
   const sorted = {};

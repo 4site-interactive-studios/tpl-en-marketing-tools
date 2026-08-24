@@ -276,6 +276,15 @@ KEPT, because they are function rather than prose:
   revealed pair corrupts the Outlook branches the whole layout rests on.
 - **Anything inside `<style>` or `<script>`**, where a legacy `<!--` is
   part of the sheet, not a note about it.
+- **A comment opening `en-tools-keep`**, which ships MINUS the marker
+  (2026-08-24, user decision) — the one deliberate way to put a comment in
+  the delivered head. Same naming family as `en-tools-config`: the marker
+  is contract, not prose. TPL uses it for the template's version stamp,
+  authored above the grouped meta tags as
+  `<!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`
+  and delivered as `<!-- TPL General Email Template (2026-08-24) v58 -->`
+  — both placeholders filled at import (see "The template head's label"
+  below).
 
 The head-resident sheets' own CSS comments are stripped too — a narrow pass
 over the `data-en-tools-band` and `data-en-tools-template-css` `<style>`s
@@ -2438,6 +2447,11 @@ placeholder is deliberate: `version-sync` hashes the SOURCE, so a baked-in
 version would feed its own hash and bump on every build. `fetchMjmlBundle`
 fills it in from `versions.json` at import, matching the leading ` v` so a
 missing manifest yields a clean "Email Template" rather than a dangling "v".
+`__TEMPLATE_DATE__` (in the `en-tools-keep` version stamp, 2026-08-24) rides
+the same mechanism: filled from `email-template`'s `date` — the YYYY-MM-DD
+day version-sync last bumped it — and matched WITH its wrapping ` (…)` so an
+entry that predates date stamping collapses to a clean "… v58" rather than a
+dangling "()".
 
 **Budget note.** `HOIST_ALLOWANCE` in TPL's `check-catalog` dropped 700 → 250
 when the band sheet moved into the head: the sheet is now measured directly
@@ -3347,7 +3361,12 @@ changed both hashes once, which is a real bump and recorded as one.
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show
 HEAD:versions.json` / `HEAD:app-version.json`); an entity whose current
-hash differs from the committed one gets `committed version + 1`.
+hash differs from the committed one gets `committed version + 1`, and (TPL,
+2026-08-24) a `date` stamp — the YYYY-MM-DD day of the bump, kept untouched
+while the entity holds steady, so each entry answers "when did this last
+change"; entries versioned before dates existed gain one on their next real
+bump. `email-template`'s date fills `__TEMPLATE_DATE__` in the delivered
+version stamp.
 Consequences: rebuilding never double-bumps; local iteration cannot inflate
 numbers (an entity sits exactly one ahead of HEAD until committed); the
 committed history of the manifest IS the version ledger. TPL check-docs

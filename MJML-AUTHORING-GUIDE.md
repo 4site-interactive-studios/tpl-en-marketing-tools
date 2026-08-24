@@ -192,20 +192,6 @@ follow. Note the merge matches conditions textually:
 `only screen and (max-width:599px)` (MJML's own emission) and
 `(max-width: 599px)` are different strings and do not merge.
 
-The fold reaches ACROSS documents, and the merge order is not what you'd
-guess (measured 2026-08-24, final-QC delivered heads, EoA hOB4q6MD… /
-hb3nYGds…): EN merges `<style>` blocks that arrive in the email BODY (a
-stylesheet shipped as a block) AHEAD of the template head's own styles.
-A reveal in the template head that shares its condition string with the
-body stylesheet folds up past its own hide — TPL's viewport-fork reveal
-did exactly that and the hide won below 599px (latent; nothing shipped
-carried the fork). Two lessons: an order-dependent block's condition must
-be unique across EVERY CSS source in the email — head, body blocks, and
-MJML's own emission — and an instrument that blesses such a design must
-include the body stylesheet in the send, because an email WITHOUT it is
-the one case the fold cannot reach (the probe that blessed the old
-arrangement tested exactly that case).
-
 **And never write tag-like text inside CSS — comments included (outage
 2026-08-18).** Any consumer that inlines the stylesheet into an
 `<mj-style>` before parsing (the importer does) tokenizes the CSS as HTML:
@@ -356,23 +342,6 @@ Author it on any side-by-side image whose stacked mobile rendering
 should be full-bleed.
 
 ### 2c. Where dark mode can and cannot reach
-
-**Word-engine dark mode flips unprotected light text over photos (measured
-2026-08-24, EoA hOB4q6MD…/hb3nYGds…, M365 Win11 dm), and the ruling is to
-accept it.** Outlook desktop ignores media queries, so its dark mode is its
-own colour transform: white copy whose cell carries no explicit background
-gets flipped to near-black — over a dark photo it becomes near-invisible.
-Measured on every white-over-photo text in the catalog (CTA Hero w/
-heading, both Photo Banners, Progress Meter, Countdown incl. its
-numerals), while copy on explicit `bgcolor` grounds transformed legibly.
-The defense would be scrims (dark bands behind each line — Word respects
-an explicit background), but the design ruling (2026-08-24, reaffirming
-2026-08-21) is raw text over the photo, no scrims: the flip is a
-DOCUMENTED, ACCEPTED limitation for the Outlook-desktop-dark audience, and
-it belongs in client-facing docs next to the other accepted trade-offs —
-not in a redesign. Author accordingly: do not pin white inline as a "fix"
-(it is what gets flipped), and do not add per-block scrims without a new
-ruling.
 
 **First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
 renders):** an authored light ground with NO dark hook at all — an
@@ -760,7 +729,12 @@ the current number before assuming it has.
 - head authoring prose — 3,590 bytes, now stripped at import
   (`stripHeadComments`; conventions.md, "Head authoring comments never
   ship"), so **head comments are free** and you should document the head
-  as thoroughly as it deserves.
+  as thoroughly as it deserves. The one comment that CAN ship: open it
+  with the `en-tools-keep` marker and the importer keeps it minus the
+  marker — TPL uses this for a version stamp above the grouped head
+  metas (`<!-- en-tools-keep TPL General Email Template
+  (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`, placeholders filled at
+  import from `versions.json`).
 
 Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
 Anything near this ceiling is far past the clip point, which is fine for a
