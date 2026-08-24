@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 12,
-    "hash": "42dd25980693"
+    "version": 13,
+    "hash": "77948d4c4a36"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 12,
-    "hash": "a48f34b1d5eb"
+    "version": 13,
+    "hash": "cf473c4fec8f"
   },
   "block:CTA Button": {
     "version": 12,
@@ -116,8 +116,8 @@
     "hash": "80f40f1aa90e"
   },
   "block:Event Invite Block": {
-    "version": 13,
-    "hash": "06626aa638bc"
+    "version": 14,
+    "hash": "5336a6f0df80"
   },
   "block:Feedback Poll Block": {
     "version": 22,
@@ -220,8 +220,8 @@
     "hash": "40a13894bb80"
   },
   "block:Signature Card (no photo)": {
-    "version": 15,
-    "hash": "b93701f485f1"
+    "version": 16,
+    "hash": "e9f41cecc178"
   },
   "block:Signature Card (photo)": {
     "version": 14,

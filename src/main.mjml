@@ -2599,9 +2599,9 @@
     <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:17px;">{user_data~First Name}, you're invited!</p>
+          <p>{user_data~First Name}, you're invited!</p>
           <h2><a href="https://tpl.org">The Great Northern Festival</a></h2>
-          <p style="font-size:17px;">
+          <p>
             The Main Cinema<br />
             115 SE Main Street<br />
             Minneapolis, MN 55414
@@ -2774,7 +2774,7 @@
         <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="137px" padding="0" align="left" css-class="dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text data-inset-toggle padding="8px 0 0">
-          <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+          <p style="margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
         </mj-text>
       </mj-column>
     </mj-section>

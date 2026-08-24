@@ -151,7 +151,7 @@
           <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
           <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
-            <p style="font-size:17px;margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+            <p style="margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
           </mj-text>
         </mj-column>
       </mj-group>
