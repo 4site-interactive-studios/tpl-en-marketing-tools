@@ -1015,11 +1015,13 @@ li {
          from the OWA block's 9999px so EN's same-condition merge cannot move
          it after the reveal.
 
-         UNVERIFIED, and the one thing to probe before a real send: whether
-         EN inlines a top-level rule from the TEMPLATE head as it does from
-         the CSS Editor field. If it does not, the style-stripped audience
-         loses the plain copy — the wrapped copy still covers everyone who
-         keeps head styles. -->
+         MEASURED 2026-08-24 (probe_vrect-and-template-head, EN templateId
+         631, EoA XXhlSbq1e…): EN DOES inline a top-level rule from the
+         template head exactly as it does the CSS Editor field — the
+         delivered HTML carries display:none inline on the .mobile-only
+         element, and this marker attribute survives delivery. The
+         style-stripped audience is covered, and the fork rendered correctly
+         on all 17 clients with NO styles.css in the email at all. -->
   <style type="text/css" data-en-tools-template-css>
     /* Viewport fork: hide twice, reveal once, in this order. */
     .mobile-only {

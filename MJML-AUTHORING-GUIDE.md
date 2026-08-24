@@ -898,6 +898,14 @@ Two companion rules for background sections, both Outlook:
 - **Outlook cannot honor horizontal section padding inside a `v:rect`.**
   Give background sections vertical-only padding and fake the gutters with
   an `mj-group` of narrow spacer columns around the content column.
+  Re-measured 2026-08-24 (EoA XXhlSbq1e…) after four TPL blocks drifted to
+  the padding shape: Outlook 2021 rendered the content flush to the email
+  edge at BOTH 32px and 64px of horizontal padding — it is not
+  magnitude-dependent — while every other client honored the padding, which
+  is exactly what makes this defect easy to ship: nothing looks wrong
+  anywhere you preview. The four blocks were converted to rails the same
+  day. If markup carrying this rule ever "simplifies" a rail pair back to
+  padding, the render only breaks in Word.
 
 ---
 

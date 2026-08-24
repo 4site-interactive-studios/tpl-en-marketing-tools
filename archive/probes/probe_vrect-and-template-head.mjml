@@ -3,6 +3,29 @@
     <!--
       PROBE — two open questions, one send (2026-08-22).
 
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-08-24 as EN templateId 631; EoA test XXhlSbq1e18ponDRl1UQMK…
+      (17 clients). Read from the raw renders and the delivered HTML:
+
+      V — §4 IS RIGHT, and it is not magnitude-dependent. Outlook 2021 (Word)
+          ignored the horizontal padding at BOTH magnitudes: V2 rendered
+          0..471 and V3 0..535 against V1's correct 64..535 (positions
+          relative to the email's left edge, measured from the PNG pixels).
+          Every other client honored it (Apple Mail / Gmail.com / Outlook.com:
+          V2 64..535, V3 32..567). Consequence: the four catalog blocks then
+          shipping the padding shape — both background-image CTA Heroes and
+          both Photo Banners w/ CTA — were flush in Outlook desktop, and were
+          converted to rails the same day (TPL f81a7b9).
+      T1 — EN INLINES a top-level rule from the page-template head, exactly as
+          it does the CSS Editor field: the delivered HTML carries
+          style="…display: none…" on the .mobile-only div. The fork's plain
+          copy therefore covers the style-stripping audience, and the
+          data-en-tools-template-css marker survived delivery.
+      T2 — the fork FORKS on all 17 clients with no styles.css in the email:
+          desktop bar only on desktop clients, mobile bar only on iPhone and
+          Android Gmail, never both, never neither.
+      ════════════════════════════════════════════════════════════════════
+
       Not a catalog page. Build, then send dist/probe_vrect-and-template-head_live.html
       through EN to Email on Acid. Read outlook2021_win11_* FIRST for the V series
       (that is the whole point of it), then applemail16_* / gmailcom-* for the T series,

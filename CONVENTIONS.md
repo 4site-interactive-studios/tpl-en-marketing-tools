@@ -2358,12 +2358,16 @@ first occurrence's position. Both hides and the reveal now sit together in the
 earliest block, so the fold cannot separate them; styles.css's remaining 599px
 rules fold up to that position and none of them touch either class.
 
-**Unverified, and worth a probe before a real send**: whether EN inlines a
-top-level rule from the TEMPLATE head as it does from the CSS Editor field.
-The plain hide exists to survive clients that drop style blocks entirely; if
-head rules are not inlined, that audience loses it, while everyone who keeps
-head styles is still covered by the wrapped copy. Each BLOCK then carries only
-its own span and `content` rule.
+**Measured 2026-08-24** (probe_vrect-and-template-head, sent as EN templateId
+631, EoA test XXhlSbq1e…): EN DOES inline a top-level rule from the TEMPLATE
+head, exactly as it does from the CSS Editor field — the delivered HTML
+carries `display:none` inline on the `.mobile-only` element, and the
+`data-en-tools-template-css` marker itself survives delivery. So the plain
+hide covers the style-stripping audience (Gmail app on non-Google accounts,
+most clients after a forward), not just everyone who keeps head styles. The
+same send proved the whole fork end to end: the probe carried NO styles.css,
+and exactly one fork bar rendered per client across all 17 EoA clients. Each
+BLOCK then carries only its own span and `content` rule.
 
 The template head's label carries `__TEMPLATE_VERSION__`, not a number. The
 placeholder is deliberate: `version-sync` hashes the SOURCE, so a baked-in
