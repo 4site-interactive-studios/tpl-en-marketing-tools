@@ -162,7 +162,7 @@
     <mj-section css-class="text-block block body-text-block inset-gutter" background-color="#ffffff" padding="16px 64px">
       <mj-column>
         <mj-text padding="0">
-          <p style="font-size:16px;">
+          <p>
             Questions, or need to update or cancel your recurring gift?
             Email
             <a href="mailto:donor.outreach@tpl.org" style="color:#006837;">donor.outreach@tpl.org</a>
