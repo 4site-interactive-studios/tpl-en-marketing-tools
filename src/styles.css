@@ -353,10 +353,21 @@ p {
      padding on a white ground — the eight button blocks lost theirs too. */
 
   /* Feedback Poll option rows: pin the icon column so the mj-group
-     percentage math cannot squeeze it (56px compiles to 10.4478%, which
-     is 32.5px at 375px — minus the icon cell's fixed 32px gap padding
-     left 0.5px of icon; measured 2026-08-19, EoA B4uCpmh6). Same calc
-     pattern as .signature-img/.signature-text above. */
+     percentage math cannot squeeze it. The original measurement was against
+     a 56px column: it compiled to 10.4478%, which is 32.5px at 375px, and the
+     icon cell's fixed gap padding left 0.5px of icon (2026-08-19, EoA
+     B4uCpmh6). The column is 40px since 2026-08-22 — the icon-to-copy gap was
+     halved from 32 to 16 — so the arithmetic moved with it, but not the
+     reason: 40px compiles to 8.4746%, or 20.9px at 375, and a 16px gap still
+     eats most of that.
+
+     The pin stays at 56 while the AUTHORED column is 40, which is the point of
+     having a pin at all — the two viewports want different widths. On mobile
+     .no-bleed puts 16px on BOTH sides of the icon cell to hold it off the
+     screen edge, so the icon needs 16 + 24 + 16 = 56 to render at its authored
+     size. Pinning 40 there instead squeezed the 24px icon to 8px (measured
+     2026-08-22, the first build after the gap was halved). Same calc pattern as
+     .signature-img/.signature-text above. */
   .poll-icon {
     width: 56px !important;
   }
