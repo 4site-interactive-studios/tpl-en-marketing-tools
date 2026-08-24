@@ -109,7 +109,13 @@ p {
    docs/archive/en-anchor-attr-probe.html). The hook therefore has to sit on an
    ANCESTOR, in block markup outside the replacement. Link-only on purpose:
    .overlay already whitens headings, spans and paragraphs too, and these
-   blocks need the anchor recoloured without disturbing approved copy. */
+   blocks need the anchor recoloured without disturbing approved copy.
+   Since 2026-08-24 these hooks are also the OPTION POOL for the importer's
+   per-block Link Color Select: any TOP-LEVEL single-declaration rule of the
+   shape `.link-something a { color: X }` here becomes a pick on the next
+   import (parseLinkHooks; conventions "Link Color"), so name new hooks
+   deliberately — and keep them single-declaration or they stop being
+   options. */
 .link-inverse a {
   color: #fff;
 }

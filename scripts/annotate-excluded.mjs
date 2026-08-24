@@ -57,7 +57,7 @@ function normalize(body) {
   // above a section is annotation for the same reason — and worse, a comment
   // NAMING a flag would otherwise read as the flag itself downstream.
   let s = stripAnnotationComments(body).replace(
-    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|arrangement-label(?:="[^"]*")?|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
+    /\s*data-(style-[a-z-]+|fully-exclude|no-display-toggle|no-link-toggle|no-link-color|no-width-toggle|no-background-color|no-direction-toggle|desktop-only-[a-z-]+|mobile-only-[a-z-]+|inset-toggle|visible-duplicate|arrangement-label(?:="[^"]*")?|link-group(?:="[^"]*")?|width-options(?:="[^"]*")?)/g,
     '',
   );
   // data-alt-arrangement is deliberately ABSENT from that list. Every other

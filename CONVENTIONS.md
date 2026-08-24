@@ -787,6 +787,39 @@ Left/Right" — the viewport-scoped rule below, firing correctly: the class
 pins mobile with `!important`, so those controls genuinely only move
 anything at desktop and the label has to say so.
 
+## Link Color — one Select recolors a block's links (2026-08-24)
+
+Every block with at least one `mj-text` gets a **Link Color** Select (merge
+tag `link_color`, block-level section). Its value is a CLASS TOKEN spliced as
+a zero-width insertion before the closing quote of every text carrier's
+compiled `class` attribute — byte-identical at every site, so one shared
+Replacement covers them all (the `data-link-group` sharing rule), and the
+empty Default restores the pristine bytes exactly. The mechanism is
+probe-measured (probe_block-color-overrides, EN templateId 634, EoA
+uC5wMRro…): EN inlines the winning `.link-* a` hook colour onto every anchor
+at send, Outlook included.
+
+- **Options are DISCOVERED, not configured** (`parseLinkHooks`): a top-level,
+  single-declaration rule of exactly the shape `.link-<name> a { color: X }`
+  becomes an option; the bare `a { color: X }` rule labels the Default.
+  Labels come from the brand palette reverse lookup (plus White/Black for the
+  two common unnamed values). Multi-declaration rules (`.footer-cta a`) and
+  rules inside @media (the dark forcing) are never options.
+- **Authored hooks are TAKEN OVER** (user decision 2026-08-24): an `mj-text`
+  whose `css-class` already carries a hook token is excluded from the shared
+  tag and mints its own per-element Link Color Select whose default is the
+  authored token — full coverage with byte-exact restore. Five sites today.
+- The tag is queued BEFORE the Display/arrangement passes, so it rides inside
+  their option fragments — picking "No Icon" keeps the chosen colour.
+  Alt-arrangement members are reached deliberately even though they are
+  swapDropped: the alternate's option value is built from its region.
+- `data-no-link-color` on an `mj-text` opts it out.
+- **What a pick does NOT reach**, and where that is said: an anchor authoring
+  its own inline colour (Question Block's row copy, the pill-button rows) —
+  an infoNote names each; dark-mode `!important` forcing outranks any pick;
+  an email built without the styles block degrades to client-default link
+  colour. All three are measured, not suspected.
+
 ## Inert paddings — never ship a field that does nothing
 
 A padding field is worthless if changing it doesn't change the rendering,
