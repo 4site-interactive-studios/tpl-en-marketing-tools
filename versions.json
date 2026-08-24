@@ -180,8 +180,8 @@
     "hash": "7e24d2acb965"
   },
   "block:Photo and Text Grid Block (2x2)": {
-    "version": 8,
-    "hash": "459be2f85a30"
+    "version": 9,
+    "hash": "424b87603d1a"
   },
   "block:Podcast Episode Block": {
     "version": 18,
@@ -196,8 +196,8 @@
     "hash": "44a3a696a7b3"
   },
   "block:Question Block": {
-    "version": 14,
-    "hash": "5e62cabf1c7b"
+    "version": 15,
+    "hash": "f50dfef73691"
   },
   "block:Quiz Block (2x2 buttons)": {
     "version": 17,
@@ -248,12 +248,12 @@
     "hash": "674aca3f7fa4"
   },
   "block:Story Card 1x1": {
-    "version": 1,
-    "hash": "66f5b15fad2c"
+    "version": 2,
+    "hash": "0c86be6e2a5a"
   },
   "block:Story Card 2x1": {
-    "version": 14,
-    "hash": "07dc401912d2"
+    "version": 15,
+    "hash": "1348c7cdbe04"
   },
   "block:Subscription Panel": {
     "version": 11,
