@@ -1093,11 +1093,13 @@ The portable rules, all measured or ruled on TPL:
   body is the LARGE paragraph row (18/24, user-ruled 2026-08-24); the base
   row (16/24) is the step-down for de-emphasized copy — receipts, source
   lines, sign-offs.
-- **Map by intent, not proximity.** When a size falls between rows, ask what
-  the element IS, not which number is nearer. A pull-quote is heading-LG
-  display (36/45), a caps band title is a heading (26/34), a podcast lead-in
-  is emphasized body (18/24 bold) — each landed on a different row than
-  nearest-number would have picked.
+- **Map by intent, not proximity — then confirm on the render.** When a
+  size falls between rows, ask what the element IS, not which number is
+  nearer: a caps band title is a heading (26/34), a podcast lead-in is
+  emphasized body (18/24 bold). And arithmetic settles nothing by itself in
+  either direction: TPL's pull-quote (authored 30/38) mapped proportionally
+  to 36/45, and the render review pulled it down a tier to 26/34 — the
+  eye ruled, twice.
 - **`h1` is a hero statement, nothing else.** A heading that titles a card
   or banner inside the email body sits one tier below its old visual size
   when a table adoption grows the tiers: TPL's photo banners went `h1`→`h2`
