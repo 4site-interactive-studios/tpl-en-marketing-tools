@@ -367,6 +367,27 @@ for (const { rel, f, out: outDir } of walk) {
     let { text, fully, imports } = annotate(source);
     let groupNote = '';
 
+    // Alternate arrangements do not RENDER. A section carrying
+    // data-alt-arrangement exists to be folded into its partner's arrangement
+    // Select at import time; in a real send exactly one arrangement ships. The
+    // compiled previews (_local-debug, and _live pasted into EN for test
+    // sends) must show what a send shows — the primary only — so the
+    // alternates are dropped here, before compilation, together with the
+    // annotation comment sitting directly above each (user decision
+    // 2026-08-24: "we should only be showing the first"). This runs BEFORE
+    // the raw-source head embed below on purpose, twice over: the embed keeps
+    // the alternates (the debugger's MJML export must stay faithful to src),
+    // and a later strip would chew through the embed's escaped markup. The
+    // importer never sees any of this — it reads src/ directly, where both
+    // arrangements remain for the Select to fold.
+    let altsDropped = 0;
+    text = text.replace(
+      /(?:<!--(?!\[if)(?:(?!-->)[\s\S])*?-->\s*)?<mj-section\b[^>]*\bdata-alt-arrangement\b[^>]*>[\s\S]*?<\/mj-section>[ \t]*\n?/g,
+      () => ((altsDropped += 1), ''),
+    );
+    const altLeft = (text.match(/<mj-section\b[^>]*data-alt-arrangement/g) || []).length;
+    if (altLeft) console.warn(`  WARN ${join(rel, f)}: ${altLeft} data-alt-arrangement section(s) survived the drop`);
+
     checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));
@@ -399,7 +420,7 @@ for (const { rel, f, out: outDir } of walk) {
     // to still resolve from .build/.
     if (rel && !outDir) text = text.replace(/(<mj-include\s+path=")\.\.\//g, '$1./');
     writeFileSync(join(OUT, outDir, f), text);
-    console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}`);
+    console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}` + (altsDropped ? `, ${altsDropped} alternate arrangement(s) dropped from the render` : ''));
 
     // Print the live category → EN folder routing. Documenting this by hand
     // rots on every category change (it did); deriving it means the build
