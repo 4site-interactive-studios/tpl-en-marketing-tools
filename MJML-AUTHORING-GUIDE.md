@@ -1035,6 +1035,12 @@ they should survive a default change. TPL's line-height is a picked value
 "× 1.7" annotation was inherited from the sheet's first authoring and appears
 in no contract.
 
+This rule binds AUTHORS, not the importer: the importer's own RTE pre-wrap
+(conventions, "RTE normalization") deliberately pins a size inline — but it
+reads that size from the element's declared style at GENERATION time and is
+rebuilt on every re-import, so it tracks a default change instead of rotting
+the way a hand-authored restatement does.
+
 Related alignment note: a text row carries line-box leading above its glyphs;
 a fixed-height icon does not. When an icon must top-align with copy, give the
 icon's cell a few px of top padding (TPL's Question Block uses 5px against

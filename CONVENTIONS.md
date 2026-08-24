@@ -2695,13 +2695,14 @@ than guessing.
 Measured on the catalog: 23 values wrapped, 132 already block-level, 2 failed
 open, and the wrap is **pixel-identical** to the unwrapped rendering
 (10px/16px caption, 205px wide, 29px cell — before and after). The same
-caption with a naive size-less paragraph, which is what the editor produces
-today, renders at 16px/27px and 328px wide.
+caption with a naive size-less paragraph — which is what the editor produces —
+rendered at the `p` rule of the measurement day, 16px/27px (2026-08-19; the
+rule is 18px/28px since 2026-08-24) and 328px wide.
 
 The measured fix is B1's: an authored `<p>` carrying its own inline
 font-size survives **both** transforms — the editor leaves it untouched, and
 EN's inliner does not override it (B1 shipped its authored 12px/16px intact
-while the injected paragraphs got 16px/27px). Pre-wrapping copy in a
+while the injected paragraphs got the then-current `p` rule, 16px/27px). Pre-wrapping copy in a
 paragraph that pins its size is therefore the durable answer, and it needs no
 stylesheet support at all.
 
