@@ -44,12 +44,12 @@
     "hash": "9eb3aaa980f5"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
-    "version": 11,
-    "hash": "5f560a7928cc"
+    "version": 12,
+    "hash": "270d9720349e"
   },
   "block:CTA Hero (w/ background image)": {
-    "version": 5,
-    "hash": "1334247fa1c2"
+    "version": 6,
+    "hash": "db72a7c95288"
   },
   "block:CTA Hero (w/ heading)": {
     "version": 6,
@@ -172,12 +172,12 @@
     "hash": "5bf3889a8c54"
   },
   "block:Photo Banner (overlay panel, w/ CTA)": {
-    "version": 5,
-    "hash": "30ed8deaa221"
+    "version": 6,
+    "hash": "28f3f9793382"
   },
   "block:Photo Banner (w/ CTA)": {
-    "version": 5,
-    "hash": "bfa294e236ba"
+    "version": 6,
+    "hash": "7e24d2acb965"
   },
   "block:Photo and Text Grid Block (2x2)": {
     "version": 7,

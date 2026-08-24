@@ -1477,17 +1477,33 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-kayak.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+              <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
+              <!--[if mso | IE]><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-kayak.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
               <div class="image-block block" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-kayak.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
                 <div style="line-height:0;font-size:0;">
                   <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-kayak.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-kayak.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:16px 32px 16px;text-align:center;">
-                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                        <td style="direction:ltr;font-size:0px;padding:16px 0 16px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:268px;" ><![endif]-->
-                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:32px;" ><![endif]-->
+                            <div class="mj-column-px-32 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:5.333333333333334%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:middle;width:240px;" ><![endif]-->
+                            <div class="mj-column-px-240 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:40%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                                 <tbody>
                                   <tr>
@@ -1520,8 +1536,8 @@ li {
                                 </tbody>
                               </table>
                             </div>
-                            <!--[if mso | IE]></td><td style="vertical-align:middle;width:268px;" ><![endif]-->
-                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                            <!--[if mso | IE]></td><td style="vertical-align:middle;width:296px;" ><![endif]-->
+                            <div class="mj-column-px-296 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:49.333333333333336%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
                                 <tbody>
                                   <tr>
@@ -1537,6 +1553,13 @@ li {
                                       </table>
                                     </td>
                                   </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:32px;" ><![endif]-->
+                            <div class="mj-column-px-32 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:5.333333333333334%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
                                 </tbody>
                               </table>
                             </div>
@@ -1587,17 +1610,33 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-trail.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+              <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
+              <!--[if mso | IE]><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-trail.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
               <div class="image-block block" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-trail.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
                 <div style="line-height:0;font-size:0;">
                   <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-trail.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-trail.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:264px 32px 16px;text-align:center;">
-                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                        <td style="direction:ltr;font-size:0px;padding:264px 0 16px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:bottom;width:268px;" ><![endif]-->
-                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:50%;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:32px;" ><![endif]-->
+                            <div class="mj-column-px-32 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:5.333333333333334%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:bottom;width:240px;" ><![endif]-->
+                            <div class="mj-column-px-240 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:40%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:bottom;" width="100%">
                                 <tbody>
                                   <tr>
@@ -1630,8 +1669,8 @@ li {
                                 </tbody>
                               </table>
                             </div>
-                            <!--[if mso | IE]></td><td style="vertical-align:bottom;width:268px;" ><![endif]-->
-                            <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:50%;">
+                            <!--[if mso | IE]></td><td style="vertical-align:bottom;width:296px;" ><![endif]-->
+                            <div class="mj-column-px-296 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:49.333333333333336%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:bottom;" width="100%">
                                 <tbody>
                                   <tr>
@@ -1647,6 +1686,13 @@ li {
                                       </table>
                                     </td>
                                   </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:32px;" ><![endif]-->
+                            <div class="mj-column-px-32 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:5.333333333333334%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
                                 </tbody>
                               </table>
                             </div>
@@ -4687,17 +4733,33 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+              <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
+              <!--[if mso | IE]><tr><td class="image-block-outlook block-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0" position="0, 0" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
               <div class="image-block block" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
                 <div style="line-height:0;font-size:0;">
                   <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-forest.jpg') center center / cover no-repeat;background-position:center center;background-repeat:no-repeat;background-size:cover;width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:48px 32px 48px;text-align:center;">
-                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                        <td style="direction:ltr;font-size:0px;padding:48px 0 48px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:536px;" ><![endif]-->
-                            <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:25px;" ><![endif]-->
+                            <div class="mj-column-px-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:4.166666666666666%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:550px;" ><![endif]-->
+                            <div class="mj-column-px-550 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:91.66666666666666%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                                 <tbody>
                                   <tr>
@@ -4720,6 +4782,13 @@ li {
                                       </table>
                                     </td>
                                   </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:25px;" ><![endif]-->
+                            <div class="mj-column-px-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:4.166666666666666%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
                                 </tbody>
                               </table>
                             </div>
@@ -4769,6 +4838,9 @@ li {
       This is why we use spacer columns with a fixed width on the sides
       of the overlay image column to create the necessary padding while
       maintaining alignment across email clients.
+      NOTE 2026-08-24: this comment was RIGHT all along, but the markup under
+      it had drifted to section padding at some point and shipped flush in
+      Outlook until the probe measurement put the rails back.
      --><!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px;">
@@ -4776,17 +4848,33 @@ li {
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="overlay-image-block-outlook block-outlook hero-reveal-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="overlay-image-block-outlook block-outlook hero-reveal-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0.5" position="0, 0.5" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-person_overlay.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
+              <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
+              <!--[if mso | IE]><tr><td class="overlay-image-block-outlook block-outlook hero-reveal-outlook" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="overlay-image-block-outlook block-outlook hero-reveal-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0, 0.5" position="0, 0.5" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-person_overlay.jpg" type="frame" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
               <div class="overlay-image-block block hero-reveal" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-person_overlay.jpg') center bottom / cover no-repeat;background-position:center bottom;background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px;">
                 <div style="line-height:0;font-size:0;">
                   <table align="center" background="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-person_overlay.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url('https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-person_overlay.jpg') center bottom / cover no-repeat;background-position:center bottom;background-repeat:no-repeat;background-size:cover;width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:350px 32px 48px;text-align:center;">
-                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                        <td style="direction:ltr;font-size:0px;padding:350px 0 48px;text-align:center;">
+                          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:600px;" ><![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:536px;" ><![endif]-->
-                            <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                            <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:25px;" ><![endif]-->
+                            <div class="mj-column-px-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:4.166666666666666%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:550px;" ><![endif]-->
+                            <div class="mj-column-px-550 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:91.66666666666666%;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                                 <tbody>
                                   <tr>
@@ -4809,6 +4897,13 @@ li {
                                       </table>
                                     </td>
                                   </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!--[if mso | IE]></td><td style="vertical-align:top;width:25px;" ><![endif]-->
+                            <div class="mj-column-px-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:4.166666666666666%;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
                                 </tbody>
                               </table>
                             </div>

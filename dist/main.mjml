@@ -350,15 +350,24 @@
     <!-- START: CTA Hero (w/ background image) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
+      <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
       <mj-section
         css-class="image-block block"
         background-url="assets/photo-kayak.jpg"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center center" padding="16px 32px 16px"
+        background-position="center center" padding="16px 0 16px"
       >
         <mj-group>
-        <mj-column vertical-align="middle" width="50%">
+          <mj-column width="32px">&nbsp;</mj-column>
+        <mj-column vertical-align="middle" width="240px">
           <mj-image data-display-toggle
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
@@ -378,13 +387,14 @@
             align="left" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="50%">
+        <mj-column vertical-align="middle" width="296px">
             <mj-button data-display-toggle css-class="button fixed-width" width="auto"
               href="https://tpl.org"
               align="right" padding="0" color="#ffffff" background-color="#006837">
               READ MORE
             </mj-button>
         </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -398,15 +408,24 @@
     <!-- START: CTA Hero (centered w/ background image, fixed height) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#362229" padding="0">
+      <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
       <mj-section
         css-class="image-block block"
         background-url="assets/photo-trail.jpg"
         background-size="cover"
         background-repeat="no-repeat"
-        background-position="center center" padding="264px 32px 16px"
+        background-position="center center" padding="264px 0 16px"
       >
         <mj-group>
-        <mj-column vertical-align="bottom" width="50%">
+          <mj-column width="32px">&nbsp;</mj-column>
+        <mj-column vertical-align="bottom" width="240px">
           <mj-image
             src="assets/logo-tpl_color-light-green-text.png"
             alt="Logo"
@@ -426,13 +445,14 @@
             align="left" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="bottom" width="50%">
+        <mj-column vertical-align="bottom" width="296px">
             <mj-button css-class="button fixed-width" width="auto"
               href="https://tpl.org"
               align="right" padding="0" color="#ffffff" background-color="#006837">
               READ MORE
             </mj-button>
         </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1581,14 +1601,24 @@
     <!-- START: Photo Banner (w/ CTA) -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#006837" padding="0">
-      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 32px 48px">
+      <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
+      <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 0 48px">
         <mj-group>
-        <mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px">
           <mj-text align="center" padding="0 0 16px">
             <h1 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h1>
           </mj-text>
           <mj-button css-class="button fixed-width" width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1606,18 +1636,30 @@
       This is why we use spacer columns with a fixed width on the sides
       of the overlay image column to create the necessary padding while
       maintaining alignment across email clients.
+      NOTE 2026-08-24: this comment was RIGHT all along, but the markup under
+      it had drifted to section padding at some point and shipped flush in
+      Outlook until the probe measurement put the rails back.
      -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#000000" padding="0">
+      <!-- The gutter is SPACER RAILS, not section padding: this is a
+           background-url section, so it compiles inside a v:rect, and Outlook
+           cannot honor horizontal padding there. Re-measured 2026-08-24
+           (probe_vrect-and-template-head, EoA XXhlSbq1e…): padding was ignored
+           at BOTH 32px and 64px — content rendered flush to the email edge in
+           Outlook 2021 while every other client honored it. This block shipped
+           the padding shape until that measurement. Same pattern as Countdown,
+           Progress Meter and Photo Banner. -->
       <mj-section
           css-class="overlay-image-block block hero-reveal" background-url="assets/photo-person_overlay.jpg"
           background-size="cover"
           background-repeat="no-repeat"
-          background-position="center bottom" padding="350px 32px 48px"
+          background-position="center bottom" padding="350px 0 48px"
       >
         <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
 
-          <mj-column>
+          <mj-column width="550px">
             <mj-text css-class="overlay" padding="0 32px 8px">
               <h1 style="text-align: center">Placeholder message for special occasion </h1>
             </mj-text>
@@ -1626,6 +1668,7 @@
               BUTTON
             </mj-button>
           </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
