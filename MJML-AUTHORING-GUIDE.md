@@ -1010,6 +1010,37 @@ This is the same underlying mechanism as §2d's `>` escape — EN parses a
 replacement value as HTML and re-serializes it on edit. Neither fires on an
 untouched save; both fire on the first keystroke.
 
+### Never restate a stylesheet default inline in RTE copy (2026-08-24, measured)
+
+Body-copy sizes live in the stylesheet (`p { font-size; line-height }` and the
+`mj-attributes` element defaults), and content inside an RTE value must
+INHERIT them, never repeat them. Three measured legs:
+
+- **Restated defaults rot.** When TPL's body copy moved 16px → 18px, 46
+  inline `font-size:16px` sites — every one a restatement of the then-default,
+  none a deliberate choice — silently pinned the old size and had to be found
+  by census and stripped.
+- **ProseMirror drops them anyway.** An inline style the editor cannot
+  re-express as a mark is discarded the first time the copy is touched (the
+  measured `em` font-family case, §5 above). An inline size is borrowed time.
+- **Inheritance survives delivery.** EN inlines the winning stylesheet rules
+  onto elements at send (measured 2026-08-19 and again 2026-08-24), so
+  inherited sizes reach even the style-stripping audience. The inline
+  restatement buys nothing.
+
+Author a NON-default size inline only when it is a deliberate design size (a
+lede, a legal line, a display headline) — those are choices, not defaults, and
+they should survive a default change. TPL's line-height is a picked value
+(28px on 18px type, user decision 2026-08-24), not a ratio; an earlier
+"× 1.7" annotation was inherited from the sheet's first authoring and appears
+in no contract.
+
+Related alignment note: a text row carries line-box leading above its glyphs;
+a fixed-height icon does not. When an icon must top-align with copy, give the
+icon's cell a few px of top padding (TPL's Question Block uses 5px against
+18/28 type) — that is raw content markup, so the closed spacing scale does not
+govern it.
+
 ### One idea per mj-text (2026-08-19, user-decided)
 
 The importer's unit of editability is the `mj-text` ELEMENT: one element

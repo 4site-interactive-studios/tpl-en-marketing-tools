@@ -597,7 +597,13 @@ li {
      doubled space, which is exactly what it was. The gap owns the distance
      to the next block now; the caption only owns its distance from the photo
      above it. Same rule wherever a block's last element carried a bottom
-     padding on a white ground — the eight button blocks lost theirs too. */
+     padding on a white ground — the eight button blocks lost theirs too.
+
+     That is the rule for BLOCK-FINAL captions. A caption mid-column — the
+     story cards' caption with a heading and copy beneath it — owns its
+     distance to the NEXT element too, and authors Half below (4px 0 8px;
+     user decision 2026-08-24, down from Single). Two shapes, one principle:
+     a caption never pays for space something else already owns. */
       /* Feedback Poll option rows: pin the icon column so the mj-group
      percentage math cannot squeeze it. The original measurement was against
      a 56px column: it compiled to 10.4478%, which is 32.5px at 375px, and the

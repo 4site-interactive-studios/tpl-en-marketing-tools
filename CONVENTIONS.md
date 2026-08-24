@@ -2666,9 +2666,13 @@ merely gains a paragraph.
 
 That paragraph is not harmless yet, and a stylesheet rule cannot make it so.
 **EN's inliner bakes the winning `p` rule onto the injected paragraph as an
-INLINE style** — the delivered email carries
+INLINE style** — measured 2026-08-19, when the delivered email carried
 `<p style="display:block;font-size:16px;line-height:27px;…">` inside an 18px
-element. Whatever rule wins specificity is what gets inlined, `inherit`
+element (the `p` rule's values AT THE TIME; since 2026-08-24 the rule is
+18px/28px, so the injected paragraph now matches the element size and the
+visible mismatch this measured is gone — but the MECHANISM is the point, and
+it re-arms the moment the two sizes ever diverge again). Whatever rule wins
+specificity is what gets inlined, `inherit`
 included, and inline `inherit` is precisely the construct Outlook's Word
 engine cannot be relied on for. A `.wysiwyg p { font-size: inherit }` rule was
 tried and reverted for that reason (2026-08-19).
