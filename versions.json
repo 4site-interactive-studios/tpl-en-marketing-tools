@@ -1,11 +1,11 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 14,
-    "hash": "3609669ff0aa"
+    "version": 15,
+    "hash": "be171f31c158"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 14,
-    "hash": "52e64b113088"
+    "version": 15,
+    "hash": "ca542f948604"
   },
   "block:CTA Button": {
     "version": 12,
@@ -20,24 +20,24 @@
     "hash": "42ea74989999"
   },
   "block:CTA Buttons 2x1": {
-    "version": 13,
-    "hash": "6a61ac5636ba"
+    "version": 14,
+    "hash": "00ed172f535c"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
-    "version": 7,
-    "hash": "320f2e050032"
+    "version": 8,
+    "hash": "c6f8dfcd5e30"
   },
   "block:CTA Buttons 2x1 (two-line)": {
-    "version": 13,
-    "hash": "e7baddd8c6e2"
+    "version": 14,
+    "hash": "079e674f05be"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
-    "version": 12,
-    "hash": "6878bdabfe78"
+    "version": 13,
+    "hash": "77844455d6b7"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
-    "version": 7,
-    "hash": "15bd1d67b55c"
+    "version": 8,
+    "hash": "b51f16858763"
   },
   "block:CTA Hero": {
     "version": 5,
@@ -200,16 +200,16 @@
     "hash": "66c9a132c73e"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 18,
-    "hash": "38e90f126bec"
+    "version": 19,
+    "hash": "9c22943b3acd"
   },
   "block:Quiz Block (2x2 photos)": {
     "version": 23,
     "hash": "4485602a1f00"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 12,
-    "hash": "0b782a6111b6"
+    "version": 13,
+    "hash": "a79e2b7aceed"
   },
   "block:Quiz Block (multiple choice)": {
     "version": 13,
@@ -280,12 +280,12 @@
     "hash": "351505531200"
   },
   "email-template": {
-    "version": 55,
-    "hash": "00d5a7350f5c"
+    "version": 56,
+    "hash": "33720227950d"
   },
   "head-css": {
-    "version": 44,
-    "hash": "75242301b08f"
+    "version": 45,
+    "hash": "dd10cc52a695"
   },
   "partial:debug-toolbar": {
     "version": 1,

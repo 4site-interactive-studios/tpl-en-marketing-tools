@@ -583,9 +583,11 @@ li {
         padding-right: 16px !important;
       }
 
-      /* Add space below first column on mobile when it is collapsed to single column */
-      .first-column,
-      .second-column {
+      /* Add space below first column on mobile when it is collapsed to single
+     column. (.second-column rode along here from first authoring; no element
+     ever carried it — retired 2026-08-24 in the budget diet, verified by
+     class census.) */
+      .first-column {
         margin-bottom: 20px !important;
       }
 
@@ -616,19 +618,35 @@ li {
      moved with it, but not the reason: 32px compiles to 6.7797%, ~17px at
      375, and any fixed gap still eats most of that.
 
-     The pin stays at 56 while the AUTHORED column is 32, which is the point of
+     The pin stays at 48 while the AUTHORED column is 32, which is the point of
      having a pin at all — the two viewports want different widths. On mobile
-     .no-bleed puts 16px on BOTH sides of the icon cell to hold it off the
-     screen edge, so the icon needs 16 + 24 + 16 = 56 to render at its authored
-     size. Pinning the authored width there instead squeezed the 24px icon to
-     8px (measured 2026-08-22, the first build after the gap was halved). Same calc pattern as
+     .no-bleed pads BOTH sides of the icon cell 16px, but only the LEFT 16 is
+     edge protection — the right side is the icon-to-copy gap, which must stay
+     the authored 8px in both viewports (user report 2026-08-24: the gap grew
+     on mobile). The scoped rule below restores it, so the icon needs
+     16 + 24 + 8 = 48 to render at its authored size. Pinning the authored
+     width instead squeezed the 24px icon to 8px (measured 2026-08-22, the
+     first build after the gap was halved). Same calc pattern as
      .signature-img/.signature-text above. */
       .poll-icon {
-        width: 56px !important;
+        width: 48px !important;
+      }
+
+      .poll-icon .no-bleed {
+        padding-right: 8px !important;
       }
 
       .poll-text {
-        width: calc(100% - 56px) !important;
+        width: calc(100% - 48px) !important;
+      }
+
+      /* The capflush copy inset (td.wysiwyg 16px, below) exists to hold copy off
+     the screen edge in flush sections — but in a poll row the icon column
+     already does that job, and the inset became icon-to-copy gap on top of
+     the authored 8px (the other half of the 2026-08-24 gap report). Zeroed
+     here; the icon cell's 8px right pad owns the gap in both viewports. */
+      .poll-text .wysiwyg {
+        padding-left: 0 !important;
       }
 
       /* Podcast Streaming Block: the two "listen on" badges are a MATCHED PAIR,
@@ -687,6 +705,20 @@ li {
 
       .meter-body {
         width: calc(100% - 32px) !important;
+      }
+
+      /* The stats row's trailing blank td is a DESKTOP spacer: it compacts
+     GOAL/RAISED/REMAINING leftward in the 472px body. On a phone the body is
+     ~300px and that 30% is width the stats need, so it goes (user decision
+     2026-08-24). Targeted by its width attribute because the table lives
+     inside an RTE Content value — a marker class there would ride the
+     replacement into every email and may not survive a ProseMirror edit,
+     while this rule lives in the template head and reaches already-built
+     emails too. */
+      .meter-body td[width="30%"] {
+        display: none;
+        /* no !important: nothing competes for display on this td,
+                      and the budget is at the working target */
       }
 
       .episode-icon {
@@ -1467,7 +1499,7 @@ li {
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                  <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
+                                  <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -1586,7 +1618,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -1719,7 +1751,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -1856,7 +1888,7 @@ li {
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                  <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
+                                  <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> READ MORE </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -1980,7 +2012,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -2349,7 +2381,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LOREM IPSUM SEMPER MI </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LOREM IPSUM SEMPER MI </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -2588,7 +2620,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -2766,7 +2798,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEFT BUTTON </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEFT BUTTON </a>
                               </td>
                             </tr>
                           </tbody>
@@ -2824,7 +2856,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#FFFFFF" role="presentation" style="border:2px solid #006837;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#FFFFFF;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER OUTLINE BUTTON </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER OUTLINE BUTTON </a>
                               </td>
                             </tr>
                           </tbody>
@@ -2894,7 +2926,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#FFFFFF" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:0 16px;background:#FFFFFF;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:0 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER TEXT BUTTON </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#FFFFFF;color:#006837;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:0 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> CENTER TEXT BUTTON </a>
                               </td>
                             </tr>
                           </tbody>
@@ -2950,8 +2982,8 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
                           <div class="cta-group" style="text-align:left;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -3006,9 +3038,9 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
                           <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">CENTER ALIGNED</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]--><!--[if !mso]><!-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">CENTER ALIGNED</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -3077,9 +3109,9 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -3148,8 +3180,8 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -3209,8 +3241,8 @@ li {
                       <td align="left" class="two-line-cta" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -3728,7 +3760,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#4A7A68" role="presentation" style="border:2px solid #ffffff;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#4A7A68;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> WATCH&nbsp;&nbsp;▷ </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> WATCH&nbsp;&nbsp;▷ </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -3862,7 +3894,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#4A7A68" role="presentation" style="border:2px solid #ffffff;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#4A7A68;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> WATCH&nbsp;&nbsp;▷ </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#4A7A68;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> WATCH&nbsp;&nbsp;▷ </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -4154,7 +4186,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -4228,7 +4260,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -4345,7 +4377,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
                               </td>
                             </tr>
                           </tbody>
@@ -4468,7 +4500,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -4589,7 +4621,7 @@ li {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
+                                        <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> PLACEHOLDER </a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -4776,7 +4808,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -4891,7 +4923,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> BUTTON </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> BUTTON </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -5831,9 +5863,9 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;line-height:28px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -5992,7 +6024,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                               </td>
                             </tr>
                           </tbody>
@@ -6124,8 +6156,8 @@ li {
                       <td align="left" class="two-line-cta" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -6135,8 +6167,8 @@ li {
                       <td align="left" class="two-line-cta" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
                           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:22px;line-height:28px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -6863,7 +6895,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -6985,7 +7017,7 @@ li {
                                         <tbody>
                                           <tr>
                                             <td align="center" bgcolor="#F7931E" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#F7931E;" valign="middle">
-                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
+                                              <a href="https://tpl.org" style="display:inline-block;background:#F7931E;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEARN MORE </a>
                                             </td>
                                           </tr>
                                         </tbody>
@@ -7821,7 +7853,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org/donate" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> DONATE </a>
+                                <a href="https://tpl.org/donate" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> DONATE </a>
                               </td>
                             </tr>
                           </tbody>
@@ -8043,7 +8075,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org/donate" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:22px;font-weight:700;line-height:28px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> DONATE </a>
+                                <a href="https://tpl.org/donate" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> DONATE </a>
                               </td>
                             </tr>
                           </tbody>

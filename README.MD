@@ -31,8 +31,8 @@ MJML-AUTHORING-GUIDE.md §5.
 | Email Heading XLG | `h1` (hero statements only) | 48px | 54px |
 | Email Heading LG | `h2` | 36px | 45px |
 | Email Heading | `h3` | 26px | 34px |
-| Email Button | `mj-button` default / pill anchors | 22px | 28px |
-| Email Button small | (reserved — no current use) | 18px | 22px |
+| Email Button | (reserved — no current use) | 22px | 28px |
+| Email Button small | `mj-button` default / pill anchors | 18px | 22px |
 | Email Paragraph large | `p` rule + `mj-text` default — the body default | 18px | 24px |
 | Email Paragraph base | inline, for de-emphasized copy | 16px | 24px |
 | Email Footer | `.footer-text` and footer link rows | 14px | 18px |
@@ -45,6 +45,8 @@ Notes that keep this honest:
 - Button labels are all caps everywhere, so the caps metrics above are the
   only button metrics; the source table's Bold/Italic/Underline variant rows
   were deliberately dropped in consolidation (user decision 2026-08-24).
+  The DEFAULT button is the small variant — 22/28 was tried the same day and
+  ruled back ("it just looks better" at 18/22).
 - Body copy INHERITS the default — never restate 18px/24px inline in RTE
   content (guide §5, "Never restate a stylesheet default inline").
 - Heading elements are size classes, not a document outline: no catalog

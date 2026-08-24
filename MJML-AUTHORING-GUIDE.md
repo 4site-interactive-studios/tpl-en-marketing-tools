@@ -1075,8 +1075,8 @@ so per row):
 | Email Heading XLG | `h1` | 48px | 54px |
 | Email Heading LG | `h2` | 36px | 45px |
 | Email Heading | `h3` | 26px | 34px |
-| Email Button | `.button` | 22px | 28px |
-| Email Button small | — | 18px | 22px |
+| Email Button | — | 22px | 28px |
+| Email Button small | `.button` (the default) | 18px | 22px |
 | Email Paragraph large | `p` (the element default) | 18px | 24px |
 | Email Paragraph base | — | 16px | 24px |
 | Email Footer | `.footer-text` | 14px | 18px |
