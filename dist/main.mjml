@@ -93,14 +93,53 @@
          on all 17 clients with NO styles.css in the email at all. -->
     <mj-raw>
       <style type="text/css" data-en-tools-template-css>
+        /* HEAD-RESIDENT rules (catalogued 2026-08-24, user decision same day;
+           see future-enhancements "Head-vs-block CSS"). Everything here must
+           pass two tests: absence REVEALS or DUPLICATES content or breaks a
+           mechanism every email relies on, and it would never be fixed by
+           swapping the Template Styles block. Fix-by-block-swap rules stay in
+           styles.css. EN inlines top-level rules from this head exactly as it
+           does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
+
+        /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+        .wysiwyg div *:first-child { margin-top: 0; }
+        .wysiwyg div *:last-child { margin-bottom: 0; }
+
+        /* Copy over a photo must be white even in an email built without the
+           styles block (user decision 2026-08-24: relocated rather than
+           re-authored inline). */
+        .overlay h1, .overlay h2, .overlay h3, .overlay h4, .overlay h5,
+        .overlay h6, .overlay span, .overlay p, .overlay a { color: #ffffff; }
+
         /* Viewport fork: hide twice, reveal once, in this order. */
         .mobile-only { display: none; }
-        @media only screen and (max-width: 9998px) {
+
+        /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+        @media (max-width: 9998px) {
           .mobile-only { display: none !important; }
         }
         @media (max-width: 599px) {
           .desktop-only { display: none !important; }
           .mobile-only { display: block !important; }
+        }
+        /* Mode-fork reveals. These two blocks are the FIRST occurrence of
+           their conditions, so styles.css's same-condition repaint blocks
+           fold up to these positions at send — swap first, repaints after,
+           which is byte-for-byte today's order inside styles.css. */
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
         }
       </style>
     </mj-raw>
@@ -148,6 +187,12 @@
            rather than a block inside it. Order is presentational only — the
            two selectors match different elements, so nothing in the cascade
            depends on it. */
+        /* Builder canvas width. Only EN's editor ever renders an element
+           bearing data-container (conventions, "the template band"), so this
+           is chrome — here it works for every email, including one built
+           without the styles block, and leaves the Gmail budget with the rest
+           of the band (moved from styles.css 2026-08-24). */
+        div[data-container] { max-width: 600px; margin: 0 auto; }
         [data-container="main"]:before{
           content: "Email Template v__TEMPLATE_VERSION__";
           display: block !important;
@@ -160,7 +205,7 @@
           background-color: #d0d5dd !important;
         }
         /* max-width tracks the EMAIL width — keep it equal to
-           div[data-container]{max-width} in styles.css, or the block band
+           div[data-container]{max-width} in the band sheet, or the block band
            stops centring over the column it labels. check-catalog's
            "Builder band width tracks the email width" guard enforces it. */
         :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{

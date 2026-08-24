@@ -2334,21 +2334,36 @@ Check every COLUMN, not just the block's last element: Images 2x1 and 3x1 hold
 one caption per column, the block's height is set by the tallest, and a first
 pass that only fixed the final column left the double in place.
 
-**The second head-resident sheet** (2026-08-22): `<style
-data-en-tools-template-css>` carries the VIEWPORT FORK — the `.mobile-only`
-plain hide, its 9998px twin, and the 599px `.desktop-only` / `.mobile-only`
-reveal. Same extraction exemption, different marker on purpose. styles.css
-ships as the Template Styles BLOCK, in the body, so an email assembled without
-that block has none of it; most rules just degrade, but a fork does not —
-neither half of the pair applies and BOTH copies render, so the reader sees
-the content twice. Rules whose absence REVEALS content meant to be hidden
-belong in the head.
+**The second head-resident sheet** (2026-08-22, widened 2026-08-24): `<style
+data-en-tools-template-css>` carries every rule that passes BOTH bar tests —
+its absence reveals/duplicates content or breaks a mechanism every email
+relies on, AND it would never be fixed by swapping the styles block. Today
+that is: the VIEWPORT FORK (`.mobile-only` plain hide, its 9998px twin — bare
+`(max-width: 9998px)` form since 2026-08-24, same form as the measured 599px
+block — and the 599px reveal pair); the MODE-FORK SWAP (`.dark-only` plain
+hide, `:root color-scheme`, the `[data-ogsc]` and `prefers-color-scheme`
+reveal pairs — the dark REPAINTS stay in styles.css, they are design); the
+`.wysiwyg` first/last-child margin containment (the bottom-only pacing model
+rests on it); and `.overlay` white-forcing (user decision 2026-08-24:
+relocated rather than re-authored inline). The swap blocks are deliberately
+the FIRST occurrence of their conditions, so styles.css's same-condition
+repaint blocks fold up to them at send — swap first, repaints after, today's
+in-block order. styles.css ships as the Template Styles BLOCK, in the body,
+so an email assembled without that block has none of it; most rules just
+degrade, but a fork does not — neither half applies and BOTH copies render.
+Before the mode-fork moved, such an email showed every light/dark twin twice.
+The full catalog of what moved, what stayed, and why each stays is in
+future-enhancements "Head-vs-block CSS".
 
-The marker is not `data-en-tools-band` because two instruments subtract band
-bytes before measuring — check-catalog's Gmail CSS budget and version-sync's
-`headCssContent()` — on the grounds that the band is builder chrome that never
-reaches an inbox. Fork CSS does reach the inbox, so reusing the band marker
-would have hidden real bytes from the 14,000-byte budget.
+The marker is not `data-en-tools-band` because of CHANGE TRACKING, not bytes:
+version-sync's `headCssContent()` filters band styles out of the head-css hash
+(builder-chrome churn should not version the shipped CSS), and fork CSS must
+stay IN that hash. The bytes ship either way — the band travels in the
+delivered head with selectors that never match outside the builder, and
+check-catalog's Gmail budget counts every head style including it (measured
+2026-08-24: moving a rule into the band did not drop the budget). An earlier
+version of this passage claimed both instruments subtract band bytes; only
+the hash does.
 
 The pair is ATOMIC in that one block, in order, which RETIRES the old warning
 that used to sit in the template head ("no mj-style @media blocks here"). That

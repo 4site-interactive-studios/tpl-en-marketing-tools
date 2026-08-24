@@ -1,0 +1,179 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — the head-resident mode-fork swap (2026-08-24).
+
+      Not a catalog page. Build, send dist/probe_head-resident-swap_live.html
+      through EN to EoA, and read the LIGHT/DARK PAIRS of each client — this
+      probe is entirely about mode forking, so every verdict needs both halves.
+
+      WHAT MOVED, AND WHY THIS SEND EXISTS. The light/dark SWAP mechanism
+      (.dark-only plain hide, :root color-scheme, the [data-ogsc] and
+      prefers-color-scheme reveal pairs) now lives in the page-template head
+      behind data-en-tools-template-css, so an email built WITHOUT the
+      Template Styles block no longer shows every twin twice. The dark
+      REPAINTS stayed in styles.css. Browser-verified already: with the sheet
+      stripped, exactly one twin set per mode. What a browser CANNOT verify is
+      EN's send pipeline, which is what the S series measures.
+
+      THE ONE HAZARD: same-condition @media folding. EN folds every
+      same-condition block into the FIRST occurrence's position (measured
+      2026-08-19). The head now carries @media blocks for the ogsc 9999px and
+      prefers-color-scheme conditions holding ONLY the swap; styles.css's
+      blocks with those conditions hold the repaints. At send the repaints
+      should fold up AFTER the head's swap rules — which is exactly today's
+      in-block order — but "should" is the word this probe deletes.
+
+      THIS PROBE CARRIES NO styles.css. Its body carries a small <style>
+      mimicking the styles block's dark REPAINT blocks (same condition
+      strings), so the fold happens exactly as it does for a real email.
+
+        S1  Light-mode clients: exactly ONE of each labelled twin pair
+            visible, the LIGHT one (Sun bar). Two bars of one pair = the swap
+            failed; the pre-move failure mode was every twin doubled.
+        S2  Dark-mode clients (applemail16_dm, iphone/android _dm,
+            outlookcom-dm, gmailcom-dm): the DARK twin (Fern bar) only — AND
+            the repaint fires: the "REPAINT CANARY" band must be Earth
+            #362229 in dark mode, proving the body-carried repaint block
+            still applies after folding against the head's swap block.
+        S3  Outlook 2021 (Word): conditionals hide the dark twin from Word
+            entirely, so the light bar alone, both modes. Word ignores
+            @media, which is why the dark twin sits in a revealed
+            conditional.
+        S4  DELIVERED HTML (/app/acidtest/display/email_html/<TEST_ID>):
+            (a) the .dark-only element carries an inlined display:none —
+            EN inlining the head's plain hide, same as the mobile fork's
+            (T1, measured 2026-08-24); (b) find both 9999px blocks and both
+            prefers-color-scheme blocks in the delivered head and confirm
+            the SWAP rules precede the REPAINT rules after folding.
+        S5  The overlay heading ("OVERLAY CHECK") renders WHITE over the
+            photo in every client — .overlay now serves from the head.
+        S6  Regression: the viewport fork still forks (mobile bar under
+            600px only), since this element also carries it.
+
+      Colours are brand palette only (CLAUDE.md → Instrument colors):
+      Sun #F7931E = light twin, Fern #39B54A = dark twin, Sky #5DD8D8 =
+      structure, Earth #362229 = the repaint target.
+    -->
+    <mj-breakpoint width="600px" />
+    <mj-title>PROBE — head-resident swap</mj-title>
+    <mj-attributes>
+      <mj-text color="#362229" font-size="16px" font-family="Tahoma, sans-serif" line-height="22px" css-class="wysiwyg" />
+      <mj-image padding="0" />
+    </mj-attributes>
+
+    <!-- The head-resident element under test — byte-identical rules to
+         main.mjml's, minus the label comments. -->
+    <mj-raw>
+      <style type="text/css" data-en-tools-template-css>
+        .wysiwyg div *:first-child { margin-top: 0; }
+        .wysiwyg div *:last-child { margin-bottom: 0; }
+        .overlay h1, .overlay h2, .overlay h3, .overlay h4, .overlay h5,
+        .overlay h6, .overlay span, .overlay p, .overlay a { color: #ffffff; }
+        .mobile-only { display: none; }
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+        @media (max-width: 9998px) {
+          .mobile-only { display: none !important; }
+        }
+        @media (max-width: 599px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block !important; }
+        }
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
+        }
+      </style>
+    </mj-raw>
+  </mj-head>
+
+  <mj-body background-color="#ffffff">
+
+    <mj-section background-color="#362229" padding="12px 16px">
+      <mj-column>
+        <mj-text color="#8CC63F" align="center" padding="0">
+          <p style="font-size:14px;font-weight:700;letter-spacing:3px;font-family:Menlo,Consolas,monospace;">S — HEAD-RESIDENT MODE-FORK SWAP · NO styles.css IN THIS EMAIL</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- The body-carried repaint mimic: same condition STRINGS as styles.css,
+         repaints only — this is what must fold cleanly behind the head swap. -->
+    <mj-raw>
+      <style type="text/css">
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .repaint-canary td { background-color: #362229 !important; }
+          [data-ogsc] .repaint-canary p { color: #ffffff !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .repaint-canary td { background-color: #362229 !important; }
+          .repaint-canary p { color: #ffffff !important; }
+        }
+      </style>
+    </mj-raw>
+
+    <!-- S1/S2/S3 — a labelled twin pair, the exact light/dark idiom every
+         image-bearing block uses. -->
+    <mj-section background-color="#F5FAF1" padding="8px 16px">
+      <mj-column>
+        <mj-text padding="0"><p><b>TWIN PAIR</b> — exactly ONE bar below may be visible per client/mode. Sun = light twin, Fern = dark twin. Both visible = the swap failed (the pre-move defect).</p></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#F7931E" padding="14px 16px" css-class="light-only">
+      <mj-column>
+        <mj-text align="center" padding="0"><p style="font-weight:700;">LIGHT TWIN — correct in light mode and in all of Outlook desktop</p></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw><!--[if !mso]><!--></mj-raw>
+    <mj-section background-color="#39B54A" padding="14px 16px" css-class="dark-only">
+      <mj-column>
+        <mj-text align="center" padding="0"><p style="font-weight:700;">DARK TWIN — correct in dark mode only; hidden from Word by the conditional</p></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw><!--<![endif]--></mj-raw>
+
+    <!-- S2 — does the body-carried repaint still fire after folding? -->
+    <mj-section background-color="#F5FAF1" padding="8px 16px" css-class="repaint-canary">
+      <mj-column>
+        <mj-text align="center" padding="0"><p><b>REPAINT CANARY</b> — Snow ground in light mode; must repaint to Earth (#362229) with white copy in dark mode. Still Snow in dark = the fold dropped the body repaints.</p></mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- S5 — .overlay served from the head -->
+    <mj-section background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+      <mj-group>
+        <mj-column width="25px">&nbsp;</mj-column>
+        <mj-column width="550px">
+          <mj-text css-class="overlay" padding="0"><h2 style="text-align:center;">OVERLAY CHECK — this heading must be WHITE in every client</h2></mj-text>
+        </mj-column>
+        <mj-column width="25px">&nbsp;</mj-column>
+      </mj-group>
+    </mj-section>
+
+    <!-- S6 — viewport-fork regression -->
+    <mj-section css-class="desktop-only" background-color="#006837" padding="12px 16px">
+      <mj-column>
+        <mj-text color="#ffffff" align="center" padding="0"><p style="font-weight:700;">S6 — DESKTOP BAR (viewport fork regression)</p></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw><!--[if !mso]><!--></mj-raw>
+    <mj-section css-class="mobile-only" background-color="#5DD8D8" padding="12px 16px">
+      <mj-column>
+        <mj-text align="center" padding="0"><p style="font-weight:700;">S6 — MOBILE BAR (under 600px only)</p></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw><!--<![endif]--></mj-raw>
+
+    <mj-section background-color="#F5FAF1" padding="8px 16px">
+      <mj-column>
+        <mj-text padding="0"><p>S4 is read from the DELIVERED HTML: (a) inlined display:none on the .dark-only element; (b) after EN's same-condition fold, the swap rules must PRECEDE the repaint rules inside both merged dark blocks.</p></mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

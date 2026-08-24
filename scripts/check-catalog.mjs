@@ -811,20 +811,20 @@ guard('No literal EN container tag in sources', () => {
 // §N Builder band width tracks the EMAIL width (2026-08-20, user-raised).
 // The block band is absolutely positioned and centres itself over the email
 // column via max-width. That literal has no way to learn the email width, so
-// widening the email (div[data-container]{max-width} in styles.css) would
-// silently leave the band centred on the OLD width. This ties them together.
+// widening the email (div[data-container]{max-width}, which lives in the
+// BAND sheet in each page's template head since 2026-08-24 — builder chrome
+// beside the other builder chrome) would silently leave the band centred on
+// the OLD width. This ties them together, per page.
 // ---------------------------------------------------------------------------
 guard('Builder band width tracks the email width', () => {
-  const css = read('src/styles.css');
-  if (!css) return;
-  const emailWidth = /div\[data-container\]\s*\{[^}]*?max-width:\s*(\d+)px/.exec(css);
-  if (!emailWidth) {
-    warn('src/styles.css — could not find div[data-container]{max-width} to compare the builder band against');
-    return;
-  }
   for (const f of sources) {
     const text = read(`src/${f}`);
     if (!text || !text.includes('marketing-tools-banner')) continue;
+    const emailWidth = /div\[data-container\]\s*\{[^}]*?max-width:\s*(\d+)px/.exec(text);
+    if (!emailWidth) {
+      warn(`src/${f} — could not find div[data-container]{max-width} (band sheet) to compare the builder band against`);
+      continue;
+    }
     const band = /\.marketing-tools-banner\s*\{[^}]*?max-width:\s*(\d+)px/.exec(text);
     if (!band) {
       warn(`src/${f} — the builder band sets no max-width; it will not centre over the email column`);

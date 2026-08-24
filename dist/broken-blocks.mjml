@@ -113,6 +113,9 @@
          cannot parse :has() would take the template band down with it. -->
     <mj-raw>
       <style type="text/css" data-en-tools-band>
+        /* Builder canvas width — chrome beside the other chrome; moved from
+           styles.css 2026-08-24 (see main.mjml's band sheet). */
+        div[data-container] { max-width: 600px; margin: 0 auto; }
         /* The TEMPLATE's own band leads, because it labels the whole email
            rather than a block inside it. Order is presentational only — the
            two selectors match different elements, so nothing in the cascade
@@ -129,7 +132,7 @@
           background-color: #d0d5dd !important;
         }
         /* max-width tracks the EMAIL width — keep it equal to
-           div[data-container]{max-width} in styles.css, or the block band
+           div[data-container]{max-width} in the band sheet, or the block band
            stops centring over the column it labels. check-catalog's
            "Builder band width tracks the email width" guard enforces it. */
         :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{

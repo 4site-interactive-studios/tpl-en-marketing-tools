@@ -19,11 +19,13 @@
    branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
    the two mobile rules using them are cosmetic insets. */
 
-div[data-container] {
-  /* Email builder compatability styles */
-  max-width: 600px;
-  margin: 0 auto;
-}
+/* MOVED to the page-template head (data-en-tools-template-css), 2026-08-24:
+   .wysiwyg margin containment, .overlay white-forcing, the light/dark SWAP
+   (.dark-only hide, :root color-scheme, both reveal pairs) — rules whose
+   absence breaks every email built without this block. div[data-container]
+   moved to the band sheet the same day: builder chrome, budget-exempt.
+   The dark REPAINTS below stay here on purpose — they are design, fixed
+   post-hoc by swapping this block. */
 
 /* body {
   color: #000000;
@@ -82,14 +84,6 @@ p {
   font-size: 16px;
   line-height: 27px; /* 16 * 1.7 */
   mso-line-height-rule: exactly;
-}
-
-.wysiwyg div *:first-child {
-  margin-top: 0;
-}
-
-.wysiwyg div *:last-child {
-  margin-bottom: 0;
 }
 
 .two-col-column h3 {
@@ -189,18 +183,6 @@ p {
 .question-response:hover {
   background-color: #ffffff!important;
   cursor: pointer;
-}
-
-.overlay h1,
-.overlay h2,
-.overlay h3,
-.overlay h4,
-.overlay h5,
-.overlay h6,
-.overlay span,
-.overlay p,
-.overlay a {
-  color: #ffffff;
 }
 
 
@@ -451,15 +433,6 @@ p {
 }
 
 /* dark mode styles */
-:root {
-  color-scheme: light dark;
-  supported-color-schemes: light dark;
-}
-
-.dark-only {
-  display: none;
-}
-
 /* Outlook.com dark mode. EN's CSS inliner DELETES [data-ogsc] rules that sit
    at top level (measured — see MJML-AUTHORING-GUIDE.md §2), so the whole
    branch lives inside a conditional media query: EN returns anything nested
@@ -469,14 +442,6 @@ p {
    OWA mirrors the media query below; backgrounds must come along with the
    forced white text or light footers render white-on-light. */
 @media only screen and (max-width: 9999px) {
-  [data-ogsc] .dark-only {
-    display: block !important;
-  }
-
-  [data-ogsc] .light-only {
-    display: none !important;
-  }
-
   [data-ogsc] .block,
   [data-ogsc] .block table[align=center],
   [data-ogsc] .spacer-block td {
@@ -556,14 +521,6 @@ p {
 }
 
 @media (prefers-color-scheme: dark) {
-  .light-only {
-    display: none !important;
-  }
-
-  .dark-only {
-    display: block !important;
-  }
-
   body,
   .email-body {
     color: #ffffff !important;
