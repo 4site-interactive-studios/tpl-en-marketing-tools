@@ -1399,6 +1399,31 @@ suppression lands in `Block.infoNotes` at 'info' level):
   percent widths, everything else stacks to the full frame. Dead at both →
   no field + infoNote; dead at one → the label carries the viewport prefix
   at generation time.
+
+  **The mobile half of that math carries an unsoundness VETO**
+  (2026-08-25): when the template's mobile CSS pins an enclosing column's
+  width (a self-form `width: Npx !important` on any ancestor's class) or
+  zeroes an enclosing frame's side padding (a flush scope rule), the
+  static 375px estimate no longer describes reality — the model assumes
+  authored padding and desktop share, and a pin breaks both. Under a pin
+  the guard never concludes mobile-dead from the number: an image live at
+  600px keeps a BARE label (the Podcast Streaming icon, which the old
+  model mis-labeled "Desktop Alignment" while the pixel audit measured it
+  live at both viewports), and an image dead at 600px stays SUPPRESSED,
+  fail-closed, with an infoNote naming `data-mobile-only-align` as the
+  mint channel should a pixel audit ever prove the mobile side live. Two
+  things survive the veto untouched: a real `text-align` mobile pin on the
+  element itself still labels Desktop, and the definitional
+  fluid-on-mobile / inline-fluid zero (`AlignSlack.fluidMobile`) is still
+  trusted — it is by construction, not model output. The ancestor check is
+  a deliberate superset (any ancestor pin invalidates the width model, and
+  the veto only ever withholds a claim, never makes one). Declarations
+  hoisted above the guard mean `data-desktop-only-align` /
+  `data-mobile-only-align` can now also RESCUE a field the guard would
+  suppress — a declaration is a claim, and the audit still measures it.
+  Note most icon rows never reach this guard at all: a row with an
+  arrangement Select (Image Position / Column Order) bakes alignment into
+  the arrangement options and drops the standalone field.
 - **Symmetric sections get no Column Order**: a column list whose
   (width, signature) pairs read the same forwards and backwards — the
   `25px spacer | content | 25px spacer` Outlook pattern — makes the swap
@@ -1482,6 +1507,14 @@ rendered geometry, so the importer cannot derive them — the author
 declares them with `data-desktop-only-<token>` / `data-mobile-only-<token>`
 (see the data-* contract). Declaration beats inference where they
 disagree, and the audit checks the claim either way.
+
+And sometimes the CSS says TOO MUCH: a mobile width pin or a flush
+padding rule doesn't make the static geometry decidable, it makes the
+static model unsound — the guard's numbers describe a layout the pin has
+replaced. The image-align guard handles that with the unsoundness veto
+above (withhold the claim, fail closed), and the resolution channel is
+the same declaration vocabulary: declare the truth a pixel audit
+measured, and the next sweep holds the claim to account.
 
 **The PASS/FAIL check.** Every audited row carries a verdict of its own:
 a field **PASSES** when its measured behavior matches what its label and
