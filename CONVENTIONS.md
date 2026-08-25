@@ -754,16 +754,26 @@ Four groups never moved in either direction, and the reasons differ:
   the photo would have to give up.
 - **Spacer and the two Dividers.** Nothing to align; a rule that spans the
   full 600 under 32px-inset copy is deliberate.
-- **Centred fixed-px boxes** — Quote Block, Highlighted Text, CTA Text
-  Block. They reach a width by design, not padding: they were cut
+- **Centred fixed-px boxes** — Quote Block and CTA Text Block (Highlighted
+  Text was the group's third member until 2026-08-25, below). They reach a
+  width by design, not padding: they were cut
   480 → 472 to centre exactly on the 64px-era edges, and they STAY at 472
   (user decision 2026-08-24) — under the 32px baseline they read as
   deliberately-inset centred boxes (64px slack each side), not
   edge-aligned ones. Their side padding stays literal (inset-box
   suppression, below) because a symmetric change to it still moves
-  nothing. Highlighted Text's copy sits at 80 — the box's own 16px inset
-  is the panel's design, not a baseline miss. Stat Row's card follows its
-  section's gutter instead, so its card edge lands on 32.
+  nothing. Stat Row's card follows its
+  section's gutter instead, so its card edge lands on 32 — and
+  **Highlighted Text joined it there** (user decision 2026-08-25, ending
+  its own 472 cut): the green panel is now a full-width column in a
+  `flush-mobile-capflush` section at the 32px gutter —
+  `data-desktop-only-background-color` on the section for the same reason
+  as Stat Row's — so the panel's edges sit on the baseline, its copy at 48
+  (the box's own 16px inset is the panel's design), and its sides are the
+  standard un-capped Desktop Block Padding Left/Right Select defaulting to
+  Double (nothing fixed-px remains inside to cap it). The Story Cards the
+  same 2026-08-25 request named were verified already on the baseline —
+  they are the exception group above that never left 32.
 
 **Where the default sits on the ladder is a trade-off.** `maxSafeGutter`
 asks whether GROWING a gutter breaks the frozen geometry inside it.
@@ -817,9 +827,12 @@ change and must be re-cut by hand:
 
 **The column ladder stayed the same size** — 17 distinct widths → 17
 (64, 316, 352, 360, 422, 440 out; 380, 416, 424, 486, 504, 536 in; 472
-survives for the three centred boxes, 32 for the poll and meter rails).
-Delivered head CSS 13,963 → **13,971** (+8 bytes of wider digits),
-headroom against the 14,000 target 37 → 29.
+survives for the centred boxes — three at the time of the move, Quote
+Block and CTA Text Block since Highlighted Text went full-width
+2026-08-25 with the ladder unmoved (`.mj-column-px-472` still lives via
+the other two; head-css steady at v49) — 32 for the poll and meter
+rails). Delivered head CSS 13,963 → **13,971** (+8 bytes of wider
+digits), headroom against the 14,000 target 37 → 29.
 
 **Mobile does not move.** Below 600px the gutter was already pinned by
 `.flush-mobile-capflush` — two class-only rules, which Gmail honours:
@@ -967,7 +980,7 @@ direction-flip skips.
   (same reasoning that removed Outlook-only column widths).
 - **Inset-box sections** (2026-07-27, `loneFixedPxColumn` in
   `sectionShapes`): a section whose only content is a lone fixed-px column
-  (Highlighted Text's 480px green box, Quote Block) centers that column in
+  (Quote Block's 472px box, CTA Text Block) centers that column in
   the side-padding slack — symmetric Block Padding Left/Right edits move
   nothing. Those two sides stay literal; Block Top/Bottom and the column's
   own four paddings (the real box inset) keep their Selects: 8 padding
@@ -1027,7 +1040,8 @@ distinct column tops cannot tell a wrap from a taller neighbour, and moves
 on every vertical Spacing Below when the columns are stacked (10 false
 positives, 2026-08-21). An `overflow` row means `paddingCap.ts` let through
 a value it should have withheld. Current template (main.mjml,
-2026-08-25, after the return to the 32px content baseline): **435/435
+2026-08-25, after Highlighted Text went full-width — its new Desktop
+Block Padding Left/Right is the +1): **434/434
 fields live, zero inert, zero overflow** after
 suppression and capping. Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
@@ -2002,7 +2016,7 @@ sort — it is purely the panel/export display order.
   Fail-open per image, idempotent.
 - **Column widths: enumerated dropdown for lone inset-box columns ONLY**
   (2026-08-09, closing future-enhancements #1 v1). A section's single
-  fixed-px column (Highlighted Text's 480px card) gets a "Desktop Column
+  fixed-px column (Quote Block's 472px card) gets a "Desktop Column
   Width" Select (the `.mj-column-px-*` ladder is min-width:600px-gated, so
   the control only acts at desktop — see "Viewport-scoped controls"; the
   merge-tag name stays `column_width`) whose ONE tag is spliced into BOTH
@@ -2037,7 +2051,9 @@ sort — it is purely the panel/export display order.
   field) and delete the CSS (that is what reclaims the head-CSS bytes).
   TPL did both when it removed the control from Highlighted Text, Quote
   Block, CTA Text Block and Footer (user decision 2026-08-20, reverting
-  those to left/right padding), and added a check-catalog guard mirroring
+  those to left/right padding; Highlighted Text has since left the
+  fixed-px form entirely — full-width column, 2026-08-25 — so it no
+  longer carries the flag), and added a check-catalog guard mirroring
   the eligibility filter above so an unflagged eligible column trips the
   build. The guard is deliberately as narrow as the filter — an earlier
   over-broad version fired on 93 px columns that can never mint a field.
