@@ -880,8 +880,15 @@ at send, Outlook included.
 - **Options are DISCOVERED, not configured** (`parseLinkHooks`): a top-level,
   single-declaration rule of exactly the shape `.link-<name> a { color: X }`
   becomes an option; the bare `a { color: X }` rule labels the Default.
-  Labels come from the brand palette reverse lookup (plus White/Black for the
-  two common unnamed values). Multi-declaration rules (`.footer-cta a`) and
+  Labels follow the same `Name - #hex` pattern as every other colour
+  dropdown (user decision 2026-08-25): the brand palette reverse lookup
+  names the colour and the normalized hex is appended (`Evergreen -
+  #006837`, `White - #ffffff` — sheet shorthand like `#fff` expands); an
+  off-palette hook falls back to `nameForHex`, the `resolvePaletteOptions`
+  precedent, and a non-hex CSS colour labels as authored. The Default
+  option is labeled by the bare-`a` sheet colour like any other option —
+  its role is marked by the export-time ` (default)` suffix, exactly as on
+  a background-colour Select. Multi-declaration rules (`.footer-cta a`) and
   rules inside @media (the dark forcing) are never options. Since 2026-08-25
   TPL authors one hook per brand-palette colour plus White and Black (sheet
   order = dropdown order; user decision: the Select mirrors a text-colour
