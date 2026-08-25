@@ -506,6 +506,17 @@ li {
         padding-right: 16px !important;
       }
 
+      /* Icon Row: its plain columns STACK on mobile (user decision 2026-08-22,
+     replacing the group that squeezed the copy beside a 120px icon), and
+     the icon's 16px gutter is RIGHT padding — horizontal, so worth nothing
+     once the icon sits above the text. This gives the stacked icon its gap
+     BELOW instead (user decision 2026-08-25, EoA FzaezTp…: icon touched
+     the copy). On the column, not the images, so the light/dark twins
+     share one rule and it cannot double. */
+      .icon-row-icon {
+        padding-bottom: 16px !important;
+      }
+
       /* Side by Side CTA Buttons */
       .cta-item {
         display: block !important;
@@ -4756,7 +4767,11 @@ li {
          The .icon-row-icon / .icon-row-text mobile pins went with the group —
          they existed to stop the group's percentage math squeezing the icon,
          and while stacked they would force both columns back to a side-by-side
-         width. Steps Block keeps its pin; it is still grouped. -->
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="image-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">

@@ -160,8 +160,8 @@
     "date": "2026-08-25"
   },
   "block:Icon Row": {
-    "version": 19,
-    "hash": "d54fb7fe729e",
+    "version": 20,
+    "hash": "40649713733f",
     "date": "2026-08-25"
   },
   "block:Image 1x1": {
@@ -331,8 +331,8 @@
     "date": "2026-08-25"
   },
   "head-css": {
-    "version": 49,
-    "hash": "67a7a4938a1d",
+    "version": 50,
+    "hash": "fa244e9ef30e",
     "date": "2026-08-25"
   },
   "partial:debug-toolbar": {

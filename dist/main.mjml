@@ -1652,7 +1652,11 @@
          The .icon-row-icon / .icon-row-text mobile pins went with the group —
          they existed to stop the group's percentage math squeezing the icon,
          and while stacked they would force both columns back to a side-by-side
-         width. Steps Block keeps its pin; it is still grouped. -->
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />

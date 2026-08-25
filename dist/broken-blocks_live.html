@@ -340,6 +340,17 @@ li {
         padding-right: 16px !important;
       }
 
+      /* Icon Row: its plain columns STACK on mobile (user decision 2026-08-22,
+     replacing the group that squeezed the copy beside a 120px icon), and
+     the icon's 16px gutter is RIGHT padding — horizontal, so worth nothing
+     once the icon sits above the text. This gives the stacked icon its gap
+     BELOW instead (user decision 2026-08-25, EoA FzaezTp…: icon touched
+     the copy). On the column, not the images, so the light/dark twins
+     share one rule and it cannot double. */
+      .icon-row-icon {
+        padding-bottom: 16px !important;
+      }
+
       /* Side by Side CTA Buttons */
       .cta-item {
         display: block !important;
