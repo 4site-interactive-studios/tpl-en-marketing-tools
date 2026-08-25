@@ -1,11 +1,13 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 15,
-    "hash": "be171f31c158"
+    "version": 16,
+    "hash": "012d274d4352",
+    "date": "2026-08-25"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 15,
-    "hash": "ca542f948604"
+    "version": 16,
+    "hash": "fcf4124dc1d7",
+    "date": "2026-08-25"
   },
   "block:CTA Button": {
     "version": 12,
@@ -100,8 +102,9 @@
     "hash": "cfebdd7440c0"
   },
   "block:Countdown Block": {
-    "version": 10,
-    "hash": "2ae4876c21cb"
+    "version": 11,
+    "hash": "ff940ff94dbf",
+    "date": "2026-08-25"
   },
   "block:Deadline Panel": {
     "version": 14,
@@ -124,12 +127,14 @@
     "hash": "55789d3c7eb3"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 7,
-    "hash": "99a24c04ab15"
+    "version": 8,
+    "hash": "bda8b4766b09",
+    "date": "2026-08-25"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 14,
-    "hash": "410c090a0218"
+    "version": 15,
+    "hash": "f8c22648faab",
+    "date": "2026-08-25"
   },
   "block:Highlighted Text": {
     "version": 8,

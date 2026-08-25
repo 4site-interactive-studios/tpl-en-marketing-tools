@@ -971,6 +971,16 @@ li {
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
     } -->
 <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
+<!-- Grouped at the top of the head (user decision 2026-08-24). The
+         en-tools-keep comment is the ONE head comment the importer ships:
+         it survives stripHeadComments minus the marker, as the delivered
+         template's version stamp. Both placeholders fill at import from
+         versions.json's email-template entry — literals here would feed
+         version-sync's own hash and bump forever. -->
+<!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->
+<meta name="color-scheme" content="light dark" />
+<meta name="supported-color-schemes" content="light dark" />
+<meta name="format-detection" content="telephone=no" />
 <!-- Baseline everything inherits -->
 <!-- VIEWPORT FORK — lives HERE, not in styles.css (user decision
          2026-08-22). styles.css ships as the Template Styles BLOCK, in the
@@ -1116,9 +1126,6 @@ li {
       }
     }
 </style>
-<meta name="color-scheme" content="light dark" />
-<meta name="supported-color-schemes" content="light dark" />
-<meta name="format-detection" content="telephone=no" />
 <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
          this sheet in the template HEAD: the importer splices every other
          style element out into the Template Styles block, and this layout has
@@ -1217,7 +1224,7 @@ li {
 <body class="email-body" style="word-spacing:normal;background-color:#ffffff;">
 <div aria-label="TPL Email Template — Block Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#ffffff;">
 <!-- START: Main Content -->
-<!-- QC INSTRUMENT (temporary): main_live part 2 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Indentation before tags stripped (render-neutral). Regenerated at head-css v47 (caption-panel fix + fold-proof reveal). Remove after the round closes. -->
+<!-- QC INSTRUMENT (temporary): main_live part 2 of 2 for the 2026-08-24 EoA round — split at a category boundary because EN caps contentHtml at 299,760 bytes (guide 2f). Indentation before tags stripped (render-neutral). Regenerated after the render-round fixes (arrow asset, kicker, mailto anchors). Remove after the round closes. -->
 <!-- START: Category — Engagement & Interactive -->
 <div data-import-exclude="true" data-folder="6408" data-category-short="Engagement">
 <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#000000" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
@@ -3237,7 +3244,10 @@ li {
 <tbody>
 <tr>
 <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#CEE4C5;">
+<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;"><!-- White, not Moss (changed 2026-08-24, final-QC render round): the
+                 kicker sits over the photo's bright foliage band, and Moss
+                 measured near-illegible in LIGHT mode on five clients while the
+                 white h3 below it read fine. -->
 <p style="font-size:16px;line-height:24px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
 </div>
 </td>
@@ -4106,9 +4116,13 @@ li {
 </td>
 </tr>
 <tr>
-<td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
-<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">
-<p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+<td align="center" class="wysiwyg link-inverse" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
+<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;"><!-- The address is an AUTHORED anchor because Word auto-links bare
+               email addresses and paints them default blue — near-illegible on
+               this brown (measured 2026-08-24, final-QC render round, both Word
+               engines). An authored anchor under the link-inverse hook gets the
+               white inlined by EN at send, which Word honors. -->
+<p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
 </div>
 </td>
 </tr>
@@ -4330,7 +4344,7 @@ li {
 <tr>
 <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
 <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-<p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+<p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
 </div>
 </td>
 </tr>

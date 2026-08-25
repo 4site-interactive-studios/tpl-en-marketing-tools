@@ -189,7 +189,7 @@
         </mj-text>
         <mj-text color="#ffffff" align="center" padding="0 0 16px">
           <p style="font-size:14px;line-height:18px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
-          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to {user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to <a href="mailto:{user_data~Email Address}" style="color:#ffffff;">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>

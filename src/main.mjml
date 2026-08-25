@@ -2599,7 +2599,11 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="550px">
-            <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
+            <mj-text align="center" color="#ffffff" padding="0 0 8px">
+            <!-- White, not Moss (changed 2026-08-24, final-QC render round): the
+                 kicker sits over the photo's bright foliage band, and Moss
+                 measured near-illegible in LIGHT mode on five clients while the
+                 white h3 below it read fine. -->
             <p style="font-size:16px;line-height:24px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
           </mj-text>
           <mj-text align="center" padding="0 0 16px">
@@ -2847,8 +2851,13 @@
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:18px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
+          <!-- The address is an AUTHORED anchor because Word auto-links bare
+               email addresses and paints them default blue — near-illegible on
+               this brown (measured 2026-08-24, final-QC render round, both Word
+               engines). An authored anchor under the link-inverse hook gets the
+               white inlined by EN at send, which Word honors. -->
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2899,7 +2908,7 @@
           <p style="font-size:14px;line-height:18px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br />{user_data~Email Address}. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
