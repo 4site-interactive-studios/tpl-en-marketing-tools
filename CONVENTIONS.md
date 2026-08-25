@@ -282,9 +282,18 @@ KEPT, because they are function rather than prose:
   is contract, not prose. TPL uses it for the template's version stamp,
   authored above the grouped meta tags as
   `<!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`
-  and delivered as `<!-- TPL General Email Template (2026-08-24) v58 -->`
+  and delivered as `<!-- TPL General Email Template (2026-08-25) v59 -->`
   — both placeholders filled at import (see "The template head's label"
-  below).
+  below). The comment plus the run of `<meta>` tags authored directly
+  under it HOIST to the FIRST children of `<head>` (same-day user
+  decision): MJML appends raw head content after its own skeleton, so
+  authoring cannot put the unit above the boilerplate — the importer
+  splices it up. First-child-of-head is the earliest safe slot (before
+  the doctype flips old engines into quirks mode; between doctype and
+  `<html>` tooling mangles it), the charset meta stays well inside its
+  1024-byte window, and head metas are order-agnostic beyond that. With
+  the `<title>` stripped (below), the stamp is line one of the stored
+  template's head.
 
 The head-resident sheets' own CSS comments are stripped too — a narrow pass
 over the `data-en-tools-band` and `data-en-tools-template-css` `<style>`s

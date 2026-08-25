@@ -768,7 +768,11 @@ the current number before assuming it has.
   marker — TPL uses this for a version stamp above the grouped head
   metas (`<!-- en-tools-keep TPL General Email Template
   (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`, placeholders filled at
-  import from `versions.json`).
+  import from `versions.json`). The importer hoists that comment plus
+  the `<meta>` run directly under it to the first children of the
+  delivered `<head>` — mj-raw cannot get above MJML's own skeleton, so
+  authoring position does not control the shipped position; keep the
+  unit together with the comment first.
 
 Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
 Anything near this ceiling is far past the clip point, which is fine for a
