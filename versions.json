@@ -74,6 +74,11 @@
     "version": 11,
     "hash": "f4dc7221628b"
   },
+  "block:Catalog Gap (Footers)": {
+    "version": 1,
+    "hash": "9755cb458465",
+    "date": "2026-08-25"
+  },
   "block:Category — Buttons": {
     "version": 6,
     "hash": "b3a2d6071405"
@@ -140,13 +145,13 @@
     "date": "2026-08-25"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 9,
-    "hash": "cb72113c7c10",
+    "version": 10,
+    "hash": "bda8b4766b09",
     "date": "2026-08-25"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 16,
-    "hash": "c5e15c58adbb",
+    "version": 17,
+    "hash": "f8c22648faab",
     "date": "2026-08-25"
   },
   "block:Highlighted Text": {
@@ -320,8 +325,8 @@
     "date": "2026-08-25"
   },
   "email-template": {
-    "version": 60,
-    "hash": "5e86d9185abf",
+    "version": 61,
+    "hash": "ebfe5681f77d",
     "date": "2026-08-25"
   },
   "head-css": {

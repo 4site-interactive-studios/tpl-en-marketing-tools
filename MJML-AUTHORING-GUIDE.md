@@ -1450,7 +1450,7 @@ the one field (§4: one value, every carrier).
 
 | Attribute | Meaning |
 | :---- | :---- |
-| `data-import-exclude` | dev-only chrome: renders in preview, never imports |
+| `data-import-exclude` | dev-only chrome: renders in preview, never imports. Whole-block granularity — give the chrome its own START/END pair, never a bare wrapper between two blocks (see the segmentation rule in §6) |
 | `data-fully-exclude` | a redundant variant of another block; dropped entirely |
 | `data-folder="1234"` | EN folder routing (on a category divider or a block) |
 | `data-category-short="Text"` | short category name prefixed onto block names |
@@ -1579,6 +1579,16 @@ can prop each other up, and the report says so when they do.
   chrome disappears with it, silently. Author preheaders, builder-band spans
   and any other template-level markup directly under `<mj-body>`, above every
   include.
+- **Nothing survives BETWEEN two blocks' comment pairs.** Segmentation tiles
+  the body byte-exactly: whatever sits between one block's `END` and the next
+  block's `START` — markup, a `data-import-exclude` wrapper, even an
+  explanatory comment — attaches to the PRECEDING block and ships inside its
+  exported HTML. A flagged wrapper dropped there does not vanish; it rides
+  along AND its flag import-excludes the block it lands in (measured
+  2026-08-25: a 16px catalog reading gap rode inside the brown Footer as a
+  white strip under its ground and silently pulled the footer from the
+  export). Catalog-page chrome gets its OWN `START`/`END` pair with
+  `data-fully-exclude` on the section, and its comments go inside the pair.
 - **Never style an inline element inside rich-text copy.** EN's editor keeps
   only the style properties it has a mark for — `font-weight`, `color`,
   `font-style`, `text-decoration` — and silently drops everything else the

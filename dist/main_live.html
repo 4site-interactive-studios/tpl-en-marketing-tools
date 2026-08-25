@@ -7930,7 +7930,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:32px 32px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:32px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
@@ -8061,14 +8061,24 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Footer (w/ image, brown) --><!-- CATALOG CHROME, not a block: data-import-exclude keeps it out of the
-         export and out of the block count. The Footers deliberately carry a
-         0px gap — they are the bottom of an email — so on this page they run
-         straight into whatever follows. This separates them for reading
-         without shipping a spacer nobody asked for. -->
+    <!-- END: Footer (w/ image, brown) --><!-- START: Catalog Gap (Footers) --><!-- CATALOG CHROME, not a block: a 16px reading gap between the two
+         Footers, which both carry a 0px gap of their own (they are the
+         bottom of an email). It needs its OWN comment pair: segmentation
+         attaches anything between two pairs to the PRECEDING block, so a
+         bare wrapper here shipped this spacer INSIDE Footer (w/ image,
+         brown) — 16px of white under the brown — and its
+         data-import-exclude flagged that whole footer out of the export
+         (measured 2026-08-25; the white strip was then misread as the
+         footer's own bottom padding, which briefly cost both footers
+         their 32px apron). This comment lives INSIDE the pair for the
+         same reason — between the pairs it would ship with the brown
+         footer. The pair makes the gap a block of its own;
+         data-fully-exclude (raw MJML) drops it from the importer's list
+         and counts; data-import-exclude stays so the debug overlay keeps
+         treating it as chrome. -->
     <div data-import-exclude="true">
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-      <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" data-fully-exclude="true" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div class="spacer-block block" data-fully-exclude="true" style="margin:0px auto;max-width:600px;">
         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
           <tbody>
             <tr>
@@ -8092,7 +8102,7 @@ li {
         </table>
       </div>
       <!--[if mso | IE]></td></tr></table><![endif]-->
-    </div><!-- START: Footer (w/ image, snow) --><!-- data-visible-duplicate: the Snow-ground twin of Footer (w/ image) —
+    </div><!-- END: Catalog Gap (Footers) --><!-- START: Footer (w/ image, snow) --><!-- data-visible-duplicate: the Snow-ground twin of Footer (w/ image) —
          same structure, light palette (user decision 2026-08-18). Deliberately
          visible alongside its anchor; never re-flag into the excluded family.
          The light arrow asset (text-and-arrow_3.png) is a programmatic Earth
@@ -8156,7 +8166,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
         <tbody>
           <tr>
-            <td style="border:1px solid #FAFAFA;direction:ltr;font-size:0px;padding:32px 32px 0;text-align:center;">
+            <td style="border:1px solid #FAFAFA;direction:ltr;font-size:0px;padding:32px;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:534px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">

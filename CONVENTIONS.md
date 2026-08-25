@@ -645,10 +645,14 @@ interchangeable at all.
   stack, so the inter-row rhythm belongs to the editor). The default IS the
   authored height, so this needs no flag; a `data-*` marker would be a
   second way to say what the markup already says, which is what
-  `findDeadFlags` exists to catch. One bottom-padding exception rides along:
-  **both Footers** author `padding="32px 32px 0"` (user decision
-  2026-08-25 — the 32px apron under the links read as unremovable space in
-  EN on the brown one; the snow twin followed for parity the same day).
+  `findDeadFlags` exists to catch. The Footers keep their full
+  `padding="32px"` — visible ground, so the band ends clear of its own
+  copy like every other grounded block. (They briefly authored
+  `32px 32px 0` on 2026-08-25 after "unremovable space" was reported
+  under the brown one in EN; the space turned out to be the catalog's
+  16px reading gap riding inside the exported block — see
+  `data-import-exclude` under Importer flags — and the apron was
+  restored the same day, user-decided.)
 - **The gap's panel header reads "Bottom Spacer"** (`└─ Bottom Spacer` in a
   multi-band block; user decision 2026-08-25). Only the section STRING
   moves: the field label stays bare `Height` (the own-group rule keys on
@@ -2785,7 +2789,22 @@ the importer whitelists all data-*-only MJML validator warnings
   mj-raw `<div data-import-exclude>` wrapper so it SURVIVES compilation;
   the block renders in previews but starts unchecked in exports
   (`src/state/store.ts`, `ExportPanel`), with an override warning when
-  exported directly.
+  exported directly. **The wrapper must live inside its own START/END
+  comment pair.** Segmentation tiles the body byte-exactly — anything
+  between two pairs attaches to the PRECEDING block
+  (`src/core/segmenter.ts` `makeContiguous`) — so a bare flagged wrapper
+  dropped between blocks does not vanish: it ships INSIDE the previous
+  block's HTML and its flag import-excludes that whole block. Measured
+  2026-08-25: the catalog's 16px reading gap between the two Footers rode
+  inside Footer (w/ image, brown) as a white strip under the brown ground
+  and silently pulled the footer out of the export; the strip was then
+  misread as the footer's own 32px apron, which briefly cost both footers
+  their bottom padding. The surviving pattern is TPL's "Catalog Gap
+  (Footers)": its own comment pair, `data-fully-exclude` on the section
+  (drops it from the importer's list and counts) plus the
+  `data-import-exclude` wrapper (keeps the debug overlay treating it as
+  chrome). Explanatory comments belong INSIDE the pair too — between
+  pairs they ship with the preceding block.
 - **`data-probe`** (raw MJML; block-level, 2026-08-18, user-decided):
   the block is a PROBE INSTRUMENT (canonical example: the head-CSS
   canary, now archived in TPL `archive/probes/` — the mechanism stays

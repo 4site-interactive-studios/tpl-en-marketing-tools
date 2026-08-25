@@ -2893,7 +2893,7 @@
 
     <!-- START: Footer (w/ image, brown) -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px 32px 0">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2926,18 +2926,30 @@
       </mj-column>
     </mj-section>
     <!-- END: Footer (w/ image, brown) -->
-    <!-- CATALOG CHROME, not a block: data-import-exclude keeps it out of the
-         export and out of the block count. The Footers deliberately carry a
-         0px gap — they are the bottom of an email — so on this page they run
-         straight into whatever follows. This separates them for reading
-         without shipping a spacer nobody asked for. -->
+    <!-- START: Catalog Gap (Footers) -->
+    <!-- CATALOG CHROME, not a block: a 16px reading gap between the two
+         Footers, which both carry a 0px gap of their own (they are the
+         bottom of an email). It needs its OWN comment pair: segmentation
+         attaches anything between two pairs to the PRECEDING block, so a
+         bare wrapper here shipped this spacer INSIDE Footer (w/ image,
+         brown) — 16px of white under the brown — and its
+         data-import-exclude flagged that whole footer out of the export
+         (measured 2026-08-25; the white strip was then misread as the
+         footer's own bottom padding, which briefly cost both footers
+         their 32px apron). This comment lives INSIDE the pair for the
+         same reason — between the pairs it would ship with the brown
+         footer. The pair makes the gap a block of its own;
+         data-fully-exclude (raw MJML) drops it from the importer's list
+         and counts; data-import-exclude stays so the debug overlay keeps
+         treating it as chrome. -->
     <mj-raw><div data-import-exclude="true"></mj-raw>
-    <mj-section css-class="spacer-block block" padding="0">
+    <mj-section css-class="spacer-block block" padding="0" data-fully-exclude>
       <mj-column>
         <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
     <mj-raw></div></mj-raw>
+    <!-- END: Catalog Gap (Footers) -->
 
 
     <!-- START: Footer (w/ image, snow) -->
@@ -2949,7 +2961,7 @@
          artwork; the dark-mode twin keeps the white _2 art for the black
          repaint. -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px 32px 0">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_3.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
