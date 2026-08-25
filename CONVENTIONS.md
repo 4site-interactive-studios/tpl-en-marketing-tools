@@ -838,6 +838,12 @@ at send, Outlook included.
   an infoNote names each; dark-mode `!important` forcing outranks any pick;
   an email built without the styles block degrades to client-default link
   colour. All three are measured, not suspected.
+- **The Inert Dropdown Audit expects this deadness**: a block whose shipped
+  copy offers the hook nothing to recolor — no textual anchor, or only
+  inline-coloured pill anchors — reports inert@both and PASSES as
+  expected-inert (`linkColorAnchorState`; see the exemption register under
+  "Viewport-scoped controls"). The field stays generated because it goes
+  live the moment an editor adds a plain link in the RTE.
 
 ## Inert paddings — never ship a field that does nothing
 
@@ -1093,7 +1099,8 @@ Findings keeps: a field dead at only ONE viewport whose label already says
 so (working as designed), a mislabelled-but-working control, and an unproven
 row (not proven dead is not dead). It also drops the deadness the audit
 expects and PASSES — link toggles, which strip only an anchor wrapper and
-move zero pixels, and a text colour under a background image — because an
+move zero pixels; a text colour under a background image; a Link Color
+hook on copy with no hook-eligible link to recolor — because an
 actionable list must not carry known-fine rows. Any filtered report states
 its scope and its share of the total in the header, so a short file is never
 mistaken for the whole audit. Scope selection is `selectReportScope` /
@@ -1134,7 +1141,10 @@ inert — Exclude Link strips only the `<a>` wrapper, which moves zero
 pixels — so the matrix annotates them "non-visual by design (href-only)"
 rather than presenting them as removal candidates: the control changes
 behavior, not rendering (measured on the unified catalog 2026-08-09, all
-link toggles inert@both, all Display toggles live). A zero-height render
+link toggles inert@both, all Display toggles live). Link Color hooks are
+render-tested the same way, and a dead one PASSES with an
+"expected-inert" annotation when — and only when — the copy offers no
+hook-eligible anchor (see the exemption register). A zero-height render
 (a Spacer at `None - 0px`) hashes as a deterministic empty raster —
 collapsing a block IS a display change, not an error.
 
@@ -1228,6 +1238,31 @@ byte-identical runs) hardened into policy (user-decided):
   alive. Without the exemption the pair returns as a FAIL on every sweep
   with no honest fix available (5 such rows in the go-live sweep). A pair
   dead on BOTH sides still reports.
+  A FOURTH exemption joined them 2026-08-24: **a Link Color hook on copy
+  with no hook-eligible anchor**. The `.link-* a` head rule is a descendant
+  selector on the mj-text carrier, so the pick is visually dead when the
+  carrier's shipped copy has no plain textual `<a>` — either no anchor at
+  all (heroes, captions, the `Category —` dividers), or only pill anchors
+  authoring their own inline `color:` that beats the class hook (the CTA
+  Buttons rows; the import infoNote names them). Both sub-cases PASS as
+  expected-inert with distinct reasons, because the field comes alive the
+  moment an editor adds a plain link in EN's RTE — removal would punish
+  future content for today's copy. `linkColorAnchorState` decides: it
+  scans SUBSTITUTED documents — every sibling at its default plus one
+  variant per non-default fragment option, mirroring the audit's render
+  permutations — because a real carrier holds its copy as a
+  `{replacement~…_copy}` tag, so the anchor and its carrier only meet
+  after substitution (the dark-mode-audit precedent; scanning raw sibling
+  values separately read every copy-carrying block as linkless). It
+  locates each carrier by the row's tag inside a `class` attribute and
+  scans only the carrier's subtree (an `<a>`-wrapped image or mj-button
+  pill outside the carrier never counts). Only a TEXTUAL anchor is
+  hook-eligible: an anchor wrapping nothing but an image — Question
+  Block's row-link overlay — has no glyphs to recolor, so it neither
+  excuses nor indicts the field. An anchor is inline-colored only
+  on an anchor-level `color:` declaration (`background-color:` alone does
+  not count). A dead Link Color row whose copy DOES carry an eligible
+  anchor is a real defect and still FAILs.
 - **A viewport qualifier counts wherever it sits in the label**, not only
   leading (2026-08-18): the enumerated column ladder instances its label as
   "Column 1 - Desktop Width" and is desktop-only by construction, so an
@@ -1345,7 +1380,9 @@ holds the equivalence):
 
 - live at both viewports, no viewport prefix → PASS
 - inert at one viewport, label names the WORKING viewport → PASS
-- inert at both, link toggle or color-under-background-image → PASS
+- inert at both, link toggle, color-under-background-image, an inset whose
+  opposite side is live, or a Link Color hook with no hook-eligible anchor
+  → PASS
 - static-exempt image swap → PASS
 - inert at one viewport with a missing, wrong, or stale prefix → FAIL
   (relabel; a "Desktop …" label on a control that is dead at 600px is as
@@ -2659,6 +2696,11 @@ the importer whitelists all data-*-only MJML validator warnings
   `src/core/mjmlProps.ts`), the same effect a structurally pinned gutter
   gets automatically. The two consumers are mutually exclusive by
   construction: a block containing any px column never offers the preset.
+  Frame example (2026-08-24): the three fixed-width CTA Buttons sections —
+  3x1 (fixed width), 2x1 (fixed width), 2x1 (two-line) — whose centred
+  fixed-width pill runs total exactly the 472px content box, so symmetric
+  gutter changes move zero pixels at either viewport (proven by the
+  inert-dropdown audit).
 - **`data-width-options`** (VALUED, on mj-column AND mj-divider):
   on a column, `data-width-options="150,250,350"` curates its Column
   Width ladder, overriding en-tools-config `columnWidthsPx` and the
@@ -2674,6 +2716,9 @@ the importer whitelists all data-*-only MJML validator warnings
   of the auto-generated Include/Exclude Link Select
   (`src/core/mjmlProps.ts` link-toggle generator) — for images whose link
   must never be removable (e.g. a legally required logo link).
+- **`data-no-link-color`** (valueless, on mj-text): opts the text out of
+  the block-wide Link Color Select — its carrier gets no spliced hook
+  token (see "Link Color — one Select recolors a block's links").
 - **`data-link-group="<name>"`** (valued, on raw `<a>` tags inside
   hand-authored component markup): sibling anchors in one scanned fragment
   that share a group name and a byte-identical href are ONE logical link.
@@ -3044,10 +3089,14 @@ button and the heading can each be hidden (user decision 2026-08-20).
   `spacing-*`/`inset-*`/`align`. This is the channel for
   the cases no static rule can reach:
   - a **centered, content-sized child in a uniformly painted frame** — the
-    gutter changes, nothing moves (CTA Button's pill is centered by the
-    mobile CSS, so its Width is `data-desktop-only-width`; the single-color
-    divider is a fixed 300px centered box at desktop and only stretches
-    below the breakpoint, so it is `data-mobile-only-width`);
+    gutter changes, nothing moves once the mobile CSS centres the run (the
+    single-color divider is a fixed 300px centered box at desktop and only
+    stretches below the breakpoint, so it is `data-mobile-only-width`).
+    Note the boundary: the fixed-width CTA Buttons rows are centred at BOTH
+    viewports, so their gutter control was dead everywhere — those retired
+    to `data-no-width-toggle` on 2026-08-24 per the dead-at-both rule
+    below (CTA Buttons 3x1 (fixed width) carried `data-desktop-only-width`
+    until then, an overclaim the audit caught);
   - **trailing spacing absorbed by a taller sibling column**, live only
     once the columns stack (`data-mobile-only-spacing-below`);
   - **column order that the mobile stack flattens**

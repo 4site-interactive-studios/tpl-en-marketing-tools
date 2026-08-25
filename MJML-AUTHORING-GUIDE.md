@@ -192,6 +192,20 @@ follow. Note the merge matches conditions textually:
 `only screen and (max-width:599px)` (MJML's own emission) and
 `(max-width: 599px)` are different strings and do not merge.
 
+The fold reaches ACROSS documents, and the merge order is not what you'd
+guess (measured 2026-08-24, final-QC delivered heads, EoA hOB4q6MD… /
+hb3nYGds…): EN merges `<style>` blocks that arrive in the email BODY (a
+stylesheet shipped as a block) AHEAD of the template head's own styles.
+A reveal in the template head that shares its condition string with the
+body stylesheet folds up past its own hide — TPL's viewport-fork reveal
+did exactly that and the hide won below 599px (latent; nothing shipped
+carried the fork). Two lessons: an order-dependent block's condition must
+be unique across EVERY CSS source in the email — head, body blocks, and
+MJML's own emission — and an instrument that blesses such a design must
+include the body stylesheet in the send, because an email WITHOUT it is
+the one case the fold cannot reach (the probe that blessed the old
+arrangement tested exactly that case).
+
 **And never write tag-like text inside CSS — comments included (outage
 2026-08-18).** Any consumer that inlines the stylesheet into an
 `<mj-style>` before parsing (the importer does) tokenizes the CSS as HTML:
@@ -342,6 +356,23 @@ Author it on any side-by-side image whose stacked mobile rendering
 should be full-bleed.
 
 ### 2c. Where dark mode can and cannot reach
+
+**Word-engine dark mode flips unprotected light text over photos (measured
+2026-08-24, EoA hOB4q6MD…/hb3nYGds…, M365 Win11 dm), and the ruling is to
+accept it.** Outlook desktop ignores media queries, so its dark mode is its
+own colour transform: white copy whose cell carries no explicit background
+gets flipped to near-black — over a dark photo it becomes near-invisible.
+Measured on every white-over-photo text in the catalog (CTA Hero w/
+heading, both Photo Banners, Progress Meter, Countdown incl. its
+numerals), while copy on explicit `bgcolor` grounds transformed legibly.
+The defense would be scrims (dark bands behind each line — Word respects
+an explicit background), but the design ruling (2026-08-24, reaffirming
+2026-08-21) is raw text over the photo, no scrims: the flip is a
+DOCUMENTED, ACCEPTED limitation for the Outlook-desktop-dark audience, and
+it belongs in client-facing docs next to the other accepted trade-offs —
+not in a redesign. Author accordingly: do not pin white inline as a "fix"
+(it is what gets flipped), and do not add per-block scrims without a new
+ruling.
 
 **First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
 renders):** an authored light ground with NO dark hook at all — an
@@ -1401,7 +1432,7 @@ the one field (§4: one value, every carrier).
 | `data-no-link-color` | on an `mj-text`: opt it out of the per-block Link Color Select (the shared class-token control; see conventions "Link Color") |
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
-| `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing |
+| `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing. Canonical frame case: a centred, fixed-width pill run sized to exactly fill the content box — symmetric gutter changes cannot move a centred run at any viewport |
 | `data-alt-arrangement="<Option Label>"` | on an `mj-section`: fold it into the PRECEDING sibling section's arrangement Select as an extra option instead of rendering it. This is how a two-column row offers "no image, text full width" — a Display toggle cannot do it, because it removes a member's `<tr>` and leaves the column, its Outlook ghost cell and the sibling's width behind. Author the alternate with the SAME copy: the pairing matches on value, and drift does NOT fail loudly — measured, one changed letter unpairs the alternate, which then renders as its OWN band (so the block ships the content twice) and renumbers every band after it, rebinding fields in emails already built on it; the importer reports only an info note, so put a build-time guard in the authoring repo that compares the two copies. The alternate's frame (padding, background, css-class) must match its partner's, and the two must be adjacent. Adding one has a consequence worth knowing: the collapsed column is full-width, so it FOLLOWS the frame's side gutter at desktop — a row that offers an alternate must not also carry a viewport-scoped padding flag like `data-mobile-only-padding-right`, because that flag's "inert at desktop" claim only holds in the un-collapsed arrangement. And the alternate must not RENDER outside the importer: only the importer consumes it (folding it into the Select), so the authoring build drops alternate sections from its compiled previews and paste artifacts before compilation (TPL's annotate step; user decision 2026-08-24) — a preview shows what a send shows, the primary, while the debugger's embedded raw source keeps both so its MJML export stays faithful |
 | `data-arrangement-label="<Option Label>"` | names the PRIMARY arrangement, for a row whose alternate exists but whose reversed order does not (the Select then reads Layout rather than Image Position) |
 | `data-no-alignment-toggle` | on a `.cta-group` div in hand-authored pill markup: no Alignment control for that button row. For a row whose pills carry fixed widths that already sum to the content width — left, center and right then render identically, so the field is a dead control (measured 2026-08-21 on four rows) |
