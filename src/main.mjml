@@ -2935,7 +2935,7 @@
          artwork; the dark-mode twin keeps the white _2 art for the black
          repaint. -->
     <mj-include path="./partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#F5FAF1" border="1px solid #FAFAFA" padding="32px 32px 0">
       <mj-column>
         <mj-image src="assets/text-and-arrow_3.png" href="https://tpl.org" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>

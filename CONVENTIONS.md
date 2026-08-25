@@ -543,7 +543,9 @@ decided by the template source, not per-block tool logic.
 
 **Horizontal insets** (2026-08-09, closing future-enhancements #2): a
 qualifying component's NON-ZERO on-scale right/left shorthand slots become
-"Inset Right" / "Inset Left" Selects on the same closed scale, spliced into
+"Inset Left" / "Inset Right" Selects on the same closed scale (panel-ordered
+Left then Right since 2026-08-25, matching the padding sides' T/B/L/R
+emission order; names unchanged), spliced into
 the same composite (mso-padding-alt copies included). Zero and off-scale
 sides stay literal — the field only exists where the template authored a
 real inset — and every Spacing Below gate applies unchanged (bottom-only,
@@ -644,9 +646,9 @@ interchangeable at all.
   authored height, so this needs no flag; a `data-*` marker would be a
   second way to say what the markup already says, which is what
   `findDeadFlags` exists to catch. One bottom-padding exception rides along:
-  **Footer (w/ image, brown)** authors `padding="32px 32px 0"` (user
-  decision 2026-08-25 — the 32px brown apron under the links read as
-  unremovable space in EN), while its snow twin keeps `padding="32px"`.
+  **both Footers** author `padding="32px 32px 0"` (user decision
+  2026-08-25 — the 32px apron under the links read as unremovable space in
+  EN on the brown one; the snow twin followed for parity the same day).
 - **The gap's panel header reads "Bottom Spacer"** (`└─ Bottom Spacer` in a
   multi-band block; user decision 2026-08-25). Only the section STRING
   moves: the field label stays bare `Height` (the own-group rule keys on
