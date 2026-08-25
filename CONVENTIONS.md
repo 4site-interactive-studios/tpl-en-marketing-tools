@@ -754,14 +754,17 @@ Episode, Podcast Streaming, Feedback Poll, Signature Card (photo), Video
 Block (inset), and the two-column rows in Photo and Text Grid and Quiz
 Block (2x2 photos)) are capped at 32px again, each carrying its
 "capped at 32px — 2 option(s) withheld" info note. The padding-growth
-census reads 42 of 170 frames short of the full scale (29 before the
-move; the delta IS that list). One residue of the pre-64 era returns in
-reduced form: the two Quiz pill-row frames (3x1 / 2x2 buttons) still
-offer Triple and Quadruple while their pills are cut for a 32px gutter —
-those choices wrap the row, and the scanner cannot see it (inline pill
-widths inside an mj-text are invisible to the geometry model; the three
-CTA fixed rows are protected because their Selects were retired
-2026-08-24, `data-no-width-toggle`).
+census reads 44 of 170 frames short of the full scale (29 before the
+move; the delta IS that list). One residue of the pre-64 era briefly
+returned: the two Quiz pill-row frames (3x1 / 2x2 buttons) kept offering
+Triple and Quadruple while their pills were cut for a 32px gutter —
+inline pill widths inside an mj-text are invisible to the geometry
+model, so those choices would have wrapped the row unflagged. Closed
+2026-08-25: the frames declare `data-max-gutter="32"` (reference entry
+below), which min-composes with the measured cap, and both frames now
+carry the same withheld note and census membership as the geometrically
+capped ones. The three CTA fixed rows were never exposed — their Selects
+were retired 2026-08-24 (`data-no-width-toggle`).
 
 **What has to move with the frame.** Three things do not follow a gutter
 change and must be re-cut by hand:
@@ -2730,6 +2733,27 @@ the importer whitelists all data-*-only MJML validator warnings
   3x1 run), so symmetric gutter changes move zero pixels at either
   viewport (proven by the inert-dropdown audit at the 64px-era cut; the
   centred-run argument is width-independent).
+- **`data-max-gutter="<px>"`** (VALUED, on mj-section/mj-wrapper,
+  2026-08-25): declares the largest side gutter the frame's content can
+  take. It min-composes with the measured cap (`declaredGutterCap` /
+  `composeCaps` in `src/core/mjmlProps.ts` — the scanner still wins where
+  it knows better) and clamps BOTH gutter paths: the Block Padding
+  Left/Right preset ladder and the per-side numeric Left/Right Selects
+  (vertical is never capped, by declaration or by geometry). The withheld
+  info note names the declaration instead of blaming frozen geometry. It
+  exists precisely for geometry the compiled-HTML scan cannot see — a
+  fixed-width pill run authored inline in an mj-text is frozen exactly
+  like a px column, but it is content, not structure. Suppression
+  (`data-no-width-toggle`) is for a frame whose gutter moves NOTHING; the
+  cap is for a frame that holds more than the frozen run — TPL's two
+  Quiz pill frames (3x1 buttons, 2x2 buttons) hold the quiz question
+  too, so their Selects stay live at 0/16/32 and cap there. An
+  unparseable or negative value is ignored. TPL's check-catalog padding
+  census honors the attribute source-side (data-* never reaches the
+  compiled HTML), so both instruments agree about what fits. A
+  declaration that the measured cap already enforces is DEAD — the
+  import-time flag audit strips-and-regenerates it like any other flag
+  and will say so.
 - **`data-width-options`** (VALUED, on mj-column AND mj-divider):
   on a column, `data-width-options="150,250,350"` curates its Column
   Width ladder, overriding en-tools-config `columnWidthsPx` and the
@@ -3472,6 +3496,21 @@ while the entity holds steady, so each entry answers "when did this last
 change"; entries versioned before dates existed gain one on their next real
 bump. `email-template`'s date fills `__TEMPLATE_DATE__` in the delivered
 version stamp.
+**Merges (app manifest, 2026-08-25):** parallel branches each bump honestly
+from a shared base, so at merge time one number can name two different
+contents — and a HEAD-only baseline cannot see the other parent's bump
+(it happened twice on 2026-08-24: colliding v85s, then v90-vs-v86, each
+reconciled by hand). The app's script therefore baselines against every
+reachable parent manifest — HEAD's, MERGE_HEAD's during an in-progress
+merge, and every parent's when HEAD is a merge commit. The top candidate
+number survives only when it unambiguously names the current content; top
+candidates with two different hashes mean the number is spent, and any
+content mints max+1. Merge reconciliation is the script's job — never
+re-derive the number by hand. A merge committed unreconciled self-heals as
+a working-tree diff on the next sync, which the `app-version-manifest`
+contract gate turns into a CI failure. (TPL's multi-entity script does not
+carry this yet; its merges conflict per entity and have so far been
+resolved by regeneration.)
 Consequences: rebuilding never double-bumps; local iteration cannot inflate
 numbers (an entity sits exactly one ahead of HEAD until committed); the
 committed history of the manifest IS the version ledger. TPL check-docs

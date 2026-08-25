@@ -224,8 +224,8 @@
     "date": "2026-08-25"
   },
   "block:Quiz Block (2x2 buttons)": {
-    "version": 20,
-    "hash": "ef45a2fc1498",
+    "version": 21,
+    "hash": "5496a2e5d870",
     "date": "2026-08-25"
   },
   "block:Quiz Block (2x2 photos)": {
@@ -234,8 +234,8 @@
     "date": "2026-08-25"
   },
   "block:Quiz Block (3x1 buttons)": {
-    "version": 14,
-    "hash": "13d3214676f3",
+    "version": 15,
+    "hash": "085065b3a64f",
     "date": "2026-08-25"
   },
   "block:Quiz Block (multiple choice)": {

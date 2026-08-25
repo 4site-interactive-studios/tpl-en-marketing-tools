@@ -5873,7 +5873,14 @@ li {
         </tbody>
       </table>
     </div>
-    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- data-max-gutter="32": the answer pills are fixed-width content
+         inside an mj-text — frozen exactly like a px column but invisible
+         to the geometry scan — so without the declaration the Padding
+         Left/Right Select would offer Triple/Quadruple and wrap the run
+         (formula comment below). The importer clamps the ladder from it;
+         check-catalog's census reads it source-side. -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#CEE4C5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block flush-mobile-capflush" style="background:#CEE4C5;background-color:#CEE4C5;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;">
         <tbody>
@@ -6169,7 +6176,12 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Linked List Block --><!-- START: Quiz Block (2x2 buttons) -->
+    <!-- END: Linked List Block --><!-- START: Quiz Block (2x2 buttons) --><!-- data-max-gutter="32": both answer rows are fixed-width pill runs
+         inside mj-texts — frozen exactly like px columns but invisible to
+         the geometry scan — so without the declaration the Padding
+         Left/Right Select would offer Triple/Quadruple and wrap the rows
+         (formula comment below). The importer clamps the ladder from it;
+         check-catalog's census reads it source-side. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#F5FAF1" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="text-block block flush-mobile-capflush" style="background:#F5FAF1;background-color:#F5FAF1;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">

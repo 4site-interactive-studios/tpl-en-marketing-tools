@@ -409,14 +409,60 @@ guard('padding growth census', () => {
     }
     if (!scale.length) continue;
 
+    // data-max-gutter: author-declared ceilings for geometry the scan
+    // cannot measure (a fixed-width pill run inside an mj-text is frozen
+    // exactly like a px column, but it is content, not structure). The
+    // importer clamps its option ladders from the same attribute
+    // (declaredGutterCap in src/core/mjmlProps.ts); the census must agree
+    // or one instrument is lying. data-* never reaches the compiled HTML,
+    // so resolve source-side: within a block, the Nth compiled probe-td
+    // pairs with the Nth source frame — valid only when the counts agree
+    // (alternate arrangements are dropped before compile, which desyncs
+    // any block that carries them; those get a warning, not a mispair).
+    const srcText = read(`src/${base}.mjml`) || '';
+    // Frames are named by the NEAREST PRECEDING START marker — the same
+    // rule blockOf() applies to the compiled HTML below, so ordinals on
+    // the two sides enumerate identically (a paired START/END regex would
+    // swallow the nested Main Content wrapper whole and name nothing).
+    const declaredCaps = new Map(); // block name -> per-frame cap (number|null)
+    for (const t of srcText.matchAll(/<mj-(?:section|wrapper)\b[^>]*>/g)) {
+      const marker = srcText.lastIndexOf('<!-- START: ', t.index);
+      const name =
+        marker < 0
+          ? '(unknown block)'
+          : /<!-- START: (.+?) -->/.exec(srcText.slice(marker))[1];
+      const g = /\bdata-max-gutter\s*=\s*"([^"]*)"/.exec(t[0]);
+      const n = g ? parseFloat(g[1]) : NaN;
+      if (!declaredCaps.has(name)) declaredCaps.set(name, []);
+      declaredCaps.get(name).push(Number.isFinite(n) && n >= 0 ? n : null);
+    }
+    for (const [k, v] of declaredCaps) if (!v.some((c) => c !== null)) declaredCaps.delete(k);
+
     const baseline = scanGeometry(html);
     const over = baseline.hits.length + baseline.imgHits.length;
+
+    const blockOf = (index) => {
+      const marker = html.lastIndexOf('<!-- START: ', index);
+      return marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
+    };
+    // Compiled probe-td count per block, for the ordinal-pairing guard.
+    const tdCount = new Map();
+    for (const m of html.matchAll(/<td[^>]*style="([^"]*direction:\s*(?:ltr|rtl)[^"]*)"/g)) {
+      if (!/(?:^|;)\s*padding:\s*([^;]+)/.test(m[1])) continue;
+      const name = blockOf(m.index);
+      tdCount.set(name, (tdCount.get(name) ?? 0) + 1);
+    }
+    const seenTds = new Map();
+    const mispaired = new Set();
 
     for (const m of html.matchAll(/<td[^>]*style="([^"]*direction:\s*(?:ltr|rtl)[^"]*)"/g)) {
       const style = m[1];
       const pad = /(?:^|;)\s*padding:\s*([^;]+)/.exec(style);
       if (!pad) continue;
       total++;
+      const name = blockOf(m.index);
+      const ord = seenTds.get(name) ?? 0;
+      seenTds.set(name, ord + 1);
       const at = m.index + m[0].indexOf(style);
       const head = html.slice(0, at);
       const tail = html.slice(at + style.length);
@@ -433,11 +479,22 @@ guard('padding growth census', () => {
         if (r.hits.length + r.imgHits.length > over) continue;
         if (max === null || px > max) max = px;
       }
+      const caps = declaredCaps.get(name);
+      if (caps) {
+        if (caps.length !== (tdCount.get(name) ?? 0)) {
+          if (!mispaired.has(name)) {
+            mispaired.add(name);
+            warn(
+              `${name}: data-max-gutter declared but source frames (${caps.length}) != compiled paddings (${tdCount.get(name) ?? 0}) — declaration not applied to the census`,
+            );
+          }
+        } else {
+          const d = caps[ord];
+          if (d !== null && max !== null && d < max) max = d;
+        }
+      }
       if (max !== null && max < scale[scale.length - 1]) {
         capped++;
-        const marker = html.lastIndexOf('<!-- START: ', m.index);
-        const name =
-          marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
         rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)`);
       }
     }
