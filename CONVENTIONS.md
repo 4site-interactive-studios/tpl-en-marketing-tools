@@ -3364,6 +3364,33 @@ toggling it could split a subsumption group.)
   reader to unrelated code) so the whole branch now survives; do not
   unwrap it.
 
+## Preview debugger — copied selectors are source-faithful (2026-08-24)
+
+The app's preview carries a debugger (🐞 Debug in the workspace toolbar,
+ported from the TPL repo's debug overlay): labeled per-block outlines, a
+deep-layout mode outlining every element by tag, a `.spacer-block` hatch,
+and a full-screen toggle. Two of its artifacts are conventions because they
+cross the preview boundary:
+
+- **Preview-only attributes.** The full-template preview wraps each block in
+  `<div data-en-block-id="…" data-en-block-label="…">` and stamps every
+  element with `data-en-path` (element-child index path into the canonical
+  string). All three are app-injected chrome — they exist in no MJML source
+  and no export, and must never be treated as part of the block's HTML.
+- **The copy payload an agent may be handed.** Clicking an element in
+  deep-layout mode copies `/* Block Name */ selector` (the comment prefix
+  only in the full-template preview; a single-block preview copies the bare
+  selector). The selector is computed from the CANONICAL block HTML
+  (`src/core/uniqueSelector.ts`), never from the live preview DOM — so it
+  contains `tbody` exactly when the compiled source does, never
+  browser-inserted structure, and never the preview wrapper. It is unique
+  by construction inside the named block: every segment disambiguates
+  same-tag siblings with `:nth-of-type`, ids anchor the chain only when
+  valid CSS identifiers and unique in the document, and classes are
+  included only when they are plain identifiers. An agent receiving one
+  should resolve the block by name first, then apply the selector within
+  that block's markup.
+
 ## Process
 
 - "Commit" from Bryan means commit AND push to origin/main.
