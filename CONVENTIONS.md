@@ -282,9 +282,12 @@ KEPT, because they are function rather than prose:
   is contract, not prose. TPL uses it for the template's version stamp,
   authored above the grouped meta tags as
   `<!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`
-  and delivered as `<!-- TPL General Email Template (2026-08-25) v59 -->`
-  — both placeholders filled at import (see "The template head's label"
-  below). The comment plus the run of `<meta>` tags authored directly
+  and delivered as `<!-- TPL General Email Template - 2026-08-25 - v61 -->`
+  — since 2026-08-25 the importer folds the date INTO the version suffix
+  (` v__TEMPLATE_VERSION__` → ` - YYYY-MM-DD - vN`, the shared band-label
+  format) and collapses the old ` (__TEMPLATE_DATE__)` slot so the date
+  never prints twice; a dateless entity yields ` v61`, no manifest yields
+  neither. The comment plus the run of `<meta>` tags authored directly
   under it HOIST to the FIRST children of `<head>` (same-day user
   decision): MJML appends raw head content after its own skeleton, so
   authoring cannot put the unit above the boilerplate — the importer
@@ -2476,11 +2479,16 @@ matchless rules at send: they reach the recipient and count against Gmail's
 16,384-byte cliff, past which Gmail drops the ENTIRE stylesheet. Copied
 verbatim, three bands cost 1,591 delivered bytes; on one shared rule, 697.
 
-The styles block's band reads **"CSS Styles Block vN"** (shortened from
-"Email Template — Head CSS Styles Block" on 2026-08-20, user decision: the
-band sits inside the block it names, so the prefix said nothing the context
-did not). `STYLES_BLOCK_PLACEHOLDER` deliberately keeps the OLD text — it is
-the legacy shape the EN-import healer recognises, and rewriting it would
+The styles block's band reads **"CSS Styles Block - 2026-08-25 - v49"**
+(shortened from "Email Template — Head CSS Styles Block" on 2026-08-20,
+user decision: the band sits inside the block it names, so the prefix said
+nothing the context did not). **Every versioned band label shares one
+suffix format** (`bandVersionSuffix`, user format 2026-08-25):
+`" - YYYY-MM-DD - vN"`, the date being the manifest entity's bump date; an
+entity versioned before version-sync stamped dates falls back to the plain
+`" vN"` until its next bump, and no version means no suffix.
+`STYLES_BLOCK_PLACEHOLDER` deliberately keeps the OLD text — it is the
+legacy shape the EN-import healer recognises, and rewriting it would
 misdescribe blocks already living in EN.
 
 Always-on bands in use: the Template Styles block (`#head-styles`, head-css
@@ -2490,10 +2498,11 @@ own content at export — plus the TEMPLATE itself, which works differently.
 Every OTHER block carries a band from the hidden-by-default family below.
 
 **Per-block bands & the Debug Helper** (2026-08-25, user request). Every
-exported content block carries a name + version band — "CTA Button v14",
-versions from the source repo's `versions.json` `block:<Leaf Name>` entities
-— that is hidden even in EN's builder until an editor adds the **"Utility —
-Debug Helper"** block to the email. That block's content is the reveal
+exported content block carries a name + version band —
+"CTA Button - 2026-08-25 - v14" (the shared dated suffix above), version
+and bump date from the source repo's `versions.json` `block:<Leaf Name>`
+entities — that is hidden even in EN's builder until an editor adds the
+**"Utility — Debug Helper"** block to the email. That block's content is the reveal
 stylesheet; add it to inspect which block revisions a draft carries, remove
 it and the bands hide again. `injectBlockBands` (`headStyles.ts`) prepends
 each band to the block's html in `createProject` — after replacement
@@ -2520,7 +2529,7 @@ every axis, each deliberately:
   uniqueness the thumbnail filenames already require and qc-validate now
   checks (duplicate band slugs would cross-label two blocks).
 - **The label rule is GATELESS** (user decision 2026-08-25):
-  `.marketing-tools-block-band[data-band="x"]:before{ content: "X vN"; }`.
+  `.marketing-tools-block-band[data-band="x"]:before{ content: "X - 2026-08-25 - vN"; }`.
   Hiding is the span's inline `display:none`, not the rule's job — a
   `::before` of a `display:none` element can never paint, and the only
   reveal path carries the gate itself. The failure would need a client that
@@ -2588,7 +2597,10 @@ markup, so a shell span never enters the builder DOM at all. The rule is
 [data-container="main"]:before { content: "Email Template v__TEMPLATE_VERSION__"; … }
 ```
 
-and it is **self-gating**, which is why it needs no `:has()` test: the stored
+(the placeholder fills at import with the shared dated suffix —
+"Email Template - 2026-08-25 - v61" — see the version-suffix rule under the
+styles band above) and it is **self-gating**, which is why it needs no
+`:has()` test: the stored
 template carries the `{{container~main}}` placeholder, a delivered email
 carries the blocks themselves, and only EN's editor ever renders an element
 bearing `data-container="main"`. It also removes a whole class of failure —

@@ -299,8 +299,9 @@ day, same account, same client matrix:
   per line — the app would otherwise beautify ~12KB of pretty-printing
   into the payload) hard-coded in the block's own single content
   `<style>` — per-email CSS edits are disabled by design, and the
-  builder band's label shows the CSS revision ("CSS Styles Block vN",
-  from the repo's versions.json head-css entity).
+  builder band's label shows the CSS revision and its publish date
+  ("CSS Styles Block - 2026-08-25 - v49", from the repo's versions.json
+  head-css entity; a dateless entity shows "… v49" until its next bump).
   The block carries a live Gmail budget meter (16,384 hard / 14,000
   target) that itemizes EN-hoisted block styles. Budget the DELIVERED
   size, not the authored size — authored comments and formatting are
@@ -771,8 +772,10 @@ the current number before assuming it has.
   with the `en-tools-keep` marker and the importer keeps it minus the
   marker — TPL uses this for a version stamp above the grouped head
   metas (`<!-- en-tools-keep TPL General Email Template
-  (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`, placeholders filled at
-  import from `versions.json`). The importer hoists that comment plus
+  (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->`, filled at import from
+  `versions.json` as `TPL General Email Template - 2026-08-25 - v61`:
+  the ` v…` placeholder becomes the shared dated version suffix and the
+  ` (…)` date slot collapses, so keep authoring both placeholders). The importer hoists that comment plus
   the `<meta>` run directly under it to the first children of the
   delivered `<head>` — mj-raw cannot get above MJML's own skeleton, so
   authoring position does not control the shipped position; keep the
