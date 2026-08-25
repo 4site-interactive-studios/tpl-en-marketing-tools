@@ -2647,7 +2647,11 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Subscription Panel --><!-- START: Stat Row -->
+    <!-- END: Subscription Panel --><!-- START: Stat Row --><!-- data-desktop-only-background-color: the section's white shows only in
+         the 32px gutters beside the opaque off-white column; flush-mobile
+         zeroes those gutters below the breakpoint, so the column covers the
+         section edge-to-edge and this colour moves nothing at 375px
+         (measured 2026-08-25). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -3929,7 +3933,11 @@ li {
          2026-08-21 to line up with its twin, Countdown Block; the centre column
          reuses Countdown's existing 484px class rather than minting 486px,
          which costs 2px of invisible slack and saves ~174 delivered bytes of
-         head CSS against a budget with ~434 to spare. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. -->
+         head CSS against a budget with ~434 to spare. --><!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. --><!-- data-desktop-only-background-color: the wrapper's white shows only in
+         the 32px gutters beside the photo section; flush-mobile zeroes them
+         below the breakpoint (measured 2026-08-25). The colour still matters
+         everywhere as the Outlook fallback per the note above — the prefix
+         describes CSS-client pixels, not the Word engine. -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
@@ -7375,7 +7383,10 @@ li {
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- END: Spacer --><!-- START: Divider (single-color) -->
+    <!-- END: Spacer --><!-- START: Divider (single-color) --><!-- data-desktop-only-background-color: the white shows beside the fixed
+         300px bar at desktop; below the breakpoint the bar stretches full
+         width (the same mobile stretch data-mobile-only-width declares) and
+         covers the section's every pixel (measured 2026-08-25). -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="divider-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div class="divider-block block" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">

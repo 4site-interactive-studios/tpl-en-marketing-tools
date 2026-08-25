@@ -121,8 +121,9 @@
     "date": "2026-08-25"
   },
   "block:Divider (single-color)": {
-    "version": 3,
-    "hash": "c0164a137942"
+    "version": 4,
+    "hash": "e7e8d9a0c65b",
+    "date": "2026-08-25"
   },
   "block:Divider (tri-color)": {
     "version": 3,
@@ -264,8 +265,8 @@
     "hash": "11b98fa8e8d5"
   },
   "block:Stat Row": {
-    "version": 10,
-    "hash": "dcc8fa887dbe",
+    "version": 11,
+    "hash": "4f3a7eaa938c",
     "date": "2026-08-25"
   },
   "block:Steps Block": {
@@ -304,8 +305,8 @@
     "hash": "663e87edfaa2"
   },
   "block:Video Block (inset)": {
-    "version": 22,
-    "hash": "1246756048fd",
+    "version": 23,
+    "hash": "46c99ce5f01f",
     "date": "2026-08-25"
   },
   "block:WYSIWYG Header": {

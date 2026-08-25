@@ -996,6 +996,14 @@ Known but NOT suppressed (documented trade-offs):
   out of five is a trap, not a control. Since 2026-08-21 the widen direction
   is also the DANGEROUS one, and is bounded independently by the unsafe-growth
   cap above: compressing a child that cannot compress is what wraps a row.
+- **Declared per-side opt-out** (2026-08-25, `data-no-padding-<side>` —
+  see the data-* contract): the removal channel for ONE side of a
+  shorthand proven dead at both viewports where no static guard reaches —
+  a px column group pins the gutter at 600px, a flush-mobile scope rule
+  zeroes it below the breakpoint, and no alternate arrangement can unpin
+  it. The side stays a literal px token; the other three keep their
+  Selects. Applied to Podcast Streaming Block and Signature Card (photo)
+  row 2 per the 2026-08-25 sweep.
 
 **Empirical oracle** (`window.__auditPadding()` in dev builds,
 src/components/paddingAudit.ts): renders every padding-family Select
@@ -1079,6 +1087,34 @@ because it is an honest ceiling for the ETA, not a prediction. Editing
 `PROBE_COPY` invalidates every stored row through
 `auditContextFingerprint` — a resume must never compare hashes taken under
 two different sentences.
+
+**A row whose frame offers an arrangement Select is re-swept under each
+alternate arrangement** (2026-08-25). The primary sweep renders every
+option against the DEFAULT of every other field, so a control pinned by
+the default arrangement's geometry read as dead even when an alternate —
+the per-100 collapse of "No Icon"/"No Arrow", where the right gutter IS
+live — revives it (the Steps / Feedback Poll shape; until this landed the
+check was authorial, and the 2026-08-25 sweep mis-called five such rows
+"dead controls"). Now, when a row measures inert at a viewport under
+defaults and its frame also offers an arrangement Select (`Layout` /
+`Image Position` / `Column Order`, matched by `ARRANGEMENT_LABEL_RE` on
+the same section string — a column-scoped "Column N Settings" Select never
+matches a row-level arrangement, a known limit), the runner renders one
+baseline per non-default arrangement (usually free: byte-identical to the
+arrangement row's own option cell, which the render cache already holds)
+and then the row's options nested inside it, option override last. The
+first pixel difference records the reviving arrangement in
+`arrangementLive[viewport]` and clears the inert verdict there: **inert
+means inert under EVERY offered arrangement**. `options[].identical` still
+means "vs. the default-arrangement baseline" — the follow-up writes only
+`arrangementLive`, which the check surfaces ("live at 600px only under
+the 'No Arrow' arrangement; inert under the default arrangement"). The
+sweep runs before the baseline re-verify so the determinism bracket spans
+every render; a failed sweep render downgrades the row to unproven; the
+sibling's option fragments join `rowFingerprint`, so editing an alternate
+invalidates exactly the rows it could revive (older stored payloads simply
+re-run those rows); `auditRenderCount` prices the full sweep as its honest
+ceiling even though it only fires on default-inert rows.
 
 Implementation: `src/core/inertAudit.ts`
 (classification + the runner — pure, vitest-covered against a scripted
@@ -1344,6 +1380,12 @@ byte-identical runs) hardened into policy (user-decided):
   mechanism has no codified explanation (today: every color-family removal,
   including the open `text_color`-on-background-image finding) are
   review-flagged and listed default-UNCHECKED in the Apply modal.
+- **Arrangement-dependent deadness is measured, never exempted**
+  (2026-08-25, user-decided over a fifth exemption): a control dead only
+  under the default arrangement is re-swept under each alternate (see the
+  audit section) and comes back LIVE with the reviving arrangement named,
+  so it never reaches the removal list at all. The exemption list stays at
+  four.
 
 Codified STATIC guards (generator-level, so they survive re-import; each
 suppression lands in `Block.infoNotes` at 'info' level):
@@ -1402,6 +1444,11 @@ because MJML puts a section/wrapper/column `css-class` on the outer
 - a FRAME's padding Selects consult the SCOPE map against the frame's own
   classes (its padding cell is nested inside its own classed div) — the
   Block Padding Left/Right preset included, which had never asked at all;
+  since 2026-08-25 the per-side Selects also ask it against the frame's
+  ANCESTOR frames' classes, because `.flush-mobile-capflush td` reaches a
+  nested COLUMN's padding cell exactly as it reaches the section's own —
+  missing that half left the Stat Row and Quiz 2x2 column paddings
+  unprefixed, the 2026-08-25 sweep's four mislabel findings;
 - a content element's INSETS consult the SCOPE map against its ANCESTOR
   frames' classes, plus the self map for a rule that names it directly —
   that is how `.flush-mobile-capflush td` reaches a caption cell whose
@@ -2769,6 +2816,22 @@ the importer whitelists all data-*-only MJML validator warnings
   3x1 run), so symmetric gutter changes move zero pixels at either
   viewport (proven by the inert-dropdown audit at the 64px-era cut; the
   centred-run argument is width-independent).
+- **`data-no-padding-<side>`** (valueless — `top`/`right`/`bottom`/`left`
+  — on the mj-section/mj-wrapper/mj-column frame that authors the
+  `padding` shorthand, 2026-08-25): suppresses exactly that side's
+  per-side padding Select. The side stays a literal px token in the
+  compiled shorthand; the other three sides are untouched, and the info
+  note names the flag. Honored in the generic per-side path only — the
+  symmetric preset has `data-no-width-toggle`, insets have
+  `data-inset-toggle`. This is the dead-at-both remedy for a single SIDE:
+  the trigger is a per-side padding proven inert at both viewports — a px
+  column group pins the gutter at 600px while a flush-mobile scope rule
+  zeroes it below the breakpoint — on a row with no alternate arrangement
+  to unpin it. Two applications: Podcast Streaming Block and Signature
+  Card (photo) row 2, both converted FROM a false
+  `data-mobile-only-padding-right` on 2026-08-25 (see that flag's entry).
+  Like every flag, the import-time flag audit strips-and-regenerates it:
+  on an element minting no such Select it is reported dead.
 - **`data-max-gutter="<px>"`** (VALUED, on mj-section/mj-wrapper,
   2026-08-25): declares the largest side gutter the frame's content can
   take. It min-composes with the measured cap (`declaredGutterCap` /
@@ -3201,9 +3264,15 @@ button and the heading can each be hidden (user decision 2026-08-20).
     breakpoint, so the frame's RIGHT gutter has nothing to move at 600px
     while the left one still shifts the whole left-packed block
     (`data-mobile-only-padding-right`, honored in the per-side Select
-    path since 2026-08-18). Two rows carry it: Podcast Streaming Block and
-    Signature Card (photo). Six more did until 2026-08-22 — see the
-    arrangement rule below.
+    path since 2026-08-18). No padding row carries it today. The last two
+    carriers — Podcast Streaming Block and Signature Card (photo) row 2 —
+    were measured dead at BOTH viewports by the 2026-08-25 sweep: their
+    sections also carry `flush-mobile-capflush`, whose scope rule zeroes
+    the right padding below the breakpoint with `!important`, so "live at
+    mobile" was a false claim that silenced the true CSS-inferred
+    "Desktop" prefix. They retired to `data-no-padding-right` per the
+    dead-at-both rule. Six more carried the flag until 2026-08-22 — see
+    the arrangement rule below.
 
     **Structural inertness only — copy-dependent inertness does not earn
     the flag** (user-visible decision, 2026-08-21). A control that moves
@@ -3231,11 +3300,16 @@ button and the heading can each be hidden (user decision 2026-08-20).
     under a label that says "Mobile". The six rows that offer an alternate
     lost the flag together — Icon Row, Podcast Episode Block, Steps Block and
     the three Feedback Poll answers — and their labels are now a plain
-    "Padding Right". The two that keep it have no alternate, so nothing can
-    unpin them. Note the audit will NOT catch a regression here: it renders
-    each Select against the DEFAULT of every other field, so the arrangement
-    is always "Left" while the padding is under test. The check is authorial —
-    when you add an alternate, drop the row's viewport-scoped padding flag.
+    "Padding Right". (The two with no alternate kept it until 2026-08-25,
+    when the sweep proved them dead at both viewports — see above — and
+    they retired to `data-no-padding-right`.) The audit MEASURES this
+    since 2026-08-25: a Select judged inert under the default of every
+    other field is re-swept with the row's arrangement Select at each
+    alternate value, so a control an arrangement revives reports live with
+    the reviving arrangement named, and a stale flag comes back as a FAIL
+    on the very next run. Still, when you add an alternate, drop the row's
+    viewport-scoped padding flag in the same change rather than waiting
+    for the audit to say so.
   - **an inset that only bites once the box shrinks** — a right-aligned
     line or a fixed-width image that clears its container at 600px and
     only meets it at 375px (`data-mobile-only-inset-right` on the
