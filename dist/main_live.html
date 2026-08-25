@@ -290,7 +290,7 @@
    The dark REPAINTS below stay here on purpose — they are design, fixed
    post-hoc by swapping this block. */
     /* body {
-  color: #000000;
+  color: #000;
   font-family: Tahoma, sans-serif;
   font-size: 18px;
 } */
@@ -310,7 +310,7 @@ li {
     h4,
     h5,
     h6 {
-      color: #000000;
+      color: #000;
       font-family: "Helvetica Neue", Arial, sans-serif;
     }
 
@@ -376,9 +376,26 @@ li {
    shape `.link-something a { color: X }` here becomes a pick on the next
    import (parseLinkHooks; conventions "Link Color"), so name new hooks
    deliberately — and keep them single-declaration or they stop being
-   options. */
+   options. Since 2026-08-25 the run spans the full brand palette plus White
+   and Black so the Select mirrors a text-color dropdown (user decision).
+   SHEET ORDER IS DROPDOWN ORDER. No .link-evergreen on purpose: the
+   Select's Default ('') already renders the bare `a` Evergreen and restores
+   pristine bytes — a duplicate hook would be a render-identical option for
+   the Inert Dropdown Audit to flag. The dark branches' `a { !important }`
+   forcing outranks every hook by design; near-white picks (Snow, Light
+   Grey, White) are invisible on white grounds — that is the palette, not a
+   bug. link-inverse/link-earth/link-accent keep their historical token
+   names: built emails carry them as saved picks. */
     .link-inverse a {
       color: #fff;
+    }
+
+    .link-snow a {
+      color: #f5faf1;
+    }
+
+    .link-moss a {
+      color: #cee4c5;
     }
 
     .link-earth a {
@@ -387,6 +404,26 @@ li {
 
     .link-accent a {
       color: #39b54a;
+    }
+
+    .link-grass a {
+      color: #8cc63f;
+    }
+
+    .link-sky a {
+      color: #5dd8d8;
+    }
+
+    .link-sun a {
+      color: #f7931e;
+    }
+
+    .link-light-grey a {
+      color: #fafafa;
+    }
+
+    .link-black a {
+      color: #000;
     }
 
     /* ProseMirror rebuilds an em element as a MARK from a fixed attribute set,
@@ -406,7 +443,7 @@ li {
     .step-num {
       display: inline-block;
       background-color: #39B54A;
-      color: #ffffff;
+      color: #fff;
       height: 20px;
       line-height: 20px;
       text-align: center;
@@ -447,11 +484,11 @@ li {
     }
 
     .question-response {
-      border: 1px solid #ffffff;
+      border: 1px solid #fff;
     }
 
     .question-response:hover {
-      background-color: #ffffff !important;
+      background-color: #fff !important;
       cursor: pointer;
     }
 
@@ -567,17 +604,15 @@ li {
         padding-right: 0 !important;
       }
 
-      .flush-mobile-capflush .wysiwyg {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-
-      /* An ICON is not a photo. The rule above deliberately lets images bleed to
-     the screen edge, which is right for a story card's photo and wrong for a
-     24px poll icon or a signature portrait — those sat hard against the edge
-     while their own copy sat at 16 (reported 2026-08-22). Marking an image
-     no-bleed opts it back into the copy's inset. Same (0,2,0) specificity as
-     the .wysiwyg restore, so it beats the (0,1,1) zeroing rule the same way. */
+      /* An ICON is not a photo. The zeroing rule above deliberately lets images
+     bleed to the screen edge, which is right for a story card's photo and
+     wrong for a 24px poll icon or a signature portrait — those sat hard
+     against the edge while their own copy sat at 16 (reported 2026-08-22).
+     Marking an image no-bleed opts it back into the copy's inset. The
+     .wysiwyg restore and the .no-bleed opt-in share ONE rule since
+     2026-08-25 (identical bodies; Gmail budget diet): both are (0,2,0), so
+     each beats the (0,1,1) zeroing rule exactly as before. */
+      .flush-mobile-capflush .wysiwyg,
       .flush-mobile-capflush .no-bleed {
         padding-left: 16px !important;
         padding-right: 16px !important;
@@ -735,6 +770,15 @@ li {
         padding-left: 32px !important;
         padding-right: 32px !important;
       }
+
+      /* table/td.mj-full-width-mobile width rules are MJML-emitted wherever a
+     fluid image exists — only the img height reset is authored, and it
+     lives here since 2026-08-25 (folded in from its own same-breakpoint
+     block: Gmail budget diet; the !important beats MJML's inline height
+     from any position). */
+      td.mj-full-width-mobile img {
+        height: auto !important;
+      }
     }
 
     /* dark mode styles */
@@ -751,7 +795,7 @@ li {
       [data-ogsc] .block,
       [data-ogsc] .block table[align=center],
       [data-ogsc] .spacer-block td {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       [data-ogsc] .image-block table[align=center],
@@ -761,11 +805,11 @@ li {
 
       [data-ogsc] .highlighted-text-column td[valign],
       [data-ogsc] .stat-row-column td[valign] {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       [data-ogsc] .social-link table {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       [data-ogsc] a {
@@ -790,38 +834,38 @@ li {
       [data-ogsc] .block div,
       [data-ogsc] .quote-block p,
       [data-ogsc] .footer-block p {
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       [data-ogsc] .email-body {
-        color: #ffffff !important;
-        background-color: #000000 !important;
+        color: #fff !important;
+        background-color: #000 !important;
       }
 
       [data-ogsc] .button td,
       [data-ogsc] .button a {
         background-color: #006837 !important;
         border-color: #006837 !important;
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       [data-ogsc] .two-line-cta a,
       [data-ogsc] .two-line-cta a span {
-        color: #000000 !important;
+        color: #000 !important;
       }
 
       [data-ogsc] .divider p {
-        border-color: #ffffff !important;
+        border-color: #fff !important;
       }
 
       [data-ogsc] .question-response {
-        background-color: #000000 !important;
-        border-color: #000000 !important;
-        color: #ffffff !important;
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
       }
 
       [data-ogsc] .question-response p a {
-        color: #ffffff !important;
+        color: #fff !important;
       }
     }
 
@@ -829,8 +873,8 @@ li {
 
       body,
       .email-body {
-        color: #ffffff !important;
-        background-color: #000000 !important;
+        color: #fff !important;
+        background-color: #000 !important;
       }
 
       a {
@@ -843,12 +887,12 @@ li {
       .wysiwyg h4,
       .wysiwyg h5,
       .wysiwyg h6 {
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       .quote-block p,
       .footer-block p {
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       /* table[align=center] = the section's outer table only (it carries the
@@ -858,7 +902,7 @@ li {
       .block,
       .block table[align=center],
       .spacer-block td {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       /* Background-photo heroes: the .block repaint above would paint an opaque
@@ -887,7 +931,7 @@ li {
      slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
       .highlighted-text-column td[valign],
       .stat-row-column td[valign] {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       /* Blocks force a black background above, but much of the catalog authors
@@ -905,29 +949,29 @@ li {
       /* mj-text compiles to a div carrying inline color — text authored without
      a paragraph/span wrapper is only reachable here */
       .block div {
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       .button td,
       .button a {
         background-color: #006837 !important;
         border-color: #006837 !important;
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
       /* Two-line pills keep their authored colored chips; black text stays
      readable on both chip colors where forced-white would fail on orange */
       .two-line-cta a,
       .two-line-cta a span {
-        color: #000000 !important;
+        color: #000 !important;
       }
 
       .social-link table {
-        background-color: #000000 !important;
+        background-color: #000 !important;
       }
 
       .divider p {
-        border-color: #ffffff !important;
+        border-color: #fff !important;
       }
 
       /* Tri-color divider: intentionally NOT adapted — its three brand-color
@@ -937,26 +981,19 @@ li {
      invisible-border behavior — the old #eee drew a visible outline around
      the Question Block on black (user decision 2026-08-19, EoA 8ryXNAL). */
       .question-response {
-        background-color: #000000 !important;
-        border-color: #000000 !important;
-        color: #ffffff !important;
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
       }
 
       .question-response p a {
-        color: #ffffff !important;
+        color: #fff !important;
       }
 
+      /* cursor:pointer rides in from the base :hover rule — the repaint only
+     owns the ground (budget diet 2026-08-25). */
       .question-response:hover {
-        background-color: #000000 !important;
-        cursor: pointer;
-      }
-    }
-
-    /* table/td.mj-full-width-mobile width rules are MJML-emitted wherever a
-   fluid image exists — only the img height reset is authored here */
-    @media only screen and (max-width:599px) {
-      td.mj-full-width-mobile img {
-        height: auto !important;
+        background-color: #000 !important;
       }
     }
   </style>
@@ -1070,7 +1107,7 @@ li {
     .overlay span,
     .overlay p,
     .overlay a {
-      color: #ffffff;
+      color: #fff;
     }
 
     /* Viewport fork: hide twice, reveal once, in this order. */
@@ -1287,7 +1324,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 32px 0;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
@@ -1838,7 +1875,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:16px 32px 0;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
                 <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:middle;width:268px;" ><![endif]-->
@@ -2822,7 +2859,7 @@ li {
                           <tbody>
                             <tr>
                               <td align="center" bgcolor="#006837" role="presentation" style="border:none;border-radius:100px;cursor:auto;mso-padding-alt:12px 16px;background:#006837;" valign="middle">
-                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> LEFT BUTTON </a>
+                                <a href="https://tpl.org" style="display:inline-block;background:#006837;color:#ffffff;font-family:Tahoma, sans-serif;font-size:18px;font-weight:700;line-height:22px;letter-spacing:1px;margin:0;text-decoration:none;text-transform:none;padding:12px 16px;mso-padding-alt:0px;border-radius:100px;" target="_blank"> SINGLE BUTTON </a>
                               </td>
                             </tr>
                           </tbody>
@@ -3006,8 +3043,8 @@ li {
                       <td align="left" class="button" style="font-size:0px;padding:0;word-break:break-word;">
                         <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;"><!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
                           <div class="cta-group" style="text-align:left;font-size:0;"><!--[if !mso]><!-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">LEFT</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
-                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">RIGHT</a></div>
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:16px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">FIRST BUTTON</a></div><!--[if mso]></td><td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
+                            <div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;padding:12px 16px;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">SECOND BUTTON</a></div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -5138,7 +5175,7 @@ li {
                   <tbody>
                     <tr>
                       <td style="font-size:0px;word-break:break-word;">
-                        <div style="height:16px;line-height:16px;">&#8202;</div>
+                        <div style="height:0px;line-height:0px;">&#8202;</div>
                       </td>
                     </tr>
                   </tbody>
@@ -7882,7 +7919,7 @@ li {
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#362229;background-color:#362229;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:32px;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:32px 32px 0;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">

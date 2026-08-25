@@ -624,23 +624,39 @@ between blocks.** On a block with no ground the two are visually identical, so
 the rhythm belongs outside; on a coloured or photo band they are not
 interchangeable at all.
 
-- **Padding Top defaults to 0 where the ground is invisible** — 4 blocks
-  (Logo Hero, CTA Hero (w/ image badge), Quote Block, Divider
-  (single-color)). The 18 blocks on a colour or photo ground KEEP theirs:
-  zeroing it puts the copy hard against the top edge of the band.
+- **Padding Top defaults to 0 where the ground is invisible** — 2 blocks
+  (Quote Block, Divider (single-color)). Logo Hero and CTA Hero (w/ image
+  badge) left this list on 2026-08-25 (user decision): both now author
+  `padding="16px 32px 0"`, so their Padding Top defaults Single. The blocks
+  on a colour or photo ground KEEP theirs: zeroing it puts the copy hard
+  against the top edge of the band.
 - **Padding Bottom moves OUT to the gap where the ground is invisible** —
   16 blocks, bottom padding to 0 and the 16px reappearing as the gap. Same
   rendering, but the space is now an inter-block control instead of an inset.
   Blocks WITH a ground keep their bottom padding inside the band, and gain the
   gap on top of it: the band still ends clear of its own copy, and no longer
   runs into the next block's ground.
-- **The gap defaults to Single/16px on every block except the two Footers**,
-  which author `height="0px"` — they are the bottom of the email, and space
-  below the unsubscribe line is dead. The default IS the authored height, so
-  this needs no flag; a `data-*` marker would be a second way to say what the
-  markup already says, which is what `findDeadFlags` exists to catch.
+- **The gap defaults to Single/16px on every block except the two Footers
+  and Question Block**, which author `height="0px"` — the Footers are the
+  bottom of the email, where space below the unsubscribe line is dead, and
+  Question Block defaults to None by user decision (2026-08-25; its rows
+  stack, so the inter-row rhythm belongs to the editor). The default IS the
+  authored height, so this needs no flag; a `data-*` marker would be a
+  second way to say what the markup already says, which is what
+  `findDeadFlags` exists to catch. One bottom-padding exception rides along:
+  **Footer (w/ image, brown)** authors `padding="32px 32px 0"` (user
+  decision 2026-08-25 — the 32px brown apron under the links read as
+  unremovable space in EN), while its snow twin keeps `padding="32px"`.
+- **The gap's panel header reads "Bottom Spacer"** (`└─ Bottom Spacer` in a
+  multi-band block; user decision 2026-08-25). Only the section STRING
+  moves: the field label stays bare `Height` (the own-group rule keys on
+  the component kind) and the merge tag stays `spacer_height` — names never
+  read the section string, so exports are byte-stable through the rename.
+  Decorative bar spacers (the tri-color divider's) keep their `Spacer N`
+  family sections.
 - The standalone **Spacer** block's own section is its gap, so it does not get
-  a second one.
+  a second one — and it keeps the header **Spacer** (its gap IS the block;
+  `bandCount === 0` is the discriminator in `resolveSection`).
 
 Two blocks still have no Padding Top/Bottom: **Spacer** and **Divider
 (tri-color)**. Both are spacer-only sections, where a padding control would be
@@ -840,7 +856,13 @@ Two notes from the 64px era's mobile work still bind:
 ## Link Color — one Select recolors a block's links (2026-08-24)
 
 Every block with at least one `mj-text` gets a **Link Color** Select (merge
-tag `link_color`, block-level section). Its value is a CLASS TOKEN spliced as
+tag `link_color`). Its section follows what it governs (user decision
+2026-08-25): **block-level when the shared tag reaches 2+ logical texts;
+homed in the text's own section when it reaches exactly one** — an
+alt-arrangement copy is the same logical text and does not count, and a
+block whose OTHER texts are all takeovers can leave the shared Select
+governing one text (the brown footer's shape). The merge-tag name is
+`link_color` either way. Its value is a CLASS TOKEN spliced as
 a zero-width insertion before the closing quote of every text carrier's
 compiled `class` attribute — byte-identical at every site, so one shared
 Replacement covers them all (the `data-link-group` sharing rule), and the
@@ -854,7 +876,15 @@ at send, Outlook included.
   becomes an option; the bare `a { color: X }` rule labels the Default.
   Labels come from the brand palette reverse lookup (plus White/Black for the
   two common unnamed values). Multi-declaration rules (`.footer-cta a`) and
-  rules inside @media (the dark forcing) are never options.
+  rules inside @media (the dark forcing) are never options. Since 2026-08-25
+  TPL authors one hook per brand-palette colour plus White and Black (sheet
+  order = dropdown order; user decision: the Select mirrors a text-colour
+  dropdown), with NO `.link-evergreen` — the Default already renders the
+  bare-`a` Evergreen and restores pristine bytes, so a hook there would be a
+  render-identical duplicate for the Inert Dropdown Audit to flag. Dark
+  forcing still outranks every pick, and the near-white options (Snow,
+  Light Grey, White) are invisible on white grounds — that is the palette,
+  not a bug.
 - **Authored hooks are TAKEN OVER** (user decision 2026-08-24): an `mj-text`
   whose `css-class` already carries a hook token is excluded from the shared
   tag and mints its own per-element Link Color Select whose default is the
@@ -950,7 +980,7 @@ direction-flip skips.
 
 Related readability rule: all four padding sides share ONE field-order
 rank, so two frames' paddings list contiguously (Block Top/Bottom, then
-Column Top/Right/Bottom/Left) instead of interleaving side-by-side.
+Column Top/Bottom/Left/Right) instead of interleaving side-by-side.
 
 Known but NOT suppressed (documented trade-offs):
 
@@ -964,14 +994,6 @@ Known but NOT suppressed (documented trade-offs):
   out of five is a trap, not a control. Since 2026-08-21 the widen direction
   is also the DANGEROUS one, and is bounded independently by the unsafe-growth
   cap above: compressing a child that cannot compress is what wraps a row.
-- **Declared per-side opt-out** (2026-08-25, `data-no-padding-<side>` —
-  see the data-* contract): the removal channel for ONE side of a
-  shorthand proven dead at both viewports where no static guard reaches —
-  a px column group pins the gutter at 600px, a flush-mobile scope rule
-  zeroes it below the breakpoint, and no alternate arrangement can unpin
-  it. The side stays a literal px token; the other three keep their
-  Selects. Applied to Podcast Streaming Block and Signature Card (photo)
-  row 2 per the 2026-08-25 sweep.
 
 **Empirical oracle** (`window.__auditPadding()` in dev builds,
 src/components/paddingAudit.ts): renders every padding-family Select
@@ -1056,34 +1078,6 @@ because it is an honest ceiling for the ETA, not a prediction. Editing
 `auditContextFingerprint` — a resume must never compare hashes taken under
 two different sentences.
 
-**A row whose frame offers an arrangement Select is re-swept under each
-alternate arrangement** (2026-08-25). The primary sweep renders every
-option against the DEFAULT of every other field, so a control pinned by
-the default arrangement's geometry read as dead even when an alternate —
-the per-100 collapse of "No Icon"/"No Arrow", where the right gutter IS
-live — revives it (the Steps / Feedback Poll shape; until this landed the
-check was authorial, and the 2026-08-25 sweep mis-called five such rows
-"dead controls"). Now, when a row measures inert at a viewport under
-defaults and its frame also offers an arrangement Select (`Layout` /
-`Image Position` / `Column Order`, matched by `ARRANGEMENT_LABEL_RE` on
-the same section string — a column-scoped "Column N Settings" Select never
-matches a row-level arrangement, a known limit), the runner renders one
-baseline per non-default arrangement (usually free: byte-identical to the
-arrangement row's own option cell, which the render cache already holds)
-and then the row's options nested inside it, option override last. The
-first pixel difference records the reviving arrangement in
-`arrangementLive[viewport]` and clears the inert verdict there: **inert
-means inert under EVERY offered arrangement**. `options[].identical` still
-means "vs. the default-arrangement baseline" — the follow-up writes only
-`arrangementLive`, which the check surfaces ("live at 600px only under
-the 'No Arrow' arrangement; inert under the default arrangement"). The
-sweep runs before the baseline re-verify so the determinism bracket spans
-every render; a failed sweep render downgrades the row to unproven; the
-sibling's option fragments join `rowFingerprint`, so editing an alternate
-invalidates exactly the rows it could revive (older stored payloads simply
-re-run those rows); `auditRenderCount` prices the full sweep as its honest
-ceiling even though it only fires on default-inert rows.
-
 Implementation: `src/core/inertAudit.ts`
 (classification + the runner — pure, vitest-covered against a scripted
 fake engine), `src/components/inertAuditRender.ts` (iframe pool →
@@ -1159,19 +1153,21 @@ Determinism contract — what makes the matrix trustworthy:
 Three report downloads, strictly nested — **full** ⊇ **Findings Only** ⊇
 **Failed Only** — each on its own filename so they can sit side by side.
 Findings Only is everything not fully live (dead options, unproven) plus
-anything the checks failed. **Failed Only is narrower than "every FAIL": it
-is the fields dead at BOTH viewports that nothing excuses** (user decision
-2026-08-19) — the removal candidates. It therefore drops three things
-Findings keeps: a field dead at only ONE viewport whose label already says
-so (working as designed), a mislabelled-but-working control, and an unproven
-row (not proven dead is not dead). It also drops the deadness the audit
+anything the checks failed. **Failed Only is every FAIL** (user decision
+2026-08-25, superseding 2026-08-19's dead-at-both-only definition —
+mislabels and unprovens are failures too, and the failure export must
+capture them): fields dead at BOTH viewports that nothing excuses (the
+removal candidates), mislabelled controls, unproven renders, and Selects
+with nothing to choose. What it drops from Findings is the PASSING
+findings: a field dead at only ONE viewport whose label already says so
+(working as designed), a partially-inert row, and the deadness the audit
 expects and PASSES — link toggles, which strip only an anchor wrapper and
 move zero pixels; a text colour under a background image; a Link Color
 hook on copy with no hook-eligible link to recolor — because an
 actionable list must not carry known-fine rows. Any filtered report states
 its scope and its share of the total in the header, so a short file is never
 mistaken for the whole audit. Scope selection is `selectReportScope` /
-`isDeadAtBothViewports` in `src/core/inertAuditReport.ts`, vitest-covered
+`isFailedRow` in `src/core/inertAuditReport.ts`, vitest-covered
 including the nesting property.
 The **Speed Test** button turns that claim into a measurement instead of a
 promise. It runs the same cold "0 → 100 rows" scope once per `Parallel`
@@ -1346,12 +1342,6 @@ byte-identical runs) hardened into policy (user-decided):
   mechanism has no codified explanation (today: every color-family removal,
   including the open `text_color`-on-background-image finding) are
   review-flagged and listed default-UNCHECKED in the Apply modal.
-- **Arrangement-dependent deadness is measured, never exempted**
-  (2026-08-25, user-decided over a fifth exemption): a control dead only
-  under the default arrangement is re-swept under each alternate (see the
-  audit section) and comes back LIVE with the reviving arrangement named,
-  so it never reaches the removal list at all. The exemption list stays at
-  four.
 
 Codified STATIC guards (generator-level, so they survive re-import; each
 suppression lands in `Block.infoNotes` at 'info' level):
@@ -1410,11 +1400,6 @@ because MJML puts a section/wrapper/column `css-class` on the outer
 - a FRAME's padding Selects consult the SCOPE map against the frame's own
   classes (its padding cell is nested inside its own classed div) — the
   Block Padding Left/Right preset included, which had never asked at all;
-  since 2026-08-25 the per-side Selects also ask it against the frame's
-  ANCESTOR frames' classes, because `.flush-mobile-capflush td` reaches a
-  nested COLUMN's padding cell exactly as it reaches the section's own —
-  missing that half left the Stat Row and Quiz 2x2 column paddings
-  unprefixed, the 2026-08-25 sweep's four mislabel findings;
 - a content element's INSETS consult the SCOPE map against its ANCESTOR
   frames' classes, plus the self map for a rule that names it directly —
   that is how `.flush-mobile-capflush td` reaches a caption cell whose
@@ -1599,7 +1584,9 @@ the bottom and split the dark URL from its light twin). The canonical rank
    colors · Border Radius · Font Size · Letter Spacing · Line Height
 4. **Dimensions** — Width in Pixels / button Width · Height
 5. **Position** — Alignment · Image Position / Column Order / Direction
-6. **Spacing** — Spacing Below · Padding Top/Right/Bottom/Left · Block
+6. **Spacing** — Spacing Below · Padding Top/Bottom/Left/Right (the four
+   sides emit in that order since 2026-08-25, user decision; `SIDE_KEYS`
+   itself stays CSS T/R/B/L for the shorthand reconstruction) · Block
    Padding Left/Right (the width preset is a frame control, so it sits
    with padding)
 
@@ -2780,22 +2767,6 @@ the importer whitelists all data-*-only MJML validator warnings
   3x1 run), so symmetric gutter changes move zero pixels at either
   viewport (proven by the inert-dropdown audit at the 64px-era cut; the
   centred-run argument is width-independent).
-- **`data-no-padding-<side>`** (valueless — `top`/`right`/`bottom`/`left`
-  — on the mj-section/mj-wrapper/mj-column frame that authors the
-  `padding` shorthand, 2026-08-25): suppresses exactly that side's
-  per-side padding Select. The side stays a literal px token in the
-  compiled shorthand; the other three sides are untouched, and the info
-  note names the flag. Honored in the generic per-side path only — the
-  symmetric preset has `data-no-width-toggle`, insets have
-  `data-inset-toggle`. This is the dead-at-both remedy for a single SIDE:
-  the trigger is a per-side padding proven inert at both viewports — a px
-  column group pins the gutter at 600px while a flush-mobile scope rule
-  zeroes it below the breakpoint — on a row with no alternate arrangement
-  to unpin it. Two applications: Podcast Streaming Block and Signature
-  Card (photo) row 2, both converted FROM a false
-  `data-mobile-only-padding-right` on 2026-08-25 (see that flag's entry).
-  Like every flag, the import-time flag audit strips-and-regenerates it:
-  on an element minting no such Select it is reported dead.
 - **`data-max-gutter="<px>"`** (VALUED, on mj-section/mj-wrapper,
   2026-08-25): declares the largest side gutter the frame's content can
   take. It min-composes with the measured cap (`declaredGutterCap` /
@@ -3157,8 +3128,14 @@ button and the heading can each be hidden (user decision 2026-08-20).
   occurrence search, never into `regionMap` (`memberSpan` takes min/max across
   an instance's regions, which across two sections would swallow everything
   between them). A primary whose columns sit directly in the section rather
-  than in an `mj-group` is rejected — there is no single contiguous region to
-  substitute. An element the alternate drops loses its Display toggle, which
+  than in an `mj-group` swaps its whole SECTION ELEMENT instead — the same
+  region its Left/Right flip already uses — and the alternate's fragment is
+  then ITS whole section element (fixed 2026-08-25; this shape was rejected
+  until then, which is what shipped the Icon Row duplicate: the row lost its
+  mj-group on 2026-08-22 so mobile could stack, the fold declined with only
+  an info note, and the unpaired alternate rendered raw under the primary in
+  every EN build. The `compiled-icon-row.json` fixture now carries the
+  ungrouped shape and pins the three-option fold). An element the alternate drops loses its Display toggle, which
   would only leave an empty column behind — but its OTHER fields stay: an
   image's URL, Dark URL, Alt Text and Width remain editable and simply have
   nothing to act on while the alternate is selected. That is deliberate (the
@@ -3222,15 +3199,9 @@ button and the heading can each be hidden (user decision 2026-08-20).
     breakpoint, so the frame's RIGHT gutter has nothing to move at 600px
     while the left one still shifts the whole left-packed block
     (`data-mobile-only-padding-right`, honored in the per-side Select
-    path since 2026-08-18). No padding row carries it today. The last two
-    carriers — Podcast Streaming Block and Signature Card (photo) row 2 —
-    were measured dead at BOTH viewports by the 2026-08-25 sweep: their
-    sections also carry `flush-mobile-capflush`, whose scope rule zeroes
-    the right padding below the breakpoint with `!important`, so "live at
-    mobile" was a false claim that silenced the true CSS-inferred
-    "Desktop" prefix. They retired to `data-no-padding-right` per the
-    dead-at-both rule. Six more carried the flag until 2026-08-22 — see
-    the arrangement rule below.
+    path since 2026-08-18). Two rows carry it: Podcast Streaming Block and
+    Signature Card (photo). Six more did until 2026-08-22 — see the
+    arrangement rule below.
 
     **Structural inertness only — copy-dependent inertness does not earn
     the flag** (user-visible decision, 2026-08-21). A control that moves
@@ -3258,16 +3229,11 @@ button and the heading can each be hidden (user decision 2026-08-20).
     under a label that says "Mobile". The six rows that offer an alternate
     lost the flag together — Icon Row, Podcast Episode Block, Steps Block and
     the three Feedback Poll answers — and their labels are now a plain
-    "Padding Right". (The two with no alternate kept it until 2026-08-25,
-    when the sweep proved them dead at both viewports — see above — and
-    they retired to `data-no-padding-right`.) The audit MEASURES this
-    since 2026-08-25: a Select judged inert under the default of every
-    other field is re-swept with the row's arrangement Select at each
-    alternate value, so a control an arrangement revives reports live with
-    the reviving arrangement named, and a stale flag comes back as a FAIL
-    on the very next run. Still, when you add an alternate, drop the row's
-    viewport-scoped padding flag in the same change rather than waiting
-    for the audit to say so.
+    "Padding Right". The two that keep it have no alternate, so nothing can
+    unpin them. Note the audit will NOT catch a regression here: it renders
+    each Select against the DEFAULT of every other field, so the arrangement
+    is always "Left" while the padding is under test. The check is authorial —
+    when you add an alternate, drop the row's viewport-scoped padding flag.
   - **an inset that only bites once the box shrinks** — a right-aligned
     line or a fixed-width image that clears its container at 600px and
     only meets it at 375px (`data-mobile-only-inset-right` on the

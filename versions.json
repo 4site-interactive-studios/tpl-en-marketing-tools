@@ -10,8 +10,8 @@
     "date": "2026-08-25"
   },
   "block:CTA Button": {
-    "version": 13,
-    "hash": "a2475a8e7511",
+    "version": 14,
+    "hash": "20aaf636d6b3",
     "date": "2026-08-25"
   },
   "block:CTA Button (centered, outline)": {
@@ -25,8 +25,8 @@
     "date": "2026-08-25"
   },
   "block:CTA Buttons 2x1": {
-    "version": 15,
-    "hash": "f023fc95ea1b",
+    "version": 16,
+    "hash": "ce2987469f1e",
     "date": "2026-08-25"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
@@ -66,8 +66,9 @@
     "hash": "2a64aeaac7bd"
   },
   "block:CTA Hero (w/ image badge)": {
-    "version": 5,
-    "hash": "cf9c6136d88f"
+    "version": 6,
+    "hash": "cd67a23087a3",
+    "date": "2026-08-25"
   },
   "block:CTA Text Block": {
     "version": 11,
@@ -138,8 +139,8 @@
     "date": "2026-08-25"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 8,
-    "hash": "bda8b4766b09",
+    "version": 9,
+    "hash": "cb72113c7c10",
     "date": "2026-08-25"
   },
   "block:Footer (w/ image, snow)": {
@@ -179,8 +180,9 @@
     "date": "2026-08-25"
   },
   "block:Logo Hero": {
-    "version": 4,
-    "hash": "30859c298c31"
+    "version": 5,
+    "hash": "a7f4756a8ff6",
+    "date": "2026-08-25"
   },
   "block:Logo Hero (w/ image)": {
     "version": 6,
@@ -219,8 +221,8 @@
     "date": "2026-08-25"
   },
   "block:Question Block": {
-    "version": 17,
-    "hash": "c6fe4ca75bf0",
+    "version": 18,
+    "hash": "7ad130136bc1",
     "date": "2026-08-25"
   },
   "block:Quiz Block (2x2 buttons)": {
@@ -317,13 +319,13 @@
     "date": "2026-08-25"
   },
   "email-template": {
-    "version": 59,
-    "hash": "68f6c560e201",
+    "version": 60,
+    "hash": "5e86d9185abf",
     "date": "2026-08-25"
   },
   "head-css": {
-    "version": 48,
-    "hash": "3108f808c376",
+    "version": 49,
+    "hash": "67a7a4938a1d",
     "date": "2026-08-25"
   },
   "partial:debug-toolbar": {
