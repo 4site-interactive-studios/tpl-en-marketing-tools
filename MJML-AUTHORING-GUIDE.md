@@ -366,13 +366,16 @@ Measured on every white-over-photo text in the catalog (CTA Hero w/
 heading, both Photo Banners, Progress Meter, Countdown incl. its
 numerals), while copy on explicit `bgcolor` grounds transformed legibly.
 The defense would be scrims (dark bands behind each line — Word respects
-an explicit background), but the design ruling (2026-08-24, reaffirming
-2026-08-21) is raw text over the photo, no scrims: the flip is a
-DOCUMENTED, ACCEPTED limitation for the Outlook-desktop-dark audience, and
-it belongs in client-facing docs next to the other accepted trade-offs —
-not in a redesign. Author accordingly: do not pin white inline as a "fix"
-(it is what gets flipped), and do not add per-block scrims without a new
-ruling.
+an explicit background), and the standing ruling (2026-08-24, stated
+repeatedly and reaffirming 2026-08-21) forbids them: the template NEVER
+puts a solid background behind text that sits over an image. Text over an
+image is an accessibility/contrast risk the CLIENT decides to take for
+themselves, block by block and image by image — the template's job is to
+ship the raw text-over-photo layout and document the risk in the
+client-facing docs, not to redesign it away. Author accordingly: no
+scrims, no panels, no slabs behind over-photo copy (the 2026-08-24 QC
+round REMOVED the one that existed), and do not pin white inline as a
+"fix" — inline white is exactly what Word's dark mode flips.
 
 **First, a measured mercy (2026-08-18, EoA aafUJU…, all five dark-capable
 renders):** an authored light ground with NO dark hook at all — an
