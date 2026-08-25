@@ -2458,7 +2458,7 @@ block and no descendant selector can reach. Both halves are load-bearing:
 carrying a pseudo-class the engine cannot parse is discarded WHOLE — a client
 understanding neither drops the rule rather than half-applying it.
 
-Every band SPAN carries `aria-hidden="true"` (the two block bands; the
+Every band SPAN carries `aria-hidden="true"` (both band families; the
 template band is a pseudo-element and has no node to annotate). The band is
 editor chrome, never
 content; `display:none` already skips it in a delivered email, so this is the
@@ -2483,10 +2483,75 @@ did not). `STYLES_BLOCK_PLACEHOLDER` deliberately keeps the OLD text — it is
 the legacy shape the EN-import healer recognises, and rewriting it would
 misdescribe blocks already living in EN.
 
-Bands in use: the Template Styles block (`#head-styles`, head-css version) and
-the RAW HTML utility block (`#raw-html`) — both spans the app injects into the
-block's own content at export — plus the TEMPLATE itself, which works
-differently.
+Always-on bands in use: the Template Styles block (`#head-styles`, head-css
+version), the RAW HTML utility block (`#raw-html`) and the Debug Helper
+utility block (`#debug-helper`) — all spans the app injects into the block's
+own content at export — plus the TEMPLATE itself, which works differently.
+Every OTHER block carries a band from the hidden-by-default family below.
+
+**Per-block bands & the Debug Helper** (2026-08-25, user request). Every
+exported content block carries a name + version band — "CTA Button v14",
+versions from the source repo's `versions.json` `block:<Leaf Name>` entities
+— that is hidden even in EN's builder until an editor adds the **"Utility —
+Debug Helper"** block to the email. That block's content is the reveal
+stylesheet; add it to inspect which block revisions a draft carries, remove
+it and the bands hide again. `injectBlockBands` (`headStyles.ts`) prepends
+each band to the block's html in `createProject` — after replacement
+generation (region mapping and the dead-flag fingerprint need the pristine
+html) and before the category prepend (labels key on base leaf names, the
+`block:` manifest keys) — and `scripts/lib/catalog.mts` mirrors the call.
+Blocks without a manifest entity (pasted sources) get an unversioned label;
+`importExclude` blocks get no band. The version is BAKED at import, so a
+band names the revision of that block instance, not whatever the catalog
+currently holds — a stale block in an old draft shows its own vintage.
+
+This second band family deviates from the one-gate/one-class shape above on
+every axis, each deliberately:
+
+- **Its own class, `marketing-tools-block-band`** — never
+  `marketing-tools-banner`, which the shared layout rule force-reveals with
+  `display:flex !important` whenever the builder gate matches. Nothing
+  anywhere targets the new class except the Debug Helper's stylesheet, so
+  the span's inline `display:none` holds everywhere else.
+- **An attribute hook, `data-band="<slug>"`, never an id** — content blocks
+  repeat within one email; `#head-styles`/`#raw-html`/`#debug-helper` keep
+  ids only because those blocks occur once. The slug is `thumbnailSlug` of
+  the base name — one derived-name convention, whose catalog-wide
+  uniqueness the thumbnail filenames already require and qc-validate now
+  checks (duplicate band slugs would cross-label two blocks).
+- **The label rule is GATELESS** (user decision 2026-08-25):
+  `.marketing-tools-block-band[data-band="x"]:before{ content: "X vN"; }`.
+  Hiding is the span's inline `display:none`, not the rule's job — a
+  `::before` of a `display:none` element can never paint, and the only
+  reveal path carries the gate itself. The failure would need a client that
+  applies head CSS with attribute selectors and `::before` yet ignores
+  inline `display:none`; the one engine that ignores `display:none`
+  (Outlook's Word engine) supports no `::before`. The bytes are why: EN
+  hoists every included block's `<style>` into the delivered head, so each
+  label rule costs delivered head bytes per block INSTANCE (~117 at EN's
+  ~1.3× reprint; the gate would add ~55 more each, ~1.75KB vs ~1.2KB on a
+  ten-block email against the Gmail budget).
+
+The Debug Helper itself is synthetic like RAW HTML
+(`debugHelperBlockExport`), appended to every block export, default-checked.
+Its content: its OWN always-on band — label "Debug Helper — shows block
+versions; remove before send"; always-on because its real content is
+invisible CSS, in-flow like `#raw-html`, never `position:absolute` — plus a
+`<style data-en-tools-band>` carrying the one reveal rule:
+`:is(body):has(.en__emailbuilder__block) .marketing-tools-block-band{
+display:flex !important; … }`, the layout copied from the shared band rule
+minus `top`. Unversioned: no manifest entity exists for app-generated
+content, and the EN name stays stable so re-uploads line up. Fail-safe if
+left in a send — the gate never matches outside the builder, and the hidden
+spans stay hidden — but the ~0.6KB of hoisted head bytes is reason enough
+for the label's reminder. Its reveal rule duplicates the band sheet's
+`max-width: 600px` email-width literal (`BLOCK_BAND_MAX_WIDTH_PX`);
+check-catalog's width guard cannot see app code, so keep the two in step by
+hand when the email width ever changes.
+
+Old drafts predating this feature contain neither the spans nor the helper —
+adding the Debug Helper to one simply reveals nothing; a mixed draft shows
+bands only on blocks generated since.
 
 **`position: absolute` is the CSS Styles Block band's alone** (user decision
 2026-08-21). It sat in the shared `.marketing-tools-banner` rule until then,

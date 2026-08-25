@@ -304,7 +304,11 @@ day, same account, same client matrix:
   The block carries a live Gmail budget meter (16,384 hard / 14,000
   target) that itemizes EN-hoisted block styles. Budget the DELIVERED
   size, not the authored size — authored comments and formatting are
-  free.
+  free. Since 2026-08-25 the importer also injects a hidden name +
+  version band into every content block (revealed only by the Debug
+  Helper utility block; conventions "Per-block bands"); each block
+  instance's one-line label rule is hoisted with the block's styles and
+  costs ~117 delivered head bytes, already counted by the meter.
 - **EN ingests a stylesheet once per `<style>` wrapper — carry exactly
   one** (measured 2026-08-18, during the 2026-08-15→18 era when the
   head CSS rode a CSS-type field). EN wraps a CSS-type replacement
@@ -1471,6 +1475,7 @@ the one field (§4: one value, every carrier).
 | `data-inset-toggle` | opt-in on a spacing component (mj-text/image/button/divider): mint the Inset Right/Left Selects AND Spacing Above even at 0, and allow an on-scale top padding. The caption pacing pattern: author the gap on the caption's TOP (`padding="4px 0 0"` on the caption class scale's Quarter step, image bottom 0) so hiding the caption removes its gap too; caption-LIKE texts without `mj-class="caption"` (signature names) author `8px 0 0` on the main scale. The closed scale still applies, and a flag on a column's only member is inert (sole-member consolidation) — the dead-flag audit reports it |
 | `data-visible-duplicate` | on a block whose structure deliberately duplicates its dedup-group anchor but must stay importable (an obvious-name alias, a separately-shipped layout variant). Exempts the block from the build's unflagged-duplicate WARN; a build that dedup-groups blocks needs an equivalent escape hatch or every deliberate twin fights the gate. Misuse (on a group anchor, or combined with a full exclusion) should warn. Pair with a dated caveat comment |
 | `data-probe` | on a probe-instrument block (a canary): its colors are measurement signals, not design — the importer excludes the flagged region from the brand-color census and the color-usage audit, so signal hexes never pollute color dropdowns. Probe bars should still use colors the template already carries (§ probe colors); the flag keeps even those from counting as design usage |
+| `data-band` | **never author this** — the importer injects it at import as the label hook of each block's hidden name + version band (revealed by the Debug Helper utility block). It is listed here so nobody "adopts" the name for something else; an authored copy would collide with the injected one |
 
 **Three rules for all of them.** Apart from the valued trio
 (`data-folder`, `data-category-short`, `data-link-group`) they are
@@ -1578,7 +1583,9 @@ can prop each other up, and the report says so when they do.
   block instead of the shell. If the importer then drops that block, the
   chrome disappears with it, silently. Author preheaders, builder-band spans
   and any other template-level markup directly under `<mj-body>`, above every
-  include.
+  include. (The per-BLOCK name + version bands are not yours to author at
+  all — the importer injects them into each block at import, hidden until
+  an editor adds the Debug Helper utility block.)
 - **Nothing survives BETWEEN two blocks' comment pairs.** Segmentation tiles
   the body byte-exactly: whatever sits between one block's `END` and the next
   block's `START` — markup, a `data-import-exclude` wrapper, even an
