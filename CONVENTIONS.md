@@ -1123,19 +1123,21 @@ Determinism contract — what makes the matrix trustworthy:
 Three report downloads, strictly nested — **full** ⊇ **Findings Only** ⊇
 **Failed Only** — each on its own filename so they can sit side by side.
 Findings Only is everything not fully live (dead options, unproven) plus
-anything the checks failed. **Failed Only is narrower than "every FAIL": it
-is the fields dead at BOTH viewports that nothing excuses** (user decision
-2026-08-19) — the removal candidates. It therefore drops three things
-Findings keeps: a field dead at only ONE viewport whose label already says
-so (working as designed), a mislabelled-but-working control, and an unproven
-row (not proven dead is not dead). It also drops the deadness the audit
+anything the checks failed. **Failed Only is every FAIL** (user decision
+2026-08-25, superseding 2026-08-19's dead-at-both-only definition —
+mislabels and unprovens are failures too, and the failure export must
+capture them): fields dead at BOTH viewports that nothing excuses (the
+removal candidates), mislabelled controls, unproven renders, and Selects
+with nothing to choose. What it drops from Findings is the PASSING
+findings: a field dead at only ONE viewport whose label already says so
+(working as designed), a partially-inert row, and the deadness the audit
 expects and PASSES — link toggles, which strip only an anchor wrapper and
 move zero pixels; a text colour under a background image; a Link Color
 hook on copy with no hook-eligible link to recolor — because an
 actionable list must not carry known-fine rows. Any filtered report states
 its scope and its share of the total in the header, so a short file is never
 mistaken for the whole audit. Scope selection is `selectReportScope` /
-`isDeadAtBothViewports` in `src/core/inertAuditReport.ts`, vitest-covered
+`isFailedRow` in `src/core/inertAuditReport.ts`, vitest-covered
 including the nesting property.
 The **Speed Test** button turns that claim into a measurement instead of a
 promise. It runs the same cold "0 → 100 rows" scope once per `Parallel`
