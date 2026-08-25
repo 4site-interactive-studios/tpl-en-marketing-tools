@@ -1260,29 +1260,42 @@ scale when you want editors to adjust them; author them off-scale to pin
 them. Remember the offsets add: total left offset = the block's gutter
 plus the content inset.
 
-### Author the default gutter at the TOP of the ladder (2026-08-21)
+### Choose where the default gutter sits on the ladder (2026-08-24)
 
 Pick one **content baseline** — the x-position where copy starts — and
 author every body block to it, so a reader's eye follows one line down the
-email. Then author that gutter as the LARGEST preset your template
-declares, not a middle one.
+email. Then choose the authored gutter's position on the declared ladder
+deliberately, because the position is a trade-off, not a free choice.
 
-The reason is mechanical. The importer withholds any gutter option that
-would break the frozen geometry inside the frame — a fixed-px column, or an
-image sized to fill its column, cannot shrink to follow a growing gutter, so
-past a point the row wraps. Authoring at the top of the ladder means every
-remaining option leaves MORE room than the authored one, so **nothing can be
-withheld**: the editor gets the full scale on both sides instead of a
-dropdown that silently stops halfway. Author in the middle and you ship a
-control whose upper half either disappears or, where the importer's static
-scan cannot see the frozen thing (fixed-px pills inside an `mj-text`, say),
-breaks the layout.
+The mechanics: the importer withholds any gutter option that would break
+the frozen geometry inside the frame — a fixed-px column, or an image
+sized to fill its column, cannot shrink to follow a growing gutter, so
+past a point the row wraps.
+
+- **Author at the TOP of the ladder** and every remaining option leaves
+  MORE room than the authored one, so **nothing can be withheld**: the
+  editor gets the full scale on both sides. The cost is the narrowest
+  content column the template offers, and the mobile bill (below).
+- **Author mid-ladder** and you buy a wider default column, paying in
+  withheld growth: every frame whose content is cut to fill the new box
+  caps at the authored step, and its Padding Selects carry
+  "capped — option(s) withheld" notes. Where the importer's static scan
+  cannot see the frozen thing (fixed-px pills inside an `mj-text`, say),
+  the upper options do not disappear — they break the layout. Suppress
+  those controls (`data-no-width-toggle`) where the frame holds nothing
+  else, and document the rest.
+
+TPL has held both positions: top of the ladder (Quadruple/64, a 472px
+column) from 2026-08-21, back to mid-ladder (Double/32, a 536px column)
+on 2026-08-24 — the wider default column won.
 
 Three kinds of measurement do NOT follow a gutter change, and have to be
 re-cut whenever the baseline moves:
 
 - **Fixed-px rails inside an `mj-group`** — rail + text must equal the new
-  frame (120+416 in a 536 frame becomes 120+352 in a 472 one). Re-target
+  frame (120+416 in a 536 frame becomes 120+352 in a 472 one), and re-cut
+  from the CURRENT tree, not from a ledger of the last move — rails drift
+  between moves. Re-target
   onto a width another block already uses where you can: each distinct
   `.mj-column-px-N` costs ~174 delivered bytes against the Gmail budget
   (§2b-bis), and it is emitted twice.
@@ -1291,11 +1304,16 @@ re-cut whenever the baseline moves:
   in a comment beside them; it is the only thing that makes the next move
   cheap.
 - **Images with an explicit px width inside a percentage column** — a 50%
-  column of a 472px frame is 236px, not 268.
+  column of a 472px frame is 236px, not 268. If the tiles keep a fixed
+  inter-tile gap, subtract it before halving: TPL's 2x2 grids cut
+  (536 − 16) / 2 = 260, exactly as the 64px era cut (472 − 16) / 2 = 228.
 
 And know the mobile cost before you commit: a section gutter is inline px
 and does not scale, so a 64px desktop gutter is still 64px at 375px, where
-it costs a third of the screen. `.inset-gutter`-style collapse rules can
+it costs a third of the screen. TPL pays that bill with class-only
+flush-on-mobile rules (`.flush-mobile-capflush`), which also make later
+gutter moves mobile-neutral for every block that carries the class.
+`.inset-gutter`-style collapse rules can
 claw that back, but see §2d — an attribute selector is inert in Gmail, so
 verify the selector form survives before relying on it.
 
@@ -1482,7 +1500,7 @@ can prop each other up, and the report says so when they do.
 
 - **A multi-child `mj-group` is a mobile-layout decision, not a neutral
   wrapper — and its width pins are part of the same decision.** MJML compiles
-  each child of a group to an INLINE percentage (a 120px column in a 472px
+  each child of a group to an INLINE percentage (a 120px column in a 536px
   frame becomes `width:22.39%`), while the `.mj-column-px-120` rule that would
   hold its px width is gated behind `min-width:600px`. Plain sibling columns
   compile to `width:100%` and stack below `mj-breakpoint`. So grouping or not
@@ -1765,18 +1783,23 @@ aloud). The Alt Text field survives either way (§5).
    Two mechanical checks catch the whole class: no inner `<table>` may
    render wider than 600px, and a block's rendered content inset must
    equal the inset you authored. A catalog-wide inset census is the
-   cheapest way to run this — 54 of the blocks here sit at exactly 32/32,
-   so any block off that number is either deliberate or a bug, and the
-   outliers name themselves (measured 2026-08-18: five did).
+   cheapest way to run this — nearly every body block here sits at
+   exactly 32/32 (the content baseline), so any block off that number is
+   either a documented exception or a bug, and the outliers name
+   themselves (measured 2026-08-18: five did).
 6d-i. Then check what the change did to the block's OPTION LIST, not just
    to its rendering: `npm run check-catalog -- --padding-census` reports
    every frame that can no longer take the whole declared scale, and by
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
-   tomorrow. Silence there means every frame reaches Quadruple.
+   tomorrow. The census is not silent here by design: since the
+   2026-08-24 return to the 32px baseline it reads 42 of 170 frames short
+   of the full scale — diff the list against the documented capped set,
+   and treat any NEW name as the finding.
 6d-bis. Confirm every body block sits on the same content baseline, and
-   that the baseline gutter is the LARGEST declared preset (see "Author the
-   default gutter at the TOP of the ladder", §5). Then re-check the three
+   know where that gutter sits on the declared ladder and what the
+   position withholds (see "Choose where the default gutter sits on the
+   ladder", §5). Then re-check the three
    things that do not follow it: group rails sum to the frame, fixed-px
    pill widths match their formula, and px image widths still fit their
    percentage columns.

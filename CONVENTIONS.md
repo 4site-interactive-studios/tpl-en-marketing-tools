@@ -703,104 +703,129 @@ not spacing, and stay.
   so the single tag filling both side slots of the composite (mso-padding-alt
   copies included) drives the whole effect.
 
-## The content baseline — 64px in, 472px wide
+## The content baseline — 32px in, 536px wide
 
-User decision 2026-08-21. Every block's internal content starts at **64px
-from the left edge and ends at 536px**, giving a 472px content column —
-the WYSIWYG Text block with its Block Padding Left/Right set to
-**Quadruple**. That is the default an editor sees; the whole ladder stays
-selectable underneath it. 36 blocks moved (32 → 64), and the audit oracle
-reads 365/365 live after the move.
+User decision 2026-08-24, reversing the 2026-08-21 move to a 64px
+baseline. Every block's internal content starts at **32px from the left
+edge and ends at 568px**, giving a 536px content column — the WYSIWYG
+Text block with its Block Padding Left/Right set to **Double**. That is
+the default an editor sees; the whole ladder stays selectable underneath
+it (Quadruple included — it is simply no longer the authored value). 32
+blocks moved back (64 → 32), the two autoresponders' body sections moved
+with them, and the audit oracle reads 435/435 live after the move.
 
-Four groups are OUT, and the reasons differ:
+Four groups never moved in either direction, and the reasons differ:
 
-- **Headers and Heroes, Footers, Story Cards** (user-named exceptions).
-  They keep the 32px gutter. Heroes and footers are chrome, not body copy;
-  Story Cards' 240/296 two-column cards cannot take a 64px gutter at all
-  (`maxSafeGutter` caps them at 32, and always did).
+- **Headers and Heroes, Footers, Story Cards** (user-named exceptions to
+  the 64px era). They sat at the 32px gutter throughout, so the new
+  baseline simply lands where they already were. Story Cards' 240/296
+  two-column cards cannot take more than 32 (`maxSafeGutter` caps them
+  there, and always did).
 - **Full-bleed photo blocks** — Image 1x1, Images 2x1/3x1, Photo Banner,
   Photo Banner (w/ CTA), Photo Banner (overlay panel, w/ CTA), Video Block,
   Countdown Block. Their copy is CENTRED over a photo, so a left edge is
   not an alignment anchor there, and the photo is meant to touch both
   edges. **Progress Meter Block is the exception among them**: its
-  GOAL / RAISED / REMAINING row is genuinely left-aligned, so it moved —
-  by re-cutting its rails (32+536+32 → 64+472+64), not by adding a gutter
+  GOAL / RAISED / REMAINING row is genuinely left-aligned, so it moved to
+  64 with the 2026-08-21 baseline and moved back with this one — by
+  re-cutting its rails (64+472+64 → 32+536+32), not by adding a gutter
   the photo would have to give up.
 - **Spacer and the two Dividers.** Nothing to align; a rule that spans the
-  full 600 under 64px-inset copy is deliberate.
+  full 600 under 32px-inset copy is deliberate.
 - **Centred fixed-px boxes** — Quote Block, Highlighted Text, CTA Text
-  Block. They reach the baseline by WIDTH, not padding: 480 → 472 centres
-  exactly on 64/536. Their side padding stays literal (inset-box
+  Block. They reach a width by design, not padding: they were cut
+  480 → 472 to centre exactly on the 64px-era edges, and they STAY at 472
+  (user decision 2026-08-24) — under the 32px baseline they read as
+  deliberately-inset centred boxes (64px slack each side), not
+  edge-aligned ones. Their side padding stays literal (inset-box
   suppression, below) because a symmetric change to it still moves
   nothing. Highlighted Text's copy sits at 80 — the box's own 16px inset
-  is the panel's design, not a baseline miss. Stat Row's card behaves the
-  same way, and its card edge now lands on 64.
+  is the panel's design, not a baseline miss. Stat Row's card follows its
+  section's gutter instead, so its card edge lands on 32.
 
-**Why the default belongs at the TOP of the ladder.** `maxSafeGutter` asks
-whether GROWING a gutter breaks the frozen geometry inside it. Authoring at
-64 — the largest declared preset — means every remaining option leaves MORE
-room than the authored one, so nothing can be withheld. That is what
-un-capped ten controls that used to stop at 32 (Icon Row, Steps Block,
-Podcast Episode, Podcast Streaming, Feedback Poll, Signature Card (photo),
-Video Block (inset), and the two-column rows in Photo and Text Grid and
-Quiz Block (2x2 photos)) — each now offers the full scale on BOTH sides,
-and every "capped at 32px — 2 option(s) withheld" info note is gone. The
-same move retired a latent trap in the other direction: the fixed-width
-pill rows offered 48 and 64 while their pills were sized for 32, so those
-two options wrapped the row.
+**Where the default sits on the ladder is a trade-off.** `maxSafeGutter`
+asks whether GROWING a gutter breaks the frozen geometry inside it.
+Authoring at the top of the ladder — the 2026-08-21 choice — means every
+other option leaves MORE room than the authored one, so nothing can be
+withheld. Authoring mid-ladder — this decision — buys a wider default
+content column (536 over 472) and pays in withheld growth: the ten
+controls that the 64px era un-capped (Icon Row, Steps Block, Podcast
+Episode, Podcast Streaming, Feedback Poll, Signature Card (photo), Video
+Block (inset), and the two-column rows in Photo and Text Grid and Quiz
+Block (2x2 photos)) are capped at 32px again, each carrying its
+"capped at 32px — 2 option(s) withheld" info note. The padding-growth
+census reads 42 of 170 frames short of the full scale (29 before the
+move; the delta IS that list). One residue of the pre-64 era returns in
+reduced form: the two Quiz pill-row frames (3x1 / 2x2 buttons) still
+offer Triple and Quadruple while their pills are cut for a 32px gutter —
+those choices wrap the row, and the scanner cannot see it (inline pill
+widths inside an mj-text are invisible to the geometry model; the three
+CTA fixed rows are protected because their Selects were retired
+2026-08-24, `data-no-width-toggle`).
 
 **What has to move with the frame.** Three things do not follow a gutter
 change and must be re-cut by hand:
 
-1. **Grouped fixed-px rails.** rail + text must equal the frame: Icon Row
-   and Steps 120+416 → 120+352, Podcast Episode 112+424 → 112+360, Podcast
-   Streaming 380+78+78 → 316+78+78, Feedback Poll 56+480 → 56+416,
-   Signature Card (photo) 110+426 → 112+360 (retargeted onto Podcast
-   Episode's pair rather than minting two new classes). Any mobile pin in
-   `styles.css` naming a changed rail moves with it — `.signature-img`
-   110 → 112.
-2. **Fixed-px pill rows**, from the formula already carried in their source
-   comments: `(600 − 2·gutter − (n−1)·gap) / n`. 3×157 → 3×136, 2×252 →
-   2×220, in CTA Buttons 3x1/2x1 (fixed width), CTA Buttons 2x1 (two-line)
-   and Quiz Block (3x1 / 2x2 buttons). Each row lands on exactly 472.
+1. **Grouped fixed-px rails.** rail + text must equal the frame — the rail
+   keeps its width and the TEXT column takes the change: Icon Row and
+   Steps 120+352 → 120+416, Podcast Episode and Signature Card (photo)
+   112+360 → 112+424 (still sharing one class pair), Podcast Streaming
+   316+78+78 → 380+78+78, Feedback Poll 32+440 → 32+504, Video Block
+   (inset) 25+422+25 → 25+486+25. Re-cut from the CURRENT tree, not from
+   this doc's history: Feedback Poll's rail was 56 in the 64px era's
+   ledger and is 32 today (the 2026-08-22 "No Icon" work moved it), so a
+   stale number here would have mis-cut it. No mobile pin in `styles.css`
+   named a changed value this time — the pins hold rails, and rails did
+   not move.
+2. **Fixed-px pill rows**, from the formula carried in their source
+   comments (now on the Quiz runs too): `(600 − 2·gutter − (n−1)·gap) / n`,
+   rounded DOWN. 3×136 → 3×157 (the floor leaves 535 in the 536 box — 1px
+   slack), 2×220 → 2×252 (exact), in CTA Buttons 3x1/2x1 (fixed width),
+   CTA Buttons 2x1 (two-line) and Quiz Block (3x1 / 2x2 buttons). Every
+   `<a>` width AND every hand-authored MSO `<td>` ghost moves together.
 3. **Images sized to fill a percentage column**: Photo and Text Grid and
-   Quiz Block (2x2 photos) 248 → 228.
+   Quiz Block (2x2 photos) 228 → 260 — NOT the 248 of the pre-64 ledger.
+   The invariant is attr = half the content box minus the 16px inter-tile
+   gap: (536 − 16) / 2 = 260, exactly as 228 was (472 − 16) / 2. 248
+   belonged to an older gap structure; copying it forward would have
+   under-filled the Outlook ghost cell by 12px.
 
-**The column ladder got cheaper, not dearer** — 19 distinct widths → 18
-(110, 380, 424, 426, 480, 484, 536 out; 64, 316, 352, 360, 422, 472 in),
-because the re-cut widths were deliberately shared between blocks. Head CSS
-13,853 → **13,670** delivered, headroom against the 14,000 target 147 →
-330.
+**The column ladder stayed the same size** — 17 distinct widths → 17
+(64, 316, 352, 360, 422, 440 out; 380, 416, 424, 486, 504, 536 in; 472
+survives for the three centred boxes, 32 for the poll and meter rails).
+Delivered head CSS 13,963 → **13,971** (+8 bytes of wider digits),
+headroom against the 14,000 target 37 → 29.
 
-**Mobile was the cost, and it is now paid** (user decision 2026-08-22). A
-section gutter is inline px and does not scale, so 64px held below 600px too:
-a rebased block gave **247px of content** at a 375px viewport where it used to
-give 311, and the grouped rows were tighter still (Icon Row / Steps text
-column 127px, Podcast Episode 135, Podcast Streaming 91).
-
-The remedy is NOT `.inset-gutter`, the collapse-to-32 rule WYSIWYG Text
-(inset) demonstrates: its `td[style*=direction]` selector is an attribute
-selector, inert in Gmail (styles.css header note), so it would fix every
-client except the largest. It is `.flush-mobile-capflush`, the class the image
-blocks already used — two class-only rules, which Gmail does honour:
+**Mobile does not move.** Below 600px the gutter was already pinned by
+`.flush-mobile-capflush` — two class-only rules, which Gmail honours:
 
     .flush-mobile-capflush td       { padding-left: 0;    padding-right: 0    }
     .flush-mobile-capflush .wysiwyg { padding-left: 16px; padding-right: 16px }
 
-Zero all side padding below the breakpoint, then restore 16px on copy only.
-Images go flush to the screen edge and copy sits 16px in — the behaviour
-Story Card 2x1 always had, now carried to 20 more blocks. It cost no new head
-CSS, because the rules already existed.
+Zero all side padding below the breakpoint, then restore 16px on copy
+only. The class was the 64px era's mobile remedy (its 2026-08-22 ledger:
+247px of content at 375 where 311 was expected), but it does not expire
+with the 64px gutter: images flush to the screen edge with copy 16px in
+is the catalog's mobile design — the behaviour Story Card 2x1 always had
+— so the class stays on every block that carries it, and phones render
+this move as a no-op for all of them. The exception is the eight
+button/pill-row frames, which never carried the class (a centred
+fixed-width run needed no remedy): their inline gutter follows the move,
+64 → 32 on phones too, which hands the wrapped pill runs more room — the
+pre-64 behaviour. The ~50 "Desktop Padding Left/Right" label prefixes
+stay for the classed blocks: the class still pins mobile with
+`!important`, so those controls still only move anything at desktop.
 
-Two things do not follow that class and had to be re-cut:
+Two notes from the 64px era's mobile work still bind:
 
-- **A fixed-px rail is not padding.** Progress Meter held its 64px inset as
-  `mj-column width="64px"` spacer rails inside an `mj-group`, and a group's
-  children go percentage below the breakpoint rather than collapsing — the
-  rail rendered 40px at 375 and no padding rule could reach it. The rails are
-  now section padding (`32px 64px`, one full-width column), identical at
-  desktop and reachable by the rule. It also un-suppressed the block's own
-  Block Padding Left/Right, which the frozen 472px column had made inert.
+- **A fixed-px rail is not padding.** Progress Meter holds its inset as
+  `mj-column` spacer rails inside an `mj-group`. It was briefly converted
+  to section padding on 2026-08-22 so the mobile rule could reach it; that
+  traded an Outlook defect for a mobile one (the section is
+  background-url, compiles inside a v:rect, and Outlook cannot pad it —
+  guide §4) and was reverted the same week. The rails carry the
+  `.meter-rail` width pin (16px below the breakpoint) instead, and with
+  this move they were re-cut 64 → 32 alongside the body's 472 → 536.
   Countdown Block keeps its 25px rails: they render ~16px at 375 already.
 - **An mj-text that authors `css-class` loses the template default.** MJML
   REPLACES the `mj-attributes` css-class rather than merging, so Question
@@ -808,12 +833,6 @@ Two things do not follow that class and had to be re-cut:
   restore rule never matched it — its copy went flush to 1px. It authors
   `"question-response wysiwyg"` now. Check this whenever a block authors a
   css-class on an mj-text.
-
-**The controls relabel themselves.** ~50 padding Selects across those 20
-blocks now read "Desktop Padding Left/Right" instead of "Padding
-Left/Right" — the viewport-scoped rule below, firing correctly: the class
-pins mobile with `!important`, so those controls genuinely only move
-anything at desktop and the label has to say so.
 
 ## Link Color — one Select recolors a block's links (2026-08-24)
 
@@ -954,8 +973,8 @@ distinct column tops cannot tell a wrap from a taller neighbour, and moves
 on every vertical Spacing Below when the columns are stacked (10 false
 positives, 2026-08-21). An `overflow` row means `paddingCap.ts` let through
 a value it should have withheld. Current template (main.mjml,
-2026-08-21, after the 64px content baseline): **365/365 fields live, zero
-inert, zero overflow** after
+2026-08-25, after the return to the 32px content baseline): **435/435
+fields live, zero inert, zero overflow** after
 suppression and capping. Run it after template-structure changes;
 any newly-flagged field means a new mechanism to detect or a candidate to
 prune. The Inert Dropdown Audit below generalizes this oracle to every
@@ -2707,9 +2726,10 @@ the importer whitelists all data-*-only MJML validator warnings
   construction: a block containing any px column never offers the preset.
   Frame example (2026-08-24): the three fixed-width CTA Buttons sections —
   3x1 (fixed width), 2x1 (fixed width), 2x1 (two-line) — whose centred
-  fixed-width pill runs total exactly the 472px content box, so symmetric
-  gutter changes move zero pixels at either viewport (proven by the
-  inert-dropdown audit).
+  fixed-width pill runs fill the 536px content box (535 for the floored
+  3x1 run), so symmetric gutter changes move zero pixels at either
+  viewport (proven by the inert-dropdown audit at the 64px-era cut; the
+  centred-run argument is width-independent).
 - **`data-width-options`** (VALUED, on mj-column AND mj-divider):
   on a column, `data-width-options="150,250,350"` curates its Column
   Width ladder, overriding en-tools-config `columnWidthsPx` and the
@@ -3363,33 +3383,6 @@ toggling it could split a subsumption group.)
   file (grep for it — line numbers here drifted once already and sent a
   reader to unrelated code) so the whole branch now survives; do not
   unwrap it.
-
-## Preview debugger — copied selectors are source-faithful (2026-08-24)
-
-The app's preview carries a debugger (🐞 Debug in the workspace toolbar,
-ported from the TPL repo's debug overlay): labeled per-block outlines, a
-deep-layout mode outlining every element by tag, a `.spacer-block` hatch,
-and a full-screen toggle. Two of its artifacts are conventions because they
-cross the preview boundary:
-
-- **Preview-only attributes.** The full-template preview wraps each block in
-  `<div data-en-block-id="…" data-en-block-label="…">` and stamps every
-  element with `data-en-path` (element-child index path into the canonical
-  string). All three are app-injected chrome — they exist in no MJML source
-  and no export, and must never be treated as part of the block's HTML.
-- **The copy payload an agent may be handed.** Clicking an element in
-  deep-layout mode copies `/* Block Name */ selector` (the comment prefix
-  only in the full-template preview; a single-block preview copies the bare
-  selector). The selector is computed from the CANONICAL block HTML
-  (`src/core/uniqueSelector.ts`), never from the live preview DOM — so it
-  contains `tbody` exactly when the compiled source does, never
-  browser-inserted structure, and never the preview wrapper. It is unique
-  by construction inside the named block: every segment disambiguates
-  same-tag siblings with `:nth-of-type`, ids anchor the chain only when
-  valid CSS identifiers and unique in the document, and classes are
-  included only when they are plain identifiers. An agent receiving one
-  should resolve the block by name first, then apply the selector within
-  that block's markup.
 
 ## Process
 

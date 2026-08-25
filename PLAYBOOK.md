@@ -482,8 +482,8 @@ a px value = fixed). Removing it re-splits structure groups.
 - **`mj-group`** wherever columns must NOT stack on mobile (e.g. the
   tri-color divider's three 200px spacer columns).
 - **Insets are padding, not column width:** a narrowed text block is authored
-  as a full-width column with section side-padding (`16px 64px` — Quadruple
-  on the declared scale, giving a ~472px content width) plus
+  as a full-width column with section side-padding (`16px 32px` — Double
+  on the declared scale, giving a ~536px content width) plus
   `css-class="… inset-gutter"`, whose shared mobile rule collapses the
   gutters to 32px on phones. Keep the side value on the scale; an off-grid
   inset snaps at import and desyncs from the other inset blocks. Never author an inset via a px

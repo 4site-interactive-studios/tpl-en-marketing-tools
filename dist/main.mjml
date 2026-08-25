@@ -623,7 +623,7 @@
          consolidation"). Its second sentence still demos an inline link. -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 64px"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column>
         <mj-text padding="0">
@@ -750,7 +750,7 @@
     <!-- START: WYSIWYG Header -->
     <mj-section
       css-class="text-block block wysiwyg-header-block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 64px"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column vertical-align="middle">
         <mj-text padding="0">
@@ -767,7 +767,7 @@
 
 
     <!-- START: Deadline Panel -->
-    <mj-section css-class="text-block block deadline-panel-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block deadline-panel-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
           <p style="margin:0 0 4px;"><b>Supporter ID</b></p>
@@ -784,7 +784,7 @@
     <!-- END: Deadline Panel -->
 
     <!-- START: Subscription Panel -->
-    <mj-section css-class="text-block block subscription-panel-block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block subscription-panel-block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
           <p style="margin:0 0 4px;"><b>Supporter ID</b></p>
@@ -801,7 +801,7 @@
     <!-- END: Subscription Panel -->
 
     <!-- START: Stat Row -->
-    <mj-section css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column css-class="stat-row-column" background-color="#F5FAF1" border="1px solid #D9E3D9" padding="32px 32px 0">
         <mj-text css-class="wysiwyg link-earth" align="center" padding="0 0 8px">
           <h3 style="color:#362229;">YOUR 2025 CONSERVATION<br />CHAMPION SUPPORT SNAPSHOT</h3>
@@ -834,7 +834,7 @@
          the presets. Same call as the Feedback Poll question section below.
          The remaining data-mobile-only-* flags are STRUCTURAL — a fixed-px
          group column pins the desktop layout whatever the copy does. -->
-    <mj-section css-class="text-block block two-line-banner-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block two-line-banner-block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
           <p style="font-size:26px;line-height:34px;font-weight:700;color:#362229;margin:0;">LOREM IPSUM DOLOR SIT</p>
@@ -869,7 +869,7 @@
     <!-- START: CTA Button -->
     <mj-section
       css-class="block"
-      background-color="#ffffff" padding="0 64px"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column vertical-align="middle">
           <mj-button width="auto"
@@ -892,7 +892,7 @@
     <!-- START: CTA Button (centered, outline) -->
     <mj-section
       css-class="block"
-      background-color="#ffffff" padding="0 64px" data-fully-exclude
+      background-color="#ffffff" padding="0 32px" data-fully-exclude
     >
       <mj-column vertical-align="middle">
           <mj-button width="auto"
@@ -915,7 +915,7 @@
     <!-- START: CTA Button (centered, text only) -->
     <mj-section
       css-class="block"
-      background-color="#ffffff" padding="0 64px" data-fully-exclude
+      background-color="#ffffff" padding="0 32px" data-fully-exclude
     >
       <mj-column vertical-align="middle">
           <!-- inner-padding is 0 vertically, against the template's 12px 16px
@@ -948,7 +948,7 @@
     <!-- END: CTA Button (centered, text only) -->
 
     <!-- START: CTA Buttons 2x1 -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px">
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0">
           <!--[if mso]><table role="presentation" align="left" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -967,7 +967,7 @@
 
 
     <!-- START: CTA Buttons 3x1 (dynamic width) -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-fully-exclude>
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-fully-exclude>
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" style="border-radius:100px;mso-padding-alt:12px 16px;" valign="middle"><![endif]-->
@@ -993,22 +993,22 @@
         width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
         sectionWidth : 600   (= email width here; use the section's own width if narrower)
-        padding      : 64 + 64
+        padding      : 32 + 32
         gap          : 32     (between buttons)
         buttonCount  : 3
-        => (600 - 64 - 64 - (3 - 1) * 32) / 3 = 408 / 3 = 136px
+        => (600 - 32 - 32 - (3 - 1) * 32) / 3 = 472 / 3 = 157px (floor; the run leaves 1px slack)
 
-      If any value changes, update width:136px on every <a> AND width="136"/width:136px on every MSO <td>.
+      If any value changes, update width:157px on every <a> AND width="157"/width:157px on every MSO <td>.
     -->
-    <!-- data-no-width-toggle: the pill run is centred and fixed-width (136·3 + 32·2 = 472px,
-         exactly the content box at the authored 64px gutter) — symmetric gutter changes cannot
+    <!-- data-no-width-toggle: the pill run is centred and fixed-width (157·3 + 32·2 = 535px,
+         a 1px floor short of the 536px content box at the authored 32px gutter) — symmetric gutter changes cannot
          move a centred run, so the Block Padding Left/Right control is dead at BOTH viewports
          (inert-dropdown audit, 2026-08-24). -->
-    <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle data-visible-duplicate>
+    <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-no-width-toggle data-visible-duplicate>
       <mj-column vertical-align="middle">
         <mj-text css-class="button" padding="0">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -1030,21 +1030,21 @@
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
 
       sectionWidth : 600   (= email width here; use the section's own width if narrower)
-      padding      : 64 + 64
+      padding      : 32 + 32
       gap          : 32     (between buttons)
       buttonCount  : 2
-      => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
+      => (600 - 32 - 32 - (2 - 1) * 32) / 2 = 504 / 2 = 252px
 
-    If any value changes, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
+    If any value changes, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+  <!-- data-no-width-toggle: centred fixed-width pill run (252·2 + 32 = 536px) exactly fills the
        content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
        control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle data-visible-duplicate>
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-no-width-toggle data-visible-duplicate>
     <mj-column vertical-align="middle">
       <mj-text css-class="button" padding="0">
-        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">$20+</a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1061,16 +1061,16 @@
     SHARED BUTTON WIDTH FORMULA (round DOWN so they never wrap):
       width = ( sectionWidth - leftPadding - rightPadding - (buttonCount - 1) * gap ) / buttonCount
       => (600 - 64 - 64 - (2 - 1) * 32) / 2 = 440 / 2 = 220px
-    If padding/gap/count change, update width:220px on every <a> AND width="220"/width:220px on every MSO <td>.
+    If padding/gap/count change, update width:252px on every <a> AND width="252"/width:252px on every MSO <td>.
   -->
-  <!-- data-no-width-toggle: centred fixed-width pill run (220·2 + 32 = 472px) exactly fills the
+  <!-- data-no-width-toggle: centred fixed-width pill run (252·2 + 32 = 536px) exactly fills the
        content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
        control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
-  <mj-section css-class="block" background-color="#ffffff" padding="0 64px" data-no-width-toggle>
+  <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-no-width-toggle>
     <mj-column vertical-align="middle">
       <mj-text css-class="two-line-cta" padding="0">
-        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+        <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+        <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
       </mj-text>
     </mj-column>
@@ -1305,18 +1305,18 @@
          which costs 2px of invisible slack and saves ~174 delivered bytes of
          head CSS against a budget with ~434 to spare. -->
     <!-- Fallback colour is on THIS wrapper, never on the section carrying the image: MJML copies a section background-color onto the v:fill as color= and the Word engine paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). This is the same wrapper(colour) > section(image) shape the CTA Heroes use. The frame is #ffffff, which is what it was always meant to be — an earlier shape nested a second wrapper to get that, which is invalid MJML, so it shipped as Earth from 2026-08-19 until the frame and the fallback were reconciled on white (2026-08-20). Anything authored OVER the photo must stay legible on white, because white is what Outlook paints when the image does not load. -->
-    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 0">
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0">
         <mj-section css-class="image-block" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="100px 0 100px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="422px">
+          <mj-column width="486px">
             <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption flush-mobile-capflush" background-color="#ffffff" padding="4px 64px 0">
+    <mj-section css-class="block caption flush-mobile-capflush" background-color="#ffffff" padding="4px 32px 0">
       <mj-column vertical-align="middle">
         <!-- data-display-toggle: the caption is the SOLE member of its column,
              and a sole member earns no Display Select otherwise. The gap above
@@ -1632,19 +1632,19 @@
          side (guide §6e), which is what held a 120px icon next to the text on
          a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
          the copy, left-aligned by the image's own align="left" (user decision
-         2026-08-22). Desktop is unchanged: 120 + 352 = 472 fills the frame.
+         2026-08-22). Desktop is unchanged: 120 + 416 = 536 fills the frame.
          The .icon-row-icon / .icon-row-text mobile pins went with the group —
          they existed to stop the group's percentage math squeezing the icon,
          and while stacked they would force both columns back to a side-by-side
          width. Steps Block keeps its pin; it is still grouped. -->
-    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column width="120px" vertical-align="middle" css-class="icon-row-icon">
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image src="assets/icon-box-and-heart.png" alt="" width="100px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
-      <mj-column width="352px" vertical-align="middle" css-class="icon-row-text">
+      <mj-column width="416px" vertical-align="middle" css-class="icon-row-text">
           <mj-text padding="0">
             <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
           </mj-text>
@@ -1662,7 +1662,7 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column>
       <mj-text padding="0">
           <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
@@ -1778,7 +1778,7 @@
     <!-- START: Question Block -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 64px"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column padding="0">
         <mj-text css-class="question-response wysiwyg" padding="0">
@@ -1824,7 +1824,7 @@
     <!-- START: Podcast Episode Block -->
     <mj-section
       css-class="image-block block flush-mobile-capflush"
-      background-color="#006837" padding="16px 64px"
+      background-color="#006837" padding="16px 32px"
     >
       <mj-group>
         <mj-column width="112px" vertical-align="middle" css-class="episode-icon">
@@ -1843,7 +1843,7 @@
             padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="360px" vertical-align="middle" css-class="episode-text">
+        <mj-column width="424px" vertical-align="middle" css-class="episode-text">
           <mj-text padding="0">
             <h3 style="color:#CEE4C5;">People. Nature. Big Ideas</h3>
           </mj-text>
@@ -1862,7 +1862,7 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#006837" padding="16px 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="image-block block flush-mobile-capflush" background-color="#006837" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
           <h3 style="color:#CEE4C5;">People. Nature. Big Ideas</h3>
@@ -1871,7 +1871,7 @@
     </mj-section>
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#CEE4C5" padding="16px 64px"
+      background-color="#CEE4C5" padding="16px 32px"
     >
       <mj-column>
         <!-- Heading and body are separate mj-texts so each mints its own
@@ -1897,10 +1897,10 @@
     <!-- START: Podcast Streaming Block -->
     <mj-section
       css-class="image-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 64px" data-mobile-only-padding-right
+      background-color="#ffffff" padding="0 32px" data-mobile-only-padding-right
     >
       <mj-group>
-        <mj-column width="316px" vertical-align="middle" css-class="stream-text">
+        <mj-column width="380px" vertical-align="middle" css-class="stream-text">
           <mj-text padding="0">
             <p style="font-weight:700;">
               Listen where you stream<br />your favorite podcasts!
@@ -1964,7 +1964,7 @@
     <!-- START: Photo and Text Grid Block (2x2) -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#362229" padding="16px 64px 0"
+      background-color="#362229" padding="16px 32px 0"
     >
       <mj-column>
         <mj-text css-class="wysiwyg overlay" padding="0">
@@ -1974,20 +1974,20 @@
     </mj-section>
     <mj-section
       css-class="image-block block flush-mobile-capflush"
-      background-color="#362229" padding="8px 64px 0"
+      background-color="#362229" padding="8px 32px 0"
     >
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
         <mj-image
           src="assets/photo-person-and-bird-4.png"
           alt="Keith Maley and a ring-necked pheasant"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-4.png"
           alt="Keith Maley and a ring-necked pheasant"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
@@ -1999,14 +1999,14 @@
         <mj-image
           src="assets/photo-person-and-bird-1.png"
           alt="Ronda Lee Chapman and a northern flicker"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-1.png"
           alt="Ronda Lee Chapman and a northern flicker"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
@@ -2017,20 +2017,20 @@
     </mj-section>
     <mj-section
       css-class="image-block block flush-mobile-capflush"
-      background-color="#362229" padding="8px 64px 0"
+      background-color="#362229" padding="8px 32px 0"
     >
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
         <mj-image
           src="assets/photo-person-and-bird-2.png"
           alt="Taj Schottland and a northern cardinal"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-2.png"
           alt="Taj Schottland and a northern cardinal"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
@@ -2042,14 +2042,14 @@
         <mj-image
           src="assets/photo-person-and-bird-3.png"
           alt="Jeff Danter and a great egret"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image
           src="assets/photo-person-and-bird-3.png"
           alt="Jeff Danter and a great egret"
-          width="228px"
+          width="260px"
           align="center"
          padding="0 0 16px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
@@ -2060,7 +2060,7 @@
     </mj-section>
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#362229" padding="0 64px 16px"
+      background-color="#362229" padding="0 32px 16px"
     >
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" align="right" mj-class="caption" color="#ffffff" padding="0">
@@ -2088,7 +2088,7 @@
          re-formed. check-catalog caught it in both directions. -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#CEE4C5" padding="16px 64px" data-visible-duplicate
+      background-color="#CEE4C5" padding="16px 32px" data-visible-duplicate
     >
       <mj-column>
         <mj-text padding="0">
@@ -2119,7 +2119,7 @@
     <!-- START: Quiz Block (multiple choice) -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#362229" padding="16px 64px"
+      background-color="#362229" padding="16px 32px"
     >
       <mj-column vertical-align="middle">
         <mj-text align="center" color="#ffffff" padding="0">
@@ -2129,7 +2129,7 @@
     </mj-section>
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#CEE4C5" padding="16px 64px"
+      background-color="#CEE4C5" padding="16px 32px"
     >
       <mj-column>
         <mj-text padding="0">
@@ -2149,21 +2149,25 @@
     <!-- END: Quiz Block (multiple choice) -->
 
     <!-- START: Quiz Block (3x1 buttons) -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 32px">
       <mj-column vertical-align="middle">
         <mj-text align="center" color="#ffffff" padding="0">
           <p style="font-size:26px;line-height:34px;font-weight:700;letter-spacing:2px;">POP QUIZ</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 32px">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">How many miles of creeks and headwaters are protected in Tualatin Mountain Forest?</h3>
         </mj-text>
+        <!-- Pill widths follow the SHARED BUTTON WIDTH FORMULA (CTA Buttons 3x1
+             (fixed width) carries it in full): (600 - 32 - 32 - 2·32) / 3 = 157px,
+             floored. If any input changes, update every <a> width AND every MSO
+             <td> width/style together. -->
         <mj-text css-class="button" padding="0">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="136" style="width:136px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:136px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">10</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">15</a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#006837" width="157" style="width:157px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#006837;color:#ffffff;border-radius:100px;width:157px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;line-height:22px;text-decoration:none;mso-padding-alt:0;white-space:nowrap;">20+</a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
@@ -2202,7 +2206,7 @@
          Poll answers and this one. Podcast Streaming Block and Signature Card
          (photo) keep theirs — they have no alternate, so nothing can unpin
          them. -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px">
       <mj-group>
         <mj-column width="120px" vertical-align="top" css-class="step-icon">
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="light-only no-bleed" />
@@ -2210,7 +2214,7 @@
           <mj-image src="assets/icon-arrow-orange.png" alt="" width="70px" align="left" padding="0 16px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="352px" vertical-align="middle" css-class="step-text">
+        <mj-column width="416px" vertical-align="middle" css-class="step-text">
           <mj-text padding="0">
             <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
           </mj-text>
@@ -2229,14 +2233,14 @@
          OWN band (the content twice) and renumbers every band after it, with
          only an INFO note from the importer. The loud signal is check-catalog's
          alternate-arrangement guard, which compares the two copies here. -->
-    <mj-section data-alt-arrangement="No Arrow" css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section data-alt-arrangement="No Arrow" css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text padding="0">
           <h3 style="color:#39B54A;font-style:italic;">It's easy to send your comment&mdash;<br />just follow these simple steps:</h3>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="0 64px 16px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="0 32px 16px">
       <mj-column>
         <mj-text padding="0 0 16px">
           <p style="margin-bottom:2px;"><span class="step-num">&nbsp;1&nbsp;</span>&nbsp; <b>Share your name.</b></p>
@@ -2273,7 +2277,7 @@
          gets a linked list rather than an empty text block to rebuild one
          in. This is the case CONVENTIONS warns about — structural dedupe
          alone must not erase a whole family. -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px" data-visible-duplicate>
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px" data-visible-duplicate>
       <mj-column>
         <mj-text padding="0">
           <h3>📰 Lorem Ipsum Dolor Sit Amet</h3>
@@ -2292,24 +2296,28 @@
     <!-- END: Linked List Block -->
 
     <!-- START: Quiz Block (2x2 buttons) -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px 0">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px 0">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">Can You Guess Which Midwest City Ranks in the Nation's Top 5 Park Systems?</h3>
         </mj-text>
+        <!-- Pill widths (both rows) follow the SHARED BUTTON WIDTH FORMULA (CTA
+             Buttons 2x1 (fixed width) carries it in full):
+             (600 - 32 - 32 - 32) / 2 = 252px. If any input changes, update every
+             <a> width AND every MSO <td> width/style together. -->
         <mj-text css-class="two-line-cta" padding="0 0 16px">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
         <mj-text css-class="two-line-cta" padding="0">
-          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
-          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="220" style="width:220px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:220px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
+          <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
+          <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px">
       <!-- highlighted-text-column: the dark-mode repaint for a column that
            authors its own background (td[valign] descendant form). Without it
            the white panel survives dark mode while .block p forces the copy
@@ -2328,7 +2336,7 @@
     <!-- END: Quiz Block (2x2 buttons) -->
 
     <!-- START: Quiz Block (2x2 photos) -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 64px 0">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="16px 32px 0">
       <mj-column>
         <mj-text color="#ffffff" padding="0 0 16px">
           <p style="font-weight:700;letter-spacing:2px;">IN THE SPOTLIGHT</p>
@@ -2338,47 +2346,47 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="8px 64px 0">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="8px 32px 0">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
+        <mj-image src="assets/photo-people-on-fence.jpg" alt="Teens sitting together on a fence" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #F7931E" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
           <a href="https://tpl.org">AGES 13-17</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-hiking.jpg" alt="Couple hiking in the mountains" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #8CC63F" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
           <a href="https://tpl.org">AGES 25-34</a>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="0 64px">
+    <mj-section css-class="image-block block flush-mobile-capflush" background-color="#362229" padding="0 32px">
       <mj-column width="50%" vertical-align="top" padding="0 8px 0 0">
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-fishing.jpg" alt="Couple fishing beside a forest creek" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #5DD8D8" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
           <a href="https://tpl.org">AGES 45-54</a>
         </mj-text>
       </mj-column>
       <mj-column width="50%" vertical-align="top" padding="0 0 0 8px">
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid light-only no-bleed" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="228px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
+        <mj-image src="assets/photo-couple-on-water.jpg" alt="Older couple relaxing in chairs by the water" href="https://tpl.org" width="260px" align="center" padding="0 0 16px" border="3px solid #39B54A" border-radius="18px" css-class="inline-fluid dark-only no-bleed" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg quiz-cta" align="center" padding="0 0 16px">
           <a href="https://tpl.org">AGES 65+</a>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="0 64px 16px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#362229" padding="0 32px 16px">
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
           <p>Not in a guessing mood? <a href="https://tpl.org"><strong>Skip to the answer.</strong></a></p>
@@ -2413,14 +2421,14 @@
          collapsed arrangement makes the right gutter live at 600px (copy box
          64..600 at 0px versus 64..536 at 64px, measured). Same rule, one step
          further out — see the note on Steps Block. -->
-    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 8px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-weight:700;">Lorem ipsum dolor sit amet consectetur adipiscing elit?</p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 8px">
       <mj-group>
         <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
@@ -2428,7 +2436,7 @@
           <mj-image src="assets/icon-heart_green.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="504px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p><a href="https://tpl.org"><strong>Very important</strong></a></p>
           </mj-text>
@@ -2452,14 +2460,14 @@
          icon if that is the intent, at the cost of letting an editor build a
          ragged list. Matches Icon Row, Steps Block and Podcast Episode Block,
          the three rows of identical shape. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 8px">
       <mj-column>
         <mj-text padding="0">
           <p><a href="https://tpl.org"><strong>Very important</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 8px">
       <mj-group>
         <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
@@ -2467,7 +2475,7 @@
           <mj-image src="assets/icon-thumbs-up.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="504px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
           </mj-text>
@@ -2476,14 +2484,14 @@
     </mj-section>
     <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
          answer row above. Copy must stay byte-identical to its primary. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 8px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 8px">
       <mj-column>
         <mj-text padding="0">
           <p><a href="https://tpl.org"><strong>Somewhat important</strong></a></p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-group>
         <mj-column width="32px" vertical-align="middle" css-class="poll-icon">
           <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="light-only no-bleed" />
@@ -2491,7 +2499,7 @@
           <mj-image src="assets/icon-prohibited.png" alt="" width="24px" align="left" padding="0 8px 0 0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="440px" vertical-align="middle" css-class="poll-text">
+        <mj-column width="504px" vertical-align="middle" css-class="poll-text">
           <mj-text padding="0">
             <p><a href="https://tpl.org"><strong>Not important</strong></a></p>
           </mj-text>
@@ -2500,7 +2508,7 @@
     </mj-section>
     <!-- ALTERNATE ARRANGEMENT for this row — see the note on the first
          answer row above. Copy must stay byte-identical to its primary. -->
-    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section data-alt-arrangement="No Icon" css-class="poll-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column>
         <mj-text padding="0">
           <p><a href="https://tpl.org"><strong>Not important</strong></a></p>
@@ -2517,7 +2525,7 @@
     <!-- START: Progress Meter Block -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#006837" padding="0">
-    <!-- The 64px inset is SPACER RAILS, not section padding, and must stay that
+    <!-- The 32px inset is SPACER RAILS, not section padding, and must stay that
          way: this is a background-url section, so it compiles inside a v:rect,
          and Outlook cannot honor horizontal padding there (guide §4). It was
          briefly converted to padding="32px 64px" on 2026-08-22 to put the
@@ -2525,12 +2533,13 @@
          defect for a mobile one, and is reverted. The rails carry a width pin
          instead — the same idiom .poll-icon and .stream-icon use, and the only
          thing that reaches a group child on a phone, because a group converts
-         px widths to inline percentages below the breakpoint (the 64px rail
-         renders 40px at 375). -->
+         px widths to inline percentages below the breakpoint (unpinned, the
+         earlier 64px cut's rail measured 40px at 375; today's 32px rail would
+         drift the same way). -->
       <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
         <mj-group>
-          <mj-column width="64px" css-class="meter-rail">&nbsp;</mj-column>
-        <mj-column width="472px" css-class="meter-body">
+          <mj-column width="32px" css-class="meter-rail">&nbsp;</mj-column>
+        <mj-column width="536px" css-class="meter-body">
           <mj-text align="center" color="#CEE4C5" padding="0 0 8px">
             <p style="font-weight:700;letter-spacing:2px;margin:0;">DEADLINE DAY</p>
           </mj-text>
@@ -2566,7 +2575,7 @@
           </mj-text>
           <mj-button width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
-          <mj-column width="64px" css-class="meter-rail">&nbsp;</mj-column>
+          <mj-column width="32px" css-class="meter-rail">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -2640,7 +2649,7 @@
 
     <!-- START: Event Invite Block -->
     <mj-include path="./partials/green-rule-divider.mjml" />
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 64px">
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
           <p>{user_data~First Name}, you're invited!</p>
@@ -2742,7 +2751,7 @@
     <!-- END: Category — Signatures -->
 
     <!-- START: Signature Card (photo) -->
-    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px 0">
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style: italic;">
@@ -2751,7 +2760,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 64px 0" data-mobile-only-padding-right>
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px 0" data-mobile-only-padding-right>
       <mj-group>
         <mj-column
           vertical-align="top"
@@ -2770,7 +2779,7 @@
         </mj-column>
         <mj-column
           vertical-align="middle"
-          width="360px"
+          width="424px"
           css-class="signature-text" padding="0 0 0 8px">
           <mj-image
               src="assets/staff-carrie-besnette-hauser-signature_black.png"
@@ -2808,7 +2817,7 @@
     <!-- END: Signature Card (photo) -->
 
     <!-- START: Signature Card (no photo) -->
-    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 64px">
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px">
       <mj-column>
         <mj-text padding="0">
           <p style="font-style:italic;font-size:16px;line-height:24px;margin:0 0 8px;">We really appreciate your support!</p>
