@@ -102,8 +102,8 @@
     "hash": "cfebdd7440c0"
   },
   "block:Countdown Block": {
-    "version": 11,
-    "hash": "ff940ff94dbf",
+    "version": 12,
+    "hash": "7cff522606b3",
     "date": "2026-08-25"
   },
   "block:Deadline Panel": {
@@ -285,9 +285,9 @@
     "hash": "351505531200"
   },
   "email-template": {
-    "version": 58,
-    "hash": "2f90685c4368",
-    "date": "2026-08-24"
+    "version": 59,
+    "hash": "68f6c560e201",
+    "date": "2026-08-25"
   },
   "head-css": {
     "version": 47,

@@ -971,10 +971,15 @@ li {
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
     } -->
   <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
-  <!-- Grouped at the top of the head (user decision 2026-08-24). The
+  <!-- The version stamp and its meta run (user decision 2026-08-24). The
          en-tools-keep comment is the ONE head comment the importer ships:
          it survives stripHeadComments minus the marker, as the delivered
-         template's version stamp. Both placeholders fill at import from
+         template's version stamp. The importer HOISTS the comment plus the
+         <meta> run directly under it to the FIRST children of the delivered
+         head — mj-raw cannot get above MJML's own skeleton (title,
+         Content-Type, viewport, MSO conditionals), so position here does
+         not control the shipped position; keep the unit together and keep
+         the comment first. Both placeholders fill at import from
          versions.json's email-template entry — literals here would feed
          version-sync's own hash and bump forever. -->
   <!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->
@@ -7025,10 +7030,12 @@ li {
                                 <tbody>
                                   <tr>
                                     <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
-                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;"><!-- White, not Moss (changed 2026-08-24, final-QC render round): the
-                 kicker sits over the photo's bright foliage band, and Moss
-                 measured near-illegible in LIGHT mode on five clients while the
-                 white h3 below it read fine. -->
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#CEE4C5;"><!-- Moss on purpose (user ruling 2026-08-24, final-QC round): the
+                 QC pass briefly made this white after Moss measured weak over
+                 the placeholder photo's bright foliage in light mode on five
+                 clients, and Bryan reverted it — text over an image is a
+                 contrast risk the CLIENT owns, image by image; the authored
+                 color stands. Do not "fix" this again. -->
                                         <p style="font-size:16px;line-height:24px;font-weight:700;letter-spacing:2px;margin:0;">DEADLINE: MIDNIGHT</p>
                                       </div>
                                     </td>
