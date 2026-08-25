@@ -209,8 +209,8 @@
     "date": "2026-08-25"
   },
   "block:Podcast Streaming Block": {
-    "version": 15,
-    "hash": "5d200d7ef5c9",
+    "version": 16,
+    "hash": "69eee71eab99",
     "date": "2026-08-25"
   },
   "block:Progress Meter Block": {
@@ -253,8 +253,8 @@
     "date": "2026-08-25"
   },
   "block:Signature Card (photo)": {
-    "version": 15,
-    "hash": "e35cb08fc1aa",
+    "version": 16,
+    "hash": "7fb734e6315e",
     "date": "2026-08-25"
   },
   "block:Spacer": {

@@ -1895,9 +1895,14 @@
     <!-- END: Podcast Episode Block -->
 
     <!-- START: Podcast Streaming Block -->
+    <!-- data-no-padding-right: the px group (380+78+78=536) pins the right
+         gutter at 600px and flush-mobile-capflush zeroes it below the
+         breakpoint — dead at both viewports (measured 2026-08-25; the
+         data-mobile-only-padding-right it carried until then claimed the
+         mobile half away and was false). No alternate arrangement unpins it. -->
     <mj-section
       css-class="image-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 32px" data-mobile-only-padding-right
+      background-color="#ffffff" padding="0 32px" data-no-padding-right
     >
       <mj-group>
         <mj-column width="380px" vertical-align="middle" css-class="stream-text">
@@ -2772,7 +2777,12 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px 0" data-mobile-only-padding-right>
+    <!-- data-no-padding-right: the px group (112+424=536) pins the right
+         gutter at 600px and flush-mobile-capflush zeroes it below the
+         breakpoint — dead at both viewports (measured 2026-08-25; the
+         data-mobile-only-padding-right it carried until then was false).
+         No alternate arrangement unpins it. -->
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="16px 32px 0" data-no-padding-right>
       <mj-group>
         <mj-column
           vertical-align="top"
