@@ -451,7 +451,7 @@ p {
   }
 
   /* The stats row's trailing blank td is a DESKTOP spacer: it compacts
-     GOAL/RAISED/REMAINING leftward in the 472px body. On a phone the body is
+     GOAL/RAISED/REMAINING leftward in the 536px body. On a phone the body is
      ~300px and that 30% is width the stats need, so it goes (user decision
      2026-08-24). Targeted by its width attribute because the table lives
      inside an RTE Content value — a marker class there would ride the
