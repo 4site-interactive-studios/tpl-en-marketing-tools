@@ -3472,6 +3472,21 @@ while the entity holds steady, so each entry answers "when did this last
 change"; entries versioned before dates existed gain one on their next real
 bump. `email-template`'s date fills `__TEMPLATE_DATE__` in the delivered
 version stamp.
+**Merges (app manifest, 2026-08-25):** parallel branches each bump honestly
+from a shared base, so at merge time one number can name two different
+contents — and a HEAD-only baseline cannot see the other parent's bump
+(it happened twice on 2026-08-24: colliding v85s, then v90-vs-v86, each
+reconciled by hand). The app's script therefore baselines against every
+reachable parent manifest — HEAD's, MERGE_HEAD's during an in-progress
+merge, and every parent's when HEAD is a merge commit. The top candidate
+number survives only when it unambiguously names the current content; top
+candidates with two different hashes mean the number is spent, and any
+content mints max+1. Merge reconciliation is the script's job — never
+re-derive the number by hand. A merge committed unreconciled self-heals as
+a working-tree diff on the next sync, which the `app-version-manifest`
+contract gate turns into a CI failure. (TPL's multi-entity script does not
+carry this yet; its merges conflict per entity and have so far been
+resolved by regeneration.)
 Consequences: rebuilding never double-bumps; local iteration cannot inflate
 numbers (an entity sits exactly one ahead of HEAD until committed); the
 committed history of the manifest IS the version ledger. TPL check-docs
