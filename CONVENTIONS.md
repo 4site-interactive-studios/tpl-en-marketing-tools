@@ -2550,10 +2550,11 @@ invisible CSS, in-flow like `#raw-html`, never `position:absolute` — plus a
 `:is(body):has(.en__emailbuilder__block) .marketing-tools-block-band{
 display:flex !important; … }`, the layout copied from the shared band rule
 minus `top`. Unversioned: no manifest entity exists for app-generated
-content, and the EN name stays stable so re-uploads line up. Fail-safe if
-left in a send — the gate never matches outside the builder, and the hidden
-spans stay hidden — but the ~0.6KB of hoisted head bytes is reason enough
-for the label's reminder. Its reveal rule duplicates the band sheet's
+content, and the EN name stays stable so re-uploads line up. Left in a
+send its RULES are inert — the gate never matches outside the builder and
+the hidden spans stay hidden — but "remove before send" is real guidance,
+not a formality: its bytes ride the delivered head, and the 2026-08-25
+incident below came from exactly a sent Debug Helper. Its reveal rule duplicates the band sheet's
 `max-width: 600px` email-width literal (`BLOCK_BAND_MAX_WIDTH_PX`);
 check-catalog's width guard cannot see app code, so keep the two in step by
 hand when the email width ever changes.
@@ -2561,6 +2562,24 @@ hand when the email width ever changes.
 Old drafts predating this feature contain neither the spans nor the helper —
 adding the Debug Helper to one simply reveals nothing; a mixed draft shows
 bands only on blocks generated since.
+
+**No literal `;`, `{` or `}` may reach EN inside a CSS string** (measured
+2026-08-25). EN's send-time CSS reserializer is STRING-BLIND: the Debug
+Helper's original label — "… shows block versions; remove before send" —
+was split at the `;`, the remainder discarded, and the delivered head
+carried `content: "Debug Helper — shows block versions` with the quote
+never closed. Spec parsers (iOS Mail) recover at the newline and lose only
+that declaration; **Gmail's sanitizer dropped the ENTIRE merged head
+stylesheet** — every media query dead, the button-stack rule included, so
+wrapped pills rendered with no vertical gap (EoA anlOePm…, against the
+clean 2026-08-21 control TmnM5apr… — same `:has()` band rules, balanced
+quotes, Gmail fine, which also exonerates the gate itself).
+`cssContentEscape` now hex-escapes `;` `{` `}` (`\3B ` `\7B ` `\7D `,
+trailing space as the escape terminator) so no band label can re-trigger
+it, and the helper's label dropped its semicolon outright. Colons and
+commas inside strings are UNMEASURED against EN's reformatter (it splits
+selector comma groups and re-spaces declaration colons); nothing we emit
+uses them inside a string today — measure before shipping one.
 
 **`position: absolute` is the CSS Styles Block band's alone** (user decision
 2026-08-21). It sat in the shared `.marketing-tools-banner` rule until then,

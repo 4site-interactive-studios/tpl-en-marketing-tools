@@ -330,6 +330,19 @@ day, same account, same client matrix:
   restored. Net on a compact field: **×1.30 delivered vs authored**
   (measured: 9,713 → 12,644). Budget against the re-printed size — the
   importer's meter and TPL's check-catalog §8 both apply the factor.
+- **EN's reserializer is STRING-BLIND — never put a literal `;`, `{` or
+  `}` inside a quoted CSS string** (measured 2026-08-25, EoA anlOePm…
+  vs clean control TmnM5apr…). A `content` string containing a `;` was
+  split at the semicolon, the remainder discarded, and the delivered
+  head carried an UNTERMINATED string. Spec parsers (iOS Mail) recover
+  at the newline, losing one declaration; **Gmail's sanitizer dropped
+  the ENTIRE merged head stylesheet** — every media query dead, so
+  wrapped buttons rendered with no gaps and dark rules vanished, at a
+  size well under the cliff. Hex-escape instead (`\3B `, `\7B `,
+  `\7D `, trailing space as terminator); the importer's
+  `cssContentEscape` does this for every band label it emits. Colons
+  and commas inside strings are unmeasured against EN's reformatter —
+  measure before shipping one.
 - **Acceptance verdict (2026-08-18, EoA TlHVjaQ…, 13,325 delivered
   bytes): PASS.** Canary bar 1 GREEN on the Gmail Android app and Gmail
   desktop webmail, light and dark; mobile bar firing blue on phones,
@@ -1792,6 +1805,14 @@ aloud). The Alt Text field survives either way (§5).
    measured clean, 2026-08-18) and the rule silently dies (§2d).
    Selectors extracted from the compiled `<style>` blocks must contain
    zero `>`.
+6b-bis. Confirm no literal `;`, `{` or `}` inside ANY quoted CSS string
+   that ships to EN (a `content:"…"` label, a quoted `font-family`). EN's
+   string-blind reserializer splits the declaration there and ships an
+   unterminated string, and Gmail then drops the ENTIRE delivered head
+   stylesheet (§2b; measured 2026-08-25). Hex-escape (`\3B ` etc.) or
+   reword. The delivered-html check in 6c is where an unterminated
+   string shows up: grep the delivered head for `content: "` lines whose
+   quote never closes.
 6c. Verify every `[style*=…]` selector and every dark-mode legibility
    claim against the DELIVERED html
    (`/app/acidtest/display/email_html/<TEST_ID>`) and real client
