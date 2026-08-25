@@ -2156,7 +2156,13 @@
         </mj-text>
       </mj-column>
     </mj-section>
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 32px">
+    <!-- data-max-gutter="32": the answer pills are fixed-width content
+         inside an mj-text — frozen exactly like a px column but invisible
+         to the geometry scan — so without the declaration the Padding
+         Left/Right Select would offer Triple/Quadruple and wrap the run
+         (formula comment below). The importer clamps the ladder from it;
+         check-catalog's census reads it source-side. -->
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#CEE4C5" padding="16px 32px" data-max-gutter="32">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">How many miles of creeks and headwaters are protected in Tualatin Mountain Forest?</h3>
@@ -2296,7 +2302,13 @@
     <!-- END: Linked List Block -->
 
     <!-- START: Quiz Block (2x2 buttons) -->
-    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px 0">
+    <!-- data-max-gutter="32": both answer rows are fixed-width pill runs
+         inside mj-texts — frozen exactly like px columns but invisible to
+         the geometry scan — so without the declaration the Padding
+         Left/Right Select would offer Triple/Quadruple and wrap the rows
+         (formula comment below). The importer clamps the ladder from it;
+         check-catalog's census reads it source-side. -->
+    <mj-section css-class="text-block block flush-mobile-capflush" background-color="#F5FAF1" padding="16px 32px 0" data-max-gutter="32">
       <mj-column>
         <mj-text padding="0 0 16px">
           <h3 style="text-align:center;">Can You Guess Which Midwest City Ranks in the Nation's Top 5 Park Systems?</h3>

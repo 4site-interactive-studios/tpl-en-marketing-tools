@@ -1283,7 +1283,10 @@ past a point the row wraps.
   cannot see the frozen thing (fixed-px pills inside an `mj-text`, say),
   the upper options do not disappear — they break the layout. Suppress
   those controls (`data-no-width-toggle`) where the frame holds nothing
-  else, and document the rest.
+  else, and declare the ceiling (`data-max-gutter="<px>"`, 2026-08-25)
+  where it holds more: the declared value min-composes with the measured
+  cap, the withheld note names the declaration, and the frame joins the
+  padding census like any geometrically capped one.
 
 TPL has held both positions: top of the ladder (Quadruple/64, a 472px
 column) from 2026-08-21, back to mid-ladder (Double/32, a 536px column)
@@ -1793,9 +1796,10 @@ aloud). The Alt Text field survives either way (§5).
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
    tomorrow. The census is not silent here by design: since the
-   2026-08-24 return to the 32px baseline it reads 42 of 170 frames short
-   of the full scale — diff the list against the documented capped set,
-   and treat any NEW name as the finding.
+   2026-08-24 return to the 32px baseline it reads 44 of 170 frames short
+   of the full scale (the two Quiz pill frames' `data-max-gutter`
+   declarations included) — diff the list against the documented capped
+   set, and treat any NEW name as the finding.
 6d-bis. Confirm every body block sits on the same content baseline, and
    know where that gutter sits on the declared ladder and what the
    position withholds (see "Choose where the default gutter sits on the
