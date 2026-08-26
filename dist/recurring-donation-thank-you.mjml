@@ -2,14 +2,58 @@
   <mj-head>
     <!-- en-tools-config {
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-      "classSpacingScales": { "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 } },
+      "classSpacingScales": {
+        "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 }
+      },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
       "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
     } -->
+    <!--
+      A STANDALONE AUTORESPONDER, rebuilt from main.mjml's catalog blocks on
+      2026-08-26. It is pasted into EN whole, and that is FORCED, not
+      preferred: EN's autoresponder editor accepts only raw HTML pasted into a
+      WYSIWYG field — no block builder, no template to attach, no Template
+      Styles block to insert (user, 2026-08-26). The whole email, stylesheet
+      included, has to arrive in one paste, which is why styles.css rides in
+      this head via mj-include rather than shipping as a body block. Do not
+      convert this page to the Marketing Tools assembly; the screen it is
+      pasted into cannot receive one. Three consequences shape this head:
+
+        * NO builder-band sheet (data-en-tools-band). Nothing here ever
+          renders inside EN's block editor, so the bands would be dead bytes.
+          check-catalog knows this ("autoresponder sources carry no band").
+        * NO version stamp. The en-tools-keep comment in main.mjml's head
+          carries __TEMPLATE_VERSION__/__TEMPLATE_DATE__ placeholders that the
+          IMPORTER fills from versions.json; nothing fills them on a page that
+          skips the importer, so a stamp here would ship as a literal.
+          version-sync still versions this file as `autoresponder:<name>`.
+        * The head-resident sheet below IS needed, exactly as in main.mjml.
+          Those rules moved out of styles.css on 2026-08-24 and this page did
+          not get them, so from that day until this rebuild every light/dark
+          twin here rendered BOTH halves on every non-Outlook client.
+
+      Blocks are copied from main.mjml's catalog and keep its grammar: the
+      unified frame model (Background Color / Padding Top / Padding Bottom),
+      a trailing `spacer-block` gap section on every block, and
+      flush-mobile-capflush rather than the retired inset-gutter. Deliberate
+      deviations from the catalog block are commented where they occur.
+    -->
     <mj-breakpoint width="600px" />
     <mj-title>TPL Recurring Donation Thank You — Auto-Responder</mj-title>
+    <!-- mj-preview STAYS on the autoresponders. EN Marketing Tools injects its
+         own hidden preheader from a broadcast's Preview Text setting (measured
+         2026-08-10), which is why the broadcast sources carry none — but this
+         page does not go out through a Marketing Tools broadcast, so nothing
+         would supply one. -->
     <mj-preview>Please save a copy of this email — it serves as your tax receipt. Thank you for your ongoing support of Trust for Public Land.</mj-preview>
+
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
 
     <!-- Baseline everything inherits -->
     <mj-attributes>
@@ -49,13 +93,39 @@
          blocks into the FIRST occurrence's position (measured 2026-08-19,
          EoA delivered heads), so a 599px block in this head would drag
          styles.css's 599px rules ahead of the order-dependent hides that
-         precede them there. The caption/cta-item rules this block used to
-         carry live in styles.css since 2026-08-19. -->
+         precede them there. All mobile rules live in styles.css. -->
 
+    <!-- The head-resident sheet, copied from main.mjml (see that file for the
+         full derivation). Everything in it either REVEALS or DUPLICATES
+         content when absent — it is not design, and swapping a stylesheet
+         would never fix it. It sits in an mj-raw so it stays a page-head
+         style element rather than joining the mj-include'd sheet below;
+         MJML emits mj-style/mj-include CSS first and mj-raw after, which is
+         the same delivered order main.mjml was verified in on 2026-08-24. -->
     <mj-raw>
-      <meta name="color-scheme" content="light dark" />
-      <meta name="supported-color-schemes" content="light dark" />
-      <meta name="format-detection" content="telephone=no" />
+      <style type="text/css" data-en-tools-template-css>
+        /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+        .wysiwyg div *:first-child { margin-top: 0; }
+        .wysiwyg div *:last-child { margin-bottom: 0; }
+
+        /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+        /* Mode-fork reveals. */
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
+        }
+      </style>
     </mj-raw>
     <mj-include path="../styles.css" type="css" />
   </mj-head>
@@ -63,41 +133,85 @@
     <mj-include path="../partials/debug-toolbar.mjml" />
     <!-- START: Main Content -->
 
-    <!-- START: Logo Hero (no CTA) -->
-    <mj-section css-class="image-block block" background-color="#CEE4C5" padding="16px 32px">
+    <!-- START: Logo Hero -->
+    <!-- Moss ground, and the gap below is 0px: this block and the Heading
+         under it are ONE continuous Moss band by design, so the 16px reading
+         gap would cut it in half. Padding Bottom is 0 for the same reason —
+         the Heading supplies the band's lower inset. -->
+    <mj-section
+      css-class="image-block block"
+      background-color="#CEE4C5" padding="16px 32px 0" data-no-width-toggle
+    >
       <mj-column vertical-align="middle">
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-black-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" />
+        <mj-image
+          src="assets/logo-tpl_color-black-text.png"
+          alt="Trust for Public Land"
+          href="https://tpl.org"
+          width="154px"
+          align="left"
+          css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="154px" align="left" data-style-dark-mode />
+        <mj-image
+          src="assets/logo-tpl_color-light-green-text.png"
+          alt="Trust for Public Land"
+          href="https://tpl.org"
+          width="154px"
+          align="left"
+          css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
       </mj-column>
     </mj-section>
-    <!-- END: Logo Hero (no CTA) -->
-
-    <!-- START: Heading -->
-    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px">
-      <mj-column><mj-text align="center" padding="0"><h1 style="color:#362229;">Thank you for your ongoing support!</h1></mj-text></mj-column>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
     </mj-section>
-    <!-- END: Heading -->
+    <!-- END: Logo Hero -->
 
-    <!-- START: Image (full-bleed) -->
+    <!-- START: WYSIWYG Header -->
+    <!-- h1 rather than the catalog block's h2: this is the email's own title,
+         not a section heading inside a longer letter. Gap 0px so the
+         full-bleed photo below butts against the Moss band. -->
+    <mj-section
+      css-class="text-block block wysiwyg-header-block flush-mobile-capflush"
+      background-color="#CEE4C5" padding="0 32px 16px"
+    >
+      <mj-column vertical-align="middle">
+        <mj-text align="center" padding="0">
+          <h1 style="color:#362229;">Thank you for your ongoing support!</h1>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: WYSIWYG Header -->
+
+    <!-- START: Image 1x1 -->
     <mj-section css-class="image-block block flush-mobile-capflush" background-color="#ffffff" padding="0">
       <mj-column vertical-align="middle">
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="light-only" />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://tpl.org" width="600px" padding="0" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://www.tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
+        <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
           <span>Photographer Adair Rutledge</span>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Image (full-bleed) -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Image 1x1 -->
 
-    <!-- START: WYSIWYG Text (inset) -->
+    <!-- START: WYSIWYG Text -->
     <mj-section
-      css-class="text-block block inset-gutter"
-      background-color="#ffffff" padding="0 32px" data-fully-exclude
+      css-class="text-block block flush-mobile-capflush"
+      background-color="#ffffff" padding="0 32px"
     >
       <mj-column>
         <mj-text padding="0">
@@ -124,60 +238,125 @@
           <p>
             Once again, thank you for your generous support. We hope
             you&rsquo;ll visit
-            <a href="https://www.tpl.org" style="color:#006837;"><strong>tpl.org</strong></a>
+            <a href="https://tpl.org"><strong>tpl.org</strong></a>
             often to see how your donation is connecting everyone to the
             outdoors.
           </p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: WYSIWYG Text (inset) -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: WYSIWYG Text -->
 
-    <!-- START: Signature Card (round photo) -->
-    <mj-section css-class="signature-block block" background-color="#ffffff" padding="16px 32px">
+    <!-- START: Signature Card (photo) -->
+    <!-- Catalog geometry: the 112+424=536 px group on the 32px content
+         baseline, 8px of inner gutter each side. data-no-padding-right for
+         the reason the catalog block records — the px group pins the right
+         gutter at 600 and flush-mobile-capflush zeroes it below the
+         breakpoint, so it is dead at both viewports.
+
+         ONE deliberate deviation from the catalog block: the portrait is the
+         pre-rounded PNG, not the square asset under border-radius="50%" +
+         data-image-shape-toggle. Word paints no border-radius on an image, so
+         a real send keeps its circle only with the baked asset; the catalog
+         keeps the toggle because an editor there needs the control.
+
+         The lead-in line sits INSIDE the text column here rather than in a
+         full-width section above the card (the catalog's arrangement): it
+         reads as part of the signature on a receipt, not as a salutation. -->
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-no-padding-right>
       <mj-group>
-        <mj-column vertical-align="middle" width="130px" css-class="signature-img">
-          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="light-only" />
+        <mj-column
+          vertical-align="top"
+          width="112px"
+          css-class="signature-img" padding="0 8px 0 0">
+          <mj-image
+              src="assets/staff-carrie-besnette-hauser_round.png" width="100px" align="left"
+              alt="Carrie Besnette Hauser"
+              padding="0" css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser_round.png" alt="Carrie Besnette Hauser" width="110px" padding="0 16px 0 0" css-class="dark-only" data-style-dark-mode />
+          <mj-image
+              src="assets/staff-carrie-besnette-hauser_round.png" width="100px" align="left"
+              alt="Carrie Besnette Hauser"
+              padding="0" css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column vertical-align="middle" width="406px" css-class="signature-text">
-          <mj-text padding="0">
-            <p style="font-style:italic;font-size:16px;line-height:24px;margin:0 0 8px;">Thank you for making this work possible.</p>
+        <mj-column
+          vertical-align="middle"
+          width="424px"
+          css-class="signature-text" padding="0 0 0 8px">
+          <mj-text padding="0 0 8px">
+            <p style="font-style:italic;font-size:16px;line-height:24px;">Thank you for making this work possible.</p>
           </mj-text>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_black.png" alt="Signature" width="185px" padding="0" align="left" css-class="light-only" />
+          <mj-image
+              src="assets/staff-carrie-besnette-hauser-signature_black.png"
+              alt="Signature"
+              width="137px"
+              padding="0"
+              align="left"
+              css-class="light-only no-bleed" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
-          <mj-image src="assets/staff-carrie-besnette-hauser-signature_white.png" alt="Signature" width="185px" padding="0" align="left" css-class="dark-only" data-style-dark-mode />
+          <mj-image
+              src="assets/staff-carrie-besnette-hauser-signature_white.png"
+              alt="Signature"
+              width="137px"
+              padding="0"
+              align="left"
+              css-class="dark-only no-bleed" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
-          <mj-text data-inset-toggle data-mobile-only-inset-right padding="8px 0 0">
-            <p style="margin:0;"><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+          <mj-text data-inset-toggle padding="8px 0 0">
+            <p><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
           </mj-text>
         </mj-column>
       </mj-group>
     </mj-section>
-    <!-- END: Signature Card (round photo) -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Signature Card (photo) -->
 
-    <!-- START: Body Text (inset) -->
-    <mj-section css-class="text-block block body-text-block inset-gutter" background-color="#ffffff" padding="16px 32px">
+    <!-- START: WYSIWYG Text (contact) -->
+    <!-- data-visible-duplicate: structurally this IS the WYSIWYG Text above —
+         one mj-text in a section — and on a CATALOG page a second copy would
+         be an unexported duplicate. This is an email, not a catalog: using a
+         block twice is the normal case, and the second copy has to stay as
+         visible as the first, so the flag says "deliberate, keep it" rather
+         than data-fully-exclude hiding the letter's own contact line behind
+         the debug overlay's excluded-block treatment (which is what this page
+         did until 2026-08-26). -->
+    <mj-section
+      css-class="text-block block flush-mobile-capflush"
+      background-color="#ffffff" padding="0 32px" data-visible-duplicate
+    >
       <mj-column>
         <mj-text padding="0">
           <p>
             Questions, or need to update or cancel your recurring gift?
             Email
-            <a href="mailto:donor.outreach@tpl.org" style="color:#006837;">donor.outreach@tpl.org</a>
+            <a href="mailto:donor.outreach@tpl.org">donor.outreach@tpl.org</a>
             or call
-            <a href="tel:800-714-5263" style="color:#006837;">1-800-714-5263</a>
+            <a href="tel:800-714-5263">1-800-714-5263</a>
             at any time.
           </p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Body Text (inset) -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: WYSIWYG Text (contact) -->
 
-    <!-- START: Footer (w/ image) -->
+    <!-- START: Footer (w/ image, brown) -->
     <mj-include path="../partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -187,20 +366,30 @@
         <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
           <p style="font-size:14px;line-height:18px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
-        <mj-text color="#ffffff" align="center" padding="0 0 16px">
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0 0 16px">
+          <!-- The address is an AUTHORED anchor because Word auto-links bare
+               email addresses and paints them default blue — near-illegible on
+               this brown (measured 2026-08-24, final-QC render round, both Word
+               engines). An authored anchor under the link-inverse hook gets the
+               white inlined by EN at send, which Word honors. -->
           <p style="font-size:14px;line-height:18px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
-          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to <a href="mailto:{user_data~Email Address}" style="color:#ffffff;">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
-        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
+        <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
-        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://www.tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
+        <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;line-height:18px;"><a href="https://fundraise.tpl.org/page/1000752/subscriptions/1?chain" style="color:#ffffff;" data-campaign-id="1000752" data-custom-urls="[]" data-custom-urls-enabled="false" data-name="Subscription_Management_Page" data-type="campaignpage_url_pb">Manage Subscription</a></p>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0">
+          <p style="font-size:14px;line-height:18px;"><a href="https://www.tpl.org/contact">Contact Us</a> | <a href="https://www.tpl.org/privacy-policy">Privacy Policy</a> | <a href="{unsubscribe_action~6~1000798~https://act.tpl.org/page/1000752/subscriptions/1}">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- END: Footer (w/ image) -->
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="0px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Footer (w/ image, brown) -->
 
     <!-- END: Main Content -->
   </mj-body>

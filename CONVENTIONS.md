@@ -2724,6 +2724,50 @@ future-enhancements "Head-vs-block CSS". Document the sheet freely: its CSS
 comments are stripped at import, same narrow pass as the band sheet's
 (2026-08-24, user decision — see "Head comments are dropped at IMPORT").
 
+**EVERY page that ships without the Template Styles block needs its own copy
+of this sheet — not just the template** (2026-08-26). The rule reads as a
+*template* concern because the template is what the importer produces, and
+that framing is what cost the two autoresponders: they carry `styles.css`
+inline in their own heads and never touch the importer, so when the swap
+moved OUT of styles.css on 2026-08-24 they simply lost it, and from that day
+until 2026-08-26 both rendered every light/dark twin TWICE on every
+non-Outlook client — 12 images where 6 belong, measured in a plain browser,
+no client quirk required. The test is not "is this the template"; it is **does
+this page's CSS reach the reader by a route that can go missing**. If the
+answer is yes for any part of it, the fork and the containment rules belong in
+that page's own head.
+
+**Why an autoresponder is standalone at all** (user, 2026-08-26): EN's
+autoresponder editor accepts ONE thing — raw HTML pasted into a WYSIWYG
+field. There is no block builder on that screen, no template to attach, no
+Template Styles block to insert. So the shape is FORCED, not chosen: the
+whole email, stylesheet included, has to arrive in a single paste, which is
+why `styles.css` rides in the page head via `mj-include` instead of shipping
+as a body block. Do not "fix" an autoresponder into the Marketing Tools
+assembly — the surface it is pasted into cannot receive one. Two consequences
+follow and both are the price of that surface: the CSS in a sent
+autoresponder is a BUILD-TIME SNAPSHOT of `styles.css` rather than the block
+EN serves, so a stylesheet change reaches an already-pasted autoresponder
+only by re-pasting it; and every rule the catalog can afford to leave in the
+styles block, an autoresponder must carry itself.
+
+What such a page takes and what it leaves:
+
+- **Takes** the mode-fork swap, the `.wysiwyg` margin containment, and the
+  viewport fork if it uses `.mobile-only`/`.desktop-only` at all. These are
+  mechanism.
+- **Leaves** the builder-band sheet (`data-en-tools-band`) — nothing renders
+  inside EN's block editor, so the selectors never match; check-catalog
+  already knows this ("autoresponder sources carry no band").
+- **Leaves** the `en-tools-keep` version stamp. `__TEMPLATE_VERSION__` and
+  `__TEMPLATE_DATE__` are filled by the IMPORTER from `versions.json`, so on a
+  page that skips the importer they would ship as literals. version-sync still
+  versions the file (`autoresponder:<name>`); the version just has nowhere to
+  print.
+- **Keeps** the `data-en-tools-template-css` marker anyway. It is inert on a
+  page that is never imported, and it is the one thing that makes the sheet
+  self-identifying if the page ever is.
+
 The marker is not `data-en-tools-band` because of CHANGE TRACKING, not bytes:
 version-sync's `headCssContent()` filters band styles out of the head-css hash
 (builder-chrome churn should not version the shipped CSS), and fork CSS must

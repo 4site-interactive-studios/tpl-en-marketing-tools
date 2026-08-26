@@ -165,6 +165,22 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
   <meta name="format-detection" content="telephone=no" />
   ```
 
+- **A head-resident `<style data-en-tools-template-css>` carries the
+  MECHANISM rules** — the light/dark swap (`.dark-only` hide + both reveal
+  pairs), the `.mobile-only`/`.desktop-only` viewport fork, and the `.wysiwyg`
+  first/last-child margin containment. They sit in the page head, not in
+  `styles.css`, because `styles.css` ships as a BODY block (the Template
+  Styles block) and an email assembled without it would show BOTH halves of
+  every light/dark pair. **Every page carries its own copy**, autoresponders
+  included: they `mj-include` `styles.css` into their own heads, so when these
+  rules left that sheet on 2026-08-24 the two autoresponders lost the swap
+  outright and rendered every twin twice until 2026-08-26. Autoresponders
+  carry the sheet but NOT the builder-band sheet and NOT the `en-tools-keep`
+  version stamp — see the head comment in `src/autoresponders/*.mjml`.
+  Autoresponders are standalone because EN's autoresponder editor takes only
+  raw HTML pasted into a WYSIWYG field — no block builder, no template, no
+  styles block — so the whole email arrives in one paste and must carry its
+  own stylesheet (user, 2026-08-26).
 - `<mj-include path="./styles.css" type="css" />` pulls shared CSS: heading
   scale (h1 32/42 … with `mso-line-height-rule: exactly`), link color, the
   light/dark image-swap classes (§5), and a

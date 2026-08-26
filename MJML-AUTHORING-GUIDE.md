@@ -488,6 +488,65 @@ ground. Off-brand colour, intact legibility, no code change. That is the
 accepted end state for Outlook desktop dark: **let it invert, and make
 the artwork survive the inversion.**
 
+### 2c-bis. A standalone email carries the fork rules in its OWN head
+
+Most repos that feed Marketing Tools also hold a few emails that are NOT
+assembled from blocks: autoresponders, receipts, other transactional sends
+that get pasted into EN whole. They look like the catalog and they share its
+stylesheet, and that resemblance hides a real trap.
+
+**They are standalone because the surface forces it, not as a shortcut.** EN's
+autoresponder editor takes exactly one thing: raw HTML pasted into a WYSIWYG
+field. No block builder, no template to attach, no Template Styles block to
+insert. The whole email — stylesheet included — has to arrive in a single
+paste. So do not treat a standalone page as a catalog page that someone was
+too lazy to convert, and do not try to convert it: the screen it is pasted
+into cannot receive blocks. Budget for the two consequences instead. The CSS
+in a sent standalone email is a BUILD-TIME SNAPSHOT of the shared sheet, not
+the block the platform serves, so a stylesheet change reaches an
+already-pasted email only by re-pasting it. And anything the catalog can
+afford to leave in the shared block, a standalone page has to carry itself —
+which is the trap below.
+
+**Split your CSS by what its absence costs, not by where it is convenient.**
+Two kinds of rule live in an email's stylesheet:
+
+- **Design** — colours, type, repaints. If the sheet goes missing the email
+  looks plain and still reads.
+- **Mechanism** — the light/dark twin swap (`.dark-only { display: none }`
+  and its reveals), any `.mobile-only`/`.desktop-only` viewport fork, and the
+  first/last-child margin containment a bottom-only pacing model rests on. If
+  the sheet goes missing these do not degrade; they REVEAL content that was
+  meant to be hidden. Dark twins sit in downlevel-revealed conditionals, so
+  with no `.dark-only` hide every non-Outlook client renders BOTH halves of
+  every pair — a doubled logo, a doubled hero, a doubled signature, all the
+  way down.
+
+In a Marketing Tools template the shared stylesheet reaches the reader as a
+BLOCK in the body, so an email an editor assembled without that block has none
+of it — which is why mechanism rules belong in the template head. **The same
+reasoning applies, for a different reason, to any standalone email in the same
+repo**: it usually pulls the shared sheet into its own head with an
+`mj-include`, so the day mechanism rules move OUT of that sheet and into the
+template head, the standalone pages silently lose them. Nothing fails at
+build time. Nothing fails in a link check. The email just goes out with every
+twin doubled.
+
+Measured 2026-08-26, in the repo this guide came from: two autoresponders ran
+that way for two days and eight commits after such a move, 12 images rendering
+where 6 belonged, visible in a plain desktop browser with no client emulation
+at all.
+
+So: **when a mechanism rule moves, move it to EVERY page that can lose it**,
+and keep a check that would notice. The cheap one costs a line of script —
+count the elements carrying each half of a swap class and assert that exactly
+one half is visible per colour scheme, per page. Whatever a standalone page
+does NOT need is equally worth stating in its head, so the omission reads as a
+decision rather than a gap: builder-only chrome (selectors that match only
+inside EN's editor) and any version placeholder an importer would have filled
+both belong to the template alone, and shipping them on a page that skips the
+importer leaves either dead bytes or a literal `__PLACEHOLDER__` in the inbox.
+
 ### 2d. EN escapes `>` in shipped CSS — never author a child combinator
 
 In EN's editing surfaces, `>` in CSS text gets HTML-escaped to `&gt;`
@@ -735,18 +794,8 @@ shell, pure ASCII) with a single Raw HTML block padded to an exact length:
 | 299,760 bytes | saves |
 | 299,761 bytes | 400, "too long" |
 
-Three caveats that belong with the number:
+Two caveats that belong with the number:
 
-- **It was measured through ONE sending surface.** The bisection ran against
-  `PUT /messaging/api/campaign/<id>/messageandsend/<id>`, and the behavior
-  that prompted it was a **Marketing Automations** email refusing to save at a
-  size a **Broadcast** of comparable weight accepted. Whether every EN surface
-  enforces the same ceiling, or the same number, has not been re-measured —
-  the bisection was run once, on the surface that was failing. If a save
-  fails under this limit on one surface and succeeds on another, that is a
-  known-unknown here, not a contradiction of the number. Re-bisect on the
-  surface you are actually shipping through before treating 299,760 as your
-  budget.
 - **It is 240 short of a round 300,000**, which strongly suggests EN's real
   limit IS 300,000 with ~240 bytes of server-side overhead wrapped around
   what the PUT carries. That overhead was measured through the blank
@@ -775,23 +824,15 @@ same arithmetic) — enough
 that a couple of edits cannot walk a passing template into a failing one,
 and enough to absorb the unexplained 240.
 
-**A full block catalog no longer fits, and this is the second time this
-paragraph has had to be re-measured.** One of every TPL block, with no
-duplicates, is **409,046 bytes** as of 2026-08-25 (shell 47,864 + 56
-importable blocks at 361,182) — 136% of the hard cap, and 124,046 over the
-285,000 working ceiling. It measured 252,607 on 2026-08-21, comfortably
-inside both; the trailing gap section, the hidden version band and the Link
-Color token that every block gained since then each cost a little, on every
-block. Before that it read 289,999, against a catalog carrying a second file
-and eighteen demo variants since deleted or promoted.
-
-The rule that survived all three readings is the one to keep: a catalog that
-outgrows the ceiling ships **SPLIT across messages** — there is no trimming
-strategy that makes one message hold everything — and TPL's now does, as a
-two-part paste cut at a category boundary for render testing. **Check the
-current number rather than this paragraph**; a catalog-library total is not a
-sending budget, and a real email built from a handful of blocks is nowhere
-near any of these figures.
+**A full block catalog fits, but not by much.** One of every TPL block,
+with no duplicates, measured 252,607 bytes on 2026-08-21 — 84% of the hard
+cap, and inside the 285,000 working ceiling with about 32,000 to spare.
+This paragraph said the opposite until then, and said it in the present
+tense: the 289,999-byte figure was the pre-2026-08-21 catalog, which carried
+a second file and eighteen demo variants since deleted or promoted. A
+catalog that outgrows the ceiling again ships SPLIT across messages — there
+is no trimming strategy that makes one message hold everything — but check
+the current number before assuming it has.
 
 **What actually costs bytes**, measured on that catalog:
 
@@ -1814,6 +1855,14 @@ aloud). The Alt Text field survives either way (§5).
    the compiled HTML.
 5. Confirm every dark-mode rule that must override an inlined base rule
    carries `!important`.
+5a. Count the swap twins on EVERY page, not just the catalog: in each
+   colour scheme exactly ONE half of each `light-only`/`dark-only` pair
+   may compute to a visible `display`. A page that lost the swap
+   mechanism shows both halves and nothing else fails — no build error,
+   no broken link, just twice the images (§2c-bis; measured 2026-08-26,
+   two autoresponders, 12 rendered where 6 belonged). Run it in a plain
+   browser under each `prefers-color-scheme`; this one does not need a
+   real client.
 6. Confirm no `[data-ogsc]` rule sits at top level; wrap them per §2a.
 6a. Confirm no `<mj-preview>` in broadcast sources — EN injects its own
    preheader from the per-email Preview Text setting (§2), and a

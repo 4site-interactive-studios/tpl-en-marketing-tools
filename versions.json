@@ -1,13 +1,13 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 17,
-    "hash": "1e5d8cfe9c77",
-    "date": "2026-08-25"
+    "version": 18,
+    "hash": "4c6d222be8f8",
+    "date": "2026-08-26"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 17,
-    "hash": "5a5b2e3e622f",
-    "date": "2026-08-25"
+    "version": 18,
+    "hash": "af0d5d3f7114",
+    "date": "2026-08-26"
   },
   "block:CTA Button": {
     "version": 14,
