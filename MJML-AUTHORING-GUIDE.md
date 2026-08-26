@@ -302,8 +302,9 @@ day, same account, same client matrix:
   builder band's label shows the CSS revision and its publish date
   ("CSS Styles Block - 2026-08-25 - v49", from the repo's versions.json
   head-css entity; a dateless entity shows "… v49" until its next bump).
-  The block carries a live Gmail budget meter (16,384 hard / 14,000
-  target) that itemizes EN-hoisted block styles. Budget the DELIVERED
+  The block carries a live Gmail budget meter (16,384 hard / 14,141
+  working target — a user-chosen advisory line, 2026-08-25) that
+  itemizes EN-hoisted block styles. Budget the DELIVERED
   size, not the authored size — authored comments and formatting are
   free. Since 2026-08-25 the importer also injects a hidden name +
   version band into every content block (revealed only by the Debug

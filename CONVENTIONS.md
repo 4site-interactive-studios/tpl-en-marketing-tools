@@ -2209,8 +2209,12 @@ trade-off was accepted deliberately.)
   CSS plus builder chrome — plus a legacy field's bytes when an
   EN-imported block still carries one; detection is content-based via
   `isStyleOnlyHtml`), against the 16,384 hard limit with a
-  14,000 working target (headroom for EN-hoisted block styles, which the
-  meter itemizes as "+N if included", also ×factor). EN re-prints all
+  14,141 working target (headroom for EN-hoisted block styles, which the
+  meter itemizes as "+N if included", also ×factor; 14,141 — raised from
+  14,000, user decision 2026-08-25: the target is advisory headroom and
+  the figure is the user's lucky number, so keep it — noting the largest
+  delivered size ever MEASURED green is 13,325 and the band up to the
+  16,384 cliff is unprobed). EN re-prints all
   head CSS at send — comments stripped, plain top-level rules inlined
   away, comma groups split, colon-space formatting — a net ×1.30 on a
   compact field (measured 2026-08-18, EoA TlHVjaQ…: 9,713 compact →

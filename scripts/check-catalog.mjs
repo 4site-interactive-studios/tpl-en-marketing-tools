@@ -679,7 +679,10 @@ guard('mobile-only MSO-guard check', () => {
 // 12,644 delivered; EN_CSS_REPRINT_FACTOR in the importer's headStyles.ts,
 // keep the two in step). This guard simulates the compact field per
 // compiled page, estimates the DELIVERED size (×1.30), and warns when a
-// shipping master passes the 14,000-byte working target or when ANY page
+// shipping master passes the 14,141-byte working target (raised from
+// 14,000 on 2026-08-25, user decision — an advisory line, and the figure
+// is the user's lucky number; keep it in step with the importer's
+// GMAIL_CSS_TARGET) or when ANY page
 // would land within a builder-chrome hoist (HOIST_ALLOWANCE, 250 delivered
 // bytes) of the cliff. The comment said ~700 until 2026-08-21, contradicting
 // its own constant thirty lines down; the canary it also reserved for was
@@ -1100,15 +1103,15 @@ guard('source CSS budgets', () => {
 
   // styles.css is ~60% of the delivered head. The rest of the head (MJML's
   // resets, the column ladder, the builder band) costs ~5,283 delivered, so
-  // against the 14,000 page target styles.css may reach ~8,717 before the
-  // page itself trips. 8,700 is that number, rounded down.
-  const STYLES_CSS_BUDGET = 8700;
+  // against the 14,141 page target styles.css may reach ~8,858 before the
+  // page itself trips. 8,850 is that number, rounded down.
+  const STYLES_CSS_BUDGET = 8850;
   const css = read('src/styles.css');
   if (css !== null) {
     const delivered = Math.round(EN_CSS_REPRINT_FACTOR * compact(css));
     if (delivered > STYLES_CSS_BUDGET) {
       warn(
-        `src/styles.css is ~${delivered} delivered bytes (${compact(css)} compact × ${EN_CSS_REPRINT_FACTOR}) — past its ${STYLES_CSS_BUDGET}-byte share of the 14,000 page target. It is the largest single contributor to the head, so trim it here rather than hunting the page total`,
+        `src/styles.css is ~${delivered} delivered bytes (${compact(css)} compact × ${EN_CSS_REPRINT_FACTOR}) — past its ${STYLES_CSS_BUDGET}-byte share of the 14,141 page target. It is the largest single contributor to the head, so trim it here rather than hunting the page total`,
       );
     }
   }
@@ -1174,9 +1177,9 @@ guard('Gmail CSS budget + head coupling check', () => {
     // Every page is a shipping master now. This used to exempt
     // mjml_extra-blocks, which was deleted on 2026-08-21 — the test could
     // never be false again, so it went with it.
-    if (estimated > 14000) {
+    if (estimated > 14141) {
       warn(
-        `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
+        `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,141-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
       );
     }
     if (estimated + HOIST_ALLOWANCE > 16384) {
