@@ -34,6 +34,7 @@ place of it.
 | A developer or template author | **Part 1 + Part 2** |
 | Picking up the work, or curious how we got things wrong | **Appendix A**, the post-mortems |
 | Looking for where a specific rule lives now | **Appendix B**, the pointer map |
+| Wondering what happens after this | **Where it goes next**, at the end of Part 2 |
 
 A glossary sits at the end. For what the system *is* today rather than how it
 was built, the companion tour is `docs/overview-for-colleagues-detailed.md` in
@@ -1176,6 +1177,117 @@ Open threads, recorded rather than resolved:
   this repo's own has not, and its merges are still resolved by regenerating.
 - The final QC report's last section is unwritten, and its EN block-import
   spot check is still pending.
+
+## Where it goes next
+
+Directions named on 2026-08-26, recorded here so they do not live only in a
+chat log. **None of this is committed, scoped or scheduled**, and it is
+deliberately not a plan. Where a direction rested on a factual premise, the
+premise was checked the same day and the finding sits beside it — including
+the two places the finding contradicts the premise.
+
+**Close the testing loop.** Today a render round is hand-driven: paste into
+EN, send, open Email on Acid, read. The direction is that the app — or an
+agent driving it — submits the email and reads the results back without a
+human in the middle.
+
+Two facts landed on this the day it was raised. **Email on Acid is being
+retired**, confirmed on three vendor surfaces, in favour of Mailgun Inspect,
+whose REST API covers submit → poll → per-client screenshots and keeps the
+same client-slug vocabulary, so the slug and image handling this project
+already has would largely survive. But **the acquisition premise is wrong**:
+there is no recent sale. Sinch has owned Email on Acid since 2021 and still
+does; what is new is the product consolidation, not the ownership. And the
+timing is worth knowing precisely, because it is quieter than a deprecation
+usually is: **no shutoff date is published, the v5 API docs carry no
+deprecation banner, and the status page says nothing.** The trigger is the
+account's own contract renewal. An integration built today keeps working
+until the account migrates and then stops, with no in-band warning — so the
+date that matters comes from the account team, not from a vendor page.
+
+**Automate Engaging Networks.** The ambition is that the app creates the
+template, creates the blocks, assembles a broadcast and sends it for testing,
+so that nobody logs into EN for routine work at all.
+
+The constraint here is harder than expected and should be recorded before
+anyone scopes it: **EN's public API does no content authoring of any kind.**
+Enumerated across all three of its published API specs, there is no endpoint —
+supported or deprecated — that creates or updates an email template, creates
+or updates a Marketing Tools block, creates a broadcast, or sends one. The
+documented surface is supporters, pages, reporting and bulk data. Block and
+template import is a screen where a human pastes JSON or uploads a file.
+Sending a test message to arbitrary addresses is also a screen — and EN's own
+documentation recommends third-party render-QA services on it.
+
+So this is browser automation, not an API integration, which is what "make
+posts through your browser or another means" already anticipated. Two things
+follow. The internal endpoint this project measured while finding the message
+ceiling is, as far as the public record goes, **documented nowhere but in this
+project's own authoring guide** — usable and completely unsupported at the
+same time, with no release note due when it changes. And EN's service-account
+type reaches only the data API, so anything driving the admin UI runs as a
+real human account, with that account's credentials and second factor to
+manage.
+
+**Extract a brand and dress the catalog in it.** Point the tool at a website
+or a set of materials, derive the palette, type and voice, apply them to the
+base blocks, load the result into an account and test it. This is the item
+that turns the project from *TPL's block library* into *a way to stand up
+anybody's block library*, and it is downstream of the two above: without the
+EN and testing loops it produces a catalog somebody still has to place and
+check by hand.
+
+**Rethink the interaction model before polishing it.** The report is direct
+and worth quoting in substance: the Replacements sidebar went unused. Changes
+were made by talking to the AI upstream, and the changes worth making were the
+ones that only became visible after looking at a block inside the email. That
+is not a complaint about the sidebar's design — it is a claim that the app's
+centre of gravity is in the wrong place, and that editing is a thing you want
+*at* the block, not beside it.
+
+It lands against a wave brief that assumes otherwise. Wave 1 is written to
+"redesign the app around its real workflow — source → configure → review →
+export", with the design system scheduled first and the information
+architecture last. Configure is the stage in question. That wave's own ground
+rules require a semantic change to be surfaced before it lands, so this is
+that flag rather than a quiet reprioritization.
+
+**Join up with the upstream work.** Michael Thomas's work should connect to
+this so the path is start-to-finish rather than a good middle with manual ends.
+The specifics are not in this repo's record, so this line is a placeholder for
+a conversation rather than a description of one.
+
+**Move it off a laptop.** The app is run locally today. The direction is a
+managed, hosted tool behind a 4Site login — perhaps only ever for the team.
+
+This is the fork the other items hang from, so it is worth stating plainly:
+**"zero backend" is not an accident of this project, it is a rule it has been
+enforcing.** Static build, no server, no telemetry, every piece of state in the
+browser. It is written into the app's own operating spec and it is a headline
+figure in this document. Closing the testing loop, automating EN, extracting
+brands and hosting for a team all need somewhere to keep a credential and
+something that runs while nobody is watching. Any one of them retires that
+rule. Better to retire it deliberately, once, than to discover it four times.
+
+**Revise the audit suite** — it has grown long, and the worry is that length
+is not the same as coverage. The specific ask was that anything carrying text
+be tested at the extremes: the placeholder copy, a single word, and copy long
+enough to wrap to a second line, across desktop and mobile.
+
+Half of that already exists, which changes what is worth building. The sweep
+has rendered every cell under exactly those three copy states at both
+viewports since 2026-08-18, with the long probe sized to wrap even at caption
+type — it was built after short placeholder copy made four of five live
+controls look dead. **What is missing is not the renders. It is the
+assertion.** Those rasters are compared only to answer *did any pixel move*,
+which decides whether a control is live; nothing asks whether the block still
+looks right at the extreme. A pill row that wraps into its neighbour, a rail
+that collapses, copy that collides — all of that renders, gets diffed for
+difference, and passes. The expensive half is already paid for. A second
+verdict over the same matrix, asking about layout integrity rather than
+control liveness, is the cheap part. One coverage gap sits behind it: the
+sweep is organized per control, so a text region with no control attached to
+it is never swept at all.
 
 ---
 
