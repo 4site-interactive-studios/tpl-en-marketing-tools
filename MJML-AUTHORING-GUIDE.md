@@ -794,8 +794,18 @@ shell, pure ASCII) with a single Raw HTML block padded to an exact length:
 | 299,760 bytes | saves |
 | 299,761 bytes | 400, "too long" |
 
-Two caveats that belong with the number:
+Three caveats that belong with the number:
 
+- **It was measured through ONE sending surface.** The bisection ran against
+  `PUT /messaging/api/campaign/<id>/messageandsend/<id>`, and the behavior
+  that prompted it was a **Marketing Automations** email refusing to save at a
+  size a **Broadcast** of comparable weight accepted. Whether every EN surface
+  enforces the same ceiling, or the same number, has not been re-measured —
+  the bisection was run once, on the surface that was failing. If a save
+  fails under this limit on one surface and succeeds on another, that is a
+  known-unknown here, not a contradiction of the number. Re-bisect on the
+  surface you are actually shipping through before treating 299,760 as your
+  budget.
 - **It is 240 short of a round 300,000**, which strongly suggests EN's real
   limit IS 300,000 with ~240 bytes of server-side overhead wrapped around
   what the PUT carries. That overhead was measured through the blank
@@ -824,15 +834,23 @@ same arithmetic) — enough
 that a couple of edits cannot walk a passing template into a failing one,
 and enough to absorb the unexplained 240.
 
-**A full block catalog fits, but not by much.** One of every TPL block,
-with no duplicates, measured 252,607 bytes on 2026-08-21 — 84% of the hard
-cap, and inside the 285,000 working ceiling with about 32,000 to spare.
-This paragraph said the opposite until then, and said it in the present
-tense: the 289,999-byte figure was the pre-2026-08-21 catalog, which carried
-a second file and eighteen demo variants since deleted or promoted. A
-catalog that outgrows the ceiling again ships SPLIT across messages — there
-is no trimming strategy that makes one message hold everything — but check
-the current number before assuming it has.
+**A full block catalog no longer fits, and this is the second time this
+paragraph has had to be re-measured.** One of every TPL block, with no
+duplicates, is **409,046 bytes** as of 2026-08-25 (shell 47,864 + 56
+importable blocks at 361,182) — 136% of the hard cap, and 124,046 over the
+285,000 working ceiling. It measured 252,607 on 2026-08-21, comfortably
+inside both; the trailing gap section, the hidden version band and the Link
+Color token that every block gained since then each cost a little, on every
+block. Before that it read 289,999, against a catalog carrying a second file
+and eighteen demo variants since deleted or promoted.
+
+The rule that survived all three readings is the one to keep: a catalog that
+outgrows the ceiling ships **SPLIT across messages** — there is no trimming
+strategy that makes one message hold everything — and TPL's now does, as a
+two-part paste cut at a category boundary for render testing. **Check the
+current number rather than this paragraph**; a catalog-library total is not a
+sending budget, and a real email built from a handful of blocks is nowhere
+near any of these figures.
 
 **What actually costs bytes**, measured on that catalog:
 
