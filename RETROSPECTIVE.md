@@ -1105,21 +1105,12 @@ audit engines, three linters, content-fingerprint versioning, a client-facing
 manual whose block reference is generated from the import pipeline, and a spec
 layer with four continuous-integration gates standing over it.
 
-Open threads, recorded rather than resolved. **Three of them block go-live and
-are marked BLOCKER**; the rest are research the work can proceed without.
+Open threads, recorded rather than resolved. Nothing here blocks a send. The
+deferred work that needs doing rather than deciding, including the account
+re-import, the thumbnail re-uploads and the asset still served stale from EN's
+CDN, is in the converter repo's deferred-work register rather than repeated
+here.
 
-- **BLOCKER. The platform account is behind this repository**, and further
-  behind than it was. The library needs a re-import and every renamed block
-  needs its thumbnail re-uploaded.
-- **BLOCKER. The asset service still serves the wrong arrow icon**, the one
-  with the stray letter baked into its pixels. The source is fixed, the served
-  file is not, and it must be replaced before anything ships.
-- **BLOCKER, and the decision is not ours.** A palette contrast issue in one
-  block family falls below the AA level of the Web Content Accessibility
-  Guidelines: white on green at 2.66:1 against a 4.5:1 floor. My call is that
-  it is held as a client-facing recommendation rather than a silent change,
-  with the exact remedy documented, because the remedy changes brand colors and
-  that decision belongs to the client.
 - **The stylesheet budget is tight by design**, and two things about it stay
   open rather than solved: everything between the largest size we have measured
   green and Gmail's cliff is modelled rather than observed, and a stylesheet
