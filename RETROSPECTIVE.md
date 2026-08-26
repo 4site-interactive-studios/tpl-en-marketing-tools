@@ -442,13 +442,13 @@ swap rather than an email rebuild.
   thorough as it deserves.
 - **The platform injects its own preheader**, the preview snippet an inbox
   shows under the subject line, from each email's preview-text setting, so a
-template-baked one doubles up in inbox snippets. We built and shipped a
-preheader field before testing that assumption, and reverted it the same day a
-send disproved it. - **Sends read block content live**, not from a build-time
-snapshot, which means a storage-versus-delivery comparison needs no rebuild to
-be valid. - **Field nesting resolves recursively**, measured 3 levels deep in a
-real send, and the same block added twice keeps independent selections per
-copy.
+  template-baked one doubles up in inbox snippets. We built and shipped a
+  preheader field before testing that assumption, and reverted it the same day
+  a send disproved it.
+- **Sends read block content live**, not from a build-time snapshot, which
+  means a storage-versus-delivery comparison needs no rebuild to be valid.
+- **Field nesting resolves recursively**, measured 3 levels deep in a real
+  send, and the same block added twice keeps independent selections per copy.
 
 ## What we learned about email clients
 
