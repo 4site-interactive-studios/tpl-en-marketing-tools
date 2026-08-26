@@ -41,7 +41,7 @@ What is unfinished: the render-testing service we rely on is being retired by
 its vendor, the platform has no way to automate the work that still happens by
 hand in its interface, the app runs on a laptop rather than as a hosted tool,
 and its own interface has never been designed around how it is actually used.
-Those are the next four decisions, and they are set out at the end.
+Those are the next 4 decisions, and they are set out at the end.
 
 ---
 
@@ -49,7 +49,7 @@ Those are the next four decisions, and they are set out at the end.
 
 | If you are… | Read |
 | :-- | :-- |
-| Anyone on the team | **The short version** above, then **Part 1**. Plain language, no code, about ten minutes |
+| Anyone on the team | **The short version** above, then **Part 1**. Plain language, no code, about 10 minutes |
 | A developer or template author | **Part 1 + Part 2** |
 | Looking for where a specific rule lives now | **Where the rules live now**, at the end of Part 2 |
 | Deciding what happens next | **Where it goes next**, the closing section |
@@ -66,7 +66,8 @@ parts most worth reading if you are picking the work up.
 
 Engaging Networks lets an editor assemble an email from reusable **blocks** (a
 hero, a story card, a footer) and customize each one through fields shown
-beside it. Two things make that harder than it sounds.
+beside it. Engaging Networks calls those fields Replacements, and this document
+uses the plain word except where the platform's own label matters. Two things make that harder than it sounds.
 
 **Email is fragile.** Every mail client renders the same code differently, and
 the differences are not cosmetic. Outlook on Windows uses Microsoft Word as its
@@ -103,57 +104,57 @@ a template repository can read them without access to the private code.
 
 ## The timeline, in seven phases
 
-Two repositories, 751 commits, about three months.
+Two repositories, 751 commits, about 3 months.
 
 **Phase 1: bootstrap and rebrand.** The template started life as another
-client's design and was re-skinned. Early commits are terse and hand-built:
-*"create more blocks"*, *"dark mode improvements"*.
+client's design and got re-skinned. The early commits were terse and
+hand-built: *"create more blocks"*, *"dark mode improvements"*.
 
-**Phase 2: from a mockup to a library.** The catalog becomes a system: a
-naming grammar, categories, and a debug overlay that lets anyone run quality
-assurance (QA) on the whole library in a browser without reading code. The converter
-starts here.
+**Phase 2: from a mockup to a library.** The catalog became a system. We added
+a naming grammar, categories, and a debug overlay that let anyone run quality
+assurance (QA) on the whole library in a browser without reading code. The
+converter started here.
 
-**Phase 3: the contract arrives.** The template begins declaring its own
-expectations (its spacing scale, its width options, later its brand palette)
-in a machine-readable comment, and the converter reads them. The conventions
-document is written and mirrored publicly. This is where the two projects stop
-being two projects.
+**Phase 3: the contract arrives.** The template began declaring its own
+expectations in a machine-readable comment: its spacing scale, its width
+options, later its brand palette. The converter read them. We wrote the
+conventions document and mirrored it publicly. This is where the two projects
+stopped being two projects.
 
-**Phase 4: the measured-behavior era.** The tone changes completely. Commits
-stop asserting things about the platform and start measuring them. We build
-**probes**, small emails whose only job is to test one set of claims through a
-real send, and read the results in every email app the rendering service
-covers. Most of the durable knowledge in this project came out of these ten
-days, and several confident beliefs did not survive them.
+**Phase 4: the measured-behavior era.** The tone changed completely. Commits
+stopped asserting things about the platform and started measuring them. We
+built **probes**, small emails whose only job is to test one set of claims
+through a real send, and read the results in every email app the rendering
+service covers. Most of the durable knowledge in this project came out of
+these 10 days. Several confident beliefs did not survive them.
 
-**Phase 5: industrialization.** Everything learned gets turned into something
+**Phase 5: industrialization.** We turned everything learned into something
 automatic: build-time checks that scan for known mistakes, pixel-level audits,
-content versioning, byte budgets. 127 converter commits land in four days, and
-the system goes live in the client's account.
+content versioning, byte budgets. 127 converter commits landed in 4 days, and
+the system went live in the client's account.
 
-**Phase 6: one catalog, and the names editors read.** Two catalog files become
-one master template: the duplicate is pruned to its unique leftovers and then
-deleted, and the master absorbs what is worth keeping while shedding demos its
-own dropdowns already reproduce. Renames sweep the catalog toward the names a
-content editor actually reads, and every panel label that said "Section" now
-says "Row", the word an editor is looking at, across 438 merge tags. The
-client manual, which had drifted a whole catalog generation, is regenerated
-from the import pipeline itself so it cannot drift again.
+**Phase 6: one catalog, and the names editors read.** Two catalog files became
+one master template. We pruned the duplicate to its unique leftovers and then
+deleted it, and the master took on what was worth keeping while shedding demos
+its own dropdowns already reproduced. Renames swept the catalog toward the
+names a content editor actually reads. Every panel label that said "Section"
+now says "Row", which is the word an editor is looking at, across 438 merge
+tags. The client manual had drifted a whole catalog generation, so we
+regenerated it from the import pipeline itself and it cannot drift again.
 
-**Phase 7: governance, and the email that says what it is.** Parallel work
-stops being occasional and becomes the way the project runs: seventeen pull
-requests merge in four days, and on one afternoon two branches mint the same
-version number, each of them honestly. The answer is process: a written spec
-for every subsystem, a reviewer protocol, and the repository's first continuous
-integration, four gates of which one refuses a change whose owning spec did not
-move with it. Meanwhile the template adopts a single brand type scale, and the
-content baseline makes a full round trip: widened, then ruled back four days
-later. Two features land that the catalog had wanted from the start. One is a
+**Phase 7: governance, and the email that says what it is.** We merged 17 pull
+requests in 4 days. On one afternoon two branches picked the same version
+number and both were right, which is what forced the process work: a written
+spec for every subsystem, a reviewer protocol, and the repo's first continuous
+integration. Four gates, one of which refuses a change whose owning spec did
+not move with it. Meanwhile the template took a single brand type scale, and
+the content baseline made a full round trip, widened and then ruled back 4 days
+later. Two features landed that the catalog had wanted from the start. One is a
 dropdown that recolors every link in a block, its options read out of the
 stylesheet rather than configured. The other is a hidden name-and-version band
-on every block, invisible in the inbox and revealed inside the builder by adding a debug
-block, so an editor can finally see which vintage of which block they have.
+on every block, invisible in the inbox and revealed inside the builder by
+adding a debug block, so an editor can finally see which vintage of which block
+they have.
 
 ## The five things we'd tell another team
 
@@ -203,7 +204,7 @@ Each figure names its owner: **TPL** (the template library, this repo), the
 | Probe instruments built and archived | 26, each with its verdict recorded | Both |
 | Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders; a later round read 33 renders across 17 clients | TPL |
 | Editor controls proven live or dead by pixel comparison | 1,003 dropdowns in the most recent full sweep: 999 pass, 4 fail, every failure since closed. Separately, all 434 spacing fields proven to change the layout | Both |
-| Stale markup annotations removed after proving they changed nothing | 8,376 | Both |
+| Dead annotations stripped from the template source | 8,376, after proving that removing every one changed zero Replacements | Both |
 | Delivered stylesheet against Gmail's limit | About 120 bytes under our working target, and roughly 2,400 under the hard cliff where Gmail discards the stylesheet entirely | Both |
 | Automated guards standing | 4 audit engines, a spacing oracle, 3 linters, byte budgets at both ends, and four continuous-integration gates over 3 machine-checked contracts | Both |
 
@@ -255,7 +256,7 @@ The flagship finding, and the most damaging.
 
 A block that had been through the editor shipped with `>` rewritten as its
 escaped form inside a stylesheet. Because a `<style>` element is raw text, that
-escape is never decoded back: it stays four literal characters, the selector
+escape is never decoded back: it stays 4 literal characters, the selector
 becomes invalid, and the client discards the rule silently.
 
 What made it so hard to see is the damage pattern. Dark-mode rules come in
@@ -264,21 +265,20 @@ its partner repaints the background using a child combinator, which died. Half
 of each pair lived. The result was **white text on a white panel**, and on iOS
 Mail, entire blocks rendering blank.
 
-**It took four wrong explanations to get there**, and the sequence is the
-lesson. *Gmail strips body stylesheets*: disproven by probe. *The dark-mode
-pairs are authoring bugs*: wrong, the pairs were correct as written. *The
-platform escapes the character at send time*: wrong, only on an editor edit.
-*Outlook for Mac is simply broken*: wrong, clean code renders there perfectly.
-Four confident diagnoses in a row, each plausible, each cheap to hold, and not
-one of them tested against a real send.
+**It took 4 wrong explanations to get there.** We thought Gmail was stripping
+body stylesheets, and a probe disproved it. We thought the dark-mode pairs were
+authoring bugs; they were correct as written. We thought the platform escaped
+the character at send time; it only does it on an editor edit. We thought
+Outlook for Mac was simply broken, and clean code renders there perfectly. Four
+confident diagnoses, and we had not tested one of them against a real send.
 
 Four controlled sends finally pinned it: **the trigger is an edit.** Import,
 send, and an untouched open-and-save round trip are all clean and
 byte-identical. The escape only persists for a field that was actually modified
 and resubmitted.
 
-Two measurement traps cost a full send round each, and they generalize to any
-similar investigation. **The platform prunes rules that match nothing**, so a
+Two measurement traps cost us a full send round each, and both apply to any
+investigation like this. **The platform prunes rules that match nothing**, so a
 canary selector aimed at a class that does not exist vanishes and reads as a
 pass. And **a plain rule gets inlined**, which dissolves the very selector you
 were trying to inspect.
@@ -302,18 +302,16 @@ parser recovers at the newline and loses one declaration; iOS Mail did exactly
 that. **Gmail discarded the entire stylesheet**, every media query with it, so
 a button row that should stack on phones rendered as touching pills.
 
-The reason this one is worth carrying somewhere else: the delivered stylesheet
-was comfortably under every size limit. We had spent a month building a mental
-model in which a dropped Gmail stylesheet means *too many bytes*, and that
-model cannot see this failure at all. The symptom was a size symptom; the cause
-was a syntax one.
+The delivered stylesheet was comfortably under every size limit. We had spent a
+month building a mental model where a dropped Gmail stylesheet means *too many
+bytes*, and that model cannot see this failure at all. The symptom looked like
+size. The cause was syntax.
 
-The obvious suspect was also innocent, and clearing it is the transferable
-move. The block-band rules shipping alongside that label use a modern selector
-of exactly the kind a sanitizer might reject. What exonerated them was an
-earlier send carrying the same selector, with balanced quotes, that Gmail had
-been perfectly happy with. **When two suspects both fit, look for the send
-where the plausible one was present and nothing broke.**
+We nearly blamed the wrong thing, too. The block-band rules shipping alongside
+that label use a modern selector of exactly the kind a sanitizer might reject.
+What cleared them was an earlier send carrying the same selector, with balanced
+quotes, that Gmail had been perfectly happy with. **When two suspects both fit,
+look for the send where the plausible one was present and nothing broke.**
 
 Fixed in two layers: the label lost its semicolon, and the code that emits
 every label now escapes those three characters so no future label can
@@ -323,7 +321,7 @@ says so rather than guessing.
 
 ### Documentation text gets read as markup
 
-Twice in three days, a comment written for humans was parsed as code.
+Twice in 3 days, a comment written for humans was parsed as code.
 
 The first killed every import, with a misleading *"malformed template"* error.
 A comment in the stylesheet contained the literal token `<style>` inside the
@@ -371,8 +369,9 @@ holds zero styled links, down from 54.
 
 ### Template edits do not reach emails that already exist
 
-A template change does not propagate into drafts built from it. Any email using
-that template must be rebuilt from scratch.
+A template code change does not propagate into drafts built from it. Any email
+using that template must be rebuilt from scratch. There is no way to update it
+in place like you can with page templates and the pages that use them.
 
 This one limitation is the entire reason the **Template Styles block** exists.
 Styling is the part of a template that most often needs a fix after the fact,
@@ -382,7 +381,7 @@ swap rather than an email rebuild.
 ### Smaller platform behaviors, each measured
 
 - **One value, several carriers.** A single authored background image compiles
-  into four separate places in the output. Miss any one and some clients show
+  into 4 separate places in the output. Miss any one and some clients show
   the new photo while the rest show the old one. This cost a full QA round.
 - **The platform rebuilds a table's background shorthand** and drops the image
   from it. The leftover shorthand then *resets* the background, overriding the
@@ -438,7 +437,7 @@ swap rather than an email rebuild.
   same day a send disproved it.
 - **Sends read block content live**, not from a build-time snapshot, which
   means a storage-versus-delivery comparison needs no rebuild to be valid.
-- **Field nesting resolves recursively**, measured three levels deep in a real
+- **Field nesting resolves recursively**, measured 3 levels deep in a real
   send, and the same block added twice keeps independent selections per copy.
 
 ## What we learned about email clients
@@ -511,7 +510,7 @@ lighting condition.
 The other was a white lowercase "s" floating beside an arrow icon on four
 clients. It is in the pixels. The asset had been cropped out of a design
 composite and carried a letter of the neighbouring text with it, and had been
-invisible for seven weeks because the catalog is light and white on white shows
+invisible for 7 weeks because the catalog is light and white on white shows
 nothing. The delivered code greps perfectly clean. **Some defects are not in
 any text you can search.**
 
@@ -539,19 +538,19 @@ any text you can search.**
   remedy is the fixed-width spacer columns it was tempting to replace padding
   with. Four shipped blocks had quietly drifted to the padding shape and were
   rendering flush; one of them carried a comment saying not to, while the
-  markup under it had drifted anyway. The fix cost eight editor fields, all of
+  markup under it had drifted anyway. The fix cost 8 editor fields, all of
   them controls Outlook was ignoring. What makes this class of defect easy to
   ship is that **nothing looks wrong anywhere you preview**.
 - **Word clamps a stale ghost width to its cell, and shrink-wraps a
-  full-width one**, and this one is worth the long version, because we
-  shipped a fix built on the opposite belief. A geometry audit concluded that
+  full-width one.** We shipped a fix built on the opposite belief, so this one
+  gets the long version. A geometry audit concluded that
   widening a gutter would overflow Outlook wherever the compiler had frozen a
   stale pixel width into the Outlook-only table it wraps around each column.
   A fix shipped: rewrite that table to full width. A probe built and sent the
   same morning refuted **both halves**, with two Outlooks agreeing to the
   pixel. Word *clamps* a stale ghost to the cell it sits in, so the defect did
   not exist. And full width makes Word *shrink-wrap it to its text*, so the
-  fix was the regression. Reverted seven hours after it shipped. Both geometry
+  fix was the regression. Reverted 7 hours after it shipped. Both geometry
   scanners now clamp the way Word does; without that they would report an
   overflow Outlook never has and strip padding options from 57 frames for
   nothing.
@@ -587,7 +586,7 @@ The same geometry bit again from the other side. A block that *groups* its
 columns never stacks them on mobile: every column becomes a percentage, so a
 narrow fixed-pixel icon column shrinks with the screen while the fixed padding
 inside it does not. Two identically authored badges had been rendering at 45
-and 29 pixels wide on phones for seven weeks, and the rows carrying a single
+and 29 pixels wide on phones for 7 weeks, and the rows carrying a single
 icon never looked broken because there was no sibling to compare against. The
 fix is a mobile width pin on every such column, and the rule is a build guard
 rather than a guideline, with two carve-outs measured in so it stays quiet: a
@@ -632,7 +631,7 @@ accident.
 - **Only structure earns an inertness label.** A control that moves nothing
   because the placeholder copy is short is not inert. The first long headline
   an editor types brings it alive. The audit renders three copy states per
-  control (as authored, one line, wrapped onto several) and calls it live if
+  control (as authored, one line, wrapped onto several lines) and calls it live if
   any of them moves pixels. This was learned the hard way: four of five
   controls an early sweep called dead were live the moment copy got longer than
   the placeholder. A centered heading's padding cannot move short copy at all,
@@ -797,9 +796,8 @@ audit self-tests at startup and **refuses to run** if rendering determinism
 fails, because a lying matrix is worse than no matrix. Parallelism is a timing knob and
 never a verdict knob.
 
-**Suspect the instrument before the subject.** Four separate times the finding
-came from our own tooling rather than from the thing being measured, and the
-pattern is consistent enough to be a rule.
+**Suspect the instrument before the subject.** Four times the finding came from
+our own tooling rather than from the thing we were measuring.
 
 The rendering service's "view source" page reported about 71 bytes of
 stylesheet and no dark-mode rules for a send that had shipped a full one, a
@@ -837,7 +835,7 @@ reproduces bugs synthetic fixtures cannot reach. It is also the kind that rots
 silently. A row was ungrouped so it would stack on mobile, and the fixture
 captured from its grouped shape went on passing, asserting that a layout fold
 worked on a structure the catalog no longer had. Meanwhile the real block
-shipped its copy twice into the platform for three days. **A stale fixture is
+shipped its copy twice into the platform for 3 days. **A stale fixture is
 worse than no test: it does not merely fail to catch the regression, it stands
 in front of it**, because green now means "the shape you no longer ship still
 works." Fixtures captured from a block are regenerated in the session that
@@ -866,8 +864,7 @@ that read its absence as a gap, and was found again, because the rule against
 it lived only in prose. It stopped recurring the day it became a build check.
 *The rule now lives where prose cannot lose it.*
 
-Three variations of the same failure are worth naming, because each looked like
-coverage. **A check can outlive its subject**: one assertion's body died when a
+The same failure showed up three ways, and each one looked like coverage. **A check can outlive its subject**: one assertion's body died when a
 file it compared was deleted, while two documents went on listing it as
 enforced. **A check can never have reached its subject**: the naming-grammar
 lint had never read the text it existed to check, because that text writes
@@ -875,7 +872,7 @@ every block name in backticks and the harvester did not read backticks. Even
 its two suppression entries were dead, which made the guard look like it was
 working. And **a check can report instead of stopping**: when a block's
 alternate layout could no longer be folded, the converter noticed and emitted
-an *informational note*, and that block shipped broken for three days because
+an *informational note*, and that block shipped broken for 3 days because
 an info note is a line in a panel nobody reads. **An importer note is not a
 guard.** A check nobody runs still reads as coverage, which is worse than not
 having it. One was retired in place, one repaired, one promoted to a build
@@ -910,7 +907,7 @@ propagated the wrong theory rather than testing it. Both were wrong and both
 were reverted. A reading gap had been authored *between* two blocks' comment
 markers, and segmentation attaches anything between markers to the block
 *before* it, so the gap shipped as a white strip under the first footer and its
-exclusion flag removed that whole footer from every export. For three days the
+exclusion flag removed that whole footer from every export. For 3 days the
 footer had not been exporting at all, and nobody noticed because the visible
 symptom was a strip of white.
 
@@ -923,9 +920,9 @@ alters how every block renders bumps only the template. Renames carry a stated
 cost, since a renamed block is a new block in the platform and restarts at
 version one.
 
-That scheme had a quiet bug worth recording. Two version labels, one for the
-template and one for the stylesheet, exist precisely so an editor can see *which*
-of the two changed. They could not: each entity's fingerprint included the
+That scheme had a quiet bug in it. Two version labels, one for the template and
+one for the stylesheet, exist so an editor can see *which* of the two
+changed. They could not: each entity's fingerprint included the
 other's content, so across four consecutive commits they moved in lockstep.
 **A signal that never disagrees with another signal is not two signals.**
 
@@ -1137,7 +1134,7 @@ tested at the extremes: the placeholder copy, a single word, and copy long
 enough to wrap onto a second line, across desktop and mobile.
 
 Half of that already exists, which changes what is worth building. The sweep
-has rendered every cell under exactly those three copy states at both screen
+has rendered every cell under exactly those 3 copy states at both screen
 sizes for some time, with the long probe sized to wrap even at caption type.
 **What is missing is not the renders. It is the assertion.** Those images are
 compared only to answer *did any pixel move*, which decides whether a control
