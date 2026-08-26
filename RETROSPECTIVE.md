@@ -247,7 +247,7 @@ Each figure names its owner: **TPL** (the template library, this repo), the
 | Email-client render rounds reviewed | 8 rounds in one QA session alone, 120 individual renders; a later round read 33 renders across 17 clients | TPL |
 | Editor controls proven live or dead by pixel comparison | 1,003 dropdowns in the most recent full sweep: 999 pass, 4 fail, every failure since closed. Separately, all 434 spacing fields proven to change the layout | Both |
 | Dead annotations stripped from the template source | 8,376, after proving that removing every one changed zero Replacements | Both |
-| Delivered stylesheet against Gmail's limit | About 120 bytes under our working target, and roughly 2,400 under the hard cliff where Gmail discards the stylesheet entirely | Both |
+| Delivered stylesheet against Gmail's limit | Inside the working target, with room measured in hundreds of bytes rather than thousands. Every figure is in [The hard limits](#the-hard-limits) | Both |
 | Automated guards standing | 4 audit engines, a spacing checker, 3 linters, byte budgets at both ends, and four continuous-integration gates over 3 machine-checked contracts | Both |
 
 ---
@@ -303,9 +303,13 @@ wrote. **An export proves nothing about what a recipient gets.**
 
 ### The editor escapes one character, and half your dark mode dies
 
-The flagship finding, and the most damaging.
+**Never author a child combinator, the `>` in a selector, in any stylesheet
+that ships inside a block.** The editor escapes that character, the rule dies
+silently, and because dark-mode rules come in pairs you lose half of every pair
+and keep the other half. The maintained rule is guide §2d.
 
-A block that had been through the editor shipped with `>` rewritten as its
+This was the flagship finding and the most damaging. A block that had been
+through the editor shipped with `>` rewritten as its
 escaped form inside a stylesheet. A stylesheet's contents are never decoded as
 markup, so that escape is never turned back: it stays 4 literal characters, the
 selector becomes invalid, and the client discards the rule silently.
@@ -377,7 +381,9 @@ says so rather than guessing.
 
 ### Documentation text gets read as markup
 
-Twice in 3 days, a comment written for humans was parsed as code.
+**Never put a tag-like sequence inside a stylesheet, comments included.** Twice
+in 3 days, a comment written for humans was parsed as code, and both times it
+took down the whole import.
 
 The first killed every import, with a misleading *"malformed template"* error.
 A comment in the stylesheet contained the literal token `<style>` inside the
@@ -522,8 +528,9 @@ figure somebody chose is more honest than a round one that looks calculated.
 The guard carries a comment saying exactly that, so no later tidying pass
 "normalizes" it away.
 
-Two caveats belong with the whole budget. The largest delivered stylesheet we
-have ever **measured** green is a few hundred bytes under the target;
+Two caveats belong with the whole budget, and the numbers behind them are in
+[The hard limits](#the-hard-limits) rather than repeated here. The largest
+delivered stylesheet we have ever **measured** green is under the target, so
 everything between there and the cliff is modelled, not observed. And **size is
 not the only way to lose the stylesheet** (see
 [The stylesheet reprinter is string-blind](#the-stylesheet-reprinter-is-string-blind)).
@@ -534,14 +541,23 @@ not sufficient.
 
 ### Dark mode reaches most clients, and two important ones not at all
 
-Only two dark-mode hooks survive the platform: the standard preference query,
-and the Outlook.com hook nested inside a conditional media query.
+**Only two dark-mode hooks survive the platform:** the standard preference
+query, and the Outlook.com hook nested inside a conditional media query. Every
+other technique is stripped before the email is delivered.
 
-**The Gmail app on Android and Outlook on Windows expose neither**, and they
-transform in opposite directions. Gmail darkens light designs. Outlook desktop
-also *inverts* dark ones, flipping a black footer to a white background while
-leaving its light logo and white icons untouched. Background-color attributes
-buy no protection; a panel colored with an attribute inverts identically to one
+What each client does with what arrives:
+
+| Client | Honors a dark hook | What it does on its own | What that means for you |
+| :-- | :-- | :-- | :-- |
+| Apple Mail | Yes, preference query | Nothing uninvited | Your dark styling is obeyed as written, including your mistakes |
+| Outlook.com | Yes, via the nested hook | Nothing uninvited | Same, and the hook must be nested or it is dropped |
+| iOS Mail | Yes, preference query | Nothing uninvited | Same |
+| **Gmail app, Android** | **No** | **Darkens light designs** | You cannot reach it. Design so its automatic transform lands somewhere legible |
+| **Outlook on Windows** | **No** | **Darkens light designs and inverts dark ones** | A black footer flips to white while its light logo and white icons stay put |
+
+The two that expose no hook transform in opposite directions, which is why a
+design that survives one can fail the other. Background-color attributes buy no
+protection: a panel colored with an attribute inverts identically to one
 colored with a stylesheet.
 
 **Images are never recolored by either client. That is both the failure mode
@@ -578,63 +594,56 @@ any text you can search.**
 
 ### Outlook's Word engine, and what we chose to accept
 
-- **A section carrying both a background color and a background image renders
-  as a flat slab.** The compiler copies the color onto the Outlook-specific
-  fill, and Word paints that instead of the photo. It renders correctly on
-  Outlook for *Mac* and everywhere else, which is why the failure looked
-  inconsistent for so long. The remedy is to move the fallback color onto a
-  wrapper *behind* the section. Note that this relocates the fallback rather
-  than removing it, since dropping it outright would trade a flat slab for text
-  on nothing. Now guarded by a build check.
-- **Every button renders square.** Word ignores rounded corners on table cells.
-  We accepted that as graceful degradation; the legacy drawing-format
-  workaround was rejected outright because it breaks the converter's label and
-  color bindings and bloats every block.
-- **Word ignores box geometry on inline elements**. Width, height and
-  inline-block all die.
-- **Zero line-height is a trap.** Correct in every browser, byte-identical
-  across desktop and mobile, and Word honors it literally, rendering every
-  hand-rolled button as a thin bar with invisible label text.
-- **Word cannot pad the shape it uses for background sections**, confirmed at
-  two different magnitudes, so the failure is not size-dependent and the only
-  remedy is the fixed-width spacer columns it was tempting to replace padding
-  with. Four shipped blocks had quietly drifted to the padding shape and were
-  rendering flush; one of them carried a comment saying not to, while the
-  markup under it had drifted anyway. The fix cost 8 editor fields, all of
-  them controls Outlook was ignoring. What makes this class of defect easy to
-  ship is that **nothing looks wrong anywhere you preview**.
-- **Word squeezes an out-of-date width down to fit, and shrinks a full-width
-  one to its text.** We shipped a fix built on the opposite belief, so this one
-  gets the long version. The compiler wraps an extra table around each column
-  that only Outlook can see, and it freezes a pixel width into that table. A
-  geometry audit concluded that widening a gutter would overflow Outlook
-  wherever that frozen width had gone stale, so a fix shipped: rewrite the
-  hidden table to full width. A probe built and sent the same morning refuted
-  **both halves**, with two Outlooks agreeing to the pixel. Word squeezes a
-  stale width down to the cell it sits in, so the defect did not exist. And
-  full width makes Word shrink the table to fit its text, so the fix was the
-  regression. Reverted 7 hours after it shipped. Both geometry
-  scanners now clamp the way Word does; without that they would report an
-  overflow Outlook never has and strip padding options from 57 frames for
-  nothing.
-- **Outlook's dark mode flips white copy that has no explicit background behind
-  it** to near-black, which over a dark photograph is near-invisible. Copy
-  sitting on an explicit background transforms legibly. The standing ruling is
-  to **accept it and not defend it**: no scrims, no panels, no slabs behind
-  text over photography. Text over an image is a contrast risk the client
-  decides to take, image by image; the template ships the raw layout and
-  documents the risk rather than making that choice silently. Pinning white
-  inline is not a fix either. Inline white is precisely what Word's dark mode
-  flips.
-- **Word auto-links a bare email address and paints it default blue**, which on
-  a dark footer is near-illegible. Both footers now author their own link
-  rather than leaving a placeholder bare.
+Outlook on Windows renders with Microsoft Word, which ignores whole categories
+of modern styling. Everything below is measured, and most of it we accepted
+rather than fought.
+
+| If you author this | Word does this | So we |
+| :-- | :-- | :-- |
+| Rounded corners on a button | Ignores them. Every button renders square | Accept it as graceful degradation. The legacy drawing-format workaround breaks the converter's field bindings and bloats every block |
+| Width, height or inline-block on an inline element | Ignores all three | Never carry box geometry on an inline element |
+| A zero line-height | Honors it literally. The button becomes a thin bar with invisible label text | Never set it. Correct in every browser, fatal here |
+| A background color and a background image on the same section | Paints the color and drops the photo. Correct on Outlook for *Mac*, which is why it looked inconsistent for so long | Move the fallback color to a wrapper *behind* the section. This relocates the fallback; dropping it would trade a flat slab for text on nothing. Guarded by a build check |
+| Horizontal padding inside the shape Word uses for background sections | Ignores it, at every size we tested | Use fixed-width spacer columns instead |
+| A stale frozen width on the hidden table Outlook draws per column | Squeezes it down to fit its cell | Nothing. It is not a defect, and we shipped a fix for it anyway (below) |
+| That hidden table rewritten to full width | Shrinks it to fit its text | Never do this. It was our fix, and it was the regression |
+| White copy with no explicit background behind it, in dark mode | Flips it to near-black, which over a dark photo is near-invisible | Accept it. No scrims, no panels, no slabs behind text over photography |
+| A bare email address | Auto-links it and paints it default blue | Author the link yourself. On a dark footer the default is near-illegible |
+
+Two of those cost us something worth recording.
+
+**The padding one is easy to ship because nothing looks wrong anywhere you
+preview.** Four blocks had quietly drifted to the padding shape and were
+rendering flush in Outlook; one of them carried a comment saying not to, while
+the markup under it had drifted anyway. The fix cost 8 editor fields, all of
+them controls Outlook was ignoring.
+
+**The width one we got backwards in both halves.** A geometry audit concluded
+that widening a gutter would overflow Outlook wherever the compiler had frozen
+a stale pixel width into that hidden table, so a fix shipped: rewrite the table
+to full width. A probe built and sent the same morning refuted both halves,
+with two Outlooks agreeing to the pixel. Word squeezes a stale width down to
+its cell, so the defect did not exist, and full width makes Word shrink the
+table to its text, so the fix was the regression. Reverted 7 hours after it
+shipped. Both geometry scanners now clamp the way Word does; without that they
+would report an overflow Outlook never has and strip padding options from 57
+frames for nothing.
+
+**The dark-mode ruling is a decision, not a limitation we failed to solve.**
+Text over an image is a contrast risk the client decides to take, image by
+image. The template ships the raw layout and documents the risk rather than
+making that choice silently. Pinning white inline is not a fix either: inline
+white is precisely what Word's dark mode flips.
 
 ### Diagnose gutters before restructuring columns
 
+**Before you conclude a mobile client is breaking your columns, add up the
+gutters.** Ours accounted for the entire apparent defect, and the fix that
+would have followed from the other theory was a catalog-wide restructure.
+
 A QA round read the Gmail Android app as shrinking two-column story cards, and
-the proposed fix was to restructure the two-column technique across the
-catalog. Four probe rounds disproved it: **there is no column-shrink bug.**
+the proposed fix was exactly that restructure. Four probe rounds disproved it:
+**there is no column-shrink bug.**
 
 The phone reports 1080 device pixels at a 3× ratio, so Gmail lays out at
 roughly 333 layout pixels, and a card loses 80 of them, a quarter of its
@@ -1111,11 +1120,11 @@ are marked BLOCKER**; the rest are research the work can proceed without.
   it is held as a client-facing recommendation rather than a silent change,
   with the exact remedy documented, because the remedy changes brand colors and
   that decision belongs to the client.
-- **The stylesheet budget is tight by design.** The master sits about 120 bytes
-  under its working target and roughly 2,400 under Gmail's cliff. Everything
-  between the largest size we have measured green and the cliff is modelled
-  rather than observed, and a stylesheet can be lost for reasons a byte budget
-  cannot see at all.
+- **The stylesheet budget is tight by design**, and two things about it stay
+  open rather than solved: everything between the largest size we have measured
+  green and Gmail's cliff is modelled rather than observed, and a stylesheet
+  can be lost for reasons no byte budget can see. Figures in
+  [The hard limits](#the-hard-limits).
 - **Colons and commas inside quoted stylesheet strings are unmeasured.**
   Semicolons and braces are now escaped and proven; the platform rewrites
   colons and commas elsewhere, nothing we ship puts one inside a string, and no
