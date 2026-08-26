@@ -2926,7 +2926,7 @@
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;line-height:18px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
+          <p style="font-size:14px;line-height:18px;"><a href="https://www.tpl.org/contact">Contact Us</a> | <a href="https://www.tpl.org/privacy-policy">Privacy Policy</a> | <a href="{unsubscribe_action~6~1000798~https://act.tpl.org/page/1000752/subscriptions/1}">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2989,7 +2989,7 @@
         <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
         <mj-text align="center" data-no-display-toggle padding="0">
-          <p style="font-size:14px;line-height:18px;"><a href="https://tpl.org">Contact Us</a> | <a href="https://tpl.org">Privacy Policy</a> | <a href="https://tpl.org">Unsubscribe</a></p>
+          <p style="font-size:14px;line-height:18px;"><a href="https://www.tpl.org/contact">Contact Us</a> | <a href="https://www.tpl.org/privacy-policy">Privacy Policy</a> | <a href="{unsubscribe_action~6~1000798~https://act.tpl.org/page/1000752/subscriptions/1}">Unsubscribe</a></p>
         </mj-text>
       </mj-column>
     </mj-section>
