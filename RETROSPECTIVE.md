@@ -67,7 +67,8 @@ parts most worth reading if you are picking the work up.
 Engaging Networks lets an editor assemble an email from reusable **blocks** (a
 hero, a story card, a footer) and customize each one through fields shown
 beside it. Engaging Networks calls those fields Replacements, and this document
-uses the plain word except where the platform's own label matters. Two things make that harder than it sounds.
+uses the plain word except where the platform's own label matters. Two things
+make that harder than it sounds.
 
 **Email is fragile.** Every mail client renders the same code differently, and
 the differences are not cosmetic. Outlook on Windows uses Microsoft Word as its
@@ -84,12 +85,13 @@ in a box that accepts anything.
 ## What got built
 
 **A template library.** Emails are authored in MJML (Mailjet Markup Language),
-a shorthand that compiles into the nested tables email actually requires. Rather than one-off emails we
-maintain a catalog of blocks, each a complete design with mobile stacking,
-dark-mode behavior and Outlook workarounds already built in. The catalog *is*
-the master template: one file, 60 blocks, 56 of them shipping into the
-platform. Beside it sit two donation thank-you autoresponders built on the same
-stylesheet, and a one-block holding pen for anything with an unresolved defect.
+a shorthand that compiles into the nested tables email actually requires.
+Rather than one-off emails we maintain a catalog of blocks, each a complete
+design with mobile stacking, dark-mode behavior and Outlook workarounds already
+built in. The catalog *is* the master template: one file, 60 blocks, 56 of them
+shipping into the platform. Beside it sit two donation thank-you autoresponders
+built on the same stylesheet, and a one-block holding pen for anything with an
+unresolved defect.
 
 **A converter.** A private, browser-only tool. Point it at the template on
 GitHub and it compiles the MJML, splits it into blocks, reads the design intent
@@ -189,7 +191,7 @@ they have.
 ## By the numbers
 
 Each figure names its owner: **TPL** (the template library, this repo), the
-**converter** (the private Email → EN Marketing Tools app), or **both**.
+**converter** (the private app that turns one into the other), or **both**.
 
 | | | Project |
 | :-- | :-- | :-- |
@@ -206,7 +208,7 @@ Each figure names its owner: **TPL** (the template library, this repo), the
 | Editor controls proven live or dead by pixel comparison | 1,003 dropdowns in the most recent full sweep: 999 pass, 4 fail, every failure since closed. Separately, all 434 spacing fields proven to change the layout | Both |
 | Dead annotations stripped from the template source | 8,376, after proving that removing every one changed zero Replacements | Both |
 | Delivered stylesheet against Gmail's limit | About 120 bytes under our working target, and roughly 2,400 under the hard cliff where Gmail discards the stylesheet entirely | Both |
-| Automated guards standing | 4 audit engines, a spacing oracle, 3 linters, byte budgets at both ends, and four continuous-integration gates over 3 machine-checked contracts | Both |
+| Automated guards standing | 4 audit engines, a spacing checker, 3 linters, byte budgets at both ends, and four continuous-integration gates over 3 machine-checked contracts | Both |
 
 ---
 
@@ -240,11 +242,12 @@ The headlines:
 | A rule matching nothing | Pruned |
 | An Outlook-only conditional comment | Kept intact |
 
-**The operative rule: a conditional media query is the platform's "do not
-touch" wrapper.** Anything that must survive as a rule rather than an inline
-style goes inside one. Two corollaries bit us later. A media-query rule that
-must beat a base rule needs its own `!important`, and any `!important` you
-wrote on an inlinable rule is gone by the time it lands.
+**The operative rule: a media query, a rule that only applies under a stated
+condition such as a screen width, is the platform's "do not touch" wrapper.**
+Anything that must survive as a rule rather than an inline style goes inside
+one. Two corollaries bit us later. A media-query rule that must beat a base
+rule needs its own `!important`, and any `!important` you wrote on an inlinable
+rule is gone by the time it lands.
 
 Timing matters as much as behavior. This is a **send-time** transform: the
 stored template keeps your source verbatim, so an export round-trips what you
@@ -255,13 +258,14 @@ wrote. **An export proves nothing about what a recipient gets.**
 The flagship finding, and the most damaging.
 
 A block that had been through the editor shipped with `>` rewritten as its
-escaped form inside a stylesheet. Because a `<style>` element is raw text, that
-escape is never decoded back: it stays 4 literal characters, the selector
-becomes invalid, and the client discards the rule silently.
+escaped form inside a stylesheet. A stylesheet's contents are never decoded as
+markup, so that escape is never turned back: it stays 4 literal characters, the
+selector becomes invalid, and the client discards the rule silently.
 
 What made it so hard to see is the damage pattern. Dark-mode rules come in
-pairs. One sets the text color using a descendant selector, which survived;
-its partner repaints the background using a child combinator, which died. Half
+pairs. One sets the text color, and it matches anything inside the block, so it
+survived. Its partner repaints the background, and it uses the `>` character to
+match only a direct child, so it died. Half
 of each pair lived. The result was **white text on a white panel**, and on iOS
 Mail, entire blocks rendering blank.
 
@@ -279,9 +283,10 @@ and resubmitted.
 
 Two measurement traps cost us a full send round each, and both apply to any
 investigation like this. **The platform prunes rules that match nothing**, so a
-canary selector aimed at a class that does not exist vanishes and reads as a
-pass. And **a plain rule gets inlined**, which dissolves the very selector you
-were trying to inspect.
+canary rule, one planted purely so we can check whether it survived, vanishes
+when it is aimed at a class that does not exist, and that reads as a pass. And
+**a plain rule gets inlined**, which dissolves the very selector you were
+trying to inspect.
 
 Our fix shipped: the stylesheet was rewritten to contain zero child
 combinators, with measured stand-ins. Theirs is written and not yet submitted:
@@ -308,7 +313,8 @@ bytes*, and that model cannot see this failure at all. The symptom looked like
 size. The cause was syntax.
 
 We nearly blamed the wrong thing, too. The block-band rules shipping alongside
-that label use a modern selector of exactly the kind a sanitizer might reject.
+that label use a modern selector of exactly the kind Gmail's filter on incoming
+mail might reject.
 What cleared them was an earlier send carrying the same selector, with balanced
 quotes, that Gmail had been perfectly happy with. **When two suspects both fit,
 look for the send where the plausible one was present and nothing broke.**
@@ -353,14 +359,15 @@ the editor.
 | Bare copy, or a lone span | Wrapped in one paragraph; spans and classes survive |
 | A span styling weight and color | Re-expressed as its own markup, color rewritten |
 | An inline element with a property the editor has no equivalent for | **That property is dropped** |
-| A paragraph that is already there | **Unchanged. The transform is idempotent** |
+| A paragraph that is already there | **Unchanged. Running the editor over it again changes nothing** |
 | A link with several attributes | **Address and target kept; everything else discarded** |
 | An Outlook-only conditional comment | **Destroyed** |
 
 Three things follow. The injected paragraph carries no inline style, so the
 stylesheet's paragraph rule wins and a caption authored at 10px ships at 16.
-Because the transform is **idempotent**, the fix is to pre-apply it. The
-converter now wraps values at generation time so the editor's first edit
+Because running the editor over its own output changes nothing, the fix is to
+apply that output ourselves up front. The converter now wraps values at
+generation time so the editor's first edit
 changes nothing, verified pixel-identical to the unwrapped rendering. And the
 predictive model is **node versus mark**: the editor rebuilds a link from a
 fixed attribute set but leaves paragraphs and spans alone, so a link inside
@@ -378,7 +385,7 @@ Styling is the part of a template that most often needs a fix after the fact,
 so we ship the stylesheet as a *block* instead. A styling fix becomes a block
 swap rather than an email rebuild.
 
-### Smaller platform behaviors, each measured
+### Smaller Engaging Networks behaviors, each measured
 
 - **One value, several carriers.** A single authored background image compiles
   into 4 separate places in the output. Miss any one and some clients show
@@ -431,14 +438,15 @@ swap rather than an email rebuild.
 - **Authoring comments in the template head never ship**, because the importer
   strips them at import. Head documentation is therefore free, and should be as
   thorough as it deserves.
-- **The platform injects its own preheader** from each email's preview-text
-  setting, so a template-baked one doubles up in inbox snippets. We built and
-  shipped a preheader field before testing that assumption, and reverted it the
-  same day a send disproved it.
-- **Sends read block content live**, not from a build-time snapshot, which
-  means a storage-versus-delivery comparison needs no rebuild to be valid.
-- **Field nesting resolves recursively**, measured 3 levels deep in a real
-  send, and the same block added twice keeps independent selections per copy.
+- **The platform injects its own preheader**, the preview snippet an inbox
+  shows under the subject line, from each email's preview-text setting, so a
+template-baked one doubles up in inbox snippets. We built and shipped a
+preheader field before testing that assumption, and reverted it the same day a
+send disproved it. - **Sends read block content live**, not from a build-time
+snapshot, which means a storage-versus-delivery comparison needs no rebuild to
+be valid. - **Field nesting resolves recursively**, measured 3 levels deep in a
+real send, and the same block added twice keeps independent selections per
+copy.
 
 ## What we learned about email clients
 
@@ -541,16 +549,17 @@ any text you can search.**
   markup under it had drifted anyway. The fix cost 8 editor fields, all of
   them controls Outlook was ignoring. What makes this class of defect easy to
   ship is that **nothing looks wrong anywhere you preview**.
-- **Word clamps a stale ghost width to its cell, and shrink-wraps a
-  full-width one.** We shipped a fix built on the opposite belief, so this one
-  gets the long version. A geometry audit concluded that
-  widening a gutter would overflow Outlook wherever the compiler had frozen a
-  stale pixel width into the Outlook-only table it wraps around each column.
-  A fix shipped: rewrite that table to full width. A probe built and sent the
-  same morning refuted **both halves**, with two Outlooks agreeing to the
-  pixel. Word *clamps* a stale ghost to the cell it sits in, so the defect did
-  not exist. And full width makes Word *shrink-wrap it to its text*, so the
-  fix was the regression. Reverted 7 hours after it shipped. Both geometry
+- **Word squeezes an out-of-date width down to fit, and shrinks a full-width
+  one to its text.** We shipped a fix built on the opposite belief, so this one
+  gets the long version. The compiler wraps an extra table around each column
+  that only Outlook can see, and it freezes a pixel width into that table. A
+  geometry audit concluded that widening a gutter would overflow Outlook
+  wherever that frozen width had gone stale, so a fix shipped: rewrite the
+  hidden table to full width. A probe built and sent the same morning refuted
+  **both halves**, with two Outlooks agreeing to the pixel. Word squeezes a
+  stale width down to the cell it sits in, so the defect did not exist. And
+  full width makes Word shrink the table to fit its text, so the fix was the
+  regression. Reverted 7 hours after it shipped. Both geometry
   scanners now clamp the way Word does; without that they would report an
   overflow Outlook never has and strip padding options from 57 frames for
   nothing.
@@ -575,10 +584,10 @@ catalog. Four probe rounds disproved it: **there is no column-shrink bug.**
 
 The phone reports 1080 device pixels at a 3× ratio, so Gmail lays out at
 roughly 333 layout pixels, and a card loses 80 of them, a quarter of its
-width, to the built-in side padding between content and the edge of its container. The
-gutter model predicted the measured width to within 2 pixels; the competing
-restructure theory missed by nearly 18. The shipped fix took mobile imagery
-flush to the edge and left the desktop rendering byte-identical.
+width, to the built-in side padding between content and the edge of its
+container. The gutter model predicted the measured width to within 2 pixels;
+the competing restructure theory missed by nearly 18. The shipped fix took
+mobile imagery flush to the edge and left the desktop rendering byte-identical.
 
 The expensive fix was the wrong one, and only measurement separated them.
 
@@ -674,7 +683,8 @@ accident.
   structurally invisible to it. **A belief travels further than the code it was
   written in.**
 - **One dropdown can hold whole layouts.** Hiding an image can never widen its
-  partner: the column, its Outlook ghost cell and the sibling's width all stay
+  partner: the column, the hidden cell Outlook draws for it, and the sibling's
+  width all stay
   behind, leaving a hole rather than a full-width heading. So a row that wants
   a "no image, text full width" state authors that arrangement as a hidden
   sibling, and the converter folds it into the row's dropdown as one more
@@ -721,7 +731,8 @@ accident.
   the debug overlay, which needs both.
 - **When you must fail, fail into the mode something already watches.** A
   light/dark image pair folds to a single key, so one pinned region reached the
-  edit list twice, and two identical edits over one range are not idempotent.
+  edit list twice, and applying the same edit twice to one range is not the
+  same as applying it once.
   The second re-sliced what the first had already grown, leaving fragments of
   markup visible as ordinary text beside the copy in the inbox. Two things went
   wrong beyond the bug. A verification pass argued the leak was invisible
@@ -781,20 +792,20 @@ come from the thing you are testing. And **generate the probe's import file
 with the real exporter**; hand-writing it is how an earlier probe imported
 silently and produced nothing.
 
-**Empirical oracles instead of reasoning.** Where a claim could be measured, we
-built something to measure it rather than argue: an audit that renders every
-block, dropdown and option at two screen sizes and compares pixel fingerprints;
-a check that strips an annotation, regenerates, and compares byte for byte; an
-oracle that proves every generated spacing field actually changes the layout,
-with a distinct verdict for an option that would *break* it rather than merely
-change nothing.
+**Measure it, do not argue about it.** Where a claim could be measured, we
+built something to measure it rather than debate it: an audit that renders
+every block, dropdown and option at two screen sizes and compares the pixels; a
+check that strips an annotation, regenerates, and compares byte for byte; and a
+checker that proves every generated spacing field actually changes the layout,
+with a distinct verdict for an option that would *break* the layout rather than
+merely change nothing.
 
 The determinism rules matter more than the engines. Caching keys on the exact
 input and never on a digest, because a weaker key could collide. A baseline
 re-verify bypasses every cache, because a cached witness is not a witness. The
 audit self-tests at startup and **refuses to run** if rendering determinism
-fails, because a lying matrix is worse than no matrix. Parallelism is a timing knob and
-never a verdict knob.
+fails, because a lying matrix is worse than no matrix. Parallelism is a timing
+knob and never a verdict knob.
 
 **Suspect the instrument before the subject.** Four times the finding came from
 our own tooling rather than from the thing we were measuring.
@@ -824,7 +835,8 @@ platform's own styling can suggest, never settle.**
 **Findings err in both directions.** Six controls a sweep called inert were
 live in a browser; a row reporting a control as live was wrong the other way.
 The rule became: confirm every claim, whichever way it points, *then* declare.
-An oracle you trust asymmetrically is an oracle you have stopped testing. And a
+A checker you only trust in one direction is a checker you have stopped
+testing. And a
 finding can be a real defect wearing an inert control's clothes. A matched
 pair of "dead" controls turned out to be a leftover oversized column
 overflowing its section.
@@ -864,19 +876,20 @@ that read its absence as a gap, and was found again, because the rule against
 it lived only in prose. It stopped recurring the day it became a build check.
 *The rule now lives where prose cannot lose it.*
 
-The same failure showed up three ways, and each one looked like coverage. **A check can outlive its subject**: one assertion's body died when a
-file it compared was deleted, while two documents went on listing it as
-enforced. **A check can never have reached its subject**: the naming-grammar
-lint had never read the text it existed to check, because that text writes
-every block name in backticks and the harvester did not read backticks. Even
-its two suppression entries were dead, which made the guard look like it was
-working. And **a check can report instead of stopping**: when a block's
-alternate layout could no longer be folded, the converter noticed and emitted
-an *informational note*, and that block shipped broken for 3 days because
-an info note is a line in a panel nobody reads. **An importer note is not a
-guard.** A check nobody runs still reads as coverage, which is worse than not
-having it. One was retired in place, one repaired, one promoted to a build
-failure, and the repaired one caught real drift within the hour.
+The same failure showed up three ways, and each one looked like coverage. **A
+check can outlive its subject**: one assertion's body died when a file it
+compared was deleted, while two documents went on listing it as enforced. **A
+check can never have reached its subject**: the naming-grammar lint had never
+read the text it existed to check, because that text writes every block name in
+backticks and the harvester did not read backticks. Even its two suppression
+entries were dead, which made the guard look like it was working. And **a check
+can report instead of stopping**: when a block's alternate layout could no
+longer be folded, the converter noticed and emitted an *informational note*,
+and that block shipped broken for 3 days because an info note is a line in a
+panel nobody reads. **An importer note is not a guard.** A check nobody runs
+still reads as coverage, which is worse than not having it. One was retired in
+place, one repaired, one promoted to a build failure, and the repaired one
+caught real drift within the hour.
 
 **If a document must match the code, generate it from the code.** The client
 manual is the one document a content editor actually reads, and nothing checked
@@ -905,11 +918,11 @@ remove looked like the footer's bottom padding. Two commits removed it. The
 second applied the same change to the second footer "for parity", which
 propagated the wrong theory rather than testing it. Both were wrong and both
 were reverted. A reading gap had been authored *between* two blocks' comment
-markers, and segmentation attaches anything between markers to the block
-*before* it, so the gap shipped as a white strip under the first footer and its
-exclusion flag removed that whole footer from every export. For 3 days the
-footer had not been exporting at all, and nobody noticed because the visible
-symptom was a strip of white.
+markers, and the step that cuts the template into blocks attaches anything
+between markers to the block *before* it, so the gap shipped as a white strip
+under the first footer and its exclusion flag removed that whole footer from
+every export. For 3 days the footer had not been exporting at all, and nobody
+noticed because the visible symptom was a strip of white.
 
 **Versioning anchored to content, with git as the ledger.** Every block,
 partial, template and the app carries an integer version derived from a content
