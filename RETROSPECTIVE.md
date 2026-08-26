@@ -51,14 +51,52 @@ All of them are set out at the end.
 
 | If you are… | Read |
 | :-- | :-- |
-| Anyone on the team | **The short version** above, then **Part 1**. Plain language, no code, about 10 minutes |
-| A developer or template author | **Part 1 + Part 2** |
-| Looking for where a specific rule lives now | **Where the rules live now**, at the end of Part 2 |
-| Deciding what happens next | **Where it goes next**, the closing section |
+| Anyone on the team | [The short version](#the-short-version) above, then [Part 1](#part-1-for-everyone). Plain language, no code, about 10 minutes |
+| A developer or template author | Part 1, then [Part 2](#part-2-for-the-technical-reader). Part 2 is three quarters of the document, about 35 minutes |
+| Deciding what happens next | [What is unfinished today](#what-is-unfinished-today) for the open items and the go-live blockers, then [What to do next](#what-to-do-next) for the directions. About 10 minutes together |
+| About to change something | The router below |
+| Looking a rule up | [Where the rules live now](#where-the-rules-live-now) and the [Glossary](#glossary), both in [Reference](#reference) at the back |
 
-A glossary sits at the end. Part 2 states each rule first and then the story
-that produced it, including the ones we got wrong on the way. Those are the
-parts most worth reading if you are picking the work up.
+Part 2 states each rule first and then the story that produced it, including
+the ones we got wrong on the way. Those are the parts most worth reading if you
+are picking the work up.
+
+## Before you change something
+
+The document is organized by what we learned, not by what you are about to
+touch. This is the other way in. Each row names the sections that bite, and the
+maintained rule in [MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md), which is
+where the contract actually lives.
+
+| If you are changing… | Read first | The rule lives at |
+| :-- | :-- | :-- |
+| The shared stylesheet | [What we learned about the platform](#what-we-learned-about-the-platform), all of it | Guide §2d, §2b-bis, checklist 6b-bis |
+| A block's layout or geometry | [What we learned about email clients](#what-we-learned-about-email-clients) | Guide §4 |
+| A block's editable fields | [Designing the editor controls](#designing-the-editor-controls) | CONVENTIONS.md |
+| A block's name | [Version by content, with git as the ledger](#version-by-content-with-git-as-the-ledger) | CONVENTIONS.md, "Versioning" |
+| Anything, before you commit | [How we learned to work](#how-we-learned-to-work) | The repo's own working rules |
+
+## Contents
+
+**[Part 1: For everyone](#part-1-for-everyone)**
+[The problem](#the-problem-we-set-out-to-solve) ·
+[What got built](#what-got-built) · [The timeline](#the-timeline-in-seven-phases) ·
+[The five things we'd tell another team](#the-five-things-wed-tell-another-team) ·
+[By the numbers](#by-the-numbers)
+
+**[Part 2: For the technical reader](#part-2-for-the-technical-reader)**
+[What we learned about the platform](#what-we-learned-about-the-platform) ·
+[What we learned about email clients](#what-we-learned-about-email-clients) ·
+[Designing the editor controls](#designing-the-editor-controls) ·
+[How we learned to work](#how-we-learned-to-work)
+
+**[Part 3: Where it stands, and what to do next](#part-3-where-it-stands-and-what-to-do-next)**
+[What is unfinished today](#what-is-unfinished-today) · [What to do next](#what-to-do-next)
+
+**[Reference](#reference)**
+[The hard limits](#the-hard-limits) ·
+[The things you must never do](#the-things-you-must-never-do) ·
+[Where the rules live now](#where-the-rules-live-now) · [Glossary](#glossary)
 
 ---
 
@@ -216,7 +254,15 @@ Each figure names its owner: **TPL** (the template library, this repo), the
 
 # Part 2: For the technical reader
 
-## What we learned about Engaging Networks
+**How sure we are, and how to tell.** Findings here are stated flatly when a
+controlled send settled them, and they say so in the words when they are not.
+Three phrases carry weight and are used deliberately: **measured** means a real
+send proved it, **modelled** means it follows from a measurement without having
+been observed directly, and **unmeasured** means nobody has tested it and the
+gap is being recorded rather than guessed at. Where a claim was later
+corrected, the correction sits beside it instead of replacing it.
+
+## What we learned about the platform
 
 Marketing Tools is not documented at the level this work required, so
 everything below came from controlled sends: a probe email carrying labeled
@@ -240,7 +286,7 @@ The headlines:
 | A mobile width media query | Kept, so mobile rules survive |
 | The Outlook.com dark-mode hook at top level | **Dropped**. That branch is lost |
 | The same hook nested inside a conditional media query | **Kept**. This is the rescue |
-| A rule carrying `!important` | Inlined, and **the `!important` is stripped** |
+| A rule carrying `!important` | Inlined, and **the `!important` is stripped**. Only on this path: see the two-path warning in [Nine more platform behaviors](#nine-more-platform-behaviors-including-two-you-must-never-do) |
 | A rule matching nothing | Pruned |
 | An Outlook-only conditional comment | Kept intact |
 
@@ -309,9 +355,11 @@ parser recovers at the newline and loses one declaration; iOS Mail did exactly
 that. **Gmail discarded the entire stylesheet**, every media query with it, so
 a button row that should stack on phones rendered as touching pills.
 
-The delivered stylesheet was comfortably under every size limit. We had spent a
-month building a mental model where a dropped Gmail stylesheet means *too many
-bytes*, and that model cannot see this failure at all. The symptom looked like
+The delivered stylesheet was comfortably under every size limit, which is what
+makes this the counterpart to
+[Gmail drops the stylesheet by size](#gmail-drops-the-stylesheet-by-size-and-it-drops-it-whole):
+the same symptom, a completely different cause. We had spent a month building a
+mental model where a dropped Gmail stylesheet means *too many bytes*, and that model cannot see this failure at all. The symptom looked like
 size. The cause was syntax.
 
 We nearly blamed the wrong thing, too. The block-band rules shipping alongside
@@ -387,7 +435,7 @@ Styling is the part of a template that most often needs a fix after the fact,
 so we ship the stylesheet as a *block* instead. A styling fix becomes a block
 swap rather than an email rebuild.
 
-### Smaller Engaging Networks behaviors, each measured
+### Nine more platform behaviors, including two you must never do
 
 - **One value, several carriers.** A single authored background image compiles
   into 4 separate places in the output. Miss any one and some clients show
@@ -411,7 +459,9 @@ swap rather than an email rebuild.
   arrangement did not, which is the one case the fold cannot reach.
 - **Comma-separated selector groups are split into individual rules**, so one
   authored group can end up half-alive.
-- **The inliner has two paths, and only one strips `!important`.** A rule
+- **The inliner has two paths, and only one strips `!important`.** This is the
+  exception to the table in [The stylesheet inliner always runs](#the-stylesheet-inliner-always-runs-and-you-cannot-turn-it-off),
+  and it is the easiest thing here to get wrong. A rule
   arriving through the template head is inlined with its `!important` removed;
   a stylesheet carried in the message body is inlined with `!important` intact.
   Word rejects any inline declaration carrying it, so those declarations vanish
@@ -475,7 +525,9 @@ The guard carries a comment saying exactly that, so no later tidying pass
 Two caveats belong with the whole budget. The largest delivered stylesheet we
 have ever **measured** green is a few hundred bytes under the target;
 everything between there and the cliff is modelled, not observed. And **size is
-not the only way to lose the stylesheet**. Gmail discarded one at roughly
+not the only way to lose the stylesheet** (see
+[The stylesheet reprinter is string-blind](#the-stylesheet-reprinter-is-string-blind)).
+Gmail discarded one at roughly
 three-quarters of the budget for a stray semicolon inside a quoted string,
 which no byte budget could ever catch. These budgets are necessary and they are
 not sufficient.
@@ -604,27 +656,45 @@ rather than a guideline, with two carve-outs measured in so it stays quiet: a
 wide column that *is* the row is supposed to shrink, and a spacer column holds
 nothing that can.
 
-## What we learned about designing editor controls
+## Designing the editor controls
 
 Every opinion below was an explicit decision rather than an implementation
 accident.
+
+### What kind of control to offer
 
 - **Free numbers are the exception.** Editors pick named options. The
   sanctioned free-number fields are a short list: image and divider width,
   font size, line height, letter spacing, corner radius. Spacing, padding and
   height never appear as free text.
+
 - **A closed spacing scale.** None / Half / Single / Double / Triple, with the
   pixel value in the label. Off-grid authored values snap to the nearest step,
   ties rounding up, with the original preserved so deleting the field restores
   the source exactly. There is deliberately no per-field "Original" escape
   hatch, because an escape hatch is how a scale stops being a scale.
+
 - **Bottom-only pacing.** Columns never carry bottom padding. One exception
   proves the rule: a caption owns the gap *above* itself, so hiding the caption
   removes the gap with it instead of stranding white space under the photo.
+
 - **A geometry guard.** Padding above a declared threshold is design geometry,
   not pacing, and gets no field at all, never a free-text fallback. Exceptions
   stay bounded: a class-scoped scale can raise its own threshold, which is how
   a locked hero-photo reserve became a curated dropdown on its own ladder.
+
+- **Colors are always dropdowns.** Every color the template authors is
+  collected into a brand palette, grouped by role, ordered perceptually and
+  named. Editors do not type color codes, so off-brand colors cannot creep in
+  through everyday edits. One documented exception: compound border values stay
+  plain text, because a compound value cannot be a dropdown.
+
+- **Alt text is always editable** on every image, empty alt included. Real
+  copy for meaningful images, empty for decorative art, never a label that
+  narrates chrome to a screen reader.
+
+### When to offer no control at all
+
 - **Growing a gutter can never break the layout.** The compiler freezes a
   block's geometry: fixed-pixel columns, images sized to their columns, widths
   derived from a section's padding. Widen a gutter past the point where that
@@ -636,9 +706,11 @@ accident.
   *declare* a ceiling the scan cannot see. A row of fixed-width buttons
   written inside a text block is frozen exactly like a fixed column, and
   nothing measuring the compiled output will ever know it.
+
 - **Inert controls are suppressed, and the suppression explains itself.** Where
   a field would do nothing, none is generated and a note records why. These are
   informational rather than warnings, because the source is correct as written.
+
 - **Only structure earns an inertness label.** A control that moves nothing
   because the placeholder copy is short is not inert. The first long headline
   an editor types brings it alive. The audit renders three copy states per
@@ -648,6 +720,7 @@ accident.
   the placeholder. A centered heading's padding cannot move short copy at all,
   because shrinking a box equally from both sides leaves its centre exactly
   where it was. With a full sentence it re-wraps and everything moves.
+
 - **Inert also means inert under every arrangement the block offers.** The
   sweep tests each control against every *other* field's default, so a control
   that the default layout pins reads dead even when an alternate layout revives
@@ -656,6 +729,7 @@ accident.
   names the layout that revives it. The tempting alternative was a fifth
   standing exemption; measuring it was the better answer, and the exemption
   list stayed at four.
+
 - **A guard that cannot be sure fails closed.** The image-alignment guard
   computed a mobile width that is only sound under some layouts, and where it
   was unsound it had been guessing, and labelling a live control as
@@ -663,15 +737,27 @@ accident.
   the control with a plain, unqualified label or suppresses it, but never ships
   a qualifier it cannot justify. **A wrong label is worse than a missing one,
   because an editor believes it.**
+
 - **"Failed" has to mean every failure.** The audit's failures-only export
   originally meant *dead at both viewports*, which quietly excluded a control
   that works but is mislabelled, and one whose verdict could not be
   established. Both are failures an operator needs to see. One rule now backs
   the badge, the filter and the export, so the three cannot disagree.
+
+- **Prune to a control that exists, not one that ought to.** Two demo blocks
+  were deleted as redundant on the premise that alignment was already a
+  dropdown. It was not. That row's alignment lived in hand-authored markup the
+  converter never read, which is precisely why the demos existed. Restored 25
+  minutes later, and re-pruned deliberately the next day once the dropdown
+  actually existed.
+
+### Naming and ordering
+
 - **Labels lead; machine names follow.** A reversal. The original contract kept
   machine names stable while labels moved, and the two vocabularies drifted
   apart. Names now follow labels through one shared resolver, at the cost of a
   catalog-wide rename, so the panel and the tags can no longer disagree.
+
 - **The panel speaks the editor's language.** What the markup language calls a
   section, an editor sees as a row of the block, so every label and tag that
   said "Section" now says "Row", across 438 merge tags.
@@ -684,6 +770,13 @@ accident.
   blind spot. It only matched left-to-right rows, so both reversed cards were
   structurally invisible to it. **A belief travels further than the code it was
   written in.**
+
+- **Display is always first** in its group, because it decides whether the rest
+  of the group matters at all. Field order runs Visibility → Primary content →
+  Appearance → Dimensions → Position → Spacing.
+
+### The dropdowns that carry a whole layout
+
 - **One dropdown can hold whole layouts.** Hiding an image can never widen its
   partner: the column, the hidden cell Outlook draws for it, and the sibling's
   width all stay
@@ -699,14 +792,7 @@ accident.
   block. The response was an informational note. **A claim repeated in five
   places is not five pieces of evidence**; it is one unverified sentence with
   four copies. A real build check replaced it.
-- **Display is always first** in its group, because it decides whether the rest
-  of the group matters at all. Field order runs Visibility → Primary content →
-  Appearance → Dimensions → Position → Spacing.
-- **Colors are always dropdowns.** Every color the template authors is
-  collected into a brand palette, grouped by role, ordered perceptually and
-  named. Editors do not type color codes, so off-brand colors cannot creep in
-  through everyday edits. One documented exception: compound border values stay
-  plain text, because a compound value cannot be a dropdown.
+
 - **A control can be discovered rather than configured.** Link Color gives
   every block one dropdown that recolors all of its links at once, and nothing
   lists its options: the converter reads the stylesheet, and any rule of the
@@ -716,21 +802,14 @@ accident.
   moves no pixels; and there is deliberately no hook for the default color,
   because a render-identical duplicate option is exactly what the inert audit
   exists to flag.
-- **Alt text is always editable** on every image, empty alt included. Real
-  copy for meaningful images, empty for decorative art, never a label that
-  narrates chrome to a screen reader.
-- **Prune to a control that exists, not one that ought to.** Two demo blocks
-  were deleted as redundant on the premise that alignment was already a
-  dropdown. It was not. That row's alignment lived in hand-authored markup the
-  converter never read, which is precisely why the demos existed. Restored 25
-  minutes later, and re-pruned deliberately the next day once the dropdown
-  actually existed.
+
 - **An annotation only the importer reads is invisible to everything else.**
   Alternate layouts are marked with an attribute the compiler drops, so the
   build rendered every alternate as an ordinary extra section, six of them,
   and every preview page had been showing rows twice. Alternates are now
   dropped before compiling, deliberately *after* the raw source is captured for
   the debug overlay, which needs both.
+
 - **When you must fail, fail into the mode something already watches.** A
   light/dark image pair folds to a single key, so one pinned region reached the
   edit list twice, and applying the same edit twice to one range is not the
@@ -747,7 +826,7 @@ accident.
   existing instruments already report, where applying one produces malformed
   markup that reaches the inbox in silence.
 
-## How the template talks to the converter
+### How the template tells the converter what it means
 
 The template annotates itself. A small vocabulary of custom attributes, the
 kind browsers and email clients ignore, lets an author tell the converter
@@ -767,9 +846,11 @@ The full table of every attribute, what it does and why, lives in
 [MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md) §5, which is the copy that
 is maintained.
 
-## What we learned about how to work
+## How we learned to work
 
 This is the part that generalizes beyond email.
+
+### Write the rule where a machine can check it
 
 **Documents as contracts, checked by a machine.** Two documents are treated as
 published contracts rather than internal notes: re-read against the full change
@@ -778,99 +859,6 @@ elsewhere can fetch them. A linter checks them for drift: dead citations, a
 documented default that no longer matches the code, stale "pending" language,
 and whether each mirror still matches its source. Its own header says it
 plainly: *each assertion below encodes a defect this repo actually shipped.*
-
-**Probes as instruments, with a lifecycle.** A probe is a small email built to
-test one set of claims against a real send. The rule: a probe whose every claim
-is measured and recorded is archived **in the session that records its last
-verdict**; one still carrying an unverified claim stays put. Archive, never
-delete. An annotated probe is the reusable instrument for re-measuring the
-platform when its behavior is suspected to have changed. Twenty-six are on the
-shelf. One lived a single morning: built, sent, and archived after refuting
-both halves of the theory it was built to test.
-
-Two habits made them trustworthy. **Paired never-opened twins**: send the same
-block twice, edit one, leave the other alone, so any difference can only have
-come from the thing you are testing. And **generate the probe's import file
-with the real exporter**; hand-writing it is how an earlier probe imported
-silently and produced nothing.
-
-**Measure it, do not argue about it.** Where a claim could be measured, we
-built something to measure it rather than debate it: an audit that renders
-every block, dropdown and option at two screen sizes and compares the pixels; a
-check that strips an annotation, regenerates, and compares byte for byte; and a
-checker that proves every generated spacing field actually changes the layout,
-with a distinct verdict for an option that would *break* the layout rather than
-merely change nothing.
-
-The determinism rules matter more than the engines. Caching keys on the exact
-input and never on a digest, because a weaker key could collide. A baseline
-re-verify bypasses every cache, because a cached witness is not a witness. The
-audit self-tests at startup and **refuses to run** if rendering determinism
-fails, because a lying matrix is worse than no matrix. Parallelism is a timing
-knob and never a verdict knob.
-
-**Suspect the instrument before the subject.** Four times the finding came from
-our own tooling rather than from the thing we were measuring.
-
-The rendering service's "view source" page reported about 71 bytes of
-stylesheet and no dark-mode rules for a send that had shipped a full one, a
-catastrophic, send-blocking finding. That URL returns the service's own
-application shell, not the email. Every test reports identical bytes; the tell
-was that a known-good send had "lost" exactly the same stylesheet. Separately,
-background-image blocks appeared to generate no editable address field, which
-read as a generator bug, until we noticed the evidence had been read from the
-build variant whose asset paths are already rewritten, so the search matched
-nothing. Against the right variant it was eight of eight, and the finding was
-retracted in its own commit rather than quietly edited away.
-
-Then there was a speedup that was not one: running the pixel audit eight frames
-wide measured over six times faster than one frame, so the default was changed.
-The measurement had been taken in a **background tab**, which browsers
-throttle. Re-measured on a real foreground tab, eight was marginally *slower*
-than one. And a local harness assembled from the platform's own builder markup
-showed every block label stacking at the same spot, which looked like a missing
-rule we needed to ship; the live builder renders them correctly, and the
-harness simply could not load the platform's stylesheet. The rule that came out
-of it: **live behavior is authoritative, and a harness that cannot load the
-platform's own styling can suggest, never settle.**
-
-**Findings err in both directions.** Six controls a sweep called inert were
-live in a browser; a row reporting a control as live was wrong the other way.
-The rule became: confirm every claim, whichever way it points, *then* declare.
-A checker you only trust in one direction is a checker you have stopped
-testing. And a
-finding can be a real defect wearing an inert control's clothes. A matched
-pair of "dead" controls turned out to be a leftover oversized column
-overflowing its section.
-
-**A fixture is only real until the shape changes.** A test built from a real
-compiled block is the strongest fixture available, and the only kind that
-reproduces bugs synthetic fixtures cannot reach. It is also the kind that rots
-silently. A row was ungrouped so it would stack on mobile, and the fixture
-captured from its grouped shape went on passing, asserting that a layout fold
-worked on a structure the catalog no longer had. Meanwhile the real block
-shipped its copy twice into the platform for 3 days. **A stale fixture is
-worse than no test: it does not merely fail to catch the regression, it stands
-in front of it**, because green now means "the shape you no longer ship still
-works." Fixtures captured from a block are regenerated in the session that
-block changes.
-
-**A green test only counts if it was red on the broken code.** Twice in one
-push: a stray character shipped inside a dropdown option and the unit test
-written for the fix passed with and without it, and a regression test for a
-field-generation bug passed against the unfixed code. Both had synthetic
-fixtures that never exercised the failing path. One fix keeps its edit regions
-strictly disjoint; the test that proved nothing was deleted rather than banked,
-with the coverage gap recorded outright.
-
-**Assert structure, not substrings.** Stripping comments out of one stylesheet
-looked like a local change. The code measured its cut points against a
-shortened copy of the document while slicing the original, so the last stretch
-of the head survived twice, carrying a second closing tag that ended the next
-stylesheet early and dumped its tail into the body of every preview as visible
-text. Fifteen minutes to fix. The regression test now asserts document
-*structure* (one closing head tag, balanced style tags, one copy of the rule),
-which is exactly what a substring check let through.
 
 **The moment a rule recurs, it becomes a lint.** The same stale annotation was
 found and removed, came back through a file rename and a later well-meaning fix
@@ -915,6 +903,78 @@ have put 45 warnings in the export panel on day one, which is how a check gets
 ignored rather than acted on. Severity was chosen by whether a workaround
 exists, not by how alarming the construct looks.
 
+**Conventions written for AI agents, not only for people.** The authoring
+guide's last section is a copy-paste prompt that points an agent in any
+template repository at both public mirrors. That is why re-publishing them is a
+hard gate: a half-pushed mirror silently hands every downstream agent a stale
+contract.
+
+### Measure it, do not argue about it
+
+Where a claim could be measured, we
+built something to measure it rather than debate it: an audit that renders
+every block, dropdown and option at two screen sizes and compares the pixels; a
+check that strips an annotation, regenerates, and compares byte for byte; and a
+checker that proves every generated spacing field actually changes the layout,
+with a distinct verdict for an option that would *break* the layout rather than
+merely change nothing.
+
+The determinism rules matter more than the engines. Caching keys on the exact
+input and never on a digest, because a weaker key could collide. A baseline
+re-verify bypasses every cache, because a cached witness is not a witness. The
+audit self-tests at startup and **refuses to run** if rendering determinism
+fails, because a lying matrix is worse than no matrix. Parallelism is a timing
+knob and never a verdict knob.
+
+**Probes as instruments, with a lifecycle.** A probe is a small email built to
+test one set of claims against a real send. The rule: a probe whose every claim
+is measured and recorded is archived **in the session that records its last
+verdict**; one still carrying an unverified claim stays put. Archive, never
+delete. An annotated probe is the reusable instrument for re-measuring the
+platform when its behavior is suspected to have changed. Twenty-six are on the
+shelf. One lived a single morning: built, sent, and archived after refuting
+both halves of the theory it was built to test.
+
+Two habits made them trustworthy. **Paired never-opened twins**: send the same
+block twice, edit one, leave the other alone, so any difference can only have
+come from the thing you are testing. And **generate the probe's import file
+with the real exporter**; hand-writing it is how an earlier probe imported
+silently and produced nothing.
+
+**Suspect the instrument before the subject.** Four times the finding came from
+our own tooling rather than from the thing we were measuring.
+
+The rendering service's "view source" page reported about 71 bytes of
+stylesheet and no dark-mode rules for a send that had shipped a full one, a
+catastrophic, send-blocking finding. That URL returns the service's own
+application shell, not the email. Every test reports identical bytes; the tell
+was that a known-good send had "lost" exactly the same stylesheet. Separately,
+background-image blocks appeared to generate no editable address field, which
+read as a generator bug, until we noticed the evidence had been read from the
+build variant whose asset paths are already rewritten, so the search matched
+nothing. Against the right variant it was eight of eight, and the finding was
+retracted in its own commit rather than quietly edited away.
+
+Then there was a speedup that was not one: running the pixel audit eight frames
+wide measured over six times faster than one frame, so the default was changed.
+The measurement had been taken in a **background tab**, which browsers
+throttle. Re-measured on a real foreground tab, eight was marginally *slower*
+than one. And a local harness assembled from the platform's own builder markup
+showed every block label stacking at the same spot, which looked like a missing
+rule we needed to ship; the live builder renders them correctly, and the
+harness simply could not load the platform's stylesheet. The rule that came out
+of it: **live behavior is authoritative, and a harness that cannot load the
+platform's own styling can suggest, never settle.**
+
+**Findings err in both directions.** Six controls a sweep called inert were
+live in a browser; a row reporting a control as live was wrong the other way.
+The rule became: confirm every claim, whichever way it points, *then* declare.
+A checker you only trust in one direction is a checker you have stopped
+testing. And a
+finding can be a real defect wearing an inert control's clothes. A matched
+pair of "dead" controls turned out to be a leftover oversized column
+overflowing its section.
+
 **Treat the symptom last.** Space under a footer that an editor could not
 remove looked like the footer's bottom padding. Two commits removed it. The
 second applied the same change to the second footer "for parity", which
@@ -925,6 +985,39 @@ between markers to the block *before* it, so the gap shipped as a white strip
 under the first footer and its exclusion flag removed that whole footer from
 every export. For 3 days the footer had not been exporting at all, and nobody
 noticed because the visible symptom was a strip of white.
+
+### A test that cannot fail is not a test
+
+**A fixture is only real until the shape changes.** A test built from a real
+compiled block is the strongest fixture available, and the only kind that
+reproduces bugs synthetic fixtures cannot reach. It is also the kind that rots
+silently. A row was ungrouped so it would stack on mobile, and the fixture
+captured from its grouped shape went on passing, asserting that a layout fold
+worked on a structure the catalog no longer had. Meanwhile the real block
+shipped its copy twice into the platform for 3 days. **A stale fixture is
+worse than no test: it does not merely fail to catch the regression, it stands
+in front of it**, because green now means "the shape you no longer ship still
+works." Fixtures captured from a block are regenerated in the session that
+block changes.
+
+**A green test only counts if it was red on the broken code.** Twice in one
+push: a stray character shipped inside a dropdown option and the unit test
+written for the fix passed with and without it, and a regression test for a
+field-generation bug passed against the unfixed code. Both had synthetic
+fixtures that never exercised the failing path. One fix keeps its edit regions
+strictly disjoint; the test that proved nothing was deleted rather than banked,
+with the coverage gap recorded outright.
+
+**Assert structure, not substrings.** Stripping comments out of one stylesheet
+looked like a local change. The code measured its cut points against a
+shortened copy of the document while slicing the original, so the last stretch
+of the head survived twice, carrying a second closing tag that ended the next
+stylesheet early and dumped its tail into the body of every preview as visible
+text. Fifteen minutes to fix. The regression test now asserts document
+*structure* (one closing head tag, balanced style tags, one copy of the rule),
+which is exactly what a substring check let through.
+
+### Version by content, with git as the ledger
 
 **Versioning anchored to content, with git as the ledger.** Every block,
 partial, template and the app carries an integer version derived from a content
@@ -941,30 +1034,7 @@ changed. They could not: each entity's fingerprint included the
 other's content, so across four consecutive commits they moved in lockstep.
 **A signal that never disagrees with another signal is not two signals.**
 
-**A local pass proves nothing about a clean install.** Every command-line
-instrument ran fine locally and crashed on a fresh checkout, because a package
-absent from the lockfile happened to be sitting in a parent directory that the
-working copy resolves upward into. It took the brand-new continuous integration
-to see it, and the first fix was the wrong theory, aimed at a layer that never
-read the setting, and "verified" against the same contaminated local resolution
-that had hidden the problem in the first place. **An environment that hides a
-bug will also validate the wrong fix for it.**
-
-**An undo is not a revert.** The content baseline was widened across the whole
-catalog and then ruled back four days later. What made the reversal safe was
-re-deriving every measurement from the *current* tree rather than restoring the
-previous numbers. Several had changed in between for unrelated reasons, and
-restoring them would have quietly reinstated decisions nobody had revisited.
-
-**Git discipline, written down after it bit us.** Parallel sessions land commits
-in both repositories many times a day, so: fetch and fast-forward both before
-starting, never run a branch-switching command inside a script, and verify after
-every push that the shared repository's latest commit equals your local one.
-That last clause exists because a commit that had been "pushed" returned a 404.
-A stray checkout inside a scripted command had detached the branch pointer; the
-next commit landed off-branch, and the push exited with a success code while
-doing nothing, because it pushed the stale local copy. **A push that prints
-nothing and exits zero is not proof.**
+### What breaks when several people work at once
 
 **Governance, once there were too many hands.** When the work started running
 in parallel (several sessions a day, landing in both repositories) the
@@ -992,35 +1062,55 @@ referee. It now derives its baseline from every reachable parent, so two
 branches that both bumped honestly get reconciled by the tool rather than by
 hand.
 
-**Conventions written for AI agents, not only for people.** The authoring
-guide's last section is a copy-paste prompt that points an agent in any
-template repository at both public mirrors. That is why re-publishing them is a
-hard gate: a half-pushed mirror silently hands every downstream agent a stale
-contract.
+**Git discipline, written down after it bit us.** Parallel sessions land commits
+in both repositories many times a day, so: fetch and fast-forward both before
+starting, never run a branch-switching command inside a script, and verify after
+every push that the shared repository's latest commit equals your local one.
+That last clause exists because a commit that had been "pushed" returned a 404.
+A stray checkout inside a scripted command had detached the branch pointer; the
+next commit landed off-branch, and the push exited with a success code while
+doing nothing, because it pushed the stale local copy. **A push that prints
+nothing and exits zero is not proof.**
 
-## Where the rules live now
+**A local pass proves nothing about a clean install.** Every command-line
+instrument ran fine locally and crashed on a fresh checkout, because a package
+absent from the lockfile happened to be sitting in a parent directory that the
+working copy resolves upward into. It took the brand-new continuous integration
+to see it, and the first fix was the wrong theory, aimed at a layer that never
+read the setting, and "verified" against the same contaminated local resolution
+that had hidden the problem in the first place. **An environment that hides a
+bug will also validate the wrong fix for it.**
 
-| Where | What it holds | Enforced by |
-| :-- | :-- | :-- |
-| [CONVENTIONS.md](CONVENTIONS.md) | The importer's full contract: how every field is generated, named, ordered, suppressed, versioned | Pre-commit review; a drift linter including mirror comparison |
-| [MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md) | Portable authoring rules, the measured inliner table, the QA checklist, the annotation vocabulary, and a copy-paste prompt for AI agents | Same |
-| [PLAYBOOK.md](PLAYBOOK.md) | This repo's build pipeline, block system, naming grammar and debug overlay; its last section is the porting checklist for the next client | A drift linter |
-| The probe archives, in both repos | 26 annotated instruments, each with its verdict recorded | The probe lifecycle rule |
-| The converter's deferred-work document | Deferred work, rejected approaches with the reason for rejection, and unexplained anomalies | Cited by the doc linter |
-| The converter's spec layer | Specs per subsystem, the delivery workflow, the reviewer protocol, durable technical learnings | Four continuous-integration gates over three machine-checked contracts |
-| The client manual | The template, every block and its fields, how the system is maintained | Regenerated from the import pipeline; its claims linted against the catalog |
-| The audit engines | Inert dropdowns, dead flags, dark-mode image ink, annotation usage | Startup self-tests |
-| [versions.json](versions.json) here, the app's own manifest there | The integer version of every block, partial, template and the app | Build-time sync; git history is the ledger |
+**An undo is not a revert.** The content baseline was widened across the whole
+catalog and then ruled back four days later. What made the reversal safe was
+re-deriving every measurement from the *current* tree rather than restoring the
+previous numbers. Several had changed in between for unrelated reasons, and
+restoring them would have quietly reinstated decisions nobody had revisited.
 
-## Where it stands today
+# Part 3: Where it stands, and what to do next
+
+## What is unfinished today
 
 Shipped and in use: the block catalog, the converter, the two contracts, four
 audit engines, three linters, content-fingerprint versioning, a client-facing
 manual whose block reference is generated from the import pipeline, and a spec
 layer with four continuous-integration gates standing over it.
 
-Open threads, recorded rather than resolved:
+Open threads, recorded rather than resolved. **Three of them block go-live and
+are marked BLOCKER**; the rest are research the work can proceed without.
 
+- **BLOCKER. The platform account is behind this repository**, and further
+  behind than it was. The library needs a re-import and every renamed block
+  needs its thumbnail re-uploaded.
+- **BLOCKER. The asset service still serves the wrong arrow icon**, the one
+  with the stray letter baked into its pixels. The source is fixed, the served
+  file is not, and it must be replaced before anything ships.
+- **BLOCKER, and the decision is not ours.** A palette contrast issue in one
+  block family falls below the AA level of the Web Content Accessibility
+  Guidelines: white on green at 2.66:1 against a 4.5:1 floor. My call is that
+  it is held as a client-facing recommendation rather than a silent change,
+  with the exact remedy documented, because the remedy changes brand colors and
+  that decision belongs to the client.
 - **The stylesheet budget is tight by design.** The master sits about 120 bytes
   under its working target and roughly 2,400 under Gmail's cliff. Everything
   between the largest size we have measured green and the cliff is modelled
@@ -1030,11 +1120,6 @@ Open threads, recorded rather than resolved:
   Semicolons and braces are now escaped and proven; the platform rewrites
   colons and commas elsewhere, nothing we ship puts one inside a string, and no
   probe has settled whether it would survive.
-- **The platform account is behind this repository**, and further behind than
-  it was. The library needs a re-import and every renamed block needs its
-  thumbnail re-uploaded. The asset service also still serves the old copy of
-  the arrow icon with the stray letter in its pixels: the source is fixed, the
-  served file is not, and it must be replaced before go-live.
 - **One hero sits in the holding pen** with its Outlook fallback unverified.
   Its photo spans two sections, so the fallback color lives in a stylesheet
   class that every other client honors and Word has not been proven to. A send
@@ -1050,11 +1135,6 @@ Open threads, recorded rather than resolved:
   candidate explanation, including the last one standing, has since been
   measured dead. It stays closed as **unexplained, not as solved**, with the
   diagnostic shortcut on file in case it recurs.
-- **A palette contrast issue in one block family falls below the AA level of
-  the Web Content Accessibility Guidelines**, white on green at 2.66:1 against
-  a 4.5:1 floor. My call: it is held as a client-facing recommendation rather
-  than a silent change, with the exact remedy documented, because the remedy
-  changes brand colors and that decision belongs to the client.
 - **The client manual disagrees with itself**. Its generated block reference
   and the hand-written prose around it give different block counts.
 - **The template repository's version script is not yet merge-aware**; the
@@ -1062,7 +1142,7 @@ Open threads, recorded rather than resolved:
 - **The final quality-control report's last section is unwritten**, and its
   block-import spot check is still pending.
 
-## Where it goes next
+## What to do next
 
 Directions named after this document's last revision, recorded so they do not
 live only in a chat log. **None of it is committed, scoped or scheduled**, and
@@ -1071,7 +1151,9 @@ the premise was checked, and the finding sits beside it, including the two
 places the finding contradicts the premise. The first item is the one Bryan
 ranks highest.
 
-**Split the catalog into one file per block.** Today all 60 blocks live in a
+### Split the catalog into one file per block
+
+Today all 60 blocks live in a
 single master template of roughly 190 KB. That one file is the reason a
 block's history is hard to read: a change to one block is a diff in a file
 everything else also lives in, so git blame answers "who touched the catalog"
@@ -1103,7 +1185,9 @@ What does not change: the head. One stylesheet, one set of version bands, one
 shared set of rules, all still assembled at the top of the master. Splitting
 bodies does not split the head, and it should not.
 
-**Close the testing loop.** Today a render round is hand-driven: paste into the
+### Close the testing loop
+
+Today a render round is hand-driven: paste into the
 platform, send, open the rendering service, read. The direction is that the app
 (or an agent driving it) submits the email and reads the results back with no
 human in the middle.
@@ -1121,7 +1205,9 @@ account's own contract renewal. An integration built today keeps working until
 the account migrates and then stops, with no warning, so the date that matters
 comes from the account team, not from a vendor page.
 
-**Automate the platform.** The ambition is that the app creates the template,
+### Automate the platform
+
+The ambition is that the app creates the template,
 creates the blocks, assembles a broadcast and sends it for testing, so nobody
 logs in for routine work at all.
 
@@ -1144,14 +1230,18 @@ note due when it changes. And the platform's service-account type reaches only
 the data interface, so anything driving the admin screens runs as a real human
 account, with that account's credentials and second factor to manage.
 
-**Extract a brand and dress the catalog in it.** Point the tool at a website or
+### Extract a brand and dress the catalog in it
+
+Point the tool at a website or
 a set of materials, derive the palette, type and voice, apply them to the base
 blocks, load the result into an account and test it. This is the item that
 turns the project from *one client's block library* into *a way to stand up
 anybody's*, and it is downstream of the two above: without those loops it
 produces a catalog somebody still has to place and check by hand.
 
-**Rethink the interaction model before polishing it.** The report is direct:
+### Rethink the interaction model before polishing it
+
+The report is direct:
 the field-editing sidebar went unused. Changes were made by talking to the AI
 upstream, and the changes worth making were the ones that only became visible
 after looking at a block inside the email. That is not a complaint about the
@@ -1160,12 +1250,16 @@ wrong place, and that editing is something you want *at* the block, not beside
 it. It lands against a planned redesign that assumes otherwise, scheduling the
 design system first and the information architecture last.
 
-**Join up with the upstream work.** Michael Thomas's work should connect to
+### Join up with the upstream work
+
+Michael Thomas's work should connect to
 this so the path is start-to-finish rather than a good middle with manual ends.
 The specifics are not in this repository's record, so this is a placeholder for
 a conversation rather than a description of one.
 
-**Move it off a laptop.** The app runs locally today. The direction is a
+### Move it off a laptop
+
+The app runs locally today. The direction is a
 managed, hosted tool behind a company login, perhaps only ever for the team.
 
 This is the fork the other items hang from, so it is worth stating plainly:
@@ -1176,7 +1270,9 @@ and hosting for a team all need somewhere to keep a credential and something
 that runs while nobody is watching. Any one of them retires that rule. Better
 to retire it deliberately, once, than to discover it four times.
 
-**Revise the audit suite**. It has grown long, and the worry is that length is
+### Revise the audit suite
+
+It has grown long, and the worry is that length is
 not the same as coverage. The specific ask was that anything carrying text be
 tested at the extremes: the placeholder copy, a single word, and copy long
 enough to wrap onto a second line, across desktop and mobile.
@@ -1196,65 +1292,78 @@ region with no control attached to it is never swept at all.
 
 ---
 
-# Glossary
+# Reference
 
-**MJML**: a shorthand language for writing emails; it compiles into the markup
-that renders correctly across mail clients.
+## The hard limits
 
-**Engaging Networks**: the platform this client uses for email, fundraising and
-advocacy. **Marketing Tools** is its email builder, where editors assemble
-emails from blocks.
+Every number the work is budgeted against, in one place. The document rounds
+these in prose; this is the one place they are exact, and each says whether it
+was measured or chosen.
 
-**Block**: one reusable email section, such as a hero, a story card or a footer.
+| Limit | Value | How we know it |
+| :-- | :-- | :-- |
+| Gmail's stylesheet cliff | 16,384 bytes | **Measured.** Past it, every Gmail surface discards the whole stylesheet |
+| Our working target under it | 14,141 bytes | **Chosen, not derived.** The advisory band under a hard limit is arbitrary, so the figure is one I picked and the guard says so |
+| Send-time reprint multiplier | about 1.3× compacted size | **Measured.** Budget the delivered size, never the authored one |
+| Largest stylesheet measured green | 13,325 bytes | **Measured.** Everything between here and the cliff is modelled, not observed |
+| Current headroom | about 120 bytes under target, 2,400 under the cliff | **Modelled** from the multiplier above |
+| Message save ceiling | about 300,000 bytes | **Measured on one sending surface only.** Whether every surface enforces it is untested |
 
-**Row**: one horizontal section of a block, numbered top to bottom. The
-editor-facing word for what the markup language calls a section.
+**Size is not the only way to lose a stylesheet.** Gmail discarded one at
+roughly three-quarters of this budget because of a single character. See
+[The stylesheet reprinter is string-blind](#the-stylesheet-reprinter-is-string-blind).
 
-**Field**: an editable control attached to a block in the editor. The platform
-calls these Replacements.
+## The things you must never do
 
-**Rail**: a narrow fixed-width column beside the content, holding an icon or a
-badge. In a grouped row it shrinks on phones while the fixed padding inside it
-does not.
+The prohibitions this project paid for, gathered. **The maintained rule is the
+guide's**, not this table: each row points at the section here that tells the
+story and at the guide section that is the contract. Nothing here is the
+authority, deliberately, because a second copy of a rule is a copy that can rot.
 
-**Alternate arrangement**: a whole second layout of a row, authored as a hidden
-sibling and offered as one more option in that row's dropdown.
+| Never | Because | Story | Rule |
+| :-- | :-- | :-- | :-- |
+| Author a child combinator in shipped CSS | The editor escapes the character, half of every dark-mode pair dies silently | [The editor escapes one character](#the-editor-escapes-one-character-and-half-your-dark-mode-dies) | Guide §2d |
+| Put a literal `;`, `{` or `}` inside a quoted CSS string | The reprinter splits there and ships an unterminated string; Gmail drops the whole sheet | [The stylesheet reprinter is string-blind](#the-stylesheet-reprinter-is-string-blind) | Guide checklist 6b-bis |
+| Author a full-width section with a background image | The platform rebuilds the shorthand and the section renders blank in Gmail, Apple Mail and iOS | [Nine more platform behaviors](#nine-more-platform-behaviors-including-two-you-must-never-do) | Guide §4 |
+| Put horizontal padding inside the shape Outlook uses for background sections | Word ignores it at every size; use fixed-width spacer columns | [Outlook's Word engine](#outlooks-word-engine-and-what-we-chose-to-accept) | Guide §4 |
+| Let `!important` reach the platform inside a body stylesheet | It survives inlining there, and Word drops any inline declaration carrying it | [Nine more platform behaviors](#nine-more-platform-behaviors-including-two-you-must-never-do) | Guide §2b |
+| Set a zero line-height on a button | Word honours it and renders the button as a thin bar with invisible text | [Outlook's Word engine](#outlooks-word-engine-and-what-we-chose-to-accept) | Guide §4 |
+| Expect a template edit to reach emails that already exist | It does not propagate, and there is no update in place | [Template edits do not reach emails that already exist](#template-edits-do-not-reach-emails-that-already-exist) | CONVENTIONS.md |
+| Put a tag-like sequence in a stylesheet comment | The parser reads it as markup and swallows the document | [Documentation text gets read as markup](#documentation-text-gets-read-as-markup) | A build assertion |
 
-**Holding pen**: a one-block page for anything with an unresolved defect. It
-keeps every build check running over the block while dropping it from exports.
+## Where the rules live now
 
-**Probe**: a small email built to test a specific set of claims through a real
-send.
+| Where | What it holds | Enforced by |
+| :-- | :-- | :-- |
+| [CONVENTIONS.md](CONVENTIONS.md) | The importer's full contract: how every field is generated, named, ordered, suppressed, versioned | Pre-commit review; a drift linter including mirror comparison |
+| [MJML-AUTHORING-GUIDE.md](MJML-AUTHORING-GUIDE.md) | Portable authoring rules, the measured inliner table, the QA checklist, the annotation vocabulary, and a copy-paste prompt for AI agents | Same |
+| [PLAYBOOK.md](PLAYBOOK.md) | This repo's build pipeline, block system, naming grammar and debug overlay; its last section is the porting checklist for the next client | A drift linter |
+| The probe archives, in both repos | 26 annotated instruments, each with its verdict recorded | The probe lifecycle rule |
+| The converter's deferred-work document | Deferred work, rejected approaches with the reason for rejection, and unexplained anomalies | Cited by the doc linter |
+| The converter's spec layer | Specs per subsystem, the delivery workflow, the reviewer protocol, durable technical learnings | Four continuous-integration gates over three machine-checked contracts |
+| The client manual | The template, every block and its fields, how the system is maintained | Regenerated from the import pipeline; its claims linted against the catalog |
+| The audit engines | Inert dropdowns, dead flags, dark-mode image ink, annotation usage | Startup self-tests |
+| [versions.json](versions.json) here, the app's own manifest there | The integer version of every block, partial, template and the app | Build-time sync; git history is the ledger |
 
-**Inliner**: the transform the platform applies at send, moving stylesheet
-rules onto individual elements. The **reserializer** is the separate pass that
-reprints the stylesheet itself.
+## Glossary
 
-**Gutter**: the built-in side padding between content and the edge of its
-container.
-
-**Frame**: the element that owns a block's outer geometry and carries its
-padding: a section, a wrapper or a column.
-
-**Viewport**: the screen width an email is viewed at. Desktop and phone are the
-two that matter here.
-
-**Merge tag**: a placeholder the platform substitutes when it assembles an
-email.
-
-**Version band**: a strip naming a block and its version, hidden inside each
-block and revealed by adding a debug block whose only content is the rule that
-unhides them. Never visible in a delivered email.
-
-**Broadcast / Marketing Automations**: two platform surfaces that send email. A
-broadcast is a one-off send an editor builds and schedules; automations send in
-response to an action. The distinction matters here because the message-size
-ceiling was measured through only one of them.
-
-**Linter**: an automated check that scans files for known mistakes. Ours run
-with every build, and a clean build prints zero warnings. A **gate** is a check
-that can refuse a change outright; a **contract** here means a rule with a
-script that verifies it, as opposed to one that exists only as prose.
-
-**Autoresponder**: an email the platform sends automatically in response to an
-action; here, the two donation thank-yous.
+| Term | Means |
+| :-- | :-- |
+| **MJML** | A shorthand language for writing emails. It compiles into the markup that renders correctly across mail clients |
+| **Engaging Networks** | The platform this client uses for email, fundraising and advocacy. **Marketing Tools** is its email builder, where editors assemble emails from blocks |
+| **Block** | One reusable email section, such as a hero, a story card or a footer |
+| **Row** | One horizontal section of a block, numbered top to bottom. The editor-facing word for what the markup language calls a section |
+| **Field** | An editable control attached to a block in the editor. The platform calls these Replacements |
+| **Rail** | A narrow fixed-width column beside the content, holding an icon or a badge. In a grouped row it shrinks on phones while the fixed padding inside it does not |
+| **Frame** | The element that owns a block's outer geometry and carries its padding: a section, a wrapper or a column |
+| **Gutter** | The built-in side padding between content and the edge of its container |
+| **Viewport** | The screen width an email is viewed at. Desktop and phone are the two that matter here |
+| **Alternate arrangement** | A whole second layout of a row, authored as a hidden sibling and offered as one more option in that row's dropdown |
+| **Holding pen** | A one-block page for anything with an unresolved defect. It keeps every build check running over the block while dropping it from exports |
+| **Probe** | A small email built to test a specific set of claims through a real send |
+| **Inliner** | The transform the platform applies at send, moving stylesheet rules onto individual elements. The **reserializer** is the separate pass that reprints the stylesheet itself |
+| **Merge tag** | A placeholder the platform substitutes when it assembles an email |
+| **Version band** | A strip naming a block and its version, hidden inside each block and revealed by adding a debug block whose only content is the rule that unhides them. Never visible in a delivered email |
+| **Broadcast / Marketing Automations** | Two platform surfaces that send email. A broadcast is a one-off send an editor builds and schedules; automations send in response to an action. The distinction matters because the message-size ceiling was measured through only one of them |
+| **Linter / gate / contract** | A linter scans files for known mistakes and ours run with every build, where a clean build prints zero warnings. A **gate** can refuse a change outright. A **contract** here means a rule with a script that verifies it, as opposed to one that exists only as prose |
+| **Autoresponder** | An email the platform sends automatically in response to an action; here, the two donation thank-yous |
