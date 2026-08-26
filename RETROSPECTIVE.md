@@ -37,11 +37,13 @@ after proving they changed nothing. Email rendering is verified against what
 actually arrives in an inbox, not against what the build produces. That
 distinction killed more than one confident theory here.
 
-What is unfinished: the render-testing service we rely on is being retired by
-its vendor, the platform has no way to automate the work that still happens by
-hand in its interface, the app runs on a laptop rather than as a hosted tool,
+What is unfinished: all 60 blocks still live in one file, so no block has a
+history of its own; the render-testing service we rely on is being retired by
+its vendor; the platform has no way to automate the work that still happens by
+hand in its interface; the app runs on a laptop rather than as a hosted tool;
 and its own interface has never been designed around how it is actually used.
-Those are the next 4 decisions, and they are set out at the end.
+Splitting the catalog into one file per block is the highest priority of those.
+All of them are set out at the end.
 
 ---
 
@@ -1066,7 +1068,40 @@ Directions named after this document's last revision, recorded so they do not
 live only in a chat log. **None of it is committed, scoped or scheduled**, and
 it is deliberately not a plan. Where a direction rested on a factual premise,
 the premise was checked, and the finding sits beside it, including the two
-places the finding contradicts the premise.
+places the finding contradicts the premise. The first item is the one Bryan
+ranks highest.
+
+**Split the catalog into one file per block.** Today all 60 blocks live in a
+single master template of roughly 190 KB. That one file is the reason a
+block's history is hard to read: a change to one block is a diff in a file
+everything else also lives in, so git blame answers "who touched the catalog"
+rather than "who touched the Story Card". Each block becoming its own file
+would give every block a real history, make one reusable on its own, and let
+two people work on two blocks without touching the same file.
+
+The useful finding is that the plumbing already exists on both sides. The
+template build already compiles with includes enabled, and `src/partials/`
+already holds three components that are pulled in that way. On the converter
+side, the fetch step already resolves includes recursively, relative to each
+file that contains them, and hands the importer one inlined document. So the
+importer would see exactly what it sees today, which means block segmentation,
+the annotation reading and the field generation are all unaffected by the
+split.
+
+That leaves the real work in two places. **Byte-exactness is the constraint**,
+because segmentation tiles the document exactly and every block's version is a
+fingerprint of its own content. If the split changes so much as the whitespace
+between markers, every block mints a new version, every renamed block restarts
+at 1, and drafts already built in the platform are the ones that pay. The test
+is a catalog dump before and after showing zero field drift. **And the marker
+pairs should move into the block files**, because then a file boundary is a
+block boundary. That kills a whole class of defect outright: the reading gap
+that attached itself to the preceding block and quietly pulled a footer out of
+every export for 3 days could not happen if the block were its own file.
+
+What does not change: the head. One stylesheet, one set of version bands, one
+shared set of rules, all still assembled at the top of the master. Splitting
+bodies does not split the head, and it should not.
 
 **Close the testing loop.** Today a render round is hand-driven: paste into the
 platform, send, open the rendering service, read. The direction is that the app
