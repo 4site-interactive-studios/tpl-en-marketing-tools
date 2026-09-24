@@ -3008,9 +3008,14 @@ the importer whitelists all data-*-only MJML validator warnings
   passes a failing rule only when EVERY source element carrying the rule's
   anchor class has this flag. In use on every `two-line-cta`, whose black
   chip text Outlook always repaints light. The compiler strips it from `mj-*`
-  elements and the importer never reads it; the data-* audit registry claims
-  it as a TPL pipeline consumer. Pair it with a dated comment naming the
-  decision. Never use it to silence a value that is simply wrong.
+  elements, so the importer reads it from each block's MJML source: its
+  Outlook audit (`src/core/outlookDark.ts`, run by `validateProject`) applies
+  the same gate at import and raises a Template warning for every
+  unaccepted failing value, for `[data-ogsc]` rules with no seed in the
+  shell, and for top-level `[data-ogsc]` (dropped by EN). EN imports carry
+  no MJML source, so there the flag is unknowable and a failing value
+  always warns. Pair it with a dated comment naming the decision. Never use
+  it to silence a value that is simply wrong.
 - **`data-folder="<id>"`** (raw MJML; on category dividers and blocks):
   EN folder routing. Precedence: block's own attr > import-form input >
   category divider's attr > account default
