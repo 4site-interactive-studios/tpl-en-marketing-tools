@@ -50,7 +50,11 @@ the inliner is a SEND/RENDER-TIME transform — the STORED template keeps
 your source verbatim (a top-level rule was still raw in the exported
 template while the sent copy arrived inlined), so exports round-trip your
 source and every verdict below describes what reaches the client, not
-what EN stores.
+what EN stores. **Instance caveat:** every verdict here was measured on
+EN's us2 instance. Other instances (ca.engagingnetworks.app, for one) are
+unmeasured, so confirm the key ones on a delivered payload before you rely
+on them there: top-level `[data-ogsc]` dropped, nested rules kept, `>`
+escaped on edit.
 
 | Construct | What EN does | Consequence |
 | :---- | :---- | :---- |
@@ -147,7 +151,7 @@ at top level and including plain rules that would otherwise be inlined.
 }
 ```
 
-Two caveats:
+Three caveats:
 
 - **The condition must be un-evaluable.** Bare `@media screen` gets
   flattened and inlined; `max-width`/`min-width`/`prefers-color-scheme` are
@@ -155,6 +159,10 @@ Two caveats:
 - **The wrapper also hides the rule from Outlook desktop's Word engine**,
   which ignores media queries entirely. Use it for dark mode, mobile, and
   `[data-ogsc]`. Do not park base layout CSS there.
+- **Surviving EN is not the same as firing.** A `[data-ogsc]` rule reaches
+  only descendants of an element Outlook.com has repainted. Without a seed
+  element above the content, the example above arrives intact and never
+  matches (§2c).
 
 **The wrap defends against the inliner — which is also its cost, so a
 defensive always-true wrap ships as a PAIR (learning 2026-08-18).** A
@@ -436,8 +444,53 @@ its no-`block` control.
 The dark-mode strategy has exactly two hooks, and both survive EN:
 `@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
 friends) and `[data-ogsc]` inside a conditional media query
-(Outlook.com / OWA). Two mainstream clients expose NEITHER hook
-(measured 2026-08-09, real TPL send viewed across clients):
+(Outlook.com / OWA). **Outlook.com uses both, and neither is in charge
+there.** Its own repaint decides what the reader sees. Established
+2026-09-24 from Outlook.com's source: Rémi Parmentier's gist
+gist.github.com/hteumeuleu/51b5a8ea95cb47e344b0cb47bc1f2289 and the 2021
+module dump in github.com/ladifire-opensource/outlook.live.com_modules. A
+port lives in `docs/archive/owa-darkmode-sim/` in the canonical repo.
+
+- **It repaints per element, on a contrast test, with no opt-out.** In
+  Outlook's dark theme a handler walks every element and reads LIVE
+  computed style, so your own CSS counts. Text must reach 4.5:1 against a
+  fixed **#333333** base, and each ground must reach 4.5:1 against its
+  (possibly repainted) text. A failure gets a new color written inline
+  with `!important`, which no stylesheet rule can beat, and a
+  `data-ogsc`/`data-ogsb` tag. Nothing reads meta tags or `color-scheme`.
+- **Design rule: in Outlook dark, dark text and light grounds never
+  survive.** Dark text fails against #333333 however bright its own ground
+  is, gets flipped light, and then any light ground fails against it.
+  Black-on-yellow buttons and highlights come out olive with light text
+  whatever the CSS says. Keep every dark-mode text value at 5.4:1 or better
+  against #333333 (the margin is because the base is from 2021 code), and
+  every dark ground at 4.5:1 against its text. TPL's check-catalog enforces
+  this, with `data-outlook-repaint-ok` for accepted exceptions
+  (conventions.md).
+- **`prefers-color-scheme` follows the reader's OS, not Outlook's theme.**
+  The message is injected into a plain div, not an iframe. A reader with
+  Outlook dark and the OS light gets none of your media-query CSS, so
+  Outlook repaints your LIGHT design.
+- **`[data-ogsc] X` only reaches descendants of an element Outlook has
+  already repainted.** The reading pane passes white text down, so a
+  wrapper with no text color of its own is never tagged, and a mirror
+  written as in §2a stays inert. That's why TPL's mirror was observed to
+  "do nothing" on a real Outlook.com send. **Arm it with a seed:** an unclassed div at the
+  top of `<mj-body>` with inline `color:#000000` (Outlook always repaints
+  #000 at 1.66:1), wrapping a classed full-width ground div that both dark
+  branches paint. No CSS may target the seed. With it, the mirror fires
+  whatever the reader's OS scheme. Measured in simulation on the TPL
+  catalog, OS light: 339 repaints (57 of 154 blocks) fell to 45 (0 blocks),
+  with 0 px changed in light mode and in media-query dark.
+- **Check the method first.** The same source has a flag-gated "simple"
+  recolor that flips every inline color with no contrast test. The 2021
+  caller passes `false`. On a real send, inline #000 grounds stay black
+  under the contrast method and turn white with `data-ogsb="rgb(0, 0, 0)"`
+  under the simple one. Under the simple method, authored dark CSS works
+  AGAINST you.
+
+Two mainstream clients expose NEITHER hook (measured 2026-08-09, real TPL
+send viewed across clients):
 
 - **Gmail app (Android, dark theme)** ignores `prefers-color-scheme`
   and force-applies its own auto-darkening. The `dark-only` swap cannot
@@ -1882,6 +1935,8 @@ aloud). The Alt Text field survives either way (§5).
    browser under each `prefers-color-scheme`; this one does not need a
    real client.
 6. Confirm no `[data-ogsc]` rule sits at top level; wrap them per §2a.
+   Confirm the Outlook seed (§2c) opens before the first block and that no
+   CSS targets it.
 6a. Confirm no `<mj-preview>` in broadcast sources — EN injects its own
    preheader from the per-email Preview Text setting (§2), and a
    template-baked one doubles the inbox snippet.
@@ -1954,6 +2009,15 @@ aloud). The Alt Text field survives either way (§5).
    (`/app/acidtest/display/email_html/<TEST_ID>`) and check for inliner
    fingerprints BEFORE diagnosing a "regression" (2026-08-19: a styleless
    non-EN payload mimicked a catastrophic mobile-CSS regression).
+6h. Outlook.com dark check (§2c): every dark-mode text value is 5.4:1 or
+   better against #333333, and every dark ground is 4.5:1 against its text,
+   or carries `data-outlook-repaint-ok`. On a real send, open the message
+   in Outlook.com's dark theme with DevTools emulating
+   `prefers-color-scheme` dark, then light, remounting the message each
+   time. Count VISIBLE repaints (`[data-ogsc]`, `[data-ogsb]`), not
+   attributes: only the seed and accepted exceptions should change.
+   `document.querySelectorAll('[data-ogsb="rgb(0, 0, 0)"]').length` must be
+   0 (the contrast method, §2c).
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.

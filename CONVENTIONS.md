@@ -2999,6 +2999,18 @@ the importer whitelists all data-*-only MJML validator warnings
   warns as misuse. The importer itself never reads it (the data-* audit
   registry claims it as a TPL pipeline consumer). Always pair it with a
   dated caveat comment naming the anchor and the decision.
+- **`data-outlook-repaint-ok`** (raw MJML; on the `mj-*` element whose
+  `css-class` a dark-mode rule anchors on, 2026-09-24): Outlook.com dark
+  mode will repaint this element's dark value, and that is accepted as
+  design. TPL's check-catalog Outlook contrast gate warns on any dark value
+  Outlook overrides: text under 5.4:1 against Outlook's #333333 base, or a
+  ground under 4.5:1 against its text (mjml-authoring-guide.md §2c). It
+  passes a failing rule only when EVERY source element carrying the rule's
+  anchor class has this flag. In use on every `two-line-cta`, whose black
+  chip text Outlook always repaints light. The compiler strips it from `mj-*`
+  elements and the importer never reads it; the data-* audit registry claims
+  it as a TPL pipeline consumer. Pair it with a dated comment naming the
+  decision. Never use it to silence a value that is simply wrong.
 - **`data-folder="<id>"`** (raw MJML; on category dividers and blocks):
   EN folder routing. Precedence: block's own attr > import-form input >
   category divider's attr > account default
