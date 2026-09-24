@@ -3009,10 +3009,10 @@ the importer whitelists all data-*-only MJML validator warnings
   anchor class has this flag. In use on every `two-line-cta`, whose black
   chip text Outlook always repaints light. The compiler strips it from `mj-*`
   elements, so the importer reads it from each block's MJML source: its
-  Outlook audit (`src/core/outlookDark.ts`, run by `validateProject`) applies
-  the same gate at import and raises a Template warning for every
-  unaccepted failing value, for `[data-ogsc]` rules with no seed in the
-  shell, and for top-level `[data-ogsc]` (dropped by EN). EN imports carry
+  Outlook audit (`src/core/outlookDark.ts`) applies the same gate and lists
+  a Template warning in the Export panel's template tab (`templateIssues`)
+  for each unaccepted failing selector group, for `[data-ogsc]` rules with no
+  seed in the shell, and for top-level `[data-ogsc]` (dropped by EN). EN imports carry
   no MJML source, so there the flag is unknowable and a failing value
   always warns. Pair it with a dated comment naming the decision. Never use
   it to silence a value that is simply wrong.

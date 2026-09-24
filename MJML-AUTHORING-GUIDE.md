@@ -465,7 +465,7 @@ port lives in `docs/archive/owa-darkmode-sim/` in the canonical repo.
   whatever the CSS says. Keep every dark-mode text value at 5.4:1 or better
   against #333333 (the margin is because the base is from 2021 code), and
   every dark ground at 4.5:1 against its text. TPL's check-catalog enforces
-  this at build and the importer warns at import, with
+  this at build and the importer's Export panel warns in its template tab, with
   `data-outlook-repaint-ok` for accepted exceptions (conventions.md).
 - **`prefers-color-scheme` follows the reader's OS, not Outlook's theme.**
   The message is injected into a plain div, not an iframe. A reader with
