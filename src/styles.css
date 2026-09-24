@@ -542,7 +542,16 @@ p {
    is flattened and inlined instead. Every declaration keeps !important
    because the base rules ARE inlined onto the elements (§2b).
    OWA mirrors the media query below; backgrounds must come along with the
-   forced white text or light footers render white-on-light. */
+   forced white text or light footers render white-on-light.
+   ARMING (2026-09-24): Outlook repaints an element only when its computed
+   text fails 4.5:1 against a #333333 base (or its ground fails against its
+   text), and [data-ogsc] X matches only below an element it repainted. The
+   unclassed seed div at the top of mj-body carries inline #000 text, so
+   Outlook always tags it and this branch reaches every block, whatever the
+   reader's OS scheme; .email-ground inside it covers the seed's own repaint.
+   Without the seed nothing above the blocks is tagged and this branch is
+   inert. Dark text values here must clear 5.4:1 against #333333 or carry
+   check-catalog's data-outlook-repaint-ok allowance. */
 @media only screen and (max-width: 9999px) {
   [data-ogsc] .block,
   [data-ogsc] .block table[align=center],
@@ -589,7 +598,7 @@ p {
     color: #fff !important;
   }
 
-  [data-ogsc] .email-body {
+  [data-ogsc] .email-ground {
     color: #fff !important;
     background-color: #000 !important;
   }
@@ -619,11 +628,18 @@ p {
   [data-ogsc] .question-response p a {
     color: #fff !important;
   }
+
+  /* Outlook.com dark paints var(--neutralDark), white, behind every hovered
+     image (email-bugs #162, 2026-02), hiding light-ink logos and icons. */
+  [data-ogsc] img:hover {
+    background-color: transparent !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   body,
-  .email-body {
+  .email-body,
+  .email-ground {
     color: #fff !important;
     background-color: #000 !important;
   }

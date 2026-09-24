@@ -550,7 +550,7 @@ What each client does with what arrives:
 | Client | Honors a dark hook | What it does on its own | What that means for you |
 | :-- | :-- | :-- | :-- |
 | Apple Mail | Yes, preference query | Nothing uninvited | Your dark styling is obeyed as written, including your mistakes |
-| Outlook.com | Yes, via the nested hook | Nothing uninvited | Same, and the hook must be nested or it is dropped |
+| Outlook.com | Yes, the preference query when the reader's OS is dark; the nested hook only below an element Outlook has repainted (corrected 2026-09-24) | Repaints any element whose colors fail its contrast test, inline and unbeatable | Keep every dark color passing, and arm the nested hook with a seed element or it never fires |
 | iOS Mail | Yes, preference query | Nothing uninvited | Same |
 | **Gmail app, Android** | **No** | **Darkens light designs** | You cannot reach it. Design so its automatic transform lands somewhere legible |
 | **Outlook on Windows** | **No** | **Darkens light designs and inverts dark ones** | A black footer flips to white while its light logo and white icons stay put |

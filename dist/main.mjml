@@ -265,6 +265,8 @@
   </mj-head>
   <mj-body css-class="email-body" background-color="#ffffff">
 
+    <!-- Outlook dark-mode seed: no class, no CSS may target it (styles.css, ARMING) -->
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
     <mj-include path="./partials/debug-toolbar.mjml" />
 
     <!-- START: Main Content -->
@@ -1077,9 +1079,13 @@
   <!-- data-no-width-toggle: centred fixed-width pill run (252·2 + 32 = 536px) exactly fills the
        content box — symmetric gutter changes cannot move it, so the Block Padding Left/Right
        control is dead at BOTH viewports (inert-dropdown audit, 2026-08-24). -->
+  <!-- data-outlook-repaint-ok (every .two-line-cta, user decision 2026-09-24): the chips keep
+       black text on their coloured pills in dark mode. Outlook.com tests text against a #333333
+       base, so black (1.66:1) is always repainted light there. Accepted; check-catalog's
+       Outlook contrast gate reads this flag instead of warning. -->
   <mj-section css-class="block" background-color="#ffffff" padding="0 32px" data-no-width-toggle>
     <mj-column vertical-align="middle">
-      <mj-text css-class="two-line-cta" padding="0">
+      <mj-text css-class="two-line-cta" data-outlook-repaint-ok padding="0">
         <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
         <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
         <!--[if mso]></td></tr></table><![endif]-->
@@ -2342,12 +2348,12 @@
              Buttons 2x1 (fixed width) carries it in full):
              (600 - 32 - 32 - 32) / 2 = 252px. If any input changes, update every
              <a> width AND every MSO <td> width/style together. -->
-        <mj-text css-class="two-line-cta" padding="0 0 16px">
+        <mj-text css-class="two-line-cta" data-outlook-repaint-ok padding="0 0 16px">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#5DD8D8" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#5DD8D8;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#8CC63F" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#8CC63F;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
         </mj-text>
-        <mj-text css-class="two-line-cta" padding="0">
+        <mj-text css-class="two-line-cta" data-outlook-repaint-ok padding="0">
           <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#39B54A" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]-->
           <div class="cta-group" data-no-alignment-toggle style="text-align:center;font-size:0;"><!--[if !mso]><!--><div class="cta-item" style="display:inline-block;vertical-align:middle;margin-right:32px;"><!--<![endif]--><!--[if mso]><div class="cta-item" style="display:inline-block;vertical-align:middle;"><![endif]--><a href="https://tpl.org" style="display:inline-block;background-color:#39B54A;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div><!--[if mso]></td><td width="32" style="width:32px;font-size:0;line-height:0;">&nbsp;</td><td bgcolor="#F7931E" width="252" style="width:252px;border-radius:100px;mso-padding-alt:12px 0;text-align:center;" valign="middle"><![endif]--><div class="cta-item" style="display:inline-block;vertical-align:middle;"><a href="https://tpl.org" style="display:inline-block;background-color:#F7931E;color:#000000;border-radius:100px;width:252px;padding:12px 0;text-align:center;font-family:Tahoma,sans-serif;font-size:18px;line-height:22px;text-decoration:none;mso-padding-alt:0;"><span style="font-weight:700;letter-spacing:0.5px;">LABEL</span><br><span style="font-weight:400;letter-spacing:1px;">LABEL</span></a></div></div>
           <!--[if mso]></td></tr></table><![endif]-->
@@ -3001,5 +3007,6 @@
     <!-- END: Footer (w/ image, snow) -->
 
     <!-- END: Main Content -->
+    <mj-raw></div></div></mj-raw>
   </mj-body>
 </mjml>

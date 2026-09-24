@@ -1202,8 +1202,93 @@ guard('Gmail CSS budget + head coupling check', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// Outlook.com contrast gate for the dark branches (2026-09-24).
+//     Outlook.com's dark handler walks every element and repaints, inline
+//     with !important, any whose computed text fails 4.5:1 against a #333333
+//     base, or whose ground fails 4.5:1 against its text (Outlook source,
+//     transformElementForDarkMode.ts:44,69; base baseDarkThemePalette.ts:35;
+//     archived in the private repo's docs/archive/owa-darkmode-sim/). A value
+//     that fails is overridden however the CSS is written, so it is a design
+//     defect, not a CSS one. Text must clear 5.4:1 (margin: the base is from
+//     2021 code); a ground must clear 4.5:1 against the text on it (the same
+//     rule's color, else the branch's .email-body text).
+//     Accepted exceptions are flagged UPSTREAM, on the source element whose
+//     class the rule anchors on: data-outlook-repaint-ok. The rule passes
+//     only when EVERY source element carrying that class has the flag.
+// ---------------------------------------------------------------------------
+guard('Outlook contrast gate', () => {
+  const css = read('src/styles.css');
+  if (!css) return;
+  const lum = (hex) => {
+    let h = hex.replace('#', '');
+    if (h.length === 3) h = [...h].map((c) => c + c).join('');
+    const [r, g, b] = [0, 2, 4].map((i) => {
+      const c = parseInt(h.slice(i, i + 2), 16) / 255;
+      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const ratio = (a, b) => {
+    const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+    return (x + 0.05) / (y + 0.05);
+  };
+  const BASE = '#333333';
+  const HEX = /#([0-9a-f]{3}|[0-9a-f]{6})\b/i;
+  const decl = (body, prop) => {
+    const m = new RegExp(`(?:^|[;\\s])${prop}\\s*:\\s*([^;!]+)`, 'i').exec(body);
+    const v = m && HEX.exec(m[1]);
+    return v ? v[0] : null;
+  };
+  // Every source tag's class list and whether it carries the flag.
+  const tags = [];
+  for (const f of sources) {
+    const text = read(`src/${f}`) || '';
+    for (const m of text.matchAll(/<[a-z][\w-]*\b[^>]*\b(?:css-class|class)="([^"]*)"[^>]*>/gi)) {
+      tags.push({ f, line: lineAt(text, m.index), classes: m[1].split(/\s+/), ok: /\sdata-outlook-repaint-ok\b/.test(m[0]) });
+    }
+  }
+  for (const marker of ['@media (prefers-color-scheme: dark)', '@media only screen and (max-width: 9999px)']) {
+    const start = css.indexOf(marker);
+    if (start === -1) continue;
+    let i = css.indexOf('{', start) + 1;
+    let depth = 1;
+    const from = i;
+    while (depth && i < css.length) {
+      if (css[i] === '{') depth += 1;
+      if (css[i] === '}') depth -= 1;
+      i += 1;
+    }
+    const block = css.slice(from, i - 1).replace(/\/\*[\s\S]*?\*\//g, '');
+    const rules = [...block.matchAll(/([^{}]+)\{([^}]*)\}/g)].map((m) => ({
+      sels: m[1].split(',').map((s) => s.trim().replace(/^\[data-ogsc\]\s*/, '')),
+      body: m[2],
+    }));
+    const pageText = decl((rules.find((r) => r.sels.includes('.email-body')) || { body: '' }).body, 'color') || '#ffffff';
+    for (const r of rules) {
+      const color = decl(r.body, 'color');
+      const ground = decl(r.body, 'background-color');
+      const fails = [];
+      if (color && ratio(color, BASE) < 5.4) fails.push(`text ${color} is ${ratio(color, BASE).toFixed(2)}:1 against Outlook's ${BASE} base (needs 5.4)`);
+      if (ground) {
+        const on = color || pageText;
+        if (ratio(ground, on) < 4.5) fails.push(`ground ${ground} is ${ratio(ground, on).toFixed(2)}:1 against its text ${on} (needs 4.5)`);
+      }
+      if (!fails.length) continue;
+      const anchors = r.sels.map((s) => (/\.([\w-]+)/.exec(s) || [])[1]).filter(Boolean);
+      const users = tags.filter((t) => anchors.some((a) => t.classes.includes(a)));
+      const accepted = anchors.length === r.sels.length && users.length > 0 && users.every((t) => t.ok);
+      if (accepted) continue;
+      const missing = users.filter((t) => !t.ok).map((t) => `src/${t.f}:${t.line}`);
+      warn(
+        `styles.css ${marker} — "${r.sels.join(', ')}": ${fails.join('; ')}. Outlook.com dark repaints it whatever the CSS says. Fix the value, or accept the repaint by flagging every element carrying that class with data-outlook-repaint-ok${missing.length ? ` (unflagged: ${missing.join(', ')})` : ''}`,
+      );
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate clean`,
 );

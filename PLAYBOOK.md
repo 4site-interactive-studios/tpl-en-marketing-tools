@@ -425,7 +425,9 @@ Backed by CSS in `styles.css`: `.dark-only { display:none }`, flipped by both
 `@media (prefers-color-scheme: dark)` and `[data-ogsc]` (Outlook.com dark
 mode). The `[data-ogsc]` branch **must stay nested inside a conditional media
 query** — EN's inliner deletes those rules at top level, and the base
-`display:none` gets inlined, so every flip also needs `!important`. See §7a.
+`display:none` gets inlined, so every flip also needs `!important`. The
+`[data-ogsc]` flip only fires below an element Outlook has repainted, which the
+seed div at the top of `<mj-body>` provides. See §7a.
 
 ### 6d. `data-fully-exclude` — "duplicative variant, don't re-import"
 
@@ -484,6 +486,24 @@ Do NOT "fix" `width="auto"` by removing it: uniform width *presence* is what
 keeps button structures unified (§6d), and the converter's width-Replacement
 contract relies on the attribute always being present ("auto" = shrink-to-fit,
 a px value = fixed). Removing it re-splits structure groups.
+
+### 6f. `data-outlook-repaint-ok` — "Outlook may repaint this, and that's accepted"
+
+A valueless flag on the source element whose class a dark-mode rule anchors
+on (today every `mj-text css-class="two-line-cta"`, user decision
+2026-09-24). check-catalog's Outlook contrast gate reads it. Any dark value in
+either branch of `styles.css` that Outlook.com would override warns unless
+EVERY source element carrying the rule's class has the flag: text under 5.4:1
+against #333333, or a ground under 4.5:1 against its text. The warning names
+each unflagged `src/` line. The compiler strips it from `mj-*` elements, so
+it never ships. It is registered as a TPL-pipeline consumer in the importer's
+`KNOWN_DATA_ATTR_CONSUMERS` (the `data-visible-duplicate` precedent), so the
+data-* audit classifies it instead of strip-testing it.
+
+Flag only a deliberate design choice. The chips keep black text on their
+colored pills, and Outlook will always repaint that black light, because it
+tests text against its #333333 base, never against the pill. If the value is
+simply wrong, fix the value.
 
 ## 7. Email-client compatibility patterns
 
@@ -578,7 +598,7 @@ Client support, since dark mode is not uniformly addressable:
 | Client | Honors | Notes |
 |---|---|---|
 | Apple Mail, iOS Mail | `prefers-color-scheme` | Full control; auto-darkens backgrounds even without our CSS, which is why missing CSS reads as black-on-black |
-| Outlook.com / OWA | `[data-ogsc]` | Needs the mirrored branch; media query never runs |
+| Outlook.com / OWA | both | Runs the media query when the reader's OS is dark (the message is not in an iframe, so it follows the OS, not Outlook's theme). Separately repaints, inline `!important`, any element whose text fails 4.5:1 against #333333 or whose ground fails against its text, so a failing dark value is overridden whatever the CSS says (check-catalog's Outlook contrast gate). The `[data-ogsc]` mirror reaches only descendants of an element Outlook has repainted; the seed div at the top of `<mj-body>` guarantees one, which is what makes the mirror fire for readers on a light OS (2026-09-24) |
 | Gmail app, Outlook Windows desktop | neither | They apply their own color transform. Only asset choice and transform-tolerant colors help — e.g. Word's inversion of a dark plum section to pink is not addressable from CSS |
 
 ## 8. Asset policy

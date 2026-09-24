@@ -130,6 +130,8 @@
     <mj-include path="../styles.css" type="css" />
   </mj-head>
   <mj-body background-color="#ffffff" css-class="email-body">
+    <!-- Outlook dark-mode seed: no class, no CSS may target it (styles.css, ARMING) -->
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
     <mj-include path="../partials/debug-toolbar.mjml" />
     <!-- START: Main Content -->
 
@@ -389,5 +391,6 @@
     <!-- END: Footer (w/ image, brown) -->
 
     <!-- END: Main Content -->
+    <mj-raw></div></div></mj-raw>
   </mj-body>
 </mjml>
