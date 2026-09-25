@@ -1923,6 +1923,14 @@ aloud). The Alt Text field survives either way (§5).
 3a. Census every `font-size`/`line-height` pair (stylesheet rules,
    `mj-attributes`, and inline) and check each against the brand type
    table (§5). Anything off-table is either a documented lockup or a bug.
+3b. Count `<mj-text` openings against `</mj-text>` closings in every
+   source (partials included, comments stripped first — prose may name
+   the tags); they must match. An unclosed or truncated
+   `mj-text` loses its whole content with NO compiler error at any
+   validation level, `strict` included (measured 2026-09-24, mjml 5.2.2
+   and mjml-browser), so a clean compile log proves nothing here and the
+   importer cannot flag it either. Apply the same count to any other
+   ending-tag element you author (`mj-button`, `mj-table`, `mj-raw`).
 4. Confirm every editable background image binds **all four** carriers in
    the compiled HTML.
 5. Confirm every dark-mode rule that must override an inlined base rule

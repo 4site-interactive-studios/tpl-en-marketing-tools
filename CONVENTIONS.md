@@ -2399,6 +2399,35 @@ Gmail-style snippets would show BOTH lines. Consequences:
 
 ## Validator (src/core/validate.ts)
 
+- **No level blocks export** (user decision 2026-09-24). An `error` means
+  the output is broken and turns the Export panel's notice red; Copy and
+  Download stay available whatever the issues say. Problems are reported,
+  never enforced.
+- **The MJML could not be compiled → a warning on BOTH Export tabs**
+  (`compileIssues`, user request 2026-09-24). Two cases, each at
+  `warning`, scoped "MJML source":
+  - A **Re-import whose MJML → HTML step threw** — the compile itself
+    ("Malformed MJML…", "Parsing failed…") or the preparation before it
+    (the CSS parser-hazard refusal). The project on screen is kept — it is
+    the last successful compile — and `project.compileFailure` records the
+    error, which the warning quotes verbatim. A fetch failure does NOT
+    mark it (the source was unreachable, not uncompilable — the alert
+    says so), nor does a throw after a successful compile. The next
+    successful import builds a fresh project and clears it.
+  - **Each MJML compiler error** from the last compile (soft validation:
+    an unknown element, invalid nesting, an attribute value MJML rejects).
+    MJML still emits HTML, but the element is dropped or rendered other
+    than authored, so the export may not match the source there. Only the
+    compiler's own messages count (its `Line N of …` shape): the fetch and
+    prepare notes and en-tools-config warnings stored in the same
+    `mjmlErrors` list stay in the preview's issues badge, and the
+    `data-*` / `width="auto"` noise stays filtered.
+
+  Not caught: a tag MJML closes implicitly. An unclosed or truncated
+  `mj-text` loses its content with NO compiler error — measured
+  2026-09-24 on mjml-browser and on mjml 5.2.2, at `strict` validation
+  too — so no issue can report it. The authoring-side check is guide §8
+  item 3b.
 - Orphaned `{replacement~…}` tags are errors; tags nested inside Select
   option values count as used and must resolve.
 - Select defaults must match one of their options.
