@@ -2073,6 +2073,23 @@ sort — it is purely the panel/export display order.
   no per-side padding fields (Spacing Below is the only content spacing
   knob).
 
+## DEV export names
+
+The export panel's **Export as DEV** toggle (2026-09-25, user-decided) prefixes
+every exported block name with `DEV: ` (`withDevNames` / `DEV_NAME_PREFIX`,
+`src/core/export/blockExport.ts`), so a test import lands BESIDE the
+production blocks in EN instead of replacing them. Semantics:
+
+- **Off by default and never persisted:** every open of the panel starts on
+  production names, so a DEV export is always a deliberate choice.
+- Applies to BOTH block outputs of the panel, the Block JSON and the
+  per-group ZIP, and to the utility blocks riding in them (RAW HTML, Debug
+  Helper). Only `name` changes: key order and every other byte are
+  identical to the production export.
+- Idempotent: a name already carrying the prefix is left alone.
+- Not applied to a block's own per-block copy/download action
+  (`BlockExportActions`) or to the template export.
+
 ## The programmatic RAW HTML utility block
 
 Block exports can carry one synthetic block the MJML never authored:
