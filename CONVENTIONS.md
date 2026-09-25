@@ -483,7 +483,8 @@ silently.
 ## Message size is advisory, never enforced
 
 `validateMessageSizeBudget` (`src/core/validate.ts`) sums the shell plus
-EVERY block and flags the total against EN's measured `contentHtml` ceiling.
+EVERY block and flags the total against EN's measured `contentHtml` ceiling,
+as a Template issue in the Export panel's template tab (`templateIssues`).
 
 It sums the AUTHORED html, with `{replacement~…}` tags still in it — not the
 substituted string EN actually counts. Most block markup lives inside Select
@@ -2203,7 +2204,9 @@ trade-off was accepted deliberately.)
   selectors — each breaks a measured behavior or an app feature (see
   the §2b-bis coupling notes).
 - **The Gmail CSS budget meter** (`CssBudgetMeter`, shown on the block's
-  panel; `validateCssBudget` mirrors it in the issues badge): estimated
+  panel; `validateCssBudget` reports the same base estimate — without the
+  meter's "+N if included" hoisted extras — as a Template issue in the
+  Export panel's template tab, `templateIssues`): estimated
   DELIVERED bytes = shell-remaining `<style>` bytes +
   `EN_CSS_REPRINT_FACTOR` × (the block's `<style>` bytes — the inline
   CSS plus builder chrome — plus a legacy field's bytes when an

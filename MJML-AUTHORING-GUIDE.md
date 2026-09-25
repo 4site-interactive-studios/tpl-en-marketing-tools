@@ -873,7 +873,8 @@ Three caveats that belong with the number:
   That catalog no longer exists; the ratio is what generalises, not the
   size.)
 
-The importer flags this for you: it sums shell + every block — the authored
+The importer flags this for you in its Export panel's template tab: it sums
+shell + every block — the authored
 text with merge tags still in it, a rough ceiling rather than a projection
 of what EN counts — and reports
 `info` past 285,000, `warning` past 299,760, and never an error — a catalog
