@@ -680,13 +680,29 @@ function atRulesOnly(css) {
   let out = '';
   let depth = 0;
   let start = 0;
+  let quote = '';
   for (let i = 0; i < text.length; i += 1) {
-    if (text[i] === '{') depth += 1;
-    else if (text[i] === '}' && --depth === 0) {
-      const rule = text.slice(start, i + 1);
-      const sel = rule.slice(0, rule.indexOf('{')).trim();
-      if (sel.startsWith('@') || /:(hover|focus|active|visited)\b/.test(sel)) out += rule;
-      start = i + 1;
+    const c = text[i];
+    // Braces inside quoted strings never end a rule, and a stray '}' never
+    // drives the depth negative: one odd rule must not hide the rest (an
+    // under-count is the unsafe direction). Mirrors the importer's
+    // deliveredShellStyleBytes walker (headStyles.ts).
+    if (quote) {
+      if (c === '\\') i += 1;
+      else if (c === quote) quote = '';
+      continue;
+    }
+    if (c === '"' || c === "'") quote = c;
+    else if (c === '{') depth += 1;
+    else if (c === '}') {
+      if (depth === 0) start = i + 1;
+      else if (--depth === 0) {
+        const rule = text.slice(start, i + 1);
+        const sel = rule.slice(0, rule.indexOf('{')).trim();
+        // Pseudo-elements are unmeasured, so they stay counted (erring safe)
+        if (sel.startsWith('@') || /:(hover|focus|active|visited)\b|::/.test(sel)) out += rule;
+        start = i + 1;
+      }
     }
   }
   return out;
