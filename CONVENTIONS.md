@@ -2094,7 +2094,9 @@ match a production block BY NAME. Semantics:
 - **Unmeasured: whether EN matches an import on `exportId` as well as
   name.** Blocks first imported FROM EN keep EN's `exportId`, so if EN
   matches on it, a DEV export of such a block could still replace its
-  production original. Fresh MJML blocks get new ids and are not exposed.
+  production original. Fresh MJML blocks get a new id on every export
+  (`genExportId`), but that range can overlap EN's own 5-digit ids, so no
+  block is known to be safe until this is measured.
   On the first DEV import, confirm in EN that the production block is
   untouched, then record the verdict here.
 - The name inside the block's builder band (its content) stays the
