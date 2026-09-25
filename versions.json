@@ -307,13 +307,14 @@
     "date": "2026-08-25"
   },
   "block:Video Block": {
-    "version": 7,
-    "hash": "663e87edfaa2"
+    "version": 8,
+    "hash": "4f600125c679",
+    "date": "2026-09-25"
   },
   "block:Video Block (inset)": {
-    "version": 23,
-    "hash": "46c99ce5f01f",
-    "date": "2026-08-25"
+    "version": 24,
+    "hash": "323f214a71f3",
+    "date": "2026-09-25"
   },
   "block:WYSIWYG Header": {
     "version": 3,
@@ -326,8 +327,8 @@
     "date": "2026-08-25"
   },
   "email-template": {
-    "version": 63,
-    "hash": "c3b4e0c39213",
+    "version": 64,
+    "hash": "c56da80fd65c",
     "date": "2026-09-25"
   },
   "head-css": {
