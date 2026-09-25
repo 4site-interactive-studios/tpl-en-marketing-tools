@@ -669,6 +669,29 @@ guard('mobile-only MSO-guard check', () => {
   }
 });
 
+/**
+ * What of a head-resident sheet can reach the delivered <head>: its @-blocks
+ * plus any rule on a state pseudo-class no inliner can resolve onto an element
+ * (:hover, …; guide §2 measured `:hover` KEPT). `:root` is inlined onto
+ * <html> (guide §2), so it drops out like any plain rule.
+ */
+function atRulesOnly(css) {
+  const text = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  let out = '';
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < text.length; i += 1) {
+    if (text[i] === '{') depth += 1;
+    else if (text[i] === '}' && --depth === 0) {
+      const rule = text.slice(start, i + 1);
+      const sel = rule.slice(0, rule.indexOf('{')).trim();
+      if (sel.startsWith('@') || /:(hover|focus|active|visited)\b/.test(sel)) out += rule;
+      start = i + 1;
+    }
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------------------
 // §8 Gmail CSS budget + importer head-CSS couplings (2026-08-18).
 // Gmail discards the ENTIRE head stylesheet past 16,384 total <style> bytes
@@ -1162,7 +1185,14 @@ guard('Gmail CSS budget + head coupling check', () => {
     const headEnd = html.indexOf('</head>');
     const head = headEnd === -1 ? html : html.slice(0, headEnd);
     let css = '';
-    for (const m of head.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) css += m[1];
+    for (const m of head.matchAll(/<style\b([^>]*)>([\s\S]*?)<\/style>/gi)) {
+      // The head-resident template sheet ships its PLAIN top-level rules to
+      // EN's inliner, which writes them onto elements and drops them from the
+      // delivered head; only its @-blocks survive into what Gmail measures.
+      // Measured 2026-09-25 in two delivered heads (EoA d0S0nH…, 8lOZqo…):
+      // the .wysiwyg containment rules were inlined and absent from <head>.
+      css += /data-en-tools-template-css/.test(m[1]) ? atRulesOnly(m[2]) : m[2];
+    }
     // Simulate the importer's compactCss: strip comments, tighten around
     // punctuation, then add back its one-line-per-rule newline/indent
     // overhead (~3 bytes per rule) so the byte count tracks the real field.

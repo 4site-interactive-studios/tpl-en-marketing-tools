@@ -69,6 +69,8 @@ escaped on edit.
 | `@media screen` (no condition) | **flattened and INLINED** | not a safe hiding place |
 | Rule matching nothing | pruned | harmless |
 | `vertical-align` in a td's style | **moved to a `valign` ATTRIBUTE** | `td[style*=vertical-align]` selectors die in the inbox (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered tds kept it inline; `direction` survives in style) |
+| `<p>` with no margin of its own | **`margin: 13px 0` written inline** (EN's own default; its injected preheader carries it too) | paragraph spacing arrives explicit, so a first/last-child trim lands inline beside it (measured 2026-09-25, EoA d0S0nH…) |
+| Structural pseudo-class rule (`:first-child`, `:last-child`) | **INLINED onto every element it matches — inline runs included** | `.x div *:last-child { margin-bottom:0 }` writes `margin-bottom:0` onto a `<u>`, `<strong>`, `<a>` or `<br>`, and Word applies an inline run's margin to its WHOLE paragraph: adjacent formatted paragraphs run together in Outlook desktop (measured 2026-09-25, EoA d0S0nH… / 8lOZqo…). Name block elements in trims, never `*` — see §2d |
 | CSS comments | **STRIPPED** at send | comment weight never reaches recipients — it costs the CSS Editor box, not the payload |
 | `<a>` wrapping a `<table>` | **anchor AUTO-CLOSED before the table** | the delivered link arrives EMPTY with the table expelled after it — the row is unclickable in every client (measured 2026-08-18, probe 0Mgmjr…: 167 delivered chars to `</a>` where the build wraps 1,160). Anchor per CELL around inline content, never around a table — share one URL across the cells with `data-link-group` (§5) |
 
@@ -768,10 +770,20 @@ box loses on specificity and is safely overridden; an inset on an ancestor div
 stacks; an inset on a `td` you did not mean to touch is erased.
 
 And a descendant selector reaches
-INTO wrappers, so pacing rules like `.wysiwyg div *:first-child
+INTO wrappers, so pacing rules like `.wysiwyg div p:first-child
 { margin-top: 0 }` require that authored content never nest a block
 element inside an inline wrapper — write `<h1><a>…</a></h1>`, never
 `<a><h1>…</h1></a>`.
+
+**Name the block elements in a trim; never use `*`.** The child combinator is
+banned, so the tempting escape-safe form is `.wysiwyg div *:first-child`, and
+it is wrong: `*` also matches inline runs (a `<strong>` is a first child even
+with text before it), EN inlines the zero margin onto them, and Word applies
+an inline run's margin to its whole paragraph — two adjacent paragraphs that
+both carry formatting lose their gap in Outlook desktop (§2 table; measured
+2026-09-25, EoA d0S0nH… reproduced it, 8lOZqo… confirmed the fix). Enumerate
+`p`, `h1`–`h6`, `ul`, `ol` instead. It costs head bytes, but the rule is
+inlined away at send, so the delivered head does not carry it.
 
 ### 2e. Mobile gutters — the "images aren't full bleed" finding
 
@@ -1889,6 +1901,23 @@ keep `line-height` for the modern-client chip height; Word renders the run
 at its own line box, which is honest typography rather than a broken box.
 This is the span-level twin of the MSO spacer-td rule above: when Word must
 get geometry right, carry it in text or table attributes, never in span CSS.
+
+---
+
+**Word honours `word-break` on a paragraph, not on a span — isolate an
+unbreakable string in its own `<p>`.** An overlong merge value with no break
+opportunity (a long email address in a footer) stretches the Word engines'
+whole block past 600px (measured 724px in Outlook 2021 and M365 Win11). What
+fails there: `word-break:break-all` on a `<span>`, `word-wrap:break-word` on a
+span, `table-layout:fixed` on the section tables, and a class rule on the
+text cell (MJML already writes `word-break:break-word` inline on that `td`,
+and inline beats the class). `word-break:break-all` on the `<p>` works, but on
+a whole sentence it splits ordinary words ("San F/rancisco"). The shipped
+shape gives the string its own paragraph:
+`<p style="…;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>`
+between `margin:0` paragraphs holding the surrounding copy, so the lines
+still read as one block and only the string can break (measured 2026-09-25,
+EoA d0S0nH…, 8lOZqo…, ruuyd3…; a normal-length address never splits).
 
 ## 7. Assets
 

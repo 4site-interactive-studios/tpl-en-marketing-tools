@@ -131,8 +131,30 @@
 
         /* RTE margin containment — the bottom-only pacing model rests on
            these; without them every RTE block grows phantom margins. */
-        .wysiwyg div *:first-child { margin-top: 0; }
-        .wysiwyg div *:last-child { margin-bottom: 0; }
+        /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
 
         /* Copy over a photo must be white even in an email built without the
            styles block (user decision 2026-08-24: relocated rather than
@@ -2924,8 +2946,14 @@
                email addresses and paints them default blue — near-illegible on
                this brown (measured 2026-08-24, final-QC render round, both Word
                engines). An authored anchor under the link-inverse hook gets the
-               white inlined by EN at send, which Word honors. -->
-          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+               white inlined by EN at send, which Word honors.
+               The address sits ALONE in a break-all <p> (BugHerd 284, EoA
+               ruuyd3…, 2026-09-25): Word honours word-break on a <p>, not on a
+               <span>, and an overlong address otherwise stretches this block
+               to 724px; on the whole sentence it would split ordinary words. -->
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>
@@ -2988,7 +3016,9 @@
           <p style="font-size:14px;line-height:18px;"><b>Connecting everyone to the outdoors.</b> We create parks and protect public land where they're needed most so that everyone will have access to the benefits and joys of the outdoors for generations to come.</p>
         </mj-text>
         <mj-text align="center" data-no-display-toggle padding="0 0 16px">
-          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_all-black.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>

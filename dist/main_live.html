@@ -1114,11 +1114,33 @@ li {
            does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
     /* RTE margin containment — the bottom-only pacing model rests on
            these; without them every RTE block grows phantom margins. */
-    .wysiwyg div *:first-child {
+    /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+    .wysiwyg div p:first-child,
+    .wysiwyg div h1:first-child,
+    .wysiwyg div h2:first-child,
+    .wysiwyg div h3:first-child,
+    .wysiwyg div h4:first-child,
+    .wysiwyg div h5:first-child,
+    .wysiwyg div h6:first-child,
+    .wysiwyg div ul:first-child,
+    .wysiwyg div ol:first-child {
       margin-top: 0;
     }
 
-    .wysiwyg div *:last-child {
+    .wysiwyg div p:last-child,
+    .wysiwyg div h1:last-child,
+    .wysiwyg div h2:last-child,
+    .wysiwyg div h3:last-child,
+    .wysiwyg div h4:last-child,
+    .wysiwyg div h5:last-child,
+    .wysiwyg div h6:last-child,
+    .wysiwyg div ul:last-child,
+    .wysiwyg div ol:last-child {
       margin-bottom: 0;
     }
 
@@ -8029,8 +8051,14 @@ li {
                email addresses and paints them default blue — near-illegible on
                this brown (measured 2026-08-24, final-QC render round, both Word
                engines). An authored anchor under the link-inverse hook gets the
-               white inlined by EN at send, which Word honors. -->
-                              <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+               white inlined by EN at send, which Word honors.
+               The address sits ALONE in a break-all <p> (BugHerd 284, EoA
+               ruuyd3…, 2026-09-25): Word honours word-break on a <p>, not on a
+               <span>, and an overlong address otherwise stretches this block
+               to 724px; on the whole sentence it would split ordinary words. -->
+                              <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+                              <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>
+                              <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                             </div>
                           </td>
                         </tr>
@@ -8262,7 +8290,9 @@ li {
                         <tr>
                           <td align="center" class="wysiwyg" style="font-size:0px;padding:0 0 16px;word-break:break-word;">
                             <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:center;color:#000000;">
-                              <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+                              <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+                              <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>
+                              <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
                             </div>
                           </td>
                         </tr>

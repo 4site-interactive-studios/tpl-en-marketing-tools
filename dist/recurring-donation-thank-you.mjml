@@ -106,8 +106,30 @@
       <style type="text/css" data-en-tools-template-css>
         /* RTE margin containment — the bottom-only pacing model rests on
            these; without them every RTE block grows phantom margins. */
-        .wysiwyg div *:first-child { margin-top: 0; }
-        .wysiwyg div *:last-child { margin-bottom: 0; }
+        /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
 
         /* Mode fork (light/dark twins): the plain hide half. The dark twins
            sit in downlevel-revealed conditionals, so without this every
@@ -375,7 +397,9 @@
                engines). An authored anchor under the link-inverse hook gets the
                white inlined by EN at send, which Word honors. -->
           <p style="font-size:14px;line-height:18px;">Trust for Public Land is a 501(c)(3), tax-exempt organization. Copyright © 2026 Trust for Public Land. All rights reserved.</p>
-          <p style="font-size:14px;line-height:18px;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to<br /><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>You are receiving this email because you set up a recurring donation to Trust for Public Land. This receipt was sent to</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:{user_data~Email Address}">{user_data~Email Address}</a>.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
         </mj-text>
         <mj-image css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="134px" align="center" padding="0 0 16px" data-no-display-toggle />
         <mj-raw><!--[if !mso]><!--></mj-raw>

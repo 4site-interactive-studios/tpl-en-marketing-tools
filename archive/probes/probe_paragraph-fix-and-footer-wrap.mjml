@@ -1,0 +1,172 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — paragraph fix + footer long-address wrap, round 2 (2026-09-25).
+
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-09-25; EoA 8lOZqoqQlg2ir71omHLNuOekh5xk6K3CQoHXmYvFk4xUl
+      (17 clients). Delivered HTML read first; renders pixel-scanned.
+
+      P5 OLD — paragraphs 1→2 RUN TOGETHER in Outlook 2021 and M365 Win11:
+          the inlined margins on the inline runs reproduce BugHerd 296.
+      P6/P7 FIX — every gap intact in every client; the delivered HTML
+          carries NO margin on any <strong>, <u>, <a> or <b>. FIX CONFIRMED.
+      F1/F4/F5 — Word stretches the footer to 724px (span word-wrap and
+          fixed table-layout both fail).
+      F6 — VOID: MJML's inline word-break:break-word on the td beats the
+          class rule, so break-all never reached the cell.
+      F3 — the only 600px hold in Word, BUT break-all on the whole <p>
+          splits ordinary words ("San F/rancisco") in every client. Not
+          shippable as-is. Follow-up: probe_footer-address-paragraph.mjml.
+      ════════════════════════════════════════════════════════════════════
+
+      Follows archive/probes/probe_outlook-seams-paragraphs-footer.mjml (round 1,
+      EoA d0S0nH…), which found BugHerd 296's root cause and confirmed 284.
+      Not a catalog page. Build, paste dist/probe_paragraph-fix-and-footer-wrap_live.html
+      into an EN email, send to EoA. Read the DELIVERED HTML first
+      (display/email_html/<TEST_ID>), then the Outlook desktop renders
+      (Outlook 2021 Win11, M365 Win11 — the two that failed round 1), then the rest.
+
+      The head carries the SCOPED containment rule now in src/main.mjml
+      (block elements enumerated; no inline runs, no child combinator).
+
+      ══ P — ADJACENT FORMATTED PARAGRAPHS (296).
+        P5 OLD      two paragraphs, each with a bold run and ending in an
+                    underlined run, carrying the margin:0 declarations the OLD
+                    rule made EN inline (<strong style="margin-top:0">,
+                    <u style="margin-bottom:0">). Expected: they run together in Word.
+        P6 FIX      the same copy with bare runs, as the scoped rule now ships it.
+                    Expected: a 13px gap (EN's inlined p margin) in every client.
+        P7 FIX      realistic shape: a paragraph opening with a bold word, one
+                    ending in a link, one plain. Expected: 13px gaps everywhere.
+        Delivered HTML must show NO margin declarations on <strong>/<u>/<a>/<br>
+        in P6 and P7; if it does, the scoped rule did not replace the old one.
+
+      ══ F — LONG FOOTER ADDRESS (284). Round 1: Word grows the footer to
+         724px; a break-all SPAN does not help. Same 82-character address.
+        F1 CONTROL  today's footer markup.
+        F3          word-break:break-all on the <p> itself.
+        F4          address in a span carrying word-wrap:break-word (legacy name).
+        F5          section tables fixed-layout (table-layout:fixed, inlined by
+                    EN from a class rule — the shape a template fix would use).
+        F6          word-break:break-all on the mj-text <td> (class rule, inlined).
+        A variant is a PASS only if Word keeps the footer at 600px AND the
+        address wraps legibly; check Apple Mail and Gmail still read cleanly.
+    -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-attributes>
+      <mj-text color="#000000" font-size="18px" font-weight="400" font-family="Tahoma, sans-serif" line-height="24px" css-class="wysiwyg" />
+      <mj-image padding="0" />
+    </mj-attributes>
+    <mj-raw>
+      <style type="text/css">
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
+        .probe-fixed table { table-layout: fixed; }
+        td.probe-tdbreak { word-break: break-all; }
+      </style>
+    </mj-raw>
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+
+  <mj-body background-color="#ffffff">
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
+
+    <!-- ══ P5 OLD ══ -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P5 OLD</b>: adjacent formatted paragraphs, old inlined margins</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p>First paragraph with <strong style="margin-top:0;">a bold run</strong> that ends in <u style="margin-bottom:0;">an underlined run</u></p>
+      <p>Second paragraph with <strong style="margin-top:0;">a bold run</strong> that ends in <u style="margin-bottom:0;">an underlined run</u></p>
+      <p>Third paragraph, plain.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ P6 FIX ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P6 FIX</b>: same copy, bare runs (scoped rule)</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p>First paragraph with <strong>a bold run</strong> that ends in <u>an underlined run</u></p>
+      <p>Second paragraph with <strong>a bold run</strong> that ends in <u>an underlined run</u></p>
+      <p>Third paragraph, plain.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ P7 FIX ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P7 FIX</b>: bold opener, link ending, plain</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p><strong>Bold opener.</strong> The rest of this paragraph is plain copy that wraps onto a second line.</p>
+      <p>This paragraph ends in a link to <a href="https://tpl.org">the Trust for Public Land</a></p>
+      <p>Final paragraph, plain.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ F1 CONTROL ══ -->
+    <mj-section padding="32px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F1 CONTROL</b>: today's footer line</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F3 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F3</b>: break-all on the paragraph</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;word-break:break-all;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F4 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F4</b>: address span with word-wrap:break-word</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><span style="word-wrap:break-word;"><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a></span>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F5 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F5</b>: section tables fixed-layout</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block probe-fixed" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F6 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F6</b>: break-all on the text cell</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse probe-tdbreak" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0 0 32px"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>

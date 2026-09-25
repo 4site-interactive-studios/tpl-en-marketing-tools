@@ -1,0 +1,107 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — footer long-address wrap, round 3 (2026-09-25).
+
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-09-25; EoA ruuyd3KoFUPKtoXN5u8CLRrNjm4poG3ySxjCUTdigbkHt.
+      F1 CONTROL — Word (Outlook 2021, M365 Win11) stretches to 724px.
+      F7 — PASS: Word holds 600px; only the address breaks; "San Francisco"
+          stays whole in Word, Apple Mail and Gmail; the three <p>s read as
+          one block. SHIPPED to all four footers the same day.
+      F8 — PASS: a 24-character address never splits.
+      ════════════════════════════════════════════════════════════════════
+
+      Follows archive/probes/probe_paragraph-fix-and-footer-wrap.mjml (round 2,
+      EoA 8lOZqo…): Word honours word-break:break-all on a <p> but not on a
+      <span>, and on the whole footer <p> it also splits ordinary words
+      ("San F/rancisco"). This round gives the ADDRESS its own <p>, so only
+      the address can break.
+      Not a catalog page. Build, paste dist/probe_footer-address-paragraph_live.html
+      into an EN email, send to EoA. Read the DELIVERED HTML first, then
+      Outlook 2021 Win11 and M365 Win11 (the two that stretched to 724px),
+      then Apple Mail, Gmail and Outlook.com for how the wrap reads.
+
+        F1 CONTROL  today's footer markup, 82-character address.
+        F7          three <p>s: lead-in / address alone in a break-all <p> /
+                    mailing address. Same 82-character address.
+                    PASS = Word holds 600px AND "San Francisco" stays whole.
+        F8          F7's shape with a realistic 24-character address.
+                    PASS = the address does not split, and the three lines
+                    read as one block (no gaps between the <p>s).
+    -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-attributes>
+      <mj-text color="#000000" font-size="18px" font-weight="400" font-family="Tahoma, sans-serif" line-height="24px" css-class="wysiwyg" />
+      <mj-image padding="0" />
+    </mj-attributes>
+    <mj-raw>
+      <style type="text/css">
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
+      </style>
+    </mj-raw>
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+
+  <mj-body background-color="#ffffff">
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
+
+    <!-- ══ F1 CONTROL ══ -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F1 CONTROL</b>: today's footer line</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F7 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F7</b>: address in its own break-all paragraph (long address)</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F8 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F8</b>: same shape, realistic address</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>This email was sent by Trust for Public Land to</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;word-break:break-all;"><b><a href="mailto:jordan.smith@example.org">jordan.smith@example.org</a>.</b></p>
+          <p style="font-size:14px;line-height:18px;margin:0;"><b>Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0 0 32px"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>

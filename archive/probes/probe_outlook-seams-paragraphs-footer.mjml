@@ -1,0 +1,179 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — Outlook seams, paragraph spacing, long footer address (2026-09-25).
+
+      ══════════════════ VERDICTS — ALL CLAIMS MEASURED ══════════════════
+      Sent 2026-09-25; EoA d0S0nHduwcxdkjjQR9noY6aN3z8gnvdtqzmqkPYmJVumS
+      (17 clients). Delivered HTML read first; renders pixel-scanned.
+
+      S SEAMS — NOT REPRODUCED at EoA's 96 DPI. No white row between dark
+          blocks in any client (S1–S5 clean; the only 1px full-white rows
+          are link underlines). Does not rule out 120 DPI display scaling.
+      P PARAGRAPHS — EN's inliner writes margin:13px 0 onto every <p>, so
+          template paragraph spacing survives. BUT the containment rule's
+          `*:first-child` / `*:last-child` also matched INLINE runs: EN
+          inlined margin-top/bottom:0 onto <b>, <strong>, <u>, <br>, <a>.
+          In Word (Outlook 2021 Win11) P4's paragraphs 2→3 ran together:
+          the <u style="margin-bottom:0"> ending paragraph 2 zeroed that
+          paragraph's 24px spacing. Root cause of BugHerd 296. P3's
+          <br><br> arrived intact and rendered a full blank line.
+      F FOOTER — CONFIRMED in Word: Outlook 2021 and M365 Win11 stretch both
+          footer blocks from 600px to 724px. F2's break-all span does NOT
+          help in Word. Every other client held 600px.
+      Follow-ups: probe_paragraph-fix-and-footer-wrap.mjml (round 2).
+      ════════════════════════════════════════════════════════════════════
+
+      Built for the TPL post-launch QA round (BugHerd 290/291, 296, 284).
+      Not a catalog page. Build, paste dist/probe_outlook-seams-paragraphs-footer_live.html
+      into an EN email, send to EoA in the SAME round as the NPLD M6 broadcast
+      and the EN-built control email. Reading order: the DELIVERED HTML first
+      (display/email_html/<TEST_ID>), then every Outlook desktop render
+      (365 Win11, 2019, 2021, 2024 LM, Office 365 Win10 DM), then light/dark
+      pairs elsewhere.
+
+      The body runs in the production context: styles.css, the catalog's
+      mj-text defaults, the head-resident RTE containment rules, and the
+      Outlook dark-mode seed, so a verdict here transfers to real sends.
+
+      ══ S — SEAMS (290/291). What sits under every section is WHITE (body,
+         .email-ground, and every spacer-block section has no bgcolor), so any
+         gap Word opens shows as a white hairline. Earth #362229 grounds.
+        S1 CONTROL   dark / 0px spacer (no bgcolor) / dark — today's "Spacing: None".
+        S2           dark / 0px spacer carrying the dark bgcolor / dark.
+        S3           dark / dark, no spacer section at all (pure DPI seam test).
+        S4 CONTROL   photo / 0px spacer (no bgcolor) / dark — 290's shape.
+        S5           photo / 0px spacer carrying the dark bgcolor / dark.
+        S6 CONTROL   dark / 16px spacer / dark — the intended white band, for scale.
+        A seam in S1 but not S2 convicts the spacer's missing bgcolor; a seam
+        in S3 is DPI rounding between tables and needs a different cure.
+
+      ══ P — PARAGRAPH SPACING (296). Nothing in TPL gives a body <p> a
+         margin, so the gap between paragraphs is each client's default.
+         Unmeasured in Outlook until this send.
+        P1 CONTROL   three unstyled <p> — today's WYSIWYG Text.
+        P2           as P1, middle paragraph carries <strong> and <u>.
+        P3           one <p>, paragraphs split by <br><br> (Shift+Enter / paste shape).
+        P4 CANDIDATE each <p> carries inline margin:0 0 24px (what EN's inliner
+                     would write from a `p { margin: 0 0 24px }` rule); the
+                     head containment rule still trims the last one.
+        P1 collapsing in Outlook while P4 holds convicts the missing margin.
+
+      ══ F — LONG FOOTER ADDRESS (284). The mj-text cell already carries
+         word-break:break-word, which Word ignores. Literal 82-character
+         address, because the merge field fills with EoA's short seed.
+        F1 CONTROL   today's footer markup.
+        F2 CANDIDATE address wrapped in <span style="word-break:break-all;">.
+        F1 overflowing the 600px frame in Word while F2 wraps convicts it.
+    -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-attributes>
+      <mj-text color="#000000" font-size="18px" font-weight="400" font-family="Tahoma, sans-serif" line-height="24px" css-class="wysiwyg" />
+      <mj-image padding="0" />
+    </mj-attributes>
+    <mj-raw>
+      <style type="text/css">
+        .wysiwyg div *:first-child { margin-top: 0; }
+        .wysiwyg div *:last-child { margin-bottom: 0; }
+      </style>
+    </mj-raw>
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+
+  <mj-body background-color="#ffffff">
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
+
+    <!-- ══ S1 CONTROL ══ -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S1 CONTROL</b>: dark / 0px spacer, no bgcolor / dark</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>First dark block. Any white line directly below this block is the seam.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Second dark block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ S2 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S2</b>: dark / 0px spacer carrying the dark bgcolor / dark</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>First dark block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#362229" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Second dark block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ S3 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S3</b>: dark / dark, no spacer section</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>First dark block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Second dark block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ S4 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S4 CONTROL</b>: photo / 0px spacer, no bgcolor / dark</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0"><mj-column><mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" width="600px" padding="0" /></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Dark block under the photo.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ S5 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S5</b>: photo / 0px spacer carrying the dark bgcolor / dark</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="image-block block" background-color="#ffffff" padding="0"><mj-column><mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" width="600px" padding="0" /></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#362229" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Dark block under the photo.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ S6 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>S6 CONTROL</b>: dark / 16px spacer / dark (intended white band, for scale)</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>First dark block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" padding="0"><mj-column><mj-spacer height="16px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#362229" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p>Second dark block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ P1 CONTROL ══ -->
+    <mj-section padding="32px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P1 CONTROL</b>: three unstyled paragraphs (today)</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p>First paragraph. Lorem ipsum dolor sit amet consectetur, morbi adipiscing convallis vitae.</p>
+      <p>Second paragraph. Cursus sed quam ornare augue quis metus, fermentum sit id pharetra.</p>
+      <p>Third paragraph. In viverra semper et lorem consequat pellentesque.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ P2 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P2</b>: as P1, middle paragraph bold and underlined</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p>First paragraph. Lorem ipsum dolor sit amet consectetur, morbi adipiscing convallis vitae.</p>
+      <p>Second paragraph with <strong>bold words</strong> and <u>underlined words</u> in it.</p>
+      <p>Third paragraph. In viverra semper et lorem consequat pellentesque.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ P3 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P3</b>: one paragraph split with two line breaks</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p>First paragraph. Lorem ipsum dolor sit amet consectetur, morbi adipiscing convallis vitae.<br><br>Second paragraph. Cursus sed quam ornare augue quis metus, fermentum sit id pharetra.<br><br>Third paragraph. In viverra semper et lorem consequat pellentesque.</p>
+    </mj-text></mj-column></mj-section>
+
+    <!-- ══ P4 CANDIDATE ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>P4 CANDIDATE</b>: each paragraph carries margin 0 0 24px</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#ffffff" padding="0 32px"><mj-column><mj-text padding="0">
+      <p style="margin:0 0 24px;">First paragraph. Lorem ipsum dolor sit amet consectetur, morbi adipiscing convallis vitae.</p>
+      <p style="margin:0 0 24px;">Second paragraph with <strong>bold words</strong> and <u>underlined words</u> in it.</p>
+      <p style="margin:0 0 24px;">Third paragraph. In viverra semper et lorem consequat pellentesque.</p>
+    </mj-text></mj-column></mj-section>
+    <mj-section padding="0 32px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;">End of P4: no gap should sit above this line (the last margin is trimmed).</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ F1 CONTROL ══ -->
+    <mj-section padding="32px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F1 CONTROL</b>: today's footer line, 82-character address</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ══ F2 CANDIDATE ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;"><b>F2 CANDIDATE</b>: same, address wrapped in a break-all span</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="footer-block block" background-color="#362229" padding="32px">
+      <mj-column>
+        <mj-text css-class="wysiwyg link-inverse" color="#ffffff" align="center" padding="0">
+          <p style="font-size:14px;line-height:18px;"><b>This email was sent by Trust for Public Land to<br /><span style="word-break:break-all;"><a href="mailto:averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org">averyveryverylongmailboxnameforwraptesting.second.segment@exampleofalongdomain.org</a></span>. Our mailing address is 23 Geary Street, Suite 1000, San Francisco, CA 94108.</b></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0 0 32px"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>

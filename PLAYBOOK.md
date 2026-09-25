@@ -249,6 +249,14 @@ Names must match exactly (case-sensitive) between START and END.
 docs still resolves to a block, family, or category in the catalog,
 `src/main.mjml`.
 
+### Held decisions
+
+- **WYSIWYG Text side padding stays Double (32px)** (BugHerd 283, held
+  2026-09-25, user decision; possibly vestigial). TPL asked on 2026-08-26 for
+  Single (16px) as the default. 32px is the gutter every block aligns to, so
+  a copy-only change would run body text wider than its neighbours; revisit
+  only as a template-wide gutter decision.
+
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 
 A 🐞 floating button (fixed bottom-right, injected via `mj-raw` in the

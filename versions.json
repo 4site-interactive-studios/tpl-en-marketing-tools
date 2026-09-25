@@ -1,13 +1,13 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 19,
-    "hash": "d4d9a4dbd955",
-    "date": "2026-09-24"
+    "version": 20,
+    "hash": "8f23375baff9",
+    "date": "2026-09-25"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 19,
-    "hash": "1f3ce3d35826",
-    "date": "2026-09-24"
+    "version": 20,
+    "hash": "799e616aa067",
+    "date": "2026-09-25"
   },
   "block:CTA Button": {
     "version": 14,
@@ -145,14 +145,14 @@
     "date": "2026-08-25"
   },
   "block:Footer (w/ image, brown)": {
-    "version": 11,
-    "hash": "5c0b9073e174",
-    "date": "2026-08-26"
+    "version": 12,
+    "hash": "b38cebefcc70",
+    "date": "2026-09-25"
   },
   "block:Footer (w/ image, snow)": {
-    "version": 18,
-    "hash": "09e3eae10fbb",
-    "date": "2026-08-26"
+    "version": 19,
+    "hash": "a9c71ac80fa6",
+    "date": "2026-09-25"
   },
   "block:Highlighted Text": {
     "version": 9,
@@ -326,14 +326,14 @@
     "date": "2026-08-25"
   },
   "email-template": {
-    "version": 62,
-    "hash": "6f2249cbd1f1",
-    "date": "2026-09-24"
+    "version": 63,
+    "hash": "c3b4e0c39213",
+    "date": "2026-09-25"
   },
   "head-css": {
-    "version": 51,
-    "hash": "5f53bac39d8a",
-    "date": "2026-09-24"
+    "version": 52,
+    "hash": "ad7a745233a9",
+    "date": "2026-09-25"
   },
   "partial:debug-toolbar": {
     "version": 1,
