@@ -2076,9 +2076,9 @@ sort — it is purely the panel/export display order.
 ## DEV export names
 
 The export panel's **Export as DEV** toggle (2026-09-25, user-decided) prefixes
-every exported block name with `DEV: ` (`withDevNames` / `DEV_NAME_PREFIX`,
-`src/core/export/blockExport.ts`), so a test import lands BESIDE the
-production blocks in EN instead of replacing them. Semantics:
+every exported block name with `DEV: ` (`applyDevNames` / `withDevNames` /
+`DEV_NAME_PREFIX`, `src/core/export/blockExport.ts`), so a test import cannot
+match a production block BY NAME. Semantics:
 
 - **Off by default and never persisted:** every open of the panel starts on
   production names, so a DEV export is always a deliberate choice.
@@ -2087,6 +2087,18 @@ production blocks in EN instead of replacing them. Semantics:
   Helper). Only `name` changes: key order and every other byte are
   identical to the production export.
 - Idempotent: a name already carrying the prefix is left alone.
+- The downloaded file is named apart too: `en-blocks-export-dev.json`,
+  `en-blocks-<group>-dev.json`, `en-block-exports-dev.zip` (the files inside
+  the ZIP keep their names, so group matching is unchanged). The JSON
+  filename follows the build it downloads, not the live checkbox.
+- **Unmeasured: whether EN matches an import on `exportId` as well as
+  name.** Blocks first imported FROM EN keep EN's `exportId`, so if EN
+  matches on it, a DEV export of such a block could still replace its
+  production original. Fresh MJML blocks get new ids and are not exposed.
+  On the first DEV import, confirm in EN that the production block is
+  untouched, then record the verdict here.
+- The name inside the block's builder band (its content) stays the
+  production name: only `name` changes, by contract.
 - Not applied to a block's own per-block copy/download action
   (`BlockExportActions`) or to the template export.
 
