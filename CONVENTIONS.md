@@ -906,7 +906,8 @@ at send, Outlook included.
   option is labeled by the bare-`a` sheet colour like any other option —
   its role is marked by the export-time ` (default)` suffix, exactly as on
   a background-colour Select. Multi-declaration rules (`.footer-cta a`) and
-  rules inside @media (the dark forcing) are never options. Since 2026-08-25
+  rules inside any @-block (@media — the dark forcing — or @supports) are
+  never options. Since 2026-08-25
   TPL authors one hook per brand-palette colour plus White and Black (sheet
   order = dropdown order; user decision: the Select mirrors a text-colour
   dropdown), with NO `.link-evergreen` — the Default already renders the
@@ -956,13 +957,23 @@ scoped from the carrier changes the whole line box (BugHerd 285/288).
   rule's pair labels the Default. Labels are `Name - size/line` with `px`
   dropped and the token's words title-cased (`Default - 18/24`,
   `Small - 16/24`, `Fine Print - 14/18`). Sheet order is dropdown order;
-  rules inside @media are never options.
+  the first rule for a token wins; rules inside any @-block and rules using
+  `!important` (Word drops it when inlined) are never options. The `text-`
+  prefix is the whole contract, so never give another `text-*` class
+  (TPL's `text-block` section class) a size-only paragraph rule: it would
+  surface as a size option.
 - **An authored size token is TAKEN OVER** (the Link Color precedent): the
-  splice claims the token and the Select defaults to it, byte-exact restore.
+  splice claims the token and the Select defaults to it. Every option is
+  spelled like the authored token sits in its class list (` tok` after other
+  classes, `tok ` when it leads the list, `tok` when it is the only class),
+  so the default is always one of the options and restores the original
+  bytes.
 - The tag is queued BEFORE the Display/arrangement passes, so it rides inside
   their option fragments. Folded dark twins are reached through their light
-  twin. The flag inside a `data-alt-arrangement` section is not supported:
-  that copy mints no field and an infoNote says so.
+  twin. **Not supported in a block with a `data-alt-arrangement` section**:
+  the field is per element, so the alternate copy would not carry the pick
+  and switching arrangement would silently drop the size. Such a block mints
+  no Text Size field at all, and an infoNote names the flagged texts.
 - **Measured vs. assumed.** The browser cascade is verified (the class rule
   outranks the bare `p` rule). That EN inlines the class-scoped rule onto
   each paragraph at send, Outlook included, rests on the Link Color
