@@ -2238,7 +2238,11 @@ trade-off was accepted deliberately.)
   panel; `validateCssBudget` reports the same base estimate — without the
   meter's "+N if included" hoisted extras — as a Template issue in the
   Export panel's template tab, `templateIssues`): estimated
-  DELIVERED bytes = shell-remaining `<style>` bytes +
+  DELIVERED bytes = shell-remaining `<style>` bytes (`deliveredShellStyleBytes`:
+  the head-resident template sheet counts only its @-blocks and state
+  pseudo-class rules, because EN inlines its plain rules away at send —
+  measured 2026-09-25, EoA d0S0nH… / 8lOZqo…; TPL check-catalog §8 applies
+  the same carve-out) +
   `EN_CSS_REPRINT_FACTOR` × (the block's `<style>` bytes — the inline
   CSS plus builder chrome — plus a legacy field's bytes when an
   EN-imported block still carries one; detection is content-based via
