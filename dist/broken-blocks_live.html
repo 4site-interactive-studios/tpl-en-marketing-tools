@@ -260,6 +260,31 @@ li {
       color: #000;
     }
 
+    /* Text size hooks, the option pool for the importer's opt-in Text Size
+   Select (parseTextSizes; conventions "Text Size"). An mj-text carrying
+   data-text-size-toggle gets the Select; a pick splices one of these tokens
+   onto its carrier and EN inlines the rule onto every paragraph at send,
+   Outlook included. EN's toolbar size control cannot do this: it sizes an
+   inline run, and the paragraph's 24px line box stays. Shape contract:
+   a .text-NAME rule over p (other elements may join under the SAME token),
+   declaring font-size and line-height and nothing else but
+   mso-line-height-rule. The bare p rule labels the Default. Pairs come from
+   the brand type table (docs/type-scale-audit.md in the importer repo).
+   SHEET ORDER IS DROPDOWN ORDER. */
+    .text-small p,
+    .text-small li {
+      font-size: 16px;
+      line-height: 24px;
+      mso-line-height-rule: exactly;
+    }
+
+    .text-fine-print p,
+    .text-fine-print li {
+      font-size: 14px;
+      line-height: 18px;
+      mso-line-height-rule: exactly;
+    }
+
     /* ProseMirror rebuilds an em element as a MARK from a fixed attribute set,
    so an inline font-family on it is dropped the first time an editor touches
    the copy — the "Section 2 Paragraph Copy" report, 2026-08-20. Ancestor-class

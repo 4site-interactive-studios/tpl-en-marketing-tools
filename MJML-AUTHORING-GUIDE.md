@@ -1622,6 +1622,7 @@ the one field (§4: one value, every carrier).
 | `data-display-toggle` | opt a column's SOLE member IN to the show/hide Select |
 | `data-no-link-toggle` | opt out of the image link Select. The Select itself **defaults to "Exclude Link"** (2026-08-21): an `href` you author is what the editor can turn ON, not what ships. Authoring one is still worth doing — it is the link an editor gets when they opt in, and the value a deleted field restores. |
 | `data-no-link-color` | on an `mj-text`: opt it out of the per-block Link Color Select (the shared class-token control; see conventions "Link Color") |
+| `data-text-size-toggle` | on an `mj-text`: opt it IN to the Text Size Select. Options come from top-level `.text-<name> p` rules declaring only font-size, line-height and mso-line-height-rule; the bare `p` rule labels the Default (see conventions "Text Size"). Put it where editors resize body copy, not everywhere |
 | `data-no-background-color` | keep an authored `background-color` as a fallback but generate no field, for a background that provably cannot show |
 | `data-no-direction-toggle` | no column-order control on this row, for columns whose content is pinned to the block's outer edge (see §6) |
 | `data-no-width-toggle` | no width dropdown on this frame or column — the width provably changes nothing. Canonical frame case: a centred, fixed-width pill run sized to exactly fill the content box — symmetric gutter changes cannot move a centred run at any viewport |

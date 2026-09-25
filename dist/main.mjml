@@ -652,7 +652,7 @@
       background-color="#ffffff" padding="0 32px"
     >
       <mj-column>
-        <mj-text padding="0">
+        <mj-text data-text-size-toggle padding="0">
           <p>
             Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
             quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.

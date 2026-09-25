@@ -936,6 +936,41 @@ at send, Outlook included.
   "Viewport-scoped controls"). The field stays generated because it goes
   live the moment an editor adds a plain link in the RTE.
 
+## Text Size — an opt-in Select resizes one text's paragraphs (2026-09-25)
+
+An `mj-text` carrying **`data-text-size-toggle`** gets a **Text Size** Select
+(merge tag `<nameBase>_text_size`, homed in the text's own section, ranked
+beside Font Size). It is OPT-IN, unlike Link Color: the control belongs where
+editors resize body copy (TPL: WYSIWYG Text), not on every block. The
+mechanism is Link Color's: the value is a class token spliced as a
+zero-width insertion before the closing quote of the text carrier's compiled
+`class` attribute, and the empty Default restores the pristine bytes. It
+exists because EN's toolbar size control cannot shrink a paragraph: it sizes
+an inline run, and the paragraph keeps its own line-height, so only a rule
+scoped from the carrier changes the whole line box (BugHerd 285/288).
+
+- **Options are DISCOVERED** (`parseTextSizes`): a top-level rule whose
+  selector is `.text-<name> p` (other elements may join under the SAME token,
+  e.g. `.text-small p, .text-small li`) and whose body declares `font-size`
+  and `line-height` and nothing else but `mso-line-height-rule`. The bare `p`
+  rule's pair labels the Default. Labels are `Name - size/line` with `px`
+  dropped and the token's words title-cased (`Default - 18/24`,
+  `Small - 16/24`, `Fine Print - 14/18`). Sheet order is dropdown order;
+  rules inside @media are never options.
+- **An authored size token is TAKEN OVER** (the Link Color precedent): the
+  splice claims the token and the Select defaults to it, byte-exact restore.
+- The tag is queued BEFORE the Display/arrangement passes, so it rides inside
+  their option fragments. Folded dark twins are reached through their light
+  twin. The flag inside a `data-alt-arrangement` section is not supported:
+  that copy mints no field and an infoNote says so.
+- **Measured vs. assumed.** The browser cascade is verified (the class rule
+  outranks the bare `p` rule). That EN inlines the class-scoped rule onto
+  each paragraph at send, Outlook included, rests on the Link Color
+  measurement of the same mechanism (probe_block-color-overrides); a size
+  rule specifically has not been measured on a real send yet. Top-level
+  rules are inlined away, so the hooks cost no delivered head bytes. An
+  editor's own toolbar size on a run still wins over the pick for that run.
+
 ## Inert paddings — never ship a field that does nothing
 
 A padding field is worthless if changing it doesn't change the rendering,
@@ -3176,6 +3211,9 @@ the importer whitelists all data-*-only MJML validator warnings
 - **`data-no-link-color`** (valueless, on mj-text): opts the text out of
   the block-wide Link Color Select — its carrier gets no spliced hook
   token (see "Link Color — one Select recolors a block's links").
+- **`data-text-size-toggle`** (valueless, on mj-text): opts the text IN to
+  the Text Size Select, whose options are the template's `.text-<name> p`
+  rules (see "Text Size — an opt-in Select resizes one text's paragraphs").
 - **`data-link-group="<name>"`** (valued, on raw `<a>` tags inside
   hand-authored component markup): sibling anchors in one scanned fragment
   that share a group name and a byte-identical href are ONE logical link.
