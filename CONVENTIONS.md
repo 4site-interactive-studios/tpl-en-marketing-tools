@@ -963,11 +963,16 @@ scoped from the carrier changes the whole line box (BugHerd 285/288).
   (TPL's `text-block` section class) a size-only paragraph rule: it would
   surface as a size option.
 - **An authored size token is TAKEN OVER** (the Link Color precedent): the
-  splice claims the token and the Select defaults to it. Every option is
-  spelled like the authored token sits in its class list (` tok` after other
-  classes, `tok ` when it leads the list, `tok` when it is the only class),
-  so the default is always one of the options and restores the original
-  bytes.
+  splice claims ` token` — the token and its own leading space, never a
+  neighbour's separator, so it cannot overlap another field's claim — and
+  the Select defaults to it, restoring the original bytes. A token that
+  LEADS its class list in any copy of the text (light or dark twin) has no
+  leading space to claim, so the text gets no Text Size field and an
+  infoNote says to list the token after another class.
+- The token lands in the **carrier's own `class`** — the first `<td>`
+  opening tag of the text's region — never in a class attribute further in:
+  the copy lives there, and a splice inside the Content field's range would
+  corrupt both. A carrier td with no matching class gets no field.
 - The tag is queued BEFORE the Display/arrangement passes, so it rides inside
   their option fragments. Folded dark twins are reached through their light
   twin. **Not supported in a block with a `data-alt-arrangement` section**:
