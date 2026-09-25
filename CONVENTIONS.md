@@ -987,6 +987,48 @@ scoped from the carrier changes the whole line box (BugHerd 285/288).
   rules are inlined away, so the hooks cost no delivered head bytes. An
   editor's own toolbar size on a run still wins over the pick for that run.
 
+## Box Border — an opt-in bordered text box (2026-09-25)
+
+An `mj-text` carrying **`data-border-toggle="#hex"`** gets two Selects in its
+own section (BugHerd 295): **Box Border** (`<nameBase>_border`: None / 2px /
+4px) and **Box Border Color** (`<nameBase>_border_color`, palette-backed
+from the **border** group, default = the flag's hex). The colour tag lives
+ONLY inside Box Border's non-default option values; EN resolves option-value
+tags recursively (verified 2026-08-09, Display over Link), so a colour pick
+reaches the render only while a width is picked. Ranked with the colours,
+width first.
+
+- **Where the border goes.** On the text's own carrier cell (the first
+  `<td>` of its region, which must carry the text's class), never the column: MJML emits a column cell only
+  for a bordered or padded column, so a column-level None could not restore
+  the pristine bytes. Box Border claims the carrier's `padding:0`
+  declaration: **None is exactly those bytes**; a width is
+  `padding:16px;border:Npx solid {colour}`. The border is inside the text's
+  box, so nothing downstream can overflow.
+- **Only the column's ONLY member qualifies** (a dark twin and mj-raw do
+  not count). Anywhere else the carrier's padding belongs to Spacing Below,
+  and two claims on one declaration corrupted the cell (review of #45:
+  flagging every TPL text corrupted 7 blocks before this rule, none after).
+  The pass also refuses any range another field already claimed.
+- **Refused, with an infoNote:** a text that is not its column's only
+  member, a carrier without zero padding (a border would sum with it), a
+  flag with no default hex, twin regions that spell the padding
+  differently (one default cannot restore both), and any block with a
+  `data-alt-arrangement` section (the Text Size reasoning). A folded dark
+  twin is reached through its light twin.
+- **Border-safe placement is the template's job**, checked mechanically by
+  the source repo (TPL: `check-catalog` "Box Border safety" warns on a flag
+  on a text that is not its column's only member, in a column with an
+  explicit width, inside an mj-group, in a section or wrapper with a
+  background image, on a text without `padding="0"`, or without a hex;
+  comments and mj-raw bodies are ignored).
+- **Mobile, measured in Chromium 2026-09-25:** in a section whose mobile
+  CSS zeroes the gutter (TPL's `flush-mobile-capflush`), the box runs to the
+  screen edge on a phone while the copy keeps its 16px inset inside it.
+  Email-client rendering is unmeasured until a real send.
+- **The Inert Dropdown Audit exempts Box Border Color by rule**, not by
+  name: see the fifth exemption under "Viewport-scoped controls".
+
 ## Inert paddings — never ship a field that does nothing
 
 A padding field is worthless if changing it doesn't change the rendering,
@@ -1444,6 +1486,14 @@ byte-identical runs) hardened into policy (user-decided):
   on an anchor-level `color:` declaration (`background-color:` alone does
   not count). A dead Link Color row whose copy DOES carry an eligible
   anchor is a real defect and still FAILs.
+  A FIFTH exemption joined them 2026-09-25: **a Select reachable only
+  through a sibling's non-default option** (Box Border Color inside Box
+  Border's widths). Every baseline substitutes siblings at their defaults,
+  where the tag does not exist, so no pick can move a default render; the
+  row is static-exempt with a reason naming the parent. It applies only when
+  the tag is absent from the html AND every sibling default, and never under
+  an arrangement Select, whose follow-up sweep renders the alternate and
+  gives a real verdict (`nestedOnlyParent`, src/core/inertAudit.ts).
 - **A viewport qualifier counts wherever it sits in the label**, not only
   leading (2026-08-18): the enumerated column ladder instances its label as
   "Column 1 - Desktop Width" and is desktop-only by construction, so an
@@ -3230,6 +3280,9 @@ the importer whitelists all data-*-only MJML validator warnings
 - **`data-text-size-toggle`** (valueless, on mj-text): opts the text IN to
   the Text Size Select, whose options are the template's `.text-<name> p`
   rules (see "Text Size — an opt-in Select resizes one text's paragraphs").
+- **`data-border-toggle="#hex"`** (valued, on mj-text): opts the text IN to
+  the Box Border + Box Border Color Selects; the value is the colour
+  default (see "Box Border — an opt-in bordered text box").
 - **`data-link-group="<name>"`** (valued, on raw `<a>` tags inside
   hand-authored component markup): sibling anchors in one scanned fragment
   that share a group name and a byte-identical href are ONE logical link.

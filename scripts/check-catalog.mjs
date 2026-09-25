@@ -1333,8 +1333,75 @@ guard('Outlook contrast gate', () => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// Box Border safety (BugHerd 295, 2026-09-25). data-border-toggle="#hex" on
+//     an mj-text gives it a Box Border (None / 2px / 4px, 16px inner padding)
+//     on its own cell. A border is safe only where nothing inside has to add
+//     up to an exact width: a plain full-width column. Warn when the flag sits
+//     in a column with an explicit width, inside an mj-group (never stacks,
+//     percentage math), in a section/wrapper with a background image (fixed
+//     heights, v:rect), on a text whose own padding is not 0 (the importer
+//     refuses it), or without a default hex (ditto).
+// ---------------------------------------------------------------------------
+guard('Box Border safety', () => {
+  const TAG = /<(\/?)(mj-section|mj-wrapper|mj-group|mj-column|mj-text|mj-[a-z-]+)\b([^>]*?)(\/?)>/g;
+  const attr = (a, n) => {
+    const m = new RegExp(`\\s${n}=(?:"([^"]*)"|'([^']*)')`).exec(a);
+    return m ? (m[1] ?? m[2]) : undefined;
+  };
+  // Blank comments and mj-raw bodies (same length, newlines kept) so a tag
+  // named in prose or raw markup never enters the stack.
+  const blank = (t) => t.replace(/[^\n]/g, ' ');
+  for (const f of sources) {
+    const raw = read(`src/${f}`) || '';
+    const text = raw
+      .replace(/<!--[\s\S]*?-->/g, blank)
+      .replace(/(<mj-raw\b[^>]*>)([\s\S]*?)(<\/mj-raw>)/g, (_, o, body, c) => o + blank(body) + c);
+    const stack = [];
+    const checks = [];
+    for (const m of text.matchAll(TAG)) {
+      const [, close, name, attrs, selfClose] = m;
+      if (close) {
+        for (let i = stack.length - 1; i >= 0; i -= 1) {
+          if (stack[i].name === name) {
+            stack.splice(i);
+            break;
+          }
+        }
+        continue;
+      }
+      const parent = stack[stack.length - 1];
+      if (parent?.name === 'mj-column') parent.members.push({ name, attrs });
+      if (name === 'mj-text' && /\sdata-border-toggle\b/.test(attrs)) {
+        const problems = [];
+        const hex = attr(attrs, 'data-border-toggle');
+        if (!hex || !/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex)) problems.push('no default hex (write data-border-toggle="#006837")');
+        const pad = attr(attrs, 'padding');
+        if (pad === undefined) problems.push('no padding="0" of its own (MJML\'s default text padding is not 0)');
+        else if (!/^0(px)?$/.test(pad.trim())) problems.push(`its own padding is "${pad}", not 0`);
+        const col = [...stack].reverse().find((t) => t.name === 'mj-column');
+        if (col && attr(col.attrs, 'width')) problems.push(`its column has an explicit width (${attr(col.attrs, 'width')})`);
+        if (stack.some((t) => t.name === 'mj-group')) problems.push('it sits inside an mj-group');
+        if (stack.some((t) => (t.name === 'mj-section' || t.name === 'mj-wrapper') && attr(t.attrs, 'background-url'))) {
+          problems.push('its section has a background image');
+        }
+        checks.push({ where: `src/${f}:${lineAt(raw, m.index)}`, col, problems });
+      }
+      if (!selfClose && name !== 'mj-text' && name !== 'mj-raw') {
+        stack.push({ name, attrs, members: [] });
+      }
+    }
+    // Evaluated after the pass: a column's members are only known once it closes
+    for (const { where, col, problems } of checks) {
+      const members = (col?.members ?? []).filter((t) => t.name !== 'mj-raw' && !/\sdata-style-dark-mode\b/.test(t.attrs));
+      if (!col || members.length !== 1) problems.push('it is not the only member of its column (the importer refuses it: Spacing Below owns that padding)');
+      if (problems.length) warn(`${where}: data-border-toggle is not border-safe here: ${problems.join('; ')}`);
+    }
+  }
+});
+
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate, box borders clean`,
 );
