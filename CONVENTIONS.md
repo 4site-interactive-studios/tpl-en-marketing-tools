@@ -1073,8 +1073,23 @@ width first.
   for a bordered or padded column, so a column-level None could not restore
   the pristine bytes. Box Border claims the carrier's `padding:0`
   declaration: **None is exactly those bytes**; a width is
-  `padding:16px;border:Npx solid {colour}`. The border is inside the text's
-  box, so nothing downstream can overflow.
+  `padding:16px {sides}px;border:Npx solid {colour}`. The border is inside
+  the text's box, so nothing downstream can overflow.
+- **Box Padding** (`<nameBase>_border_padding`, 2026-09-26, user decision):
+  the box's inner SIDE space, a third Select nested inside the widths
+  exactly like the colour (so the Inert Dropdown Audit's nested-only
+  exemption covers it by rule). Options are the spacing scale's Single /
+  Double / Triple (16 / 32 / 48px), default Single, which is the 16px the
+  widths always carried, so every default render is unchanged. It exists
+  because widening the box by narrowing the block gutter also moved the
+  copy: growing Box Padding by the same step keeps the copy where it was
+  (gutter 32 + padding 16 = gutter 16 + padding 32 = gutter 0 + padding
+  48). Top and bottom stay 16px. Labeled **Desktop Box Padding** where the
+  template's mobile CSS pins the text's side padding (TPL:
+  `.flush-mobile-capflush .wysiwyg`, which holds the copy's 16px phone
+  inset whatever the pick), by the same pin lookup the Inset labels use.
+  Ranked after Box Border Color. Skipped, sides left a literal 16px, when
+  the scale has no 16px step.
 - **Only the column's ONLY member qualifies** (a dark twin and mj-raw do
   not count). Anywhere else the carrier's padding belongs to Spacing Below,
   and two claims on one declaration corrupted the cell (review of #45:
