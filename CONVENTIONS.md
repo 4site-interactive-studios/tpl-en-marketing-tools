@@ -3686,11 +3686,13 @@ button and the heading can each be hidden (user decision 2026-08-20).
   its fragment is its whole section element, and its own frame candidates
   are dropped with the pairing, so its shell used to keep the authored
   bytes and a Block Background Color (or block padding) pick never reached
-  it (Icon Row "No Icon" rendered white). Pairing requires the frames to
-  match, so the fragment now opens with the PRIMARY's shell (section div
-  through the outer cell's opening tag) with the primary's frame tags,
-  followed by the alternate's own content. A shell of any other shape keeps
-  the authored bytes, with an infoNote. **`data-alt-arrangement` is
+  it (Icon Row "No Icon" rendered white). When the two authored shells
+  (section div through the outer cell's opening tag) are byte-identical,
+  the fragment now opens with the PRIMARY's shell with the primary's frame
+  tags, followed by the alternate's own content. Pairing compares frame
+  candidates, not bytes, so the byte check is the guard: a shell that
+  differs from the primary's (an authored border on the alternate's cell)
+  or has another shape keeps the authored bytes, with an infoNote. **`data-alt-arrangement` is
   STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
