@@ -658,12 +658,34 @@ interchangeable at all.
   `data-import-exclude` under Importer flags — and the apron was
   restored the same day, user-decided.)
 - **The gap's panel header reads "Bottom Spacer"** (`└─ Bottom Spacer` in a
-  multi-band block; user decision 2026-08-25). Only the section STRING
-  moves: the field label stays bare `Height` (the own-group rule keys on
-  the component kind) and the merge tag stays `spacer_height` — names never
-  read the section string, so exports are byte-stable through the rename.
-  Decorative bar spacers (the tri-color divider's) keep their `Spacer N`
-  family sections.
+  multi-band block; user decision 2026-08-25). The field label stays bare
+  `Height` (the own-group rule keys on the component kind). Decorative bar
+  spacers (the tri-color divider's) keep their `Spacer N` family sections.
+- **"None" removes the gap section (2026-09-26, BugHerd 290/291).** Word
+  draws an EMPTY 0px spacer row 2-3px tall (up to 4px at 120 DPI), so a gap
+  at `None - 0px` left a line between blocks and under photos in Outlook
+  desktop (measured: archived probe `probe_outlook-seams-v2` in the TPL
+  repo; collapse CSS and `mso-hide` do not hold across Outlook versions,
+  only an absent section is clean). The gap's Height is therefore a Select
+  of whole-section FRAGMENTS (the Link / Heading Level precedent): the span
+  runs from the gap's Outlook table opener through the comment after it;
+  every step is that markup with both numbers set, and None is what MJML
+  emits when the section is absent: a merged opener plus pure closer
+  leaves the closer, a merged opener plus merged next opener leaves the
+  trailing comment, a standalone opener leaves `''` or the next opener
+  without its closer. Any other field inside the span (a gap's own
+  background lands in its Outlook opener too) rides inside the steps and
+  goes with None. Labels are unchanged (`None - 0px` …), so the Inert
+  Dropdown Audit still render-tests it as `spacer-height`. The merge tag
+  is **`spacer_gap`** (numbered, e.g. spacer 2 of a block becomes spacer_2_gap, when a block has several spacers):
+  EN may read block content live into already-built emails, and an old
+  saved numeric `spacer_height` value must never land in a slot that now
+  holds a whole section. A gap whose wrapper is not MJML's shape (no
+  `spacer-block-outlook` opener, or a trailing comment that is not a table
+  closer) keeps the numeric `spacer_height`, and an infoNote says Outlook's
+  row stays. The authored-0px gaps (both Footers, Question Block) default
+  to None, so those blocks now ship without the row; their originalValue
+  is still the pristine 0px markup.
 - The standalone **Spacer** block's own section is its gap, so it does not get
   a second one — and it keeps the header **Spacer** (its gap IS the block;
   `bandCount === 0` is the discriminator in `resolveSection`).
@@ -1369,7 +1391,9 @@ render-tested the same way, and a dead one PASSES with an
 "expected-inert" annotation when — and only when — the copy offers no
 hook-eligible anchor (see the exemption register). A zero-height render
 (a Spacer at `None - 0px`) hashes as a deterministic empty raster —
-collapsing a block IS a display change, not an error.
+collapsing a block IS a display change, not an error. A Bottom Spacer's
+None removes its section outright (see "None removes the gap section"),
+which is equally a display change.
 
 Results persist per row under `localStorage['en-tools:inert-audit:v1']`
 (its own key — never inside the project state), keyed by block id +

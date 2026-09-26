@@ -1519,6 +1519,19 @@ frame, gated on the AUTHORED class rather than on "contains only a spacer" —
 decorative colour bars (a 3–4px rule, a tri-colour divider) are spacer-only
 sections too, and they ARE bands.
 
+**A 0px gap is not zero in Outlook (measured 2026-09-26).** Word draws an
+EMPTY spacer row 2-3px tall at 96 DPI and up to 4px at 120 DPI, so a gap set
+to "None" shows as a thin line between stacked blocks and under photos in
+Outlook desktop (whatever sits under the row shows through: usually white).
+Painting the gap's background only hides it on a matching neighbour; collapse
+CSS (`font-size:0; line-height:0; mso-line-height-rule:exactly`) and
+`mso-hide:all` do not hold across Outlook versions. Only an ABSENT section is
+clean, so "None" must remove the gap section, including its Outlook table
+wrapper, rather than render it at 0px (conventions, "None removes the gap
+section"). The instrument that found it: paint the ground, the spacers and
+every block a distinct non-black, non-white palette colour, so a line of any
+colour shows and its colour says what produced it.
+
 ### Sole-member consolidation
 
 When a column holds a single element, that element gets no spacing field of
@@ -2095,6 +2108,10 @@ aloud). The Alt Text field survives either way (§5).
    will not fit in one message and ships split; a normal campaign email is
    nowhere near the limit, so a template that IS near it is telling you it
    has grown into a catalog.
+12. Stack two coloured blocks with the gap at "None" and look at Outlook
+   desktop at 96 and 120 DPI: no line may appear between them or under a
+   photo. A line means a 0px row is still being drawn (see "A 0px gap is
+   not zero in Outlook").
 
 ---
 
