@@ -948,6 +948,10 @@ at send, Outlook included.
   whose `css-class` already carries a hook token is excluded from the shared
   tag and mints its own per-element Link Color Select whose default is the
   authored token — full coverage with byte-exact restore. Five sites today.
+  An alt-arrangement copy rides its PRIMARY's takeover field (#49): the
+  primary claims ` token` in the copy's regions too, so a pick survives a
+  layout switch (a copy used to mint its own `…_link_color_2` left at its
+  default). Copies with different classes never pair in the first place.
   The takeover claims ` token`, its own leading space included, exactly as
   Text Size does: a hook that LEADS its class list in any copy of the text
   has no leading space to claim, so that text gets no Link Color field and
