@@ -674,16 +674,22 @@ interchangeable at all.
   leaves the closer, a merged opener plus merged next opener leaves the
   trailing comment, a standalone opener leaves `''` or the next opener
   without its closer. Any other field inside the span (a gap's own
-  background lands in its Outlook opener too) rides inside the steps and
-  goes with None. Labels are unchanged (`None - 0px` …), so the Inert
+  background lands in its Outlook opener too) rides inside the steps; the
+  NEXT section's fields inside a merged trailing comment (its `bgcolor`)
+  stay tags in None too, never frozen literals. Labels are unchanged (`None - 0px` …), so the Inert
   Dropdown Audit still render-tests it as `spacer-height`. The merge tag
   is **`spacer_gap`** (numbered, e.g. spacer 2 of a block becomes spacer_2_gap, when a block has several spacers):
   EN may read block content live into already-built emails, and an old
   saved numeric `spacer_height` value must never land in a slot that now
-  holds a whole section. A gap whose wrapper is not MJML's shape (no
-  `spacer-block-outlook` opener, or a trailing comment that is not a table
-  closer) keeps the numeric `spacer_height`, and an infoNote says Outlook's
-  row stays. The authored-0px gaps (both Footers, Question Block) default
+  holds a whole section. **Consequence, accepted with the rename:** an
+  email already built on a block loses its saved Bottom Spacer pick and
+  shows the block default (Single 16px; None on the authored-0px blocks)
+  wherever EN reads the updated block. A gap keeps the numeric
+  `spacer_height`, with an infoNote saying Outlook's row stays, when its
+  wrapper is not MJML's shape (no `spacer-block-outlook` opener, or a
+  trailing comment that is not exactly one table closer), when it holds
+  more than one spacer, or when it shares its Outlook wrapper with the gap
+  before it (two adjacent gaps: only the first converts). The authored-0px gaps (both Footers, Question Block) default
   to None, so those blocks now ship without the row; their originalValue
   is still the pristine 0px markup.
 - The standalone **Spacer** block's own section is its gap, so it does not get
