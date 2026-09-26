@@ -3670,9 +3670,10 @@ button and the heading can each be hidden (user decision 2026-08-20).
   2026-09-26): its `<div>` alone left an empty section table, markup MJML
   never emits for an absent section. It does NOT draw a row: the 2026-09-26
   acceptance send (EoA vXQx21…, TPL
-  `archive/probes/probe_acceptance-round-2026-09-26.html`) showed the pre-fix
-  wrapper invisible in every Outlook desktop, unlike the 0px spacer row, so
-  this is markup cleanup, not a rendering fix. The alternate's opener goes
+  `archive/probes/probe_acceptance-round-2026-09-26.html`) showed no row from
+  the pre-fix wrapper in the four Windows Outlook desktops tested (2016 and
+  2019 at 125%, 2021 and M365 on Win11), where the 0px spacer row did draw
+  one, so this is markup cleanup, not a rendering fix. The alternate's opener goes
   with ONE closer from the primary's side (the merged opener whole; or the
   primary's pure closer plus a standalone opener, source comments between
   kept), so the alternate's own trailing closer closes the primary and that

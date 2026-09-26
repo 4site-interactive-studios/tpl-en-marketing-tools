@@ -1531,10 +1531,11 @@ wrapper, rather than render it at 0px (conventions, "None removes the gap
 section"). The instrument that found it: paint the ground, the spacers and
 every block a distinct non-black, non-white palette colour, so a line of any
 colour shows and its colour says what produced it.
-An EMPTY section table does not do this (measured 2026-09-26): Word sizes
-the 0px spacer row because its cell holds a div and a non-breaking space; a
-wrapper table left with an empty cell collapses to nothing in every Outlook
-desktop. So the row comes from the spacer's content, not from the table.
+An EMPTY section table did not do this (measured 2026-09-26 in Outlook 2016
+and 2019 at 125% and Outlook 2021 and M365 on Win11): a wrapper table left
+with an empty cell drew no row, where the 0px spacer row did. The likely
+reason, not separately tested, is that Word sizes the spacer row from its
+content (a div and a non-breaking space) and an empty cell has none.
 Removing a leftover empty wrapper is still right (MJML emits none for an
 absent section), but it is cleanup, not a fix for a visible line.
 
