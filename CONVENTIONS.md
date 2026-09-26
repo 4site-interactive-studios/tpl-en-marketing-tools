@@ -123,8 +123,8 @@ Task: [describe the change]
   restores it everywhere its tag appears: the html AND every sibling
   field's default, original and option values, since Display, Link, Layout
   and gap Selects carry fragments that nest other fields' tags
-  (`removeReplacementEverywhere`, #55; the html-only removal left orphan
-  tags in 702 of the TPL catalog's field deletions).
+  (`removeReplacementEverywhere`, #55; the html-only removal orphaned
+  those nested tags).
 - Applies to: content components' **Spacing Below**, **spacer heights**
   (stack spacers when more than Triple is needed), and **frame
   (section/wrapper/column) paddings on all four sides** — vertical AND
@@ -1078,8 +1078,8 @@ width first.
 - **Mobile, measured in Chromium 2026-09-25:** in a section whose mobile
   CSS zeroes the gutter (TPL's `flush-mobile-capflush`), the box runs to the
   screen edge on a phone while the copy keeps its 16px inset inside it.
-  Confirmed on a real send 2026-09-26 (iPhone), and kept edge to edge by
-  user decision.
+  Confirmed on the 2026-09-26 acceptance send (iPhone render, EoA
+  vXQx21…), and kept edge to edge by user decision.
 - **Dark mode (measured 2026-09-26, EoA RRQnx2…):** TPL remaps an Earth
   border to Grass in dark mode (`td.wysiwyg[style*="#362229"]` in both dark
   branches), which reaches Apple Mail and iOS, where Earth vanished on
