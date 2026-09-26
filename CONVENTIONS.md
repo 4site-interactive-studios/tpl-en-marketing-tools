@@ -119,7 +119,12 @@ Task: [describe the change]
   escape. Off-grid authored values **snap to the closest step, ties round
   UP** (24px → Double, 12px → Single, 10px → Half, 60px → Triple). The
   authored value is preserved as `originalValue` so deleting a field
-  restores the HTML byte-exact. (`snapToSpacingScale`)
+  restores the HTML byte-exact. (`snapToSpacingScale`) Deleting a field
+  restores it everywhere its tag appears: the html AND every sibling
+  field's default, original and option values, since Display, Link, Layout
+  and gap Selects carry fragments that nest other fields' tags
+  (`removeReplacementEverywhere`, #55; the html-only removal left orphan
+  tags in 702 of the TPL catalog's field deletions).
 - Applies to: content components' **Spacing Below**, **spacer heights**
   (stack spacers when more than Triple is needed), and **frame
   (section/wrapper/column) paddings on all four sides** — vertical AND
@@ -1073,7 +1078,15 @@ width first.
 - **Mobile, measured in Chromium 2026-09-25:** in a section whose mobile
   CSS zeroes the gutter (TPL's `flush-mobile-capflush`), the box runs to the
   screen edge on a phone while the copy keeps its 16px inset inside it.
-  Email-client rendering is unmeasured until a real send.
+  Confirmed on a real send 2026-09-26 (iPhone), and kept edge to edge by
+  user decision.
+- **Dark mode (measured 2026-09-26, EoA RRQnx2…):** TPL remaps an Earth
+  border to Grass in dark mode (`td.wysiwyg[style*="#362229"]` in both dark
+  branches), which reaches Apple Mail and iOS, where Earth vanished on
+  black. Outlook.com and Outlook for Windows ignore the rule but repaint
+  Earth pale and visible; Gmail never applies it. **Known limit (user
+  decision 2026-09-26):** M365 for Mac dark leaves an Earth border dim on
+  dark grey, and no CSS reaches it.
 - **The Inert Dropdown Audit exempts Box Border Color by rule**, not by
   name: see the fifth exemption under "Viewport-scoped controls".
 
