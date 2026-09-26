@@ -3665,7 +3665,17 @@ button and the heading can each be hidden (user decision 2026-08-20).
   editor can switch back), and it is why an alternate is not a way to delete
   content. Adding one also costs the row its viewport-scoped padding flag:
   the collapsed per-100 column follows the frame's side gutter at desktop, so
-  `data-mobile-only-padding-right` stops being true (see that flag's entry). **`data-alt-arrangement` is
+  `data-mobile-only-padding-right` stops being true (see that flag's entry).
+  **The alternate section leaves with its Outlook table wrapper** (#50,
+  2026-09-26): its `<div>` alone left an empty section table that Word draws
+  as a 2-3px row under every such block, whatever the pick (the same Word
+  behaviour as "None removes the gap section"). The alternate's opener goes
+  with ONE closer from the primary's side (the merged opener whole; or the
+  primary's pure closer plus a standalone opener, source comments between
+  kept), so the alternate's own trailing closer closes the primary and that
+  comment, often the next gap's opener, is never touched. The opener must
+  carry the alternate's own `-outlook` classes and the trailer must open with
+  a closer; any other shape keeps the div-only removal, with an infoNote. **`data-alt-arrangement` is
   STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
