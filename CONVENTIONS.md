@@ -948,6 +948,16 @@ at send, Outlook included.
   whose `css-class` already carries a hook token is excluded from the shared
   tag and mints its own per-element Link Color Select whose default is the
   authored token — full coverage with byte-exact restore. Five sites today.
+  The takeover claims ` token`, its own leading space included, exactly as
+  Text Size does: a hook that LEADS its class list in any copy of the text
+  has no leading space to claim, so that text gets no Link Color field and
+  an infoNote says to list the hook after another class (#43: restoring
+  ` token` there used to leave `class=" link-inverse …"`).
+- Both the shared tag and a takeover land only in the **carrier's own
+  `class`**, the first `<td>` opening tag of the text's region, and only
+  when it carries an authored or default class; a class attribute further
+  in is the copy's and is never touched (#43; the rule Text Size states
+  below, now one shared lookup).
 - The tag is queued BEFORE the Display/arrangement passes, so it rides inside
   their option fragments — picking "No Icon" keeps the chosen colour.
   Alt-arrangement members are reached deliberately even though they are
@@ -996,7 +1006,13 @@ scoped from the carrier changes the whole line box (BugHerd 285/288).
   the Select defaults to it, restoring the original bytes. A token that
   LEADS its class list in any copy of the text (light or dark twin) has no
   leading space to claim, so the text gets no Text Size field and an
-  infoNote says to list the token after another class.
+  infoNote says to list the token after another class. A token authored on
+  the light twin but missing from its dark twin keeps the field (the light
+  copy is reached), and an infoNote says the pick does not reach dark mode.
+  Link Color's takeover does the same. The note needs the twin's carrier to
+  be recognised at all (its class shares a token with the light twin's or
+  the `wysiwyg` default); a twin carrying none of them is reached by neither
+  pass, and says nothing.
 - The token lands in the **carrier's own `class`** — the first `<td>`
   opening tag of the text's region — never in a class attribute further in:
   the copy lives there, and a splice inside the Content field's range would
