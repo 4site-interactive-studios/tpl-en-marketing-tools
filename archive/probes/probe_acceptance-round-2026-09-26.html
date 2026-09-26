@@ -1,0 +1,2804 @@
+<!doctype html>
+<html lang="en" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<!--
+  PROBE — acceptance round for #41 Text Size, #44 Box Border, #46 spacer None, #50 alt-arrangement wrapper (2026-09-26).
+  Generated from the importer's own block output (email-to-en-marketing-tools main da53941, TPL main 1fe1a1c).
+  Instrument colours: Sun ground, Fern blocks, Earth captions (palette only).
+
+  Unlike the MJML probes, this one is GENERATED (probe_acceptance-round-2026-09-26.gen.mts
+  beside it): every block is the importer's own output with the picks substituted, so it
+  tests exactly what an editor's choices send. Re-run it with the generator, not by hand.
+
+  VERDICT (2026-09-26, EN send, EoA vXQx21…, 18 clients; Outlook boundaries measured by
+  pixel scan, not by eye):
+    S1/S2 (#46 spacer None)   PASS: no line in Outlook 2016 + 2019 (125%), Outlook 2021
+                              Win11, M365 Win11, nor any other client.
+    S3 CONTROL                line reproduced in all four Outlook desktops (Sun, 4-5px at
+                              125%, 2px at 100%): the send could see the defect.
+    I1-I3 (#50 wrapper)       PASS: no strip under any layout.
+    I4 CONTROL                NOT reproduced: the pre-#51 empty section table rendered no
+                              row in any Outlook. The #50 premise (an empty wrapper draws a
+                              2-3px row like the 0px spacer row) is DISPROVEN; the fix stays
+                              as markup cleanup only. A 0px spacer row has a div and an
+                              nbsp for Word to size; an empty td collapses.
+    T1-T3 (#41 Text Size)     PASS: whole paragraph and its line height shrink in every
+                              client, light and dark (EN inlined 16/24 and 14/18 onto p).
+    B1-B4 (#44 Box Border)    PASS: renders in every client; mobile runs edge to edge with
+                              the copy 16px inside, as predicted. Dark mode: a DARK border
+                              pick (Earth) nearly vanishes on Apple Mail's black and is
+                              inverted to pale pink by Outlook 2021 / Outlook.com dark.
+    I3 background             white despite Fern: importer issue #52, not in scope here.
+-->
+  <title>TPL Email Template — Block Catalog</title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:600px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
+      }
+
+      .mj-column-px-32 {
+        width: 32px !important;
+        max-width: 32px;
+      }
+
+      .mj-column-px-240 {
+        width: 240px !important;
+        max-width: 240px;
+      }
+
+      .mj-column-px-296 {
+        width: 296px !important;
+        max-width: 296px;
+      }
+
+      .mj-column-px-472 {
+        width: 472px !important;
+        max-width: 472px;
+      }
+
+      .mj-column-px-300 {
+        width: 300px !important;
+        max-width: 300px;
+      }
+
+      .mj-column-px-200 {
+        width: 200px !important;
+        max-width: 200px;
+      }
+
+      .mj-column-px-25 {
+        width: 25px !important;
+        max-width: 25px;
+      }
+
+      .mj-column-px-550 {
+        width: 550px !important;
+        max-width: 550px;
+      }
+
+      .mj-column-px-486 {
+        width: 486px !important;
+        max-width: 486px;
+      }
+
+      .mj-column-px-120 {
+        width: 120px !important;
+        max-width: 120px;
+      }
+
+      .mj-column-px-416 {
+        width: 416px !important;
+        max-width: 416px;
+      }
+
+      .mj-column-px-112 {
+        width: 112px !important;
+        max-width: 112px;
+      }
+
+      .mj-column-px-424 {
+        width: 424px !important;
+        max-width: 424px;
+      }
+
+      .mj-column-px-380 {
+        width: 380px !important;
+        max-width: 380px;
+      }
+
+      .mj-column-px-78 {
+        width: 78px !important;
+        max-width: 78px;
+      }
+
+      .mj-column-px-504 {
+        width: 504px !important;
+        max-width: 504px;
+      }
+
+      .mj-column-px-536 {
+        width: 536px !important;
+        max-width: 536px;
+      }
+    }
+
+  </style>
+  <style media="screen and (min-width:600px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .moz-text-html .mj-column-per-50 {
+      width: 50% !important;
+      max-width: 50%;
+    }
+
+    .moz-text-html .mj-column-px-32 {
+      width: 32px !important;
+      max-width: 32px;
+    }
+
+    .moz-text-html .mj-column-px-240 {
+      width: 240px !important;
+      max-width: 240px;
+    }
+
+    .moz-text-html .mj-column-px-296 {
+      width: 296px !important;
+      max-width: 296px;
+    }
+
+    .moz-text-html .mj-column-px-472 {
+      width: 472px !important;
+      max-width: 472px;
+    }
+
+    .moz-text-html .mj-column-px-300 {
+      width: 300px !important;
+      max-width: 300px;
+    }
+
+    .moz-text-html .mj-column-px-200 {
+      width: 200px !important;
+      max-width: 200px;
+    }
+
+    .moz-text-html .mj-column-px-25 {
+      width: 25px !important;
+      max-width: 25px;
+    }
+
+    .moz-text-html .mj-column-px-550 {
+      width: 550px !important;
+      max-width: 550px;
+    }
+
+    .moz-text-html .mj-column-px-486 {
+      width: 486px !important;
+      max-width: 486px;
+    }
+
+    .moz-text-html .mj-column-px-120 {
+      width: 120px !important;
+      max-width: 120px;
+    }
+
+    .moz-text-html .mj-column-px-416 {
+      width: 416px !important;
+      max-width: 416px;
+    }
+
+    .moz-text-html .mj-column-px-112 {
+      width: 112px !important;
+      max-width: 112px;
+    }
+
+    .moz-text-html .mj-column-px-424 {
+      width: 424px !important;
+      max-width: 424px;
+    }
+
+    .moz-text-html .mj-column-px-380 {
+      width: 380px !important;
+      max-width: 380px;
+    }
+
+    .moz-text-html .mj-column-px-78 {
+      width: 78px !important;
+      max-width: 78px;
+    }
+
+    .moz-text-html .mj-column-px-504 {
+      width: 504px !important;
+      max-width: 504px;
+    }
+
+    .moz-text-html .mj-column-px-536 {
+      width: 536px !important;
+      max-width: 536px;
+    }
+
+  </style>
+  <style type="text/css">
+    @media only screen and (max-width:599px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+
+  </style>
+  <style type="text/css">
+    /* NO CHILD COMBINATORS anywhere in this file. This CSS ships inside a
+   CSS-type Replacement (EN's CSS Editor — the Template Styles block's
+   head_styles), and in EN's editing surfaces `>` gets HTML-escaped to
+   `&gt;` — the escaped selector is invalid CSS and the rule silently dies
+   (guide §2d). Reproduced 2026-08-13 for the HTML Editor field, where an
+   EDIT persists the escape; whether the CSS Editor does the same is still
+   UNVERIFIED. Where the old `>` chains targeted MJML's unclassable
+   structural elements, two measured idioms stand in:
+   - section/column OUTER table:  table[align=center]  (only outer tables
+     carry align=center in the non-MSO DOM)
+   - column wrapper td (exists only when a column authors padding/border/
+     background): pair td[style*=vertical-align] WITH td[valign] — EN's
+     inliner moves vertical-align out of the style attribute into a valign
+     attribute at send (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered
+     tds kept it inline), so the style form only matches previews and the
+     valign form only matches the inbox. The section's own main td:
+     td[style*=direction] — direction survives inline (20 of 20 delivered).
+   Attribute selectors are inert in Gmail; acceptable here because the dark
+   branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
+   the two mobile rules using them are cosmetic insets. */
+    /* MOVED to the page-template head (data-en-tools-template-css), 2026-08-24:
+   .wysiwyg margin containment, .overlay white-forcing, the light/dark SWAP
+   (.dark-only hide, :root color-scheme, both reveal pairs) — rules whose
+   absence breaks every email built without this block. div[data-container]
+   moved to the band sheet the same day: builder chrome, budget-exempt.
+   The dark REPAINTS below stay here on purpose — they are design, fixed
+   post-hoc by swapping this block. */
+    /* body {
+  color: #000;
+  font-family: Tahoma, sans-serif;
+  font-size: 18px;
+} */
+    a {
+      color: #006837;
+    }
+
+    /* p,
+span,
+a,
+li {
+  font-family: Tahoma, sans-serif;
+} */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 54px;
+      mso-line-height-rule: exactly;
+    }
+
+    h2 {
+      font-size: 36px;
+      line-height: 45px;
+      mso-line-height-rule: exactly;
+    }
+
+    h3 {
+      font-size: 26px;
+      line-height: 34px;
+      mso-line-height-rule: exactly;
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: 18px;
+      line-height: 24px;
+      mso-line-height-rule: exactly;
+    }
+
+    p {
+      font-size: 18px;
+      /* 18/24 per the brand type table, adopted 2026-08-24
+     (docs/type-scale-audit.md in the importer repo). Supersedes the 28px
+     picked earlier the same day. The line-heights across this sheet are
+     absolute per-size brand values, NOT a ratio — do not derive one. */
+      line-height: 24px;
+      mso-line-height-rule: exactly;
+    }
+
+    .two-col-column h3 {
+      margin-bottom: 0;
+    }
+
+    .footer-text p,
+    .footer-text span,
+    .footer-text a,
+    .footer-text li {
+      font-size: 14px;
+      line-height: 18px;
+      /* font-family: Arial, sans-serif; */
+      mso-line-height-rule: exactly;
+    }
+
+    /* Link colour hooks. These exist because an anchor inside an RTE Content
+   value keeps its href and NOTHING else — EN's editor discards class, style,
+   id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook therefore has to sit on an
+   ANCESTOR, in block markup outside the replacement. Link-only on purpose:
+   .overlay already whitens headings, spans and paragraphs too, and these
+   blocks need the anchor recoloured without disturbing approved copy.
+   Since 2026-08-24 these hooks are also the OPTION POOL for the importer's
+   per-block Link Color Select: any TOP-LEVEL single-declaration rule of the
+   shape `.link-something a { color: X }` here becomes a pick on the next
+   import (parseLinkHooks; conventions "Link Color"), so name new hooks
+   deliberately — and keep them single-declaration or they stop being
+   options. Since 2026-08-25 the run spans the full brand palette plus White
+   and Black so the Select mirrors a text-color dropdown (user decision).
+   SHEET ORDER IS DROPDOWN ORDER. No .link-evergreen on purpose: the
+   Select's Default ('') already renders the bare `a` Evergreen and restores
+   pristine bytes — a duplicate hook would be a render-identical option for
+   the Inert Dropdown Audit to flag. The dark branches' `a { !important }`
+   forcing outranks every hook by design; near-white picks (Snow, Light
+   Grey, White) are invisible on white grounds — that is the palette, not a
+   bug. link-inverse/link-earth/link-accent keep their historical token
+   names: built emails carry them as saved picks. */
+    .link-inverse a {
+      color: #fff;
+    }
+
+    .link-snow a {
+      color: #f5faf1;
+    }
+
+    .link-moss a {
+      color: #cee4c5;
+    }
+
+    .link-earth a {
+      color: #362229;
+    }
+
+    .link-accent a {
+      color: #39b54a;
+    }
+
+    .link-grass a {
+      color: #8cc63f;
+    }
+
+    .link-sky a {
+      color: #5dd8d8;
+    }
+
+    .link-sun a {
+      color: #f7931e;
+    }
+
+    .link-light-grey a {
+      color: #fafafa;
+    }
+
+    .link-black a {
+      color: #000;
+    }
+
+    /* Text size hooks, the option pool for the importer's opt-in Text Size
+   Select (parseTextSizes; conventions "Text Size"). An mj-text carrying
+   data-text-size-toggle gets the Select; a pick splices one of these tokens
+   onto its carrier and EN inlines the rule onto every paragraph at send,
+   Outlook included. EN's toolbar size control cannot do this: it sizes an
+   inline run, and the paragraph's 24px line box stays. Shape contract:
+   a .text-NAME rule over p (other elements may join under the SAME token),
+   declaring font-size and line-height and nothing else but
+   mso-line-height-rule. The bare p rule labels the Default. Pairs come from
+   the brand type table (docs/type-scale-audit.md in the importer repo).
+   SHEET ORDER IS DROPDOWN ORDER. */
+    .text-small p,
+    .text-small li {
+      font-size: 16px;
+      line-height: 24px;
+      mso-line-height-rule: exactly;
+    }
+
+    .text-fine-print p,
+    .text-fine-print li {
+      font-size: 14px;
+      line-height: 18px;
+      mso-line-height-rule: exactly;
+    }
+
+    /* ProseMirror rebuilds an em element as a MARK from a fixed attribute set,
+   so an inline font-family on it is dropped the first time an editor touches
+   the copy — the "Section 2 Paragraph Copy" report, 2026-08-20. Ancestor-class
+   styling survives (measured, docs/archive/en-headsheet-probe.html) because
+   the hook lives in block markup outside the replacement. */
+    .signature-text em {
+      font-family: Georgia, serif;
+    }
+
+    /* The Steps Block's numbered badge. A span's CLASS survives an edit while an
+   inline style is re-expressed as MARKS (measured: font-weight becomes a
+   strong element, a hex becomes rgb()) — and display, background-color,
+   height and border-radius have no mark to become, so the badge would lose
+   its shape entirely. A class keeps the span editable as plain text. */
+    .step-num {
+      display: inline-block;
+      background-color: #39B54A;
+      color: #fff;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: Menlo, Consolas, 'Courier New', monospace;
+      border-radius: 3px;
+    }
+
+    /* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
+   the ordinary footer links keep their own treatment. */
+    .footer-cta a {
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    /* Quiz answer pills. The styling lives here rather than inline on the anchor
+   because an anchor inside an RTE Content value keeps its href and NOTHING
+   else — EN's editor rebuilds links as ProseMirror marks and discards class,
+   style, id, title and data-* on the first edit (measured 2026-08-19,
+   docs/archive/en-anchor-attr-probe.html). The hook is on the mj-text, which
+   is block markup outside the replacement, so the editor cannot reach it;
+   that pattern survives an edit in storage and in the delivered email
+   (docs/archive/en-headsheet-probe.html). Descendant selector, never a child
+   combinator. */
+    .quiz-cta a {
+      display: inline-block;
+      background-color: #fff;
+      border-radius: 100px;
+      width: 200px;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      mso-padding-alt: 0;
+      white-space: nowrap;
+    }
+
+    .question-response {
+      border: 1px solid #fff;
+    }
+
+    .question-response:hover {
+      background-color: #fff !important;
+      cursor: pointer;
+    }
+
+    @media (max-width: 599px) {
+
+      /* .desktop-only / .mobile-only are NOT here any more. The whole
+     hide/reveal pair moved to the page template head on 2026-08-22 so a
+     viewport fork still works in an email built without the Template Styles
+     block — with this sheet absent neither half applied and BOTH copies
+     rendered. The pair has to travel together and stay in order, so it is
+     atomic in one style block there rather than split across two sheets. */
+      /* Indents the caption (!important beats the inline td padding) */
+      .caption {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Icon Row: its plain columns STACK on mobile (user decision 2026-08-22,
+     replacing the group that squeezed the copy beside a 120px icon), and
+     the icon's 16px gutter is RIGHT padding — horizontal, so worth nothing
+     once the icon sits above the text. This gives the stacked icon its gap
+     BELOW instead (user decision 2026-08-25, EoA FzaezTp…: icon touched
+     the copy). On the column, not the images, so the light/dark twins
+     share one rule and it cannot double. */
+      .icon-row-icon {
+        padding-bottom: 16px !important;
+      }
+
+      /* Side by Side CTA Buttons */
+      .cta-item {
+        display: block !important;
+        margin: 0 0 16px 0 !important;
+      }
+
+      .cta-item:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      /* Buttons center on mobile regardless of desktop alignment — a
+     left-hugging button on a 375px screen reads as a layout accident.
+     text-align + inline-table beats the legacy td[align] attribute. */
+      td.button {
+        text-align: center !important;
+      }
+
+      td.button table {
+        float: none !important;
+        display: inline-table !important;
+        margin: 0 auto !important;
+      }
+
+      /* MJML writes the button's align onto TWO cells: the outer td.button
+     (pinned above) and the inner cell holding the anchor. Without this the
+     pill centers but a label that WRAPS keeps its desktop alignment
+     inside it — ragged text in a centered button, and an "inert on
+     mobile" control that silently comes back to life the moment the copy
+     gets longer. Pin the inner cell so mobile centering is complete. */
+      td.button table td {
+        text-align: center !important;
+      }
+
+      .cta-group {
+        text-align: center !important;
+      }
+
+      /* Fixed-width dividers and buttons span their container on narrow
+     screens — a px width would force table min-width and overflow the
+     viewport. Buttons opt in via css-class="button fixed-width". */
+      .divider p {
+        width: 100% !important;
+      }
+
+      .fixed-width table {
+        width: 100% !important;
+      }
+
+      .fixed-width table a {
+        width: auto !important;
+      }
+
+      .signature-img {
+        width: 112px !important;
+      }
+
+      .signature-text {
+        width: calc(100% - 112px) !important;
+      }
+
+      /* The column's own gutter padding lands on MJML's wrapper td. EN moves
+     inline vertical-align to a valign ATTRIBUTE at send (measured
+     2026-08-18, EoA aafUJU: 0 of 107 delivered tds kept it inline), so
+     td[valign] is the only selector form that survives delivery. */
+      .two-col-column td[valign] {
+        padding: 0 !important;
+      }
+
+      /* Flush-to-edge imagery on mobile (2026-08-13, EoA dnYN8bje).
+     A 240/296px card on a ~333 CSS px screen loses 80px — a quarter of the
+     width — to section + column gutters, which is what the QA round read as
+     "images not full bleed". The columns were never the problem: the image
+     always filled its column exactly.
+
+     `.class td` is the only selector form that survives the whole chain: EN
+     escapes child combinators (2d) and Gmail ignores attribute selectors, and
+     both of those failed here. The second rule puts the inset back on copy
+     only, and wins because two classes outrank `.flush-mobile-capflush td`.
+
+     SCOPE, corrected 2026-08-18: the restore rule reaches EVERY mj-text in a
+     flush block, captions included — MJML stamps the template-wide wysiwyg
+     css-class default onto every one, so a caption cell compiles to a table
+     cell carrying class wysiwyg, and `.flush-mobile-capflush .wysiwyg`
+     (0,2,0) outranks `.flush-mobile-capflush td` (0,1,1). The IMAGE goes flush; the
+     copy AND its caption keep the 16px inset, which reads as a caption
+     aligned to the copy rather than to the photo. An earlier note here
+     claimed captions stayed flush with the photo; that was never what
+     shipped. Both rules pin horizontal padding with !important either way,
+     so the importer labels a caption's Inset controls desktop-only in both
+     readings (conventions "Where the labels come from"). To make captions
+     genuinely flush, exclude them from the restore rule — do NOT rely on the
+     bare `td` rule winning, it cannot.
+     Measured: image 262.7 -> 326.0 CSS, copy held at 29, desktop untouched. */
+      .flush-mobile-capflush td {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      /* An ICON is not a photo. The zeroing rule above deliberately lets images
+     bleed to the screen edge, which is right for a story card's photo and
+     wrong for a 24px poll icon or a signature portrait — those sat hard
+     against the edge while their own copy sat at 16 (reported 2026-08-22).
+     Marking an image no-bleed opts it back into the copy's inset. The
+     .wysiwyg restore and the .no-bleed opt-in share ONE rule since
+     2026-08-25 (identical bodies; Gmail budget diet): both are (0,2,0), so
+     each beats the (0,1,1) zeroing rule exactly as before. */
+      .flush-mobile-capflush .wysiwyg,
+      .flush-mobile-capflush .no-bleed {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Add space below first column on mobile when it is collapsed to single
+     column. (.second-column rode along here from first authoring; no element
+     ever carried it — retired 2026-08-24 in the budget diet, verified by
+     class census.) */
+      .first-column {
+        margin-bottom: 20px !important;
+      }
+
+      /* Image-block rhythm lives on the CAPTIONS since 2026-08-19 (user
+     decision, round two): every image caption authors Quarter above and
+     nothing below, both viewports, and the image sections carry no bottom
+     padding. The mobile-only image-stack-gap classes this replaced are
+     retired.
+
+     The "Half below" half was dropped on 2026-08-22, when every block gained
+     a 16px trailing gap: 8px under the caption PLUS that gap read as one
+     doubled space, which is exactly what it was. The gap owns the distance
+     to the next block now; the caption only owns its distance from the photo
+     above it. Same rule wherever a block's last element carried a bottom
+     padding on a white ground — the eight button blocks lost theirs too.
+
+     That is the rule for BLOCK-FINAL captions. A caption mid-column — the
+     story cards' caption with a heading and copy beneath it — owns its
+     distance to the NEXT element too, and authors Half below (4px 0 8px;
+     user decision 2026-08-24, down from Single). Two shapes, one principle:
+     a caption never pays for space something else already owns. */
+      /* Feedback Poll option rows: pin the icon column so the mj-group
+     percentage math cannot squeeze it. The original measurement was against
+     a 56px column: it compiled to 10.4478%, which is 32.5px at 375px, and the
+     icon cell's fixed gap padding left 0.5px of icon (2026-08-19, EoA
+     B4uCpmh6). The column is 40px since 2026-08-22 — the icon-to-copy gap was
+     reduced from 32 to 16 and then to 8 (2026-08-24) — so the arithmetic
+     moved with it, but not the reason: 32px compiles to 6.7797%, ~17px at
+     375, and any fixed gap still eats most of that.
+
+     The pin stays at 48 while the AUTHORED column is 32, which is the point of
+     having a pin at all — the two viewports want different widths. On mobile
+     .no-bleed pads BOTH sides of the icon cell 16px, but only the LEFT 16 is
+     edge protection — the right side is the icon-to-copy gap, which must stay
+     the authored 8px in both viewports (user report 2026-08-24: the gap grew
+     on mobile). The scoped rule below restores it, so the icon needs
+     16 + 24 + 8 = 48 to render at its authored size. Pinning the authored
+     width instead squeezed the 24px icon to 8px (measured 2026-08-22, the
+     first build after the gap was halved). Same calc pattern as
+     .signature-img/.signature-text above. */
+      .poll-icon {
+        width: 48px !important;
+      }
+
+      .poll-icon .no-bleed {
+        padding-right: 8px !important;
+      }
+
+      .poll-text {
+        width: calc(100% - 48px) !important;
+      }
+
+      /* The capflush copy inset (td.wysiwyg 16px, below) exists to hold copy off
+     the screen edge in flush sections — but in a poll row the icon column
+     already does that job, and the inset became icon-to-copy gap on top of
+     the authored 8px (the other half of the 2026-08-24 gap report). Zeroed
+     here; the icon cell's 8px right pad owns the gap in both viewports. */
+      .poll-text .wysiwyg {
+        padding-left: 0 !important;
+      }
+
+      /* Podcast Streaming Block: the two "listen on" badges are a MATCHED PAIR,
+     and only the Apple one carries an inset (padding="0 0 0 16px") to space
+     it off Spotify. Both 78px columns are pinned above the breakpoint, so at
+     600px that inset sits in the column's slack and both badges render 62px.
+     Below it the columns go percentage — 45px at 375 — and the same 16px
+     inset eats a third of one badge but not the other: measured 45px vs 29px
+     at 375, 37 vs 21 at 320 (2026-08-21). Pinning both columns holds each
+     badge at its authored 62px AND keeps the 16px gap.
+
+     Deleting the inset instead was measured and rejected: it fixes the sizes
+     but drops the gap to 0 and the two circles touch. */
+      .stream-icon {
+        width: 78px !important;
+      }
+
+      .stream-text {
+        width: calc(100% - 156px) !important;
+      }
+
+      /* Icon-beside-text rows: the icon column is authored in px, so below the
+     breakpoint it goes percentage and the icon shrinks harder than the row
+     does — 100px to 54px on Icon Row, 92px to 49px on Podcast Episode
+     (measured 2026-08-21). Nothing looks broken, because each row has ONE
+     icon with no sibling to be measured against, which is why these three
+     were left until last. Pinned to their AUTHORED widths, as .poll-icon,
+     .signature-img and .stream-icon already are.
+
+     The cost is text width: Icon Row and Podcast Episode lose ~50px of
+     column and grow 25% / 50% taller. Steps Block pays nothing — its arrow
+     is 70px in a 104px content box, so it had slack and the text reflows
+     identically. Icon Row and Steps Block share the 120px selector. */
+      /* Icon Row left this pin on 2026-08-22 when it stopped being an mj-group:
+     plain columns stack below the breakpoint, so there is no percentage math
+     to defend against, and pinning a stacked column to 120px would put the
+     icon back beside the copy. Steps Block is still grouped and still needs
+     it. */
+      .step-icon {
+        width: 120px !important;
+      }
+
+      .step-text {
+        width: calc(100% - 120px) !important;
+      }
+
+      /* Progress Meter's gutter is spacer RAILS, because a background-url section
+     compiles inside a v:rect and Outlook cannot honor horizontal padding there
+     (guide §4). A rail is a width, not a padding, so no padding rule reaches
+     it — a group converts px widths to inline percentages below the
+     breakpoint, and the 64px rail renders 40px at 375. Pinning the width is
+     what reaches it, exactly as .poll-icon and .stream-icon do. */
+      .meter-rail {
+        width: 16px !important;
+      }
+
+      .meter-body {
+        width: calc(100% - 32px) !important;
+      }
+
+      /* The stats row's trailing blank td is a DESKTOP spacer: it compacts
+     GOAL/RAISED/REMAINING leftward in the 536px body. On a phone the body is
+     ~300px and that 30% is width the stats need, so it goes (user decision
+     2026-08-24). Targeted by its width attribute because the table lives
+     inside an RTE Content value — a marker class there would ride the
+     replacement into every email and may not survive a ProseMirror edit,
+     while this rule lives in the template head and reaches already-built
+     emails too. */
+      .meter-body td[width="30%"] {
+        display: none;
+        /* no !important: nothing competes for display on this td,
+                      and the budget is at the working target */
+      }
+
+      .episode-icon {
+        width: 112px !important;
+      }
+
+      .episode-text {
+        width: calc(100% - 112px) !important;
+      }
+
+      /* Inset sections: collapse the wide desktop gutters to the standard 32px.
+     The section's main td is the only one carrying direction inline. */
+      .inset-gutter td[style*=direction] {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+      }
+
+      /* table/td.mj-full-width-mobile width rules are MJML-emitted wherever a
+     fluid image exists — only the img height reset is authored, and it
+     lives here since 2026-08-25 (folded in from its own same-breakpoint
+     block: Gmail budget diet; the !important beats MJML's inline height
+     from any position). */
+      td.mj-full-width-mobile img {
+        height: auto !important;
+      }
+    }
+
+    /* dark mode styles */
+    /* Outlook.com dark mode. EN's CSS inliner DELETES [data-ogsc] rules that sit
+   at top level (measured — see MJML-AUTHORING-GUIDE.md §2), so the whole
+   branch lives inside a conditional media query: EN returns anything nested
+   in one verbatim. The condition must be un-evaluable — a bare @media screen
+   is flattened and inlined instead. Every declaration keeps !important
+   because the base rules ARE inlined onto the elements (§2b).
+   OWA mirrors the media query below; backgrounds must come along with the
+   forced white text or light footers render white-on-light.
+   ARMING (2026-09-24): Outlook repaints an element only when its computed
+   text fails 4.5:1 against a #333333 base (or its ground fails against its
+   text), and [data-ogsc] X matches only below an element it repainted. The
+   unclassed seed div at the top of mj-body carries inline #000 text, so
+   Outlook always tags it and this branch reaches every block, whatever the
+   reader's OS scheme; .email-ground inside it covers the seed's own repaint.
+   Without the seed nothing above the blocks is tagged and this branch is
+   inert. Dark text values here must clear 5.4:1 against #333333 or carry
+   check-catalog's data-outlook-repaint-ok allowance. */
+    @media only screen and (max-width: 9999px) {
+
+      [data-ogsc] .block,
+      [data-ogsc] .block table[align=center],
+      [data-ogsc] .spacer-block td {
+        background-color: #000 !important;
+      }
+
+      [data-ogsc] .image-block table[align=center],
+      [data-ogsc] .overlay-image-block table[align=center] {
+        background-color: transparent !important;
+      }
+
+      [data-ogsc] .highlighted-text-column td[valign],
+      [data-ogsc] .stat-row-column td[valign] {
+        background-color: #000 !important;
+      }
+
+      [data-ogsc] .social-link table {
+        background-color: #000 !important;
+      }
+
+      [data-ogsc] a {
+        color: #8CC63F !important;
+      }
+
+      [data-ogsc] .wysiwyg h1,
+      [data-ogsc] .wysiwyg h2,
+      [data-ogsc] .wysiwyg h3,
+      [data-ogsc] .wysiwyg h4,
+      [data-ogsc] .wysiwyg h5,
+      [data-ogsc] .wysiwyg h6,
+      [data-ogsc] .block h1,
+      [data-ogsc] .block h2,
+      [data-ogsc] .block h3,
+      [data-ogsc] .block h4,
+      [data-ogsc] .block h5,
+      [data-ogsc] .block h6,
+      [data-ogsc] .block p,
+      [data-ogsc] .block span,
+      [data-ogsc] .block li,
+      [data-ogsc] .block div,
+      [data-ogsc] .quote-block p,
+      [data-ogsc] .footer-block p {
+        color: #fff !important;
+      }
+
+      [data-ogsc] .email-ground {
+        color: #fff !important;
+        background-color: #000 !important;
+      }
+
+      [data-ogsc] .button td,
+      [data-ogsc] .button a {
+        background-color: #006837 !important;
+        border-color: #006837 !important;
+        color: #fff !important;
+      }
+
+      [data-ogsc] .two-line-cta a,
+      [data-ogsc] .two-line-cta a span {
+        color: #000 !important;
+      }
+
+      [data-ogsc] .divider p {
+        border-color: #fff !important;
+      }
+
+      [data-ogsc] .question-response {
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
+      }
+
+      [data-ogsc] .question-response p a {
+        color: #fff !important;
+      }
+
+      /* Outlook.com dark paints var(--neutralDark), white, behind every hovered
+     image (email-bugs #162, 2026-02), hiding light-ink logos and icons. */
+      [data-ogsc] img:hover {
+        background-color: transparent !important;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+
+      body,
+      .email-body,
+      .email-ground {
+        color: #fff !important;
+        background-color: #000 !important;
+      }
+
+      a {
+        color: #8CC63F !important;
+      }
+
+      .wysiwyg h1,
+      .wysiwyg h2,
+      .wysiwyg h3,
+      .wysiwyg h4,
+      .wysiwyg h5,
+      .wysiwyg h6 {
+        color: #fff !important;
+      }
+
+      .quote-block p,
+      .footer-block p {
+        color: #fff !important;
+      }
+
+      /* table[align=center] = the section's outer table only (it carries the
+     authored background inline). Bonus over the old `>` form: it also
+     reaches background-image sections, whose outer table sits under an
+     extra positioning div the child combinator never crossed. */
+      .block,
+      .block table[align=center],
+      .spacer-block td {
+        background-color: #000 !important;
+      }
+
+      /* Background-photo heroes: the .block repaint above would paint an opaque
+     black lid over the photo. EN's send-time shorthand rebuild strips the
+     url() from the hero section's outer table (measured, delivered payload
+     0Mgmjr…), so the photo lives on the DIV behind it — the table must stay
+     see-through. Convicted by controlled A/B 2026-08-18: P1 as-shipped =
+     black slab, P2 identical-minus-`block` = photo, Apple Mail dark AND
+     Outlook.com dark. Equal specificity, later in the sheet, so it wins.
+     Confirmed 2026-08-18 (probe MeKGcu…): all five hero shapes photo in
+     Apple Mail dark and Outlook.com dark with this exemption live. */
+      .image-block table[align=center],
+      .overlay-image-block table[align=center] {
+        background-color: transparent !important;
+      }
+
+      /* Two shapes, and the difference is load-bearing. A column's
+     background-color lands on a td whose class sits on the PARENT div, so it
+     needs the descendant form; a container-background-color lands on the
+     element's OWN classed td, so `.advocacy-box` is bare. `.block` only ever
+     has a table[align=center] descendant form, never td, which is why a
+     column ground is never covered by it (audit 2026-08-15). */
+      /* .caption-panel left this list 2026-08-24: its one carrier was the CTA
+     Hero (w/ heading) heading, whose panel was removed 2026-08-21 — the
+     class survived the panel and this repaint resurrected it as a black
+     slab over the photo on every swap-dark client (EoA hOB4q6MD…). */
+      .highlighted-text-column td[valign],
+      .stat-row-column td[valign] {
+        background-color: #000 !important;
+      }
+
+      /* Blocks force a black background above, but much of the catalog authors
+     its text color inline (dark ink on light section colors) — that ink is
+     invisible on black unless overridden here. Exceptions re-assert below. */
+      .block h1,
+      .block h2,
+      .block h3,
+      .block h4,
+      .block h5,
+      .block h6,
+      .block p,
+      .block span,
+      .block li,
+      /* mj-text compiles to a div carrying inline color — text authored without
+     a paragraph/span wrapper is only reachable here */
+      .block div {
+        color: #fff !important;
+      }
+
+      .button td,
+      .button a {
+        background-color: #006837 !important;
+        border-color: #006837 !important;
+        color: #fff !important;
+      }
+
+      /* Two-line pills keep their authored colored chips; black text stays
+     readable on both chip colors where forced-white would fail on orange */
+      .two-line-cta a,
+      .two-line-cta a span {
+        color: #000 !important;
+      }
+
+      .social-link table {
+        background-color: #000 !important;
+      }
+
+      .divider p {
+        border-color: #fff !important;
+      }
+
+      /* Tri-color divider: intentionally NOT adapted — its three brand-color
+     bars (orange/green/teal, authored as spacer td backgrounds) read fine
+     on black. Only the single-color divider above inverts. */
+      /* Border matches the repainted ground so dark mirrors light's
+     invisible-border behavior — the old #eee drew a visible outline around
+     the Question Block on black (user decision 2026-08-19, EoA 8ryXNAL). */
+      .question-response {
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
+      }
+
+      .question-response p a {
+        color: #fff !important;
+      }
+
+      /* cursor:pointer rides in from the base :hover rule — the repaint only
+     owns the ground (budget diet 2026-08-25). */
+      .question-response:hover {
+        background-color: #000 !important;
+      }
+    }
+
+  </style>
+  <!-- en-tools-config {
+      "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "classSpacingScales": {
+        "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 },
+        "video-band": { "None": 0, "16:9": 144, "3:2": 175, "1:1": 275 },
+        "video-band-inset": { "None": 0, "16:9": 126, "3:2": 154, "1:1": 243 }
+      },
+      "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
+      "geometryReachPx": 64,
+      "brandColors": { "Snow": "#F5FAF1", "Moss": "#CEE4C5", "Earth": "#362229", "Evergreen": "#006837", "Fern": "#39B54A", "Grass": "#8CC63F", "Sky": "#5DD8D8", "Sun": "#F7931E", "Light Grey": "#FAFAFA" }
+    } -->
+  <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
+  <!-- The version stamp and its meta run (user decision 2026-08-24). The
+         en-tools-keep comment is the ONE head comment the importer ships:
+         it survives stripHeadComments minus the marker, as the delivered
+         template's version stamp. The importer HOISTS the comment plus the
+         <meta> run directly under it to the FIRST children of the delivered
+         head — mj-raw cannot get above MJML's own skeleton (title,
+         Content-Type, viewport, MSO conditionals), so position here does
+         not control the shipped position; keep the unit together and keep
+         the comment first. Both placeholders fill at import from
+         versions.json's email-template entry — literals here would feed
+         version-sync's own hash and bump forever. -->
+  <!-- en-tools-keep TPL General Email Template - 2026-09-25 - v64 -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="supported-color-schemes" content="light dark" />
+  <meta name="format-detection" content="telephone=no" />
+  <!-- Baseline everything inherits -->
+  <!-- VIEWPORT FORK — lives HERE, not in styles.css (user decision
+         2026-08-22). styles.css ships as the Template Styles BLOCK, in the
+         body, so an email an editor assembled without adding that block has
+         none of it. Most rules degrade gracefully when that happens; a fork
+         does not. .mobile-only depends on a hide/reveal pair, and with the
+         sheet absent NEITHER half applies — so both copies render and the
+         reader sees the content twice. Rules whose absence reveals content
+         meant to be hidden belong in the template head.
+
+         data-en-tools-template-css marks it exempt from head extraction. It
+         is deliberately NOT data-en-tools-band: that marker is subtracted
+         before the Gmail budget is measured (check-catalog) and before the
+         head-css hash (version-sync), because the band is builder chrome
+         that never reaches an inbox. This CSS does reach the inbox and must
+         keep counting.
+
+         The pair is ATOMIC in this one block, and the reveal's @media
+         condition is deliberately UNIQUE across every CSS source in the
+         email — that uniqueness, not position, is what protects the order.
+         The 2026-08-22 design assumed this head came FIRST in EN's merge so
+         the reveal block would be the fold target; the 2026-08-24 final-QC
+         delivered heads (EoA hOB4q6MD…/hb3nYGds…) measured the opposite:
+         EN merges BODY style blocks (the Template Styles block carrying
+         styles.css) AHEAD of the template head, so a reveal sharing
+         styles.css's `(max-width: 599px)` string folded up past its own
+         hide and the hide won everywhere below 599px. Latent only — no
+         shipped block carries .mobile-only/.desktop-only today. The probe
+         that blessed the old design (templateId 631) tested an email
+         WITHOUT the styles block, which is exactly the case the fold cannot
+         reach. `only screen and (max-width: 599px)` (with the space) is
+         distinct from styles.css's `(max-width: 599px)`, from styles.css's
+         `only screen and (max-width:599px)` (no space), and from MJML's
+         emitted no-space block — nothing folds it, it stays after the 9998
+         hide. Verify on the next send's delivered head: the reveal must
+         appear AFTER the 9998 block.
+
+         The hide is authored TWICE, on the .dark-only precedent, because the
+         two copies serve different clients: the PLAIN copy is what EN inlines
+         onto the element at send (!important stripped), covering clients that
+         drop style blocks entirely — Gmail app on non-Google accounts, and
+         most clients after a forward; the WRAPPED copy is an always-true
+         media query EN returns verbatim (guide §2a), so the hide survives as
+         a rule wherever the inline was lost. 9998px is deliberately distinct
+         from the OWA block's 9999px so EN's same-condition merge cannot move
+         it after the reveal.
+
+         MEASURED 2026-08-24 (probe_vrect-and-template-head, EN templateId
+         631, EoA XXhlSbq1e…): EN DOES inline a top-level rule from the
+         template head exactly as it does the CSS Editor field — the
+         delivered HTML carries display:none inline on the .mobile-only
+         element, and this marker attribute survives delivery. The
+         style-stripped audience is covered, and the fork rendered correctly
+         on all 17 clients with NO styles.css in the email at all. -->
+  <style type="text/css" data-en-tools-template-css>
+    /* HEAD-RESIDENT rules (catalogued 2026-08-24, user decision same day;
+           see future-enhancements "Head-vs-block CSS"). Everything here must
+           pass two tests: absence REVEALS or DUPLICATES content or breaks a
+           mechanism every email relies on, and it would never be fixed by
+           swapping the Template Styles block. Fix-by-block-swap rules stay in
+           styles.css. EN inlines top-level rules from this head exactly as it
+           does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
+    /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+    /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+    .wysiwyg div p:first-child,
+    .wysiwyg div h1:first-child,
+    .wysiwyg div h2:first-child,
+    .wysiwyg div h3:first-child,
+    .wysiwyg div h4:first-child,
+    .wysiwyg div h5:first-child,
+    .wysiwyg div h6:first-child,
+    .wysiwyg div ul:first-child,
+    .wysiwyg div ol:first-child {
+      margin-top: 0;
+    }
+
+    .wysiwyg div p:last-child,
+    .wysiwyg div h1:last-child,
+    .wysiwyg div h2:last-child,
+    .wysiwyg div h3:last-child,
+    .wysiwyg div h4:last-child,
+    .wysiwyg div h5:last-child,
+    .wysiwyg div h6:last-child,
+    .wysiwyg div ul:last-child,
+    .wysiwyg div ol:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Copy over a photo must be white even in an email built without the
+           styles block (user decision 2026-08-24: relocated rather than
+           re-authored inline). */
+    .overlay h1,
+    .overlay h2,
+    .overlay h3,
+    .overlay h4,
+    .overlay h5,
+    .overlay h6,
+    .overlay span,
+    .overlay p,
+    .overlay a {
+      color: #fff;
+    }
+
+    /* Viewport fork: hide twice, reveal once, in this order. */
+    .mobile-only {
+      display: none;
+    }
+
+    /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+    .dark-only {
+      display: none;
+    }
+
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+
+    @media (max-width: 9998px) {
+      .mobile-only {
+        display: none !important;
+      }
+    }
+
+    @media only screen and (max-width: 599px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: block !important;
+      }
+    }
+
+    /* Mode-fork reveals. These two blocks are the FIRST occurrence of
+           their conditions, so styles.css's same-condition repaint blocks
+           fold up to these positions at send — swap first, repaints after,
+           which is byte-for-byte today's order inside styles.css. */
+    @media only screen and (max-width: 9999px) {
+      [data-ogsc] .dark-only {
+        display: block !important;
+      }
+
+      [data-ogsc] .light-only {
+        display: none !important;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .light-only {
+        display: none !important;
+      }
+
+      .dark-only {
+        display: block !important;
+      }
+    }
+
+  </style>
+  <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
+         this sheet in the template HEAD: the importer splices every other
+         style element out into the Template Styles block, and this layout has
+         to survive an email built without that block. __TEMPLATE_VERSION__ is
+         filled in at import from versions.json; keeping the literal here is
+         what stops the version from feeding its own hash.
+
+         TWO SEPARATE RULES, DELIBERATELY NOT MERGED INTO ONE SELECTOR LIST.
+
+         BLOCK bands hang off a span the app injects into the block's own
+         content, gated on whether a block wrapper exists anywhere in the
+         document — true while editing in EN, false in a delivered email.
+
+         The TEMPLATE band hangs off EN's container element instead. A span
+         authored in the template shell does NOT work (measured 2026-08-20):
+         EN's builder renders blocks inside the container and does not render
+         the template's own surrounding markup, so such a span never enters
+         the builder DOM at all. [data-container="main"] IS that container,
+         and it is self-gating — the stored template carries EN's container
+         placeholder there and a delivered email carries the blocks
+         themselves, so nothing bears the attribute outside the editor.
+
+         Do NOT write EN's container merge tag literally anywhere in this
+         file. autoEnableTemplateReplacements splits the shell on the FIRST
+         occurrence of that tag, so a literal in a comment splits the head at
+         the comment instead of at the real container: the comment loses its
+         terminator, swallows the whole stylesheet, and every light/dark image
+         pair renders both halves. Measured 2026-08-20; check-catalog guards it.
+
+         Merging the two selectors would be a live hazard: one unsupported
+         selector in a group invalidates the WHOLE rule, so a client that
+         cannot parse :has() would take the template band down with it. -->
+  <style type="text/css" data-en-tools-band>
+    /* The TEMPLATE's own band leads, because it labels the whole email
+           rather than a block inside it. Order is presentational only — the
+           two selectors match different elements, so nothing in the cascade
+           depends on it. */
+    /* Builder canvas width. Only EN's editor ever renders an element
+           bearing data-container (conventions, "the template band"), so this
+           is chrome — here it works for every email, including one built
+           without the styles block, and leaves the Gmail budget with the rest
+           of the band (moved from styles.css 2026-08-24). */
+    div[data-container] {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    [data-container="main"]:before {
+      content: "Email Template - 2026-09-25 - v64";
+      display: block !important;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #4e535c !important;
+      line-height: 1.75rem !important;
+      text-align: center !important;
+      margin-bottom: 2rem !important;
+      background-color: #d0d5dd !important;
+    }
+
+    /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in the band sheet, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+    :is(body):has(.en__emailbuilder__block) .marketing-tools-banner {
+      display: flex !important;
+      font-weight: 700 !important;
+      font-family: sans-serif !important;
+      color: #4e535c !important;
+      line-height: 2rem !important;
+      top: 1.75rem !important;
+      width: 100% !important;
+      max-width: 600px !important;
+      justify-content: center !important;
+      background-color: #d0d5dd !important;
+    }
+
+    /* position:absolute belongs to the CSS Styles Block band ALONE (user
+           decision 2026-08-21). That block's real content is a <style>, so it
+           has no height of its own to sit above and the band has to be lifted
+           out of flow; every other band labels a block with visible content,
+           where taking the label out of flow makes it overlap what it labels.
+           Targeted by id rather than a new class: each band span already
+           carries a unique one — #head-styles and #raw-html, from
+           STYLES_BAND_ID and RAW_HTML_BAND_ID — and those ids are baked into
+           the stored content of blocks already living in EN, so minting new
+           ones would desync every uploaded copy. Its own rule, never merged
+           into the selector list above: one unparseable selector discards the
+           WHOLE rule, and this gate is exactly the kind an older engine may
+           not parse (conventions.md, "Builder bands"). */
+    :is(body):has(.en__emailbuilder__block) #head-styles {
+      position: absolute !important;
+    }
+
+  </style>
+</head>
+
+<body class="email-body" style="word-spacing:normal;background-color:#F7931E;">
+  <div aria-label="TPL Email Template — Block Catalog" aria-roledescription="email" role="article" lang="en" dir="auto" style="word-spacing:normal;background-color:#F7931E;">
+    <!-- Outlook dark-mode seed: no class, no CSS may target it (styles.css, ARMING) -->
+    <div style="color:#000000;background-color:#F7931E;margin:0;padding:0;">
+      <div class="email-ground" style="background-color:#F7931E;margin:0;padding:0;">
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>SPACER — #46 / BugHerd 290, 291</b>: Spacing None must leave NO line between the two blocks. Ground is Sun, blocks are Fern: a line of any colour is a failure, except in S3.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>S1</b>: Fern text block, Spacing None / Fern text block (291)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>S2</b>: Photo, Spacing None / Fern text block (290)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="image-1x1" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="image-1x1"]:before{ content: "Image 1x1 v12"; }
+</style>
+<!-- START: Image 1x1 --><!-- Same block as the all-blocks catalog's Image 1x1, minus its
+         data-visible-duplicate: THIS catalog has no Image (full-bleed) twin,
+         so the block is structurally unique here and the flag would warn as
+         anchor misuse (per-catalog asymmetry, like the poll's per-side flag;
+         2026-08-18). -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="image-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 0px 0px 0px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="center" class="light-only" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:600px;">
+                                    
+                                      <img alt="Volunteers tending a community garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="600" height="auto" />
+                                    
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <!--[if !mso]><!-->
+                        <tr>
+                          <td align="center" class="dark-only" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:600px;"><img alt="Volunteers tending a community garden" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/photo-garden.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="600" height="auto" /></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr><!--<![endif]-->
+                        <!-- Caption - Not Displayed -->
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: Image 1x1 -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>S3 CONTROL</b>: Fern / the OLD 0px spacer row / Fern. A thin line SHOULD show here in Outlook desktop; if it does not, this send cannot judge S1/S2.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:0px;line-height:0px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>ICON ROW — #50</b>: Each Icon Row is Fern with Spacing None over a Fern text block. No strip of any colour may show under the Icon Row, except in I4.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>I1</b>: Icon Row, Layout Left</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="icon-row" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="icon-row"]:before{ content: "Icon Row - 2026-08-25 - v20"; }
+</style>
+<!-- START: Icon Row --><!-- NOT an mj-group, deliberately. A group never stacks — it converts its
+         children to percentages below the breakpoint and keeps them side by
+         side (guide §6e), which is what held a 120px icon next to the text on
+         a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
+         the copy, left-aligned by the image's own align="left" (user decision
+         2026-08-22). Desktop is unchanged: 120 + 416 = 536 fills the frame.
+         The .icon-row-icon / .icon-row-text mobile pins went with the group —
+         they existed to stop the group's percentage math squeezing the icon,
+         and while stacked they would force both columns back to a side-by-side
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="image-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="icon-row-icon-outlook" style="vertical-align:middle;width:120px;" ><![endif]-->
+                  <div class="mj-column-px-120 mj-outlook-group-fix icon-row-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;">
+                                    <img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <!--[if !mso]><!-->
+                        <tr>
+                          <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;"><img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr><!--<![endif]-->
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td class="icon-row-text-outlook" style="vertical-align:middle;width:416px;" ><![endif]-->
+                  <div class="mj-column-px-416 mj-outlook-group-fix icon-row-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
+        
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: Icon Row -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>I2</b>: Icon Row, Layout Right</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="icon-row" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="icon-row"]:before{ content: "Icon Row - 2026-08-25 - v20"; }
+</style>
+<!-- START: Icon Row --><!-- NOT an mj-group, deliberately. A group never stacks — it converts its
+         children to percentages below the breakpoint and keeps them side by
+         side (guide §6e), which is what held a 120px icon next to the text on
+         a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
+         the copy, left-aligned by the image's own align="left" (user decision
+         2026-08-22). Desktop is unchanged: 120 + 416 = 536 fills the frame.
+         The .icon-row-icon / .icon-row-text mobile pins went with the group —
+         they existed to stop the group's percentage math squeezing the icon,
+         and while stacked they would force both columns back to a side-by-side
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="image-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="icon-row-text-outlook" style="vertical-align:middle;width:416px;" ><![endif]-->
+                  <div class="mj-column-px-416 mj-outlook-group-fix icon-row-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td class="icon-row-icon-outlook" style="vertical-align:middle;width:120px;" ><![endif]-->
+                  <div class="mj-column-px-120 mj-outlook-group-fix icon-row-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="right" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;">
+                                    <img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <!--[if !mso]><!-->
+                        <tr>
+                          <td align="right" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;"><img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr><!--<![endif]-->
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
+        
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: Icon Row -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>I3</b>: Icon Row, Layout No Icon. Its WHITE background is a known separate bug (#52): judge only the strip under it.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="icon-row" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="icon-row"]:before{ content: "Icon Row - 2026-08-25 - v20"; }
+</style>
+<!-- START: Icon Row --><!-- NOT an mj-group, deliberately. A group never stacks — it converts its
+         children to percentages below the breakpoint and keeps them side by
+         side (guide §6e), which is what held a 120px icon next to the text on
+         a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
+         the copy, left-aligned by the image's own align="left" (user decision
+         2026-08-22). Desktop is unchanged: 120 + 416 = 536 fills the frame.
+         The .icon-row-icon / .icon-row-text mobile pins went with the group —
+         they existed to stop the group's percentage math squeezing the icon,
+         and while stacked they would force both columns back to a side-by-side
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="image-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
+        
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: Icon Row -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>I4 CONTROL</b>: Icon Row, Layout Left, as the importer built it BEFORE the fix: an empty Outlook table (white) SHOULD show as a strip under it in Outlook desktop.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="icon-row" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="icon-row"]:before{ content: "Icon Row - 2026-08-25 - v20"; }
+</style>
+<!-- START: Icon Row --><!-- NOT an mj-group, deliberately. A group never stacks — it converts its
+         children to percentages below the breakpoint and keeps them side by
+         side (guide §6e), which is what held a 120px icon next to the text on
+         a 375px screen. Plain columns stack, so on mobile the icon sits ABOVE
+         the copy, left-aligned by the image's own align="left" (user decision
+         2026-08-22). Desktop is unchanged: 120 + 416 = 536 fills the frame.
+         The .icon-row-icon / .icon-row-text mobile pins went with the group —
+         they existed to stop the group's percentage math squeezing the icon,
+         and while stacked they would force both columns back to a side-by-side
+         width. Steps Block keeps its pin; it is still grouped.
+         Once stacked, the icon's 16px gutter (RIGHT padding on the images) is
+         horizontal and buys no gap above the copy — styles.css gives
+         .icon-row-icon a mobile-only padding-bottom:16px instead (user
+         decision 2026-08-25, EoA FzaezTp…: the icon touched its text). -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="image-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="icon-row-icon-outlook" style="vertical-align:middle;width:120px;" ><![endif]-->
+                  <div class="mj-column-px-120 mj-outlook-group-fix icon-row-icon" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;">
+                                    <img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <!--[if !mso]><!-->
+                        <tr>
+                          <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0 16px 0 0;word-break:break-word;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                              <tbody>
+                                <tr>
+                                  <td style="width:100px;"><img alt="" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/icon-box-and-heart.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr><!--<![endif]-->
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td class="icon-row-text-outlook" style="vertical-align:middle;width:416px;" ><![endif]-->
+                  <div class="mj-column-px-416 mj-outlook-group-fix icon-row-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p><b>Lorem ipsum:</b> dolor sit amet consectetur. Morbi adipiscing convallis vitae. Cursus sed quam ornare augue quis metus. In viverra semper et lorem consequat pellentesque sfssjbl. <a href="https://tpl.org"><strong>Proin urna urna massa ut quis pulvinar senectus aenean. &gt;&gt;</strong></a></p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- The section below is this row's ALTERNATE ARRANGEMENT: same content,
+         no image, one full-width column. data-alt-arrangement folds it into
+         the row's own Select as a third option instead of rendering it, so an
+         editor picks Left / Right / No Icon from one control. It has to be
+         AUTHORED rather than generated: the collapsed column needs
+         mj-column-per-100 AND its head rules, and column widths are never
+         generated. Keep its copy byte-identical to the primary's — the pairing
+         matches on value, and drift does NOT fail loudly: measured 2026-08-22,
+         one changed letter unpairs the alternate, which then renders as its
+         OWN band (the content twice) and renumbers every band after it, with
+         only an INFO note from the importer. The loud signal is check-catalog's
+         alternate-arrangement guard, which compares the two copies here. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="image-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: Icon Row -->
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#39b54a" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#39b54a;background-color:#39b54a;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#39b54a;background-color:#39b54a;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>TEXT SIZE — #41 / BugHerd 285, 288</b>: Same paragraph at each Text Size. The WHOLE paragraph must shrink, line spacing included, in every client and in dark mode.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>T1</b>: Text Size Default (18/24)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>T2</b>: Text Size Small (16/24)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg text-small" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>T3</b>: Text Size Fine Print (14/18)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg text-fine-print" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>BOX BORDER — #44 / BugHerd 295</b>: The box sits inside the block gutter on desktop; on a phone it runs to the screen edge with the copy 16px inside. Judge whether mobile should keep a margin.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>B1</b>: Box Border None (no box)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:0;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>B2</b>: Box Border 2px, default colour (Evergreen)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:16px;border:2px solid #006837;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>B3</b>: Box Border 4px, colour Earth</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg" style="font-size:0px;padding:16px;border:4px solid #362229;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"><tbody><tr><td style="padding:28px 32px 8px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>B4</b>: Box Border 2px Fern + Text Size Fine Print, on a Moss block</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<span class="marketing-tools-block-band" data-band="wysiwyg-text" aria-hidden="true" style="display: none;"></span>
+<style type="text/css">
+  .marketing-tools-block-band[data-band="wysiwyg-text"]:before{ content: "WYSIWYG Text - 2026-09-25 - v12"; }
+</style>
+<!-- START: WYSIWYG Text --><!-- Reduced to the body paragraph alone (user decision 2026-08-22). It
+         carried a heading mj-text and a button as well; an editor who wants
+         either adds the block that ships it. The paragraph is now the column's
+         SOLE member, so sole-member consolidation applies: it gets no Spacing
+         Below of its own and its authored padding drops to 0 — the section's
+         own bottom padding is the one pacing control (conventions, "Sole-member
+         consolidation"). Its second sentence still demos an inline link. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="text-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#cee4c5" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="text-block block flush-mobile-capflush" style="background:#cee4c5;background-color:#cee4c5;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#cee4c5;background-color:#cee4c5;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 32px 0px 32px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td align="left" class="wysiwyg text-fine-print" style="font-size:0px;padding:16px;border:2px solid #39b54a;word-break:break-word;">
+                            <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                              <p> Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus. Fermentum sit id pharetra tortor. In viverra semper et lorem consequat pellentesque. Proin urna urna massa ut quis augue pulvinar senectus aenean. <a href="https://tpl.org">Non sit volutpat quam pretium</a> risus ullamcorper <a href="https://tpl.org">pretium nisi porttitor</a>. </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: WYSIWYG Text -->
+<!-- END: Main Content -->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
