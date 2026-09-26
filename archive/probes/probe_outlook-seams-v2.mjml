@@ -1,0 +1,117 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — Outlook seams, round 4 (2026-09-26). BugHerd 290/291.
+
+      Round 1 (archive/probes/probe_outlook-seams-paragraphs-footer.mjml) did
+      reproduce the seams: re-measured 2026-09-26 against the round-1 and
+      120 DPI renders, the 0px "Spacing: None" spacer leaves a 2-3px light
+      line in Outlook 2021 Win11 / M365 Win11 / Office 365 Win10 at 96 DPI
+      and up to 4px at 120 DPI (Outlook 2016/2019). No spacer section at all
+      was clean everywhere. Round 1's "not reproduced" was a misread.
+
+      The instrument (user suggestion): no black or white anywhere a line
+      could land, so a seam of ANY colour shows. Blocks are Fern #39B54A
+      (Moss #CEE4C5 for A1's light stack); round 1's Earth blocks were
+      near-black, which hides a dark line as surely as white hides a white one.
+        GROUND  Sun   #F7931E  body, mj-body, .email-ground. A Sun line is a
+                GAP between tables (nothing drawn there): DPI rounding.
+        SPACER  Sky   #5DD8D8  every spacer section. A Sky line is Word
+                giving the empty 0px spacer row HEIGHT.
+        PHOTO   Grass #8CC63F  the photo section's own ground. A Grass line
+                under the photo is the image cell rounding short, inside the
+                photo block itself.
+        No line means clean. Labels sit on the Sun ground in Earth.
+
+      Send to: Outlook 2016 120 DPI, Outlook 2019 120 DPI, Outlook 2021
+      Win11, M365 Win11, Office 365 Win10 (96 DPI controls).
+
+        A1 CONTROL  Moss  / 0px spacer / Moss   (the light stack, unseen today)
+        A2 CONTROL  Fern  / 0px spacer / Fern   (291)
+        A3 CONTROL  photo / 0px spacer / Fern   (290)
+        A4          Fern  / Fern, no spacer section
+        A5 FIX      Fern  / spacer REMOVED, an HTML comment in its place /
+                    Fern (what an importer "None removes the row" option
+                    would emit: the Display-exclude shape)
+        A6 FIX      Fern  / 0px spacer, cell collapse CSS for Word
+                    (font-size:0; line-height:0 exactly; mso-line-height-rule)
+        A7 FIX      Fern  / 0px spacer whose cell content is mso-hide:all
+        A8 CONTROL  Fern  / 16px spacer / Fern (the intended band, for scale)
+
+      VERDICT (2026-09-26, Outlook 2016 + 2019 at 120 DPI, EoA uzXE42…):
+        A1/A2/A3 Sky 1-3px in both; A4/A5 clean in both; A6 Sky in both;
+        A7 Sky in 2016, clean in 2019; no Sun, no Grass anywhere. The spacer
+        row is the whole cause; removing it (A5) is the fix. Archived.
+
+      Reading: Sky in A1-A3 and nothing in A4/A5 = the spacer row is the
+      whole cause, and A5 is the fix. Sun anywhere = table gaps too, which
+      a fix must also cover. Grass under the photo = the image cell, a
+      separate cure. A6/A7 clean at both DPIs = a CSS-only fix.
+    -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-attributes>
+      <mj-text color="#000000" font-size="18px" font-weight="400" font-family="Tahoma, sans-serif" line-height="24px" css-class="wysiwyg" />
+      <mj-image padding="0" />
+    </mj-attributes>
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+
+  <mj-body background-color="#F7931E">
+    <mj-raw><div style="color:#000000;background-color:#F7931E;margin:0;padding:0;"><div class="email-ground" style="background-color:#F7931E;margin:0;padding:0;"></mj-raw>
+
+    <!-- ══ A1 CONTROL ══ -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A1 CONTROL</b>: light (Moss) / 0px spacer (Sky) / light (Moss)</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px"><mj-column><mj-text padding="0"><p style="margin:0;">First light block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#CEE4C5" padding="16px 32px"><mj-column><mj-text padding="0"><p style="margin:0;">Second light block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A2 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A2 CONTROL</b>: Fern / 0px spacer (Sky) / Fern</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A3 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A3 CONTROL</b>: photo / 0px spacer (Sky) / Fern</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="image-block block" background-color="#8CC63F" padding="0"><mj-column><mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" width="600px" padding="0" /></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-spacer height="0px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Block under the photo.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A4 ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A4</b>: Fern / Fern, no spacer section</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A5 FIX ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A5 FIX</b>: Fern / spacer removed (comment in its place) / Fern</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-raw><!-- Bottom Spacer - Not Displayed --></mj-raw>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A6 FIX ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A6 FIX</b>: Fern / 0px spacer (Sky), collapse CSS / Fern</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-raw><tr><td style="font-size:0px;line-height:0px;mso-line-height-rule:exactly;height:0px;"><div style="height:0px;line-height:0px;font-size:0px;mso-line-height-rule:exactly;">&#8202;</div></td></tr></mj-raw></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A7 FIX ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A7 FIX</b>: Fern / 0px spacer (Sky), content mso-hide:all / Fern</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-raw><tr><td style="font-size:0px;line-height:0px;mso-line-height-rule:exactly;"><div style="height:0px;line-height:0px;font-size:0px;mso-hide:all;">&#8202;</div></td></tr></mj-raw></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ A8 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>A8 CONTROL</b>: Fern / 16px spacer (Sky) / Fern, for scale</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">First block.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="spacer-block block" background-color="#5DD8D8" padding="0"><mj-column><mj-spacer height="16px" /></mj-column></mj-section>
+    <mj-section css-class="text-block block" background-color="#39B54A" padding="16px 32px"><mj-column><mj-text color="#ffffff" padding="0"><p style="margin:0;">Second block.</p></mj-text></mj-column></mj-section>
+
+    <mj-section padding="24px 32px 32px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;">End of probe. Sun line = gap between tables. Sky line = spacer row height. No line = clean.</p></mj-text></mj-column></mj-section>
+
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>
