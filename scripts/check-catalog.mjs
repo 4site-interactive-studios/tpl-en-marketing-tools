@@ -1342,6 +1342,14 @@ guard('Outlook contrast gate', () => {
 //     percentage math), in a section/wrapper with a background image (fixed
 //     heights, v:rect), on a text whose own padding is not 0 (the importer
 //     refuses it), or without a default hex (ditto).
+//
+//     Policy (2026-09-26): every Text-category text that COULD take a border
+//     must offer one. Between the Text divider's END comment and the next
+//     category's START, an mj-text that passes every check above but carries
+//     no data-border-toggle warns unless it opts out with data-no-border-toggle
+//     (template-only; the importer never reads it). Texts that cannot qualify
+//     (fixed-width columns, padded or shared columns) are skipped by the rule
+//     itself, so they need no opt-out.
 // ---------------------------------------------------------------------------
 guard('Box Border safety', () => {
   const TAG = /<(\/?)(mj-section|mj-wrapper|mj-group|mj-column|mj-text|mj-[a-z-]+)\b([^>]*?)(\/?)>/g;
@@ -1359,6 +1367,9 @@ guard('Box Border safety', () => {
       .replace(/(<mj-raw\b[^>]*>)([\s\S]*?)(<\/mj-raw>)/g, (_, o, body, c) => o + blank(body) + c);
     const stack = [];
     const checks = [];
+    const textFrom = raw.indexOf('<!-- END: Category — Text Blocks -->');
+    const nextCat = textFrom < 0 ? -1 : raw.indexOf('<!-- START: Category — ', textFrom);
+    const inTextCategory = (i) => textFrom >= 0 && i > textFrom && (nextCat < 0 || i < nextCat);
     for (const m of text.matchAll(TAG)) {
       const [, close, name, attrs, selfClose] = m;
       if (close) {
@@ -1372,10 +1383,11 @@ guard('Box Border safety', () => {
       }
       const parent = stack[stack.length - 1];
       if (parent?.name === 'mj-column') parent.members.push({ name, attrs });
-      if (name === 'mj-text' && /\sdata-border-toggle\b/.test(attrs)) {
+      const flagged = /\sdata-border-toggle\b/.test(attrs);
+      if (name === 'mj-text' && (flagged || inTextCategory(m.index))) {
         const problems = [];
         const hex = attr(attrs, 'data-border-toggle');
-        if (!hex || !/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex)) problems.push('no default hex (write data-border-toggle="#006837")');
+        if (flagged && (!hex || !/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex))) problems.push('no default hex (write data-border-toggle="#006837")');
         const pad = attr(attrs, 'padding');
         if (pad === undefined) problems.push('no padding="0" of its own (MJML\'s default text padding is not 0)');
         else if (!/^0(px)?$/.test(pad.trim())) problems.push(`its own padding is "${pad}", not 0`);
@@ -1385,17 +1397,22 @@ guard('Box Border safety', () => {
         if (stack.some((t) => (t.name === 'mj-section' || t.name === 'mj-wrapper') && attr(t.attrs, 'background-url'))) {
           problems.push('its section has a background image');
         }
-        checks.push({ where: `src/${f}:${lineAt(raw, m.index)}`, col, problems });
+        const optOut = /\sdata-no-border-toggle\b/.test(attrs);
+        checks.push({ where: `src/${f}:${lineAt(raw, m.index)}`, col, problems, flagged, optOut });
       }
       if (!selfClose && name !== 'mj-text' && name !== 'mj-raw') {
         stack.push({ name, attrs, members: [] });
       }
     }
     // Evaluated after the pass: a column's members are only known once it closes
-    for (const { where, col, problems } of checks) {
+    for (const { where, col, problems, flagged, optOut } of checks) {
       const members = (col?.members ?? []).filter((t) => t.name !== 'mj-raw' && !/\sdata-style-dark-mode\b/.test(t.attrs));
       if (!col || members.length !== 1) problems.push('it is not the only member of its column (the importer refuses it: Spacing Below owns that padding)');
-      if (problems.length) warn(`${where}: data-border-toggle is not border-safe here: ${problems.join('; ')}`);
+      if (flagged && optOut) warn(`${where}: carries both data-border-toggle and data-no-border-toggle; keep one`);
+      else if (flagged && problems.length) warn(`${where}: data-border-toggle is not border-safe here: ${problems.join('; ')}`);
+      else if (!flagged && !optOut && !problems.length) {
+        warn(`${where}: Text-category text could take a Box Border but offers none. Add data-border-toggle="#006837", or opt out with data-no-border-toggle`);
+      }
     }
   }
 });

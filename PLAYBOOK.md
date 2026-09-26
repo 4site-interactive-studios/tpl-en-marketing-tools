@@ -513,6 +513,28 @@ colored pills, and Outlook will always repaint that black light, because it
 tests text against its #333333 base, never against the pill. If the value is
 simply wrong, fix the value.
 
+### 6g. Box Border on Text blocks — `data-border-toggle` / `data-no-border-toggle`
+
+`data-border-toggle="#hex"` on an `mj-text` gives the importer's Box Border,
+Box Border Color and Box Padding fields (conventions.md owns the field
+contract). Policy, user decision 2026-09-26: every Text-category text that
+CAN take a border offers one. Today that is WYSIWYG Text, WYSIWYG Header,
+Deadline Panel, Subscription Panel and Two-Line Banner.
+
+check-catalog's "Box Border safety" guard enforces it. Between the Text
+divider's END comment and the next category's START, a text that is its
+column's sole member, has `padding="0"`, and sits in a plain full-width
+column (no width, no mj-group, no background image) warns unless it carries
+the flag or the valueless opt-out `data-no-border-toggle`. Texts that cannot
+qualify are skipped, so the Quote Block, Highlighted Text, CTA Text Block and
+Stat Row need no opt-out: fixed-width columns, or columns that already draw
+their own box.
+
+The opt-out is template-only: the importer never reads it and no source
+carries it today. The first time one does, register it in the importer's
+`KNOWN_DATA_ATTR_CONSUMERS` (the §6f precedent) so the data-* audit
+classifies it instead of strip-testing it as dead.
+
 ## 7. Email-client compatibility patterns
 
 - **Pill CTA hybrid (side-by-side buttons):** raw `<a>` pills inside
