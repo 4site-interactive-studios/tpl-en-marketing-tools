@@ -3681,7 +3681,16 @@ button and the heading can each be hidden (user decision 2026-08-20).
   a closer; any other shape, or a field crossing the removed ranges, keeps
   the div-only removal, with an infoNote naming which. Fields inside the
   dropped comments (the alternate's own frame tags) go with them; the
-  alternate's frame already matches the primary's. **`data-alt-arrangement` is
+  alternate's frame already matches the primary's.
+  **A section-swap alternate takes the primary's shell** (#52, 2026-09-26):
+  its fragment is its whole section element, and its own frame candidates
+  are dropped with the pairing, so its shell used to keep the authored
+  bytes and a Block Background Color (or block padding) pick never reached
+  it (Icon Row "No Icon" rendered white). Pairing requires the frames to
+  match, so the fragment now opens with the PRIMARY's shell (section div
+  through the outer cell's opening tag) with the primary's frame tags,
+  followed by the alternate's own content. A shell of any other shape keeps
+  the authored bytes, with an infoNote. **`data-alt-arrangement` is
   STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
