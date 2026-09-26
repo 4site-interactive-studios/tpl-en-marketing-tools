@@ -3668,8 +3668,7 @@ button and the heading can each be hidden (user decision 2026-08-20).
   `data-mobile-only-padding-right` stops being true (see that flag's entry).
   **The alternate section leaves with its Outlook table wrapper** (#50,
   2026-09-26): its `<div>` alone left an empty section table, markup MJML
-  never emits for an absent section. It does NOT draw a row: the 2026-09-26
-  acceptance send (EoA vXQx21…, TPL
+  never emits for an absent section. The 2026-09-26 acceptance send (EoA vXQx21…, TPL
   `archive/probes/probe_acceptance-round-2026-09-26.html`) showed no row from
   the pre-fix wrapper in the four Windows Outlook desktops tested (2016 and
   2019 at 125%, 2021 and M365 on Win11), where the 0px spacer row did draw
