@@ -1531,9 +1531,12 @@ wrapper, rather than render it at 0px (conventions, "None removes the gap
 section"). The instrument that found it: paint the ground, the spacers and
 every block a distinct non-black, non-white palette colour, so a line of any
 colour shows and its colour says what produced it.
-The same holds for ANY empty section table: a tool that removes a section's
-content but leaves its `<!--[if mso | IE]>` table wrapper behind ships the
-same row. Remove a section together with its wrapper, or not at all.
+An EMPTY section table does not do this (measured 2026-09-26): Word sizes
+the 0px spacer row because its cell holds a div and a non-breaking space; a
+wrapper table left with an empty cell collapses to nothing in every Outlook
+desktop. So the row comes from the spacer's content, not from the table.
+Removing a leftover empty wrapper is still right (MJML emits none for an
+absent section), but it is cleanup, not a fix for a visible line.
 
 ### Sole-member consolidation
 
