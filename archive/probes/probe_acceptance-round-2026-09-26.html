@@ -15,6 +15,8 @@
   pixel scan, not by eye):
     S1/S2 (#46 spacer None)   PASS: no line in Outlook 2016 + 2019 (125%), Outlook 2021
                               Win11, M365 Win11, nor any other client.
+    GMAIL WEB CLIPPED          the ~171KB probe passed Gmail's ~102KB clip after I4, so
+                              T and B were not seen there. Keep future probes under 100KB.
     S3 CONTROL                line reproduced in all four Outlook desktops (Sun, 4-5px at
                               125%, 2px at 100%): the send could see the defect.
     I1-I3 (#50 wrapper)       PASS: no strip under any layout.
@@ -24,8 +26,8 @@
                               as markup cleanup only. A 0px spacer row has a div and an
                               nbsp for Word to size; an empty td collapses.
     T1-T3 (#41 Text Size)     PASS: whole paragraph and its line height shrink in every
-                              client, light and dark (EN inlined 16/24 and 14/18 onto p).
-    B1-B4 (#44 Box Border)    PASS: renders in every client; mobile runs edge to edge with
+                              client that reached them, light and dark (EN inlined 16/24 and 14/18 onto p).
+    B1-B4 (#44 Box Border)    PASS: renders in every client that reached them; mobile runs edge to edge with
                               the copy 16px inside, as predicted. Dark mode: a DARK border
                               pick (Earth) nearly vanishes on Apple Mail's black and is
                               inverted to pale pink by Outlook 2021 / Outlook.com dark.
