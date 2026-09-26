@@ -3675,7 +3675,10 @@ button and the heading can each be hidden (user decision 2026-08-20).
   kept), so the alternate's own trailing closer closes the primary and that
   comment, often the next gap's opener, is never touched. The opener must
   carry the alternate's own `-outlook` classes and the trailer must open with
-  a closer; any other shape keeps the div-only removal, with an infoNote. **`data-alt-arrangement` is
+  a closer; any other shape, or a field crossing the removed ranges, keeps
+  the div-only removal, with an infoNote naming which. Fields inside the
+  dropped comments (the alternate's own frame tags) go with them; the
+  alternate's frame already matches the primary's. **`data-alt-arrangement` is
   STRUCTURAL**, so it is deliberately absent from the strip list in
   TPL's `normalize()`: a block carrying it renders one section where a block
   without it renders two, and stripping it would let a flagged block subsume
