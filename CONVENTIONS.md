@@ -593,10 +593,27 @@ strip-tested per instance like every importer flag (`IMPORTER_FLAG_RE`).
 Upstream convention: flag pattern-a captions (the mj-text beside its
 image in the same column, authored `padding="0"` = flush with the photo,
 matching the image's own side padding); the standalone caption SECTIONS
-already carry a Block Padding Left/Right frame control and get no flag —
+already carry their row's frame left/right padding and get no flag —
 their gap is the SECTION's top padding, authored `4px` on the caption
 scale too (the section's `css-class="block caption"` matches the
 `caption` key, so its Block Padding Top Select offers Quarter).
+
+**Caption-only rows read as the caption's Inset** (2026-09-26, BugHerd
+294, user decision). A band whose ONLY content is one Caption-role member
+in one column (the Video Blocks: the video is a background-image section,
+so its caption gets a row of its own) hands its spacing to the frame by
+sole-member consolidation — so that frame's left/right padding IS the
+caption's inset, and editors look for it in the caption's group. Those two
+sides are therefore named, labeled and grouped as the caption's Inset:
+`<captionNameBase>_inset_left` / `_inset_right` (`row_2_caption_inset_left`),
+labels "Inset Left" / "Inset Right" with the usual per-side viewport prefix
+("Desktop Inset Left" under `flush-mobile-capflush`), in the caption's
+section (`└─ Row 2 Caption`), after its other fields. Only the name, label
+and group move: the splice, the closed scale, the caps and every
+suppression rule are the frame path's, and Top/Bottom stay the row's
+(`row_2_padding_top/bottom`). A row holding anything besides the one
+caption keeps `row_N_padding_left/right`. Renames apply on the next block
+import; EN emails built on earlier imports keep `row_2_padding_left/right`.
 The idiom covers caption-LIKE texts too (2026-08-18, user-directed
 sweep): a signature card's name/title text under its signature image is
 a caption — image bottom 0, text flagged with `padding="8px 0 …"`.
@@ -1799,7 +1816,10 @@ on the next block/template import. (`memberIdentity` + `resolveSection` in
   later `mj-section` — Video Block's wrapper swallowed its sibling
   caption section (both authored `padding="0"`) and that row minted no
   padding fields at all, while its inset twin, whose caption is authored
-  differently, minted all four (fixed 2026-08-21).
+  differently, minted all four (fixed 2026-08-21). A caption-only row's
+  left/right are the exception to "frame settings head the row": they
+  sit in the caption's group as its Inset (see Horizontal insets,
+  2026-09-26).
 - **Content groups**: in a **single-band block they carry NO glyph** —
   `Heading`, `Text`, `Column 1 Button` sit directly under the block header
   (the glyph implied a hierarchy that wasn't there). In a **multi-band
