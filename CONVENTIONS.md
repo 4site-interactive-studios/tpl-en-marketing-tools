@@ -1116,10 +1116,16 @@ width first.
   Confirmed on the 2026-09-26 acceptance send (iPhone render, EoA
   vXQx21…), and kept edge to edge by user decision.
 - **Dark mode (measured 2026-09-26, EoA RRQnx2…):** TPL remaps an Earth
-  border to Grass in dark mode (`td.wysiwyg[style*="#362229"]` in both dark
-  branches), which reaches Apple Mail and iOS, where Earth vanished on
-  black. Outlook.com and Outlook for Windows ignore the rule but repaint
-  Earth pale and visible; Gmail never applies it. **Known limit (user
+  border to Grass in dark mode, which reaches Apple Mail and iOS, where
+  Earth vanished on black. Outlook.com and Outlook for Windows ignore the
+  rule but repaint Earth pale and visible; Gmail never applies it. The rule
+  was `td.wysiwyg[style*="#362229"]` until 2026-09-27, which missed the
+  column variant's classless cell; it is now `td[style*="solid #362229"]`
+  in both dark branches, keyed on the `solid <hex>` this generator writes
+  (EN delivers `border: 4px solid #362229`). Re-measured through EN the
+  same day (EoA FbqICw…): the CTA Text Block's column border turns Grass
+  in Apple Mail and iOS exactly like a text border, and every other client
+  behaves as above. **Known limit (user
   decision 2026-09-26):** M365 for Mac dark leaves an Earth border dim on
   dark grey, and no CSS reaches it.
 - **The Inert Dropdown Audit exempts Box Border Color by rule**, not by

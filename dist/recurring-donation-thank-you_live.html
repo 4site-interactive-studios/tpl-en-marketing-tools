@@ -756,8 +756,14 @@ li {
       /* Box Border in Earth #362229 (#44) is near-black on the repainted black
      ground; Grass matches dark mode's link colour. Matched on the inline hex
      EN delivers on the text cell ("border: 4px solid #362229"); on a cell
-     with no border, border-color does nothing. */
-      [data-ogsc] td.wysiwyg[style*="#362229"] {
+     with no border, border-color does nothing. Any td, not td.wysiwyg
+     (2026-09-27): the CTA Text Block's COLUMN-level Box Border sits on a
+     classless cell. EoA FbqICw…: Grass in Apple Mail and iOS dark; the
+     Outlooks repaint Earth pale either way; Gmail ignores it. Keyed on
+     "solid #362229" (the importer writes border:Npx solid HEX; EN
+     delivers "border: 4px solid #362229"): no authored cell carries it,
+     and it is the shortest match (Gmail head-CSS budget). */
+      [data-ogsc] td[style*="solid #362229"] {
         border-color: #8CC63F !important;
       }
 
@@ -887,8 +893,9 @@ li {
       /* Box Border in Earth #362229 (#44): near-black on the black dark ground
      (measured 2026-09-26, Apple Mail dark, EoA vXQx21…). Grass is dark
      mode's link colour. Mid-tone picks (Evergreen upward) stayed visible and
-     are left alone. The [data-ogsc] copy above covers Outlook.com. */
-      td.wysiwyg[style*="#362229"] {
+     are left alone. The [data-ogsc] copy above covers Outlook.com. Any td
+     since 2026-09-27, for the CTA Text Block's classless column cell. */
+      td[style*="solid #362229"] {
         border-color: #8CC63F !important;
       }
 

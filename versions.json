@@ -333,9 +333,9 @@
     "date": "2026-09-27"
   },
   "head-css": {
-    "version": 54,
-    "hash": "e54a8da7c0fc",
-    "date": "2026-09-26"
+    "version": 55,
+    "hash": "e7c69bb822f2",
+    "date": "2026-09-27"
   },
   "partial:debug-toolbar": {
     "version": 1,
