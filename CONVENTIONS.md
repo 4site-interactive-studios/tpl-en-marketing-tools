@@ -1974,7 +1974,10 @@ sort — it is purely the panel/export display order.
   PLAIN name — the category never leaks into sections, labels, or
   merge-tag names. Thumbnail slugs/probes and per-block download filenames
   also use the plain name (`blockBaseName`) so existing
-  `thumbnail-<slug>.png` assets keep matching. Dividers, pre-divider
+  `thumbnail-<slug>.png` assets keep matching. The probe runs after
+  Compile, and block export waits for it (`thumbnailProbePending`,
+  2026-09-27): exported earlier, a block whose thumbnail is already
+  uploaded shipped `placeholder.png`. Dividers, pre-divider
   blocks, and user renames are left alone. Declared short names
   (2026-07-29): Headers/Heroes, Text, Buttons, Images, Text and Images,
   Engagement, Utility, Signature, Footer. ("Images and Text" became
