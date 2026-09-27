@@ -2220,13 +2220,18 @@ sort — it is purely the panel/export display order.
   (section, wrapper, column) at its widest OFFERED side padding (the Padding
   Left/Right preset or the per-side Selects, after their own caps), minus
   the mj-button's own side padding at its widest Inset option (as authored
-  when it has no Inset field). The cap becomes "Npx (widest that fits)",
-  wider steps are withheld with an info note, and an authored default is
-  always kept. Measured cause: CTA Button's 536px at a 64px gutter ran 64px
+  when it has no Inset field, longhand `padding-left`/`padding-right`
+  winning over the shorthand). The cap becomes "Npx (widest that fits)"
+  (any positive cap, even under 100px), wider steps are withheld with an
+  info note, and an authored default is always kept; one wider than the cap
+  is relabelled "Npx (original; can overflow)" so its label never promises
+  a fit. When no fixed width fits at all (cap under 1px) the options ship
+  as generated with an info note rather than as an inert Auto-only Select.
+  Measured cause: CTA Button's 536px at a 64px gutter ran 64px
   past its box, and a 472px button with 32px insets stretched its cell to
   536px. The geometry walk subtracts a column's side BORDERS as well as its
   padding, as MJML does: Stat Row's 1px card border otherwise let a "full
-  width" button run 2px past it. On TPL this capped 8 of 22 button Widths
+  width" button run 2px past it. On TPL this capped 8 of 21 button Widths
   (CTA Button 536 to 472, Stat Row 472 to 342, Photo Banner (overlay panel,
   w/ CTA) 550 to 422, CTA Hero and CTA Hero (w/ image badge) 268 to 236,
   Steps Block and both Footer (w/ image) 536 to 472). A button whose space
@@ -2235,7 +2240,12 @@ sort — it is purely the panel/export display order.
   wider than the phone column overflows unless mobile CSS releases it. TPL's
   `td.button table { width: auto !important }` below the breakpoint does,
   so the mobile-pin inference labels every TPL button Width "Desktop
-  Width".
+  Width"; a button in a `td.fixed-width` cell stays full width instead.
+  Both halves were verified through EN on 2026-09-27 (EoA nTHjOCYq…, 18
+  clients): no capped button left its box at its block's widest settings,
+  and phones shrank buttons to their labels while `fixed-width` held.
+  Outlook ignores an Inset inside a background-image section (the v:rect
+  limit), which only gives the button more room than the cap assumed.
 - **Button-link parity** (2026-07-27): hand-authored `<a>` buttons inside
   mj-text expose EXACTLY what real mj-buttons do — Label, Link URL,
   Text/Background Color (+ the width Select where present). Their inline

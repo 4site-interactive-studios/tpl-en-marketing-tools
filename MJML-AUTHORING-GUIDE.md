@@ -1853,8 +1853,18 @@ can prop each other up, and the report says so when they do.
   at import: a frame's Padding Left/Right Select no longer offers a value
   its own frozen geometry cannot survive (conventions "Unsafe growth"), and
   where only the authored value survives the field is not created at all.
-  Element widths are still free, so the combination is still worth
-  checking.
+  Since 2026-09-27 the ELEMENT half is bounded too, on desktop: a button's
+  Width Select stops at the widest that fits with every frame at its widest
+  offered side padding and the button at its widest Inset (conventions
+  "Button widths"). The importer cannot size a phone, so the template must
+  release fixed widths below its breakpoint. Put a class on the
+  `mj-button` (MJML sets it on the cell) and, inside the mobile media
+  query, set `td.button table { width: auto !important; }`. Use `width:
+  auto`, not `max-width: 100%`: measured in Chromium 2026-09-27, a table cell
+  grows to its table's px width, so `max-width` never engages. A button
+  meant to fill a phone takes a second class and a later
+  `td.fixed-width table { width: 100% !important; }`. Both behaviors held
+  across 18 EoA clients through EN (2026-09-27).
 - **Column-order swaps need text shielding.** Reversing a section with
   `direction: rtl` only reorders columns safely when MJML has pinned
   `direction: ltr` on each column div. Verify the pins exist before relying
