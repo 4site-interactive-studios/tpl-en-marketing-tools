@@ -1120,9 +1120,11 @@ width first.
   Earth vanished on black. Outlook.com and Outlook for Windows ignore the
   rule but repaint Earth pale and visible; Gmail never applies it. The rule
   was `td.wysiwyg[style*="#362229"]` until 2026-09-27, which missed the
-  column variant's classless cell; it is now `td[style*="solid #362229"]`
-  in both dark branches, keyed on the `solid <hex>` this generator writes
-  (EN delivers `border: 4px solid #362229`). Re-measured through EN the
+  column variant's classless cell; it is now `[style*="solid #362229"]`
+  in both dark branches (no element prefix, to fit the Gmail head-CSS
+  budget; nothing outside a Box Border carries the string), keyed on the
+  `solid <hex>` this generator writes (EN delivers
+  `border: 4px solid #362229`). Re-measured through EN the
   same day (EoA FbqICw…): the CTA Text Block's column border turns Grass
   in Apple Mail and iOS exactly like a text border, and every other client
   behaves as above. **Known limit (user
