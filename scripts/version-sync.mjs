@@ -25,7 +25,7 @@
  *                              across mjml_all + tpl_unified (a divergent
  *                              copy in either catalog bumps the one entity).
  *  - head-css                 the COMPILED head <style> contents of
- *                              dist/main_live.html, EXCEPT the
+ *                              dist/main_local-debug.html, EXCEPT the
  *                              data-en-tools-band chrome, which stays in the
  *                              template — the exact
  *                              CSS the importer bakes into the Template
@@ -36,7 +36,15 @@
  *                              source hashing would miss. Because dist is
  *                              stale when the main pass runs (pre-compile),
  *                              the build re-syncs this ONE entity after
- *                              emit-variants via `--head-css`.
+ *                              emit-variants via `--head-css`. Read from
+ *                              _local-debug, the compiler's own output:
+ *                              _live strips the sheets' comments and
+ *                              indentation for the paste (emit-variants),
+ *                              and hashing that would bump this entity on
+ *                              a byte change the importer's compactCss
+ *                              erases anyway (2026-09-27; the two files'
+ *                              sheets were byte-identical before then, so
+ *                              the switch itself moved no hash).
  *
  * A renamed block starts over at version 1 under its new name; git history
  * carries the lineage. Entities that no longer exist are dropped from the
@@ -98,9 +106,15 @@ function shellOf(text) {
   return out + text.slice(pos);
 }
 
-/** Compiled head <style> contents of the unified master's live artifact */
+/** Compiled head <style> contents of the unified master, as the compiler wrote them */
 export function headCssContent() {
-  const html = read(`dist/${CATALOG.replace('.mjml', '')}_live.html`);
+  // Scripts out first: _local-debug carries the raw MJML as a JSON payload
+  // whose `<style …>` text (its `</` escaped) must never pair with a real
+  // closing tag further down — exactly what stripDebugger removes for _live.
+  const html = read(`dist/${CATALOG.replace('.mjml', '')}_local-debug.html`).replace(
+    /<script\b[\s\S]*?<\/script>/gi,
+    '',
+  );
   return (
     [...html.matchAll(/<style([^>]*)>([\s\S]*?)<\/style>/gi)]
       // The builder band is CHROME: data-en-tools-band marks it exempt from

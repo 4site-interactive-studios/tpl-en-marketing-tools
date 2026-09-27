@@ -311,9 +311,12 @@ are for whoever edits the MJML, not for the delivered email — and because
 both sheets stay in the head, their comments would ship in every exported
 template (band: 2026-08-20, user decision; template-CSS: 2026-08-24, user
 decision, after its catalog comments shipped in an exported template head).
-Every OTHER stylesheet keeps its comments exactly as authored: `styles.css`
-ships its "NO CHILD COMBINATORS" warning inside the Template Styles block on
-purpose.
+Every OTHER head stylesheet keeps its comments through this pass, but none
+of them reach a recipient as authored: the sheets extracted into the Template
+Styles block go through `compactCss`, which strips comments (2026-08-18),
+TPL's `_live.html` paste strips CSS comments too (2026-09-27), and EN strips
+CSS comments at send anyway (guide §2). `styles.css`'s "NO CHILD
+COMBINATORS" warning is therefore for the people editing the MJML repo.
 
 Blank-line runs in the head collapse to a single newline — both the gaps a
 strip leaves behind and the ones MJML's own compile leaves between
@@ -326,9 +329,11 @@ the line to itself, the trailing newline. Before that (2026-08-24) every
 extracted sheet left one blank line behind, stacked in front of whatever
 stayed in the head.
 
-Only the FIRST `<head>` is processed, and the body is left byte-identical
-— block comments (`<!-- START: … -->`, the `- Not Displayed` markers) are
-untouched, and the segmenter still depends on them.
+Only the FIRST `<head>` is processed here. The body has its own pass,
+which runs earlier — see "Body authoring comments never ship" below. It
+leaves head COMMENTS to this function (it strips indentation document-wide,
+head included), and it keeps every block comment the segmenter depends on
+(`<!-- START: … -->`, the `- Not Displayed` markers).
 
 **Rule for agents**: document the head freely. Prose in `<mj-head>` costs
 the delivered email nothing, so the constraint on head comments is
@@ -336,6 +341,87 @@ clarity, not byte budget. This matters because the budget is real
 elsewhere: EN rejects a message whose `contentHtml` exceeds a measured
 **299,760 bytes** with `{"message":"Message contentHtml too long"}`
 (2026-08-20 — see the authoring guide for the full measurement).
+
+## Body authoring comments never ship; delivered HTML is compacted (2026-09-27)
+
+The head rule's body twin (user decision 2026-09-27). The MJML documents
+itself inline — caveat notes above a section, formulas beside a width,
+dated rulings inside an `mj-text` — and MJML passes every comment through.
+EN delivers body comments untouched (guide §2), so before this the notes
+rode in every block that carried them AND in every Select option fragment
+that copies the block's markup. On the TPL catalog that was 37.5 KB of
+block `content` (and under 2 KB more inside replacement values).
+
+**`compactEmailHtml` (`src/core/compact.ts`) runs once at import**, in
+`runImportPipeline` right after `formatEmailHtml` and BEFORE segmentation —
+the placement formatting already has, and for the same reason: every
+canonical block string, replacement offset, instance region, Select option
+fragment and the shell share one text, so nothing downstream can disagree
+about the bytes. It removes two things, neither of which can change a
+rendering:
+
+- **Prose comments after `</head>`.** KEPT, because they are function:
+  conditional comments both downlevel-hidden and downlevel-revealed (the
+  same left-to-right `<!--…-->` scan `stripHeadComments` uses, so
+  `<!--[if !mso]><!-->` is one complete comment and the markup it reveals
+  is never swallowed), the `START:`/`END:` block markers, `- Not Displayed`
+  markers, and `en-tools-keep` comments. The head is left to
+  `stripHeadComments`.
+- **Line indentation, trailing blanks and blank-line runs**, document-wide
+  (head included) — 54.4 KB on the TPL catalog, 17.8% of block bytes (2–29%
+  per block), all of it js-beautify's. Every line keeps its NEWLINE (a run
+  of blank lines collapses to one): a newline is collapsible white space
+  exactly like the indentation it replaces, so text never joins, no line
+  grows toward RFC 5322's 998-byte limit, and the markup stays one tag per
+  line in EN's HTML view.
+
+Never touched, byte for byte: every kept comment (conditional innards
+included), EVERY start tag (an attribute value keeps all its white space,
+even across lines), the bodies of the raw-text and RCDATA elements —
+`<style>`, `<script>`, `<pre>`, `<textarea>`, `<title>`, `<xmp>`,
+`<iframe>`, `<noembed>`, `<noframes>`, `<noscript>` (the head-CSS parsers
+read the sheets) — and CDATA. One leftmost-match scan finds all of them the
+way an HTML tokenizer does: a comment ends at `-->`, at `--!>`, or abruptly
+as `<!-->` / `<!--->`; a comment that MENTIONS `<style>` stays a comment;
+a `<!--` inside a stylesheet, a `<title>` or a quoted attribute is not a
+comment at all. Held spans come back verbatim, so any doubt resolves toward
+keeping bytes (hardened 2026-09-27 after an adversarial review found each
+of those cases swallowing or rewriting content in synthetic input — none
+occurred in the TPL catalog).
+
+**Block structure ignores prose too.** The segmenter decides whether a
+START/END pair whose children are pairs is a WRAPPER (flattened into its
+children) or a COMPOSITE block (kept whole) by what is left between the
+children (`childrenTileSpan`). A note there used to count as content,
+keeping the pair whole. The compiled side now reaches the segmenter with
+its notes removed while `attachMjmlSources` segments the still-annotated
+MJML, so the two would disagree and the split blocks would find no MJML
+source — and mint no fields. Both sides now treat prose as nothing: a pair
+whose only leftover is a note is a wrapper on both sides. (The TPL catalog
+has no such pair; its 65 blocks segment identically either way.)
+
+**The MJML side is stripped the same way.** mjmlProps reads a content
+component's value from the MJML source (`inner-html` candidates), and a
+note authored INSIDE an `mj-text` would otherwise leave the value carrying
+a comment the compiled text no longer has — the value stops matching and
+the Content field silently never mints. `stripProseComments` runs on that
+value too (measured 2026-09-27: the Countdown Block's and the brown
+Footer's Content fields went missing until it did). Fields, labels, types,
+sections, order and option lists are otherwise identical before and after
+(qc-dump, 1,426 fields); defaults and option values differ only by white
+space and removed notes.
+
+Deliberately NOT a general minifier. MJML's own `minify` (htmlnano) joins
+lines past 998 bytes, turns `alt=""` into a bare `alt` and sorts class
+lists; cssnano rewrites `x !important` and media-query text, which EN
+merges by exact string (guide §2a). Fail-open: an exception leaves the
+formatted text as it was. TPL's `scripts/emit-variants.mjs` mirrors
+`compactEmailHtml` for its `_live.html` paste — keep the two in step.
+
+**Rule for agents**: document the body freely too — in a comment of its
+own or inside an `mj-text`. The one comment form that can still ship is
+the functional set above; `en-tools-keep` is the deliberate way to put a
+note in the delivered email.
 
 ## Builder-band colors never enter the palette
 
@@ -958,7 +1044,8 @@ at send, Outlook included.
   precedent, and a non-hex CSS colour labels as authored. The Default
   option is labeled by the bare-`a` sheet colour like any other option —
   its role is marked by the export-time ` (default)` suffix, exactly as on
-  a background-colour Select. Multi-declaration rules (`.footer-cta a`) and
+  a background-colour Select. Multi-declaration rules (a link rule that also
+  sets letter-spacing or text-decoration) and
   rules inside any @-block (@media — the dark forcing — or @supports) are
   never options. Since 2026-08-25
   TPL authors one hook per brand-palette colour plus White and Black (sheet
@@ -1242,8 +1329,10 @@ Column Top/Bottom/Left/Right) instead of interleaving side-by-side.
 
 Known but NOT suppressed (documented trade-offs):
 
-- **Mobile-only CSS pinning**: `.inset-gutter` / `.two-col-column` head
-  rules override some paddings with `!important` below 600px. The fields
+- **Mobile-only CSS pinning**: `.flush-mobile-*` / `.two-col-column` head
+  rules override some paddings with `!important` below 600px (TPL's
+  `.inset-gutter` rule was retired 2026-09-27 — no block had carried the
+  class since 2026-08-26). The fields
   work at desktop width — where email is judged — so they stay; just know
   the mobile rendering is fixed by the template's own CSS.
 - **Grow-direction asymmetry**: a pinned gutter's WIDEN direction does have
@@ -1518,7 +1607,7 @@ reloads, and batchable by category chip; Re-import regenerates block ids,
 which correctly invalidates everything.
 
 Two pre-registered mechanisms are expected on the mobile axis and are
-documented trade-offs, not new discoveries: the `.inset-gutter` /
+documented trade-offs, not new discoveries: the `.flush-mobile-*` /
 `.two-col-column` mobile `!important` pinning and grow-direction asymmetry
 (see "Known but NOT suppressed" above).
 
@@ -1753,8 +1842,9 @@ viewport labels survive re-import without anyone running the audit and
 applying its verdicts by hand. The labels' premise — that the pinning
 CSS actually reaches the inbox — is measured, not assumed: EN keeps the
 mobile media queries verbatim at send, and the pin rules (`td.button` and
-its carrier twin, `.flush-mobile-*`, `.inset-gutter`, `.two-col-column`)
-arrive byte-intact in the delivered payload (EoA aafUJU…, 2026-08-18).
+its carrier twin, `.flush-mobile-*`, `.two-col-column`, and the since-retired
+`.inset-gutter`) arrive byte-intact in the delivered payload (EoA aafUJU…,
+2026-08-18).
 
 Two carriers, one value: a pin only settles the question when it covers
 EVERY compiled carrier of the value. MJML writes a button's `align` onto
@@ -3176,6 +3266,11 @@ dormant-but-sanctioned `.mobile-only` both look dead and are not.
   (prettier took ~46s on a ~1MB doc; js-beautify ~60ms). The instrumented
   parallel compile stays unformatted (ordinal matching only). Formatting is
   fail-open.
+- Then **compacted** (`compactEmailHtml`, 2026-09-27): body prose comments
+  out, indentation out, one tag per line kept — see "Body authoring
+  comments never ship". js-beautify still decides where lines break; the
+  compaction only removes what it indented with. Also fail-open, and also
+  before segmentation.
 - Thumbnail probing is async, after load — never blocks the import. It
   runs once per project + asset root (`thumbnailsProbedRoot` records the
   root; only missing thumbnails are probed when the root changes), and a
@@ -3315,8 +3410,10 @@ the importer whitelists all data-*-only MJML validator warnings
   (Footers)": its own comment pair, `data-fully-exclude` on the section
   (drops it from the importer's list and counts) plus the
   `data-import-exclude` wrapper (keeps the debug overlay treating it as
-  chrome). Explanatory comments belong INSIDE the pair too — between
-  pairs they ship with the preceding block.
+  chrome). Markup between pairs ships with the preceding block; a prose
+  comment there is stripped at import (2026-09-27, "Body authoring comments
+  never ship"), but keep explanatory notes INSIDE the pair anyway — that is
+  where the next reader looks.
 - **`data-probe`** (raw MJML; block-level, 2026-08-18, user-decided):
   the block is a PROBE INSTRUMENT (canonical example: the head-CSS
   canary, now archived in TPL `archive/probes/` — the mechanism stays

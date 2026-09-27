@@ -103,6 +103,29 @@ Each step exists for a reason:
   The root is TPL's by default and overridable with `TPL_ASSET_ROOT=…`; see
   CLAUDE.md. Source MJML always keeps relative paths (guide §7) — the
   absolute form is a build artifact, never something you author.
+  The live copy is then **compacted** (2026-09-27) — this paragraph owns
+  the rule for this repo:
+  - **Out:** authoring prose comments (head and body), line indentation,
+    trailing blanks, blank-line runs (collapsed to ONE newline — no line is
+    ever joined to another), and CSS comments wherever white space or
+    `{ } ; ,` sits beside them.
+  - **Kept byte-for-byte:** conditional comments (hidden and revealed),
+    `START:`/`END:` markers (check-catalog names blocks by them), `- Not
+    Displayed` markers, `en-tools-keep`; every start tag (attribute values
+    are never touched); the bodies of `<style>`-in-conditionals, `<script>`,
+    `<pre>`, `<textarea>`, `<title>` and the other raw-text elements; CDATA;
+    every at-rule prelude, declaration, quoted string and `url()`; a CSS
+    comment that could fuse two tokens if removed.
+  - **Mirror:** the HTML half is the importer's `compactEmailHtml`
+    (conventions "Body authoring comments never ship") — keep the two in
+    step. The paste adds head prose and CSS comments because no importer
+    runs on it.
+  - **Guard:** every build re-parses both copies and prints `WARN` unless
+    the tag stream, the white-space-collapsed text, the kept comments, the
+    raw-text bodies and the tokenized CSS are identical and no line grew.
+    It normalises only what a client ignores, never borrowing the
+    compactor's own shortcuts. The variants line reports the bytes saved.
+  - `_local-debug.html` is left exactly as compiled.
 
 - `scripts/check-docs.mjs` — **documentation lint.** Asserts the things that
   actually rotted before: every block name cited in a doc still resolves
@@ -155,8 +178,8 @@ the same server from the CLI. Always preview from `dist/`, never from `src/`.
   and are applied with `mj-class="caption"` rather than repeating attributes.
 - `mj-style` holds mobile-only overrides under `@media (max-width: 599px)`
   (caption gutter with `!important` to beat inline td padding; `.cta-item`
-  stacking for side-by-side CTAs). Note `.inset-gutter` — which collapses
-  desktop inset gutters to 32px on phones — lives in `styles.css`, not here.
+  stacking for side-by-side CTAs). Mobile gutter rules for whole blocks
+  (`.flush-mobile-capflush`) live in `styles.css`, not here.
 - `mj-raw` in head injects the metas MJML has no tag for:
 
   ```html
@@ -291,7 +314,7 @@ live counts:
 | EDIT | Copy changes | Copies a JSON changeset keyed by ORIGINAL block names (the stable identifiers): per-block `newName`, `deleted: true`, and `textEdits` (`{before, after}` per changed text node, diffed against a baseline snapshotted when edit mode first turns on), plus a full-page `order` array when blocks were moved. Paste it to Claude to apply against the MJML source. Caveat: blocks whose text is rewritten by live scripts (countdown timers) can't hold manual text edits |
 | EXCLUDED | Highlight all excluded | Red tint + red ✕ over every excluded block — both `data-fully-exclude` variants and `data-import-exclude` chrome |
 | EXCLUDED | Export / Copy .mjml | The page's raw .mjml with every excluded/dev-only top-level block removed and every mj-include inlined (type="css" becomes mj-style; partials spliced in) — fully self-contained and compilable from anywhere. A scope selector (shown when the page has Category headers) narrows the export to one category section, or downloads a .zip containing one .mjml per section plus the full template (dependency-free store-mode zip); Copy is disabled in zip mode |
-| EXCLUDED | Copy HTML | The compiled page as served, minus every `<script>` (the debugger and both injected JSON payloads) and the 🐞 toolbar — i.e. the send-ready HTML. Re-fetches from the server so debugger surgery can never leak in; on `file://` pages it falls back to a cleaned clone of the live DOM. Same output as `<name>_live.html` but with relative asset paths |
+| EXCLUDED | Copy HTML | The compiled page as served, minus every `<script>` (the debugger and both injected JSON payloads) and the 🐞 toolbar — i.e. the send-ready HTML. Re-fetches from the server so debugger surgery can never leak in; on `file://` pages it falls back to a cleaned clone of the live DOM. Same output as `<name>_live.html` before its compaction (§2), with relative asset paths |
 | EXCLUDED | Hide all excluded | Hides all of those blocks — what remains is exactly what imports (one block per structure group) |
 
 Exclusion detection reads the `[data-fully-exclude]` / `[data-import-exclude]`
@@ -561,15 +584,17 @@ classifies it instead of strip-testing it as dead.
   tri-color divider's three 200px spacer columns).
 - **Insets are padding, not column width:** a narrowed text block is authored
   as a full-width column with section side-padding (`16px 32px` — Double
-  on the declared scale, giving a ~536px content width) plus
-  `css-class="… inset-gutter"`, whose shared mobile rule collapses the
-  gutters to 32px on phones. Keep the side value on the scale; an off-grid
+  on the declared scale, giving a ~536px content width). For the mobile side,
+  use `css-class="… flush-mobile-capflush"` as the catalog and both
+  autoresponders do. Keep the side value on the scale; an off-grid
   inset snaps at import and desyncs from the other inset blocks. Never author an inset via a px
   column: MJML bakes column widths into class names (not Replaceable, §6d) and
-  the column collapse leaves zero-margin full-bleed text on mobile. The
-  `inset-gutter` token is ignored by the structure normalizer (it's the
-  responsive companion of a padding value), but imported blocks must carry the
-  class + its CSS for padding Replacements to behave on mobile.
+  the column collapse leaves zero-margin full-bleed text on mobile. The older
+  `inset-gutter` class (collapse the gutters to 32px on phones) is RETIRED:
+  no block carried it after the 2026-08-26 autoresponder rebuild, and its
+  rule left `styles.css` on 2026-09-27 as dead delivered CSS. The structure
+  normalizer still ignores the token, so an old block carrying it groups
+  correctly, but the class now does nothing.
 - **Fixed-width buttons:** keep ≤ 300px. A 400px `mj-button` plus 32px section
   padding overflows a 375px phone (rendered 464px → horizontal scroll).
 - **Element width × block width can jointly overflow (QA hazard):** in EN,

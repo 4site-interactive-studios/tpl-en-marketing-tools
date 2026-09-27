@@ -106,7 +106,9 @@ included — are retained verbatim but HOISTED into the email's head
 stylesheet, with same-condition queries merged into one block. Hoisting
 makes block CSS global to the WHOLE email, so scope class names (e.g. a
 block-specific prefix) to avoid cross-block collisions. Ordinary HTML
-comments in block markup survive untouched. The bgcolor rewrite also
+comments in block markup survive untouched (the importer removes authoring
+prose before EN ever sees it — §2f, "What actually costs bytes"). The
+bgcolor rewrite also
 REBUILDS a table's `background:` shorthand (measured 2026-08-09): the
 color moves to `bgcolor`, any `url()` is DROPPED, and the leftover
 shorthand (e.g. `background: repeat center top / auto`) still counts as
@@ -954,6 +956,17 @@ near any of these figures.
   delivered `<head>` — mj-raw cannot get above MJML's own skeleton, so
   authoring position does not control the shipped position; keep the
   unit together with the comment first.
+- body authoring prose and pretty-print indentation — on the TPL catalog
+  (2026-09-27) 37.5 KB of notes and 54.4 KB of indentation across the block
+  `content`, plus the copies inside Select option fragments. Both are now
+  removed at import (`compactEmailHtml`; conventions.md, "Body authoring
+  comments never ship"): block content fell 305,461 → 213,577 bytes, and
+  a shell + Template Styles + ten average blocks, defaults filled, from
+  104,039 to 74,342 — back under Gmail's clip. So **body comments are free
+  too**, inside an `mj-text` or between sections. What survives is
+  function: conditional comments, `START:`/`END:` markers, `- Not
+  Displayed` markers, `en-tools-keep`. Every newline survives as well — a
+  newline renders as the same collapsible space the indentation did.
 
 Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
 Anything near this ceiling is far past the clip point, which is fine for a
@@ -1614,9 +1627,9 @@ codifies what it proves, so expect:
   Pin both (`td.button`, `td.button table td`) or claim nothing.
 - **The pins reach the inbox.** The `@media only screen and (max-width:…)`
   blocks the pins live in are kept verbatim by EN's inliner, and the pin
-  rules themselves (`td.button` pair, `.flush-mobile-*`, `.inset-gutter`,
-  `.two-col-column`) arrive byte-intact in delivered payloads (measured
-  2026-08-18, EoA aafUJU…). A "Desktop …" label therefore describes inbox
+  rules themselves (`td.button` pair, `.flush-mobile-*`, `.two-col-column`,
+  and TPL's since-retired `.inset-gutter`) arrive byte-intact in delivered
+  payloads (measured 2026-08-18, EoA aafUJU…). A "Desktop …" label therefore describes inbox
   behaviour, not merely preview behaviour.
 
 ### The data-style vocabulary is RETIRED — one survivor
@@ -1787,9 +1800,9 @@ can prop each other up, and the report says so when they do.
   an editor adds the Debug Helper utility block.)
 - **Nothing survives BETWEEN two blocks' comment pairs.** Segmentation tiles
   the body byte-exactly: whatever sits between one block's `END` and the next
-  block's `START` — markup, a `data-import-exclude` wrapper, even an
-  explanatory comment — attaches to the PRECEDING block and ships inside its
-  exported HTML. A flagged wrapper dropped there does not vanish; it rides
+  block's `START` — markup or a `data-import-exclude` wrapper — attaches to
+  the PRECEDING block and ships inside its exported HTML (a prose comment
+  there is stripped at import, §2f). A flagged wrapper dropped there does not vanish; it rides
   along AND its flag import-excludes the block it lands in (measured
   2026-08-25: a 16px catalog reading gap rode inside the brown Footer as a
   white strip under its ground and silently pulled the footer from the

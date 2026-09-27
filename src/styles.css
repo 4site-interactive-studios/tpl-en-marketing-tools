@@ -218,13 +218,6 @@ p {
   border-radius: 3px;
 }
 
-/* Footer CTAs carry more than colour. Scoped separately from .footer-text a so
-   the ordinary footer links keep their own treatment. */
-.footer-cta a {
-  letter-spacing: 2px;
-  text-decoration: none;
-}
-
 /* Quiz answer pills. The styling lives here rather than inline on the anchor
    because an anchor inside an RTE Content value keeps its href and NOTHING
    else — EN's editor rebuilds links as ProseMirror marks and discards class,
@@ -549,13 +542,6 @@ p {
     width: calc(100% - 112px) !important;
   }
 
-  /* Inset sections: collapse the wide desktop gutters to the standard 32px.
-     The section's main td is the only one carrying direction inline. */
-  .inset-gutter td[style*=direction] {
-    padding-left: 32px !important;
-    padding-right: 32px !important;
-  }
-
   /* table/td.mj-full-width-mobile width rules are MJML-emitted wherever a
      fluid image exists — only the img height reset is authored, and it
      lives here since 2026-08-25 (folded in from its own same-breakpoint
@@ -598,10 +584,6 @@ p {
 
   [data-ogsc] .highlighted-text-column td[valign],
   [data-ogsc] .stat-row-column td[valign] {
-    background-color: #000 !important;
-  }
-
-  [data-ogsc] .social-link table {
     background-color: #000 !important;
   }
 
@@ -777,10 +759,6 @@ p {
   .two-line-cta a,
   .two-line-cta a span {
     color: #000 !important;
-  }
-
-  .social-link table {
-    background-color: #000 !important;
   }
 
   .divider p {

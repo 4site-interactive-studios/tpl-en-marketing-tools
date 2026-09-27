@@ -87,7 +87,7 @@ Every `src/*.mjml` compiles to **two** files in `dist/`:
 | Output | Asset URLs | Debugger | Use |
 | :--- | :--- | :--- | :--- |
 | `<name>_local-debug.html` | relative (`assets/x.png`) | **kept** | working copy; what the preview server serves |
-| `<name>_live.html` | absolute | **stripped** | paste-in ready for an EN send / autoresponder |
+| `<name>_live.html` | absolute | **stripped** | paste-in ready for an EN send / autoresponder — **compacted** |
 
 **Neither is what the importer reads.** It consumes `src/<name>.mjml` (the
 build copies the raw sources into `dist/` alongside the HTML) and explicitly
@@ -99,6 +99,14 @@ MJML, this one feeds a paste-in HTML send. Both assume EN's flat CDN folder.
 `scripts/emit-variants.mjs` names both as the last build step: it renames the
 compiler's own output to `_local-debug.html` and writes `_live.html` beside it. It rewrites all four carriers MJML emits for one background image
 (guide §4) plus `<img src>`, and removes every `<script>` and the 🐞 toolbar.
+
+**The live copy is compacted** (2026-09-27) — render-inert byte removal,
+proved by a guard on every build; PLAYBOOK §2 owns the rule (what goes, what
+stays, the guard). Two consequences live here because they bite in this
+repo: it mirrors the importer's `compactEmailHtml` (keep the two in step,
+like `applyInlineFluid`), and `version-sync --head-css` therefore hashes
+`_local-debug.html` — the compiler's own sheets — so compaction never bumps
+head-css for bytes the importer's `compactCss` discards anyway.
 
 **TPL's EN asset root** (flat folder — filenames must be unique repo-wide):
 
