@@ -409,10 +409,17 @@ li {
         text-align: center !important;
       }
 
+      /* width:auto (2026-09-27): a Width pick wider than the phone column held
+     its px width and scrolled the email sideways (CTA Button at 536px).
+     Auto sizes the pill to its label and lets it wrap; buttons already auto
+     are untouched. max-width:100% does NOT work here: the cell grows to the
+     table's px width. td.fixed-width table below still wins for its four
+     full-width-on-phone buttons (same specificity, later). */
       td.button table {
         float: none !important;
         display: inline-table !important;
         margin: 0 auto !important;
+        width: auto !important;
       }
 
       /* MJML writes the button's align onto TWO cells: the outer td.button
@@ -436,11 +443,11 @@ li {
         width: 100% !important;
       }
 
-      .fixed-width table {
+      td.fixed-width table {
         width: 100% !important;
       }
 
-      .fixed-width table a {
+      td.button a {
         width: auto !important;
       }
 
@@ -756,14 +763,14 @@ li {
       /* Box Border in Earth #362229 (#44) is near-black on the repainted black
      ground; Grass matches dark mode's link colour. Matched on the inline hex
      EN delivers on the text cell ("border: 4px solid #362229"); on a cell
-     with no border, border-color does nothing. Any td, not td.wysiwyg
+     with no border, border-color does nothing. Any element, not td.wysiwyg
      (2026-09-27): the CTA Text Block's COLUMN-level Box Border sits on a
      classless cell. EoA FbqICw…: Grass in Apple Mail and iOS dark; the
      Outlooks repaint Earth pale either way; Gmail ignores it. Keyed on
      "solid #362229" (the importer writes border:Npx solid HEX; EN
      delivers "border: 4px solid #362229"): no authored cell carries it,
      and it is the shortest match (Gmail head-CSS budget). */
-      [data-ogsc] td[style*="solid #362229"] {
+      [data-ogsc] [style*="solid #362229"] {
         border-color: #8CC63F !important;
       }
 
@@ -893,9 +900,9 @@ li {
       /* Box Border in Earth #362229 (#44): near-black on the black dark ground
      (measured 2026-09-26, Apple Mail dark, EoA vXQx21…). Grass is dark
      mode's link colour. Mid-tone picks (Evergreen upward) stayed visible and
-     are left alone. The [data-ogsc] copy above covers Outlook.com. Any td
+     are left alone. The [data-ogsc] copy above covers Outlook.com. Any element
      since 2026-09-27, for the CTA Text Block's classless column cell. */
-      td[style*="solid #362229"] {
+      [style*="solid #362229"] {
         border-color: #8CC63F !important;
       }
 

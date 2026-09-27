@@ -2212,7 +2212,28 @@ sort — it is purely the panel/export display order.
   (pacingNote explains) — a swap that mangles text is worse than no swap.
 - **Button widths**: Select — "Automatically Resize", 100px steps capped at
   the column's usable content width, "Npx (full width)" at the cap, plus
-  Original for off-grid authored widths.
+  Original for off-grid authored widths. **Worst-case cap (2026-09-27):**
+  when other fields in the block can narrow that space, the options are cut
+  again at the NARROWEST it gets: the column re-measured with every frame
+  (section, wrapper, column) at its widest OFFERED side padding (the Padding
+  Left/Right preset or the per-side Selects, after their own caps), minus
+  the mj-button's own side padding at its widest Inset option (as authored
+  when it has no Inset field). The cap becomes "Npx (widest that fits)",
+  wider steps are withheld with an info note, and an authored default is
+  always kept. Measured cause: CTA Button's 536px at a 64px gutter ran 64px
+  past its box, and a 472px button with 32px insets stretched its cell to
+  536px. The geometry walk subtracts a column's side BORDERS as well as its
+  padding, as MJML does: Stat Row's 1px card border otherwise let a "full
+  width" button run 2px past it. On TPL this capped 8 of 22 button Widths
+  (CTA Button 536 to 472, Stat Row 472 to 342, Photo Banner (overlay panel,
+  w/ CTA) 550 to 422, CTA Hero and CTA Hero (w/ image badge) 268 to 236,
+  Steps Block and both Footer (w/ image) 536 to 472). A button whose space
+  moves with Box Border and Box Padding too is locked instead
+  (`data-no-width-toggle`). Phones are the template's job: a fixed px width
+  wider than the phone column overflows unless mobile CSS releases it. TPL's
+  `td.button table { width: auto !important }` below the breakpoint does,
+  so the mobile-pin inference labels every TPL button Width "Desktop
+  Width".
 - **Button-link parity** (2026-07-27): hand-authored `<a>` buttons inside
   mj-text expose EXACTLY what real mj-buttons do — Label, Link URL,
   Text/Background Color (+ the width Select where present). Their inline
