@@ -3358,6 +3358,13 @@ the importer whitelists all data-*-only MJML validator warnings
   3x1 run), so symmetric gutter changes move zero pixels at either
   viewport (proven by the inert-dropdown audit at the 64px-era cut; the
   centred-run argument is width-independent).
+  **On an mj-button** (2026-09-27, user decision) it suppresses the button's
+  Width Select: the button keeps its authored width (TPL: `auto`) and an
+  info note names the flag. For a button whose space other fields keep
+  changing, where any fixed px option could overflow: TPL's CTA Text Block,
+  whose gutter, button insets, Box Border and Box Padding all move it. An
+  editor who needs a fixed-width button uses separate text and button
+  blocks instead.
 - **`data-no-padding-<side>`** (valueless — `top`/`right`/`bottom`/`left`
   — on the mj-section/mj-wrapper/mj-column frame that authors the
   `padding` shorthand, 2026-08-25): suppresses exactly that side's

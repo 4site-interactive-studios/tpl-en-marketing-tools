@@ -769,7 +769,10 @@
             donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
           </p>
         </mj-text>
-        <mj-button width="auto"
+        <!-- data-no-width-toggle: auto only. Gutter, insets, Box Border and
+             Box Padding all change this button's space; a fixed px width
+             could only overflow it (Bryan, 2026-09-27). -->
+        <mj-button data-no-width-toggle width="auto"
             color="#ffffff"
             background-color="#006837"
             href="https://tpl.org"
