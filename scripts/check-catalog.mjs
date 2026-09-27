@@ -1350,6 +1350,12 @@ guard('Outlook contrast gate', () => {
 //     (template-only; the importer never reads it). Texts that cannot qualify
 //     (fixed-width columns, padded or shared columns) are skipped by the rule
 //     itself, so they need no opt-out.
+//
+//     The same flag on an mj-column (2026-09-27, the CTA Text Block) boxes
+//     the whole column. Warn unless it has padding="0" of its own, is its
+//     section's only column, sits outside mj-group and background-image
+//     frames, and holds only texts, auto-width buttons, spacers and mj-raw:
+//     MJML sizes anything fixed-width from the unbordered column.
 // ---------------------------------------------------------------------------
 guard('Box Border safety', () => {
   const TAG = /<(\/?)(mj-section|mj-wrapper|mj-group|mj-column|mj-text|mj-[a-z-]+)\b([^>]*?)(\/?)>/g;
@@ -1367,6 +1373,7 @@ guard('Box Border safety', () => {
       .replace(/(<mj-raw\b[^>]*>)([\s\S]*?)(<\/mj-raw>)/g, (_, o, body, c) => o + blank(body) + c);
     const stack = [];
     const checks = [];
+    const colChecks = [];
     const textFrom = raw.indexOf('<!-- END: Category — Text Blocks -->');
     const nextCat = textFrom < 0 ? -1 : raw.indexOf('<!-- START: Category — ', textFrom);
     const inTextCategory = (i) => textFrom >= 0 && i > textFrom && (nextCat < 0 || i < nextCat);
@@ -1382,8 +1389,23 @@ guard('Box Border safety', () => {
         continue;
       }
       const parent = stack[stack.length - 1];
-      if (parent?.name === 'mj-column') parent.members.push({ name, attrs });
+      if (parent) parent.members.push({ name, attrs });
       const flagged = /\sdata-border-toggle\b/.test(attrs);
+      if (name === 'mj-column' && flagged) {
+        const problems = [];
+        const hex = attr(attrs, 'data-border-toggle');
+        if (!hex || !/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex)) problems.push('no default hex (write data-border-toggle="#006837")');
+        const pad = attr(attrs, 'padding');
+        if (pad === undefined || !/^0(px)?$/.test(pad.trim())) problems.push('no padding="0" of its own (MJML emits no column cell to border without one)');
+        if (stack.some((t) => t.name === 'mj-group')) problems.push('it sits inside an mj-group');
+        if (stack.some((t) => (t.name === 'mj-section' || t.name === 'mj-wrapper') && attr(t.attrs, 'background-url'))) {
+          problems.push('its section has a background image');
+        }
+        const entry = { name, attrs, members: [] };
+        colChecks.push({ where: `src/${f}:${lineAt(raw, m.index)}`, col: entry, section: parent, problems });
+        stack.push(entry);
+        continue;
+      }
       if (name === 'mj-text' && (flagged || inTextCategory(m.index))) {
         const problems = [];
         const hex = attr(attrs, 'data-border-toggle');
@@ -1405,6 +1427,17 @@ guard('Box Border safety', () => {
       }
     }
     // Evaluated after the pass: a column's members are only known once it closes
+    for (const { where, col, section, problems } of colChecks) {
+      if (section?.name !== 'mj-section' || section.members.filter((t) => t.name === 'mj-column').length !== 1) {
+        problems.push('it is not the only column of its section');
+      }
+      for (const t of col.members) {
+        if (t.name === 'mj-button' && /px\s*$/.test(attr(t.attrs, 'width') ?? '')) problems.push('it holds a fixed-width mj-button');
+        else if (!['mj-text', 'mj-button', 'mj-spacer', 'mj-raw'].includes(t.name)) problems.push(`it holds an ${t.name}`);
+        else if (t.name === 'mj-text' && /\sdata-border-toggle\b/.test(t.attrs)) problems.push('a text inside carries its own data-border-toggle');
+      }
+      if (problems.length) warn(`${where}: column data-border-toggle is not border-safe here: ${[...new Set(problems)].join("; ")}`);
+    }
     for (const { where, col, problems, flagged, optOut } of checks) {
       const members = (col?.members ?? []).filter((t) => t.name !== 'mj-raw' && !/\sdata-style-dark-mode\b/.test(t.attrs));
       if (!col || members.length !== 1) problems.push('it is not the only member of its column (the importer refuses it: Spacing Below owns that padding)');

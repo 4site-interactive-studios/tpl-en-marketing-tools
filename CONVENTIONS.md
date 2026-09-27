@@ -1069,9 +1069,9 @@ reaches the render only while a width is picked. Ranked with the colours,
 width first.
 
 - **Where the border goes.** On the text's own carrier cell (the first
-  `<td>` of its region, which must carry the text's class), never the column: MJML emits a column cell only
-  for a bordered or padded column, so a column-level None could not restore
-  the pristine bytes. Box Border claims the carrier's `padding:0`
+  `<td>` of its region, which must carry the text's class). A column gets
+  its own cell only when its padding is authored, so the column variant
+  below requires `padding="0"`. Box Border claims the carrier's `padding:0`
   declaration: **None is exactly those bytes**; a width is
   `padding:16px {sides}px;border:Npx solid {colour}`. The border is inside
   the text's box, so nothing downstream can overflow.
@@ -1121,6 +1121,27 @@ width first.
   dark grey, and no CSS reaches it.
 - **The Inert Dropdown Audit exempts Box Border Color by rule**, not by
   name: see the fifth exemption under "Viewport-scoped controls".
+- **On a whole column (2026-09-27, user decision).** The same flag on an
+  `mj-column` boxes EVERYTHING the column holds (TPL: the CTA Text Block's
+  heading, copy and button). The same three Selects, named `block_border`,
+  `block_border_color` and `block_border_padding`, sit in the block's
+  header section with the other block-level fields. The column must carry
+  an authored `padding="0"`: MJML then emits the column's own cell,
+  `<td style="vertical-align:top;padding:0;">`, the first `<td>` after the
+  column's `<div>` (the Outlook ghost-table comment before it holds a
+  `<td>` as text and is skipped), and Box Border claims its `padding:0`
+  exactly as on a text. **Refused, with an infoNote:** no authored
+  `padding="0"`, a column that shares its section, a multi-row block, a
+  `data-alt-arrangement` block, no default hex, and a column holding
+  anything but texts, auto-width buttons, spacers and mj-raw. MJML sizes an
+  image or a fixed-width button from the column's box at compile time, and
+  a border added in EN is invisible to that math, so the child would
+  overflow the box. A text inside that carries its own flag is refused
+  too (two nested boxes). **The box stays inside the column's width**, so
+  on a fixed-width column the copy narrows with every step (measured in
+  Chromium 2026-09-27 on TPL's 472px CTA column: 436px at 2px + Single,
+  368px at 4px + Triple; 307px and 239px at a 375px phone). No gutter can
+  offset that, unlike the full-width text case.
 
 ## Inert paddings — never ship a field that does nothing
 
@@ -3378,9 +3399,10 @@ the importer whitelists all data-*-only MJML validator warnings
 - **`data-text-size-toggle`** (valueless, on mj-text): opts the text IN to
   the Text Size Select, whose options are the template's `.text-<name> p`
   rules (see "Text Size — an opt-in Select resizes one text's paragraphs").
-- **`data-border-toggle="#hex"`** (valued, on mj-text): opts the text IN to
-  the Box Border + Box Border Color Selects; the value is the colour
-  default (see "Box Border — an opt-in bordered text box").
+- **`data-border-toggle="#hex"`** (valued, on mj-text or mj-column): opts
+  the text, or the whole column, IN to the Box Border + Box Border Color +
+  Box Padding Selects; the value is the colour default (see "Box Border —
+  an opt-in bordered text box").
 - **`data-link-group="<name>"`** (valued, on raw `<a>` tags inside
   hand-authored component markup): sibling anchors in one scanned fragment
   that share a group name and a byte-identical href are ONE logical link.

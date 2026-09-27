@@ -519,16 +519,26 @@ simply wrong, fix the value.
 Box Border Color and Box Padding fields (conventions.md owns the field
 contract). Policy, user decision 2026-09-26: every Text-category text that
 CAN take a border offers one. Today that is WYSIWYG Text, WYSIWYG Header,
-Deadline Panel, Subscription Panel and Two-Line Banner.
+Deadline Panel, Subscription Panel and Two-Line Banner, plus CTA Text Block
+through its column (below).
 
 check-catalog's "Box Border safety" guard enforces it. Between the Text
 divider's END comment and the next category's START, a text that is its
 column's sole member, has `padding="0"`, and sits in a plain full-width
 column (no width, no mj-group, no background image) warns unless it carries
 the flag or the valueless opt-out `data-no-border-toggle`. Texts that cannot
-qualify are skipped, so the Quote Block, Highlighted Text, CTA Text Block and
-Stat Row need no opt-out: fixed-width columns, or columns that already draw
-their own box.
+qualify are skipped, so the Quote Block, Highlighted Text and Stat Row need
+no opt-out: a fixed-width column holding an image, or columns that already
+draw their own box.
+
+**A whole column can carry the flag too** (2026-09-27). The CTA Text Block's
+column does, so its box wraps the heading, copy and button. The importer puts
+the three fields in the block's header section. The guard warns on a column
+flag unless the column has `padding="0"` of its own, is its section's only
+column, sits outside mj-group and background-image frames, and holds only
+texts, auto-width buttons, spacers and mj-raw. The box stays inside the fixed
+472px column, so the copy narrows with each step (conventions "Box Border",
+column variant, has the measurements).
 
 The opt-out is template-only: the importer never reads it and no source
 carries it today. The first time one does, register it in the importer's
