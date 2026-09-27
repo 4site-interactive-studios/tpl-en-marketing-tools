@@ -2293,7 +2293,8 @@ sort — it is purely the panel/export display order.
   Block, CTA Text Block and Footer (user decision 2026-08-20, reverting
   those to left/right padding; Highlighted Text has since left the
   fixed-px form entirely — full-width column, 2026-08-25 — so it no
-  longer carries the flag), and added a check-catalog guard mirroring
+  longer carries the flag, and CTA Text Block likewise since its
+  2026-09-27 full-width rebuild), and added a check-catalog guard mirroring
   the eligibility filter above so an unflagged eligible column trips the
   build. The guard is deliberately as narrow as the filter — an earlier
   over-broad version fired on 93 px columns that can never mint a field.
