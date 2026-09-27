@@ -1137,7 +1137,11 @@ width first.
   image or a fixed-width button from the column's box at compile time, and
   a border added in EN is invisible to that math, so the child would
   overflow the box. A text inside that carries its own flag is refused
-  too (two nested boxes). **The box stays inside the column's width**, so
+  too (two nested boxes). Only `mj-*` children are inspected: fixed-width
+  raw HTML inside an `mj-raw` or a text's content is the template's to
+  avoid. The column cell is found by shape, not by exact bytes: no class
+  and a `vertical-align` in its style, since a column background-color,
+  border-radius or vertical-align puts declarations ahead of the padding. **The box stays inside the column's width**, so
   on a fixed-width column the copy narrows with every step (measured in
   Chromium 2026-09-27 on TPL's 472px CTA column: 436px at 2px + Single,
   368px at 4px + Triple; 307px and 239px at a 375px phone). No gutter can
