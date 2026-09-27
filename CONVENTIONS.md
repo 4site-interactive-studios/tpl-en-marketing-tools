@@ -808,8 +808,10 @@ Four groups never moved in either direction, and the reasons differ:
   the photo would have to give up.
 - **Spacer and the two Dividers.** Nothing to align; a rule that spans the
   full 600 under 32px-inset copy is deliberate.
-- **Centred fixed-px boxes** — Quote Block and CTA Text Block (Highlighted
-  Text was the group's third member until 2026-08-25, below). They reach a
+- **Centred fixed-px boxes** — Quote Block (Highlighted Text was a member
+  until 2026-08-25, below, and CTA Text Block until 2026-09-27, when it was
+  rebuilt as a full-width column inside a 64px section gutter so its width
+  became editable). They reach a
   width by design, not padding: they were cut
   480 → 472 to centre exactly on the 64px-era edges, and they STAY at 472
   (user decision 2026-08-24) — under the 32px baseline they read as
@@ -884,7 +886,8 @@ change and must be re-cut by hand:
 survives for the centred boxes — three at the time of the move, Quote
 Block and CTA Text Block since Highlighted Text went full-width
 2026-08-25 with the ladder unmoved (`.mj-column-px-472` still lives via
-the other two; head-css steady at v49) — 32 for the poll and meter
+the other two; head-css steady at v49), and Quote Block alone since CTA
+Text Block went full-width 2026-09-27 — 32 for the poll and meter
 rails). Delivered head CSS 13,963 → **13,971** (+8 bytes of wider
 digits), headroom against the 14,000 target 37 → 29.
 
@@ -1123,7 +1126,9 @@ width first.
   name: see the fifth exemption under "Viewport-scoped controls".
 - **On a whole column (2026-09-27, user decision).** The same flag on an
   `mj-column` boxes EVERYTHING the column holds (TPL: the CTA Text Block's
-  heading, copy and button). The same three Selects, named `block_border`,
+  heading, copy and button; a full-width column in a 64px section gutter
+  since its rebuild the same day, so Block Padding Left/Right widens the
+  box exactly as on a text). The same three Selects, named `block_border`,
   `block_border_color` and `block_border_padding`, sit in the block's
   header section with the other block-level fields. The column must carry
   an authored `padding="0"`: MJML then emits the column's own cell,
@@ -1142,10 +1147,13 @@ width first.
   avoid. The column cell is found by shape, not by exact bytes: no class
   and a `vertical-align` in its style, since a column background-color,
   border-radius or vertical-align puts declarations ahead of the padding. **The box stays inside the column's width**, so
-  on a fixed-width column the copy narrows with every step (measured in
-  Chromium 2026-09-27 on TPL's 472px CTA column: 436px at 2px + Single,
-  368px at 4px + Triple; 307px and 239px at a 375px phone). No gutter can
-  offset that, unlike the full-width text case.
+  on a FIXED-width column the copy narrows with every step (measured in
+  Chromium 2026-09-27 on the CTA Text Block's former 472px column: 436px at
+  2px + Single, 368px at 4px + Triple; 307px and 239px at a 375px phone)
+  and no gutter can offset it. In a full-width column inside a section
+  gutter the text-box behaviour holds instead (measured on the rebuilt CTA
+  Text Block: gutter 32 + Box Padding 48 widens the box to 534px while the
+  copy stays 436px at x=82).
 
 ## Inert paddings — never ship a field that does nothing
 
@@ -1170,8 +1178,9 @@ direction-flip skips.
   created (the gutter stays literal; top/bottom Selects remain; the inner
   section's own Width is the working control). Zero gutters never pin —
   600px is the natural cap and stays responsive. On the current template
-  this suppresses the side gutter on eleven blocks — Logo Hero, CTA Hero
-  (w/ heading), Quote Block, CTA Text Block, Image 1x1, Images 2x1, Images
+  this suppressed the side gutter on eleven blocks — Logo Hero, CTA Hero
+  (w/ heading), Quote Block, CTA Text Block (left the list 2026-09-27 when
+  it was rebuilt full-width), Image 1x1, Images 2x1, Images
   3x1, Photo Banner, Progress Meter Block, Spacer, Divider (tri-color)
   (measured 2026-08-21). Video Block (inset) and Countdown Block were on
   this list until their gutter moved 48→32 the same day, and the old entry
@@ -1195,7 +1204,7 @@ direction-flip skips.
   (same reasoning that removed Outlook-only column widths).
 - **Inset-box sections** (2026-07-27, `loneFixedPxColumn` in
   `sectionShapes`): a section whose only content is a lone fixed-px column
-  (Quote Block's 472px box, CTA Text Block) centers that column in
+  (Quote Block's 472px box; CTA Text Block was one until 2026-09-27) centers that column in
   the side-padding slack — symmetric Block Padding Left/Right edits move
   nothing. Those two sides stay literal; Block Top/Bottom and the column's
   own four paddings (the real box inset) keep their Selects: 8 padding

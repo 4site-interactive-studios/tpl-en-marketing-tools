@@ -71,13 +71,8 @@
     "date": "2026-08-25"
   },
   "block:CTA Text Block": {
-    "version": 12,
-    "hash": "656414ba0417",
-    "date": "2026-09-27"
-  },
-  "block:CTA Text Block (adjustable width)": {
-    "version": 1,
-    "hash": "df43df5e9e1a",
+    "version": 13,
+    "hash": "a57199eac27f",
     "date": "2026-09-27"
   },
   "block:Catalog Gap (Footers)": {
@@ -333,8 +328,8 @@
     "date": "2026-09-25"
   },
   "email-template": {
-    "version": 65,
-    "hash": "2aaf3b51a9f7",
+    "version": 66,
+    "hash": "c56da80fd65c",
     "date": "2026-09-27"
   },
   "head-css": {

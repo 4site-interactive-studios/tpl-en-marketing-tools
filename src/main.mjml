@@ -746,48 +746,12 @@
     <!-- END: Highlighted Text -->
 
     <!-- START: CTA Text Block -->
-    <mj-section
-      css-class="block"
-      background-color="#CEE4C5" padding="16px"
-    >
-      <mj-column data-no-width-toggle data-border-toggle="#006837" width="472px" padding="0">
-        <!-- Heading and body are separate mj-texts so each mints its own
-             Content field and Display toggle (one idea per mj-text,
-             user decision 2026-08-19). -->
-        <mj-text align="center" padding="0 0 16px">
-          <h3>Lorem ipsum dolor</h3>
-        </mj-text>
-        <mj-text align="center" padding="0 0 32px">
-          <p style="font-family: Arial, sans-serif;">
-            Lorem ipsum dolor sit amet consectetur. Diam venenatis lectus nisi quam nibh at
-            donec adipiscing ornare. Pellentesque nibh morbi pulvinar quis viverra.
-          </p>
-        </mj-text>
-        <mj-button width="auto"
-            color="#ffffff"
-            background-color="#006837"
-            href="https://tpl.org"
-            align="center" padding="0 32px 8px">
-          LOREM IPSUM SEMPER MI
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    <mj-section css-class="spacer-block block" padding="0">
-      <mj-column>
-        <mj-spacer height="16px" />
-      </mj-column>
-    </mj-section>
-    <!-- END: CTA Text Block -->
-
-    <!-- START: CTA Text Block (adjustable width) -->
-    <!-- TEMPORARY test variant (2026-09-27, Bryan): CTA Text Block rebuilt
-         the WYSIWYG Text way so the box's outside side padding is editable.
-         The 472px fixed column became a full-width column, and the section
-         carries the gutter instead: 64px (Quadruple) reproduces today's
-         472px desktop width, and Desktop Block Padding Left/Right now moves
-         it. flush-mobile-capflush keeps phones where they were (gutter 0,
-         copy held at 16px by the .wysiwyg rule). If it tests well it
-         REPLACES CTA Text Block under that name; if not, delete it. -->
+    <!-- Rebuilt 2026-09-27 (Bryan; tested as "CTA Text Block (adjustable
+         width)", EoA vUYCZg…): a full-width column inside a section that
+         carries the gutter, the WYSIWYG Text shape, so Desktop Block Padding
+         Left/Right sets the width outside the Box Border. 64px (Quadruple)
+         is the old fixed 472px column's width. flush-mobile-capflush keeps
+         phones as they were: gutter 0, copy held at 16px by .wysiwyg. -->
     <mj-section
       css-class="block flush-mobile-capflush"
       background-color="#CEE4C5" padding="16px 64px"
@@ -819,7 +783,7 @@
         <mj-spacer height="16px" />
       </mj-column>
     </mj-section>
-    <!-- END: CTA Text Block (adjustable width) -->
+    <!-- END: CTA Text Block -->
 
     <!-- START: WYSIWYG Header -->
     <mj-section

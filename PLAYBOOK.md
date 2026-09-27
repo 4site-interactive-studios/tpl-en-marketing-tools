@@ -536,9 +536,11 @@ column does, so its box wraps the heading, copy and button. The importer puts
 the three fields in the block's header section. The guard warns on a column
 flag unless the column has `padding="0"` of its own, is its section's only
 column, sits outside mj-group and background-image frames, and holds only
-texts, auto-width buttons, spacers and mj-raw. The box stays inside the fixed
-472px column, so the copy narrows with each step (conventions "Box Border",
-column variant, has the measurements).
+texts, auto-width buttons, spacers and mj-raw. The CTA Text Block was rebuilt
+the same day (tested first as a temporary adjustable-width copy) from a fixed
+472px column into a full-width column inside a `16px 64px` section with
+`flush-mobile-capflush`, the WYSIWYG Text shape: Desktop Block Padding
+Left/Right now widens the box and Box Padding keeps the copy where it was.
 
 The opt-out is template-only: the importer never reads it and no source
 carries it today. The first time one does, register it in the importer's
