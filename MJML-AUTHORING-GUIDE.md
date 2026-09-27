@@ -446,7 +446,7 @@ its no-`block` control.
 The dark-mode strategy has exactly two hooks, and both survive EN:
 `@media (prefers-color-scheme: dark)` (Apple Mail, iOS Mail, and
 friends) and `[data-ogsc]` inside a conditional media query
-(Outlook.com / OWA). **Outlook.com uses both, and neither is in charge
+(Outlook.com / OWA, and Outlook for Mac). **Outlook.com uses both, and neither is in charge
 there.** Its own repaint decides what the reader sees. Established
 2026-09-24 from Outlook.com's source: Rémi Parmentier's gist
 gist.github.com/hteumeuleu/51b5a8ea95cb47e344b0cb47bc1f2289 and the 2021
@@ -483,7 +483,23 @@ port lives in `docs/archive/owa-darkmode-sim/` in the canonical repo.
   branches paint. No CSS may target the seed. With it, the mirror fires
   whatever the reader's OS scheme. Measured in simulation on the TPL
   catalog, OS light: 339 repaints (57 of 154 blocks) fell to 45 (0 blocks),
-  with 0 px changed in light mode and in media-query dark.
+  with 0 px changed in light mode and in media-query dark. Confirmed on a
+  real send 2026-09-27 (EoA I5TnBD…, a standalone two-box demo archived in
+  TPL `archive/probes/`): one `[data-ogsc] .box` rule, two identical boxes,
+  one inside a seed. The seeded box took the rule's background in
+  Outlook.com dark and Outlook for Mac dark; the unseeded one stayed plain
+  in both, and neither box changed in any other client.
+- **A mirror rule owns grounds, not the text of an element Outlook
+  repaints.** In that send Outlook.com painted the seeded box's
+  background from the rule but kept its own light text, ignoring the
+  rule's `color`. The likely cause: the box inherits dark text from the
+  seed, fails the contrast test, and gets its text written inline with
+  `!important` (inferred from the render; the delivered HTML was not
+  inspected).
+  Backgrounds and borders, which Outlook leaves alone on that element,
+  follow the rule. Outlook for Mac applied both. So set text color in a
+  `[data-ogsc]` rule only on an element whose own authored text already
+  passes, and never rely on it to override a repaint.
 - **Check the method first.** The same source has a flag-gated "simple"
   recolor that flips every inline color with no contrast test. The 2021
   caller passes `false`. On a real send, inline #000 grounds stay black
@@ -498,7 +514,8 @@ send viewed across clients):
   and force-applies its own auto-darkening. The `dark-only` swap cannot
   fire; the light variant renders and Gmail recolors it.
 - **Outlook 2021 Windows (Word engine, dark mode)** supports no media
-  queries at all, and `[data-ogsc]` is Outlook.com-only. TPL
+  queries at all, and `[data-ogsc]` never fires there (Outlook.com / OWA
+  and Outlook for Mac only). TPL
   additionally excludes `dark-only` images from Outlook with
   `<!--[if !mso]><!-->` — deliberate, since Word cannot reliably
   `display:none` them — so desktop Outlook can only ever receive the

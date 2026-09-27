@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[data-ogsc] seed demo</title>
+<style>
+  .demo-box { padding: 16px; border: 2px dashed #888888; font-family: Arial, sans-serif; font-size: 16px; line-height: 22px; }
+  .demo-box b { font-size: 18px; }
+  /* The only dark-mode CSS in this email. Outlook.com / OWA dark only. */
+  @media only screen and (max-width: 9999px) {
+    [data-ogsc] .demo-box {
+      background-color: #6A1B9A !important;
+      color: #FFEB3B !important;
+    }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
+        <tr>
+          <td style="padding:24px 16px 8px;font-family:Arial,sans-serif;font-size:15px;line-height:21px;">
+            <b>[data-ogsc] seed demo.</b> Both boxes below carry the same class and the same CSS rule:
+            <code>[data-ogsc] .demo-box</code> paints purple with yellow text. Box B sits in the email body with nothing
+            around it. Box A sits inside an unclassed <code>&lt;div style="color:#000000"&gt;</code> seed. That is the only difference.<br><br>
+            <b>Expected:</b> Outlook.com / Outlook on the web in dark mode: <b>A purple, B plain</b>.
+            Everywhere else (Outlook.com light, Apple Mail light or dark, Gmail, Outlook desktop): both plain.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px;">
+            <div class="demo-box">
+              <b>B: NOT ARMED (control)</b><br>
+              No seed above this box. In Outlook dark it should stay plain.
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px;">
+            <!-- The seed: no class, no CSS targets it, inline black text so Outlook always repaints and tags it. -->
+            <div style="color:#000000;">
+              <div class="demo-box">
+                <b>A: ARMED (seeded)</b><br>
+                Inside the seed. In Outlook dark it should turn purple with yellow text.
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 16px 32px;font-family:Arial,sans-serif;font-size:15px;line-height:21px;">
+            <span style="color:#222222;background-color:#ffffff;">Sanity check: this line is authored dark text on white. In Outlook dark it should come out light text on a dark ground, which confirms the render really is in dark mode.</span>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
