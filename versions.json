@@ -75,6 +75,11 @@
     "hash": "656414ba0417",
     "date": "2026-09-27"
   },
+  "block:CTA Text Block (adjustable width)": {
+    "version": 1,
+    "hash": "df43df5e9e1a",
+    "date": "2026-09-27"
+  },
   "block:Catalog Gap (Footers)": {
     "version": 1,
     "hash": "9755cb458465",
@@ -328,9 +333,9 @@
     "date": "2026-09-25"
   },
   "email-template": {
-    "version": 64,
-    "hash": "c56da80fd65c",
-    "date": "2026-09-25"
+    "version": 65,
+    "hash": "2aaf3b51a9f7",
+    "date": "2026-09-27"
   },
   "head-css": {
     "version": 54,
