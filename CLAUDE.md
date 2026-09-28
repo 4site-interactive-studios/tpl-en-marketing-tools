@@ -39,6 +39,14 @@ padding inside it does not). Run it with
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.
 
+**Mirror correction (2026-09-27), until re-mirrored:** CONVENTIONS.md and
+guide §6d-i cite the padding census as "44 of 170 frames". That figure never
+included the autoresponders — check-catalog rebuilt their source path as
+`src/<base>.mjml` and skipped them silently after the 2026-08-21 move. Resolved
+through the layout helper, the baseline is **50 of 200**: the 30 autoresponder
+frames add 6 capped rows, every one a block already capped the same way in
+`main.mjml`, so no new name. Diff against that set, not the mirrors' figure.
+
 ## Source layout
 
 | Path | Role |
@@ -126,6 +134,14 @@ here plus an allowlist entry in `scripts/check-docs.mjs` assertion 5.
 
 ## Working rules
 
+- **Stopping and continuing** (written for Claude Opus 5.5, 2026-09; mirrors
+  the user's global rule, which cloud sessions do not load). When a step
+  doesn't need the user's input, keep going, and put status notes in the same
+  message as the next action. Stop and ask only when blocked, or before
+  anything destructive or visible outside this repo: deleting data or
+  branches, force-pushing, rewriting history, deploying, or posting where
+  others will see it. When the user describes a problem or asks a question,
+  the deliverable is the assessment: report findings and stop.
 - Never commit or push unless asked. "Commit" means commit **and** push to
   `origin/main`.
 - **Git discipline** (parallel AI sessions push here many times a day):

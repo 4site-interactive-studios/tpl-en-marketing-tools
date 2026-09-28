@@ -19,7 +19,7 @@
  * output. Every assertion is wrapped so one throwing cannot lose the others.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { sourcePages } from './lib/source-pages.mjs';
+import { sourcePages, CATALOG } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -41,6 +41,36 @@ const lineAt = (text, index) => text.slice(0, index).split('\n').length;
 const sources = sourcePages(ROOT)
   .filter((p) => p.dir !== 'probes')
   .map((p) => p.rel);
+
+/** The compiled pages the dist-reading checks police: every dist/*_live.html,
+ *  resolved to its source through the layout helper and excluded by the same
+ *  probes-directory rule as `sources`. Never rebuild the path as
+ *  `src/${base}.mjml` — that silently skipped both autoresponders from
+ *  2026-08-21, when they moved into src/autoresponders/, until a 2026-09-27
+ *  review. A compiled page with no source WARNS instead of being skipped: it
+ *  is a stale artifact (the build never cleans dist/) or a page this lookup
+ *  has lost, and either way no geometry check ran on it. Memoized so the
+ *  warning prints once however many checks ask. */
+let livePagesMemo = null;
+const livePages = () => {
+  if (livePagesMemo) return livePagesMemo;
+  const byBase = new Map(sourcePages(ROOT).map((p) => [p.base, p]));
+  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
+  livePagesMemo = [];
+  for (const page of dist.filter((n) => n.endsWith('_live.html')).sort()) {
+    const base = page.replace(/_live\.html$/, '');
+    const src = byBase.get(base);
+    if (!src) {
+      warn(
+        `dist/${page} has no source page in src/ — a stale artifact (git rm its three dist files) or a page the layout helper cannot find; the column-geometry and padding checks did not run on it`,
+      );
+      continue;
+    }
+    if (src.dir === 'probes') continue;
+    livePagesMemo.push({ page, rel: `src/${src.rel}`, catalog: src.rel === CATALOG, srcText: read(`src/${src.rel}`) || '' });
+  }
+  return livePagesMemo;
+};
 
 /** Run an assertion without letting a throw take the rest of the pass down. */
 const guard = (label, fn) => {
@@ -282,27 +312,21 @@ function scanGeometry(html) {
 }
 
 guard('column geometry check', () => {
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   // _live.html only: _local-debug.html embeds the whole source MJML as JSON,
   // including its own START: markers, which mis-attributes every later hit.
   // These regexes are tuned to MJML's own output shape — never point this
   // check at DELIVERED html, whose attributes EN rewrites (valign, bgcolor).
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes are deliberate experiments — they carry markup a catalog page must
+  // never carry (a frozen ghost overflowing on purpose, say) — so livePages()
+  // excludes them exactly as `sources` does.
+  const pages = livePages();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — run npm run build; skipping column geometry');
     return;
   }
 
-  for (const page of pages) {
+  for (const { page, rel, srcText } of pages) {
     const html = read(`dist/${page}`) || '';
-    const base = page.replace(/_live\.html$/, '');
-    const srcText = read(`src/${base}.mjml`);
-    if (srcText === null) continue; // a page with no source is not ours to police
 
     // MJML's [if mso | IE] conditionals mirror the column tree exactly, so the
     // frames they open give sibling identity without a tree parser.
@@ -317,7 +341,7 @@ guard('column geometry check', () => {
       const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
-        `src/${base}.mjml${at} "${name}" — a ${hit.img}px image in a ${Math.round(hit.box)}px content box (${Math.round(hit.img - hit.box)}px over); it cannot shrink with the frame, so it overflows its column`,
+        `${rel}${at} "${name}" — a ${hit.img}px image in a ${Math.round(hit.box)}px content box (${Math.round(hit.img - hit.box)}px over); it cannot shrink with the frame, so it overflows its column`,
       );
     }
 
@@ -328,8 +352,8 @@ guard('column geometry check', () => {
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
         hit.cols.length < 2
-          ? `src/${base}.mjml${at} "${name}" — a lone ${Math.round(hit.sum)}px column in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); it overflows the body instead of filling the frame — drop its width= so it fills`
-          : `src/${base}.mjml${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
+          ? `${rel}${at} "${name}" — a lone ${Math.round(hit.sum)}px column in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); it overflows the body instead of filling the frame — drop its width= so it fills`
+          : `${rel}${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
       );
     }
   }
@@ -376,13 +400,8 @@ const OPT_OUT_FLAGS = [
 // ---------------------------------------------------------------------------
 
 guard('padding growth census', () => {
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes excluded by livePages(), as in the column-geometry check above.
+  const pages = livePages();
   if (!pages.length) return;
   const detail = process.argv.includes('--padding-census');
 
@@ -390,14 +409,12 @@ guard('padding growth census', () => {
   let total = 0;
   const rows = [];
 
-  for (const page of pages) {
+  for (const { page, rel, catalog, srcText } of pages) {
     const html = read(`dist/${page}`) || '';
-    const base = page.replace(/_live\.html$/, '');
-    if (read(`src/${base}.mjml`) === null) continue;
 
     // The scale the template itself declares — the same values the importer
     // turns into options. No declaration means no editable padding at all.
-    const cfg = /<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(read(`src/${base}.mjml`) || '');
+    const cfg = /<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(srcText);
     let scale = [];
     try {
       const parsed = JSON.parse(cfg?.[1] ?? '{}');
@@ -419,7 +436,6 @@ guard('padding growth census', () => {
     // pairs with the Nth source frame — valid only when the counts agree
     // (alternate arrangements are dropped before compile, which desyncs
     // any block that carries them; those get a warning, not a mispair).
-    const srcText = read(`src/${base}.mjml`) || '';
     // Frames are named by the NEAREST PRECEDING START marker — the same
     // rule blockOf() applies to the compiled HTML below, so ordinals on
     // the two sides enumerate identically (a paired START/END regex would
@@ -495,7 +511,9 @@ guard('padding growth census', () => {
       }
       if (max !== null && max < scale[scale.length - 1]) {
         capped++;
-        rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)`);
+        // Rows from a page other than the catalog name it: the autoresponders
+        // reuse catalog blocks, and an unlabelled repeat reads as a duplicate.
+        rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)${catalog ? '' : ` — ${rel}`}`);
       }
     }
   }
@@ -1185,18 +1203,13 @@ guard('Gmail CSS budget + head coupling check', () => {
   // canary this still reserves for was archived on 2026-08-21, so the 250 is
   // now pure conservatism; keep it until something measurable replaces it.
   const HOIST_ALLOWANCE = 250;
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes excluded by livePages(), as in the column-geometry check.
+  const pages = livePages();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — skipping the CSS budget check');
     return;
   }
-  for (const page of pages) {
+  for (const { page } of pages) {
     const html = read(`dist/${page}`) || '';
     const headEnd = html.indexOf('</head>');
     const head = headEnd === -1 ? html : html.slice(0, headEnd);
