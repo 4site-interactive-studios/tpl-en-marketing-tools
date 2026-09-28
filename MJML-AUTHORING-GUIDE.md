@@ -67,11 +67,16 @@ escaped on edit.
 | `[data-ogsc] …` (top level) | **DROPPED** | Outlook.com dark branch silently deleted |
 | Rule with `!important`, when inlined | inlined, **`!important` stripped** | priority does not survive inlining |
 | `@media screen` (no condition) | **flattened and INLINED** | not a safe hiding place |
-| Rule matching nothing | pruned | harmless |
+| Rule matching nothing | pruned — **at top level only** | a dead rule inside a conditional `@media` is KEPT verbatim and costs delivered bytes (re-measured 2026-09-28, EoA cJzcMWhb…: a top-level `.footer-cta a` was gone from the delivered head while three unmatched rules inside `@media` arrived) |
 | `vertical-align` in a td's style | **moved to a `valign` ATTRIBUTE** | `td[style*=vertical-align]` selectors die in the inbox (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered tds kept it inline; `direction` survives in style) |
 | `<p>` with no margin of its own | **`margin: 13px 0` written inline** (EN's own default; its injected preheader carries it too) | paragraph spacing arrives explicit, so a first/last-child trim lands inline beside it (measured 2026-09-25, EoA d0S0nH…) |
 | Structural pseudo-class rule (`:first-child`, `:last-child`) | **INLINED onto every element it matches — inline runs included** | `.x div *:last-child { margin-bottom:0 }` writes `margin-bottom:0` onto a `<u>`, `<strong>`, `<a>` or `<br>`, and Word applies an inline run's margin to its WHOLE paragraph: adjacent formatted paragraphs run together in Outlook desktop (measured 2026-09-25, EoA d0S0nH… / 8lOZqo…). Name block elements in trims, never `*` — see §2d |
 | CSS comments | **STRIPPED** at send | comment weight never reaches recipients — it costs the CSS Editor box, not the payload |
+| HTML comments in the body — own-line, inline, multi-line, `START:`/`END:` markers | **KEPT verbatim**, on the paste path AND through the block pipeline | every note ships to every recipient unless it is removed before EN sees it — the importer does that (§2f; measured 2026-09-28, EoA cJzcMWhb… paste / wKyPewfA… block) |
+| Indentation and trailing blanks (spaces and tabs) | **KEPT exactly** — 17 spaces, 3 tabs and 3 trailing spaces all arrived | pretty-printing costs delivered bytes: a real block pasted 4,848 bytes smaller arrived exactly 4,848 bytes smaller (same sends) |
+| A run of blank lines | **COLLAPSED to one** | the only white space EN normalises |
+| `<` / `>` inside an attribute value | **entity-escaped** (`&lt;`, `&gt;`) | the value is unchanged once parsed; harmless (same sends) |
+| A line longer than 998 bytes | **delivered whole** — a 1,466-byte line arrived on one line | EN does not re-flow markup; tags on one line stay on one line (same sends) |
 | `<a>` wrapping a `<table>` | **anchor AUTO-CLOSED before the table** | the delivered link arrives EMPTY with the table expelled after it — the row is unclickable in every client (measured 2026-08-18, probe 0Mgmjr…: 167 delivered chars to `</a>` where the build wraps 1,160). Anchor per CELL around inline content, never around a table — share one URL across the cells with `data-link-group` (§5) |
 
 Plus two structural rewrites: EN injects a hidden preheader `<p>` as the
@@ -967,6 +972,13 @@ near any of these figures.
   function: conditional comments, `START:`/`END:` markers, `- Not
   Displayed` markers, `en-tools-keep`. Every newline survives as well — a
   newline renders as the same collapsible space the indentation did.
+  **The saving reaches the inbox in full** (measured on real sends,
+  2026-09-28, EoA cJzcMWhb… paste and wKyPewfA… block, probe archived in
+  TPL `archive/probes/probe_en-send-bytes-2026-09-28.html`): EN delivers
+  body comments and indentation untouched on both paths — only blank-line
+  runs collapse — so a real block pasted before and after compaction
+  arrived 14,956 vs 10,108 bytes, the whole 4,848-byte difference. EN's
+  inliner adds the same ~2.5 KB to either copy.
 
 Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
 Anything near this ceiling is far past the clip point, which is fine for a

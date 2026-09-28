@@ -418,6 +418,12 @@ merges by exact string (guide §2a). Fail-open: an exception leaves the
 formatted text as it was. TPL's `scripts/emit-variants.mjs` mirrors
 `compactEmailHtml` for its `_live.html` paste — keep the two in step.
 
+**It is a real inbox saving, not a stored-size one** (measured on real
+sends 2026-09-28, both the paste path and the block pipeline; guide §2 owns
+the measured behaviour): EN delivers body comments and indentation
+untouched and only collapses blank-line runs, so the full difference a
+compacted block makes arrives in the recipient's copy.
+
 **Rule for agents**: document the body freely too — in a comment of its
 own or inside an `mj-text`. The one comment form that can still ship is
 the functional set above; `en-tools-keep` is the deliberate way to put a

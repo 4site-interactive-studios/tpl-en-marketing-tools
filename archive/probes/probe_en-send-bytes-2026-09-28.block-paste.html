@@ -1,0 +1,354 @@
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;background:#CEE4C5;background-color:#CEE4C5;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;"><tbody><tr><td style="padding:12px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;"><b>EN SEND-BYTES PROBE (2026-09-28)</b>: what does EN remove between the paste and the inbox? Read the delivered SOURCE with the reader script, not the render.</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]-->
+    <div style="margin:0px auto;max-width:600px;background:#F5FAF1;background-color:#F5FAF1;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5FAF1;background-color:#F5FAF1;width:100%;">
+        <tbody>
+          <!-- PROBE-C1 own-line prose comment: does EN deliver an HTML comment that sits on its own line in the body? -->
+          <tr>
+            <td style="padding:8px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">
+              C2 inline comment between two words: alpha<!-- PROBE-C2 inline comment -->beta
+            </td>
+          </tr>
+          <!--
+            PROBE-C3 multi-line prose comment, shaped like the MJML's own notes:
+            dated rulings, measurements, why a value is load-bearing. Before
+            2026-09-27 roughly 37.5 KB of these rode inside the TPL catalog's
+            blocks. If this whole comment is missing from the delivered source,
+            EN strips body comments and the compaction's comment half is redundant.
+          -->
+          <!-- START: PROBE-C4 marker -->
+          <tr>
+            <td style="padding:8px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">
+              C4 sits between a START/END comment pair (the block markers the importer keeps).
+            </td>
+          </tr>
+          <!-- END: PROBE-C4 marker -->
+          <tr>
+            <td style="padding:8px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">
+              C5 hidden conditional: <!--[if mso | IE]><span>PROBE-C5 Outlook-only text</span><![endif]-->
+              C6 revealed conditional: <!--[if !mso]><!--><span>PROBE-C6 non-Outlook text</span><!--<![endif]-->
+              C7 comment inside an attribute value: <span title="PROBE-C7 <!-- not a comment -->">hover</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">
+                 PROBE-W1 is indented by exactly 17 spaces in the paste
+			PROBE-W2 is indented by exactly 3 tabs in the paste
+              PROBE-W3 ends with exactly 3 trailing spaces in the paste   
+              PROBE-W4-A is followed by exactly 4 blank lines in the paste
+
+
+
+
+              PROBE-W4-B
+              <span>PROBE-W5-A</span><span>PROBE-W5-B</span> are two tags on one line with nothing between them
+              PROBE-W7 keeps runs of spaces inside text: one  two   three
+            </td>
+          </tr>
+          <tr><td style="padding:8px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">PROBE-W6 one line longer than 998 bytes: lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet PROBE-W6-END</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;background:#CEE4C5;background-color:#CEE4C5;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;"><tbody><tr><td style="padding:12px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">PROBE-R1-BEGIN: Signature Card (photo), as shipped BEFORE compaction (11,726 bytes pasted)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!-- START: PROBE-R1 Signature Card (photo) --><!-- Catalog geometry: the 112+424=536 px group on the 32px content
+         baseline, 8px of inner gutter each side. data-no-padding-right for
+         the reason the catalog block records — the px group pins the right
+         gutter at 600 and flush-mobile-capflush zeroes it below the
+         breakpoint, so it is dead at both viewports.
+
+         ONE deliberate deviation from the catalog block: the portrait is the
+         pre-rounded PNG, not the square asset under border-radius="50%" +
+         data-image-shape-toggle. Word paints no border-radius on an image, so
+         a real send keeps its circle only with the baked asset; the catalog
+         keeps the toggle because an editor there needs the control.
+
+         The lead-in line sits INSIDE the text column here rather than in a
+         full-width section above the card (the catalog's arrangement): it
+         reads as part of the signature on a receipt, not as a salutation. -->
+        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="signature-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="signature-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0 32px 0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                    <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:112px;" ><![endif]-->
+                    <div class="mj-column-px-112 mj-outlook-group-fix signature-img" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:20.8955223880597%;">
+                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                        <tbody>
+                          <tr>
+                            <td style="vertical-align:top;padding:0 8px 0 0;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:100px;">
+                                              <img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <!--[if !mso]><!-->
+                                  <tr>
+                                    <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:100px;"><img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr><!--<![endif]-->
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!--[if mso | IE]></td><td style="vertical-align:middle;width:424px;" ><![endif]-->
+                    <div class="mj-column-px-424 mj-outlook-group-fix signature-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:79.1044776119403%;">
+                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                        <tbody>
+                          <tr>
+                            <td style="vertical-align:middle;padding:0 0 0 8px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                        <p style="font-style:italic;font-size:16px;line-height:24px;">Thank you for making this work possible.</p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" class="light-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:137px;">
+                                              <img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="137" height="auto" />
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <!--[if !mso]><!-->
+                                  <tr>
+                                    <td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                          <tr>
+                                            <td style="width:137px;"><img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_white.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="137" height="auto" /></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr><!--<![endif]-->
+                                  <tr>
+                                    <td align="left" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+                                      <div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+                                        <p><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+        <div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                  <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                      <tbody>
+                        <tr>
+                          <td style="font-size:0px;word-break:break-word;">
+                            <div style="height:16px;line-height:16px;">&#8202;</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--[if mso | IE]></td></tr></table><![endif]-->
+        <!-- END: PROBE-R1 Signature Card (photo) -->
+
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;background:#CEE4C5;background-color:#CEE4C5;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;"><tbody><tr><td style="padding:12px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">PROBE-R1-END</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;background:#CEE4C5;background-color:#CEE4C5;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;"><tbody><tr><td style="padding:12px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">PROBE-R2-BEGIN: the same block AFTER compaction (6,900 bytes pasted)</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+
+<!-- START: PROBE-R2 Signature Card (photo) -->
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="signature-block-outlook block-outlook flush-mobile-capflush-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div class="signature-block block flush-mobile-capflush" style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+<tbody>
+<tr>
+<td style="direction:ltr;font-size:0px;padding:0 32px 0;text-align:center;">
+<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:536px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+<!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td style="vertical-align:top;width:112px;" ><![endif]-->
+<div class="mj-column-px-112 mj-outlook-group-fix signature-img" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:20.8955223880597%;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+<tbody>
+<tr>
+<td style="vertical-align:top;padding:0 8px 0 0;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+<tbody>
+<tr>
+<td align="left" class="light-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td style="width:100px;">
+<img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" />
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-->
+<tr>
+<td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td style="width:100px;"><img alt="Carrie Besnette Hauser" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser_round.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto" /></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr><!--<![endif]-->
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td><td style="vertical-align:middle;width:424px;" ><![endif]-->
+<div class="mj-column-px-424 mj-outlook-group-fix signature-text" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:79.1044776119403%;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+<tbody>
+<tr>
+<td style="vertical-align:middle;padding:0 0 0 8px;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+<tbody>
+<tr>
+<td align="left" class="wysiwyg" style="font-size:0px;padding:0 0 8px;word-break:break-word;">
+<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+<p style="font-style:italic;font-size:16px;line-height:24px;">Thank you for making this work possible.</p>
+</div>
+</td>
+</tr>
+<tr>
+<td align="left" class="light-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td style="width:137px;">
+<img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_black.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="137" height="auto" />
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-->
+<tr>
+<td align="left" class="dark-only no-bleed" style="font-size:0px;padding:0;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td style="width:137px;"><img alt="Signature" src="https://bd6ca9cefa6fb6e0adf1-c2f9aa1adb9f60a775f60074e4c86031.ssl.cf5.rackcdn.com/20002/staff-carrie-besnette-hauser-signature_white.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="137" height="auto" /></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr><!--<![endif]-->
+<tr>
+<td align="left" class="wysiwyg" style="font-size:0px;padding:8px 0 0;word-break:break-word;">
+<div style="font-family:Tahoma, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
+<p><b>Carrie Besnette Hauser</b><br /><b>President &amp; Chief Executive Officer</b></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="spacer-block-outlook block-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div class="spacer-block block" style="margin:0px auto;max-width:600px;">
+<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+<tbody>
+<tr>
+<td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+<tbody>
+<tr>
+<td style="font-size:0px;word-break:break-word;">
+<div style="height:16px;line-height:16px;">&#8202;</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+<!-- END: PROBE-R2 Signature Card (photo) -->
+
+
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600"><tr><td><![endif]--><div style="margin:0px auto;max-width:600px;background:#CEE4C5;background-color:#CEE4C5;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#CEE4C5;background-color:#CEE4C5;width:100%;"><tbody><tr><td style="padding:12px 32px;font-family:Tahoma,sans-serif;font-size:14px;line-height:18px;color:#362229;text-align:left;">PROBE-R2-END</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
+

@@ -105,7 +105,8 @@ Each step exists for a reason:
   CLAUDE.md. Source MJML always keeps relative paths (guide §7) — the
   absolute form is a build artifact, never something you author.
   The live copy is then **compacted** (2026-09-27) — this paragraph owns
-  the rule for this repo:
+  the rule for this repo, and it is a real inbox saving: EN delivers body
+  comments and indentation untouched (guide §2, measured 2026-09-28):
   - **Out:** authoring prose comments (head and body), line indentation,
     trailing blanks, blank-line runs (collapsed to ONE newline — no line is
     ever joined to another), and CSS comments wherever white space or
