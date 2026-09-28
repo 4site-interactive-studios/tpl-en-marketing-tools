@@ -121,8 +121,12 @@ Each step exists for a reason:
   the photo), every light container background inside a `.block` section has a
   dark-mode hook in BOTH branches, and no set of fixed-width columns exceeds
   its frame. The last one reads compiled `dist/*_live.html`, because the frame
-  is only resolved there — it skips with a note if `dist/` is absent. Same
-  WARN-only contract. Run alone with `npm run check-catalog`.
+  is only resolved there — it skips with a note if `dist/` is absent. Each
+  compiled page is traced to its source through `scripts/lib/source-pages.mjs`,
+  and one with no source WARNs rather than being skipped (a rebuilt
+  `src/<base>.mjml` path silently dropped both autoresponders for five weeks
+  after they moved to `src/autoresponders/`). Same WARN-only contract. Run
+  alone with `npm run check-catalog`.
 
 Preview: `.claude/launch.json` runs `npx http-server <repo>/dist -p 8642 -c-1`
 (`-c-1` disables caching so rebuilds show immediately); `npm run preview` is
