@@ -12,7 +12,8 @@ short version.
 ```
 src/
   main.mjml            ← the master template, and the ONLY catalog
-  broken-blocks.mjml   ← holding pen for blocks under repair; not shipped
+  broken-blocks.mjml   ← holding pen for blocks under repair; not shipped.
+                         Its head mirrors main's (check-catalog guards it)
   autoresponders/
     donation-thank-you.mjml
     recurring-donation-thank-you.mjml  ← standalone autoresponders

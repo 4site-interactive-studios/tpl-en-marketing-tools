@@ -19,7 +19,7 @@
  * output. Every assertion is wrapped so one throwing cannot lose the others.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { sourcePages } from './lib/source-pages.mjs';
+import { sourcePages, CATALOG } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -967,6 +967,87 @@ guard('Builder band span leads the body', () => {
 });
 
 // ---------------------------------------------------------------------------
+// §N Head mirror matches the catalog head (2026-09-28). broken-blocks.mjml
+// promises main's head verbatim so a block under repair behaves there as it
+// did in the catalog. That promise was a sentence, and it rotted: two commits
+// that moved rules into main's head (the viewport fork 2026-08-22, the
+// light/dark swap 2026-08-24) skipped the holding pen, and for a month its
+// page rendered BOTH halves of every twin pair (measured 2026-09-27) while
+// every other check passed. Compared per top-level head element, comments
+// stripped; the en-tools-config comment is compared on its own, as JSON.
+// Allowed: a different <mj-title>, and <mj-style> elements main does not
+// carry (rules for a block parked there, like .hero-photo-fallback).
+// ---------------------------------------------------------------------------
+const HEAD_MIRRORS = ['broken-blocks.mjml'];
+
+guard('Head mirror matches the catalog head', () => {
+  const main = read(`src/${CATALOG}`);
+  if (main === null) return;
+  const HEAD_EL = /<(mj-[\w-]+)\b[^>]*?(?:\/>|>[\s\S]*?<\/\1>)/g;
+  const elements = (text) =>
+    [...(/<mj-head>([\s\S]*?)<\/mj-head>/.exec(text)?.[1] ?? '').replace(/<!--[\s\S]*?-->/g, '').matchAll(HEAD_EL)].map(
+      (m) => ({
+        tag: m[1],
+        key: m[1] === 'mj-title' ? '<mj-title>'
+          : m[0].replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim(),
+      }),
+    );
+  const config = (text) => JSON.parse(/<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(text)?.[1] ?? '{}');
+  const short = (s, at = 0) => JSON.stringify(s.slice(Math.max(0, at - 30), at + 60));
+  const mainEls = elements(main);
+  const mainKeys = mainEls.map((e) => e.key);
+  const mainCfg = config(main);
+
+  for (const f of HEAD_MIRRORS) {
+    const text = read(`src/${f}`);
+    if (text === null) continue; // the holding pen is deleted once it empties
+
+    const cfg = config(text);
+    const drift = [];
+    for (const k of new Set([...Object.keys(mainCfg), ...Object.keys(cfg)])) {
+      const [a, b] = [mainCfg[k], cfg[k]];
+      if (JSON.stringify(a) === JSON.stringify(b)) continue;
+      if (a && b && typeof a === 'object' && typeof b === 'object') {
+        for (const s of new Set([...Object.keys(a), ...Object.keys(b)])) {
+          if (JSON.stringify(a[s]) !== JSON.stringify(b[s])) drift.push(`${k}.${s}`);
+        }
+      } else drift.push(k);
+    }
+    if (drift.length) {
+      warn(`src/${f} — en-tools-config differs from ${CATALOG}'s at ${drift.join(', ')}; copy ${CATALOG}'s across`);
+    }
+
+    const els = elements(text).filter((e) => !(e.tag === 'mj-style' && !mainKeys.includes(e.key)));
+    const keys = els.map((e) => e.key);
+    const missing = mainEls.filter((e) => !keys.includes(e.key));
+    const extra = els.filter((e) => !mainKeys.includes(e.key));
+    for (const m of missing) {
+      // One missing and one extra of the same tag is the same element, edited
+      // on one side: point at the first byte where they part.
+      const pair = extra.filter((e) => e.tag === m.tag);
+      if (pair.length === 1 && missing.filter((e) => e.tag === m.tag).length === 1) {
+        const x = pair[0];
+        extra.splice(extra.indexOf(x), 1);
+        let i = 0;
+        while (m.key[i] === x.key[i]) i += 1;
+        warn(`src/${f} — its <${m.tag}> differs from ${CATALOG}'s: ${CATALOG} has ${short(m.key, i)}, this page has ${short(x.key, i)}; copy ${CATALOG}'s across`);
+      } else {
+        warn(`src/${f} — its head lacks this <${m.tag}> from ${CATALOG}'s: ${short(m.key)}; copy it across, in the same position`);
+      }
+    }
+    for (const x of extra) {
+      warn(`src/${f} — its head carries a <${x.tag}> that ${CATALOG}'s does not: ${short(x.key)}; remove it, or add it to ${CATALOG} too`);
+    }
+    if (!missing.length && !extra.length && keys.join('\0') !== mainKeys.join('\0')) {
+      warn(
+        `src/${f} — its head elements are in a different order from ${CATALOG}'s (${els.map((e) => e.tag).join(' → ')} vs ` +
+          `${mainEls.map((e) => e.tag).join(' → ')}); CSS cascades in source order, so match ${CATALOG}'s`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
 // §N Column Width opt-out. The 50px width ladder in styles.css was deleted
 // on 2026-08-20 once every block stopped offering a Column Width dropdown
 // (user decision: Highlighted Text, Quote Block, CTA Text Block and Footer
@@ -1453,5 +1534,5 @@ guard('Box Border safety', () => {
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate, box borders clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, head mirror, CSS budget, Outlook contrast gate, box borders clean`,
 );
