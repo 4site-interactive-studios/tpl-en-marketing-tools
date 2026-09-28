@@ -1,0 +1,292 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — CTA Hero (w/ heading): the heading-to-button gap in Outlook
+      desktop (2026-09-28). Follows 856a2ec, which replaced a 4/8 `&nbsp;`
+      spacer <p> under the h3 with 32px of bottom padding on the h3's own
+      text cell. Chrome measured the gap 34px before and 32px after. Outlook
+      desktop was never measured, before or after.
+
+      Not a catalog page. Build, paste dist/probe_cta-heading-gap-outlook-2026-09-28_live.html
+      into an EN email, send to EoA. Read the DELIVERED HTML first
+      (display/email_html/<TEST_ID>), then the Word-engine renders
+      (Outlook 2016 and 2019 at 120 DPI, Outlook 2021 Win11, M365 Win11,
+      Office 365 Win10), then Apple Mail / iOS / Gmail web as controls.
+      Light mode only; dark is out of scope.
+
+      The head carries src/main.mjml's mj-attributes and its head-resident
+      sheet verbatim (the `.wysiwyg div h3:last-child { margin-bottom: 0 }`
+      rule is half of what is under test), plus styles.css.
+
+      ══ CLAIMS
+        C1  In every Word-engine Outlook the SHIPPED shape renders the gap at
+            32px, as every other client does.
+        C2  EN inlines `margin-bottom:0` onto the shipped h3 at send (the
+            :last-child rule) and keeps `padding:0 0 32px` on its text cell.
+        C3  (baseline, recorded, not pass/fail) what the OLD shape rendered in
+            each Outlook, so the ledger knows how far the fix moved it there.
+
+      ══ R — THE REAL BLOCK, on the kayak photo. Eyeball test.
+        R1 SHIPPED  the block exactly as main.mjml ships it (856a2ec).
+        R2 OLD      the pre-856a2ec markup: padding 0, spacer <p> under the h3.
+        PASS: in each Outlook, R1's gap looks like Apple Mail's R1.
+
+      ══ M — METERED TWINS. Same group geometry, flat Grass ground, and
+         palette paint so the gap is a band you can count:
+           MOSS   #CEE4C5  the h3's own box (its padding included)
+           SKY    #5DD8D8  the text cell; Sky BELOW the Moss box is the gap
+           SUN    #F7931E  the 32px ruler at the top of the series
+         Gap in px = (Sky band pixels / Sun ruler pixels) x 32, which holds at
+         any DPI because both scale together.
+        M1 SHIPPED  as R1.                                   Expect 32 everywhere.
+        M2 OLD      as R2.                                   Chrome: 34. Outlook: C3.
+        M3 CONTROL  as M1 with margin:0 authored on the h3.  Expect 32 everywhere.
+        Reading: M1 = M3 = 32 → C1 PASSES. M3 = 32 but M1 ≠ 32 → the inlined
+        margin did not reach the h3 in that client (check C2 in the delivered
+        HTML). M3 ≠ 32 → Word is not honouring the cell padding itself.
+
+      VERDICT (2026-09-28, sent through EN, EoA r9Xx6T…, 19 clients). Delivered
+      HTML read first; M bands pixel-counted down the centre of the Sky cell.
+        C2 PASSES. EN inlined `margin-top: 0; margin-bottom: 0` onto the R1
+          and M1 h3s and kept `padding: 0 0 32px` on their cells. R2/M2 got
+          `margin-top: 0` only: the spacer <p> was their last child. EN's
+          inliner fingerprint (mso-table-lspace on td) sits on 48 cells, so
+          the send went through EN.
+        C1 PASSES. M1 = M3 = 32px in Outlook 2016 and 2019 at 120 DPI (40
+          device px against a 40-row ruler, 1.25x) and in Outlook 2021 and
+          M365 Win11 (32 against 32), the same as Apple Mail 16, M365 Mac,
+          iOS 26, Gmail web and Outlook.com. R1 matches by eye. Office 365
+          Win10 was not in this send.
+        C3 recorded. The OLD shape rendered 25.6-27px in every Word engine
+          (2016 26.4, 2019 25.6, 2021 27, M365 27) against 34px everywhere
+          else. Word gave the h3 its own bottom spacing, about 19px (27 minus
+          the 8px spacer; inferred, and consistent with Word's 14pt auto
+          spacing), where browsers apply 1em = 26px. The fix moved Word up
+          5-6px and every other client down 2px: the cross-client spread went
+          from 7-8px to 0.
+      Archived the same day.
+    -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-button width="auto"
+        css-class="button"
+        font-size="18px"
+        font-weight="700"
+        font-family="Tahoma, sans-serif"
+        line-height="22px"
+        border-radius="100px"
+        inner-padding="12px 16px"
+        letter-spacing="1px"
+        color="#ffffff"
+        background-color="#006837"
+      />
+      <mj-image
+        padding="0" />
+
+      <!-- Reusable variants — apply with mj-class="*" -->
+      <mj-class
+        name="caption"
+        font-size="10px"
+        line-height="16px"
+        padding="4px 0 0 0"
+      />
+    </mj-attributes>
+    <mj-raw>
+      <style type="text/css" data-en-tools-template-css>
+        /* HEAD-RESIDENT rules (catalogued 2026-08-24, user decision same day;
+           see future-enhancements "Head-vs-block CSS"). Everything here must
+           pass two tests: absence REVEALS or DUPLICATES content or breaks a
+           mechanism every email relies on, and it would never be fixed by
+           swapping the Template Styles block. Fix-by-block-swap rules stay in
+           styles.css. EN inlines top-level rules from this head exactly as it
+           does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
+
+        /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+        /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
+
+        /* Copy over a photo must be white even in an email built without the
+           styles block (user decision 2026-08-24: relocated rather than
+           re-authored inline). */
+        .overlay h1, .overlay h2, .overlay h3, .overlay h4, .overlay h5,
+        .overlay h6, .overlay span, .overlay p, .overlay a { color: #fff; }
+
+        /* Viewport fork: hide twice, reveal once, in this order. */
+        .mobile-only { display: none; }
+
+        /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+        @media (max-width: 9998px) {
+          .mobile-only { display: none !important; }
+        }
+        @media only screen and (max-width: 599px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block !important; }
+        }
+        /* Mode-fork reveals. These two blocks are the FIRST occurrence of
+           their conditions, so styles.css's same-condition repaint blocks
+           fold up to these positions at send — swap first, repaints after,
+           which is byte-for-byte today's order inside styles.css. */
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
+        }
+      </style>
+    </mj-raw>
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+
+  <mj-body background-color="#F5FAF1">
+    <mj-raw><div style="color:#000000;background-color:#F5FAF1;margin:0;padding:0;"><div class="email-ground" style="background-color:#F5FAF1;margin:0;padding:0;"></mj-raw>
+
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>PROBE — CTA Hero (w/ heading) gap.</b> R = the real block. M = metered twins: gap = Sky band under the Moss heading box, measured against the Sun 32px ruler.</p></mj-text></mj-column></mj-section>
+
+    <!-- ══ R1 SHIPPED ══ -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R1 SHIPPED</b>: the block as main.mjml ships it (32px cell padding)</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+        <mj-group data-no-direction-toggle>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" data-style-dark-mode />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" padding="0 0 32px">
+              <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+            </mj-text>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- ══ R2 OLD ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R2 OLD</b>: the pre-fix markup (4/8 spacer paragraph, no padding)</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#362229" padding="0">
+      <mj-section css-class="image-block block" background-url="assets/photo-kayak.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="32px 0 32px">
+        <mj-group data-no-direction-toggle>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">
+            <mj-image data-display-toggle css-class="light-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" />
+            <mj-raw><!--[if !mso]><!--></mj-raw>
+            <mj-image css-class="dark-only" src="assets/logo-tpl_color-light-green-text.png" alt="Trust for Public Land" href="https://tpl.org" width="144px" padding="0 8px 8px 0" align="left" data-style-dark-mode />
+            <mj-raw><!--<![endif]--></mj-raw>
+          </mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" padding="0">
+              <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+            </mj-text>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- ══ RULER ══ -->
+    <mj-section padding="32px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>RULER</b>: the Sun bar below is 32px</p></mj-text></mj-column></mj-section>
+    <mj-section background-color="#F7931E" padding="0"><mj-column><mj-spacer height="32px" /></mj-column></mj-section>
+
+    <!-- ══ M1 SHIPPED ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M1 SHIPPED</b>: expect a 32px Sky band</p></mj-text></mj-column></mj-section>
+    <mj-section background-color="#8CC63F" padding="32px 0 32px">
+        <mj-group>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" container-background-color="#5DD8D8" padding="0 0 32px">
+              <h3 style="color:#362229;background-color:#CEE4C5;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+            </mj-text>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+
+    <!-- ══ M2 OLD ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M2 OLD</b>: Chrome renders 34px; Outlook is what this measures</p></mj-text></mj-column></mj-section>
+    <mj-section background-color="#8CC63F" padding="32px 0 32px">
+        <mj-group>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" container-background-color="#5DD8D8" padding="0">
+              <h3 style="color:#362229;background-color:#CEE4C5;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
+              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
+            </mj-text>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+
+    <!-- ══ M3 CONTROL ══ -->
+    <mj-section padding="24px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M3 CONTROL</b>: as M1, margin:0 authored on the heading; expect 32px</p></mj-text></mj-column></mj-section>
+    <mj-section background-color="#8CC63F" padding="32px 0 32px">
+        <mj-group>
+          <mj-column width="32px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="240px">&nbsp;</mj-column>
+          <mj-column vertical-align="top" width="296px">
+            <mj-text align="center" css-class="wysiwyg advocacy-box" container-background-color="#5DD8D8" padding="0 0 32px">
+              <h3 style="color:#362229;background-color:#CEE4C5;padding:12px 8px 0;margin:0;">Lorem Ipsum Dolor Sit Amet</h3>
+            </mj-text>
+            <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
+          </mj-column>
+          <mj-column width="32px">&nbsp;</mj-column>
+        </mj-group>
+    </mj-section>
+
+    <mj-section padding="24px 32px 32px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;">End of probe. Sky band = the gap. Sun bar = 32px.</p></mj-text></mj-column></mj-section>
+
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>
