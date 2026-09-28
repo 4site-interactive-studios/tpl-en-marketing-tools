@@ -36,7 +36,9 @@ column inside an `mj-group` carrying a mobile pin (guide §6e — mj-group
 never stacks, so an unpinned rail shrinks with the viewport while the fixed
 padding inside it does not), and the guide §8 item 3a type census — every
 shipped font-size/line-height pair is a README.MD type-table row or a lockup
-named in its "tuned lockups" note, both read from README at run time. Run it with
+named in its "tuned lockups" note, both read from README at run time — and
+`src/broken-blocks.mjml`'s head matching `main.mjml`'s (it rendered both halves
+of every twin pair for a month after two head moves skipped it). Run it with
 `npm run check-catalog`. Both are WARN-only; the build must print zero.
 **Prefer a check over a sentence** — a count written in prose rots; a command
 that produces the count cannot.
