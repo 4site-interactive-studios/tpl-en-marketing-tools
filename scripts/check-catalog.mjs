@@ -19,7 +19,7 @@
  * output. Every assertion is wrapped so one throwing cannot lose the others.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { sourcePages, CATALOG } from './lib/source-pages.mjs';
+import { sourcePages, CATALOG, PARTIAL_DIRS } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -876,6 +876,101 @@ guard('ALL-CAPS button label check', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Type-table census — guide §8 item 3a, automated (2026-09-28). Every
+// font-size/line-height pair that ships must be a row of the brand type table
+// or a documented lockup (guide §5). README.MD owns both lists — the rows are
+// its "Type scale" table, the lockups are the `(N/N …)` pairs in its "tuned
+// lockups" note — so a new lockup is documented there or it warns here; this
+// file keeps no copy of either.
+//
+// Censused: styles.css, head <style>/<mj-style>, mj-attributes and element
+// attributes, inline styles, in every page and partial — import-excluded
+// category dividers included: they never become blocks, but they were
+// brought onto the table anyway (14/18, user decision 2026-09-28) and are
+// held there. Skipped, because none of it is type: the builder-band sheet
+// (data-en-tools-band, editor chrome), the 🐞 toolbar (the same regex
+// emit-variants strips it with), and 0 sizes (structural resets on spacer
+// and bar cells). A LONE size or line-height is resolved against the body
+// default read from the `p` rule, because that is what it inherits in RTE
+// copy: the divider labels authored font-size:14px alone and rendered 14/24.
+// Why it exists: a 4/8 `&nbsp;` spacer <p> in CTA Hero (w/ heading) shipped
+// from 2026-07-02 until a manual 3a pass caught it on 2026-09-27.
+// ---------------------------------------------------------------------------
+guard('type-table census', () => {
+  const readme = read('README.MD') ?? '';
+  const scale = /^## Type scale[\s\S]*?(?=^## )/m.exec(readme)?.[0] ?? '';
+  const rows = new Set(
+    [...scale.matchAll(/^\|[^|\n]*\|[^|\n]*\|\s*(\d+)px\s*\|\s*(\d+)px\s*\|/gm)].map((m) => `${m[1]}/${m[2]}`),
+  );
+  const note = /^- [^\n]*\blockups?\b[\s\S]*?(?=\n- |\n\s*\n|(?![\s\S]))/m.exec(scale)?.[0] ?? '';
+  const lockups = new Set([...note.matchAll(/\((\d+)\/(\d+)\b/g)].map((m) => `${m[1]}/${m[2]}`));
+  const blank = (s) => s.replace(/[^\n]/g, ' ');
+  const stylesCss = (read('src/styles.css') ?? '').replace(/\/\*[\s\S]*?\*\//g, blank);
+  const body = /(?:^|\})\s*p\s*\{([^}]*)\}/.exec(stylesCss)?.[1] ?? '';
+  const decl = (s, prop) => new RegExp(`(?:^|[;{\\s])${prop}\\s*:\\s*([^;}"!]+)`, 'i').exec(s)?.[1]?.trim() ?? null;
+  const px = (v) => /^(\d+(?:\.\d+)?)px$|^(0)$/i.exec(v ?? '')?.slice(1).find((x) => x !== undefined);
+  const BODY = { fs: px(decl(body, 'font-size')), lh: px(decl(body, 'line-height')) };
+  if (!rows.size || !lockups.size || !BODY.fs || !BODY.lh) {
+    const missing = !rows.size ? 'README.MD "Type scale" table' : !lockups.size ? 'README.MD "tuned lockups" note' : 'body default (the `p` rule in src/styles.css)';
+    warn(`type-table census could not read the ${missing}, so it did not run`);
+    return;
+  }
+
+  const files = [
+    ...sources,
+    ...PARTIAL_DIRS.flatMap((d) =>
+      existsSync(join(ROOT, 'src', d)) ? readdirSync(join(ROOT, 'src', d)).filter((n) => n.endsWith('.mjml')).map((n) => `${d}/${n}`) : [],
+    ),
+    'styles.css',
+  ];
+  for (const f of files) {
+    const raw = read(`src/${f}`) ?? '';
+    // Every exclusion blanks in place, so offsets still map to raw lines.
+    const text = raw
+      .replace(/[ \t]*<div id="tpl-debug-btn"[\s\S]*?<\/div>/, blank)
+      .replace(/<style\b[^>]*\bdata-en-tools-band\b[\s\S]*?<\/style>/g, blank)
+      .replace(/<!--(?!\[if|<!\[endif)[\s\S]*?-->/g, blank);
+
+    const found = [];
+    const regions = f.endsWith('.css')
+      ? [[0, text]]
+      : [...text.matchAll(/<(mj-style|style)\b[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => [m.index + m[0].indexOf('>') + 1, m[2]]);
+    for (const [off, css] of regions) {
+      for (const r of css.replace(/\/\*[\s\S]*?\*\//g, blank).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+        found.push({ at: off + r.index + r[1].length, fs: decl(r[2], 'font-size'), lh: decl(r[2], 'line-height'), what: `${r[1].trim().split('\n').pop().trim()} {…}` });
+      }
+    }
+    if (f.endsWith('.mjml')) {
+      for (const m of text.matchAll(/\sstyle\s*=\s*"([^"]*)"/g)) {
+        found.push({ at: m.index, fs: decl(m[1], 'font-size'), lh: decl(m[1], 'line-height'), what: `style="${m[1].slice(0, 60)}${m[1].length > 60 ? '…' : ''}"` });
+      }
+      for (const m of text.matchAll(/<(mj-[\w-]+)\b([^>]*)>/g)) {
+        const attr = (n) => new RegExp(`\\s${n}\\s*=\\s*"([^"]*)"`).exec(m[2])?.[1]?.trim() ?? null;
+        found.push({ at: m.index, fs: attr('font-size'), lh: attr('line-height'), what: `<${m[1]}> attributes` });
+      }
+    }
+
+    for (const { at, fs, lh, what } of found) {
+      if (fs === null && lh === null) continue;
+      const where = `src/${f}:${lineAt(raw, at)}`;
+      const [s, l] = [px(fs), px(lh)];
+      if ((fs !== null && s === undefined) || (lh !== null && l === undefined)) {
+        warn(`${where}: ${what} sets ${[fs && `font-size ${fs}`, lh && `line-height ${lh}`].filter(Boolean).join(', ')} — the type table is absolute px per size, never a ratio or relative unit (guide §5)`);
+        continue;
+      }
+      if (s === '0' || l === '0') continue;
+      const pair = `${s ?? BODY.fs}/${l ?? BODY.lh}`;
+      if (rows.has(pair) || lockups.has(pair)) continue;
+      const lone = s === undefined || l === undefined ? ` (the ${s === undefined ? 'size' : 'line-height'} is inherited from the ${BODY.fs}/${BODY.lh} body default)` : '';
+      warn(
+        `${where}: ${what} ships ${pair}${lone} — not a row of the README.MD type table and not a documented lockup (guide §5, §8 item 3a). ` +
+          `Map it to a row by intent, or record it as a lockup in README.MD's "tuned lockups" note with a comment at the source line`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
 // §N No literal EN container merge tag in a source (2026-08-20). The importer
 // joins the template shell as beforeBlocks + CONTAINER_TAG + afterBlocks and
 // then splits it back on the FIRST occurrence of that tag
@@ -1466,5 +1561,5 @@ guard('Box Border safety', () => {
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate, box borders clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, type table, CSS budget, Outlook contrast gate, box borders clean`,
 );

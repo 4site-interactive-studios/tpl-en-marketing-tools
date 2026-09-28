@@ -24,7 +24,9 @@ Adopted 2026-08-24 and reconciled across every block. This is the ONLY
 approved set of font-size / line-height pairs; the full audit and per-block
 mapping live in the importer repo's `docs/type-scale-audit.md`, and the
 authoring rules (inherit-don't-restate, intent mapping, heading tiers) are
-MJML-AUTHORING-GUIDE.md §5.
+MJML-AUTHORING-GUIDE.md §5. `npm run check-catalog` reads the table below and
+the `(N/N …)` pairs in the lockups note at build time and warns on any other
+shipped pair, so change the scale HERE, never in the script.
 
 | Style | Where it lives | Size | Line-height |
 |---|---|---|---|

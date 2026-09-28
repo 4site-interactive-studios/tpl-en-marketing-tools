@@ -300,7 +300,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">HEADERS AND HEROES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -605,9 +605,14 @@
             <mj-raw><!--<![endif]--></mj-raw>
           </mj-column>
           <mj-column vertical-align="top" width="296px">
-            <mj-text align="center" css-class="wysiwyg advocacy-box" padding="0">
+            <!-- The heading-to-button gap is this mj-text's bottom padding (td
+                 padding, which Word honours). Until 2026-09-27 it was a 4/8
+                 `&nbsp;` <p> after the h3, off the type table, and the gap it
+                 rendered was 34px, not 8: the <p> kept the h3 off :last-child,
+                 so the h3's 26px default margin survived the head's margin
+                 containment. Double is the scale step nearest that render. -->
+            <mj-text align="center" css-class="wysiwyg advocacy-box" padding="0 0 32px">
               <h3 style="color:#ffffff;padding:12px 8px 0;">Lorem Ipsum Dolor Sit Amet</h3>
-              <p style="margin:0;font-size:4px;line-height:8px;">&nbsp;</p>
             </mj-text>
             <mj-button width="auto" href="https://tpl.org" align="center" padding="0" color="#ffffff" background-color="#006837">LEARN MORE</mj-button>
           </mj-column>
@@ -627,7 +632,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">TEXT BLOCKS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -900,7 +905,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">BUTTONS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1137,7 +1142,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGES &amp; MEDIA</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1406,7 +1411,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">IMAGE &amp; TEXT LAYOUTS</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -1829,7 +1834,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">ENGAGEMENT &amp; INTERACTIVE</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2767,7 +2772,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">UTILITIES</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">UTILITIES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2825,7 +2830,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">SIGNATURES</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">SIGNATURES</p>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -2935,7 +2940,7 @@
     <mj-section data-no-width-toggle css-class="text-block block" background-color="#000000" padding="8px 32px">
       <mj-column>
         <mj-text align="center" padding="0">
-          <p style="font-size:14px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">FOOTERS</p>
+          <p style="font-size:14px;line-height:18px;font-weight:700;letter-spacing:3px;color:#8CC63F;font-family:Menlo,Consolas,monospace;">FOOTERS</p>
         </mj-text>
       </mj-column>
     </mj-section>
