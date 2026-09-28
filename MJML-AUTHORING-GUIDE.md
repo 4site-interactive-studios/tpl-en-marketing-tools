@@ -978,7 +978,15 @@ near any of these figures.
   body comments and indentation untouched on both paths — only blank-line
   runs collapse — so a real block pasted before and after compaction
   arrived 14,956 vs 10,108 bytes, the whole 4,848-byte difference. EN's
-  inliner adds the same ~2.5 KB to either copy.
+  inliner adds the same ~2.5 KB to either copy. **And it is render-neutral
+  in real clients**: in all 38 EoA renders of those two sends (19 clients
+  each — Outlook 2016 and 2019 at 120 dpi, Outlook 2021 and M365 on
+  Windows, M365 for Mac, Apple Mail, iPhone 17 and 17 Pro Max, the Gmail
+  app on Android, Gmail web and Outlook.com, light and dark) the compacted
+  copy rendered identically to the original. Every differing pixel was the
+  probe's own label text, sub-pixel image resampling, or anti-aliasing/JPEG
+  noise — reviewed render by render, with each hand-aligned comparison
+  re-checked by three independent reviewers.
 
 Worth knowing but not the same limit: Gmail clips a message at ~102 KB.
 Anything near this ceiling is far past the clip point, which is fine for a
