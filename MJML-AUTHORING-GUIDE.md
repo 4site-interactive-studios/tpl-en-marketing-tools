@@ -2079,10 +2079,12 @@ aloud). The Alt Text field survives either way (§5).
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
    tomorrow. The census is not silent here by design: since the
-   2026-08-24 return to the 32px baseline it reads 44 of 170 frames short
+   2026-08-24 return to the 32px baseline it reads 50 of 200 frames short
    of the full scale (the two Quiz pill frames' `data-max-gutter`
-   declarations included) — diff the list against the documented capped
-   set, and treat any NEW name as the finding.
+   declarations included; until 2026-09-28 it skipped the autoresponders
+   and read 44 of 170, and their 6 rows repeat names already capped in the
+   catalog) — diff the list against the documented capped set, and treat
+   any NEW name as the finding.
 6d-bis. Confirm every body block sits on the same content baseline, and
    know where that gutter sits on the declared ladder and what the
    position withholds (see "Choose where the default gutter sits on the

@@ -19,7 +19,7 @@
  * output. Every assertion is wrapped so one throwing cannot lose the others.
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { sourcePages } from './lib/source-pages.mjs';
+import { sourcePages, CATALOG, PARTIAL_DIRS } from './lib/source-pages.mjs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -41,6 +41,36 @@ const lineAt = (text, index) => text.slice(0, index).split('\n').length;
 const sources = sourcePages(ROOT)
   .filter((p) => p.dir !== 'probes')
   .map((p) => p.rel);
+
+/** The compiled pages the dist-reading checks police: every dist/*_live.html,
+ *  resolved to its source through the layout helper and excluded by the same
+ *  probes-directory rule as `sources`. Never rebuild the path as
+ *  `src/${base}.mjml` — that silently skipped both autoresponders from
+ *  2026-08-21, when they moved into src/autoresponders/, until a 2026-09-27
+ *  review. A compiled page with no source WARNS instead of being skipped: it
+ *  is a stale artifact (the build never cleans dist/) or a page this lookup
+ *  has lost, and either way no geometry check ran on it. Memoized so the
+ *  warning prints once however many checks ask. */
+let livePagesMemo = null;
+const livePages = () => {
+  if (livePagesMemo) return livePagesMemo;
+  const byBase = new Map(sourcePages(ROOT).map((p) => [p.base, p]));
+  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
+  livePagesMemo = [];
+  for (const page of dist.filter((n) => n.endsWith('_live.html')).sort()) {
+    const base = page.replace(/_live\.html$/, '');
+    const src = byBase.get(base);
+    if (!src) {
+      warn(
+        `dist/${page} has no source page in src/ — a stale artifact (git rm its three dist files) or a page the layout helper cannot find; the column-geometry and padding checks did not run on it`,
+      );
+      continue;
+    }
+    if (src.dir === 'probes') continue;
+    livePagesMemo.push({ page, rel: `src/${src.rel}`, catalog: src.rel === CATALOG, srcText: read(`src/${src.rel}`) || '' });
+  }
+  return livePagesMemo;
+};
 
 /** Run an assertion without letting a throw take the rest of the pass down. */
 const guard = (label, fn) => {
@@ -282,27 +312,21 @@ function scanGeometry(html) {
 }
 
 guard('column geometry check', () => {
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
   // _live.html only: _local-debug.html embeds the whole source MJML as JSON,
   // including its own START: markers, which mis-attributes every later hit.
   // These regexes are tuned to MJML's own output shape — never point this
   // check at DELIVERED html, whose attributes EN rewrites (valign, bgcolor).
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes are deliberate experiments — they carry markup a catalog page must
+  // never carry (a frozen ghost overflowing on purpose, say) — so livePages()
+  // excludes them exactly as `sources` does.
+  const pages = livePages();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — run npm run build; skipping column geometry');
     return;
   }
 
-  for (const page of pages) {
+  for (const { page, rel, srcText } of pages) {
     const html = read(`dist/${page}`) || '';
-    const base = page.replace(/_live\.html$/, '');
-    const srcText = read(`src/${base}.mjml`);
-    if (srcText === null) continue; // a page with no source is not ours to police
 
     // MJML's [if mso | IE] conditionals mirror the column tree exactly, so the
     // frames they open give sibling identity without a tree parser.
@@ -317,7 +341,7 @@ guard('column geometry check', () => {
       const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
-        `src/${base}.mjml${at} "${name}" — a ${hit.img}px image in a ${Math.round(hit.box)}px content box (${Math.round(hit.img - hit.box)}px over); it cannot shrink with the frame, so it overflows its column`,
+        `${rel}${at} "${name}" — a ${hit.img}px image in a ${Math.round(hit.box)}px content box (${Math.round(hit.img - hit.box)}px over); it cannot shrink with the frame, so it overflows its column`,
       );
     }
 
@@ -328,8 +352,8 @@ guard('column geometry check', () => {
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
         hit.cols.length < 2
-          ? `src/${base}.mjml${at} "${name}" — a lone ${Math.round(hit.sum)}px column in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); it overflows the body instead of filling the frame — drop its width= so it fills`
-          : `src/${base}.mjml${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
+          ? `${rel}${at} "${name}" — a lone ${Math.round(hit.sum)}px column in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); it overflows the body instead of filling the frame — drop its width= so it fills`
+          : `${rel}${at} "${name}" — ${hit.cols.length} fixed-width columns total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.sum - hit.frame)}px over); CSS clients wrap the last column`,
       );
     }
   }
@@ -376,13 +400,8 @@ const OPT_OUT_FLAGS = [
 // ---------------------------------------------------------------------------
 
 guard('padding growth census', () => {
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes excluded by livePages(), as in the column-geometry check above.
+  const pages = livePages();
   if (!pages.length) return;
   const detail = process.argv.includes('--padding-census');
 
@@ -390,14 +409,12 @@ guard('padding growth census', () => {
   let total = 0;
   const rows = [];
 
-  for (const page of pages) {
+  for (const { page, rel, catalog, srcText } of pages) {
     const html = read(`dist/${page}`) || '';
-    const base = page.replace(/_live\.html$/, '');
-    if (read(`src/${base}.mjml`) === null) continue;
 
     // The scale the template itself declares — the same values the importer
     // turns into options. No declaration means no editable padding at all.
-    const cfg = /<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(read(`src/${base}.mjml`) || '');
+    const cfg = /<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(srcText);
     let scale = [];
     try {
       const parsed = JSON.parse(cfg?.[1] ?? '{}');
@@ -419,7 +436,6 @@ guard('padding growth census', () => {
     // pairs with the Nth source frame — valid only when the counts agree
     // (alternate arrangements are dropped before compile, which desyncs
     // any block that carries them; those get a warning, not a mispair).
-    const srcText = read(`src/${base}.mjml`) || '';
     // Frames are named by the NEAREST PRECEDING START marker — the same
     // rule blockOf() applies to the compiled HTML below, so ordinals on
     // the two sides enumerate identically (a paired START/END regex would
@@ -495,7 +511,9 @@ guard('padding growth census', () => {
       }
       if (max !== null && max < scale[scale.length - 1]) {
         capped++;
-        rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)`);
+        // Rows from a page other than the catalog name it: the autoresponders
+        // reuse catalog blocks, and an unlabelled repeat reads as a duplicate.
+        rows.push(`${name} — up to ${max}px (scale reaches ${scale[scale.length - 1]}px)${catalog ? '' : ` — ${rel}`}`);
       }
     }
   }
@@ -858,6 +876,101 @@ guard('ALL-CAPS button label check', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Type-table census — guide §8 item 3a, automated (2026-09-28). Every
+// font-size/line-height pair that ships must be a row of the brand type table
+// or a documented lockup (guide §5). README.MD owns both lists — the rows are
+// its "Type scale" table, the lockups are the `(N/N …)` pairs in its "tuned
+// lockups" note — so a new lockup is documented there or it warns here; this
+// file keeps no copy of either.
+//
+// Censused: styles.css, head <style>/<mj-style>, mj-attributes and element
+// attributes, inline styles, in every page and partial — import-excluded
+// category dividers included: they never become blocks, but they were
+// brought onto the table anyway (14/18, user decision 2026-09-28) and are
+// held there. Skipped, because none of it is type: the builder-band sheet
+// (data-en-tools-band, editor chrome), the 🐞 toolbar (the same regex
+// emit-variants strips it with), and 0 sizes (structural resets on spacer
+// and bar cells). A LONE size or line-height is resolved against the body
+// default read from the `p` rule, because that is what it inherits in RTE
+// copy: the divider labels authored font-size:14px alone and rendered 14/24.
+// Why it exists: a 4/8 `&nbsp;` spacer <p> in CTA Hero (w/ heading) shipped
+// from 2026-07-02 until a manual 3a pass caught it on 2026-09-27.
+// ---------------------------------------------------------------------------
+guard('type-table census', () => {
+  const readme = read('README.MD') ?? '';
+  const scale = /^## Type scale[\s\S]*?(?=^## )/m.exec(readme)?.[0] ?? '';
+  const rows = new Set(
+    [...scale.matchAll(/^\|[^|\n]*\|[^|\n]*\|\s*(\d+)px\s*\|\s*(\d+)px\s*\|/gm)].map((m) => `${m[1]}/${m[2]}`),
+  );
+  const note = /^- [^\n]*\blockups?\b[\s\S]*?(?=\n- |\n\s*\n|(?![\s\S]))/m.exec(scale)?.[0] ?? '';
+  const lockups = new Set([...note.matchAll(/\((\d+)\/(\d+)\b/g)].map((m) => `${m[1]}/${m[2]}`));
+  const blank = (s) => s.replace(/[^\n]/g, ' ');
+  const stylesCss = (read('src/styles.css') ?? '').replace(/\/\*[\s\S]*?\*\//g, blank);
+  const body = /(?:^|\})\s*p\s*\{([^}]*)\}/.exec(stylesCss)?.[1] ?? '';
+  const decl = (s, prop) => new RegExp(`(?:^|[;{\\s])${prop}\\s*:\\s*([^;}"!]+)`, 'i').exec(s)?.[1]?.trim() ?? null;
+  const px = (v) => /^(\d+(?:\.\d+)?)px$|^(0)$/i.exec(v ?? '')?.slice(1).find((x) => x !== undefined);
+  const BODY = { fs: px(decl(body, 'font-size')), lh: px(decl(body, 'line-height')) };
+  if (!rows.size || !lockups.size || !BODY.fs || !BODY.lh) {
+    const missing = !rows.size ? 'README.MD "Type scale" table' : !lockups.size ? 'README.MD "tuned lockups" note' : 'body default (the `p` rule in src/styles.css)';
+    warn(`type-table census could not read the ${missing}, so it did not run`);
+    return;
+  }
+
+  const files = [
+    ...sources,
+    ...PARTIAL_DIRS.flatMap((d) =>
+      existsSync(join(ROOT, 'src', d)) ? readdirSync(join(ROOT, 'src', d)).filter((n) => n.endsWith('.mjml')).map((n) => `${d}/${n}`) : [],
+    ),
+    'styles.css',
+  ];
+  for (const f of files) {
+    const raw = read(`src/${f}`) ?? '';
+    // Every exclusion blanks in place, so offsets still map to raw lines.
+    const text = raw
+      .replace(/[ \t]*<div id="tpl-debug-btn"[\s\S]*?<\/div>/, blank)
+      .replace(/<style\b[^>]*\bdata-en-tools-band\b[\s\S]*?<\/style>/g, blank)
+      .replace(/<!--(?!\[if|<!\[endif)[\s\S]*?-->/g, blank);
+
+    const found = [];
+    const regions = f.endsWith('.css')
+      ? [[0, text]]
+      : [...text.matchAll(/<(mj-style|style)\b[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => [m.index + m[0].indexOf('>') + 1, m[2]]);
+    for (const [off, css] of regions) {
+      for (const r of css.replace(/\/\*[\s\S]*?\*\//g, blank).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+        found.push({ at: off + r.index + r[1].length, fs: decl(r[2], 'font-size'), lh: decl(r[2], 'line-height'), what: `${r[1].trim().split('\n').pop().trim()} {…}` });
+      }
+    }
+    if (f.endsWith('.mjml')) {
+      for (const m of text.matchAll(/\sstyle\s*=\s*"([^"]*)"/g)) {
+        found.push({ at: m.index, fs: decl(m[1], 'font-size'), lh: decl(m[1], 'line-height'), what: `style="${m[1].slice(0, 60)}${m[1].length > 60 ? '…' : ''}"` });
+      }
+      for (const m of text.matchAll(/<(mj-[\w-]+)\b([^>]*)>/g)) {
+        const attr = (n) => new RegExp(`\\s${n}\\s*=\\s*"([^"]*)"`).exec(m[2])?.[1]?.trim() ?? null;
+        found.push({ at: m.index, fs: attr('font-size'), lh: attr('line-height'), what: `<${m[1]}> attributes` });
+      }
+    }
+
+    for (const { at, fs, lh, what } of found) {
+      if (fs === null && lh === null) continue;
+      const where = `src/${f}:${lineAt(raw, at)}`;
+      const [s, l] = [px(fs), px(lh)];
+      if ((fs !== null && s === undefined) || (lh !== null && l === undefined)) {
+        warn(`${where}: ${what} sets ${[fs && `font-size ${fs}`, lh && `line-height ${lh}`].filter(Boolean).join(', ')} — the type table is absolute px per size, never a ratio or relative unit (guide §5)`);
+        continue;
+      }
+      if (s === '0' || l === '0') continue;
+      const pair = `${s ?? BODY.fs}/${l ?? BODY.lh}`;
+      if (rows.has(pair) || lockups.has(pair)) continue;
+      const lone = s === undefined || l === undefined ? ` (the ${s === undefined ? 'size' : 'line-height'} is inherited from the ${BODY.fs}/${BODY.lh} body default)` : '';
+      warn(
+        `${where}: ${what} ships ${pair}${lone} — not a row of the README.MD type table and not a documented lockup (guide §5, §8 item 3a). ` +
+          `Map it to a row by intent, or record it as a lockup in README.MD's "tuned lockups" note with a comment at the source line`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
 // §N No literal EN container merge tag in a source (2026-08-20). The importer
 // joins the template shell as beforeBlocks + CONTAINER_TAG + afterBlocks and
 // then splits it back on the FIRST occurrence of that tag
@@ -961,6 +1074,87 @@ guard('Builder band span leads the body', () => {
           ` shell.beforeBlocks stops at the first START marker, so this span lands inside that block` +
           ` instead of the template shell and never reaches the exported Email Template. Move it directly` +
           ` under <mj-body>, above every include.`,
+      );
+    }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// §N Head mirror matches the catalog head (2026-09-28). broken-blocks.mjml
+// promises main's head verbatim so a block under repair behaves there as it
+// did in the catalog. That promise was a sentence, and it rotted: two commits
+// that moved rules into main's head (the viewport fork 2026-08-22, the
+// light/dark swap 2026-08-24) skipped the holding pen, and for a month its
+// page rendered BOTH halves of every twin pair (measured 2026-09-27) while
+// every other check passed. Compared per top-level head element, comments
+// stripped; the en-tools-config comment is compared on its own, as JSON.
+// Allowed: a different <mj-title>, and <mj-style> elements main does not
+// carry (rules for a block parked there, like .hero-photo-fallback).
+// ---------------------------------------------------------------------------
+const HEAD_MIRRORS = ['broken-blocks.mjml'];
+
+guard('Head mirror matches the catalog head', () => {
+  const main = read(`src/${CATALOG}`);
+  if (main === null) return;
+  const HEAD_EL = /<(mj-[\w-]+)\b[^>]*?(?:\/>|>[\s\S]*?<\/\1>)/g;
+  const elements = (text) =>
+    [...(/<mj-head>([\s\S]*?)<\/mj-head>/.exec(text)?.[1] ?? '').replace(/<!--[\s\S]*?-->/g, '').matchAll(HEAD_EL)].map(
+      (m) => ({
+        tag: m[1],
+        key: m[1] === 'mj-title' ? '<mj-title>'
+          : m[0].replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim(),
+      }),
+    );
+  const config = (text) => JSON.parse(/<!--\s*en-tools-config\s*([\s\S]*?)-->/.exec(text)?.[1] ?? '{}');
+  const short = (s, at = 0) => JSON.stringify(s.slice(Math.max(0, at - 30), at + 60));
+  const mainEls = elements(main);
+  const mainKeys = mainEls.map((e) => e.key);
+  const mainCfg = config(main);
+
+  for (const f of HEAD_MIRRORS) {
+    const text = read(`src/${f}`);
+    if (text === null) continue; // the holding pen is deleted once it empties
+
+    const cfg = config(text);
+    const drift = [];
+    for (const k of new Set([...Object.keys(mainCfg), ...Object.keys(cfg)])) {
+      const [a, b] = [mainCfg[k], cfg[k]];
+      if (JSON.stringify(a) === JSON.stringify(b)) continue;
+      if (a && b && typeof a === 'object' && typeof b === 'object') {
+        for (const s of new Set([...Object.keys(a), ...Object.keys(b)])) {
+          if (JSON.stringify(a[s]) !== JSON.stringify(b[s])) drift.push(`${k}.${s}`);
+        }
+      } else drift.push(k);
+    }
+    if (drift.length) {
+      warn(`src/${f} — en-tools-config differs from ${CATALOG}'s at ${drift.join(', ')}; copy ${CATALOG}'s across`);
+    }
+
+    const els = elements(text).filter((e) => !(e.tag === 'mj-style' && !mainKeys.includes(e.key)));
+    const keys = els.map((e) => e.key);
+    const missing = mainEls.filter((e) => !keys.includes(e.key));
+    const extra = els.filter((e) => !mainKeys.includes(e.key));
+    for (const m of missing) {
+      // One missing and one extra of the same tag is the same element, edited
+      // on one side: point at the first byte where they part.
+      const pair = extra.filter((e) => e.tag === m.tag);
+      if (pair.length === 1 && missing.filter((e) => e.tag === m.tag).length === 1) {
+        const x = pair[0];
+        extra.splice(extra.indexOf(x), 1);
+        let i = 0;
+        while (m.key[i] === x.key[i]) i += 1;
+        warn(`src/${f} — its <${m.tag}> differs from ${CATALOG}'s: ${CATALOG} has ${short(m.key, i)}, this page has ${short(x.key, i)}; copy ${CATALOG}'s across`);
+      } else {
+        warn(`src/${f} — its head lacks this <${m.tag}> from ${CATALOG}'s: ${short(m.key)}; copy it across, in the same position`);
+      }
+    }
+    for (const x of extra) {
+      warn(`src/${f} — its head carries a <${x.tag}> that ${CATALOG}'s does not: ${short(x.key)}; remove it, or add it to ${CATALOG} too`);
+    }
+    if (!missing.length && !extra.length && keys.join('\0') !== mainKeys.join('\0')) {
+      warn(
+        `src/${f} — its head elements are in a different order from ${CATALOG}'s (${els.map((e) => e.tag).join(' → ')} vs ` +
+          `${mainEls.map((e) => e.tag).join(' → ')}); CSS cascades in source order, so match ${CATALOG}'s`,
       );
     }
   }
@@ -1185,18 +1379,13 @@ guard('Gmail CSS budget + head coupling check', () => {
   // canary this still reserves for was archived on 2026-08-21, so the 250 is
   // now pure conservatism; keep it until something measurable replaces it.
   const HOIST_ALLOWANCE = 250;
-  const dist = existsSync(join(ROOT, 'dist')) ? readdirSync(join(ROOT, 'dist')) : [];
-  // probe_* pages are deliberate experiments — they carry markup a catalog
-  // page must never carry (a frozen ghost overflowing on purpose, say), so
-  // they are excluded here exactly as they are from `sources` above.
-  const pages = dist
-    .filter((n) => n.endsWith('_live.html') && !n.startsWith('probe_'))
-    .sort();
+  // Probes excluded by livePages(), as in the column-geometry check.
+  const pages = livePages();
   if (!pages.length) {
     console.log('  check-catalog: no dist/*_live.html — skipping the CSS budget check');
     return;
   }
-  for (const page of pages) {
+  for (const { page } of pages) {
     const html = read(`dist/${page}`) || '';
     const headEnd = html.indexOf('</head>');
     const head = headEnd === -1 ? html : html.slice(0, headEnd);
@@ -1453,5 +1642,5 @@ guard('Box Border safety', () => {
 console.log(
   warnings
     ? `check-catalog: ${warnings} WARNING(S) — see above`
-    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, CSS budget, Outlook contrast gate, box borders clean`,
+    : `check-catalog: ${sources.length} sources verified — backgrounds, column geometry, grouped column pins, twin flags, anchors, link groups, mobile-only guards, head mirror, type table, CSS budget, Outlook contrast gate, box borders clean`,
 );

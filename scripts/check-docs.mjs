@@ -326,8 +326,14 @@ for (const f of LOCAL_DOCS) {
 }
 
 // ---------------------------------------------------------------------------
-// 11. No child combinator in any head-CSS selector (styles.css or an inline
-//     <mj-style>). The whole head lands in the Template Styles block's
+// 11. No child combinator in any head-CSS selector (styles.css, an inline
+//     <mj-style>, or a <style> in an mj-raw — the template-css and band
+//     sheets, which nothing checked until 2026-09-28). Every page comes from
+//     the layout helper and has its HTML comments stripped first: a bare
+//     readdirSync('src') never saw src/autoresponders/, and prose naming a
+//     tag ("the <mj-style> below") opened a phantom element that ran to the
+//     next real closing tag and was linted as CSS (both 2026-09-28).
+//     The whole head lands in the Template Styles block's
 //     head_styles Replacement, and somewhere in EN's editing surfaces `>`
 //     gets HTML-escaped to `&gt;` — the escaped selector is invalid CSS and
 //     the rule silently dies (guide §2d). Measured 2026-08-11: a production
@@ -338,10 +344,10 @@ for (const f of LOCAL_DOCS) {
 // ---------------------------------------------------------------------------
 {
   const cssSources = [['src/styles.css', css]];
-  for (const f of readdirSync(join(ROOT, 'src')).filter((n) => n.endsWith('.mjml'))) {
-    const text = read(`src/${f}`) || '';
-    for (const m of text.matchAll(/<mj-style[^>]*>([\s\S]*?)<\/mj-style>/g)) {
-      cssSources.push([`src/${f} <mj-style>`, m[1]]);
+  for (const { rel: f } of sourcePages(ROOT)) {
+    const text = (read(`src/${f}`) || '').replace(/<!--[\s\S]*?-->/g, '');
+    for (const m of text.matchAll(/<(mj-style|style)\b[^>]*>([\s\S]*?)<\/\1>/g)) {
+      cssSources.push([`src/${f} <${m[1]}>`, m[2]]);
     }
   }
   for (const [name, source] of cssSources) {

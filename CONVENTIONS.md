@@ -928,8 +928,10 @@ Episode, Podcast Streaming, Feedback Poll, Signature Card (photo), Video
 Block (inset), and the two-column rows in Photo and Text Grid and Quiz
 Block (2x2 photos)) are capped at 32px again, each carrying its
 "capped at 32px — 2 option(s) withheld" info note. The padding-growth
-census reads 44 of 170 frames short of the full scale (29 before the
-move; the delta IS that list). One residue of the pre-64 era briefly
+census reads 50 of 200 frames short of the full scale: 44 in the catalog
+pages (29 before the move; the delta IS that list), plus 6 in the two
+autoresponders, which repeat names already capped in the catalog and which
+the census skipped until 2026-09-28. One residue of the pre-64 era briefly
 returned: the two Quiz pill-row frames (3x1 / 2x2 buttons) kept offering
 Triple and Quadruple while their pills were cut for a 32px gutter —
 inline pill widths inside an mj-text are invisible to the geometry

@@ -4,7 +4,9 @@
       "spacingScale": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "classSpacingScales": {
         "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
-        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 }
+        "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 },
+        "video-band": { "None": 0, "16:9": 144, "3:2": 175, "1:1": 275 },
+        "video-band-inset": { "None": 0, "16:9": 126, "3:2": 154, "1:1": 243 }
       },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
@@ -15,9 +17,13 @@
 
       A holding pen for blocks pulled out of main.mjml while something about
       them is unresolved. It carries main's head verbatim (the en-tools-config,
-      the builder-band sheet, styles.css) so a block behaves here exactly as it
-      did there — the point is to look at it in isolation, not in a different
-      environment.
+      mj-attributes, the template-css sheet, the builder-band sheet,
+      styles.css) so a block behaves here exactly as it did there — the point
+      is to look at it in isolation, not in a different environment.
+      check-catalog's "Head mirror matches the catalog head" guard holds it to
+      that, comments aside. Two differences are allowed: the title, and
+      mj-style rules this page adds for a block parked here (the
+      .hero-photo-fallback below). When main's head changes, copy the change.
 
       Moving a block here has three consequences worth knowing:
         * it stops exporting, so EN never sees it;
@@ -33,6 +39,14 @@
     <mj-breakpoint width="600px" />
     <mj-title>TPL — Blocks under repair</mj-title>
     <!-- No mj-preview: EN injects its own hidden preheader from each email's Preview Text setting (measured 2026-08-10) — a template-baked one would double up in inbox snippets. Autoresponder sources (donation-thank-you) keep theirs; they do not go out through Marketing Tools broadcasts. -->
+
+    <!-- main.mjml's meta run, minus its en-tools-keep version stamp: that
+         comment is filled in at import, and this page is never imported. -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
 
     <!-- Baseline everything inherits -->
     <mj-attributes>
@@ -68,16 +82,84 @@
       />
     </mj-attributes>
 
-    <!-- No mj-style @media blocks here: EN merges same-condition @media
-         blocks into the FIRST occurrence's position (measured 2026-08-19,
-         EoA delivered heads), so a 599px block in this head would drag
-         styles.css's 599px rules ahead of the order-dependent hides that
-         precede them there. All mobile rules live in styles.css. -->
-
+    <!-- The head-resident sheet, copied byte for byte from main.mjml — the
+         VIEWPORT FORK comment above it there owns the derivation. It holds
+         the swap MECHANISMS (light/dark twins, the viewport fork) plus RTE
+         margin containment and .overlay white; without it every twin pair on
+         this page renders both halves. -->
     <mj-raw>
-      <meta name="color-scheme" content="light dark" />
-      <meta name="supported-color-schemes" content="light dark" />
-      <meta name="format-detection" content="telephone=no" />
+      <style type="text/css" data-en-tools-template-css>
+        /* HEAD-RESIDENT rules (catalogued 2026-08-24, user decision same day;
+           see future-enhancements "Head-vs-block CSS"). Everything here must
+           pass two tests: absence REVEALS or DUPLICATES content or breaks a
+           mechanism every email relies on, and it would never be fixed by
+           swapping the Template Styles block. Fix-by-block-swap rules stay in
+           styles.css. EN inlines top-level rules from this head exactly as it
+           does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
+
+        /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+        /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
+
+        /* Copy over a photo must be white even in an email built without the
+           styles block (user decision 2026-08-24: relocated rather than
+           re-authored inline). */
+        .overlay h1, .overlay h2, .overlay h3, .overlay h4, .overlay h5,
+        .overlay h6, .overlay span, .overlay p, .overlay a { color: #fff; }
+
+        /* Viewport fork: hide twice, reveal once, in this order. */
+        .mobile-only { display: none; }
+
+        /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+        @media (max-width: 9998px) {
+          .mobile-only { display: none !important; }
+        }
+        @media only screen and (max-width: 599px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block !important; }
+        }
+        /* Mode-fork reveals. These two blocks are the FIRST occurrence of
+           their conditions, so styles.css's same-condition repaint blocks
+           fold up to these positions at send — swap first, repaints after,
+           which is byte-for-byte today's order inside styles.css. */
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
+        }
+      </style>
     </mj-raw>
     <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
          this sheet in the template HEAD: the importer splices every other

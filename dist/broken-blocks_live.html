@@ -465,6 +465,80 @@ background-color: #000 !important;
 <meta name="color-scheme" content="light dark" />
 <meta name="supported-color-schemes" content="light dark" />
 <meta name="format-detection" content="telephone=no" />
+<style type="text/css" data-en-tools-template-css>
+.wysiwyg div p:first-child,
+.wysiwyg div h1:first-child,
+.wysiwyg div h2:first-child,
+.wysiwyg div h3:first-child,
+.wysiwyg div h4:first-child,
+.wysiwyg div h5:first-child,
+.wysiwyg div h6:first-child,
+.wysiwyg div ul:first-child,
+.wysiwyg div ol:first-child {
+margin-top: 0;
+}
+.wysiwyg div p:last-child,
+.wysiwyg div h1:last-child,
+.wysiwyg div h2:last-child,
+.wysiwyg div h3:last-child,
+.wysiwyg div h4:last-child,
+.wysiwyg div h5:last-child,
+.wysiwyg div h6:last-child,
+.wysiwyg div ul:last-child,
+.wysiwyg div ol:last-child {
+margin-bottom: 0;
+}
+.overlay h1,
+.overlay h2,
+.overlay h3,
+.overlay h4,
+.overlay h5,
+.overlay h6,
+.overlay span,
+.overlay p,
+.overlay a {
+color: #fff;
+}
+.mobile-only {
+display: none;
+}
+.dark-only {
+display: none;
+}
+:root {
+color-scheme: light dark;
+supported-color-schemes: light dark;
+}
+@media (max-width: 9998px) {
+.mobile-only {
+display: none !important;
+}
+}
+@media only screen and (max-width: 599px) {
+.desktop-only {
+display: none !important;
+}
+.mobile-only {
+display: block !important;
+}
+}
+@media only screen and (max-width: 9999px) {
+[data-ogsc] .dark-only {
+display: block !important;
+}
+[data-ogsc] .light-only {
+display: none !important;
+}
+}
+@media (prefers-color-scheme: dark) {
+.light-only {
+display: none !important;
+}
+.dark-only {
+display: block !important;
+}
+}
+</style>
 <style type="text/css" data-en-tools-band>
 div[data-container] {
 max-width: 600px;

@@ -62,8 +62,9 @@
     "hash": "db72a7c95288"
   },
   "block:CTA Hero (w/ heading)": {
-    "version": 7,
-    "hash": "2a64aeaac7bd"
+    "version": 8,
+    "hash": "7d98587beccf",
+    "date": "2026-09-28"
   },
   "block:CTA Hero (w/ image badge)": {
     "version": 6,
@@ -81,40 +82,49 @@
     "date": "2026-08-25"
   },
   "block:Category — Buttons": {
-    "version": 6,
-    "hash": "b3a2d6071405"
+    "version": 7,
+    "hash": "4f9a4571adcf",
+    "date": "2026-09-28"
   },
   "block:Category — Engagement & Interactive": {
-    "version": 7,
-    "hash": "6d00597d064b"
+    "version": 8,
+    "hash": "8e0c05895e5b",
+    "date": "2026-09-28"
   },
   "block:Category — Footers": {
-    "version": 7,
-    "hash": "bd54edf5be2b"
+    "version": 8,
+    "hash": "1aaeed78f6ff",
+    "date": "2026-09-28"
   },
   "block:Category — Headers and Heroes": {
-    "version": 7,
-    "hash": "cdb2ec6fae98"
+    "version": 8,
+    "hash": "41af633c078d",
+    "date": "2026-09-28"
   },
   "block:Category — Image & Text Layouts": {
-    "version": 7,
-    "hash": "b11887bf7d32"
+    "version": 8,
+    "hash": "d63c434597aa",
+    "date": "2026-09-28"
   },
   "block:Category — Images & Media": {
-    "version": 7,
-    "hash": "758568a062fe"
+    "version": 8,
+    "hash": "191a60c471b8",
+    "date": "2026-09-28"
   },
   "block:Category — Signatures": {
-    "version": 6,
-    "hash": "d0ccc4911cd9"
+    "version": 7,
+    "hash": "a2da0e50fcac",
+    "date": "2026-09-28"
   },
   "block:Category — Text Blocks": {
-    "version": 7,
-    "hash": "60304cbfe132"
+    "version": 8,
+    "hash": "d8da4a80d979",
+    "date": "2026-09-28"
   },
   "block:Category — Utilities": {
-    "version": 6,
-    "hash": "cfebdd7440c0"
+    "version": 7,
+    "hash": "6b50aaaeea03",
+    "date": "2026-09-28"
   },
   "block:Countdown Block": {
     "version": 12,
