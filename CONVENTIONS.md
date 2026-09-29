@@ -4475,22 +4475,24 @@ or "CSS Styles Block" name for markup EN never stores — the importer's
 `compactEmailHtml` drops prose comments and `compactCss` drops CSS comments
 before anything is saved (Highlighted Text, Stat Row and Countdown Block each
 bumped once that way on 2026-09-29, and those versions stand). A block now
-hashes its region with non-conditional comments removed, whitespace runs
-collapsed and whitespace BETWEEN tags removed (the same prose normaliser as the template in TPL's version-sync.mjs: `[if …]`,
-`<![endif]` and `en-tools-keep` survive), and `head-css` hashes its sheets
-with `/* … */` comments removed and whitespace runs collapsed to one space.
-The block normaliser is deliberately a little BROADER than the importer's
-`compactEmailHtml`, which keeps inter-tag whitespace: an edit that only adds
-or removes whitespace between two tags (say, the space between two inline
-links) does not bump the block. Rare in block source, and a version bump is
-a rename in EN, so the trade favours fewer false bumps; bump such an edit
-by changing real markup alongside it. The definition change
+hashes its region with non-conditional comments removed and whitespace runs
+collapsed to one space (the same prose normaliser as the template in TPL's
+version-sync.mjs: `[if …]`, `<![endif]` and `en-tools-keep` survive), and
+`head-css` hashes its sheets with `/* … */` comments removed and whitespace
+runs collapsed to one space. Blocks KEEP the whitespace between tags, which
+the template hash drops: inside a block it is often a rendered space
+(`<b>Lorem:</b> <a>` vs `<b>Lorem:</b><a>`), and a visible change must bump
+(caught by the 2026-09-29 final QA, a few hours after the first
+comment-free rule had shipped that step to blocks too; both old block rules
+re-anchor, so neither switch bumped anything). The definition change
 re-anchored per entity: a committed hash equal to the entity's old-rule hash
 adopts the new hash at the same version, so the switch bumped nothing (77
 entities held). Breach-tested 2026-09-29: a block comment edit and a
 `styles.css` comment edit held every version; a block padding edit bumped
-that block, and a `styles.css` value edit bumped `head-css`. Autoresponders
-and partials still hash their raw source.
+that block, a `styles.css` value edit bumped `head-css`, and (after the
+tag-gap fix) deleting the rendered space in `<b>Lorem:</b> <a>` bumped its
+block while a reindent plus a prose comment held. Autoresponders and
+partials still hash their raw source.
 
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show

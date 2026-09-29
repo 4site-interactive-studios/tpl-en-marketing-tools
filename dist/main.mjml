@@ -2091,7 +2091,7 @@
         <mj-column width="78px" vertical-align="middle" css-class="stream-icon">
           <!-- data-display-toggle on the FIRST badge only (user decision
                2026-08-21): a client on one service should be able to drop
-               Spotify and keep Apple, which sits last and hard against the
+               Spotify and keep Apple, which sits last, 16px in from the
                right edge, so the row still reads as intended. Hiding it
                leaves its 78px column standing - hidden content does not
                reflow its siblings - which here is the wanted behaviour: the
@@ -2782,8 +2782,8 @@
     <!-- START: Countdown Block -->
     <!-- FULL BLEED (user decision 2026-08-21): the wrapper carries no side
          gutter, so the photo reaches both email edges and the group fills the
-         frame at 25+550+25 = 600 — the same shape Video Block and Photo Banner
-         use. It was 0/32px/16px around a 25+484+25 = 534 card until then.
+         frame at 25+550+25 = 600 — the same shape Video Block uses (the
+         Photo Banners moved to 16/568/16 rails on 2026-09-29). It was 0/32px/16px around a 25+484+25 = 534 card until then.
          The 1px #D9E3D9 border went with the inset: it framed a card, and at
          full bleed it becomes a hairline hugging the email edge. No other
          full-bleed block in the catalog carries one.

@@ -116,18 +116,24 @@ function shellOf(text) {
 /**
  * Markup with render-inert prose removed: every comment except a conditional
  * one (`[if …]` / `<![endif]`) and the en-tools-keep stamp, and every
- * whitespace run. It is what the importer leaves when it stores HTML
- * (compactEmailHtml drops prose comments), so a comment or reindent edit
- * moves no version. Shared by the template and the block hashes.
+ * whitespace run collapsed to one space. The importer's compactEmailHtml
+ * drops prose comments too, so a comment or reindent edit moves no version.
+ *
+ * `tagGaps: false` also deletes whitespace BETWEEN tags. Only the template
+ * hash uses that (its rule since 2026-09-29, kept so its version holds);
+ * blocks keep the gap, because inside a block it is often a rendered space
+ * — `<b>Lorem:</b> <a>` vs `<b>Lorem:</b><a>` — and a visible change must
+ * bump (final QA, 2026-09-29).
  */
 const keepComment = (c) => /^<!--\s*\[if\b|<!\[endif\]|^<!--\s*en-tools-keep\b/i.test(c);
-function withoutProse(markup) {
-  return markup
+function withoutProse(markup, { tagGaps = true } = {}) {
+  const out = markup
     .replace(/<!--[\s\S]*?-->/g, (c) => (keepComment(c) ? c : ''))
-    .replace(/\s+/g, ' ')
-    .replace(/>\s+</g, '><')
-    .trim();
+    .replace(/\s+/g, ' ');
+  return (tagGaps ? out : out.replace(/>\s+</g, '><')).trim();
 }
+/** The first comment-free block rule (2026-09-29, hours old), which also deleted tag gaps. */
+const blockHashRule1 = (content) => sha(withoutProse(content, { tagGaps: false }));
 
 /** CSS with comments and whitespace runs removed, as the importer's compactCss leaves it. */
 function withoutCssProse(css) {
@@ -205,6 +211,7 @@ export function templateMarkupContent() {
     head.replace(/<style([^>]*)>[\s\S]*?<\/style>/gi, (m, attrs) =>
       /\bdata-en-tools-band\b/i.test(attrs) ? m : '',
     ) + before + after,
+    { tagGaps: false },
   );
 }
 
@@ -223,7 +230,7 @@ function resolveEntry(key, hash, prev) {
   if (!prev) return { version: 1, hash, date: today() };
   if (prev.hash === hash) return prev;
   if (key === 'email-template' && prev.hash === legacyTemplateHash()) return { ...prev, hash };
-  if (LEGACY[key] !== undefined && prev.hash === LEGACY[key]) return { ...prev, hash };
+  if ((LEGACY[key] ?? []).includes(prev.hash)) return { ...prev, hash };
   return { version: prev.version + 1, hash, date: today() };
 }
 
@@ -231,7 +238,7 @@ function resolveEntry(key, hash, prev) {
 const POST_COMPILE = {
   'head-css': () => {
     const raw = headCssContent();
-    LEGACY['head-css'] = sha(raw);
+    LEGACY['head-css'] = [sha(raw)];
     return sha(withoutCssProse(raw));
   },
   'email-template': () => sha(templateMarkupContent()),
@@ -268,7 +275,7 @@ export function computeEntities() {
     blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n${BLOCK_REGION_SEP}\n` + unified.slice(l.start, l.end));
   }
   for (const [name, content] of blocks) {
-    LEGACY[`block:${name}`] = sha(content);
+    LEGACY[`block:${name}`] = [sha(content), blockHashRule1(content)];
     entities[`block:${name}`] = sha(withoutProse(content));
   }
   return entities;
