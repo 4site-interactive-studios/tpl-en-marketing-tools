@@ -43,8 +43,12 @@
         R3 NONE         option 3 resolved: the column holds only the comment.
         R4 OLD          pre-637f573: 144px padding, bare rails, button.
         R5 OLD NONE     R4 with the button excluded (the 50px drop).
+        R6 INSET ICON   Video Block (inset), option 2: 87px padding, 486px
+                        centre column inside the white 32px frame.
+        R7 INSET NONE   Video Block (inset), option 3.
         PASS: R1 = R2 = R3 in height in each client; R4 is the reference
-        height the old math was built for; R5 shows the drift.
+        height the old math was built for; R5 shows the drift; R6 = R7 =
+        302px at 600 wide (the inset's 16:9).
 
       == M — METERED TWINS. Same group geometry on a flat ground, palette
          paint, so heights are countable:
@@ -405,6 +409,39 @@
       </mj-section>
     </mj-wrapper>
 
+    <!-- == R6 INSET PLAY ICON / R7 INSET NONE == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R6 INSET PLAY ICON</b>: Video Block (inset), option 2. Expect 302px, icon centred.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-desktop-only-background-color>
+      <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="87px 0 87px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="486px" vertical-align="middle">
+            <mj-image src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R7 INSET NONE</b>: Video Block (inset), option 3. Expect 302px, photo only.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-desktop-only-background-color>
+      <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="87px 0 87px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="486px" vertical-align="middle">
+            <mj-raw><!-- Row 1 Button - Not Displayed --></mj-raw>
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
     <!-- == M: ruler + metered twins == -->
     <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>SUN RULER</b>: exactly 128px. Band = Grass px / ruler px x 128.</p></mj-text></mj-column></mj-section>
     <mj-section padding="0 32px"><mj-column>

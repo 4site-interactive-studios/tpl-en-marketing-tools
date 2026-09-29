@@ -323,9 +323,9 @@
     "date": "2026-09-29"
   },
   "block:Video Block (inset)": {
-    "version": 24,
-    "hash": "323f214a71f3",
-    "date": "2026-09-25"
+    "version": 25,
+    "hash": "a5ef1b0b367d",
+    "date": "2026-09-29"
   },
   "block:Video Feature": {
     "version": 3,
@@ -343,8 +343,8 @@
     "date": "2026-09-25"
   },
   "email-template": {
-    "version": 68,
-    "hash": "a7d93c7dda9f",
+    "version": 69,
+    "hash": "1c92b9eb640b",
     "date": "2026-09-29"
   },
   "head-css": {

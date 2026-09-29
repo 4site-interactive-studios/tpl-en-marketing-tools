@@ -6,7 +6,7 @@
         "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
         "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 },
         "video-band": { "None": 0, "16:9": 105, "3:2": 136, "1:1": 236 },
-        "video-band-inset": { "None": 0, "16:9": 126, "3:2": 154, "1:1": 243 }
+        "video-band-inset": { "None": 0, "16:9": 87, "3:2": 115, "1:1": 204 }
       },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
@@ -1389,15 +1389,24 @@
          everywhere as the Outlook fallback per the note above — the prefix
          describes CSS-client pixels, not the Word engine. -->
     <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-desktop-only-background-color>
-        <!-- Same ratio steps as Video Block, computed for the 536px inset photo
-             (video-band-inset scale; 16:9 default). -->
-        <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="126px 0 126px">
+        <!-- Same ratio steps and overlay as Video Block, computed for the
+             536px inset photo (video-band-inset scale; 16:9 default):
+             87 / 115 / 204 + the 128px slot = 302 / 358 / 536px bands, the
+             heights 126 / 154 / 243 gave with the ~50px button. Overlay is
+             WATCH Button / Play Icon / Exclude Block, held at 128px by the
+             rail rows — Video Block's note has the reasoning. -->
+        <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="87px 0 87px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="486px">
-            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="486px" vertical-align="middle">
+            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
         </mj-group>
     </mj-section>
     </mj-wrapper>
