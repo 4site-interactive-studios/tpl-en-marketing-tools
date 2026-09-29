@@ -2333,7 +2333,8 @@ sort — it is purely the panel/export display order.
 
   `reverseCompiledRow` rebuilds the row: each `<td …>` cell descriptor
   travels WITH its column (it carries that column's width and classes, e.g.
-  `two-col-column-outlook first-column`, `width:296px`), and only
+  `two-col-column-outlook first-column-outlook`, `width:240px` on the Story
+  Cards' image column), and only
   `[if mso | IE]` conditionals delimit cells — the `[if !mso]` dark-mode
   wrappers inside a column are carried along untouched. It locks onto the row
   by scanning candidate openers, so an enclosing frame's own wrapper is
