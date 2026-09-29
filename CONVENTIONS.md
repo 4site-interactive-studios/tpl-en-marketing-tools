@@ -1383,10 +1383,17 @@ direction-flip skips.
   underfilled 584px CTA Hero row offered 16px on all four sides at once,
   which the one-option-at-a-time oracle below cannot see. Each later cap is
   now measured with the earlier controls held at their WIDEST offered
-  option (per-side: right, then left; frames in document order), so every
-  combination of offered options fits — padding only ever takes width
-  away. The control measured first keeps the range; the later one reads
-  "…already offered to an earlier padding control in this block". A block
+  option, so every combination of offered FRAME-padding options fits —
+  padding only ever takes width away. Order is the generator's claim order,
+  not document order: per frame right then left, and frames by the
+  `searched` sort in `autoEnableReplacements` (longest authored padding
+  string first, then tightest region), so in the pre-fix heroes the inner
+  section (`32px 0 32px`) claimed the 16px before its outer wrapper (`0`).
+  The control measured first keeps the range; the later one reads
+  "…already offered to an earlier padding control in this block". Element
+  Inset Left/Right Selects (mj-image, mj-text, mj-button, mj-divider) are
+  NOT part of the budget: they are neither capped nor held, a known gap
+  (future-enhancements). A block
   whose joint-widest picks already fit is unaffected (the TPL catalog dumped
   identically before and after).
 

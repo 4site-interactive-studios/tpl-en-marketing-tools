@@ -143,8 +143,10 @@ Each step exists for a reason:
   or a grep, so each is now a build-time assertion: no tag carrying both
   `background-color` and `background-url` (Word paints the colour instead of
   the photo), every light container background inside a `.block` section has a
-  dark-mode hook in BOTH branches, and no set of fixed-width columns exceeds
-  its frame. The last one reads compiled `dist/*_live.html`, because the frame
+  dark-mode hook in BOTH branches, and no row of columns exceeds its frame or
+  (since 2026-09-29) falls short of it, and no edge spacer rail in an
+  `mj-group` goes unpinned for mobile. The frame checks read compiled
+  `dist/*_live.html`, because the frame
   is only resolved there — it skips with a note if `dist/` is absent. Each
   compiled page is traced to its source through `scripts/lib/source-pages.mjs`,
   and one with no source WARNs rather than being skipped (a rebuilt

@@ -212,12 +212,14 @@ function scanGeometry(html) {
   const frames = [];
   const hits = [];
   const imgHits = [];
-  // Underfill (2026-09-29): an all-px row that sums SHORT of its frame. The
-  // overflow test above could never see it — the 16px-baseline re-cut left
-  // three CTA Heroes at 16+240+312+16 = 584 in a 600 frame, a 16px dead
-  // strip on the right that shipped with zero WARN. Percentage rows fill by
-  // construction and a lone px column is a deliberate centred box (Quote
-  // Block's 472), so only a px row of two or more columns is measured.
+  // Underfill (2026-09-29): a row of two or more columns that sums SHORT of
+  // its frame. The overflow test above could never see it — the
+  // 16px-baseline re-cut left three CTA Heroes at 16+240+312+16 = 584 in a
+  // 600 frame, a 16px dead strip on the right that shipped with zero WARN.
+  // Percentage columns count at their share of the frame, so a 50% + 40%
+  // row is caught too (MJML's own rounding stays inside the 1px slack). A
+  // lone column is a deliberate centred box (Quote Block's 472) and is
+  // never measured.
   const unders = [];
 
   const closeFrame = (at) => {
@@ -230,7 +232,10 @@ function scanGeometry(html) {
     // frames entirely. Only the sibling-sum case needs two columns.
     const sum = f.cols.reduce((a, b) => a + b, 0);
     if (sum > f.frame + 1) hits.push({ ...f, sum, at });
-    else if (f.pxOnly && f.cols.length > 1 && sum < f.frame - 1) unders.push({ ...f, sum, at });
+    else if (f.fill.length > 1) {
+      const filled = f.fill.reduce((a, b) => a + b, 0);
+      if (filled < f.frame - 1) unders.push({ ...f, cols: f.fill, sum: filled, at });
+    }
   };
 
   /** Horizontal insets a content td takes out of its carrier. */
@@ -295,8 +300,14 @@ function scanGeometry(html) {
       const raw = e[3].replace('-', '.');
       const px = e[2] === 'px' ? Number(raw) : (cell * Number(raw)) / 100;
       if (frames.length) {
-        frames[frames.length - 1].cols.push(px);
-        if (e[2] !== 'px') frames[frames.length - 1].pxOnly = false;
+        const top = frames[frames.length - 1];
+        top.cols.push(px);
+        // The fill model for the underfill test: a percentage column is its
+        // share of the FRAME the row sits in. `cell` cannot serve — a
+        // conditional td has already narrowed it to the column's own ghost,
+        // so `cell * 50 / 100` halves a halved number (every 50+50 row read
+        // as 142+142 in a 568 frame).
+        top.fill.push(e[2] === 'px' ? px : (top.frame * Number(raw)) / 100);
       }
       box = e[2] === 'px' ? Number(raw) : Number(raw) === 100 ? frameBox : (frameBox * Number(raw)) / 100;
       leafInset = 0;
@@ -309,7 +320,7 @@ function scanGeometry(html) {
         continue;
       }
       if (t[0].startsWith('<table')) {
-        frames.push({ frame: cell, cols: [], savedCell: cell, pxOnly: true });
+        frames.push({ frame: cell, cols: [], fill: [], savedCell: cell });
         continue;
       }
       const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
@@ -352,7 +363,7 @@ guard('column geometry check', () => {
       const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
       const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
       warn(
-        `${rel}${at} "${name}" — ${hit.cols.length} fixed-width columns (${hit.cols.map((c) => Math.round(c)).join('+')}) total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.frame - hit.sum)}px short); the row stops short of the content baseline — re-cut the widest column to fill it`,
+        `${rel}${at} "${name}" — ${hit.cols.length} columns (${hit.cols.map((c) => Math.round(c)).join('+')}) total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.frame - hit.sum)}px short); the row stops short of the content baseline — re-cut the widest column to fill it`,
       );
     }
 
@@ -845,7 +856,7 @@ guard('grouped fixed-px columns are pinned for mobile', () => {
           const tokens = cls ? cls[1].split(/\s+/) : [];
           if (edge && cols.length > 1 && at375 < 12 && !tokens.some((t) => pinned.has(t))) {
             warn(
-              `src/${f}:${lineAt(text, g.index)}: a ${px}px edge spacer rail inside an mj-group has no mobile pin — ` +
+              `src/${f}:${lineAt(text, g.index + g[0].indexOf(g[1]) + col.index)}: the ${col === cols[0] ? 'left' : 'right'} ${px}px edge spacer rail inside an mj-group has no mobile pin — ` +
                 `mj-group converts it to a percentage below 600px, so the gutter renders about ${at375.toFixed(1)}px at ${MOBILE_VW} ` +
                 `(guide §6e). Pin it: .<token> { width: ${px}px !important }, and give the content column a calc() companion so the row still fits`,
             );
@@ -1425,11 +1436,14 @@ guard('source CSS budgets', () => {
   };
 
   // styles.css is ~60% of the delivered head. The rest of the head (MJML's
-  // resets, the column ladder, the builder band) costs ~5,283 delivered, so
-  // against the 15,000 page target (14,141 until 2026-09-29) styles.css may
-  // reach ~9,717 before the page itself trips. 9,710 is that number, rounded
-  // down.
-  const STYLES_CSS_BUDGET = 9710;
+  // resets, the column ladder, the builder band) costs ~5,850 delivered
+  // (measured 2026-09-29 on main: 14,383 page − 8,533 styles.css; it was
+  // ~5,283 when this guard was written, and the ladder and builder band have
+  // grown since), so against the 15,000 page target (14,141 until
+  // 2026-09-29) styles.css may reach ~9,150 before the page itself trips.
+  // Re-measure the rest when the ladder moves, or this share stops firing
+  // first — at 9,710 (15,000 − the stale 5,283) it never could.
+  const STYLES_CSS_BUDGET = 9150;
   const css = read('src/styles.css');
   if (css !== null) {
     const delivered = Math.round(EN_CSS_REPRINT_FACTOR * compact(css));
@@ -1442,10 +1456,10 @@ guard('source CSS budgets', () => {
 
   // Every distinct mj-column width="Npx" mints a head class, and MJML emits
   // each TWICE — once under @media (min-width:600px) and once as a
-  // .moz-text-html twin — for ~174 delivered bytes a width. With the page
-  // target ~610 bytes away that is about three widths of headroom, so the
-  // ceiling sits one above today's count to give an early signal rather than
-  // a post-mortem. Reuse an existing width before minting a new one.
+  // .moz-text-html twin — for ~174 delivered bytes a width. The ceiling sits
+  // just above today's count (18 on 2026-09-29, with ~617 bytes to the
+  // 15,000 target, about three widths) to give an early signal rather than a
+  // post-mortem. Reuse an existing width before minting a new one.
   const MAX_COLUMN_WIDTHS = 20;
   const live = read('dist/main_live.html');
   if (live !== null) {
