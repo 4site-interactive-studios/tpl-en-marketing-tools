@@ -113,6 +113,37 @@ function shellOf(text) {
   return out + text.slice(pos);
 }
 
+/**
+ * Markup with render-inert prose removed: every comment except a conditional
+ * one (`[if …]` / `<![endif]`) and the en-tools-keep stamp, and every
+ * whitespace run. It is what the importer leaves when it stores HTML
+ * (compactEmailHtml drops prose comments), so a comment or reindent edit
+ * moves no version. Shared by the template and the block hashes.
+ */
+const keepComment = (c) => /^<!--\s*\[if\b|<!\[endif\]|^<!--\s*en-tools-keep\b/i.test(c);
+function withoutProse(markup) {
+  return markup
+    .replace(/<!--[\s\S]*?-->/g, (c) => (keepComment(c) ? c : ''))
+    .replace(/\s+/g, ' ')
+    .replace(/>\s+</g, '><')
+    .trim();
+}
+
+/** CSS with comments and whitespace runs removed, as the importer's compactCss leaves it. */
+function withoutCssProse(css) {
+  return css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Old-rule hashes, filled as entities are computed (2026-09-29). Blocks
+ * hashed their raw source region and head-css the raw compiled sheets, so a
+ * prose-comment edit bumped an EN block name for markup EN never stores.
+ * resolveEntry uses these to adopt the new comment-free hash at the SAME
+ * version when the committed hash still equals the old-rule one: the
+ * definition change itself bumps nothing (the legacyTemplateHash precedent).
+ */
+const LEGACY = {};
+
 /** Compiled head <style> contents of the unified master, as the compiler wrote them */
 export function headCssContent() {
   // Scripts out first: _local-debug carries the raw MJML as a JSON payload
@@ -170,16 +201,11 @@ export function templateMarkupContent() {
   const before = starts.length ? body.slice(0, starts[0].index) : body;
   const lastEnd = ends[ends.length - 1];
   const after = lastEnd ? body.slice(lastEnd.index + lastEnd[0].length) : '';
-  const keepComment = (c) => /^<!--\s*\[if\b|<!\[endif\]|^<!--\s*en-tools-keep\b/i.test(c);
-  return (
+  return withoutProse(
     head.replace(/<style([^>]*)>[\s\S]*?<\/style>/gi, (m, attrs) =>
       /\bdata-en-tools-band\b/i.test(attrs) ? m : '',
-    ) + before + after
-  )
-    .replace(/<!--[\s\S]*?-->/g, (c) => (keepComment(c) ? c : ''))
-    .replace(/\s+/g, ' ')
-    .replace(/>\s+</g, '><')
-    .trim();
+    ) + before + after,
+  );
 }
 
 /**
@@ -197,12 +223,17 @@ function resolveEntry(key, hash, prev) {
   if (!prev) return { version: 1, hash, date: today() };
   if (prev.hash === hash) return prev;
   if (key === 'email-template' && prev.hash === legacyTemplateHash()) return { ...prev, hash };
+  if (LEGACY[key] !== undefined && prev.hash === LEGACY[key]) return { ...prev, hash };
   return { version: prev.version + 1, hash, date: today() };
 }
 
 /** Entities hashed from dist/, re-resolved by the post-compile pass. */
 const POST_COMPILE = {
-  'head-css': () => sha(headCssContent()),
+  'head-css': () => {
+    const raw = headCssContent();
+    LEGACY['head-css'] = sha(raw);
+    return sha(withoutCssProse(raw));
+  },
   'email-template': () => sha(templateMarkupContent()),
 };
 
@@ -236,7 +267,10 @@ export function computeEntities() {
   for (const l of leafRegions(unified)) {
     blocks.set(l.name, (blocks.get(l.name) ?? '') + `\n${BLOCK_REGION_SEP}\n` + unified.slice(l.start, l.end));
   }
-  for (const [name, content] of blocks) entities[`block:${name}`] = sha(content);
+  for (const [name, content] of blocks) {
+    LEGACY[`block:${name}`] = sha(content);
+    entities[`block:${name}`] = sha(withoutProse(content));
+  }
   return entities;
 }
 
