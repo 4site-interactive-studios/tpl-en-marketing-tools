@@ -327,6 +327,11 @@
     "hash": "323f214a71f3",
     "date": "2026-09-25"
   },
+  "block:Video Feature": {
+    "version": 1,
+    "hash": "2c190bb8cecc",
+    "date": "2026-09-29"
+  },
   "block:WYSIWYG Header": {
     "version": 4,
     "hash": "7b7c7dfbedf1",
@@ -338,9 +343,9 @@
     "date": "2026-09-25"
   },
   "email-template": {
-    "version": 66,
-    "hash": "c56da80fd65c",
-    "date": "2026-09-27"
+    "version": 67,
+    "hash": "0d9ddebd1073",
+    "date": "2026-09-29"
   },
   "head-css": {
     "version": 57,
