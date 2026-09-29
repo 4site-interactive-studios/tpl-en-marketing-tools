@@ -211,16 +211,19 @@
     "date": "2026-09-29"
   },
   "block:Photo Banner": {
-    "version": 4,
-    "hash": "e540bad6b005"
+    "version": 5,
+    "hash": "51d6eb5bfa1b",
+    "date": "2026-09-29"
   },
   "block:Photo Banner (overlay panel, w/ CTA)": {
-    "version": 7,
-    "hash": "6b01bac4eb3f"
+    "version": 8,
+    "hash": "465ff526f4db",
+    "date": "2026-09-29"
   },
   "block:Photo Banner (w/ CTA)": {
-    "version": 7,
-    "hash": "2c623094c715"
+    "version": 8,
+    "hash": "361d142eb36e",
+    "date": "2026-09-29"
   },
   "block:Photo and Text Grid Block (2x2)": {
     "version": 11,
@@ -356,8 +359,8 @@
     "date": "2026-09-29"
   },
   "head-css": {
-    "version": 62,
-    "hash": "2bc53f77eed1",
+    "version": 63,
+    "hash": "cb6bf31746b5",
     "date": "2026-09-29"
   },
   "partial:debug-toolbar": {

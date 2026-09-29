@@ -621,7 +621,7 @@ classifies it instead of strip-testing it as dead.
   VML automatically, but Outlook cannot honor horizontal section padding
   inside one — author these sections with vertical-only padding and fake the
   gutters with an `mj-group` of `25px` spacer columns around a `550px` content
-  column (the NGS pattern; see Photo Banner or Countdown). The CTA Heroes
+  column (the NGS pattern; see Countdown or Video Block). The CTA Heroes
   use the same rail idiom at the content baseline instead: 16px rails around
   a 240 + 328 pair, pinned on phones by `.hero-rail` / `.hero-text`. Every `background-url` container
   must also author a real `background-color` — without it MJML omits `color=`
