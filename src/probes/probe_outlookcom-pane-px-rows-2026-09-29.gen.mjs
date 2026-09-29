@@ -104,7 +104,24 @@ ${BLOCKS.map(([n], i) => `        ${i + 1}  ${n}`).join('\n')}
       viewport B matched A within 1px. Only a real Outlook.com render can
       settle P1-P4.
 
-      VERDICTS: (none yet)
+      ROUND 1 (2026-09-29, sent through EN, EoA 69P1Kcg…, 19 clients;
+      Outlook 2016/2019 at 120 DPI not yet rendered, Outlook 2021 dark a
+      near-empty capture).
+        P1, P2 NOT MEASURABLE this round: BOTH Outlook.com captures (light
+          and dark) got a ~600px reading pane (email card 602px at a 1440
+          window), where the px pins fit, so nothing could wrap. Every A and
+          B row and C sat on one line in both. EoA's pane width varies per
+          capture: the video probe's round 1 light was ~538 (wrapped) and its
+          dark ~600 (fine). A narrow-pane capture is still needed.
+        P3 PASSES: Outlook 2021 (Word), Gmail web, Apple Mail and iPhone
+          render A and B the same (Word reads the MSO tables; phones sit
+          under the mobile pins).
+        P4 PASSES, weakly: C held one line, but in a pane that could not
+          make it wrap.
+        Also seen: dark mode repaints the probe's label bars black (they
+          carry .block); the labels stay readable.
+
+      VERDICTS: P3, P4 settled; P1, P2 open (need a <600px Outlook.com pane).
     -->`;
 
 const out = `<mjml lang="en">
