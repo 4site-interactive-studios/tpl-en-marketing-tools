@@ -2115,14 +2115,14 @@
             padding="0" css-class="dark-only" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
-        <mj-column width="78px" vertical-align="middle" css-class="stream-icon">
+        <mj-column width="78px" vertical-align="middle" css-class="stream-icon stream-icon-last">
           <mj-image
             src="assets/icon-apple-podcast.png"
             alt="Listen on Apple Podcasts"
             href="https://tpl.org"
             width="62px"
             align="right"
-            padding="0 0 0 16px" css-class="light-only" />
+            padding="0 0 0 16px" css-class="light-only stream-badge-last" />
           <mj-raw><!--[if !mso]><!--></mj-raw>
           <mj-image
             src="assets/icon-apple-podcast.png"
@@ -2130,7 +2130,7 @@
             href="https://tpl.org"
             width="62px"
             align="right"
-            padding="0 0 0 16px" css-class="dark-only" data-style-dark-mode />
+            padding="0 0 0 16px" css-class="dark-only stream-badge-last" data-style-dark-mode />
           <mj-raw><!--<![endif]--></mj-raw>
         </mj-column>
       </mj-group>
