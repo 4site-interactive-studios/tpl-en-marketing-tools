@@ -2411,10 +2411,11 @@ sort — it is purely the panel/export display order.
   past its box, and a 472px button with 32px insets stretched its cell to
   536px. The geometry walk subtracts a column's side BORDERS as well as its
   padding, as MJML does: Stat Row's 1px card border otherwise let a "full
-  width" button run 2px past it. On TPL this capped 8 of 21 button Widths
-  (CTA Button 536 to 472, Stat Row 472 to 342, Photo Banner (overlay panel,
-  w/ CTA) 550 to 422, CTA Hero and CTA Hero (w/ image badge) 268 to 236,
-  Steps Block and both Footer (w/ image) 536 to 472). A button whose space
+  width" button run 2px past it. On TPL this caps 9 of 23 button Widths
+  (re-counted 2026-09-29 on the 16px baseline: CTA Button, Video Feature,
+  Steps Block and both Footer (w/ image) to 472, Stat Row to 342, Photo
+  Banner (overlay panel, w/ CTA) to 440, CTA Hero and CTA Hero (w/ image
+  badge) to 236; the overlay was 550 to 422 before that day's rail re-cut). A button whose space
   moves with Box Border and Box Padding too is locked instead
   (`data-no-width-toggle`). Phones are the template's job: a fixed px width
   wider than the phone column overflows unless mobile CSS releases it. TPL's
@@ -4474,10 +4475,16 @@ or "CSS Styles Block" name for markup EN never stores — the importer's
 `compactEmailHtml` drops prose comments and `compactCss` drops CSS comments
 before anything is saved (Highlighted Text, Stat Row and Countdown Block each
 bumped once that way on 2026-09-29, and those versions stand). A block now
-hashes its region with non-conditional comments removed and whitespace
-collapsed (the same prose normaliser as the template in TPL's version-sync.mjs: `[if …]`,
+hashes its region with non-conditional comments removed, whitespace runs
+collapsed and whitespace BETWEEN tags removed (the same prose normaliser as the template in TPL's version-sync.mjs: `[if …]`,
 `<![endif]` and `en-tools-keep` survive), and `head-css` hashes its sheets
-with `/* … */` comments and whitespace runs removed. The definition change
+with `/* … */` comments removed and whitespace runs collapsed to one space.
+The block normaliser is deliberately a little BROADER than the importer's
+`compactEmailHtml`, which keeps inter-tag whitespace: an edit that only adds
+or removes whitespace between two tags (say, the space between two inline
+links) does not bump the block. Rare in block source, and a version bump is
+a rename in EN, so the trade favours fewer false bumps; bump such an edit
+by changing real markup alongside it. The definition change
 re-anchored per entity: a committed hash equal to the entity's old-rule hash
 adopts the new hash at the same version, so the switch bumped nothing (77
 entities held). Breach-tested 2026-09-29: a block comment edit and a
