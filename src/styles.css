@@ -13,7 +13,10 @@
      inliner moves vertical-align out of the style attribute into a valign
      attribute at send (measured 2026-08-18, EoA aafUJU…: 0 of 107 delivered
      tds kept it inline), so the style form only matches previews and the
-     valign form only matches the inbox. The section's own main td:
+     valign form only matches the inbox. A rule that only has to hold in
+     DELIVERED email (the dark card repaint, the two-col mobile inset) may
+     carry the valign form alone to save bytes: it will not show in a dist
+     preview, which is not what is delivered (guide §8 6c). The section's own main td:
      td[style*=direction] — direction survives inline (20 of 20 delivered).
    Attribute selectors are inert in Gmail; acceptable here because the dark
    branches never reach Gmail (no prefers-color-scheme, no [data-ogsc]) and
