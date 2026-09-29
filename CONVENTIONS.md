@@ -4455,6 +4455,24 @@ the same version. Breach-tested 2026-09-29: adding a block, changing an
 `en-tools-config` value and changing an `mj-attributes` default all held v69;
 changing `<mj-title>` moved it to v70.
 
+**Blocks and `head-css` ignore prose too (user decision 2026-09-29, the same
+rule carried to its end).** A block hashed its raw source region and
+`head-css` the raw compiled sheets, so a comment-only edit bumped an EN block
+or "CSS Styles Block" name for markup EN never stores — the importer's
+`compactEmailHtml` drops prose comments and `compactCss` drops CSS comments
+before anything is saved (Highlighted Text, Stat Row and Countdown Block each
+bumped once that way on 2026-09-29, and those versions stand). A block now
+hashes its region with non-conditional comments removed and whitespace
+collapsed (the same prose normaliser as the template in TPL's version-sync.mjs: `[if …]`,
+`<![endif]` and `en-tools-keep` survive), and `head-css` hashes its sheets
+with `/* … */` comments and whitespace runs removed. The definition change
+re-anchored per entity: a committed hash equal to the entity's old-rule hash
+adopts the new hash at the same version, so the switch bumped nothing (77
+entities held). Breach-tested 2026-09-29: a block comment edit and a
+`styles.css` comment edit held every version; a block padding edit bumped
+that block, and a `styles.css` value edit bumped `head-css`. Autoresponders
+and partials still hash their raw source.
+
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show
 HEAD:versions.json` / `HEAD:app-version.json`); an entity whose current
