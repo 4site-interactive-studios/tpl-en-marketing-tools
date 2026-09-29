@@ -377,7 +377,7 @@ p {
   }
 
   /* Flush-to-edge imagery on mobile (2026-08-13, EoA dnYN8bje).
-     A 240/328px card on a ~333 CSS px screen loses 80px — a quarter of the
+     A 240/296px card (240/328 since 2026-09-29) on a ~333 CSS px screen loses 80px — a quarter of the
      width — to section + column gutters, which is what the QA round read as
      "images not full bleed". The columns were never the problem: the image
      always filled its column exactly.
@@ -537,12 +537,22 @@ p {
      it — a group converts px widths to inline percentages below the
      breakpoint, and the 64px rail renders 40px at 375. Pinning the width is
      what reaches it, exactly as .poll-icon and .stream-icon do. */
-  .meter-rail {
+  .meter-rail,
+  .hero-rail {
     width: 16px !important;
   }
 
   .meter-body {
     width: calc(100% - 32px) !important;
+  }
+
+  /* The background-image CTA Heroes' gutter is the same kind of rail
+     (16 + 240 + 328 + 16, 2026-09-29): unpinned, a 16px rail renders ~10px
+     at 375. Pinning only the rails would overfill the row (40% + 54.67% +
+     32px), so the text column takes 60% minus both rails; the 240 column
+     keeps its inline 40%. */
+  .hero-text {
+    width: calc(60% - 32px) !important;
   }
 
   /* The stats row's trailing blank td is a DESKTOP spacer: it compacts

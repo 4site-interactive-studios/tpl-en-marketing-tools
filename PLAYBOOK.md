@@ -278,7 +278,7 @@ Names must match exactly (case-sensitive) between START and END.
 docs still resolves to a block, family, or category in the catalog,
 `src/main.mjml`.
 
-### Held decisions
+### Decisions
 
 - **The content baseline is Single (16px)** (user decision 2026-09-29,
   closing BugHerd 283). TPL asked on 2026-08-26 for Single as the WYSIWYG
@@ -621,7 +621,7 @@ classifies it instead of strip-testing it as dead.
   gutters with an `mj-group` of `25px` spacer columns around a `550px` content
   column (the NGS pattern; see Photo Banner or Countdown). The CTA Heroes
   use the same rail idiom at the content baseline instead: 16px rails around
-  a 240 + 312 pair. Every `background-url` container
+  a 240 + 328 pair, pinned on phones by `.hero-rail` / `.hero-text`. Every `background-url` container
   must also author a real `background-color` — without it MJML omits `color=`
   on `v:fill` and Outlook shows black/transparent when the image fails.
 - **Outlook renders all buttons square:** Outlook ignores `border-radius` on

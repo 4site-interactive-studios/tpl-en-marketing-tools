@@ -212,6 +212,13 @@ function scanGeometry(html) {
   const frames = [];
   const hits = [];
   const imgHits = [];
+  // Underfill (2026-09-29): an all-px row that sums SHORT of its frame. The
+  // overflow test above could never see it — the 16px-baseline re-cut left
+  // three CTA Heroes at 16+240+312+16 = 584 in a 600 frame, a 16px dead
+  // strip on the right that shipped with zero WARN. Percentage rows fill by
+  // construction and a lone px column is a deliberate centred box (Quote
+  // Block's 472), so only a px row of two or more columns is measured.
+  const unders = [];
 
   const closeFrame = (at) => {
     const f = frames.pop();
@@ -223,6 +230,7 @@ function scanGeometry(html) {
     // frames entirely. Only the sibling-sum case needs two columns.
     const sum = f.cols.reduce((a, b) => a + b, 0);
     if (sum > f.frame + 1) hits.push({ ...f, sum, at });
+    else if (f.pxOnly && f.cols.length > 1 && sum < f.frame - 1) unders.push({ ...f, sum, at });
   };
 
   /** Horizontal insets a content td takes out of its carrier. */
@@ -286,7 +294,10 @@ function scanGeometry(html) {
     if (e[2]) {
       const raw = e[3].replace('-', '.');
       const px = e[2] === 'px' ? Number(raw) : (cell * Number(raw)) / 100;
-      if (frames.length) frames[frames.length - 1].cols.push(px);
+      if (frames.length) {
+        frames[frames.length - 1].cols.push(px);
+        if (e[2] !== 'px') frames[frames.length - 1].pxOnly = false;
+      }
       box = e[2] === 'px' ? Number(raw) : Number(raw) === 100 ? frameBox : (frameBox * Number(raw)) / 100;
       leafInset = 0;
       columnPadTaken = false;
@@ -298,7 +309,7 @@ function scanGeometry(html) {
         continue;
       }
       if (t[0].startsWith('<table')) {
-        frames.push({ frame: cell, cols: [], savedCell: cell });
+        frames.push({ frame: cell, cols: [], savedCell: cell, pxOnly: true });
         continue;
       }
       const w = /width:(\d+(?:\.\d+)?)px/.exec(t[1] || '');
@@ -308,7 +319,7 @@ function scanGeometry(html) {
   }
   while (frames.length) closeFrame(html.length);
 
-  return { hits, imgHits };
+  return { hits, imgHits, unders };
 }
 
 guard('column geometry check', () => {
@@ -333,7 +344,17 @@ guard('column geometry check', () => {
     // The section content td carrying `direction:ltr` is REAL markup, not part
     // of an MSO conditional, so it needs its own branch — a plain section's
     // frame comes from nowhere else.
-    const { hits, imgHits } = scanGeometry(html);
+    const { hits, imgHits, unders } = scanGeometry(html);
+
+    for (const hit of unders) {
+      const marker = html.lastIndexOf('<!-- START: ', hit.at);
+      const name = marker < 0 ? '(unknown block)' : /<!-- START: (.+?) -->/.exec(html.slice(marker))[1];
+      const inSrc = srcText.indexOf(`<!-- START: ${name} -->`);
+      const at = inSrc < 0 ? '' : `:${lineAt(srcText, inSrc)}`;
+      warn(
+        `${rel}${at} "${name}" — ${hit.cols.length} fixed-width columns (${hit.cols.map((c) => Math.round(c)).join('+')}) total ${Math.round(hit.sum)}px in a ${Math.round(hit.frame)}px frame (${Math.round(hit.frame - hit.sum)}px short); the row stops short of the content baseline — re-cut the widest column to fill it`,
+      );
+    }
 
     for (const hit of imgHits) {
       const marker = html.lastIndexOf('<!-- START: ', hit.at);
@@ -812,7 +833,25 @@ guard('grouped fixed-px columns are pinned for mobile', () => {
       for (const col of cols) {
         const px = Number(col[2]);
         const body = col[4];
-        if (/^\s*&nbsp;\s*$/.test(body)) continue; // spacer rail: nothing to shrink
+        if (/^\s*&nbsp;\s*$/.test(body)) {
+          // An EDGE spacer rail IS the block's gutter (2026-09-29). Unpinned it
+          // shrinks with the viewport, so the CTA Heroes' 16px rails rendered
+          // ~10px at 375 while every other block sat at 16. Warn below 12px
+          // (three-quarters of the 16px mobile baseline): the 25px photo-band
+          // rails render ~15.6px, which the docs accept.
+          const edge = col === cols[0] || col === cols[cols.length - 1];
+          const at375 = (px / total) * avail;
+          const cls = /css-class="([^"]*)"/.exec(col[1] + col[3]);
+          const tokens = cls ? cls[1].split(/\s+/) : [];
+          if (edge && cols.length > 1 && at375 < 12 && !tokens.some((t) => pinned.has(t))) {
+            warn(
+              `src/${f}:${lineAt(text, g.index)}: a ${px}px edge spacer rail inside an mj-group has no mobile pin — ` +
+                `mj-group converts it to a percentage below 600px, so the gutter renders about ${at375.toFixed(1)}px at ${MOBILE_VW} ` +
+                `(guide §6e). Pin it: .<token> { width: ${px}px !important }, and give the content column a calc() companion so the row still fits`,
+            );
+          }
+          continue;
+        }
         const inset = insetOf(body);
         if (!inset) continue;
         // Rails only. A column that IS the row (a text column spanning the

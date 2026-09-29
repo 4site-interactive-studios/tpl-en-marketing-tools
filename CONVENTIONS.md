@@ -747,7 +747,7 @@ interchangeable at all.
 - **Padding Top defaults to 0 where the ground is invisible** — 2 blocks
   (Quote Block, Divider (single-color)). Logo Hero and CTA Hero (w/ image
   badge) left this list on 2026-08-25 (user decision): both now author
-  `padding="16px 32px 0"`, so their Padding Top defaults Single. The blocks
+  `padding="16px 16px 0"` (16px 32px 0 until the 2026-09-29 16px baseline), so their Padding Top defaults Single. The blocks
   on a colour or photo ground KEEP theirs: zeroing it puts the copy hard
   against the top edge of the band.
 - **Padding Bottom moves OUT to the gap where the ground is invisible** —
@@ -895,7 +895,15 @@ inner insets did not move):
   32+536, Video Block (inset) 25+486+25 → 25+518+25. The GUTTER rails
   themselves move: Progress Meter 32+536+32 → 16+568+16 (the `.meter-rail`
   mobile pin was already 16), and the three CTA Heroes'
-  background-url rails 32+240+296+32 → 16+240+312+16.
+  background-url rails 32+240+296+32 → 16+240+328+16 (the 328 shared with
+  the Story Cards). The heroes' rails now carry their own mobile pin,
+  `.hero-rail` (16px, grouped with `.meter-rail`), plus a `.hero-text`
+  companion (`calc(60% - 32px)`) so the pinned row still fits: unpinned, the
+  rails rendered ~10px at 375 where every other block sits at 16. They were
+  first re-cut to 312 — a 584px row, 16px short of the frame — which
+  shipped with zero WARN because the geometry guard only caught rows too
+  WIDE; check-catalog now also warns on an all-px row short of its frame
+  and on an unpinned edge rail.
 - **Story Cards' two-column cards** 240+296 → 240+328 (image 232 kept).
 - **Fixed-px pill rows** from the formula in their source comments:
   3×157 → 3×168 (exact — the 1px floor slack is gone), 2×252 → 2×268; the
@@ -903,22 +911,34 @@ inner insets did not move):
 - **Images sized to fill a column**: 2x2 tiles (Story Card 2x1, Photo and
   Text Grid, Quiz Block (2x2 photos)) 260 → 276 = (568 − 16) / 2; Story
   Card 1x1 536 → 568.
-- **Video Block (inset)'s ratio scale** re-derived for the 568px photo:
-  `video-band-inset` 126/154/243 → 135/164/259, from
-  floor((frame × ratio − 49) / 2) with 49 the WATCH button's height (the
-  same formula reproduces both old scales exactly).
+- **Video Block (inset)'s ratio scale** re-derived for the 568px photo
+  with the overlay's own formula, round((frame × ratio − 128) / 2) around
+  the 128px overlay slot (which reproduces 105/136/236 at 600 and
+  87/115/204 at 536): `video-band-inset` → **96/125/220**, 320/378/568px
+  bands. Its Outlook.com percentage pins follow the columns: 25/518/25 of
+  568 → 4.4% / 91.1%.
 
 Unmoved, for the reasons below: full-bleed photo blocks (25/550/25 rails,
 centred copy), Spacer and Dividers, and the centred fixed boxes (Quote
-Block's 472 column, CTA Text Block's 64px gutter). The padding-growth
-census still reads 50 of 200 frames, now capped at 16px (the authored
-step), and the three CTA Heroes gained 8px of headroom. The column ladder
-grew 17 → 19 (a 16px rail class, and 296 split into 312 for the heroes and
-328 for the Story Cards); delivered head CSS estimated 13,779 → **14,122**,
-19 bytes under the 14,141 working target. Mobile is unmoved for every
-`flush-mobile-capflush` block, as below.
+Block's 472 column, CTA Text Block's 64px gutter). Video Feature (added
+upstream the same day) was authored at 16. The padding-growth census reads
+52 of 207 frames short of the full scale: 21 capped at 16px (the authored
+step) and 31 that cannot grow at all. The column ladder grew 17 → 18
+distinct widths (16, 328, 412, 448, 456, 518 and 568 in; 296, 380, 416,
+424, 486 and 504 out). Delivered head CSS on the master, as check-catalog
+estimates it, is **14,383** (13,779 before the move; upstream alone
+14,139), and 14,574 in-app — under the 15,000 working target the user set
+the same day (user decision 2026-09-29, raised from 14,141). Mobile is
+unmoved for every `flush-mobile-capflush` block, as below; the frames
+WITHOUT the class (the button and pill rows) take the move on phones too,
+32 → 16.
 
-### 2026-08-24: 32px in, 536px wide (superseded)
+The 2026-08-24 record below is the previous baseline. Its numbers are
+superseded, but its rules still apply to any gutter move: what has to
+move with the frame, why classed blocks do not move on mobile, and the
+rail and `css-class` notes.
+
+### 2026-08-24: 32px in, 536px wide (the previous baseline)
 
 User decision 2026-08-24, reversing the 2026-08-21 move to a 64px
 baseline. Every block's internal content starts at **32px from the left
@@ -2673,10 +2693,12 @@ trade-off was accepted deliberately.)
   CSS plus builder chrome — plus a legacy field's bytes when an
   EN-imported block still carries one; detection is content-based via
   `isStyleOnlyHtml`), against the 16,384 hard limit with a
-  14,141 working target (headroom for EN-hoisted block styles, which the
-  meter itemizes as "+N if included", also ×factor; 14,141 — raised from
-  14,000, user decision 2026-08-25: the target is advisory headroom and
-  the figure is the user's lucky number, so keep it — noting the largest
+  15,000 working target (headroom for EN-hoisted block styles, which the
+  meter itemizes as "+N if included", also ×factor; 15,000 — user decision
+  2026-09-29, raised from 14,141 (itself raised from 14,000, user decision
+  2026-08-25, the user's lucky number) when TPL's 16px content baseline and
+  video overlay work put its master at ~14,400: the target is advisory
+  headroom and the figure is the user's to pick, so keep it — noting the largest
   delivered size ever MEASURED green is 13,325 and the band up to the
   16,384 cliff is unprobed). EN re-prints all
   head CSS at send — comments stripped, plain top-level rules inlined
@@ -3589,7 +3611,7 @@ the importer whitelists all data-*-only MJML validator warnings
   (`data-no-width-toggle`) is for a frame whose gutter moves NOTHING; the
   cap is for a frame that holds more than the frozen run — TPL's two
   Quiz pill frames (3x1 buttons, 2x2 buttons) hold the quiz question
-  too, so their Selects stay live at 0/16/32 and cap there. An
+  too, so their Selects stay live at 0/16 and cap there (0/16/32 until the 2026-09-29 16px baseline). An
   unparseable or negative value is ignored. TPL's check-catalog padding
   census honors the attribute source-side (data-* never reaches the
   compiled HTML), so both instruments agree about what fits. A

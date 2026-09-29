@@ -319,8 +319,8 @@ day, same account, same client matrix:
   builder band's label shows the CSS revision and its publish date
   ("CSS Styles Block - 2026-08-25 - v49", from the repo's versions.json
   head-css entity; a dateless entity shows "… v49" until its next bump).
-  The block carries a live Gmail budget meter (16,384 hard / 14,141
-  working target — a user-chosen advisory line, 2026-08-25) that
+  The block carries a live Gmail budget meter (16,384 hard / 15,000
+  working target — a user-chosen advisory line, 14,141 from 2026-08-25, raised 2026-09-29) that
   itemizes EN-hoisted block styles. Budget the DELIVERED
   size, not the authored size — authored comments and formatting are
   free. Since 2026-08-25 the importer also injects a hidden name +
@@ -1525,7 +1525,8 @@ re-cut whenever the baseline moves:
 - **Images with an explicit px width inside a percentage column** — a 50%
   column of a 472px frame is 236px, not 268. If the tiles keep a fixed
   inter-tile gap, subtract it before halving: TPL's 2x2 grids cut
-  (536 − 16) / 2 = 260, exactly as the 64px era cut (472 − 16) / 2 = 228.
+  (568 − 16) / 2 = 276 at the 16px baseline, exactly as the 32px era cut
+  (536 − 16) / 2 = 260 and the 64px era (472 − 16) / 2 = 228.
 
 And know the mobile cost before you commit: a section gutter is inline px
 and does not scale, so a 64px desktop gutter is still 64px at 375px, where
@@ -2102,9 +2103,10 @@ aloud). The Alt Text field survives either way (§5).
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
    tomorrow. The census is not silent here by design: since the
-   2026-08-24 return to a mid-ladder baseline (32px, 16px since
-   2026-09-29 — the same frames, now capped at 16) it reads 50 of 200 frames short
-   of the full scale (the two Quiz pill frames' `data-max-gutter`
+   2026-08-24 return to a mid-ladder baseline (32px; 16px since
+   2026-09-29) it reads a steady set short of the full scale — 52 of 207
+   frames after the 2026-09-29 merge, 21 capped at 16 and 31 that cannot
+   grow at all (the two Quiz pill frames' `data-max-gutter`
    declarations included; until 2026-09-28 it skipped the autoresponders
    and read 44 of 170, and their 6 rows repeat names already capped in the
    catalog) — diff the list against the documented capped set, and treat

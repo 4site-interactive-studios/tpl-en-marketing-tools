@@ -55,18 +55,18 @@
     "date": "2026-09-29"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
-    "version": 13,
-    "hash": "973766851551",
+    "version": 14,
+    "hash": "d8cdefe6a10c",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ background image)": {
-    "version": 7,
-    "hash": "7cbb36f9fcab",
+    "version": 8,
+    "hash": "dbfb1f6a4a6c",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ heading)": {
-    "version": 9,
-    "hash": "f922dda445b5",
+    "version": 10,
+    "hash": "598b5518e1fb",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ image badge)": {
@@ -130,9 +130,9 @@
     "date": "2026-09-29"
   },
   "block:Countdown Block": {
-    "version": 12,
-    "hash": "7cff522606b3",
-    "date": "2026-08-25"
+    "version": 13,
+    "hash": "482295ac2780",
+    "date": "2026-09-29"
   },
   "block:Deadline Panel": {
     "version": 17,
@@ -169,8 +169,8 @@
     "date": "2026-09-29"
   },
   "block:Highlighted Text": {
-    "version": 10,
-    "hash": "bdc144d7fe1a",
+    "version": 11,
+    "hash": "41fbbb96adfe",
     "date": "2026-09-29"
   },
   "block:Icon Row": {
@@ -286,8 +286,8 @@
     "hash": "11b98fa8e8d5"
   },
   "block:Stat Row": {
-    "version": 12,
-    "hash": "e869cfcc9ff9",
+    "version": 13,
+    "hash": "7964368d9074",
     "date": "2026-09-29"
   },
   "block:Steps Block": {
@@ -356,8 +356,8 @@
     "date": "2026-09-29"
   },
   "head-css": {
-    "version": 59,
-    "hash": "dad575eb5cf0",
+    "version": 60,
+    "hash": "e57d40b1c924",
     "date": "2026-09-29"
   },
   "partial:debug-toolbar": {
