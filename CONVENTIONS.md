@@ -1376,6 +1376,19 @@ direction-flip skips.
   understates the shrink by a whole gutter per extra frame (found by the
   rendered oracle on 2026-08-21, after the static scan had passed a 154px
   logo overflowing at Quadruple).
+  **Horizontal slack is shared** (2026-09-29, `GutterOffer`): caps used to
+  be measured one control at a time against the pristine block, so a
+  wrapper's gutter, its inner section's gutter and a frame's two sides could
+  each be offered the same spare width and overflow together — an
+  underfilled 584px CTA Hero row offered 16px on all four sides at once,
+  which the one-option-at-a-time oracle below cannot see. Each later cap is
+  now measured with the earlier controls held at their WIDEST offered
+  option (per-side: right, then left; frames in document order), so every
+  combination of offered options fits — padding only ever takes width
+  away. The control measured first keeps the range; the later one reads
+  "…already offered to an earlier padding control in this block". A block
+  whose joint-widest picks already fit is unaffected (the TPL catalog dumped
+  identically before and after).
 
 Related readability rule: all four padding sides share ONE field-order
 rank, so two frames' paddings list contiguously (Block Top/Bottom, then
