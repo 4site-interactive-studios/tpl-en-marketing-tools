@@ -5,8 +5,8 @@
       "classSpacingScales": {
         "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
         "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 },
-        "video-band": { "None": 0, "16:9": 144, "3:2": 175, "1:1": 275 },
-        "video-band-inset": { "None": 0, "16:9": 135, "3:2": 164, "1:1": 259 }
+        "video-band": { "None": 0, "16:9": 105, "3:2": 136, "1:1": 236 },
+        "video-band-inset": { "None": 0, "16:9": 96, "3:2": 125, "1:1": 220 }
       },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
@@ -1313,18 +1313,36 @@
     <!-- START: Video Block -->
     <!-- Fallback colour lives on the wrapper, NOT this section: MJML copies a section background-color onto the v:fill as color=, and the Word engine then paints that instead of the photo (measured 2026-08-13, EoA aBPD6k1l — variant A slabbed, B and C rendered). Behind the section it still covers a blocked image. -->
     <mj-wrapper background-color="#4A7A68" padding="0">
-      <!-- Band height = top + bottom padding + the ~50px button (BugHerd 293,
-           user decision 2026-09-25: 16:9 / 3:2 / 1:1 at 600px wide, 16:9 the
-           default; the old ~250px "short" band was dropped). The video-band
-           class scale mints Padding Top and Padding Bottom Selects on those
-           ratio steps; set both to the same ratio. -->
-      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="144px 0 144px">
+      <!-- Band height = top + bottom padding + a fixed 128px overlay slot
+           (BugHerd 293, user decision 2026-09-25: 16:9 / 3:2 / 1:1 at 600px
+           wide, 16:9 the default; the old ~250px "short" band was dropped).
+           The video-band class scale mints Padding Top and Padding Bottom
+           Selects on those ratio steps (105 / 136 / 236 = 338 / 400 / 600px
+           bands); set both to the same ratio.
+           The overlay is one Display Select (user decision 2026-09-29):
+           WATCH Button / Play Icon / Exclude Block. The icon is the button's
+           data-alt-member, so it never renders in place — the importer folds
+           it into the button's Select, and the build drops it from the
+           previews. A 128px row in each rail holds the slot's height
+           whichever option ships (the 128px icon, the ~50px button, or
+           nothing), so the ratio steps stay true; vertical-align="middle"
+           centres the button in it. The rows are mj-raw, not mj-spacer: a
+           spacer is a column member and renumbered the trailing gap's tag
+           (spacer_gap -> spacer_2_gap), and both rails carry one so the row
+           stays symmetric and mints no Column Order. Rescaled from 144 / 175 / 275 when the
+           slot replaced the button's ~50px. -->
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="105px 0 105px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-        <mj-column width="550px">
-          <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
-        </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1370,16 +1388,25 @@
          everywhere as the Outlook fallback per the note above — the prefix
          describes CSS-client pixels, not the Word engine. -->
     <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 16px 0" data-desktop-only-background-color>
-        <!-- Same ratio steps as Video Block, computed for the 568px inset photo
-             (video-band-inset scale; 16:9 default): floor((568 * ratio - 49) / 2),
-             49 being the WATCH button's height. -->
-        <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="135px 0 135px">
+        <!-- Same ratio steps and overlay as Video Block, computed for the
+             568px inset photo (video-band-inset scale; 16:9 default):
+             96 / 125 / 220 + the 128px slot = 320 / 378 / 568px bands,
+             round((568 * ratio - 128) / 2) — re-cut from 87 / 115 / 204 (the
+             536px frame) with the 2026-09-29 16px baseline. Overlay is
+             WATCH Button / Play Icon / Exclude Block, held at 128px by the
+             rail rows — Video Block's note has the reasoning. -->
+        <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="96px 0 96px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-          <mj-column width="518px">
-            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="518px" vertical-align="middle">
+            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
         </mj-group>
     </mj-section>
     </mj-wrapper>
@@ -1405,6 +1432,84 @@
       </mj-column>
     </mj-section>
     <!-- END: Video Block (inset) -->
+
+    <!-- START: Video Feature -->
+    <!-- The recurring story unit (user request 2026-09-29): WYSIWYG Header +
+         Video Block + WYSIWYG Text + CTA Button in one block, so an editor
+         places it once instead of stacking four. Every part is its own band,
+         so each mints its own Background Color: the header ships on
+         off-white, the rest on white, and none is a block-level ground.
+         Text bands author a Single (16px) gutter where the catalog default
+         is Double (user decision 2026-09-29, ahead of the template-wide
+         change). The video band is Video Block verbatim: full bleed, the
+         fallback colour on the wrapper, and its fixed 550px centre column
+         means it takes no width preset. -->
+    <mj-section
+      css-class="text-block block wysiwyg-header-block flush-mobile-capflush"
+      background-color="#F5FAF1" padding="16px 16px"
+    >
+      <mj-column vertical-align="middle">
+        <mj-text padding="0">
+          <h2><a href="https://tpl.org">Lorem Ipsum Dolor Sit Amet</a></h2>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="105px 0 105px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
+      <mj-column vertical-align="middle">
+        <!-- data-display-toggle: sole member of its column, as in Video Block. -->
+        <mj-text data-display-toggle align="right" mj-class="caption" padding="0">
+          <span>Photo: Photographer&rsquo;s Name</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="text-block block flush-mobile-capflush"
+      background-color="#ffffff" padding="16px 16px 0"
+    >
+      <mj-column>
+        <mj-text data-text-size-toggle padding="0">
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Morbi adipiscing convallis vitae
+            quisque commodo volutpat ut. Cursus sed quam ornare augue quis metus.
+            <a href="https://tpl.org">Non sit volutpat quam pretium</a>.
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section
+      css-class="block"
+      background-color="#ffffff" padding="16px 16px 0"
+    >
+      <mj-column vertical-align="middle">
+        <mj-button width="auto"
+          href="https://tpl.org"
+          align="left" padding="0" color="#ffffff" background-color="#006837">
+          WATCH NOW
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section css-class="spacer-block block" padding="0">
+      <mj-column>
+        <mj-spacer height="16px" />
+      </mj-column>
+    </mj-section>
+    <!-- END: Video Feature -->
 
     <!-- START: Category — Image & Text Layouts -->
     <mj-raw><div data-import-exclude="true" data-folder="6407" data-category-short="Text and Images"></mj-raw>

@@ -2216,6 +2216,9 @@ sort — it is purely the panel/export display order.
   `data-no-display-toggle` opts out upstream, `data-display-toggle` opts a sole
   member in; complex hand-authored texts
   are skipped with a code comment. Applies template-wide.
+  A member may carry an **alternate** (`data-alt-member`, 2026-09-29): the
+  Select then offers the primary, the alternate, and Exclude — one control for
+  "which overlay, or none". See the flag's entry below.
 - **Dark-mode images**: light/dark swap pairs merge (src EXCLUDED from the
   equality check so differing artwork still pairs); the dark twin's src
   becomes "Dark Mode Image URL" in the light image's group.
@@ -3899,6 +3902,36 @@ FIRST twin of a light/dark pair, never the second. `data-no-display-toggle` on
 the same element wins. Used by the Headers/Heroes blocks so the logo, the CTA
 button and the heading can each be hidden (user decision 2026-08-20).
 
+- **`data-alt-member="<Option Label>"`** (valued, on a content component,
+2026-09-29): makes the component an ALTERNATE of the member directly before it
+in the same column, folded into that primary's Display Select as an extra
+option — primary / alternate / "Exclude Block", defaulting to the primary.
+It exists for Video Block's overlay (WATCH Button / Play Icon / None, user
+decision 2026-09-29): a Display Select can only include or exclude one
+fragment, and every Display defaults to Include, so an icon authored beside
+the button as an ordinary member would ship both. The rules
+(`columnMembers` + the Display emit loop + `columnMemberCount`,
+`src/core/mjmlProps.ts`):
+  - **It never renders in place.** Its compiled `<tr>` (`memberSpan`) becomes
+    the option's value with its own splices baked in, and its place in the
+    flow is emptied. Its OWN fields survive — an image keeps Image URL, Alt,
+    Link, Width, Alignment — and their tags live only inside that option
+    value (nested tags in Select values are how Display already works).
+  - **It is not a member for counting.** It does not lift the column to the
+    >=2 threshold, gets no Display of its own, and does not cost the primary
+    its sole-member consolidation (no Spacing Below appears on either).
+    Numbering of every other field is unchanged.
+  - **The primary must get a Display Select** (`data-display-toggle` on a
+    sole member, or a shared column) and must not be an alternate itself; a
+    light/dark primary pairs through its light twin. **`data-option-label="<Label>"`**
+    on the primary names its option (falls back to "Include Block").
+  - **Unpaired, it renders in place** with an info note — overlay on overlay.
+    The importer cannot fail louder, so the authoring repo guards it at build
+    time (TPL `check-catalog`, "alternate member check"). Like
+    `data-alt-arrangement`, both flags are STRUCTURAL: never in the TPL
+    `normalize()` strip list, and the authoring build drops alternate members
+    from its compiled previews so a preview shows the default.
+
 **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
   Select (`src/core/mjmlProps.ts` columnMembers) — used for
@@ -4345,8 +4378,8 @@ Every EN artifact and the app itself carry an integer version, anchored to
 content hashes so increments are mechanical and can never be lost:
 
 - **TPL `versions.json`** — one entry per entity: `email-template` (the
-  `main.mjml` SHELL — every leaf `<!-- START/END -->` block region replaced
-  by a name sentinel; **shell only**, see below), `autoresponder:<file>`,
+  template markup EN STORES — see "The template version tracks stored
+  markup" below), `autoresponder:<file>`,
   `partial:<file>`, and `block:<name>` (the block's leaf marker regions).
   `catalog-shell` was the SECOND catalog's shell and is deliberately gone
   since 2026-08-21, when `mjml_extra-blocks.mjml` was deleted and
@@ -4358,8 +4391,8 @@ content hashes so increments are mechanical and can never be lost:
   everything under src/.
 
 **"Directly changed" is the bump rule, made precise by the entity
-definitions**: editing a block's markup bumps that block alone; editing the
-template shell bumps `email-template` alone; editing `styles.css` bumps
+definitions**: editing a block's markup bumps that block alone; changing the
+template's stored markup bumps `email-template` alone; editing `styles.css` bumps
 `head-css` alone; editing app code bumps the app. A stylesheet change that
 alters how every block RENDERS still bumps only `head-css` — versions track
 what was edited, not what was affected downstream.
@@ -4376,6 +4409,29 @@ so each number moves only when the thing it names does. Verified both ways:
 a `styles.css` edit moves `head-css` and not `email-template`; a band edit
 moves `email-template` and not `head-css`. Correcting the definitions
 changed both hashes once, which is a real bump and recorded as one.
+
+**The template version tracks stored markup (user rule 2026-09-29: "the
+template's version should not change unless the markup of the template
+itself changes").** Until then `email-template` hashed the `main.mjml`
+SOURCE shell, so it bumped for things EN never stores: adding, removing or
+reordering a block (the shell's block placeholders), the `en-tools-config`
+comment (stripped at import), head authoring prose (stripped at import) and
+`mj-attributes`/`mj-class` defaults. It went v66 → v69 on 2026-09-29 while the
+stored template did not change. It now hashes the template as the importer
+carves it out of the COMPILED master (the templateMarkupContent function in
+TPL's version-sync script): the head
+minus the sheets `head-css` covers (the `data-en-tools-band` chrome stays),
+plus the body wrapper before the first block and after the last,
+non-conditional comments dropped and whitespace collapsed. Because that is
+compiled output, it is resolved in the post-compile pass alongside
+`head-css`. An `mj-attributes` default that re-renders every block therefore
+bumps nothing unless it changes that markup — no block's markup changed
+either, and versions track markup, not downstream rendering (user decision,
+same day). The definition change re-anchored rather than bumped: a
+committed hash equal to the retired source-shell hash adopts the new hash at
+the same version. Breach-tested 2026-09-29: adding a block, changing an
+`en-tools-config` value and changing an `mj-attributes` default all held v69;
+changing `<mj-title>` moved it to v70.
 
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show

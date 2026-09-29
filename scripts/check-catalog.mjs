@@ -736,10 +736,11 @@ function atRulesOnly(css) {
 // 12,644 delivered; EN_CSS_REPRINT_FACTOR in the importer's headStyles.ts,
 // keep the two in step). This guard simulates the compact field per
 // compiled page, estimates the DELIVERED size (×1.30), and warns when a
-// shipping master passes the 14,141-byte working target (raised from
-// 14,000 on 2026-08-25, user decision — an advisory line, and the figure
-// is the user's lucky number; keep it in step with the importer's
-// GMAIL_CSS_TARGET) or when ANY page
+// shipping master passes the 15,000-byte working target (14,000 → 14,141
+// on 2026-08-25, the user's lucky number; → 15,000 on 2026-09-29, user
+// decision, when the 16px content baseline plus the video overlay work put
+// the master at ~14,400 — an advisory line either way; keep it in step with
+// the importer's GMAIL_CSS_TARGET) or when ANY page
 // would land within a builder-chrome hoist (HOIST_ALLOWANCE, 250 delivered
 // bytes) of the cliff. The comment said ~700 until 2026-08-21, contradicting
 // its own constant thirty lines down; the canary it also reserved for was
@@ -1322,6 +1323,56 @@ guard('alternate arrangement check', () => {
   }
 });
 
+guard('alternate member check', () => {
+  // data-alt-member folds an element into the Display Select of the member
+  // directly before it in its column (Video Block: WATCH Button / Play Icon /
+  // Exclude). The importer only notes an unpaired alternate at info level —
+  // and an unpaired one RENDERS IN PLACE, overlay stacked on overlay — so the
+  // pairing rules are checked here, next to the author.
+  const MEMBER = /<(mj-(?:image|text|button|divider))\b([^>]*)>/g;
+  for (const name of sources) {
+    const src = read(`src/${name}`) ?? '';
+    const members = [...src.matchAll(MEMBER)].map((m) => ({
+      index: m.index,
+      attrs: m[2],
+      column: src.lastIndexOf('<mj-column', m.index),
+    }));
+    for (const [i, m] of members.entries()) {
+      const label = /\bdata-alt-member\s*=\s*"([^"]*)"/.exec(m.attrs);
+      const at = `src/${name}:${lineAt(src, m.index)}`;
+      if (!label) {
+        if (/\bdata-option-label\b/.test(m.attrs)) {
+          const next = members[i + 1];
+          if (!next || next.column !== m.column || !/\bdata-alt-member\b/.test(next.attrs)) {
+            warn(`${at} data-option-label with no data-alt-member directly after it in the same column — the label names nothing`);
+          }
+        }
+        continue;
+      }
+      if (!label[1].trim()) warn(`${at} data-alt-member needs a non-empty label — it becomes the option's name`);
+      // The primary is the member before it in the same column; a light/dark
+      // pair's dark twin folds into its light twin, so step past it.
+      let p = i - 1;
+      if (p >= 0 && /dark-only/.test(members[p].attrs)) p -= 1;
+      const primary = p >= 0 && members[p].column === m.column ? members[p] : null;
+      if (!primary) {
+        warn(`${at} data-alt-member="${label[1]}" has no member before it in its column — it would render in place`);
+        continue;
+      }
+      if (/\bdata-alt-member\b/.test(primary.attrs)) {
+        warn(`${at} data-alt-member="${label[1]}" follows another alternate — its primary must be an ordinary member`);
+      }
+      if (!/\bdata-option-label\s*=\s*"[^"]+"/.test(primary.attrs)) {
+        warn(`${at} data-alt-member="${label[1]}": its primary has no data-option-label, so the Select's first option reads "Include Block"`);
+      }
+      const siblings = members.filter((x) => x.column === m.column && !/\bdata-alt-member\b|dark-only/.test(x.attrs));
+      if (/\bdata-no-display-toggle\b/.test(primary.attrs) || (!/\bdata-display-toggle\b/.test(primary.attrs) && siblings.length < 2)) {
+        warn(`${at} data-alt-member="${label[1]}": its primary gets no Display Select (add data-display-toggle), so the alternate would render in place`);
+      }
+    }
+  }
+});
+
 guard('source CSS budgets', () => {
   const EN_CSS_REPRINT_FACTOR = 1.3; // same measured factor as §8
 
@@ -1336,15 +1387,16 @@ guard('source CSS budgets', () => {
 
   // styles.css is ~60% of the delivered head. The rest of the head (MJML's
   // resets, the column ladder, the builder band) costs ~5,283 delivered, so
-  // against the 14,141 page target styles.css may reach ~8,858 before the
-  // page itself trips. 8,850 is that number, rounded down.
-  const STYLES_CSS_BUDGET = 8850;
+  // against the 15,000 page target (14,141 until 2026-09-29) styles.css may
+  // reach ~9,717 before the page itself trips. 9,710 is that number, rounded
+  // down.
+  const STYLES_CSS_BUDGET = 9710;
   const css = read('src/styles.css');
   if (css !== null) {
     const delivered = Math.round(EN_CSS_REPRINT_FACTOR * compact(css));
     if (delivered > STYLES_CSS_BUDGET) {
       warn(
-        `src/styles.css is ~${delivered} delivered bytes (${compact(css)} compact × ${EN_CSS_REPRINT_FACTOR}) — past its ${STYLES_CSS_BUDGET}-byte share of the 14,141 page target. It is the largest single contributor to the head, so trim it here rather than hunting the page total`,
+        `src/styles.css is ~${delivered} delivered bytes (${compact(css)} compact × ${EN_CSS_REPRINT_FACTOR}) — past its ${STYLES_CSS_BUDGET}-byte share of the 15,000 page target. It is the largest single contributor to the head, so trim it here rather than hunting the page total`,
       );
     }
   }
@@ -1412,9 +1464,9 @@ guard('Gmail CSS budget + head coupling check', () => {
     // Every page is a shipping master now. This used to exempt
     // mjml_extra-blocks, which was deleted on 2026-08-21 — the test could
     // never be false again, so it went with it.
-    if (estimated > 14141) {
+    if (estimated > 15000) {
       warn(
-        `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 14,141-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
+        `dist/${page}: estimated delivered head CSS is ${estimated} bytes (${compactBytes} compact × ${EN_CSS_REPRINT_FACTOR} EN re-print) — past the 15,000-byte working target under Gmail's 16,384 cliff (guide §2b-bis); every Gmail surface drops the ENTIRE stylesheet past the limit`,
       );
     }
     if (estimated + HOIST_ALLOWANCE > 16384) {

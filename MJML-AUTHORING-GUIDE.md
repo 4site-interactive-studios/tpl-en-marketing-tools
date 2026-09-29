@@ -1692,6 +1692,7 @@ the one field (§4: one value, every carrier).
 | `data-category-short="Text"` | short category name prefixed onto block names |
 | `data-no-display-toggle` | opt out of the show/hide Select |
 | `data-display-toggle` | opt a column's SOLE member IN to the show/hide Select |
+| `data-alt-member="<Option Label>"` | on a content element placed DIRECTLY after another in the same column: make it that member's alternate — one Display Select offering the primary, this alternate, and Exclude (e.g. a video band's WATCH button / play icon / none). The alternate never renders in place and keeps its own fields; name the primary's option with `data-option-label="<Label>"`. The primary must get a Display Select itself (`data-display-toggle` if it is its column's only member). An unpaired alternate renders in place with only an info note, so guard the pairing at build time, and drop alternates from compiled previews the way alternate arrangements are dropped. If the options differ in height, hold the slot with a fixed-height filler outside the column (a raw `<tr><td height>` in a side rail — not an `mj-spacer`, which is a column member and renumbers later spacer tags) so switching options never resizes the band |
 | `data-no-link-toggle` | opt out of the image link Select. The Select itself **defaults to "Exclude Link"** (2026-08-21): an `href` you author is what the editor can turn ON, not what ships. Authoring one is still worth doing — it is the link an editor gets when they opt in, and the value a deleted field restores. |
 | `data-no-link-color` | on an `mj-text`: opt it out of the per-block Link Color Select (the shared class-token control; see conventions "Link Color") |
 | `data-text-size-toggle` | on an `mj-text`: opt it IN to the Text Size Select. Options come from top-level `.text-<name> p` rules declaring only font-size, line-height and mso-line-height-rule; the bare `p` rule labels the Default (see conventions "Text Size"). Put it where editors resize body copy, not everywhere |
@@ -2123,6 +2124,16 @@ aloud). The Alt Text field survives either way (§5).
    0.5px at 375px). Pin such columns with the signature-block pattern —
    a mobile rule setting the icon column's `width: <px> !important` and
    the text column's `width: calc(100% - <px>) !important`.
+   The DESKTOP half bites in Outlook.com: MJML re-pins every px column
+   with `width: <px> !important` inside its `min-width` breakpoint query,
+   and Outlook.com matches that against the browser WINDOW, not its
+   reading pane — measured 2026-09-29 (EoA OawK4B…): a 25 / 550 / 25px
+   group in a ~538px pane WRAPPED, stacking the rails. Empty rails hide
+   the wrap (no height); any rail with content exposes it. Restate such
+   columns as the percentages MJML already inlines, rounded DOWN, in the
+   same condition and scoped by an ancestor class so the selector
+   outranks the bare pin (`.band .mj-column-px-25 { width: 4.1% !important }`).
+   Outlook desktop renders its MSO px tables and is unaffected.
 6f. Confirm each `@media` condition string that ends up in the compiled
    head appears exactly ONCE, and that any order-dependent pair keeps
    deliberately distinct conditions — EN folds same-condition blocks into

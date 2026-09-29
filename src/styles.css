@@ -250,6 +250,30 @@ p {
   cursor: pointer;
 }
 
+/* Video band overlay rows never wrap (EoA OawK4B…, 2026-09-29). MJML pins
+   px group columns with !important inside this same condition, and
+   Outlook.com matches it against the WINDOW, not its ~538px reading pane:
+   25 + 550 + 25px could not fit, so the 128px rail rows stacked under each
+   other and the band grew to 466-594px. These restate the columns as the
+   percentages MJML already writes inline, rounded down to one decimal (a
+   hair under 100%, so rounding can never wrap; one decimal because the head
+   budget is that tight), keyed on the band class so no other group changes. The
+   inset needs its own: 25 / 518 / 25 of 568px (25 / 486 / 25 of 536 until the
+   2026-09-29 16px baseline). No max-width override:
+   MJML's non-!important max-width (25 / 550 / 518px) equals each column's
+   width at the full 600px and only binds above it, so it can never push a
+   narrow pane into a wrap. (Sharing the full band's 91.66% clamped the
+   inset's centre at 486px and pushed its icon 3px off centre.)
+   Same condition string as MJML's block, so an EN fold lands them together;
+   the descendant selector outranks the bare pin either way. Outlook desktop
+   renders from its MSO px tables and never reads this. */
+@media only screen and (min-width:600px) {
+  .video-band .mj-column-px-25 { width: 4.1% !important; }
+  .video-band .mj-column-px-550 { width: 91.6% !important; }
+  .video-band-inset .mj-column-px-25 { width: 4.4% !important; }
+  .video-band-inset .mj-column-px-518 { width: 91.1% !important; }
+}
+
 
 
 @media (max-width: 599px) {

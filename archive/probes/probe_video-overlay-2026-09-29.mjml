@@ -1,0 +1,558 @@
+<mjml lang="en">
+  <mj-head>
+    <!--
+      PROBE — Video overlay: WATCH Button / Play Icon / None (2026-09-29).
+      Follows importer 451aaad (data-alt-member) and TPL 637f573, which gave
+      Video Block and Video Feature one Display Select for the overlay and
+      held the band's height with a 128px mj-raw row in each 25px rail
+      (video-band rescaled 144/175/275 -> 105/136/236). Chromium measured
+      every option at 338px (600 and 375 wide), overlay centred. No real
+      client has been measured.
+
+      Not a catalog page. First upload assets/icon-play-circle_orange.png to
+      EN folder 20002 (the live copy points at the CDN; without it B2 is a
+      broken image). Build, paste dist/probe_video-overlay-2026-09-29_live.html
+      into an EN email, send to EoA. Read the DELIVERED HTML first
+      (display/email_html/<TEST_ID>), then the Word-engine renders (Outlook
+      2016 and 2019 at 120 DPI, Outlook 2021 Win11, M365 Win11), then Apple
+      Mail / iOS / Gmail web / Gmail Android / Outlook.com. Light and dark
+      both; dark is recorded, not pass/fail.
+
+      The three options are authored RESOLVED (what each Select value sends),
+      not with data-alt-member: the build would drop the alternate. The head
+      is src/main.mjml's, verbatim except the styles.css path.
+
+      == CLAIMS
+        C1  Every option renders the SAME band height in every client:
+            338px at 600 wide (x1.25 at 120 DPI).
+        C2  The overlay is centred in the band, both axes, in every client:
+            the rails' vertical-align="middle" reaches Word as valign.
+        C3  The 128px rail rows hold 128px in the Word engine (no Word
+            line-height or empty-row inflation), and EN delivers them
+            intact: <td height="128" style="...height:128px;line-height:128px">.
+        C4  The icon renders at 128px (not its 256px native size) and sharp,
+            including Outlook desktop.
+        C5  On phones the band keeps its height and the overlay stays centred
+            (mj-group never stacks, so the rails stay beside the slot).
+        C6  (baseline, recorded, not pass/fail) the OLD shape's band in each
+            client, with the button and without it: how big the drift was.
+
+      == R — THE REAL BAND, kayak photo. Eyeball test.
+        R1 WATCH        option 1, as shipped.
+        R2 PLAY ICON    option 2 resolved.
+        R3 NONE         option 3 resolved: the column holds only the comment.
+        R4 OLD          pre-637f573: 144px padding, bare rails, button.
+        R5 OLD NONE     R4 with the button excluded (the 50px drop).
+        R6 INSET ICON   Video Block (inset), option 2: 87px padding, 486px
+                        centre column inside the white 32px frame.
+        R7 INSET NONE   Video Block (inset), option 3.
+        PASS: R1 = R2 = R3 in height in each client; R4 is the reference
+        height the old math was built for; R5 shows the drift; R6 = R7 =
+        302px at 600 wide (the inset's 16:9).
+
+      == M — METERED TWINS. Same group geometry on a flat ground, palette
+         paint, so heights are countable:
+           SUN    #F7931E  the 128px ruler at the top of the series
+           GRASS  #8CC63F  the band ground (105px padding top and bottom)
+           SKY    #5DD8D8  the rail rows; Sky height IS the slot
+        Band px = (Grass band pixels / Sun ruler pixels) x 128. Holds at any DPI.
+        M1 WATCH, M2 PLAY ICON, M3 NONE.  Expect band 338, Sky 128, everywhere.
+        Reading: Sky = 128 but band != 338 -> the section padding moved (check
+        the delivered padding). Sky != 128 -> Word is inflating or ignoring
+        the row (C3 fails; check line-height/height in the delivered HTML).
+        M1 taller than M3 -> the button outgrew the slot in that client.
+
+      ROUND 1 (2026-09-29, sent through EN, EoA OawK4B…, 19 clients). This send
+      was built BEFORE R6/R7 existed, so the inset is untested. Delivered HTML
+      read first; bands pixel-counted against the Sun ruler.
+        C3 PASSES. EN delivered all 13 height="128" cells with height,
+          line-height and font-size:0 intact. It DROPPED the inline
+          background-color from the painted Sky/Sun cells and kept their
+          bgcolor attribute (rendered the same). Sky rows 126-128 everywhere.
+          Word draws a 1px hairline under the centre column's content on the
+          FLAT M grounds (2016/2019 at the slot's bottom edge; 2021/M365 under
+          the button); none on any photo band.
+        C1 PASSES except Outlook.com light: R1 = R2 = R3 and M1 = M2 = M3 at
+          338 in Apple Mail, Gmail web, M365 Mac, Outlook 2021, M365 Win11
+          (339 iOS; 338-343 in 2016/2019 at 120 DPI, ruler 158-160). Gmail
+          Android draws every band ~4% short (324; old R5 269 vs 288), old
+          and new alike, so not this change. Outlook.com LIGHT FAILED: the
+          25 / 550 / 25px group WRAPPED (rails stacked; bands 516 / 594 / 466,
+          the same numbers a 538px pane reproduces in Chromium). MJML pins px
+          columns with !important inside @media (min-width:600px), which
+          Outlook.com matches against the window, not its ~538px reading
+          pane. The dark render had a ~600px pane and was fine. R4/R5 wrapped
+          too, invisibly: their rails are empty.
+        C2 PASSES wherever the row did not wrap, Word included.
+        C4 PASSES: the icon renders at 128px and sharp, Word included.
+        C5 PASSES: iOS and Gmail Android keep the bands and centring.
+        C6 recorded: R4 = 338 and R5 = 288 in every client that did not wrap.
+      FIX (same day): src/styles.css restates the video bands' px columns as
+      percentages inside the same @media condition, scoped by .video-band /
+      .video-band-inset. M1-M3 now carry css-class="video-band" so they get
+      it too. Chromium at a 538px and a 420px pane: every band 338 / 302.
+
+      ROUND 2 — what is left to verify. Paste the CURRENT live file (it has
+      R6/R7). Read Outlook.com LIGHT at a reading pane under 600px (the
+      failure needs the narrow pane; a wide pane passes either way): R1-R3,
+      R6-R7 and M1-M3 must hold 338 / 302 with the rails beside the slot.
+      Then the inset (R6/R7 = 302) in every client, and a Word re-check that
+      the percent override changed nothing there (it should not: Word reads
+      the MSO tables).
+
+      ROUND 2 VERDICT (2026-09-29, sent through EN, EoA migsvT…, 19 clients;
+      M365 Mac dark returned no render). Delivered HTML read first: all 17
+      height="128" cells intact, and the four .video-band / .video-band-inset
+      rules delivered INSIDE the single @media (min-width:600px) block (EN
+      folded the styles.css block into MJML's, as expected).
+        C1 PASSES everywhere, Outlook.com included. Outlook.com light was read
+          at the same ~538px pane that failed round 1: rails now sit beside
+          the slot, R1-R3 and M1-M3 at 338, R6/R7 at 302. Every other client
+          matches round 1 (338 / 339 iOS / 338-343 at 120 DPI; Gmail Android
+          its usual ~4% short, 324 and inset 290). Inset R6 = R7 = 302 in
+          Apple Mail, Gmail web, iOS, M365 Mac, Outlook 2016/2021, M365 Win11
+          and Outlook.com; 305-306 in Outlook 2019 at 120 DPI (same scaling
+          as its 342 full band).
+        C2 PASSES: overlay centred in every render, inset included.
+        C3 PASSES (as round 1; the flat-ground Word hairline recurs, still
+          never on a photo band).
+        C4, C5 PASS. Outlook 2021 light's screenshot is cut off inside M3 by
+          the capture; its dark render shows M3 whole at 338.
+        Word unchanged by the override, as predicted.
+      Every claim settled. Archived the same day.
+    -->
+    <mj-raw>
+      <!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="format-detection" content="telephone=no" />
+    </mj-raw>
+
+    <!-- Baseline everything inherits -->
+    <mj-attributes>
+      <mj-text
+        color="#000000"
+        font-size="18px"
+        font-weight="400"
+        font-family="Tahoma, sans-serif"
+        line-height="24px"
+        css-class="wysiwyg"
+      />
+      <mj-button width="auto"
+        css-class="button"
+        font-size="18px"
+        font-weight="700"
+        font-family="Tahoma, sans-serif"
+        line-height="22px"
+        border-radius="100px"
+        inner-padding="12px 16px"
+        letter-spacing="1px"
+        color="#ffffff"
+        background-color="#006837"
+      />
+      <mj-image
+        padding="0" />
+
+      <!-- Reusable variants — apply with mj-class="*" -->
+      <mj-class
+        name="caption"
+        font-size="10px"
+        line-height="16px"
+        padding="4px 0 0 0"
+      />
+    </mj-attributes>
+
+    <!-- VIEWPORT FORK — lives HERE, not in styles.css (user decision
+         2026-08-22). styles.css ships as the Template Styles BLOCK, in the
+         body, so an email an editor assembled without adding that block has
+         none of it. Most rules degrade gracefully when that happens; a fork
+         does not. .mobile-only depends on a hide/reveal pair, and with the
+         sheet absent NEITHER half applies — so both copies render and the
+         reader sees the content twice. Rules whose absence reveals content
+         meant to be hidden belong in the template head.
+
+         data-en-tools-template-css marks it exempt from head extraction. It
+         is deliberately NOT data-en-tools-band: that marker is subtracted
+         before the Gmail budget is measured (check-catalog) and before the
+         head-css hash (version-sync), because the band is builder chrome
+         that never reaches an inbox. This CSS does reach the inbox and must
+         keep counting.
+
+         The pair is ATOMIC in this one block, and the reveal's @media
+         condition is deliberately UNIQUE across every CSS source in the
+         email — that uniqueness, not position, is what protects the order.
+         The 2026-08-22 design assumed this head came FIRST in EN's merge so
+         the reveal block would be the fold target; the 2026-08-24 final-QC
+         delivered heads (EoA hOB4q6MD…/hb3nYGds…) measured the opposite:
+         EN merges BODY style blocks (the Template Styles block carrying
+         styles.css) AHEAD of the template head, so a reveal sharing
+         styles.css's `(max-width: 599px)` string folded up past its own
+         hide and the hide won everywhere below 599px. Latent only — no
+         shipped block carries .mobile-only/.desktop-only today. The probe
+         that blessed the old design (templateId 631) tested an email
+         WITHOUT the styles block, which is exactly the case the fold cannot
+         reach. `only screen and (max-width: 599px)` (with the space) is
+         distinct from styles.css's `(max-width: 599px)`, from styles.css's
+         `only screen and (max-width:599px)` (no space), and from MJML's
+         emitted no-space block — nothing folds it, it stays after the 9998
+         hide. Verify on the next send's delivered head: the reveal must
+         appear AFTER the 9998 block.
+
+         The hide is authored TWICE, on the .dark-only precedent, because the
+         two copies serve different clients: the PLAIN copy is what EN inlines
+         onto the element at send (!important stripped), covering clients that
+         drop style blocks entirely — Gmail app on non-Google accounts, and
+         most clients after a forward; the WRAPPED copy is an always-true
+         media query EN returns verbatim (guide §2a), so the hide survives as
+         a rule wherever the inline was lost. 9998px is deliberately distinct
+         from the OWA block's 9999px so EN's same-condition merge cannot move
+         it after the reveal.
+
+         MEASURED 2026-08-24 (probe_vrect-and-template-head, EN templateId
+         631, EoA XXhlSbq1e…): EN DOES inline a top-level rule from the
+         template head exactly as it does the CSS Editor field — the
+         delivered HTML carries display:none inline on the .mobile-only
+         element, and this marker attribute survives delivery. The
+         style-stripped audience is covered, and the fork rendered correctly
+         on all 17 clients with NO styles.css in the email at all. -->
+    <mj-raw>
+      <style type="text/css" data-en-tools-template-css>
+        /* HEAD-RESIDENT rules (catalogued 2026-08-24, user decision same day;
+           see future-enhancements "Head-vs-block CSS"). Everything here must
+           pass two tests: absence REVEALS or DUPLICATES content or breaks a
+           mechanism every email relies on, and it would never be fixed by
+           swapping the Template Styles block. Fix-by-block-swap rules stay in
+           styles.css. EN inlines top-level rules from this head exactly as it
+           does the CSS Editor field (measured 2026-08-24, EoA XXhlSbq1e…). */
+
+        /* RTE margin containment — the bottom-only pacing model rests on
+           these; without them every RTE block grows phantom margins. */
+        /* Block elements only, enumerated (2026-09-25, EoA d0S0nH…): the old
+           `*:first-child` / `*:last-child` also matched INLINE runs, so EN
+           inlined margin-top/bottom:0 onto <strong>, <u>, <a>, <br>, and Word
+           lets an inline run's margin zero its whole paragraph's spacing —
+           adjacent formatted paragraphs ran together in Outlook (BugHerd 296).
+           Enumerated rather than `div > *` because §2d bans child combinators. */
+        .wysiwyg div p:first-child,
+        .wysiwyg div h1:first-child,
+        .wysiwyg div h2:first-child,
+        .wysiwyg div h3:first-child,
+        .wysiwyg div h4:first-child,
+        .wysiwyg div h5:first-child,
+        .wysiwyg div h6:first-child,
+        .wysiwyg div ul:first-child,
+        .wysiwyg div ol:first-child { margin-top: 0; }
+        .wysiwyg div p:last-child,
+        .wysiwyg div h1:last-child,
+        .wysiwyg div h2:last-child,
+        .wysiwyg div h3:last-child,
+        .wysiwyg div h4:last-child,
+        .wysiwyg div h5:last-child,
+        .wysiwyg div h6:last-child,
+        .wysiwyg div ul:last-child,
+        .wysiwyg div ol:last-child { margin-bottom: 0; }
+
+        /* Copy over a photo must be white even in an email built without the
+           styles block (user decision 2026-08-24: relocated rather than
+           re-authored inline). */
+        .overlay h1, .overlay h2, .overlay h3, .overlay h4, .overlay h5,
+        .overlay h6, .overlay span, .overlay p, .overlay a { color: #fff; }
+
+        /* Viewport fork: hide twice, reveal once, in this order. */
+        .mobile-only { display: none; }
+
+        /* Mode fork (light/dark twins): the plain hide half. The dark twins
+           sit in downlevel-revealed conditionals, so without this every
+           non-Outlook client renders BOTH twins. Repaints stay in styles.css
+           — only the swap mechanism lives here. */
+        .dark-only { display: none; }
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+        @media (max-width: 9998px) {
+          .mobile-only { display: none !important; }
+        }
+        @media only screen and (max-width: 599px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block !important; }
+        }
+        /* Mode-fork reveals. These two blocks are the FIRST occurrence of
+           their conditions, so styles.css's same-condition repaint blocks
+           fold up to these positions at send — swap first, repaints after,
+           which is byte-for-byte today's order inside styles.css. */
+        @media only screen and (max-width: 9999px) {
+          [data-ogsc] .dark-only { display: block !important; }
+          [data-ogsc] .light-only { display: none !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .light-only { display: none !important; }
+          .dark-only { display: block !important; }
+        }
+      </style>
+    </mj-raw>
+    <!-- Marketing Tools builder bands. The data-en-tools-band attribute keeps
+         this sheet in the template HEAD: the importer splices every other
+         style element out into the Template Styles block, and this layout has
+         to survive an email built without that block. __TEMPLATE_VERSION__ is
+         filled in at import from versions.json; keeping the literal here is
+         what stops the version from feeding its own hash.
+
+         TWO SEPARATE RULES, DELIBERATELY NOT MERGED INTO ONE SELECTOR LIST.
+
+         BLOCK bands hang off a span the app injects into the block's own
+         content, gated on whether a block wrapper exists anywhere in the
+         document — true while editing in EN, false in a delivered email.
+
+         The TEMPLATE band hangs off EN's container element instead. A span
+         authored in the template shell does NOT work (measured 2026-08-20):
+         EN's builder renders blocks inside the container and does not render
+         the template's own surrounding markup, so such a span never enters
+         the builder DOM at all. [data-container="main"] IS that container,
+         and it is self-gating — the stored template carries EN's container
+         placeholder there and a delivered email carries the blocks
+         themselves, so nothing bears the attribute outside the editor.
+
+         Do NOT write EN's container merge tag literally anywhere in this
+         file. autoEnableTemplateReplacements splits the shell on the FIRST
+         occurrence of that tag, so a literal in a comment splits the head at
+         the comment instead of at the real container: the comment loses its
+         terminator, swallows the whole stylesheet, and every light/dark image
+         pair renders both halves. Measured 2026-08-20; check-catalog guards it.
+
+         Merging the two selectors would be a live hazard: one unsupported
+         selector in a group invalidates the WHOLE rule, so a client that
+         cannot parse :has() would take the template band down with it. -->
+    <mj-raw>
+      <style type="text/css" data-en-tools-band>
+        /* The TEMPLATE's own band leads, because it labels the whole email
+           rather than a block inside it. Order is presentational only — the
+           two selectors match different elements, so nothing in the cascade
+           depends on it. */
+        /* Builder canvas width. Only EN's editor ever renders an element
+           bearing data-container (conventions, "the template band"), so this
+           is chrome — here it works for every email, including one built
+           without the styles block, and leaves the Gmail budget with the rest
+           of the band (moved from styles.css 2026-08-24). */
+        div[data-container] { max-width: 600px; margin: 0 auto; }
+        [data-container="main"]:before{
+          content: "Email Template v__TEMPLATE_VERSION__";
+          display: block !important;
+          font-weight: 700 !important;
+          font-family: sans-serif !important;
+          color: #4e535c !important;
+          line-height: 1.75rem !important;
+          text-align: center !important;
+          margin-bottom: 2rem !important;
+          background-color: #d0d5dd !important;
+        }
+        /* max-width tracks the EMAIL width — keep it equal to
+           div[data-container]{max-width} in the band sheet, or the block band
+           stops centring over the column it labels. check-catalog's
+           "Builder band width tracks the email width" guard enforces it. */
+        :is(body):has(.en__emailbuilder__block) .marketing-tools-banner{
+          display: flex !important;
+          font-weight: 700 !important;
+          font-family: sans-serif !important;
+          color: #4e535c !important;
+          line-height: 2rem !important;
+          top: 1.75rem !important;
+          width: 100% !important;
+          max-width: 600px !important;
+          justify-content: center !important;
+          background-color: #d0d5dd !important;
+        }
+        /* position:absolute belongs to the CSS Styles Block band ALONE (user
+           decision 2026-08-21). That block's real content is a <style>, so it
+           has no height of its own to sit above and the band has to be lifted
+           out of flow; every other band labels a block with visible content,
+           where taking the label out of flow makes it overlap what it labels.
+           Targeted by id rather than a new class: each band span already
+           carries a unique one — #head-styles and #raw-html, from
+           STYLES_BAND_ID and RAW_HTML_BAND_ID — and those ids are baked into
+           the stored content of blocks already living in EN, so minting new
+           ones would desync every uploaded copy. Its own rule, never merged
+           into the selector list above: one unparseable selector discards the
+           WHOLE rule, and this gate is exactly the kind an older engine may
+           not parse (conventions.md, "Builder bands"). */
+        :is(body):has(.en__emailbuilder__block) #head-styles{
+          position: absolute !important;
+        }
+      </style>
+    </mj-raw>
+
+    <mj-include path="../styles.css" type="css" />
+  </mj-head>
+  <mj-body css-class="email-body" background-color="#ffffff">
+    <mj-raw><div style="color:#000000;background-color:#ffffff;margin:0;padding:0;"><div class="email-ground" style="background-color:#ffffff;margin:0;padding:0;"></mj-raw>
+
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>PROBE — Video overlay, 2026-09-29.</b> R = real band (eyeball). M = metered twins (count pixels against the Sun ruler). Every new band should be 338px.</p></mj-text></mj-column></mj-section>
+
+    <!-- == R1 WATCH == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R1 WATCH</b>: option 1, as shipped. Expect 338px, button centred.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="105px 0 105px">
+          <mj-group>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+            <mj-column width="550px" vertical-align="middle">
+              <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            </mj-column>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+          </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- == R2 PLAY ICON == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R2 PLAY ICON</b>: option 2. Expect 338px, 128px icon centred.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="105px 0 105px">
+          <mj-group>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+            <mj-column width="550px" vertical-align="middle">
+              <mj-image src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+            </mj-column>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+          </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- == R3 NONE == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R3 NONE</b>: option 3. Expect 338px, photo only.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="105px 0 105px">
+          <mj-group>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+            <mj-column width="550px" vertical-align="middle">
+              <mj-raw><!-- Row 1 Button - Not Displayed --></mj-raw>
+            </mj-column>
+            <mj-column width="25px" vertical-align="middle">
+              <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+            </mj-column>
+          </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- == R4 OLD == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R4 OLD</b>: pre-change shape, 144px padding + button. Reference height.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="144px 0 144px">
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="550px">
+            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- == R5 OLD NONE == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R5 OLD NONE</b>: R4 without the button. Chromium: 288px (the drift).</p></mj-text></mj-column></mj-section>
+    <mj-wrapper background-color="#4A7A68" padding="0">
+      <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="144px 0 144px">
+        <mj-group>
+          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="550px">
+            <mj-raw><!-- Row 1 Button - Not Displayed --></mj-raw>
+          </mj-column>
+          <mj-column width="25px">&nbsp;</mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+
+    <!-- == R6 INSET PLAY ICON / R7 INSET NONE == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R6 INSET PLAY ICON</b>: Video Block (inset), option 2. Expect 302px, icon centred.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-desktop-only-background-color>
+      <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="87px 0 87px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="486px" vertical-align="middle">
+            <mj-image src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>R7 INSET NONE</b>: Video Block (inset), option 3. Expect 302px, photo only.</p></mj-text></mj-column></mj-section>
+    <mj-wrapper css-class="block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-desktop-only-background-color>
+      <mj-section css-class="image-block video-band-inset" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="87px 0 87px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="486px" vertical-align="middle">
+            <mj-raw><!-- Row 1 Button - Not Displayed --></mj-raw>
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-wrapper>
+    <!-- == M: ruler + metered twins == -->
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>SUN RULER</b>: exactly 128px. Band = Grass px / ruler px x 128.</p></mj-text></mj-column></mj-section>
+    <mj-section padding="0 32px"><mj-column>
+      <mj-raw><tr><td height="128" bgcolor="#F7931E" style="background-color:#F7931E;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+    </mj-column></mj-section>
+
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M1 WATCH</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+    </mj-section>
+
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M2 PLAY ICON</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-image src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+    </mj-section>
+
+    <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M3 NONE</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
+        <mj-group>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+          <mj-column width="550px" vertical-align="middle">
+            <mj-raw><!-- Row 1 Button - Not Displayed --></mj-raw>
+          </mj-column>
+          <mj-column width="25px" vertical-align="middle">
+            <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
+          </mj-column>
+        </mj-group>
+    </mj-section>
+
+    <mj-section padding="16px 0 0"><mj-column><mj-spacer height="16px" /></mj-column></mj-section>
+    <mj-raw></div></div></mj-raw>
+  </mj-body>
+</mjml>

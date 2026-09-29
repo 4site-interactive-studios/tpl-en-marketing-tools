@@ -12,11 +12,18 @@
  * hand-edit the file and never reset a number.
  *
  * Entities and what "directly changed" means for each:
- *  - email-template            main.mjml SHELL (every <!-- START/END -->
- *                              block region replaced by a name sentinel).
- *                              Block edits inside the file bump the BLOCK,
- *                              and styles.css bumps head-css — this moves
- *                              only when the shell itself does.
+ *  - email-template            the template markup EN STORES: the compiled
+ *                              head (minus the sheets head-css covers) and
+ *                              the body wrapper outside the blocks, comments
+ *                              and whitespace normalised — see
+ *                              templateMarkupContent. Adding, removing or
+ *                              reordering a block, the en-tools-config
+ *                              comment, head prose and mj-attributes defaults
+ *                              move it only if that markup changes. Hashed
+ *                              from dist, so re-resolved post-compile with
+ *                              head-css. (Until 2026-09-29 it hashed the
+ *                              main.mjml SOURCE shell, which bumped on all
+ *                              of the above.)
  *  - catalog-shell             mjml_extra-blocks.mjml shell, same treatment
  *                              (mj-attributes defaults, category dividers).
  *  - autoresponder:<file>     each thank-you file, whole.
@@ -128,23 +135,92 @@ export function headCssContent() {
   );
 }
 
+/**
+ * The template EN STORES, as the importer carves it out of the compiled
+ * master: the head, and the body wrapper before the first block and after
+ * the last one (store.ts: beforeBlocks + afterBlocks around segmentEmail's
+ * block span). Everything the importer drops before storing is dropped here
+ * too, so only a change to that markup moves the version (user rule
+ * 2026-09-29: "the template's version should not change unless the markup
+ * of the template itself changes"):
+ *   - every block region: adding, removing or reordering a block is not a
+ *     template change (the old source-shell hash bumped on each);
+ *   - the head <style> sheets except the data-en-tools-band chrome: they
+ *     ship in the Template Styles block under head-css;
+ *   - comments other than conditional ones and the en-tools-keep stamp: the
+ *     importer strips the en-tools-config comment and head authoring prose,
+ *     and prose comments are render-inert anywhere;
+ *   - whitespace runs, so reindenting the source moves nothing.
+ * mj-attributes / mj-class defaults therefore bump nothing unless they
+ * change this markup; the blocks they re-render keep their versions, since
+ * no block's markup changed either (user decision, same day).
+ * Read from _local-debug (the compiler's own output), scripts removed.
+ */
+export function templateMarkupContent() {
+  const html = read(`dist/${CATALOG.replace('.mjml', '')}_local-debug.html`).replace(
+    /<script\b[\s\S]*?<\/script>/gi,
+    '',
+  );
+  const bodyAt = html.search(/<body\b/i);
+  if (bodyAt < 0) return '';
+  const head = html.slice(0, bodyAt);
+  const body = html.slice(bodyAt);
+  const starts = [...body.matchAll(/<!--\s*START:[\s\S]*?-->/g)];
+  const ends = [...body.matchAll(/<!--\s*END:[\s\S]*?-->/g)];
+  const before = starts.length ? body.slice(0, starts[0].index) : body;
+  const lastEnd = ends[ends.length - 1];
+  const after = lastEnd ? body.slice(lastEnd.index + lastEnd[0].length) : '';
+  const keepComment = (c) => /^<!--\s*\[if\b|<!\[endif\]|^<!--\s*en-tools-keep\b/i.test(c);
+  return (
+    head.replace(/<style([^>]*)>[\s\S]*?<\/style>/gi, (m, attrs) =>
+      /\bdata-en-tools-band\b/i.test(attrs) ? m : '',
+    ) + before + after
+  )
+    .replace(/<!--[\s\S]*?-->/g, (c) => (keepComment(c) ? c : ''))
+    .replace(/\s+/g, ' ')
+    .replace(/>\s+</g, '><')
+    .trim();
+}
+
+/**
+ * The retired definition (the main.mjml SOURCE shell), kept only to re-anchor
+ * the ledger when the definition changed: a committed hash that still equals
+ * it means nothing changed under the old rule, so the entity adopts the new
+ * hash at the SAME version instead of bumping for a definition change.
+ */
+export function legacyTemplateHash() {
+  return sha(shellOf(read(`src/${CATALOG}`)));
+}
+
+/** Next manifest entry for one entity against its committed baseline. */
+function resolveEntry(key, hash, prev) {
+  if (!prev) return { version: 1, hash, date: today() };
+  if (prev.hash === hash) return prev;
+  if (key === 'email-template' && prev.hash === legacyTemplateHash()) return { ...prev, hash };
+  return { version: prev.version + 1, hash, date: today() };
+}
+
+/** Entities hashed from dist/, re-resolved by the post-compile pass. */
+const POST_COMPILE = {
+  'head-css': () => sha(headCssContent()),
+  'email-template': () => sha(templateMarkupContent()),
+};
+
 export function computeEntities() {
   const entities = {};
   const unified = read(`src/${CATALOG}`);
 
-  // SHELL ONLY. styles.css used to be concatenated here, which meant every
-  // stylesheet edit bumped BOTH this and head-css — the two labels an editor
-  // reads to tell WHICH thing changed moved in lockstep, so neither said
-  // anything (v46->v49 and v26->v29 across four consecutive commits, 2026-08-21).
-  // The CSS is extracted into the Template Styles block at import and ships
-  // under head-css's version; it is not part of the template EN stores.
-  entities['email-template'] = sha(shellOf(unified));
+  // The stored template's markup (templateMarkupContent). Hashed from dist,
+  // which is stale here, so the post-compile pass re-resolves it with
+  // head-css. styles.css was once concatenated in (2026-08-21 lockstep bug);
+  // the source shell replaced that and was itself replaced 2026-09-29.
+  entities['email-template'] = POST_COMPILE['email-template']();
   // 'catalog-shell' was the second catalog's shell. mjml_extra-blocks.mjml
   // was deleted on 2026-08-21 once its keepers had moved into the master, so
   // the entity is deliberately GONE rather than left to pin forever to the
   // hash of an empty string. syncedManifest rebuilds from computed entities,
   // so it drops out of versions.json on the next run with no hand-editing.
-  entities['head-css'] = sha(headCssContent());
+  entities['head-css'] = POST_COMPILE['head-css']();
 
   for (const pg of sourcePages(ROOT).filter((x) => x.dir === 'autoresponders')) {
     entities[`autoresponder:${pg.base}`] = sha(read(`src/${pg.rel}`));
@@ -188,43 +264,35 @@ export function syncedManifest() {
   const manifest = {};
   const bumped = [];
   for (const key of Object.keys(entities).sort()) {
-    const hash = entities[key];
     const prev = base[key];
+    manifest[key] = resolveEntry(key, entities[key], prev);
     if (!prev) {
-      manifest[key] = { version: 1, hash, date: today() };
       if (Object.keys(base).length) bumped.push(`${key} -> v1 (new)`);
-    } else if (prev.hash === hash) {
-      manifest[key] = prev;
-    } else {
-      manifest[key] = { version: prev.version + 1, hash, date: today() };
-      bumped.push(`${key} -> v${prev.version + 1}`);
+    } else if (manifest[key].version !== prev.version) {
+      bumped.push(`${key} -> v${manifest[key].version}`);
     }
   }
   return { manifest, bumped };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv.includes('--head-css')) {
-  // Post-compile pass: dist is now FRESH — re-sync only the head-css entity
-  // against the committed baseline and rewrite the manifest in place.
+  // Post-compile pass: dist is now FRESH — re-resolve the entities hashed
+  // from it (head-css, email-template) against the committed baseline and
+  // rewrite the manifest in place. The flag keeps its original name.
   const base = baseline();
-  const hash = sha(headCssContent());
   const manifest = JSON.parse(read('versions.json') || '{}');
-  const prev = base['head-css'];
-  const next = !prev
-    ? { version: 1, hash, date: today() }
-    : prev.hash === hash
-      ? prev
-      : { version: prev.version + 1, hash, date: today() };
-  const changed = JSON.stringify(manifest['head-css']) !== JSON.stringify(next);
-  manifest['head-css'] = next;
+  const notes = [];
+  for (const [key, hashOf] of Object.entries(POST_COMPILE)) {
+    const next = resolveEntry(key, hashOf(), base[key]);
+    const changed = JSON.stringify(manifest[key]) !== JSON.stringify(next);
+    manifest[key] = next;
+    const moved = base[key] && next.version !== base[key].version;
+    notes.push(`${key} ${moved || !base[key] ? '->' : 'steady at'} v${next.version}${changed ? ` (${next.hash})` : ''}`);
+  }
   const sorted = {};
   for (const k of Object.keys(manifest).sort()) sorted[k] = manifest[k];
   writeFileSync(join(ROOT, 'versions.json'), JSON.stringify(sorted, null, 2) + '\n');
-  console.log(
-    changed
-      ? `version-sync --head-css: head-css -> v${next.version} (${next.hash})`
-      : `version-sync --head-css: head-css steady at v${next.version}`,
-  );
+  console.log(`version-sync --head-css: ${notes.join(', ')}`);
   process.exit(0);
 }
 
