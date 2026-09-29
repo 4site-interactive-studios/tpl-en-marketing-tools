@@ -919,7 +919,8 @@ inner insets did not move):
   568 → 4.4% / 91.1%.
 
 Unmoved, for the reasons in the next section: full-bleed photo blocks (25/550/25 rails,
-centred copy), Spacer and Dividers, and the centred fixed boxes (Quote
+centred copy; the three Photo Banners left this group later the same day,
+below), Spacer and Dividers, and the centred fixed boxes (Quote
 Block's 472 column, CTA Text Block's 64px gutter). Video Feature (added
 upstream the same day) was authored at 16. The padding-growth census reads
 52 of 207 frames short of the full scale: 21 capped at 16px (the authored
@@ -940,14 +941,25 @@ records above and below only change the numbers.
 
 **What stays off the baseline, and why.**
 
-- **Full-bleed photo blocks** — Image 1x1, Images 2x1/3x1, Photo Banner,
-  Photo Banner (w/ CTA), Photo Banner (overlay panel, w/ CTA), Video Block,
+- **Full-bleed photo blocks** — Image 1x1, Images 2x1/3x1, Video Block,
   Video Feature's video band, Countdown Block. Their copy is CENTRED over a
   photo, so a left edge is not an alignment anchor, and the photo is meant
-  to touch both edges. **Progress Meter Block is the exception among them**:
-  its GOAL / RAISED / REMAINING row is genuinely left-aligned, so it follows
-  every baseline move by re-cutting its rails (today 16+568+16), not by
-  adding a gutter the photo would have to give up.
+  to touch both edges. **Two groups among them follow the baseline anyway,
+  by re-cutting their rails, never by adding a gutter the photo would have
+  to give up** (the photo is the section background, so it still touches
+  both edges):
+  - Progress Meter Block, whose GOAL / RAISED / REMAINING row is genuinely
+    left-aligned (today 16+568+16).
+  - The three Photo Banners (user decision 2026-09-29): 25/550/25 →
+    16/568/16 rails, so copy an editor LEFT-aligns lands on the 16px
+    baseline instead of at 57 or 25. Photo Banner's copy inset went
+    32 → 0 for that (Photo Banner (w/ CTA) had none); the overlay variant
+    keeps its 32px copy insets, because its heading has no alignment
+    control and zeroing them would delete its Inset Selects. Rails pin at
+    16px on phones (`.hero-rail`), the 568 column takes
+    `calc(100% - 32px)` (`.banner-body`, grouped with `.meter-body`). With
+    the catalog's sample copy the centred default is pixel-identical at
+    600px; longer copy gets the wider measure.
 - **Spacer and the two Dividers.** Nothing to align; a rule that spans the
   full 600 under inset copy is deliberate.
 - **Centred fixed-px boxes** — Quote Block (Highlighted Text until

@@ -1539,11 +1539,11 @@
         background-position="center center" padding="16px 0 16px"
       >
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-        <mj-column width="550px" vertical-align="middle">
-          <mj-text color="#ffffff" align="center" padding="0 32px 8px">Hello World</mj-text>
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
+        <mj-column width="568px" vertical-align="middle" css-class="banner-body">
+          <mj-text color="#ffffff" align="center" padding="0 0 8px">Hello World</mj-text>
         </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1866,14 +1866,14 @@
            Progress Meter and Photo Banner. -->
       <mj-section css-class="image-block block" background-url="assets/photo-forest.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="48px 0 48px">
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
-        <mj-column width="550px">
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
+        <mj-column width="568px" css-class="banner-body">
           <mj-text align="center" padding="0 0 16px">
             <h2 style="color:#ffffff;">Lorem Ipsum Dolor Sit Amet</h2>
           </mj-text>
           <mj-button css-class="button fixed-width" width="auto" href="https://tpl.org" align="center" background-color="#F7931E" padding="0" color="#ffffff">LEARN MORE</mj-button>
         </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
@@ -1912,9 +1912,9 @@
           background-position="center bottom" padding="350px 0 48px"
       >
         <mj-group>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
 
-          <mj-column width="550px">
+          <mj-column width="568px" css-class="banner-body">
             <mj-text css-class="overlay" padding="0 32px 8px">
               <h2 style="text-align: center">Placeholder message for special occasion </h2>
             </mj-text>
@@ -1923,7 +1923,7 @@
               BUTTON
             </mj-button>
           </mj-column>
-          <mj-column width="25px">&nbsp;</mj-column>
+          <mj-column width="16px" css-class="hero-rail">&nbsp;</mj-column>
         </mj-group>
       </mj-section>
     </mj-wrapper>
