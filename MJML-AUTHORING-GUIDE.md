@@ -2121,6 +2121,16 @@ aloud). The Alt Text field survives either way (§5).
    0.5px at 375px). Pin such columns with the signature-block pattern —
    a mobile rule setting the icon column's `width: <px> !important` and
    the text column's `width: calc(100% - <px>) !important`.
+   The DESKTOP half bites in Outlook.com: MJML re-pins every px column
+   with `width: <px> !important` inside its `min-width` breakpoint query,
+   and Outlook.com matches that against the browser WINDOW, not its
+   reading pane — measured 2026-09-29 (EoA OawK4B…): a 25 / 550 / 25px
+   group in a ~538px pane WRAPPED, stacking the rails. Empty rails hide
+   the wrap (no height); any rail with content exposes it. Restate such
+   columns as the percentages MJML already inlines, rounded DOWN, in the
+   same condition and scoped by an ancestor class so the selector
+   outranks the bare pin (`.band .mj-column-px-25 { width: 4.1% !important }`).
+   Outlook desktop renders its MSO px tables and is unaffected.
 6f. Confirm each `@media` condition string that ends up in the compiled
    head appears exactly ONCE, and that any order-dependent pair keeps
    deliberately distinct conditions — EN folds same-condition blocks into

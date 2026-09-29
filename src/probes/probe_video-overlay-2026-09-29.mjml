@@ -61,6 +61,44 @@
         the delivered padding). Sky != 128 -> Word is inflating or ignoring
         the row (C3 fails; check line-height/height in the delivered HTML).
         M1 taller than M3 -> the button outgrew the slot in that client.
+
+      ROUND 1 (2026-09-29, sent through EN, EoA OawK4B…, 19 clients). This send
+      was built BEFORE R6/R7 existed, so the inset is untested. Delivered HTML
+      read first; bands pixel-counted against the Sun ruler.
+        C3 PASSES. EN delivered all 13 height="128" cells with height,
+          line-height and font-size:0 intact. It DROPPED the inline
+          background-color from the painted Sky/Sun cells and kept their
+          bgcolor attribute (rendered the same). Sky rows 126-128 everywhere.
+          Word draws a 1px hairline under the centre column's content on the
+          FLAT M grounds (2016/2019 at the slot's bottom edge; 2021/M365 under
+          the button); none on any photo band.
+        C1 PASSES except Outlook.com light: R1 = R2 = R3 and M1 = M2 = M3 at
+          338 in Apple Mail, Gmail web, M365 Mac, Outlook 2021, M365 Win11
+          (339 iOS; 338-343 in 2016/2019 at 120 DPI, ruler 158-160). Gmail
+          Android draws every band ~4% short (324; old R5 269 vs 288), old
+          and new alike, so not this change. Outlook.com LIGHT FAILED: the
+          25 / 550 / 25px group WRAPPED (rails stacked; bands 516 / 594 / 466,
+          the same numbers a 538px pane reproduces in Chromium). MJML pins px
+          columns with !important inside @media (min-width:600px), which
+          Outlook.com matches against the window, not its ~538px reading
+          pane. The dark render had a ~600px pane and was fine. R4/R5 wrapped
+          too, invisibly: their rails are empty.
+        C2 PASSES wherever the row did not wrap, Word included.
+        C4 PASSES: the icon renders at 128px and sharp, Word included.
+        C5 PASSES: iOS and Gmail Android keep the bands and centring.
+        C6 recorded: R4 = 338 and R5 = 288 in every client that did not wrap.
+      FIX (same day): src/styles.css restates the video bands' px columns as
+      percentages inside the same @media condition, scoped by .video-band /
+      .video-band-inset. M1-M3 now carry css-class="video-band" so they get
+      it too. Chromium at a 538px and a 420px pane: every band 338 / 302.
+
+      ROUND 2 — what is left to verify. Paste the CURRENT live file (it has
+      R6/R7). Read Outlook.com LIGHT at a reading pane under 600px (the
+      failure needs the narrow pane; a wide pane passes either way): R1-R3,
+      R6-R7 and M1-M3 must hold 338 / 302 with the rails beside the slot.
+      Then the inset (R6/R7 = 302) in every client, and a Word re-check that
+      the percent override changed nothing there (it should not: Word reads
+      the MSO tables).
     -->
     <mj-raw>
       <!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->
@@ -449,7 +487,7 @@
     </mj-column></mj-section>
 
     <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M1 WATCH</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
-    <mj-section background-color="#8CC63F" padding="105px 0 105px">
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
         <mj-group>
           <mj-column width="25px" vertical-align="middle">
             <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
@@ -464,7 +502,7 @@
     </mj-section>
 
     <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M2 PLAY ICON</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
-    <mj-section background-color="#8CC63F" padding="105px 0 105px">
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
         <mj-group>
           <mj-column width="25px" vertical-align="middle">
             <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
@@ -479,7 +517,7 @@
     </mj-section>
 
     <mj-section padding="16px 32px 8px"><mj-column><mj-text padding="0"><p style="font-size:14px;line-height:18px;color:#362229;margin:0;"><b>M3 NONE</b>: Grass band 338, Sky rails 128.</p></mj-text></mj-column></mj-section>
-    <mj-section background-color="#8CC63F" padding="105px 0 105px">
+    <mj-section css-class="video-band" background-color="#8CC63F" padding="105px 0 105px">
         <mj-group>
           <mj-column width="25px" vertical-align="middle">
             <mj-raw><tr><td height="128" bgcolor="#5DD8D8" style="background-color:#5DD8D8;height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
