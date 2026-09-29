@@ -280,11 +280,14 @@ docs still resolves to a block, family, or category in the catalog,
 
 ### Held decisions
 
-- **WYSIWYG Text side padding stays Double (32px)** (BugHerd 283, held
-  2026-09-25, user decision; possibly vestigial). TPL asked on 2026-08-26 for
-  Single (16px) as the default. 32px is the gutter every block aligns to, so
-  a copy-only change would run body text wider than its neighbours; revisit
-  only as a template-wide gutter decision.
+- **The content baseline is Single (16px)** (user decision 2026-09-29,
+  closing BugHerd 283). TPL asked on 2026-08-26 for Single as the WYSIWYG
+  Text default; it was held at Double (32px) on 2026-09-25 because a
+  copy-only change would have run body text wider than its neighbours. It
+  landed as the template-wide gutter move that note called for: every
+  edge-aligned block's section side padding went 32 → 16 (a 568px content
+  column) and the fixed-px widths cut to the old frame were re-cut with it
+  (conventions.md "The content baseline").
 
 ## 5. Debug overlay (`assets/debug.js` + `partials/debug-toolbar.mjml`)
 
@@ -589,8 +592,8 @@ classifies it instead of strip-testing it as dead.
 - **`mj-group`** wherever columns must NOT stack on mobile (e.g. the
   tri-color divider's three 200px spacer columns).
 - **Insets are padding, not column width:** a narrowed text block is authored
-  as a full-width column with section side-padding (`16px 32px` — Double
-  on the declared scale, giving a ~536px content width). For the mobile side,
+  as a full-width column with section side-padding (`16px 16px` — Single
+  on the declared scale, giving a 568px content width). For the mobile side,
   use `css-class="… flush-mobile-capflush"` as the catalog and both
   autoresponders do. Keep the side value on the scale; an off-grid
   inset snaps at import and desyncs from the other inset blocks. Never author an inset via a px
@@ -616,7 +619,9 @@ classifies it instead of strip-testing it as dead.
   VML automatically, but Outlook cannot honor horizontal section padding
   inside one — author these sections with vertical-only padding and fake the
   gutters with an `mj-group` of `25px` spacer columns around a `550px` content
-  column (the NGS pattern; see any CTA Hero). Every `background-url` container
+  column (the NGS pattern; see Photo Banner or Countdown). The CTA Heroes
+  use the same rail idiom at the content baseline instead: 16px rails around
+  a 240 + 312 pair. Every `background-url` container
   must also author a real `background-color` — without it MJML omits `color=`
   on `v:fill` and Outlook shows black/transparent when the image fails.
 - **Outlook renders all buttons square:** Outlook ignores `border-radius` on

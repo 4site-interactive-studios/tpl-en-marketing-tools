@@ -1504,7 +1504,9 @@ past a point the row wraps.
 
 TPL has held both positions: top of the ladder (Quadruple/64, a 472px
 column) from 2026-08-21, back to mid-ladder (Double/32, a 536px column)
-on 2026-08-24 — the wider default column won.
+on 2026-08-24 — the wider default column won — and one step further down
+(Single/16, a 568px column) on 2026-09-29, so copy starts 16px in on every
+edge-aligned block (conventions.md "The content baseline").
 
 Three kinds of measurement do NOT follow a gutter change, and have to be
 re-cut whenever the baseline moves:
@@ -2090,7 +2092,7 @@ aloud). The Alt Text field survives either way (§5).
    render wider than 600px, and a block's rendered content inset must
    equal the inset you authored. A catalog-wide inset census is the
    cheapest way to run this — nearly every body block here sits at
-   exactly 32/32 (the content baseline), so any block off that number is
+   exactly 16/16 (the content baseline since 2026-09-29; 32/32 before), so any block off that number is
    either a documented exception or a bug, and the outliers name
    themselves (measured 2026-08-18: five did).
 6d-i. Then check what the change did to the block's OPTION LIST, not just
@@ -2099,7 +2101,8 @@ aloud). The Alt Text field survives either way (§5).
    how much. A fixed-px child costs the editor real range — the block
    still renders correctly today and quietly offers fewer choices
    tomorrow. The census is not silent here by design: since the
-   2026-08-24 return to the 32px baseline it reads 50 of 200 frames short
+   2026-08-24 return to a mid-ladder baseline (32px, 16px since
+   2026-09-29 — the same frames, now capped at 16) it reads 50 of 200 frames short
    of the full scale (the two Quiz pill frames' `data-max-gutter`
    declarations included; until 2026-09-28 it skipped the autoresponders
    and read 44 of 170, and their 6 rows repeat names already capped in the

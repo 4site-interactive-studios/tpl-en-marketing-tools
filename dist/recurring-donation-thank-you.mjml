@@ -164,7 +164,7 @@
          the Heading supplies the band's lower inset. -->
     <mj-section
       css-class="image-block block"
-      background-color="#CEE4C5" padding="16px 32px 0" data-no-width-toggle
+      background-color="#CEE4C5" padding="16px 16px 0" data-no-width-toggle
     >
       <mj-column vertical-align="middle">
         <mj-image
@@ -198,7 +198,7 @@
          full-bleed photo below butts against the Moss band. -->
     <mj-section
       css-class="text-block block wysiwyg-header-block flush-mobile-capflush"
-      background-color="#CEE4C5" padding="0 32px 16px"
+      background-color="#CEE4C5" padding="0 16px 16px"
     >
       <mj-column vertical-align="middle">
         <mj-text align="center" padding="0">
@@ -235,7 +235,7 @@
     <!-- START: WYSIWYG Text -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 32px"
+      background-color="#ffffff" padding="0 16px"
     >
       <mj-column>
         <mj-text padding="0">
@@ -277,7 +277,7 @@
     <!-- END: WYSIWYG Text -->
 
     <!-- START: Signature Card (photo) -->
-    <!-- Catalog geometry: the 112+424=536 px group on the 32px content
+    <!-- Catalog geometry: the 112+456=568 px group on the 16px content
          baseline, 8px of inner gutter each side. data-no-padding-right for
          the reason the catalog block records — the px group pins the right
          gutter at 600 and flush-mobile-capflush zeroes it below the
@@ -292,7 +292,7 @@
          The lead-in line sits INSIDE the text column here rather than in a
          full-width section above the card (the catalog's arrangement): it
          reads as part of the signature on a receipt, not as a salutation. -->
-    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 32px 0" data-no-padding-right>
+    <mj-section css-class="signature-block block flush-mobile-capflush" background-color="#ffffff" padding="0 16px 0" data-no-padding-right>
       <mj-group>
         <mj-column
           vertical-align="top"
@@ -311,7 +311,7 @@
         </mj-column>
         <mj-column
           vertical-align="middle"
-          width="424px"
+          width="456px"
           css-class="signature-text" padding="0 0 0 8px">
           <mj-text padding="0 0 8px">
             <p style="font-style:italic;font-size:16px;line-height:24px;">Thank you for making this work possible.</p>
@@ -356,7 +356,7 @@
          did until 2026-08-26). -->
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#ffffff" padding="0 32px" data-visible-duplicate
+      background-color="#ffffff" padding="0 16px" data-visible-duplicate
     >
       <mj-column>
         <mj-text padding="0">
@@ -380,7 +380,7 @@
 
     <!-- START: Footer (w/ image, brown) -->
     <mj-include path="../partials/tri-color-divider.mjml" />
-    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px">
+    <mj-section css-class="footer-block block flush-mobile-capflush" background-color="#362229" padding="32px 16px">
       <mj-column>
         <mj-image src="assets/text-and-arrow_2.png" href="https://tpl.org/donate" alt="Supporters like you make our work possible" width="225px" align="center" padding="0 0 8px" css-class="light-only" />
         <mj-raw><!--[if !mso]><!--></mj-raw>

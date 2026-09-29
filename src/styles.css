@@ -353,7 +353,7 @@ p {
   }
 
   /* Flush-to-edge imagery on mobile (2026-08-13, EoA dnYN8bje).
-     A 240/296px card on a ~333 CSS px screen loses 80px — a quarter of the
+     A 240/328px card on a ~333 CSS px screen loses 80px — a quarter of the
      width — to section + column gutters, which is what the QA round read as
      "images not full bleed". The columns were never the problem: the image
      always filled its column exactly.
@@ -522,7 +522,7 @@ p {
   }
 
   /* The stats row's trailing blank td is a DESKTOP spacer: it compacts
-     GOAL/RAISED/REMAINING leftward in the 536px body. On a phone the body is
+     GOAL/RAISED/REMAINING leftward in the 568px body. On a phone the body is
      ~300px and that 30% is width the stats need, so it goes (user decision
      2026-08-24). Targeted by its width attribute because the table lives
      inside an RTE Content value — a marker class there would ride the

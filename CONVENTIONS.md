@@ -871,7 +871,54 @@ not spacing, and stay.
   so the single tag filling both side slots of the composite (mso-padding-alt
   copies included) drives the whole effect.
 
-## The content baseline — 32px in, 536px wide
+## The content baseline — 16px in, 568px wide
+
+User decision 2026-09-29: the baseline moved one step down the ladder,
+from Double (32px) to **Single (16px)**. Every block's internal content
+now starts **16px from the left edge and ends at 584px**, a 568px content
+column: the WYSIWYG Text block with its Block Padding Left/Right set to
+**Single** (closing TPL's BugHerd 283, held at Double on 2026-09-25 until
+it could land template-wide). The whole ladder stays selectable
+underneath it.
+
+What moved, and how (every section-level horizontal 32 became 16 — 73
+sections in the catalog, 6 in each autoresponder; vertical 32s and the
+inner insets did not move):
+
+- **Blocks that sat at 32 now sit at 16**, the 2026-08-24 exception groups
+  included: Headers and Heroes, Footers (`32px` → `32px 16px`, band
+  padding kept) and Story Cards moved with the body this time.
+- **Grouped fixed-px rails** — the rail keeps its width and the text
+  column takes the change: Icon Row and Steps 120+416 → 120+448, Podcast
+  Episode and Signature Card (photo) 112+424 → 112+456 (still one class
+  pair), Podcast Streaming 380+78+78 → 412+78+78, Feedback Poll 32+504 →
+  32+536, Video Block (inset) 25+486+25 → 25+518+25. The GUTTER rails
+  themselves move: Progress Meter 32+536+32 → 16+568+16 (the `.meter-rail`
+  mobile pin was already 16), and the three CTA Heroes'
+  background-url rails 32+240+296+32 → 16+240+312+16.
+- **Story Cards' two-column cards** 240+296 → 240+328 (image 232 kept).
+- **Fixed-px pill rows** from the formula in their source comments:
+  3×157 → 3×168 (exact — the 1px floor slack is gone), 2×252 → 2×268; the
+  Quiz pill frames' `data-max-gutter` 32 → 16.
+- **Images sized to fill a column**: 2x2 tiles (Story Card 2x1, Photo and
+  Text Grid, Quiz Block (2x2 photos)) 260 → 276 = (568 − 16) / 2; Story
+  Card 1x1 536 → 568.
+- **Video Block (inset)'s ratio scale** re-derived for the 568px photo:
+  `video-band-inset` 126/154/243 → 135/164/259, from
+  floor((frame × ratio − 49) / 2) with 49 the WATCH button's height (the
+  same formula reproduces both old scales exactly).
+
+Unmoved, for the reasons below: full-bleed photo blocks (25/550/25 rails,
+centred copy), Spacer and Dividers, and the centred fixed boxes (Quote
+Block's 472 column, CTA Text Block's 64px gutter). The padding-growth
+census still reads 50 of 200 frames, now capped at 16px (the authored
+step), and the three CTA Heroes gained 8px of headroom. The column ladder
+grew 17 → 19 (a 16px rail class, and 296 split into 312 for the heroes and
+328 for the Story Cards); delivered head CSS estimated 13,779 → **14,122**,
+19 bytes under the 14,141 working target. Mobile is unmoved for every
+`flush-mobile-capflush` block, as below.
+
+### 2026-08-24: 32px in, 536px wide (superseded)
 
 User decision 2026-08-24, reversing the 2026-08-21 move to a 64px
 baseline. Every block's internal content starts at **32px from the left
@@ -3498,8 +3545,8 @@ the importer whitelists all data-*-only MJML validator warnings
   construction: a block containing any px column never offers the preset.
   Frame example (2026-08-24): the three fixed-width CTA Buttons sections —
   3x1 (fixed width), 2x1 (fixed width), 2x1 (two-line) — whose centred
-  fixed-width pill runs fill the 536px content box (535 for the floored
-  3x1 run), so symmetric gutter changes move zero pixels at either
+  fixed-width pill runs fill the 568px content box exactly (since the
+  2026-09-29 baseline move), so symmetric gutter changes move zero pixels at either
   viewport (proven by the inert-dropdown audit at the 64px-era cut; the
   centred-run argument is width-independent).
   **On an mj-button** (2026-09-27, user decision) it suppresses the button's

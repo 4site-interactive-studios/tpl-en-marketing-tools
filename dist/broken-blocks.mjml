@@ -6,7 +6,7 @@
         "caption": { "None": 0, "Quarter": 4, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
         "hero-reveal": { "None": 0, "Half": 8, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64, "100": 100, "150": 150, "200": 200, "250": 250, "300": 300, "350": 350, "400": 400, "450": 450, "500": 500 },
         "video-band": { "None": 0, "16:9": 144, "3:2": 175, "1:1": 275 },
-        "video-band-inset": { "None": 0, "16:9": 126, "3:2": 154, "1:1": 243 }
+        "video-band-inset": { "None": 0, "16:9": 135, "3:2": 164, "1:1": 259 }
       },
       "widthPresets": { "Full Bleed": 0, "Single": 16, "Double": 32, "Triple": 48, "Quadruple": 64 },
       "geometryReachPx": 64,
@@ -290,7 +290,7 @@
       <!-- data-mobile-only-width was here until 2026-08-21. The 2026-08-18 audit measured this gutter INERT at desktop because the centered heading carries its own line break and never reaches it, and said to drop the flag if the copy ever wrapped at desktop. The 2026-08-21 audit sweeps three copy states including realistic length, and the control is live at BOTH viewports — so the bare "Padding Left/Right" is the honest label. -->
       <mj-section
         css-class="image-block block"
-        padding="48px 32px 8px"
+        padding="48px 16px 8px"
       >
         <mj-column>
           <mj-text data-display-toggle align="center" padding="0">
@@ -300,7 +300,7 @@
       </mj-section>
       <mj-section
         css-class="image-block"
-        padding="48px 32px 32px"
+        padding="48px 16px 32px"
       >
         <mj-group>
           <mj-column vertical-align="middle" width="50%">
