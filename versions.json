@@ -11,346 +11,346 @@
   },
   "block:CTA Button": {
     "version": 15,
-    "hash": "53dfd6456983",
+    "hash": "f2a459133970",
     "date": "2026-09-29"
   },
   "block:CTA Button (centered, outline)": {
     "version": 12,
-    "hash": "9723d296b400",
+    "hash": "62924b31992e",
     "date": "2026-09-29"
   },
   "block:CTA Button (centered, text only)": {
     "version": 13,
-    "hash": "acbfae1ab118",
+    "hash": "58b927152e9b",
     "date": "2026-09-29"
   },
   "block:CTA Buttons 2x1": {
     "version": 17,
-    "hash": "bbf8f0798a6e",
+    "hash": "226ad5c49d15",
     "date": "2026-09-29"
   },
   "block:CTA Buttons 2x1 (fixed width)": {
     "version": 11,
-    "hash": "afa442bec2e3",
+    "hash": "84045bda2dd3",
     "date": "2026-09-29"
   },
   "block:CTA Buttons 2x1 (two-line)": {
     "version": 18,
-    "hash": "99a3a5fbfbb9",
+    "hash": "580d1f75ac72",
     "date": "2026-09-29"
   },
   "block:CTA Buttons 3x1 (dynamic width)": {
     "version": 15,
-    "hash": "624554e35a19",
+    "hash": "9f658872acdf",
     "date": "2026-09-29"
   },
   "block:CTA Buttons 3x1 (fixed width)": {
     "version": 11,
-    "hash": "54ec73c9db11",
+    "hash": "c26f2617c21c",
     "date": "2026-09-29"
   },
   "block:CTA Hero": {
     "version": 6,
-    "hash": "4c3cd5fcbd52",
+    "hash": "5bd4c0ded6ff",
     "date": "2026-09-29"
   },
   "block:CTA Hero (centered w/ background image, fixed height)": {
     "version": 14,
-    "hash": "a65579c1c18f",
+    "hash": "b73a9421fbd4",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ background image)": {
     "version": 8,
-    "hash": "d7c83bbfe4d9",
+    "hash": "0dc093647ff4",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ heading)": {
     "version": 10,
-    "hash": "fb8f6d6b5170",
+    "hash": "0465ba5c3f1f",
     "date": "2026-09-29"
   },
   "block:CTA Hero (w/ image badge)": {
     "version": 7,
-    "hash": "7fc483f0fd12",
+    "hash": "de198671b336",
     "date": "2026-09-29"
   },
   "block:CTA Text Block": {
     "version": 14,
-    "hash": "b6aea8b55fa6",
+    "hash": "61b00183e5ff",
     "date": "2026-09-27"
   },
   "block:Catalog Gap (Footers)": {
     "version": 1,
-    "hash": "6272e5770c9a",
+    "hash": "69598cca7a5f",
     "date": "2026-08-25"
   },
   "block:Category — Buttons": {
     "version": 8,
-    "hash": "bb1862af8039",
+    "hash": "db016ffa146e",
     "date": "2026-09-29"
   },
   "block:Category — Engagement & Interactive": {
     "version": 9,
-    "hash": "9d7058b0f624",
+    "hash": "e58eebc7ac24",
     "date": "2026-09-29"
   },
   "block:Category — Footers": {
     "version": 9,
-    "hash": "637a15cfe2c4",
+    "hash": "cb79003828d5",
     "date": "2026-09-29"
   },
   "block:Category — Headers and Heroes": {
     "version": 9,
-    "hash": "9f012a234d97",
+    "hash": "0a7d2cfd1c37",
     "date": "2026-09-29"
   },
   "block:Category — Image & Text Layouts": {
     "version": 9,
-    "hash": "360d13220007",
+    "hash": "8e87b4583a61",
     "date": "2026-09-29"
   },
   "block:Category — Images & Media": {
     "version": 9,
-    "hash": "149d2f57b337",
+    "hash": "9b8b396f61a1",
     "date": "2026-09-29"
   },
   "block:Category — Signatures": {
     "version": 8,
-    "hash": "8a6e9ec81310",
+    "hash": "86192a815e7e",
     "date": "2026-09-29"
   },
   "block:Category — Text Blocks": {
     "version": 9,
-    "hash": "9aed71eecbfa",
+    "hash": "425dd456d58f",
     "date": "2026-09-29"
   },
   "block:Category — Utilities": {
     "version": 8,
-    "hash": "fc03ab7a25c0",
+    "hash": "9c1173bd8891",
     "date": "2026-09-29"
   },
   "block:Countdown Block": {
     "version": 13,
-    "hash": "724f2182c271",
+    "hash": "24582c26fda4",
     "date": "2026-09-29"
   },
   "block:Deadline Panel": {
     "version": 17,
-    "hash": "b0bb3e82b4ec",
+    "hash": "941fd1d9ee62",
     "date": "2026-09-29"
   },
   "block:Divider (single-color)": {
     "version": 4,
-    "hash": "b96da5c59539",
+    "hash": "e8afc053ab16",
     "date": "2026-08-25"
   },
   "block:Divider (tri-color)": {
     "version": 3,
-    "hash": "3f54230af4cf"
+    "hash": "c83d8f04c114"
   },
   "block:Event Invite Block": {
     "version": 17,
-    "hash": "a8bae4be5f14",
+    "hash": "c339eaa3c598",
     "date": "2026-09-29"
   },
   "block:Feedback Poll Block": {
     "version": 24,
-    "hash": "f551eb181406",
+    "hash": "347def4bd53e",
     "date": "2026-09-29"
   },
   "block:Footer (w/ image, brown)": {
     "version": 13,
-    "hash": "23dae54cb92a",
+    "hash": "eb910cf1a2d5",
     "date": "2026-09-29"
   },
   "block:Footer (w/ image, snow)": {
     "version": 20,
-    "hash": "7900be28456a",
+    "hash": "3b306f523fc7",
     "date": "2026-09-29"
   },
   "block:Highlighted Text": {
     "version": 11,
-    "hash": "e2726fc587a4",
+    "hash": "8d256dddbeb3",
     "date": "2026-09-29"
   },
   "block:Icon Row": {
     "version": 21,
-    "hash": "69a35e79648d",
+    "hash": "3e7890ba36f4",
     "date": "2026-09-29"
   },
   "block:Image 1x1": {
     "version": 12,
-    "hash": "7d12ddb30525"
+    "hash": "d8823d471f3e"
   },
   "block:Images 2x1": {
     "version": 13,
-    "hash": "3be05c555528"
+    "hash": "7ce3f8834c3c"
   },
   "block:Images 3x1": {
     "version": 14,
-    "hash": "ae428a870094"
+    "hash": "cc4cc6803c77"
   },
   "block:Join Links Block": {
     "version": 17,
-    "hash": "05d0fb92577c",
+    "hash": "a3de62b6e172",
     "date": "2026-09-29"
   },
   "block:Linked List Block": {
     "version": 15,
-    "hash": "d02dccbfd844",
+    "hash": "eb24a4b28c7e",
     "date": "2026-09-29"
   },
   "block:Logo Hero": {
     "version": 6,
-    "hash": "5c9bec1f22b4",
+    "hash": "b8cd764531c8",
     "date": "2026-09-29"
   },
   "block:Logo Hero (w/ image)": {
     "version": 7,
-    "hash": "3b1714080500",
+    "hash": "afc4756eb311",
     "date": "2026-09-29"
   },
   "block:Photo Banner": {
     "version": 5,
-    "hash": "51d6eb5bfa1b",
+    "hash": "4b790787d982",
     "date": "2026-09-29"
   },
   "block:Photo Banner (overlay panel, w/ CTA)": {
     "version": 8,
-    "hash": "465ff526f4db",
+    "hash": "801930028990",
     "date": "2026-09-29"
   },
   "block:Photo Banner (w/ CTA)": {
     "version": 8,
-    "hash": "361d142eb36e",
+    "hash": "f7198a053b48",
     "date": "2026-09-29"
   },
   "block:Photo and Text Grid Block (2x2)": {
     "version": 11,
-    "hash": "6198cc62563a",
+    "hash": "82c7c4fbabb8",
     "date": "2026-09-29"
   },
   "block:Podcast Episode Block": {
     "version": 21,
-    "hash": "1566a3469dcd",
+    "hash": "47bc1af5a7eb",
     "date": "2026-09-29"
   },
   "block:Podcast Streaming Block": {
     "version": 18,
-    "hash": "c95a5c990e6b",
+    "hash": "8fb97cc629ae",
     "date": "2026-09-29"
   },
   "block:Progress Meter Block": {
     "version": 21,
-    "hash": "b2638762a01e",
+    "hash": "e299d3444190",
     "date": "2026-09-29"
   },
   "block:Question Block": {
     "version": 19,
-    "hash": "4824d981b01d",
+    "hash": "d08a62a41aac",
     "date": "2026-09-29"
   },
   "block:Quiz Block (2x2 buttons)": {
     "version": 23,
-    "hash": "98a1b3824553",
+    "hash": "88737904db51",
     "date": "2026-09-29"
   },
   "block:Quiz Block (2x2 photos)": {
     "version": 25,
-    "hash": "f0e411defbf3",
+    "hash": "96909d14048a",
     "date": "2026-09-29"
   },
   "block:Quiz Block (3x1 buttons)": {
     "version": 16,
-    "hash": "0592740b7af0",
+    "hash": "d4d02e775061",
     "date": "2026-09-29"
   },
   "block:Quiz Block (multiple choice)": {
     "version": 15,
-    "hash": "1d3b99d5bef7",
+    "hash": "8efcdf5541f1",
     "date": "2026-09-29"
   },
   "block:Quote Block": {
     "version": 14,
-    "hash": "a8d793b015ca"
+    "hash": "83850ad0ffcd"
   },
   "block:Signature Card (no photo)": {
     "version": 19,
-    "hash": "f475ffbe6f4b",
+    "hash": "3d05e5775119",
     "date": "2026-09-29"
   },
   "block:Signature Card (photo)": {
     "version": 17,
-    "hash": "9cac58b5329d",
+    "hash": "7f09c717eeb3",
     "date": "2026-09-29"
   },
   "block:Spacer": {
     "version": 4,
-    "hash": "044f49176dbf"
+    "hash": "e7d167ff4b63"
   },
   "block:Stat Row": {
     "version": 13,
-    "hash": "75e7153078b5",
+    "hash": "3bd375a9a19b",
     "date": "2026-09-29"
   },
   "block:Steps Block": {
     "version": 26,
-    "hash": "f92617828e69",
+    "hash": "d208599d3c3f",
     "date": "2026-09-29"
   },
   "block:Story Card (image left, center-aligned)": {
     "version": 2,
-    "hash": "d1da3ab8948f",
+    "hash": "e98716d1ca28",
     "date": "2026-09-29"
   },
   "block:Story Card (image right, left aligned)": {
     "version": 2,
-    "hash": "6ab9bacbc662",
+    "hash": "812adc85bac1",
     "date": "2026-09-29"
   },
   "block:Story Card 1x1": {
     "version": 3,
-    "hash": "2a4b8d142913",
+    "hash": "13bd1aef099b",
     "date": "2026-09-29"
   },
   "block:Story Card 2x1": {
     "version": 16,
-    "hash": "5b6671b86ba1",
+    "hash": "c732c1d62a63",
     "date": "2026-09-29"
   },
   "block:Subscription Panel": {
     "version": 14,
-    "hash": "09c7fc9f4376",
+    "hash": "5fa0b33595be",
     "date": "2026-09-29"
   },
   "block:Two-Line Banner": {
     "version": 11,
-    "hash": "144175acee26",
+    "hash": "2974592944a4",
     "date": "2026-09-29"
   },
   "block:Video Block": {
     "version": 10,
-    "hash": "f4abdadce861",
+    "hash": "74d405971ee2",
     "date": "2026-09-29"
   },
   "block:Video Block (inset)": {
     "version": 26,
-    "hash": "04cbddbac9e0",
+    "hash": "d2ce9d0ec689",
     "date": "2026-09-29"
   },
   "block:Video Feature": {
     "version": 3,
-    "hash": "fc9d88fd4152",
+    "hash": "072a7cfb05a0",
     "date": "2026-09-29"
   },
   "block:WYSIWYG Header": {
     "version": 5,
-    "hash": "fe16f2646454",
+    "hash": "386723810f03",
     "date": "2026-09-29"
   },
   "block:WYSIWYG Text": {
     "version": 13,
-    "hash": "3002cb090b24",
+    "hash": "8302645fe47d",
     "date": "2026-09-29"
   },
   "email-template": {
