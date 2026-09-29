@@ -99,6 +99,27 @@
       Then the inset (R6/R7 = 302) in every client, and a Word re-check that
       the percent override changed nothing there (it should not: Word reads
       the MSO tables).
+
+      ROUND 2 VERDICT (2026-09-29, sent through EN, EoA migsvT…, 19 clients;
+      M365 Mac dark returned no render). Delivered HTML read first: all 17
+      height="128" cells intact, and the four .video-band / .video-band-inset
+      rules delivered INSIDE the single @media (min-width:600px) block (EN
+      folded the styles.css block into MJML's, as expected).
+        C1 PASSES everywhere, Outlook.com included. Outlook.com light was read
+          at the same ~538px pane that failed round 1: rails now sit beside
+          the slot, R1-R3 and M1-M3 at 338, R6/R7 at 302. Every other client
+          matches round 1 (338 / 339 iOS / 338-343 at 120 DPI; Gmail Android
+          its usual ~4% short, 324 and inset 290). Inset R6 = R7 = 302 in
+          Apple Mail, Gmail web, iOS, M365 Mac, Outlook 2016/2021, M365 Win11
+          and Outlook.com; 305-306 in Outlook 2019 at 120 DPI (same scaling
+          as its 342 full band).
+        C2 PASSES: overlay centred in every render, inset included.
+        C3 PASSES (as round 1; the flat-ground Word hairline recurs, still
+          never on a photo band).
+        C4, C5 PASS. Outlook 2021 light's screenshot is cut off inside M3 by
+          the capture; its dark render shows M3 whole at 338.
+        Word unchanged by the override, as predicted.
+      Every claim settled. Archived the same day.
     -->
     <mj-raw>
       <!-- en-tools-keep TPL General Email Template (__TEMPLATE_DATE__) v__TEMPLATE_VERSION__ -->
