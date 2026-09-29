@@ -4331,8 +4331,8 @@ Every EN artifact and the app itself carry an integer version, anchored to
 content hashes so increments are mechanical and can never be lost:
 
 - **TPL `versions.json`** — one entry per entity: `email-template` (the
-  `main.mjml` SHELL — every leaf `<!-- START/END -->` block region replaced
-  by a name sentinel; **shell only**, see below), `autoresponder:<file>`,
+  template markup EN STORES — see "The template version tracks stored
+  markup" below), `autoresponder:<file>`,
   `partial:<file>`, and `block:<name>` (the block's leaf marker regions).
   `catalog-shell` was the SECOND catalog's shell and is deliberately gone
   since 2026-08-21, when `mjml_extra-blocks.mjml` was deleted and
@@ -4344,8 +4344,8 @@ content hashes so increments are mechanical and can never be lost:
   everything under src/.
 
 **"Directly changed" is the bump rule, made precise by the entity
-definitions**: editing a block's markup bumps that block alone; editing the
-template shell bumps `email-template` alone; editing `styles.css` bumps
+definitions**: editing a block's markup bumps that block alone; changing the
+template's stored markup bumps `email-template` alone; editing `styles.css` bumps
 `head-css` alone; editing app code bumps the app. A stylesheet change that
 alters how every block RENDERS still bumps only `head-css` — versions track
 what was edited, not what was affected downstream.
@@ -4362,6 +4362,29 @@ so each number moves only when the thing it names does. Verified both ways:
 a `styles.css` edit moves `head-css` and not `email-template`; a band edit
 moves `email-template` and not `head-css`. Correcting the definitions
 changed both hashes once, which is a real bump and recorded as one.
+
+**The template version tracks stored markup (user rule 2026-09-29: "the
+template's version should not change unless the markup of the template
+itself changes").** Until then `email-template` hashed the `main.mjml`
+SOURCE shell, so it bumped for things EN never stores: adding, removing or
+reordering a block (the shell's block placeholders), the `en-tools-config`
+comment (stripped at import), head authoring prose (stripped at import) and
+`mj-attributes`/`mj-class` defaults. It went v66 → v69 on 2026-09-29 while the
+stored template did not change. It now hashes the template as the importer
+carves it out of the COMPILED master (the templateMarkupContent function in
+TPL's version-sync script): the head
+minus the sheets `head-css` covers (the `data-en-tools-band` chrome stays),
+plus the body wrapper before the first block and after the last,
+non-conditional comments dropped and whitespace collapsed. Because that is
+compiled output, it is resolved in the post-compile pass alongside
+`head-css`. An `mj-attributes` default that re-renders every block therefore
+bumps nothing unless it changes that markup — no block's markup changed
+either, and versions track markup, not downstream rendering (user decision,
+same day). The definition change re-anchored rather than bumped: a
+committed hash equal to the retired source-shell hash adopts the new hash at
+the same version. Breach-tested 2026-09-29: adding a block, changing an
+`en-tools-config` value and changing an `mj-attributes` default all held v69;
+changing `<mj-title>` moved it to v70.
 
 **Mechanics** (`scripts/version-sync.mjs` in each repo, first step of each
 build): the baseline is the manifest AS COMMITTED (`git show
