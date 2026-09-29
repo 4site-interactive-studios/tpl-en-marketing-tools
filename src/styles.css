@@ -690,6 +690,10 @@ p {
     color: #fff !important;
   }
 
+  [data-ogsc] .footer-block td[style*=direction] {
+    border-color: #000 !important;
+  }
+
   [data-ogsc] .question-response p a {
     color: #fff !important;
   }
@@ -826,6 +830,14 @@ p {
 
   .question-response p a {
     color: #fff !important;
+  }
+
+  /* Same rule for Footer (w/ image, snow)'s 1px #FAFAFA section border
+     (2026-09-29): invisible on white in light mode, a pale frame around the
+     repainted black ground in dark. It sits on the section's main td, which
+     keeps direction inline through delivery (header idiom). */
+  .footer-block td[style*=direction] {
+    border-color: #000 !important;
   }
 
   /* cursor:pointer rides in from the base :hover rule — the repaint only
