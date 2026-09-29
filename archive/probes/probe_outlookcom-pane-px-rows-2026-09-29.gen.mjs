@@ -121,7 +121,16 @@ ${BLOCKS.map(([n], i) => `        ${i + 1}  ${n}`).join('\n')}
         Also seen: dark mode repaints the probe's label bars black (they
           carry .block); the labels stay readable.
 
-      VERDICTS: P3, P4 settled; P1, P2 open (need a <600px Outlook.com pane).
+      CLOSED 2026-09-29, NOT REPRODUCIBLE (user decision): EoA's Outlook.com
+      capture offers only the ~600px pane (the user's account of the
+      service), so P1/P2 cannot be measured there; this contradicts the
+      video probe's recorded ~538px readings, which may have misjudged the
+      pane. No fix shipped: the restatement would spend ~250 of the 257
+      head-CSS bytes left for a wrap never directly observed. Re-open by
+      sending this to a real Outlook.com mailbox and narrowing the window
+      below a 600px reading pane.
+
+      VERDICTS: P3, P4 pass; P1, P2 not reproducible in EoA. Archived.
     -->`;
 
 const out = `<mjml lang="en">
