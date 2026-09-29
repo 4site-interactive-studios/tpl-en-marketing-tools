@@ -1322,6 +1322,56 @@ guard('alternate arrangement check', () => {
   }
 });
 
+guard('alternate member check', () => {
+  // data-alt-member folds an element into the Display Select of the member
+  // directly before it in its column (Video Block: WATCH Button / Play Icon /
+  // Exclude). The importer only notes an unpaired alternate at info level —
+  // and an unpaired one RENDERS IN PLACE, overlay stacked on overlay — so the
+  // pairing rules are checked here, next to the author.
+  const MEMBER = /<(mj-(?:image|text|button|divider))\b([^>]*)>/g;
+  for (const name of sources) {
+    const src = read(`src/${name}`) ?? '';
+    const members = [...src.matchAll(MEMBER)].map((m) => ({
+      index: m.index,
+      attrs: m[2],
+      column: src.lastIndexOf('<mj-column', m.index),
+    }));
+    for (const [i, m] of members.entries()) {
+      const label = /\bdata-alt-member\s*=\s*"([^"]*)"/.exec(m.attrs);
+      const at = `src/${name}:${lineAt(src, m.index)}`;
+      if (!label) {
+        if (/\bdata-option-label\b/.test(m.attrs)) {
+          const next = members[i + 1];
+          if (!next || next.column !== m.column || !/\bdata-alt-member\b/.test(next.attrs)) {
+            warn(`${at} data-option-label with no data-alt-member directly after it in the same column — the label names nothing`);
+          }
+        }
+        continue;
+      }
+      if (!label[1].trim()) warn(`${at} data-alt-member needs a non-empty label — it becomes the option's name`);
+      // The primary is the member before it in the same column; a light/dark
+      // pair's dark twin folds into its light twin, so step past it.
+      let p = i - 1;
+      if (p >= 0 && /dark-only/.test(members[p].attrs)) p -= 1;
+      const primary = p >= 0 && members[p].column === m.column ? members[p] : null;
+      if (!primary) {
+        warn(`${at} data-alt-member="${label[1]}" has no member before it in its column — it would render in place`);
+        continue;
+      }
+      if (/\bdata-alt-member\b/.test(primary.attrs)) {
+        warn(`${at} data-alt-member="${label[1]}" follows another alternate — its primary must be an ordinary member`);
+      }
+      if (!/\bdata-option-label\s*=\s*"[^"]+"/.test(primary.attrs)) {
+        warn(`${at} data-alt-member="${label[1]}": its primary has no data-option-label, so the Select's first option reads "Include Block"`);
+      }
+      const siblings = members.filter((x) => x.column === m.column && !/\bdata-alt-member\b|dark-only/.test(x.attrs));
+      if (/\bdata-no-display-toggle\b/.test(primary.attrs) || (!/\bdata-display-toggle\b/.test(primary.attrs) && siblings.length < 2)) {
+        warn(`${at} data-alt-member="${label[1]}": its primary gets no Display Select (add data-display-toggle), so the alternate would render in place`);
+      }
+    }
+  }
+});
+
 guard('source CSS budgets', () => {
   const EN_CSS_REPRINT_FACTOR = 1.3; // same measured factor as §8
 

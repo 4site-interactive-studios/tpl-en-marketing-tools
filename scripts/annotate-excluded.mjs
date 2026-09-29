@@ -388,6 +388,18 @@ for (const { rel, f, out: outDir } of walk) {
     const altLeft = (text.match(/<mj-section\b[^>]*data-alt-arrangement/g) || []).length;
     if (altLeft) console.warn(`  WARN ${join(rel, f)}: ${altLeft} data-alt-arrangement section(s) survived the drop`);
 
+    // Alternate MEMBERS, same reasoning one level down: an element carrying
+    // data-alt-member is an extra option of the Display Select on the member
+    // before it (Video Block's Play Icon beside its WATCH button), so a send
+    // shows it only when an editor picks it. The previews show the default.
+    let altMembersDropped = 0;
+    text = text.replace(
+      /[ \t]*(?:<mj-[a-z-]+\b[^>]*\bdata-alt-member\b[^>]*\/>|<(mj-[a-z-]+)\b[^>]*\bdata-alt-member\b[^>]*>[\s\S]*?<\/\1>)[ \t]*\n?/g,
+      () => ((altMembersDropped += 1), ''),
+    );
+    const altMembersLeft = (text.match(/<mj-[a-z-]+\b[^>]*data-alt-member/g) || []).length;
+    if (altMembersLeft) console.warn(`  WARN ${join(rel, f)}: ${altMembersLeft} data-alt-member element(s) survived the drop`);
+
     checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));
@@ -420,7 +432,7 @@ for (const { rel, f, out: outDir } of walk) {
     // to still resolve from .build/.
     if (rel && !outDir) text = text.replace(/(<mj-include\s+path=")\.\.\//g, '$1./');
     writeFileSync(join(OUT, outDir, f), text);
-    console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}` + (altsDropped ? `, ${altsDropped} alternate arrangement(s) dropped from the render` : ''));
+    console.log(`annotate: ${join(rel, f)} — ${fully} fully-excluded, ${imports} import-excluded${groupNote}` + (altsDropped ? `, ${altsDropped} alternate arrangement(s) dropped from the render` : '') + (altMembersDropped ? `, ${altMembersDropped} alternate member(s) dropped from the render` : ''));
 
     // Print the live category → EN folder routing. Documenting this by hand
     // rots on every category change (it did); deriving it means the build

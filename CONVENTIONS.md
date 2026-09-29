@@ -2169,6 +2169,9 @@ sort — it is purely the panel/export display order.
   `data-no-display-toggle` opts out upstream, `data-display-toggle` opts a sole
   member in; complex hand-authored texts
   are skipped with a code comment. Applies template-wide.
+  A member may carry an **alternate** (`data-alt-member`, 2026-09-29): the
+  Select then offers the primary, the alternate, and Exclude — one control for
+  "which overlay, or none". See the flag's entry below.
 - **Dark-mode images**: light/dark swap pairs merge (src EXCLUDED from the
   equality check so differing artwork still pairs); the dark twin's src
   becomes "Dark Mode Image URL" in the light image's group.
@@ -3851,6 +3854,36 @@ opt-in of the display family. Authored on the component's own tag — and on the
 FIRST twin of a light/dark pair, never the second. `data-no-display-toggle` on
 the same element wins. Used by the Headers/Heroes blocks so the logo, the CTA
 button and the heading can each be hidden (user decision 2026-08-20).
+
+- **`data-alt-member="<Option Label>"`** (valued, on a content component,
+2026-09-29): makes the component an ALTERNATE of the member directly before it
+in the same column, folded into that primary's Display Select as an extra
+option — primary / alternate / "Exclude Block", defaulting to the primary.
+It exists for Video Block's overlay (WATCH Button / Play Icon / None, user
+decision 2026-09-29): a Display Select can only include or exclude one
+fragment, and every Display defaults to Include, so an icon authored beside
+the button as an ordinary member would ship both. The rules
+(`columnMembers` + the Display emit loop + `columnMemberCount`,
+`src/core/mjmlProps.ts`):
+  - **It never renders in place.** Its compiled `<tr>` (`memberSpan`) becomes
+    the option's value with its own splices baked in, and its place in the
+    flow is emptied. Its OWN fields survive — an image keeps Image URL, Alt,
+    Link, Width, Alignment — and their tags live only inside that option
+    value (nested tags in Select values are how Display already works).
+  - **It is not a member for counting.** It does not lift the column to the
+    >=2 threshold, gets no Display of its own, and does not cost the primary
+    its sole-member consolidation (no Spacing Below appears on either).
+    Numbering of every other field is unchanged.
+  - **The primary must get a Display Select** (`data-display-toggle` on a
+    sole member, or a shared column) and must not be an alternate itself; a
+    light/dark primary pairs through its light twin. **`data-option-label="<Label>"`**
+    on the primary names its option (falls back to "Include Block").
+  - **Unpaired, it renders in place** with an info note — overlay on overlay.
+    The importer cannot fail louder, so the authoring repo guards it at build
+    time (TPL `check-catalog`, "alternate member check"). Like
+    `data-alt-arrangement`, both flags are STRUCTURAL: never in the TPL
+    `normalize()` strip list, and the authoring build drops alternate members
+    from its compiled previews so a preview shows the default.
 
 **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display
