@@ -30,8 +30,11 @@ still resolve, no top-level `[data-ogsc]`, every dark-mode declaration carries `
 absolute CDN URL in source, every `§N` cross-reference resolves, and the
 mirrors still carry their header. Run it alone with `npm run check-docs`.
 `scripts/check-catalog.mjs` is its sibling for the blocks: both-attribute
-backgrounds, unhooked dark-mode grounds, fixed-width columns overflowing
-their frame (that one needs a built `dist/`), and every narrow fixed-px
+backgrounds, unhooked dark-mode grounds, column rows overflowing their frame
+or falling short of it (both need a built `dist/`; the short-row half caught
+the 584px CTA Hero rows of 2026-09-29), every edge spacer rail inside an
+`mj-group` carrying a mobile pin (an unpinned 16px rail renders ~10px at
+375), and every narrow fixed-px
 column inside an `mj-group` carrying a mobile pin (guide §6e — mj-group
 never stacks, so an unpinned rail shrinks with the viewport while the fixed
 padding inside it does not), and the guide §8 item 3a type census — every
