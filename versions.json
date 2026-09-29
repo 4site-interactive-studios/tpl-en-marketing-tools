@@ -318,9 +318,9 @@
     "date": "2026-09-26"
   },
   "block:Video Block": {
-    "version": 8,
-    "hash": "4f600125c679",
-    "date": "2026-09-25"
+    "version": 9,
+    "hash": "dcb9ecccc67b",
+    "date": "2026-09-29"
   },
   "block:Video Block (inset)": {
     "version": 24,
@@ -328,8 +328,8 @@
     "date": "2026-09-25"
   },
   "block:Video Feature": {
-    "version": 1,
-    "hash": "2c190bb8cecc",
+    "version": 2,
+    "hash": "c3077f8439e1",
     "date": "2026-09-29"
   },
   "block:WYSIWYG Header": {

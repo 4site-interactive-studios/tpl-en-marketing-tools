@@ -1317,12 +1317,15 @@
            user decision 2026-09-25: 16:9 / 3:2 / 1:1 at 600px wide, 16:9 the
            default; the old ~250px "short" band was dropped). The video-band
            class scale mints Padding Top and Padding Bottom Selects on those
-           ratio steps; set both to the same ratio. -->
+           ratio steps; set both to the same ratio. data-display-toggle on the
+           button lets an editor exclude it when the play icon is baked into
+           the photo (user request 2026-09-29); the band then loses the
+           button's ~50px, so the ratio steps read slightly short. -->
       <mj-section css-class="image-block block video-band" background-url="assets/photo-kayak_color-overlay.jpg" background-size="cover" background-repeat="no-repeat" background-position="center center" padding="144px 0 144px">
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
         <mj-column width="550px">
-          <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+          <mj-button data-display-toggle width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
         </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
@@ -1432,7 +1435,7 @@
         <mj-group>
           <mj-column width="25px">&nbsp;</mj-column>
           <mj-column width="550px">
-            <mj-button width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
           </mj-column>
           <mj-column width="25px">&nbsp;</mj-column>
         </mj-group>
