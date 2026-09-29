@@ -506,7 +506,24 @@ p {
   }
 
   .stream-text {
-    width: calc(100% - 156px) !important;
+    width: calc(100% - 172px) !important;
+  }
+
+  /* The flush class zeroes the row's gutter, so the last badge sat hard
+     against the right screen edge while the copy kept 16px (2026-09-29; the
+     2026-08-22 icon-edge defect, missed here). Its column widens by the 16px
+     and the Apple badge's own cell takes it as a right inset, at the
+     two-class specificity that outranks the flush zero — the .no-bleed
+     idiom, but right-only. Gmail-safe: classes only. Known trade-off: in
+     the editor's "Reversed" Column Order the Apple badge leads, so on phones
+     this inset widens the badge-to-badge gap 16 → 32 (measured 2026-09-29);
+     the default order is exact. */
+  .stream-icon-last {
+    width: 94px !important;
+  }
+
+  .flush-mobile-capflush .stream-badge-last {
+    padding-right: 16px !important;
   }
 
   /* Icon-beside-text rows: the icon column is authored in px, so below the
