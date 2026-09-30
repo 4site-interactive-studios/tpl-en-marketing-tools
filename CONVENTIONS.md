@@ -683,9 +683,14 @@ bypasses the other gates (sole-member consolidation still wins — do NOT
 flag a column's only member, the dead-flag audit will report it), and is
 strip-tested per instance like every importer flag (`IMPORTER_FLAG_RE`).
 Upstream convention: flag pattern-a captions (the mj-text beside its
-image in the same column, authored `padding="0"` = flush with the photo,
-matching the image's own side padding); the standalone caption SECTIONS
-already carry their row's frame left/right padding and get no flag —
+image in the same column). Their left/right put the caption text on the
+content baseline, not on the photo edge (user decision 2026-09-30):
+`4px 16px 0` (Single) under a full-width photo, whose frame has no gutter,
+and `4px 0 0` (None) under an inset photo, whose frame already supplies the
+16. The Inset default therefore reads Single or None by block while every
+caption lands at the same 16px. The standalone caption SECTIONS carry
+their row's frame left/right padding (16 for the same reason) and get no
+flag —
 their gap is the SECTION's top padding, authored `4px` on the caption
 scale too (the section's `css-class="block caption"` matches the
 `caption` key, so its Block Padding Top Select offers Quarter).
@@ -960,6 +965,15 @@ records above and below only change the numbers.
     `calc(100% - 32px)` (`.banner-body`, grouped with `.meter-body`). With
     the catalog's sample copy the centred default is pixel-identical at
     600px; longer copy gets the wider measure.
+  - Their photo CAPTIONS (user decision 2026-09-30): the photo stays edge
+    to edge, but the caption beneath it is copy and sits on the baseline,
+    16px from the block edge at every width (Image 1x1, Images 2x1/3x1,
+    Video Block, Video Feature, and the autoresponders' Image 1x1). An
+    Images 2x1/3x1 caption's inner side takes the same 16, so a
+    right-aligned caption ends 16px inside its photo's inner edge. The
+    phone-only `.caption` indent was retired with this change: once each
+    caption section authored its own 16, it only stacked a second 16
+    (Video Block (inset) read 32 on phones).
 - **Spacer and the two Dividers.** Nothing to align; a rule that spans the
   full 600 under inset copy is deliberate.
 - **Centred fixed-px boxes** — Quote Block (Highlighted Text until
@@ -3943,7 +3957,8 @@ in the same column, folded into that primary's Display Select as an extra
 option — primary / alternate / "Exclude Block", defaulting to the primary.
 It exists for Video Block's overlay (WATCH Button / Play Icon / None, user
 decision 2026-09-29): a Display Select can only include or exclude one
-fragment, and every Display defaults to Include, so an icon authored beside
+fragment, and every Display defaults to Include (unless flagged
+`data-display-default-exclude`, below), so an icon authored beside
 the button as an ordinary member would ship both. The rules
 (`columnMembers` + the Display emit loop + `columnMemberCount`,
 `src/core/mjmlProps.ts`):
@@ -3966,6 +3981,21 @@ the button as an ordinary member would ship both. The rules
     `data-alt-arrangement`, both flags are STRUCTURAL: never in the TPL
     `normalize()` strip list, and the authoring build drops alternate members
     from its compiled previews so a preview shows the default.
+
+- **`data-display-default-exclude`** (valueless, on a member that gets a
+Display Select, 2026-09-30): the Select DEFAULTS to "Exclude Block" instead
+of the member's own fragment, so the member ships only when an editor opts it
+in. The options and their order are unchanged, and `originalValue` stays the
+authored fragment, so deleting the field restores the markup byte-exact (the
+"Exclude Link" default's precedent). On a primary with an alternate it covers
+the whole Select: primary and alternate both ship off. Used by the three
+video blocks' WATCH Button / Play Icon overlay (user decision 2026-09-30),
+whose fixed 128px slot keeps the band height whichever option ships. Like the
+alternate flags it is STRUCTURAL: it changes what the default send renders,
+so it stays out of the TPL `normalize()` strip list, and the authoring build
+drops the flagged member from its compiled previews so a preview shows the
+default. On a member that gets no Display Select it is dead, and the
+dead-flag audit reports it.
 
 **`data-no-display-toggle`** (valueless, on content components): opts
   the component out of the auto-generated Include/Exclude Block Display

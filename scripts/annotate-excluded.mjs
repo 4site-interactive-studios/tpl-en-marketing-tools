@@ -400,6 +400,17 @@ for (const { rel, f, out: outDir } of walk) {
     const altMembersLeft = (text.match(/<mj-[a-z-]+\b[^>]*data-alt-member/g) || []).length;
     if (altMembersLeft) console.warn(`  WARN ${join(rel, f)}: ${altMembersLeft} data-alt-member element(s) survived the drop`);
 
+    // A member flagged data-display-default-exclude ships with its Display
+    // Select on "Exclude Block", so the default send omits it: the previews
+    // drop it too (Video Block's WATCH button, 2026-09-30). Runs after the
+    // alternate drop, so the Play Icon is already gone.
+    text = text.replace(
+      /[ \t]*(?:<mj-[a-z-]+\b[^>]*\bdata-display-default-exclude\b[^>]*\/>|<(mj-[a-z-]+)\b[^>]*\bdata-display-default-exclude\b[^>]*>[\s\S]*?<\/\1>)[ \t]*\n?/g,
+      '',
+    );
+    const excludedLeft = (text.match(/<mj-[a-z-]+\b[^>]*data-display-default-exclude/g) || []).length;
+    if (excludedLeft) console.warn(`  WARN ${join(rel, f)}: ${excludedLeft} data-display-default-exclude element(s) survived the drop`);
+
     checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {
       checkImageWidths(source, join(rel, f));

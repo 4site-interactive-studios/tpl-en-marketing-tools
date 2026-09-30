@@ -1,13 +1,13 @@
 {
   "autoresponder:donation-thank-you": {
-    "version": 21,
-    "hash": "e389e62c43f3",
-    "date": "2026-09-29"
+    "version": 22,
+    "hash": "e69c7eb34902",
+    "date": "2026-09-30"
   },
   "autoresponder:recurring-donation-thank-you": {
-    "version": 21,
-    "hash": "1ebcda20b79d",
-    "date": "2026-09-29"
+    "version": 22,
+    "hash": "e1fde265ca6f",
+    "date": "2026-09-30"
   },
   "block:CTA Button": {
     "version": 15,
@@ -179,16 +179,19 @@
     "date": "2026-09-29"
   },
   "block:Image 1x1": {
-    "version": 12,
-    "hash": "d8823d471f3e"
+    "version": 13,
+    "hash": "ffc86a69a456",
+    "date": "2026-09-30"
   },
   "block:Images 2x1": {
-    "version": 13,
-    "hash": "7ce3f8834c3c"
+    "version": 14,
+    "hash": "3f261b2c5861",
+    "date": "2026-09-30"
   },
   "block:Images 3x1": {
-    "version": 14,
-    "hash": "cc4cc6803c77"
+    "version": 15,
+    "hash": "9d125892390a",
+    "date": "2026-09-30"
   },
   "block:Join Links Block": {
     "version": 17,
@@ -329,19 +332,19 @@
     "date": "2026-09-29"
   },
   "block:Video Block": {
-    "version": 10,
-    "hash": "74d405971ee2",
-    "date": "2026-09-29"
+    "version": 11,
+    "hash": "94748e29c572",
+    "date": "2026-09-30"
   },
   "block:Video Block (inset)": {
-    "version": 26,
-    "hash": "d2ce9d0ec689",
-    "date": "2026-09-29"
+    "version": 27,
+    "hash": "1400691de5bb",
+    "date": "2026-09-30"
   },
   "block:Video Feature": {
-    "version": 3,
-    "hash": "072a7cfb05a0",
-    "date": "2026-09-29"
+    "version": 4,
+    "hash": "881f5dced904",
+    "date": "2026-09-30"
   },
   "block:WYSIWYG Header": {
     "version": 5,
@@ -359,9 +362,9 @@
     "date": "2026-09-29"
   },
   "head-css": {
-    "version": 63,
-    "hash": "cb6bf31746b5",
-    "date": "2026-09-29"
+    "version": 64,
+    "hash": "980761011c5a",
+    "date": "2026-09-30"
   },
   "partial:debug-toolbar": {
     "version": 1,

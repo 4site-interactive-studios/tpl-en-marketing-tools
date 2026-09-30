@@ -1167,7 +1167,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-garden.jpg" alt="Volunteers tending a community garden" href="https://tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1201,7 +1201,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1222,7 +1222,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1256,7 +1256,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1277,7 +1277,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1298,7 +1298,7 @@
           align="center"
           fluid-on-mobile="true" css-class="inline-fluid dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer&rsquo;s Name, AGENCY</span>
         </mj-text>
       </mj-column>
@@ -1320,7 +1320,10 @@
            Selects on those ratio steps (105 / 136 / 236 = 338 / 400 / 600px
            bands); set both to the same ratio.
            The overlay is one Display Select (user decision 2026-09-29):
-           WATCH Button / Play Icon / Exclude Block. The icon is the button's
+           WATCH Button / Play Icon / Exclude Block, DEFAULTING to Exclude
+           Block (the button carries the default-exclude flag, user decision
+           2026-09-30), so the previews show the band with no overlay. The
+           icon is the button's
            data-alt-member, so it never renders in place — the importer folds
            it into the button's Select, and the build drops it from the
            previews. A 128px row in each rail holds the slot's height
@@ -1337,7 +1340,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="550px" vertical-align="middle">
-            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
@@ -1346,7 +1349,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 16px 0">
       <mj-column vertical-align="middle">
         <!-- data-display-toggle: the caption is the SOLE member of its column,
              and a sole member earns no Display Select otherwise. The gap above
@@ -1401,7 +1404,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="518px" vertical-align="middle">
-            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
@@ -1461,7 +1464,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="550px" vertical-align="middle">
-            <mj-button data-display-toggle data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
@@ -1470,7 +1473,7 @@
         </mj-group>
       </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 0 0">
+    <mj-section css-class="block caption" background-color="#ffffff" padding="4px 16px 0">
       <mj-column vertical-align="middle">
         <!-- data-display-toggle: sole member of its column, as in Video Block. -->
         <mj-text data-display-toggle align="right" mj-class="caption" padding="0">

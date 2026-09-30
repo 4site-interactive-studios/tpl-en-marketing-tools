@@ -784,9 +784,10 @@ here — that an older `.caption { padding-left: 16px }` need not be removed —
 was wrong. A `css-class` on an `mj-section`, `mj-wrapper` or `mj-column`
 lands on the outer `<div>`, which no `td` selector reaches, so an inset
 carried there is untouched by the zero AND then **adds** to the restore. TPL's
-Video Block (inset) caption carries both `caption` and the flush class: 16px
+Video Block (inset) caption carried both `caption` and the flush class: 16px
 from `.caption` on the div, 16px from the restore on the cell, and the caption
-lands 32px from the screen edge instead of 16.
+landed 32px from the screen edge instead of 16. Fixed 2026-09-30 by retiring
+the `.caption` div rule once every caption section authored its own 16.
 
 Before adding the class to a section, read its whole `css-class` list and ask
 what else fires at that breakpoint, and **on which box**: an inset on the same
@@ -841,8 +842,8 @@ one-selector edit:
 
 | | caption | shipped |
 | :---- | :---- | :---- |
-| caption with the PHOTO (flush) | 14 CSS | **yes** — matches the flush caption form (today `padding="4px 0 0"`; measured at 8px) |
-| caption with the COPY (inset) | 30 CSS | add `.flush-mobile-capflush .caption` to the override rule |
+| caption with the PHOTO (flush) | 14 CSS | no — would need captions excluded from the restore rule |
+| caption with the COPY (inset) | 30 CSS | **yes** — the restore rule reaches every mj-text, captions included (MJML stamps the `wysiwyg` default onto each cell); re-measured 2026-09-30, every caption at 16px on 375 and 320 |
 
 Body copy holds its 29 CSS inset either way. Applied to the seven blocks
 that pair a `fluid-on-mobile` image with two or more columns.
@@ -1034,7 +1035,8 @@ sections/wrappers/columns — offer, snap to, and label THAT scale
 instead of the main one. (Spacer heights and the Block Padding
 Left/Right preset stay on the main vocabulary.) TPL uses it to give
 captions a **Quarter - 4px** step: inline captions
-(`mj-class="caption"`) author `padding="4px 0 0"`, and the standalone
+(`mj-class="caption"`) author a 4px top (`4px 0 0` under an inset photo,
+`4px 16px 0` under a full-width one), and the standalone
 caption sections (`css-class="block caption"`) author the same 4px as
 their section top padding — both default to Quarter without the 4px
 option widening every other spacing dropdown in the catalog. Each class
@@ -1694,6 +1696,7 @@ the one field (§4: one value, every carrier).
 | `data-no-display-toggle` | opt out of the show/hide Select |
 | `data-display-toggle` | opt a column's SOLE member IN to the show/hide Select |
 | `data-alt-member="<Option Label>"` | on a content element placed DIRECTLY after another in the same column: make it that member's alternate — one Display Select offering the primary, this alternate, and Exclude (e.g. a video band's WATCH button / play icon / none). The alternate never renders in place and keeps its own fields; name the primary's option with `data-option-label="<Label>"`. The primary must get a Display Select itself (`data-display-toggle` if it is its column's only member). An unpaired alternate renders in place with only an info note, so guard the pairing at build time, and drop alternates from compiled previews the way alternate arrangements are dropped. If the options differ in height, hold the slot with a fixed-height filler outside the column (a raw `<tr><td height>` in a side rail — not an `mj-spacer`, which is a column member and renumbers later spacer tags) so switching options never resizes the band |
+| `data-display-default-exclude` | on a member that gets a show/hide Select: default that Select to Exclude Block, so the member ships only when an editor turns it on (options unchanged; with an alternate, both ship off). Drop the flagged member from compiled previews so they show the default, and hold its slot's height the way alternates do if the band must not resize |
 | `data-no-link-toggle` | opt out of the image link Select. The Select itself **defaults to "Exclude Link"** (2026-08-21): an `href` you author is what the editor can turn ON, not what ships. Authoring one is still worth doing — it is the link an editor gets when they opt in, and the value a deleted field restores. |
 | `data-no-link-color` | on an `mj-text`: opt it out of the per-block Link Color Select (the shared class-token control; see conventions "Link Color") |
 | `data-text-size-toggle` | on an `mj-text`: opt it IN to the Text Size Select. Options come from top-level `.text-<name> p` rules declaring only font-size, line-height and mso-line-height-rule; the bare `p` rule labels the Default (see conventions "Text Size"). Put it where editors resize body copy, not everywhere |
@@ -2159,9 +2162,11 @@ aloud). The Alt Text field survives either way (§5).
 7. In dark-mode passes, check Gmail app and Outlook desktop
    SPECIFICALLY: the swap cannot fire there (§2c), so judge whether the
    light-only assets survive the client's own auto-darkening.
-7a. Confirm every image caption that sits flush with its photo carries
-   `data-inset-toggle` (§5) — without it the caption's zero side padding
-   is frozen and an editor cannot indent it. Never flag a caption that
+7a. Confirm every image caption that shares its photo's column carries
+   `data-inset-toggle` (§5) — without it a zero side padding is frozen
+   and an editor cannot indent it — and that its text lands on the
+   content baseline (Single under a full-width photo, None under an
+   inset one). Never flag a caption that
    is its column's only member (the flag is inert there and the
    dead-flag audit reports it).
 7b. Confirm every button label is authored ALL CAPS (2026-08-18,

@@ -287,11 +287,9 @@ p {
      rendered. The pair has to travel together and stay in order, so it is
      atomic in one style block there rather than split across two sheets. */
 
-  /* Indents the caption (!important beats the inline td padding) */
-  .caption {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
+  /* The phone-only .caption indent left 2026-09-30: every caption section
+     now authors its 16px gutter itself, so the rule only stacked a second
+     16 on top (Video Block (inset) read 32 on phones). */
 
   /* Icon Row: its plain columns STACK on mobile (user decision 2026-08-22,
      replacing the group that squeezed the copy beside a 120px icon), and

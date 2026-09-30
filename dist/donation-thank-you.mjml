@@ -220,7 +220,7 @@
         <mj-raw><!--[if !mso]><!--></mj-raw>
         <mj-image src="assets/photo-family.jpg" alt="Family celebrating on a mountain overlook" href="https://tpl.org" width="600px" padding="0" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photographer Adair Rutledge</span>
         </mj-text>
       </mj-column>
