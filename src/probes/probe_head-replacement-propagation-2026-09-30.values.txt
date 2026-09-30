@@ -1,0 +1,22 @@
+probe_head-replacement-propagation-2026-09-30 — paste-in values
+
+STEP 3 — edit the TEMPLATE (turns E1's bars Sky if EN reads the template live)
+
+probe_head_css (CSS-type) → replace the whole value with:
+.rp-c1 { background-color: #5DD8D8; }
+@media only screen and (max-width: 9997px) {
+  .rp-c2 { background-color: #5DD8D8 !important; }
+  .rp-c3 > div { background-color: #5DD8D8 !important; }
+}
+
+probe_head_select → the "Current" option's value (and the default, if shown separately):
+.rp-s1 { background-color: #5DD8D8; } @media only screen and (max-width: 9996px) { .rp-s2 { background-color: #5DD8D8 !important; } .rp-s3 > div { background-color: #5DD8D8 !important; } }
+
+STEP 5 — edit INSIDE email E1, only if EN offers it (turns C bars Sun)
+
+probe_head_css → replace the whole value with:
+.rp-c1 { background-color: #F7931E; }
+@media only screen and (max-width: 9997px) {
+  .rp-c2 { background-color: #F7931E !important; }
+  .rp-c3 > div { background-color: #F7931E !important; }
+}
