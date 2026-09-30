@@ -659,7 +659,7 @@ unhandled (none exist upstream; documented limitation).
 
 **`data-inset-toggle`** (opt-in, 2026-08-18): a flagged spacing component
 mints its Inset Selects even when a side is 0 — "None" is on the closed
-scale, so a flush element (an image caption matching its photo's edge)
+scale, so a flush element (a caption an editor sets flush with its photo)
 stays adjustable without an authoring round-trip. The flag also unlocks
 **Spacing Above** (same closed scale, zero included) and relaxes the
 top-must-be-0 gate: THE CAPTION PACING EXCEPTION (user-decided
@@ -683,13 +683,16 @@ bypasses the other gates (sole-member consolidation still wins — do NOT
 flag a column's only member, the dead-flag audit will report it), and is
 strip-tested per instance like every importer flag (`IMPORTER_FLAG_RE`).
 Upstream convention: flag pattern-a captions (the mj-text beside its
-image in the same column). Their left/right put the caption text on the
-content baseline, not on the photo edge (user decision 2026-09-30):
-`4px 16px 0` (Single) under a full-width photo, whose frame has no gutter,
-and `4px 0 0` (None) under an inset photo, whose frame already supplies the
-16. The Inset default therefore reads Single or None by block while every
-caption lands at the same 16px. The standalone caption SECTIONS carry
-their row's frame left/right padding (16 for the same reason) and get no
+image in the same column). Every caption is indented 16px (Single) from
+its own photo's edge (user decision 2026-09-30): `4px 16px 0`, or
+`4px 16px 8px` where it paces the copy below. Under a full-width photo that
+lands the text on the 16px baseline; under an inset photo it lands 32px
+from the block edge on desktop. On phones the capflush restore pins every
+caption at 16 from the screen, where the photos bleed, so it stays 16 from
+the photo there too. A caption under a photo GRID (the credit lines of
+Photo and Text Grid, Quiz 2x2 photos) takes the same 16 in from the grid's
+edge. The standalone caption SECTIONS carry the photo's frame plus that 16
+as their row's left/right padding (32 under an inset video) and get no
 flag —
 their gap is the SECTION's top padding, authored `4px` on the caption
 scale too (the section's `css-class="block caption"` matches the
@@ -966,11 +969,13 @@ records above and below only change the numbers.
     the catalog's sample copy the centred default is pixel-identical at
     600px; longer copy gets the wider measure.
   - Their photo CAPTIONS (user decision 2026-09-30): the photo stays edge
-    to edge, but the caption beneath it is copy and sits on the baseline,
-    16px from the block edge at every width (Image 1x1, Images 2x1/3x1,
-    Video Block, Video Feature, and the autoresponders' Image 1x1). An
-    Images 2x1/3x1 caption's inner side takes the same 16, so a
-    right-aligned caption ends 16px inside its photo's inner edge. The
+    to edge, but the caption beneath it is indented 16px from the photo
+    like every caption in the catalog (see the caption convention under
+    `data-inset-toggle`), which here puts it on the baseline at every width
+    (Image 1x1, Images 2x1/3x1, Video Block, Video Feature, and the
+    autoresponders' Image 1x1). An Images 2x1/3x1 caption's inner side
+    takes the same 16, so a right-aligned caption ends 16px inside its
+    photo's inner edge. The
     phone-only `.caption` indent was retired with this change: once each
     caption section authored its own 16, it only stacked a second 16
     (Video Block (inset) read 32 on phones).

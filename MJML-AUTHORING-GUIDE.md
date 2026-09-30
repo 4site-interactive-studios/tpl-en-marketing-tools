@@ -1035,8 +1035,8 @@ sections/wrappers/columns — offer, snap to, and label THAT scale
 instead of the main one. (Spacer heights and the Block Padding
 Left/Right preset stay on the main vocabulary.) TPL uses it to give
 captions a **Quarter - 4px** step: inline captions
-(`mj-class="caption"`) author a 4px top (`4px 0 0` under an inset photo,
-`4px 16px 0` under a full-width one), and the standalone
+(`mj-class="caption"`) author a 4px top with a 16px inset from their
+photo (`4px 16px 0`), and the standalone
 caption sections (`css-class="block caption"`) author the same 4px as
 their section top padding — both default to Quarter without the 4px
 option widening every other spacing dropdown in the catalog. Each class
@@ -2164,9 +2164,8 @@ aloud). The Alt Text field survives either way (§5).
    light-only assets survive the client's own auto-darkening.
 7a. Confirm every image caption that shares its photo's column carries
    `data-inset-toggle` (§5) — without it a zero side padding is frozen
-   and an editor cannot indent it — and that its text lands on the
-   content baseline (Single under a full-width photo, None under an
-   inset one). Never flag a caption that
+   and an editor cannot indent it — and that its text sits 16px (Single)
+   in from its photo's edge. Never flag a caption that
    is its column's only member (the flag is inert there and the
    dead-flag audit reports it).
 7b. Confirm every button label is authored ALL CAPS (2026-08-18,

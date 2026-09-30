@@ -1413,7 +1413,7 @@
         </mj-group>
     </mj-section>
     </mj-wrapper>
-    <mj-section css-class="block caption flush-mobile-capflush" background-color="#ffffff" padding="4px 16px 0">
+    <mj-section css-class="block caption flush-mobile-capflush" background-color="#ffffff" padding="4px 32px 0">
       <mj-column vertical-align="middle">
         <!-- data-display-toggle: the caption is the SOLE member of its column,
              and a sole member earns no Display Select otherwise. The gap above
@@ -1579,7 +1579,7 @@
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 8px">
           <span>Photograph by Photographer</span>
         </mj-text>
         <mj-text padding="0 0 8px">
@@ -1614,7 +1614,7 @@
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 8px">
           <span>Photograph by Photographer</span>
         </mj-text>
         <mj-text padding="0 0 8px">
@@ -1672,7 +1672,7 @@
             align="center"
             fluid-on-mobile="true" css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 8px">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 8px">
           <span>Photograph by Photographer</span>
         </mj-text>
         <mj-text padding="0 0 8px">
@@ -1723,7 +1723,7 @@
           fluid-on-mobile="true"
           css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -1771,7 +1771,7 @@
             padding="0"
             css-class="dark-only" data-style-dark-mode />
         <mj-raw><!--<![endif]--></mj-raw>
-        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 0 0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" padding="4px 16px 0">
           <span>Photograph by Photographer</span>
         </mj-text>
       </mj-column>
@@ -2244,7 +2244,7 @@
     </mj-section>
     <mj-section
       css-class="text-block block flush-mobile-capflush"
-      background-color="#362229" padding="0 16px 16px"
+      background-color="#362229" padding="0 32px 16px"
     >
       <mj-column>
         <mj-text css-class="wysiwyg link-inverse" align="right" mj-class="caption" color="#ffffff" padding="0">
@@ -2587,7 +2587,7 @@
         <mj-text css-class="wysiwyg link-inverse" color="#ffffff" padding="0 0 8px">
           <p>Not in a guessing mood? <a href="https://tpl.org"><strong>Skip to the answer.</strong></a></p>
         </mj-text>
-        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0">
+        <mj-text data-inset-toggle align="right" mj-class="caption" color="#ffffff" padding="0 16px">
           <span>Photos: Bergreen Photography, Chris Bennett, Caroline Martin, Sara Rubinstein</span>
         </mj-text>
       </mj-column>
