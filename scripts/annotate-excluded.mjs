@@ -388,6 +388,20 @@ for (const { rel, f, out: outDir } of walk) {
     const altLeft = (text.match(/<mj-section\b[^>]*data-alt-arrangement/g) || []).length;
     if (altLeft) console.warn(`  WARN ${join(rel, f)}: ${altLeft} data-alt-arrangement section(s) survived the drop`);
 
+    // A primary naming its default (data-display-default="<Option Label>")
+    // previews THAT option, since it is what the default send renders: its
+    // alternate's label keeps the alternate in place of the primary, and
+    // "Exclude Block" drops both (Video Block defaults to its Play Icon,
+    // 2026-09-30). The alternate keeps rendering because its marker is
+    // removed here, before the alternate drop below reads it.
+    const PRIMARY_THEN_ALT =
+      /([ \t]*)(<(mj-[a-z-]+)\b[^>]*\bdata-display-default="([^"]*)"[^>]*?(?:\/>|>[\s\S]*?<\/\3>))(\s*)(<mj-[a-z-]+\b[^>]*\bdata-alt-member="([^"]*)"[^>]*?(?:\/>|>[\s\S]*?<\/mj-[a-z-]+>))/g;
+    text = text.replace(PRIMARY_THEN_ALT, (whole, indent, primary, _tag, choice, gap, alt, altLabel) => {
+      if (choice === altLabel) return indent + alt.replace(/\s+data-alt-member="[^"]*"/, '');
+      if (choice === 'Exclude Block') return '';
+      return whole;
+    });
+
     // Alternate MEMBERS, same reasoning one level down: an element carrying
     // data-alt-member is an extra option of the Display Select on the member
     // before it (Video Block's Play Icon beside its WATCH button), so a send
@@ -399,17 +413,6 @@ for (const { rel, f, out: outDir } of walk) {
     );
     const altMembersLeft = (text.match(/<mj-[a-z-]+\b[^>]*data-alt-member/g) || []).length;
     if (altMembersLeft) console.warn(`  WARN ${join(rel, f)}: ${altMembersLeft} data-alt-member element(s) survived the drop`);
-
-    // A member flagged data-display-default-exclude ships with its Display
-    // Select on "Exclude Block", so the default send omits it: the previews
-    // drop it too (Video Block's WATCH button, 2026-09-30). Runs after the
-    // alternate drop, so the Play Icon is already gone.
-    text = text.replace(
-      /[ \t]*(?:<mj-[a-z-]+\b[^>]*\bdata-display-default-exclude\b[^>]*\/>|<(mj-[a-z-]+)\b[^>]*\bdata-display-default-exclude\b[^>]*>[\s\S]*?<\/\1>)[ \t]*\n?/g,
-      '',
-    );
-    const excludedLeft = (text.match(/<mj-[a-z-]+\b[^>]*data-display-default-exclude/g) || []).length;
-    if (excludedLeft) console.warn(`  WARN ${join(rel, f)}: ${excludedLeft} data-display-default-exclude element(s) survived the drop`);
 
     checkMarkupIntegrity(source, join(rel, f));
     if (text.includes('</mj-head>')) {

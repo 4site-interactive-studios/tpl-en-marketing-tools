@@ -1391,10 +1391,21 @@ guard('alternate member check', () => {
       const label = /\bdata-alt-member\s*=\s*"([^"]*)"/.exec(m.attrs);
       const at = `src/${name}:${lineAt(src, m.index)}`;
       if (!label) {
-        if (/\bdata-option-label\b/.test(m.attrs)) {
-          const next = members[i + 1];
-          if (!next || next.column !== m.column || !/\bdata-alt-member\b/.test(next.attrs)) {
-            warn(`${at} data-option-label with no data-alt-member directly after it in the same column — the label names nothing`);
+        const next = members[i + 1];
+        const altNext = next && next.column === m.column && /\bdata-alt-member\b/.test(next.attrs) ? next : null;
+        if (/\bdata-option-label\b/.test(m.attrs) && !altNext) {
+          warn(`${at} data-option-label with no data-alt-member directly after it in the same column — the label names nothing`);
+        }
+        // data-display-default must name one of the Select's options, or the
+        // importer falls back to the first with only an info note.
+        const def = /\bdata-display-default\s*=\s*"([^"]*)"/.exec(m.attrs);
+        if (def) {
+          const alt = altNext && /\bdata-alt-member\s*=\s*"([^"]*)"/.exec(altNext.attrs)?.[1];
+          // Without an alternate the importer ignores data-option-label
+          const own = (alt && /\bdata-option-label\s*=\s*"([^"]*)"/.exec(m.attrs)?.[1]) || 'Include Block';
+          const labels = [own, ...(alt ? [alt] : []), 'Exclude Block'];
+          if (!labels.includes(def[1])) {
+            warn(`${at} data-display-default="${def[1]}" names no option of its Display Select (${labels.map((l) => `"${l}"`).join(', ')})`);
           }
         }
         continue;

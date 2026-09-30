@@ -3957,8 +3957,8 @@ in the same column, folded into that primary's Display Select as an extra
 option — primary / alternate / "Exclude Block", defaulting to the primary.
 It exists for Video Block's overlay (WATCH Button / Play Icon / None, user
 decision 2026-09-29): a Display Select can only include or exclude one
-fragment, and every Display defaults to Include (unless flagged
-`data-display-default-exclude`, below), so an icon authored beside
+fragment, and every Display defaults to Include (unless its primary names
+another default with `data-display-default`, below), so an icon authored beside
 the button as an ordinary member would ship both. The rules
 (`columnMembers` + the Display emit loop + `columnMemberCount`,
 `src/core/mjmlProps.ts`):
@@ -3982,19 +3982,23 @@ the button as an ordinary member would ship both. The rules
     `normalize()` strip list, and the authoring build drops alternate members
     from its compiled previews so a preview shows the default.
 
-- **`data-display-default-exclude`** (valueless, on a member that gets a
-Display Select, 2026-09-30): the Select DEFAULTS to "Exclude Block" instead
-of the member's own fragment, so the member ships only when an editor opts it
-in. The options and their order are unchanged, and `originalValue` stays the
-authored fragment, so deleting the field restores the markup byte-exact (the
-"Exclude Link" default's precedent). On a primary with an alternate it covers
-the whole Select: primary and alternate both ship off. Used by the three
-video blocks' WATCH Button / Play Icon overlay (user decision 2026-09-30),
-whose fixed 128px slot keeps the band height whichever option ships. Like the
-alternate flags it is STRUCTURAL: it changes what the default send renders,
-so it stays out of the TPL `normalize()` strip list, and the authoring build
-drops the flagged member from its compiled previews so a preview shows the
-default. On a member that gets no Display Select it is dead, and the
+- **`data-display-default="<Option Label>"`** (valued, on a member that gets
+a Display Select, 2026-09-30): names which option the Select DEFAULTS to —
+the member's own option label (its `data-option-label`, or "Include Block"),
+its alternate's `data-alt-member` label, or "Exclude Block". Absent, the
+first option is the default, as before. The options and their order are
+unchanged, and `originalValue` stays the authored fragment, so deleting the
+field restores the markup byte-exact (the "Exclude Link" default's
+precedent). A label matching no option falls back to the first with an info
+note; the authoring repo guards it at build time (TPL `check-catalog`,
+"alternate member check"). Used by the three video blocks, whose overlay
+defaults to the orange Play Icon while the white WATCH button is the opt-in
+(user decision 2026-09-30); their fixed 128px slot keeps the band height
+whichever option ships. Like the alternate flags it is STRUCTURAL: it
+changes what the default send renders, so it stays out of the TPL
+`normalize()` strip list, and the authoring build previews the chosen
+option (the alternate in the primary's place, or nothing for "Exclude
+Block"). On a member that gets no Display Select it is dead, and the
 dead-flag audit reports it.
 
 **`data-no-display-toggle`** (valueless, on content components): opts

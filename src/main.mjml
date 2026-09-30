@@ -1320,10 +1320,10 @@
            Selects on those ratio steps (105 / 136 / 236 = 338 / 400 / 600px
            bands); set both to the same ratio.
            The overlay is one Display Select (user decision 2026-09-29):
-           WATCH Button / Play Icon / Exclude Block, DEFAULTING to Exclude
-           Block (the button carries the default-exclude flag, user decision
-           2026-09-30), so the previews show the band with no overlay. The
-           icon is the button's
+           WATCH Button / Play Icon / Exclude Block, DEFAULTING to the orange
+           Play Icon (the button names it as its default, user decision
+           2026-09-30): the white WATCH button is the opt-in. The previews
+           show the icon. The icon is the button's
            data-alt-member, so it never renders in place — the importer folds
            it into the button's Select, and the build drops it from the
            previews. A 128px row in each rail holds the slot's height
@@ -1340,7 +1340,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="550px" vertical-align="middle">
-            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default="Play Icon" data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
@@ -1404,7 +1404,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="518px" vertical-align="middle">
-            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default="Play Icon" data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
@@ -1464,7 +1464,7 @@
             <mj-raw><tr><td height="128" style="height:128px;line-height:128px;font-size:0;">&nbsp;</td></tr></mj-raw>
           </mj-column>
           <mj-column width="550px" vertical-align="middle">
-            <mj-button data-display-toggle data-display-default-exclude data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
+            <mj-button data-display-toggle data-display-default="Play Icon" data-option-label="WATCH Button" width="auto" href="https://tpl.org" align="center" background-color="#4A7A68" color="#ffffff" border="2px solid #ffffff" padding="0">WATCH&nbsp;&nbsp;▷</mj-button>
             <mj-image data-alt-member="Play Icon" src="assets/icon-play-circle_orange.png" width="128px" alt="Play video" href="https://tpl.org" align="center" padding="0" />
           </mj-column>
           <mj-column width="25px" vertical-align="middle">
