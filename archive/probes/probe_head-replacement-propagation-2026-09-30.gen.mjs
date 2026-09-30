@@ -81,11 +81,33 @@
  *   O  test 2: bar C Sun → per-email overrides work (and would shadow a later
  *      template fix for that email — record it).
  *
- * ══════════════════ VERDICTS — NONE MEASURED YET ══════════════════
- * ═══════════════════════════════════════════════════════════════════
+ * ══════════════ VERDICTS — CLOSED 2026-09-30, idea shelved ══════════════
+ * EoA xsCGAGNE… (E1) and FXFTsBAK… (E2), 17 clients each; the two Outlook
+ * 125% slots return no capture. An earlier E2 send (0i4BxgDa…) had no Select
+ * option picked and is superseded. Read from the renders only.
+ *   P  NOT A PROBE QUESTION. E1 was edited in-email before its send, so no
+ *      untouched existing email was measured. The user settled it from EN
+ *      experience: an email copies the template when it is created, so
+ *      template edits never reach an existing email. Fix-once is impossible.
+ *   —  Substitution works for both carriers (a bare CSS-type tag in the
+ *      head; a whole-rule Select inside the head <style>): all bars painted
+ *      in Apple Mail, iOS, Gmail web and app, Outlook.com, Mac 365. A new
+ *      email (E2) gets the edited template value for both.
+ *   O  Per-email override WORKS: E1's C bars painted Sun after the in-email
+ *      edit. That is the one useful result, a per-email fix path.
+ *   E  The `>` escape did NOT reproduce: C3 filled after the in-email edit.
+ *   M  @media rules applied everywhere except Word (normal for Word).
+ *   I  NOT MEASURED: inlining needs the delivered HTML (EoA login). Outlook
+ *      2021 painted C1/S1/K and no @media bar, consistent with inlining.
+ *   —  A Select resolves by its selected option; a fresh email with none
+ *      picked rendered values.default.value, a separate copy that editing
+ *      the option leaves stale.
+ * Write-up and pickup: email-to-en-marketing-tools docs/future-enhancements.md,
+ * "Head CSS in a template replacement".
+ * ═══════════════════════════════════════════════════════════════════════
  *
  * Usage (from the repo root):
- *   node src/probes/probe_head-replacement-propagation-2026-09-30.gen.mjs
+ *   node archive/probes/probe_head-replacement-propagation-2026-09-30.gen.mjs
  */
 import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
